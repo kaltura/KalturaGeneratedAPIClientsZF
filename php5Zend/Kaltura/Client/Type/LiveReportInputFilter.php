@@ -52,6 +52,7 @@ class Kaltura_Client_Type_LiveReportInputFilter extends Kaltura_Client_ObjectBas
 			$this->toTime = (int)$xml->toTime;
 		if(count($xml->live))
 			$this->live = (int)$xml->live;
+		$this->orderBy = (string)$xml->orderBy;
 	}
 	/**
 	 * 
@@ -80,6 +81,13 @@ class Kaltura_Client_Type_LiveReportInputFilter extends Kaltura_Client_ObjectBas
 	 * @var Kaltura_Client_Enum_NullableBoolean
 	 */
 	public $live = null;
+
+	/**
+	 * 
+	 *
+	 * @var Kaltura_Client_Enum_LiveReportOrderBy
+	 */
+	public $orderBy = null;
 
 
 }

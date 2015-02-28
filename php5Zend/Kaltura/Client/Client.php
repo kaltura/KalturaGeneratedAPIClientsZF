@@ -188,9 +188,9 @@ class Kaltura_Client_Client extends Kaltura_Client_ClientBase
 	/**
 	 * Stats Service
 	 *  
-	 * @var Kaltura_Client_StatsService
+	 * @var Kaltura_Client_LiveStatsService
 	 */
-	public $stats = null;
+	public $liveStats = null;
 
 	/**
 	 * Live Stream service lets you manage live stream entries
@@ -292,6 +292,13 @@ class Kaltura_Client_Client extends Kaltura_Client_ClientBase
 	 * @var Kaltura_Client_SessionService
 	 */
 	public $session = null;
+
+	/**
+	 * Stats Service
+	 *  
+	 * @var Kaltura_Client_StatsService
+	 */
+	public $stats = null;
 
 	/**
 	 * Storage Profiles service
@@ -414,7 +421,7 @@ class Kaltura_Client_Client extends Kaltura_Client_ClientBase
 		$this->liveChannelSegment = new Kaltura_Client_LiveChannelSegmentService($this);
 		$this->liveChannel = new Kaltura_Client_LiveChannelService($this);
 		$this->liveReports = new Kaltura_Client_LiveReportsService($this);
-		$this->stats = new Kaltura_Client_StatsService($this);
+		$this->liveStats = new Kaltura_Client_LiveStatsService($this);
 		$this->liveStream = new Kaltura_Client_LiveStreamService($this);
 		$this->mediaInfo = new Kaltura_Client_MediaInfoService($this);
 		$this->mediaServer = new Kaltura_Client_MediaServerService($this);
@@ -429,6 +436,7 @@ class Kaltura_Client_Client extends Kaltura_Client_ClientBase
 		$this->schema = new Kaltura_Client_SchemaService($this);
 		$this->search = new Kaltura_Client_SearchService($this);
 		$this->session = new Kaltura_Client_SessionService($this);
+		$this->stats = new Kaltura_Client_StatsService($this);
 		$this->storageProfile = new Kaltura_Client_StorageProfileService($this);
 		$this->syndicationFeed = new Kaltura_Client_SyndicationFeedService($this);
 		$this->system = new Kaltura_Client_SystemService($this);

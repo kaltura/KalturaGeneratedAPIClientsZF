@@ -37,7 +37,7 @@ class Kaltura_Client_Configuration
 	public $serviceUrl    				= "http://www.kaltura.com/";
 	public $partnerId    				= null;
 	public $format        				= Kaltura_Client_ClientBase::KALTURA_SERVICE_FORMAT_XML;
-	public $clientTag 	  				= "php5zend:14-12-16";
+	public $clientTag 	  				= "php5zend:15-02-03";
 	public $curlTimeout   				= 120;
 	public $startZendDebuggerSession 	= false;
 	public $userAgent					= '';

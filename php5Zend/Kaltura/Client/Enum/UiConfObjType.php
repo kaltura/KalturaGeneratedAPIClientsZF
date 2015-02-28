@@ -53,5 +53,6 @@ class Kaltura_Client_Enum_UiConfObjType
 	const CLIPPER = 18;
 	const KSR = 19;
 	const KUPLOAD = 20;
+	const WEBCASTING = 21;
 }
 

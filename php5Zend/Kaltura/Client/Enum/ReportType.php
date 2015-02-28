@@ -54,6 +54,7 @@ class Kaltura_Client_Enum_ReportType
 	const OPERATION_SYSTEM = 22;
 	const BROWSERS = 23;
 	const LIVE = 24;
+	const TOP_PLAYBACK_CONTEXT = 25;
 	const PARTNER_USAGE = 201;
 }
 

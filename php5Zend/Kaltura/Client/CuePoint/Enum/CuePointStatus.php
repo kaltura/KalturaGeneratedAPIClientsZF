@@ -36,5 +36,6 @@ class Kaltura_Client_CuePoint_Enum_CuePointStatus
 	const READY = 1;
 	const DELETED = 2;
 	const HANDLED = 3;
+	const PENDING = 4;
 }
 

@@ -48,6 +48,9 @@ class Kaltura_Client_Type_StorageJobData extends Kaltura_Client_Type_JobData
 		$this->serverUrl = (string)$xml->serverUrl;
 		$this->serverUsername = (string)$xml->serverUsername;
 		$this->serverPassword = (string)$xml->serverPassword;
+		$this->serverPrivateKey = (string)$xml->serverPrivateKey;
+		$this->serverPublicKey = (string)$xml->serverPublicKey;
+		$this->serverPassPhrase = (string)$xml->serverPassPhrase;
 		if(!empty($xml->ftpPassiveMode))
 			$this->ftpPassiveMode = true;
 		$this->srcFileSyncLocalPath = (string)$xml->srcFileSyncLocalPath;
@@ -74,6 +77,27 @@ class Kaltura_Client_Type_StorageJobData extends Kaltura_Client_Type_JobData
 	 * @var string
 	 */
 	public $serverPassword = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $serverPrivateKey = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $serverPublicKey = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $serverPassPhrase = null;
 
 	/**
 	 * 

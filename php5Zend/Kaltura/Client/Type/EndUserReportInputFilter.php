@@ -48,6 +48,7 @@ class Kaltura_Client_Type_EndUserReportInputFilter extends Kaltura_Client_Type_R
 		$this->application = (string)$xml->application;
 		$this->userIds = (string)$xml->userIds;
 		$this->playbackContext = (string)$xml->playbackContext;
+		$this->ancestorPlaybackContext = (string)$xml->ancestorPlaybackContext;
 	}
 	/**
 	 * 
@@ -69,6 +70,13 @@ class Kaltura_Client_Type_EndUserReportInputFilter extends Kaltura_Client_Type_R
 	 * @var string
 	 */
 	public $playbackContext = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $ancestorPlaybackContext = null;
 
 
 }

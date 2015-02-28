@@ -33,7 +33,6 @@
  */
 class Kaltura_Client_Enum_RuleActionType
 {
-	const DRM_POLICY = "playReady.DRM_POLICY";
 	const BLOCK = "1";
 	const PREVIEW = "2";
 	const LIMIT_FLAVORS = "3";

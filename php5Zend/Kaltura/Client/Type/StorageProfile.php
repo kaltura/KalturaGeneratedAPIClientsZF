@@ -97,6 +97,9 @@ class Kaltura_Client_Type_StorageProfile extends Kaltura_Client_ObjectBase
 			$this->deliveryProfileIds = array();
 		else
 			$this->deliveryProfileIds = Kaltura_Client_ParseUtils::unmarshalArray($xml->deliveryProfileIds, "KalturaKeyValue");
+		$this->privateKey = (string)$xml->privateKey;
+		$this->publicKey = (string)$xml->publicKey;
+		$this->passPhrase = (string)$xml->passPhrase;
 	}
 	/**
 	 * 
@@ -303,6 +306,27 @@ class Kaltura_Client_Type_StorageProfile extends Kaltura_Client_ObjectBase
 	 * @var array of KalturaKeyValue
 	 */
 	public $deliveryProfileIds;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $privateKey = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $publicKey = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $passPhrase = null;
 
 
 }
