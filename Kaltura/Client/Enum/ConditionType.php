@@ -9,7 +9,7 @@
 // to do with audio, video, and animation what Wiki platfroms allow them to do with
 // text.
 //
-// Copyright (C) 2006-2011  Kaltura Inc.
+// Copyright (C) 2006-2015  Kaltura Inc.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -48,5 +48,6 @@ class Kaltura_Client_Enum_ConditionType
 	const ASSET_PROPERTIES_COMPARE = "8";
 	const USER_ROLE = "9";
 	const GEO_DISTANCE = "10";
+	const OR_OPERATOR = "11";
 }
 

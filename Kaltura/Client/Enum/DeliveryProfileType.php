@@ -9,7 +9,7 @@
 // to do with audio, video, and animation what Wiki platfroms allow them to do with
 // text.
 //
-// Copyright (C) 2006-2011  Kaltura Inc.
+// Copyright (C) 2006-2015  Kaltura Inc.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -65,6 +65,7 @@ class Kaltura_Client_Enum_DeliveryProfileType
 	const LIMELIGHT_HTTP = "44";
 	const LIMELIGHT_RTMP = "45";
 	const LOCAL_PATH_APPLE_HTTP = "51";
+	const LOCAL_PATH_HDS = "53";
 	const LOCAL_PATH_HTTP = "54";
 	const LOCAL_PATH_RTMP = "55";
 	const VOD_PACKAGER_HLS = "61";
@@ -73,6 +74,7 @@ class Kaltura_Client_Enum_DeliveryProfileType
 	const VOD_PACKAGER_DASH = "68";
 	const LIVE_HLS = "1001";
 	const LIVE_HDS = "1002";
+	const LIVE_DASH = "1003";
 	const LIVE_RTMP = "1005";
 	const LIVE_AKAMAI_HDS = "1013";
 }

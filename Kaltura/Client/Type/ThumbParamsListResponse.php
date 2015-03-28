@@ -9,7 +9,7 @@
 // to do with audio, video, and animation what Wiki platfroms allow them to do with
 // text.
 //
-// Copyright (C) 2006-2011  Kaltura Inc.
+// Copyright (C) 2006-2015  Kaltura Inc.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -31,7 +31,7 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Type_ThumbParamsListResponse extends Kaltura_Client_ObjectBase
+class Kaltura_Client_Type_ThumbParamsListResponse extends Kaltura_Client_Type_ListResponse
 {
 	public function getKalturaObjectType()
 	{
@@ -49,8 +49,6 @@ class Kaltura_Client_Type_ThumbParamsListResponse extends Kaltura_Client_ObjectB
 			$this->objects = array();
 		else
 			$this->objects = Kaltura_Client_ParseUtils::unmarshalArray($xml->objects, "KalturaThumbParams");
-		if(count($xml->totalCount))
-			$this->totalCount = (int)$xml->totalCount;
 	}
 	/**
 	 * 
@@ -59,14 +57,6 @@ class Kaltura_Client_Type_ThumbParamsListResponse extends Kaltura_Client_ObjectB
 	 * @readonly
 	 */
 	public $objects;
-
-	/**
-	 * 
-	 *
-	 * @var int
-	 * @readonly
-	 */
-	public $totalCount = null;
 
 
 }

@@ -9,7 +9,7 @@
 // to do with audio, video, and animation what Wiki platfroms allow them to do with
 // text.
 //
-// Copyright (C) 2006-2011  Kaltura Inc.
+// Copyright (C) 2006-2015  Kaltura Inc.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -31,7 +31,7 @@
  * @package Kaltura
  * @subpackage Client
  */
-abstract class Kaltura_Client_Type_UserBaseFilter extends Kaltura_Client_Type_Filter
+abstract class Kaltura_Client_Type_UserBaseFilter extends Kaltura_Client_Type_RelatedFilter
 {
 	public function getKalturaObjectType()
 	{
@@ -47,6 +47,9 @@ abstract class Kaltura_Client_Type_UserBaseFilter extends Kaltura_Client_Type_Fi
 		
 		if(count($xml->partnerIdEqual))
 			$this->partnerIdEqual = (int)$xml->partnerIdEqual;
+		if(count($xml->typeEqual))
+			$this->typeEqual = (int)$xml->typeEqual;
+		$this->typeIn = (string)$xml->typeIn;
 		$this->screenNameLike = (string)$xml->screenNameLike;
 		$this->screenNameStartsWith = (string)$xml->screenNameStartsWith;
 		$this->emailLike = (string)$xml->emailLike;
@@ -71,6 +74,20 @@ abstract class Kaltura_Client_Type_UserBaseFilter extends Kaltura_Client_Type_Fi
 	 * @var int
 	 */
 	public $partnerIdEqual = null;
+
+	/**
+	 * 
+	 *
+	 * @var Kaltura_Client_Enum_UserType
+	 */
+	public $typeEqual = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $typeIn = null;
 
 	/**
 	 * 

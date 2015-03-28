@@ -9,7 +9,7 @@
 // to do with audio, video, and animation what Wiki platfroms allow them to do with
 // text.
 //
-// Copyright (C) 2006-2011  Kaltura Inc.
+// Copyright (C) 2006-2015  Kaltura Inc.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -49,6 +49,7 @@ class Kaltura_Client_Type_LiveReportExportParams extends Kaltura_Client_ObjectBa
 		$this->recpientEmail = (string)$xml->recpientEmail;
 		if(count($xml->timeZoneOffset))
 			$this->timeZoneOffset = (int)$xml->timeZoneOffset;
+		$this->applicationUrlTemplate = (string)$xml->applicationUrlTemplate;
 	}
 	/**
 	 * 
@@ -71,6 +72,14 @@ class Kaltura_Client_Type_LiveReportExportParams extends Kaltura_Client_ObjectBa
 	 * @var int
 	 */
 	public $timeZoneOffset = null;
+
+	/**
+	 * Optional argument that allows controlling the prefix of the exported csv url
+	 * 	 
+	 *
+	 * @var string
+	 */
+	public $applicationUrlTemplate = null;
 
 
 }

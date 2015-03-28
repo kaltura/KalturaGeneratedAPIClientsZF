@@ -9,7 +9,7 @@
 // to do with audio, video, and animation what Wiki platfroms allow them to do with
 // text.
 //
-// Copyright (C) 2006-2011  Kaltura Inc.
+// Copyright (C) 2006-2015  Kaltura Inc.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -60,6 +60,7 @@ class Kaltura_Client_Type_LiveStatsEvent extends Kaltura_Client_ObjectBase
 		$this->referrer = (string)$xml->referrer;
 		if(!empty($xml->isLive))
 			$this->isLive = true;
+		$this->startTime = (string)$xml->startTime;
 		$this->deliveryType = (string)$xml->deliveryType;
 	}
 	/**
@@ -77,9 +78,10 @@ class Kaltura_Client_Type_LiveStatsEvent extends Kaltura_Client_ObjectBase
 	public $entryId = null;
 
 	/**
-	 * 
+	 * an integer representing the type of event being sent from the player
+	 * 	 
 	 *
-	 * @var Kaltura_Client_Enum_StatsEventType
+	 * @var Kaltura_Client_Enum_LiveStatsEventType
 	 */
 	public $eventType = null;
 
@@ -129,6 +131,14 @@ class Kaltura_Client_Type_LiveStatsEvent extends Kaltura_Client_ObjectBase
 	 * @var bool
 	 */
 	public $isLive = null;
+
+	/**
+	 * the event start time as string
+	 * 	 
+	 *
+	 * @var string
+	 */
+	public $startTime = null;
 
 	/**
 	 * delivery type used for this stream

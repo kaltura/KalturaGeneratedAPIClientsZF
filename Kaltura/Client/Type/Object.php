@@ -9,7 +9,7 @@
 // to do with audio, video, and animation what Wiki platfroms allow them to do with
 // text.
 //
-// Copyright (C) 2006-2011  Kaltura Inc.
+// Copyright (C) 2006-2015  Kaltura Inc.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -45,7 +45,16 @@ abstract class Kaltura_Client_Type_Object extends Kaltura_Client_ObjectBase
 		if(is_null($xml))
 			return;
 		
+		if(!empty($xml->relatedObjects))
+			$this->relatedObjects = Kaltura_Client_ParseUtils::unmarshalObject($xml->relatedObjects, "map");
 	}
+	/**
+	 * 
+	 *
+	 * @var map
+	 */
+	public $relatedObjects;
+
 
 }
 

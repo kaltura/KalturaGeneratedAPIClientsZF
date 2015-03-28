@@ -9,7 +9,7 @@
 // to do with audio, video, and animation what Wiki platfroms allow them to do with
 // text.
 //
-// Copyright (C) 2006-2011  Kaltura Inc.
+// Copyright (C) 2006-2015  Kaltura Inc.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -173,7 +173,7 @@ class Kaltura_Client_Type_BaseEntry extends Kaltura_Client_ObjectBase
 	public $adminTags = null;
 
 	/**
-	 * Categories with no entitlement that this entry belongs to.
+	 * Comma separated list of full names of categories to which this entry belongs. Only categories that don't have entitlement (privacy context) are listed, to retrieve the full list of categories, use the categoryEntry.list action. 
 	 * 	 
 	 *
 	 * @var string
@@ -181,7 +181,7 @@ class Kaltura_Client_Type_BaseEntry extends Kaltura_Client_ObjectBase
 	public $categories = null;
 
 	/**
-	 * Categories Ids of categories with no entitlement that this entry belongs to
+	 * Comma separated list of ids of categories to which this entry belongs. Only categories that don't have entitlement (privacy context) are listed, to retrieve the full list of categories, use the categoryEntry.list action. 
 	 * 	 
 	 *
 	 * @var string

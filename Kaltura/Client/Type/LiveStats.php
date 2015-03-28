@@ -9,7 +9,7 @@
 // to do with audio, video, and animation what Wiki platfroms allow them to do with
 // text.
 //
-// Copyright (C) 2006-2011  Kaltura Inc.
+// Copyright (C) 2006-2015  Kaltura Inc.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -47,6 +47,8 @@ class Kaltura_Client_Type_LiveStats extends Kaltura_Client_ObjectBase
 		
 		if(count($xml->audience))
 			$this->audience = (int)$xml->audience;
+		if(count($xml->dvrAudience))
+			$this->dvrAudience = (int)$xml->dvrAudience;
 		if(count($xml->avgBitrate))
 			$this->avgBitrate = (float)$xml->avgBitrate;
 		if(count($xml->bufferTime))
@@ -66,6 +68,13 @@ class Kaltura_Client_Type_LiveStats extends Kaltura_Client_ObjectBase
 	 * @var int
 	 */
 	public $audience = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $dvrAudience = null;
 
 	/**
 	 * 

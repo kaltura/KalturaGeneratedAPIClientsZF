@@ -9,7 +9,7 @@
 // to do with audio, video, and animation what Wiki platfroms allow them to do with
 // text.
 //
-// Copyright (C) 2006-2011  Kaltura Inc.
+// Copyright (C) 2006-2015  Kaltura Inc.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -33,11 +33,6 @@
  */
 class Kaltura_Client_Client extends Kaltura_Client_ClientBase
 {
-	/**
-	 * @var string
-	 */
-	protected $apiVersion = '3.1.6';
-
 	/**
 	 * Manage access control profiles
 	 *  
@@ -166,6 +161,13 @@ class Kaltura_Client_Client extends Kaltura_Client_ClientBase
 	public $flavorParams = null;
 
 	/**
+	 * Add & Manage GroupUser
+	 *  
+	 * @var Kaltura_Client_GroupUserService
+	 */
+	public $groupUser = null;
+
+	/**
 	 * Manage live channel segments
 	 *  
 	 * @var Kaltura_Client_LiveChannelSegmentService
@@ -270,6 +272,13 @@ class Kaltura_Client_Client extends Kaltura_Client_ClientBase
 	 * @var Kaltura_Client_ReportService
 	 */
 	public $report = null;
+
+	/**
+	 * Manage response profiles
+	 *  
+	 * @var Kaltura_Client_ResponseProfileService
+	 */
+	public $responseProfile = null;
 
 	/**
 	 * Expose the schema definitions for syndication MRSS, bulk upload XML and other schema types. 
@@ -400,6 +409,9 @@ class Kaltura_Client_Client extends Kaltura_Client_ClientBase
 	{
 		parent::__construct($config);
 		
+		$this->setClientTag('php5:15-03-23');
+		$this->setApiVersion('3.2.0');
+		
 		$this->accessControlProfile = new Kaltura_Client_AccessControlProfileService($this);
 		$this->accessControl = new Kaltura_Client_AccessControlService($this);
 		$this->adminUser = new Kaltura_Client_AdminUserService($this);
@@ -418,6 +430,7 @@ class Kaltura_Client_Client extends Kaltura_Client_ClientBase
 		$this->flavorAsset = new Kaltura_Client_FlavorAssetService($this);
 		$this->flavorParamsOutput = new Kaltura_Client_FlavorParamsOutputService($this);
 		$this->flavorParams = new Kaltura_Client_FlavorParamsService($this);
+		$this->groupUser = new Kaltura_Client_GroupUserService($this);
 		$this->liveChannelSegment = new Kaltura_Client_LiveChannelSegmentService($this);
 		$this->liveChannel = new Kaltura_Client_LiveChannelService($this);
 		$this->liveReports = new Kaltura_Client_LiveReportsService($this);
@@ -433,6 +446,7 @@ class Kaltura_Client_Client extends Kaltura_Client_ClientBase
 		$this->permission = new Kaltura_Client_PermissionService($this);
 		$this->playlist = new Kaltura_Client_PlaylistService($this);
 		$this->report = new Kaltura_Client_ReportService($this);
+		$this->responseProfile = new Kaltura_Client_ResponseProfileService($this);
 		$this->schema = new Kaltura_Client_SchemaService($this);
 		$this->search = new Kaltura_Client_SearchService($this);
 		$this->session = new Kaltura_Client_SessionService($this);
@@ -450,6 +464,148 @@ class Kaltura_Client_Client extends Kaltura_Client_ClientBase
 		$this->user = new Kaltura_Client_UserService($this);
 		$this->widget = new Kaltura_Client_WidgetService($this);
 		$this->xInternal = new Kaltura_Client_XInternalService($this);
+	}
+	
+	/**
+	 * @param string $clientTag
+	 */
+	public function setClientTag($clientTag)
+	{
+		$this->clientConfiguration['clientTag'] = $clientTag;
+	}
+	
+	/**
+	 * @return string
+	 */
+	public function getClientTag()
+	{
+		if(isset($this->clientConfiguration['clientTag']))
+		{
+			return $this->clientConfiguration['clientTag'];
+		}
+		
+		return null;
+	}
+	
+	/**
+	 * @param string $apiVersion
+	 */
+	public function setApiVersion($apiVersion)
+	{
+		$this->clientConfiguration['apiVersion'] = $apiVersion;
+	}
+	
+	/**
+	 * @return string
+	 */
+	public function getApiVersion()
+	{
+		if(isset($this->clientConfiguration['apiVersion']))
+		{
+			return $this->clientConfiguration['apiVersion'];
+		}
+		
+		return null;
+	}
+	
+	/**
+	 * Impersonated partner id
+	 * 
+	 * @param int $partnerId
+	 */
+	public function setPartnerId($partnerId)
+	{
+		$this->requestConfiguration['partnerId'] = $partnerId;
+	}
+	
+	/**
+	 * Impersonated partner id
+	 * 
+	 * @return int
+	 */
+	public function getPartnerId()
+	{
+		if(isset($this->requestConfiguration['partnerId']))
+		{
+			return $this->requestConfiguration['partnerId'];
+		}
+		
+		return null;
+	}
+	
+	/**
+	 * Kaltura API session
+	 * 
+	 * @param string $ks
+	 */
+	public function setKs($ks)
+	{
+		$this->requestConfiguration['ks'] = $ks;
+	}
+	
+	/**
+	 * Kaltura API session
+	 * 
+	 * @return string
+	 */
+	public function getKs()
+	{
+		if(isset($this->requestConfiguration['ks']))
+		{
+			return $this->requestConfiguration['ks'];
+		}
+		
+		return null;
+	}
+	
+	/**
+	 * Kaltura API session
+	 * 
+	 * @param string $sessionId
+	 */
+	public function setSessionId($sessionId)
+	{
+		$this->requestConfiguration['ks'] = $sessionId;
+	}
+	
+	/**
+	 * Kaltura API session
+	 * 
+	 * @return string
+	 */
+	public function getSessionId()
+	{
+		if(isset($this->requestConfiguration['ks']))
+		{
+			return $this->requestConfiguration['ks'];
+		}
+		
+		return null;
+	}
+	
+	/**
+	 * Response profile
+	 * 
+	 * @param KalturaBaseResponseProfile $responseProfile
+	 */
+	public function setResponseProfile(KalturaBaseResponseProfile $responseProfile)
+	{
+		$this->requestConfiguration['responseProfile'] = $responseProfile;
+	}
+	
+	/**
+	 * Response profile
+	 * 
+	 * @return KalturaBaseResponseProfile
+	 */
+	public function getResponseProfile()
+	{
+		if(isset($this->requestConfiguration['responseProfile']))
+		{
+			return $this->requestConfiguration['responseProfile'];
+		}
+		
+		return null;
 	}
 	
 }

@@ -9,7 +9,7 @@
 // to do with audio, video, and animation what Wiki platfroms allow them to do with
 // text.
 //
-// Copyright (C) 2006-2011  Kaltura Inc.
+// Copyright (C) 2006-2015  Kaltura Inc.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -48,6 +48,8 @@ class Kaltura_Client_Type_User extends Kaltura_Client_ObjectBase
 		$this->id = (string)$xml->id;
 		if(count($xml->partnerId))
 			$this->partnerId = (int)$xml->partnerId;
+		if(count($xml->type))
+			$this->type = (int)$xml->type;
 		$this->screenName = (string)$xml->screenName;
 		$this->fullName = (string)$xml->fullName;
 		$this->email = (string)$xml->email;
@@ -110,6 +112,13 @@ class Kaltura_Client_Type_User extends Kaltura_Client_ObjectBase
 	 * @readonly
 	 */
 	public $partnerId = null;
+
+	/**
+	 * 
+	 *
+	 * @var Kaltura_Client_Enum_UserType
+	 */
+	public $type = null;
 
 	/**
 	 * 

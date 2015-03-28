@@ -9,7 +9,7 @@
 // to do with audio, video, and animation what Wiki platfroms allow them to do with
 // text.
 //
-// Copyright (C) 2006-2011  Kaltura Inc.
+// Copyright (C) 2006-2015  Kaltura Inc.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -31,7 +31,7 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_VarConsole_Type_PartnerUsageListResponse extends Kaltura_Client_ObjectBase
+class Kaltura_Client_VarConsole_Type_PartnerUsageListResponse extends Kaltura_Client_Type_ListResponse
 {
 	public function getKalturaObjectType()
 	{
@@ -51,8 +51,6 @@ class Kaltura_Client_VarConsole_Type_PartnerUsageListResponse extends Kaltura_Cl
 			$this->objects = array();
 		else
 			$this->objects = Kaltura_Client_ParseUtils::unmarshalArray($xml->objects, "KalturaVarPartnerUsageItem");
-		if(count($xml->totalCount))
-			$this->totalCount = (int)$xml->totalCount;
 	}
 	/**
 	 * 
@@ -67,13 +65,6 @@ class Kaltura_Client_VarConsole_Type_PartnerUsageListResponse extends Kaltura_Cl
 	 * @var array of KalturaVarPartnerUsageItem
 	 */
 	public $objects;
-
-	/**
-	 * 
-	 *
-	 * @var int
-	 */
-	public $totalCount = null;
 
 
 }
