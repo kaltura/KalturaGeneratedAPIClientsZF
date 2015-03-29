@@ -204,6 +204,21 @@ class Kaltura_Client_Metadata_MetadataService extends Kaltura_Client_ServiceBase
 		Kaltura_Client_ParseUtils::checkIfError($resultXmlObject->result);
 	}
 
+	function index($id, $shouldUpdate)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "id", $id);
+		$this->client->addParam($kparams, "shouldUpdate", $shouldUpdate);
+		$this->client->queueServiceActionCall("metadata_metadata", "index", null, $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultXml = $this->client->doQueue();
+		$resultXmlObject = new \SimpleXMLElement($resultXml);
+		Kaltura_Client_ParseUtils::checkIfError($resultXmlObject->result);
+		$resultObject = (int)Kaltura_Client_ParseUtils::unmarshalSimpleType($resultXmlObject->result);
+		return $resultObject;
+	}
+
 	function serve($id)
 	{
 		$kparams = array();

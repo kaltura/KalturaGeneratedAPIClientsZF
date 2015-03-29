@@ -46,6 +46,7 @@ class Kaltura_Client_Type_AmazonS3StorageExportJobData extends Kaltura_Client_Ty
 			return;
 		
 		$this->filesPermissionInS3 = (string)$xml->filesPermissionInS3;
+		$this->s3Region = (string)$xml->s3Region;
 	}
 	/**
 	 * 
@@ -53,6 +54,13 @@ class Kaltura_Client_Type_AmazonS3StorageExportJobData extends Kaltura_Client_Ty
 	 * @var Kaltura_Client_Enum_AmazonS3StorageProfileFilesPermissionLevel
 	 */
 	public $filesPermissionInS3 = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $s3Region = null;
 
 
 }

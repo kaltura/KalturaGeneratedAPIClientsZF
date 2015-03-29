@@ -40,5 +40,6 @@ class Kaltura_Client_Metadata_Enum_MetadataObjectType
 	const CATEGORY = "2";
 	const USER = "3";
 	const PARTNER = "4";
+	const DYNAMIC_OBJECT = "5";
 }
 

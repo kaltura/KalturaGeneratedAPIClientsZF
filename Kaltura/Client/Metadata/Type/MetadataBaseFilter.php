@@ -112,7 +112,8 @@ abstract class Kaltura_Client_Metadata_Type_MetadataBaseFilter extends Kaltura_C
 	public $metadataProfileVersionLessThanOrEqual = null;
 
 	/**
-	 * 
+	 * When null, default is KalturaMetadataObjectType::ENTRY
+	 * 	 
 	 *
 	 * @var Kaltura_Client_Metadata_Enum_MetadataObjectType
 	 */
