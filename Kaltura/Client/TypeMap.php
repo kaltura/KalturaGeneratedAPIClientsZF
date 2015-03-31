@@ -738,6 +738,7 @@ class Kaltura_Client_TypeMap
 		'KalturaUrlTokenizerAkamaiRtsp' => 'Kaltura_Client_Type_UrlTokenizerAkamaiRtsp',
 		'KalturaUrlTokenizerAkamaiSecureHd' => 'Kaltura_Client_Type_UrlTokenizerAkamaiSecureHd',
 		'KalturaUrlTokenizerBitGravity' => 'Kaltura_Client_Type_UrlTokenizerBitGravity',
+		'KalturaUrlTokenizerCloudFront' => 'Kaltura_Client_Type_UrlTokenizerCloudFront',
 		'KalturaUrlTokenizerLevel3' => 'Kaltura_Client_Type_UrlTokenizerLevel3',
 		'KalturaUrlTokenizerLimeLight' => 'Kaltura_Client_Type_UrlTokenizerLimeLight',
 		'KalturaUrlTokenizerVelocix' => 'Kaltura_Client_Type_UrlTokenizerVelocix',
