@@ -532,6 +532,7 @@ class Kaltura_Client_TypeMap
 		'KalturaMetadataProfileFieldListResponse' => 'Kaltura_Client_Metadata_Type_MetadataProfileFieldListResponse',
 		'KalturaMetadataProfileFilter' => 'Kaltura_Client_Metadata_Type_MetadataProfileFilter',
 		'KalturaMetadataProfileListResponse' => 'Kaltura_Client_Metadata_Type_MetadataProfileListResponse',
+		'KalturaMetadataResponseProfileMapping' => 'Kaltura_Client_Metadata_Type_MetadataResponseProfileMapping',
 		'KalturaMetadataSearchItem' => 'Kaltura_Client_Metadata_Type_MetadataSearchItem',
 		'KalturaMixEntry' => 'Kaltura_Client_Type_MixEntry',
 		'KalturaMixEntryBaseFilter' => 'Kaltura_Client_Type_MixEntryBaseFilter',
