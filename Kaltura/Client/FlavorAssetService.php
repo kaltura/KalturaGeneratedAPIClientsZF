@@ -188,12 +188,14 @@ class Kaltura_Client_FlavorAssetService extends Kaltura_Client_ServiceBase
 		Kaltura_Client_ParseUtils::checkIfError($resultXmlObject->result);
 	}
 
-	function getUrl($id, $storageId = null, $forceProxy = false)
+	function getUrl($id, $storageId = null, $forceProxy = false, Kaltura_Client_Type_FlavorAssetUrlOptions $options = null)
 	{
 		$kparams = array();
 		$this->client->addParam($kparams, "id", $id);
 		$this->client->addParam($kparams, "storageId", $storageId);
 		$this->client->addParam($kparams, "forceProxy", $forceProxy);
+		if ($options !== null)
+			$this->client->addParam($kparams, "options", $options->toParams());
 		$this->client->queueServiceActionCall("flavorasset", "getUrl", null, $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();

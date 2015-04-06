@@ -385,6 +385,7 @@ class Kaltura_Client_TypeMap
 		'KalturaFlavorAssetBaseFilter' => 'Kaltura_Client_Type_FlavorAssetBaseFilter',
 		'KalturaFlavorAssetFilter' => 'Kaltura_Client_Type_FlavorAssetFilter',
 		'KalturaFlavorAssetListResponse' => 'Kaltura_Client_Type_FlavorAssetListResponse',
+		'KalturaFlavorAssetUrlOptions' => 'Kaltura_Client_Type_FlavorAssetUrlOptions',
 		'KalturaFlavorAssetWithParams' => 'Kaltura_Client_Type_FlavorAssetWithParams',
 		'KalturaFlavorParams' => 'Kaltura_Client_Type_FlavorParams',
 		'KalturaFlavorParamsBaseFilter' => 'Kaltura_Client_Type_FlavorParamsBaseFilter',
