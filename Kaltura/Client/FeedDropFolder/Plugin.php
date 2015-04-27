@@ -31,21 +31,37 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Type_ResponseProfileFilter extends Kaltura_Client_Type_ResponseProfileBaseFilter
+class Kaltura_Client_FeedDropFolder_Plugin extends Kaltura_Client_Plugin
 {
-	public function getKalturaObjectType()
+	protected function __construct(Kaltura_Client_Client $client)
 	{
-		return 'KalturaResponseProfileFilter';
-	}
-	
-	public function __construct(SimpleXMLElement $xml = null)
-	{
-		parent::__construct($xml);
-		
-		if(is_null($xml))
-			return;
-		
+		parent::__construct($client);
 	}
 
+	/**
+	 * @return Kaltura_Client_FeedDropFolder_Plugin
+	 */
+	public static function get(Kaltura_Client_Client $client)
+	{
+		return new Kaltura_Client_FeedDropFolder_Plugin($client);
+	}
+
+	/**
+	 * @return array<Kaltura_Client_ServiceBase>
+	 */
+	public function getServices()
+	{
+		$services = array(
+		);
+		return $services;
+	}
+
+	/**
+	 * @return string
+	 */
+	public function getName()
+	{
+		return 'FeedDropFolder';
+	}
 }
 

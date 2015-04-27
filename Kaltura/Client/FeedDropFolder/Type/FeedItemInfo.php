@@ -31,11 +31,11 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Type_ResponseProfileFilter extends Kaltura_Client_Type_ResponseProfileBaseFilter
+class Kaltura_Client_FeedDropFolder_Type_FeedItemInfo extends Kaltura_Client_ObjectBase
 {
 	public function getKalturaObjectType()
 	{
-		return 'KalturaResponseProfileFilter';
+		return 'KalturaFeedItemInfo';
 	}
 	
 	public function __construct(SimpleXMLElement $xml = null)
@@ -45,7 +45,79 @@ class Kaltura_Client_Type_ResponseProfileFilter extends Kaltura_Client_Type_Resp
 		if(is_null($xml))
 			return;
 		
+		$this->itemXPath = (string)$xml->itemXPath;
+		$this->itemPublishDateXPath = (string)$xml->itemPublishDateXPath;
+		$this->itemUniqueIdentifierXPath = (string)$xml->itemUniqueIdentifierXPath;
+		$this->itemContentFileSizeXPath = (string)$xml->itemContentFileSizeXPath;
+		$this->itemContentUrlXPath = (string)$xml->itemContentUrlXPath;
+		$this->itemContentBitrateXPath = (string)$xml->itemContentBitrateXPath;
+		$this->itemHashXPath = (string)$xml->itemHashXPath;
+		$this->itemContentXpath = (string)$xml->itemContentXpath;
+		$this->contentBitrateAttributeName = (string)$xml->contentBitrateAttributeName;
 	}
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $itemXPath = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $itemPublishDateXPath = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $itemUniqueIdentifierXPath = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $itemContentFileSizeXPath = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $itemContentUrlXPath = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $itemContentBitrateXPath = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $itemHashXPath = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $itemContentXpath = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $contentBitrateAttributeName = null;
+
 
 }
 

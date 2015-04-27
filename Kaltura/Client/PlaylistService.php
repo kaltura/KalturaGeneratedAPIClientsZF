@@ -135,7 +135,7 @@ class Kaltura_Client_PlaylistService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
-	function execute($id, $detailed = "", Kaltura_Client_Type_Context $playlistContext = null, Kaltura_Client_Type_MediaEntryFilterForPlaylist $filter = null)
+	function execute($id, $detailed = "", Kaltura_Client_Type_Context $playlistContext = null, Kaltura_Client_Type_MediaEntryFilterForPlaylist $filter = null, Kaltura_Client_Type_FilterPager $pager = null)
 	{
 		$kparams = array();
 		$this->client->addParam($kparams, "id", $id);
@@ -144,6 +144,8 @@ class Kaltura_Client_PlaylistService extends Kaltura_Client_ServiceBase
 			$this->client->addParam($kparams, "playlistContext", $playlistContext->toParams());
 		if ($filter !== null)
 			$this->client->addParam($kparams, "filter", $filter->toParams());
+		if ($pager !== null)
+			$this->client->addParam($kparams, "pager", $pager->toParams());
 		$this->client->queueServiceActionCall("playlist", "execute", "KalturaBaseEntry", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
@@ -155,12 +157,14 @@ class Kaltura_Client_PlaylistService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
-	function executeFromContent($playlistType, $playlistContent, $detailed = "")
+	function executeFromContent($playlistType, $playlistContent, $detailed = "", Kaltura_Client_Type_FilterPager $pager = null)
 	{
 		$kparams = array();
 		$this->client->addParam($kparams, "playlistType", $playlistType);
 		$this->client->addParam($kparams, "playlistContent", $playlistContent);
 		$this->client->addParam($kparams, "detailed", $detailed);
+		if ($pager !== null)
+			$this->client->addParam($kparams, "pager", $pager->toParams());
 		$this->client->queueServiceActionCall("playlist", "executeFromContent", "KalturaBaseEntry", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
@@ -172,7 +176,7 @@ class Kaltura_Client_PlaylistService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
-	function executeFromFilters(array $filters, $totalResults, $detailed = "")
+	function executeFromFilters(array $filters, $totalResults, $detailed = "1", Kaltura_Client_Type_FilterPager $pager = null)
 	{
 		$kparams = array();
 		foreach($filters as $index => $obj)
@@ -181,6 +185,8 @@ class Kaltura_Client_PlaylistService extends Kaltura_Client_ServiceBase
 		}
 		$this->client->addParam($kparams, "totalResults", $totalResults);
 		$this->client->addParam($kparams, "detailed", $detailed);
+		if ($pager !== null)
+			$this->client->addParam($kparams, "pager", $pager->toParams());
 		$this->client->queueServiceActionCall("playlist", "executeFromFilters", "KalturaBaseEntry", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();

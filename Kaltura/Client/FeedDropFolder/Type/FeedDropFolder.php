@@ -31,11 +31,11 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Type_ResponseProfileFilter extends Kaltura_Client_Type_ResponseProfileBaseFilter
+class Kaltura_Client_FeedDropFolder_Type_FeedDropFolder extends Kaltura_Client_DropFolder_Type_DropFolder
 {
 	public function getKalturaObjectType()
 	{
-		return 'KalturaResponseProfileFilter';
+		return 'KalturaFeedDropFolder';
 	}
 	
 	public function __construct(SimpleXMLElement $xml = null)
@@ -45,7 +45,25 @@ class Kaltura_Client_Type_ResponseProfileFilter extends Kaltura_Client_Type_Resp
 		if(is_null($xml))
 			return;
 		
+		if(count($xml->itemHandlingLimit))
+			$this->itemHandlingLimit = (int)$xml->itemHandlingLimit;
+		if(!empty($xml->feedItemInfo))
+			$this->feedItemInfo = Kaltura_Client_ParseUtils::unmarshalObject($xml->feedItemInfo, "KalturaFeedItemInfo");
 	}
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $itemHandlingLimit = null;
+
+	/**
+	 * 
+	 *
+	 * @var Kaltura_Client_FeedDropFolder_Type_FeedItemInfo
+	 */
+	public $feedItemInfo;
+
 
 }
 
