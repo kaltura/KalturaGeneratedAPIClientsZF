@@ -45,7 +45,8 @@ abstract class Kaltura_Client_DropFolder_Type_DropFolderFileHandlerConfig extend
 		if(is_null($xml))
 			return;
 		
-		$this->handlerType = (string)$xml->handlerType;
+		if(count($xml->handlerType))
+			$this->handlerType = (string)$xml->handlerType;
 	}
 	/**
 	 * 

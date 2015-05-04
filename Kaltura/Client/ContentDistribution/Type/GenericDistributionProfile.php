@@ -47,16 +47,18 @@ class Kaltura_Client_ContentDistribution_Type_GenericDistributionProfile extends
 		
 		if(count($xml->genericProviderId))
 			$this->genericProviderId = (int)$xml->genericProviderId;
-		if(!empty($xml->submitAction))
+		if(count($xml->submitAction) && !empty($xml->submitAction))
 			$this->submitAction = Kaltura_Client_ParseUtils::unmarshalObject($xml->submitAction, "KalturaGenericDistributionProfileAction");
-		if(!empty($xml->updateAction))
+		if(count($xml->updateAction) && !empty($xml->updateAction))
 			$this->updateAction = Kaltura_Client_ParseUtils::unmarshalObject($xml->updateAction, "KalturaGenericDistributionProfileAction");
-		if(!empty($xml->deleteAction))
+		if(count($xml->deleteAction) && !empty($xml->deleteAction))
 			$this->deleteAction = Kaltura_Client_ParseUtils::unmarshalObject($xml->deleteAction, "KalturaGenericDistributionProfileAction");
-		if(!empty($xml->fetchReportAction))
+		if(count($xml->fetchReportAction) && !empty($xml->fetchReportAction))
 			$this->fetchReportAction = Kaltura_Client_ParseUtils::unmarshalObject($xml->fetchReportAction, "KalturaGenericDistributionProfileAction");
-		$this->updateRequiredEntryFields = (string)$xml->updateRequiredEntryFields;
-		$this->updateRequiredMetadataXPaths = (string)$xml->updateRequiredMetadataXPaths;
+		if(count($xml->updateRequiredEntryFields))
+			$this->updateRequiredEntryFields = (string)$xml->updateRequiredEntryFields;
+		if(count($xml->updateRequiredMetadataXPaths))
+			$this->updateRequiredMetadataXPaths = (string)$xml->updateRequiredMetadataXPaths;
 	}
 	/**
 	 * 

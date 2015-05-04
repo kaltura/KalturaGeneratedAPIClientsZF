@@ -45,7 +45,8 @@ abstract class Kaltura_Client_Type_ObjectIdentifier extends Kaltura_Client_Objec
 		if(is_null($xml))
 			return;
 		
-		$this->extendedFeatures = (string)$xml->extendedFeatures;
+		if(count($xml->extendedFeatures))
+			$this->extendedFeatures = (string)$xml->extendedFeatures;
 	}
 	/**
 	 * Comma separated string of enum values denoting which features of the item need to be included in the MRSS 

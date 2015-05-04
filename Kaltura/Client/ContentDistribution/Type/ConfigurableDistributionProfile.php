@@ -45,14 +45,20 @@ abstract class Kaltura_Client_ContentDistribution_Type_ConfigurableDistributionP
 		if(is_null($xml))
 			return;
 		
-		if(empty($xml->fieldConfigArray))
-			$this->fieldConfigArray = array();
-		else
-			$this->fieldConfigArray = Kaltura_Client_ParseUtils::unmarshalArray($xml->fieldConfigArray, "KalturaDistributionFieldConfig");
-		if(empty($xml->itemXpathsToExtend))
-			$this->itemXpathsToExtend = array();
-		else
-			$this->itemXpathsToExtend = Kaltura_Client_ParseUtils::unmarshalArray($xml->itemXpathsToExtend, "KalturaExtendingItemMrssParameter");
+		if(count($xml->fieldConfigArray))
+		{
+			if(empty($xml->fieldConfigArray))
+				$this->fieldConfigArray = array();
+			else
+				$this->fieldConfigArray = Kaltura_Client_ParseUtils::unmarshalArray($xml->fieldConfigArray, "KalturaDistributionFieldConfig");
+		}
+		if(count($xml->itemXpathsToExtend))
+		{
+			if(empty($xml->itemXpathsToExtend))
+				$this->itemXpathsToExtend = array();
+			else
+				$this->itemXpathsToExtend = Kaltura_Client_ParseUtils::unmarshalArray($xml->itemXpathsToExtend, "KalturaExtendingItemMrssParameter");
+		}
 	}
 	/**
 	 * 

@@ -49,8 +49,10 @@ class Kaltura_Client_Type_FileSyncResource extends Kaltura_Client_Type_ContentRe
 			$this->fileSyncObjectType = (int)$xml->fileSyncObjectType;
 		if(count($xml->objectSubType))
 			$this->objectSubType = (int)$xml->objectSubType;
-		$this->objectId = (string)$xml->objectId;
-		$this->version = (string)$xml->version;
+		if(count($xml->objectId))
+			$this->objectId = (string)$xml->objectId;
+		if(count($xml->version))
+			$this->version = (string)$xml->version;
 	}
 	/**
 	 * The object type of the file sync object 

@@ -45,9 +45,9 @@ class Kaltura_Client_BulkUploadFilter_Type_BulkServiceFilterData extends Kaltura
 		if(is_null($xml))
 			return;
 		
-		if(!empty($xml->filter))
+		if(count($xml->filter) && !empty($xml->filter))
 			$this->filter = Kaltura_Client_ParseUtils::unmarshalObject($xml->filter, "KalturaFilter");
-		if(!empty($xml->templateObject))
+		if(count($xml->templateObject) && !empty($xml->templateObject))
 			$this->templateObject = Kaltura_Client_ParseUtils::unmarshalObject($xml->templateObject, "KalturaObjectBase");
 	}
 	/**

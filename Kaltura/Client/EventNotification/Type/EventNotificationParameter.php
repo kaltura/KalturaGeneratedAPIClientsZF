@@ -45,9 +45,11 @@ class Kaltura_Client_EventNotification_Type_EventNotificationParameter extends K
 		if(is_null($xml))
 			return;
 		
-		$this->key = (string)$xml->key;
-		$this->description = (string)$xml->description;
-		if(!empty($xml->value))
+		if(count($xml->key))
+			$this->key = (string)$xml->key;
+		if(count($xml->description))
+			$this->description = (string)$xml->description;
+		if(count($xml->value) && !empty($xml->value))
 			$this->value = Kaltura_Client_ParseUtils::unmarshalObject($xml->value, "KalturaStringValue");
 	}
 	/**

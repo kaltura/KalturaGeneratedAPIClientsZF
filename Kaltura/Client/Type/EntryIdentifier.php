@@ -45,7 +45,8 @@ class Kaltura_Client_Type_EntryIdentifier extends Kaltura_Client_Type_ObjectIden
 		if(is_null($xml))
 			return;
 		
-		$this->identifier = (string)$xml->identifier;
+		if(count($xml->identifier))
+			$this->identifier = (string)$xml->identifier;
 	}
 	/**
 	 * Identifier of the object

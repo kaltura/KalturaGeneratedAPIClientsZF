@@ -45,7 +45,8 @@ class Kaltura_Client_CuePoint_Type_CuePointFilter extends Kaltura_Client_CuePoin
 		if(is_null($xml))
 			return;
 		
-		$this->freeText = (string)$xml->freeText;
+		if(count($xml->freeText))
+			$this->freeText = (string)$xml->freeText;
 	}
 	/**
 	 * 

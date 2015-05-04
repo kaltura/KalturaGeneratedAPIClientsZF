@@ -45,7 +45,7 @@ class Kaltura_Client_ContentDistribution_Type_DistributionValidationErrorMissing
 		if(is_null($xml))
 			return;
 		
-		if(!empty($xml->dimensions))
+		if(count($xml->dimensions) && !empty($xml->dimensions))
 			$this->dimensions = Kaltura_Client_ParseUtils::unmarshalObject($xml->dimensions, "KalturaDistributionThumbDimensions");
 	}
 	/**

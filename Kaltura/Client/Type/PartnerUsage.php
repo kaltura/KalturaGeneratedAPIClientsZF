@@ -55,7 +55,8 @@ class Kaltura_Client_Type_PartnerUsage extends Kaltura_Client_ObjectBase
 			$this->usageGB = (float)$xml->usageGB;
 		if(count($xml->reachedLimitDate))
 			$this->reachedLimitDate = (int)$xml->reachedLimitDate;
-		$this->usageGraph = (string)$xml->usageGraph;
+		if(count($xml->usageGraph))
+			$this->usageGraph = (string)$xml->usageGraph;
 	}
 	/**
 	 * Partner total hosting in GB on the disk

@@ -53,21 +53,33 @@ class Kaltura_Client_Type_BulkUploadResult extends Kaltura_Client_ObjectBase
 			$this->lineIndex = (int)$xml->lineIndex;
 		if(count($xml->partnerId))
 			$this->partnerId = (int)$xml->partnerId;
-		$this->status = (string)$xml->status;
-		$this->action = (string)$xml->action;
-		$this->objectId = (string)$xml->objectId;
+		if(count($xml->status))
+			$this->status = (string)$xml->status;
+		if(count($xml->action))
+			$this->action = (string)$xml->action;
+		if(count($xml->objectId))
+			$this->objectId = (string)$xml->objectId;
 		if(count($xml->objectStatus))
 			$this->objectStatus = (int)$xml->objectStatus;
-		$this->bulkUploadResultObjectType = (string)$xml->bulkUploadResultObjectType;
-		$this->rowData = (string)$xml->rowData;
-		$this->partnerData = (string)$xml->partnerData;
-		$this->objectErrorDescription = (string)$xml->objectErrorDescription;
-		if(empty($xml->pluginsData))
-			$this->pluginsData = array();
-		else
-			$this->pluginsData = Kaltura_Client_ParseUtils::unmarshalArray($xml->pluginsData, "KalturaBulkUploadPluginData");
-		$this->errorDescription = (string)$xml->errorDescription;
-		$this->errorCode = (string)$xml->errorCode;
+		if(count($xml->bulkUploadResultObjectType))
+			$this->bulkUploadResultObjectType = (string)$xml->bulkUploadResultObjectType;
+		if(count($xml->rowData))
+			$this->rowData = (string)$xml->rowData;
+		if(count($xml->partnerData))
+			$this->partnerData = (string)$xml->partnerData;
+		if(count($xml->objectErrorDescription))
+			$this->objectErrorDescription = (string)$xml->objectErrorDescription;
+		if(count($xml->pluginsData))
+		{
+			if(empty($xml->pluginsData))
+				$this->pluginsData = array();
+			else
+				$this->pluginsData = Kaltura_Client_ParseUtils::unmarshalArray($xml->pluginsData, "KalturaBulkUploadPluginData");
+		}
+		if(count($xml->errorDescription))
+			$this->errorDescription = (string)$xml->errorDescription;
+		if(count($xml->errorCode))
+			$this->errorCode = (string)$xml->errorCode;
 		if(count($xml->errorType))
 			$this->errorType = (int)$xml->errorType;
 	}

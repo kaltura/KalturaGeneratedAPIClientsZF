@@ -47,7 +47,8 @@ class Kaltura_Client_Type_SiteRestriction extends Kaltura_Client_Type_BaseRestri
 		
 		if(count($xml->siteRestrictionType))
 			$this->siteRestrictionType = (int)$xml->siteRestrictionType;
-		$this->siteList = (string)$xml->siteList;
+		if(count($xml->siteList))
+			$this->siteList = (string)$xml->siteList;
 	}
 	/**
 	 * The site restriction type (allow or deny)

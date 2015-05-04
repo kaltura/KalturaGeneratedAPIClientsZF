@@ -45,7 +45,8 @@ abstract class Kaltura_Client_Type_MediaInfoBaseFilter extends Kaltura_Client_Ty
 		if(is_null($xml))
 			return;
 		
-		$this->flavorAssetIdEqual = (string)$xml->flavorAssetIdEqual;
+		if(count($xml->flavorAssetIdEqual))
+			$this->flavorAssetIdEqual = (string)$xml->flavorAssetIdEqual;
 	}
 	/**
 	 * 

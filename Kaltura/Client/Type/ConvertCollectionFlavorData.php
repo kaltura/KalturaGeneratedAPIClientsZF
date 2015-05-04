@@ -45,7 +45,8 @@ class Kaltura_Client_Type_ConvertCollectionFlavorData extends Kaltura_Client_Obj
 		if(is_null($xml))
 			return;
 		
-		$this->flavorAssetId = (string)$xml->flavorAssetId;
+		if(count($xml->flavorAssetId))
+			$this->flavorAssetId = (string)$xml->flavorAssetId;
 		if(count($xml->flavorParamsOutputId))
 			$this->flavorParamsOutputId = (int)$xml->flavorParamsOutputId;
 		if(count($xml->readyBehavior))
@@ -54,8 +55,10 @@ class Kaltura_Client_Type_ConvertCollectionFlavorData extends Kaltura_Client_Obj
 			$this->videoBitrate = (int)$xml->videoBitrate;
 		if(count($xml->audioBitrate))
 			$this->audioBitrate = (int)$xml->audioBitrate;
-		$this->destFileSyncLocalPath = (string)$xml->destFileSyncLocalPath;
-		$this->destFileSyncRemoteUrl = (string)$xml->destFileSyncRemoteUrl;
+		if(count($xml->destFileSyncLocalPath))
+			$this->destFileSyncLocalPath = (string)$xml->destFileSyncLocalPath;
+		if(count($xml->destFileSyncRemoteUrl))
+			$this->destFileSyncRemoteUrl = (string)$xml->destFileSyncRemoteUrl;
 	}
 	/**
 	 * 

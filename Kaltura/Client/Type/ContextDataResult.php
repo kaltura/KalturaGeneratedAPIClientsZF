@@ -45,14 +45,20 @@ class Kaltura_Client_Type_ContextDataResult extends Kaltura_Client_ObjectBase
 		if(is_null($xml))
 			return;
 		
-		if(empty($xml->messages))
-			$this->messages = array();
-		else
-			$this->messages = Kaltura_Client_ParseUtils::unmarshalArray($xml->messages, "KalturaString");
-		if(empty($xml->actions))
-			$this->actions = array();
-		else
-			$this->actions = Kaltura_Client_ParseUtils::unmarshalArray($xml->actions, "KalturaRuleAction");
+		if(count($xml->messages))
+		{
+			if(empty($xml->messages))
+				$this->messages = array();
+			else
+				$this->messages = Kaltura_Client_ParseUtils::unmarshalArray($xml->messages, "KalturaString");
+		}
+		if(count($xml->actions))
+		{
+			if(empty($xml->actions))
+				$this->actions = array();
+			else
+				$this->actions = Kaltura_Client_ParseUtils::unmarshalArray($xml->actions, "KalturaRuleAction");
+		}
 	}
 	/**
 	 * Array of messages as received from the rules that invalidated

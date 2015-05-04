@@ -45,9 +45,12 @@ class Kaltura_Client_Type_LiveStreamPushPublishConfiguration extends Kaltura_Cli
 		if(is_null($xml))
 			return;
 		
-		$this->publishUrl = (string)$xml->publishUrl;
-		$this->backupPublishUrl = (string)$xml->backupPublishUrl;
-		$this->port = (string)$xml->port;
+		if(count($xml->publishUrl))
+			$this->publishUrl = (string)$xml->publishUrl;
+		if(count($xml->backupPublishUrl))
+			$this->backupPublishUrl = (string)$xml->backupPublishUrl;
+		if(count($xml->port))
+			$this->port = (string)$xml->port;
 	}
 	/**
 	 * 

@@ -45,8 +45,10 @@ class Kaltura_Client_Type_ClientNotification extends Kaltura_Client_ObjectBase
 		if(is_null($xml))
 			return;
 		
-		$this->url = (string)$xml->url;
-		$this->data = (string)$xml->data;
+		if(count($xml->url))
+			$this->url = (string)$xml->url;
+		if(count($xml->data))
+			$this->data = (string)$xml->data;
 	}
 	/**
 	 * The URL where the notification should be sent to 

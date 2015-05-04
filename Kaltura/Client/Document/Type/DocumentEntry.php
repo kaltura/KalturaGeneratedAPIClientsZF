@@ -47,7 +47,8 @@ class Kaltura_Client_Document_Type_DocumentEntry extends Kaltura_Client_Type_Bas
 		
 		if(count($xml->documentType))
 			$this->documentType = (int)$xml->documentType;
-		$this->assetParamsIds = (string)$xml->assetParamsIds;
+		if(count($xml->assetParamsIds))
+			$this->assetParamsIds = (string)$xml->assetParamsIds;
 	}
 	/**
 	 * The type of the document

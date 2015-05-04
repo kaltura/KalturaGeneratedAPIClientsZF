@@ -45,7 +45,8 @@ class Kaltura_Client_Type_EntryLiveStats extends Kaltura_Client_Type_LiveStats
 		if(is_null($xml))
 			return;
 		
-		$this->entryId = (string)$xml->entryId;
+		if(count($xml->entryId))
+			$this->entryId = (string)$xml->entryId;
 		if(count($xml->peakAudience))
 			$this->peakAudience = (int)$xml->peakAudience;
 		if(count($xml->peakDvrAudience))

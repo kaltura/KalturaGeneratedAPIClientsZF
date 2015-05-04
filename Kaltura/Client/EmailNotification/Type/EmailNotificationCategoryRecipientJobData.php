@@ -45,7 +45,7 @@ class Kaltura_Client_EmailNotification_Type_EmailNotificationCategoryRecipientJo
 		if(is_null($xml))
 			return;
 		
-		if(!empty($xml->categoryUserFilter))
+		if(count($xml->categoryUserFilter) && !empty($xml->categoryUserFilter))
 			$this->categoryUserFilter = Kaltura_Client_ParseUtils::unmarshalObject($xml->categoryUserFilter, "KalturaCategoryUserFilter");
 	}
 	/**

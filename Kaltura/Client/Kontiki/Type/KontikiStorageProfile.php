@@ -45,7 +45,8 @@ class Kaltura_Client_Kontiki_Type_KontikiStorageProfile extends Kaltura_Client_T
 		if(is_null($xml))
 			return;
 		
-		$this->serviceToken = (string)$xml->serviceToken;
+		if(count($xml->serviceToken))
+			$this->serviceToken = (string)$xml->serviceToken;
 	}
 	/**
 	 * 

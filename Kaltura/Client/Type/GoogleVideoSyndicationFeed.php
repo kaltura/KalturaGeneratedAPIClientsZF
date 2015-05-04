@@ -45,7 +45,8 @@ class Kaltura_Client_Type_GoogleVideoSyndicationFeed extends Kaltura_Client_Type
 		if(is_null($xml))
 			return;
 		
-		$this->adultContent = (string)$xml->adultContent;
+		if(count($xml->adultContent))
+			$this->adultContent = (string)$xml->adultContent;
 	}
 	/**
 	 * 

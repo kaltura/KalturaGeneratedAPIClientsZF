@@ -45,9 +45,12 @@ class Kaltura_Client_Type_CategoryEntryAdvancedFilter extends Kaltura_Client_Typ
 		if(is_null($xml))
 			return;
 		
-		$this->categoriesMatchOr = (string)$xml->categoriesMatchOr;
-		$this->categoryEntryStatusIn = (string)$xml->categoryEntryStatusIn;
-		$this->orderBy = (string)$xml->orderBy;
+		if(count($xml->categoriesMatchOr))
+			$this->categoriesMatchOr = (string)$xml->categoriesMatchOr;
+		if(count($xml->categoryEntryStatusIn))
+			$this->categoryEntryStatusIn = (string)$xml->categoryEntryStatusIn;
+		if(count($xml->orderBy))
+			$this->orderBy = (string)$xml->orderBy;
 		if(count($xml->categoryIdEqual))
 			$this->categoryIdEqual = (int)$xml->categoryIdEqual;
 	}

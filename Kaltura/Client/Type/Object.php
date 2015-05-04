@@ -45,8 +45,13 @@ abstract class Kaltura_Client_Type_Object extends Kaltura_Client_ObjectBase
 		if(is_null($xml))
 			return;
 		
-		if(!empty($xml->relatedObjects))
-			$this->relatedObjects = Kaltura_Client_ParseUtils::unmarshalObject($xml->relatedObjects, "map");
+		if(count($xml->relatedObjects))
+		{
+			if(empty($xml->relatedObjects))
+				$this->relatedObjects = array();
+			else
+				$this->relatedObjects = Kaltura_Client_ParseUtils::unmarshalMap($xml->relatedObjects, "KalturaListResponse");
+		}
 	}
 	/**
 	 * 

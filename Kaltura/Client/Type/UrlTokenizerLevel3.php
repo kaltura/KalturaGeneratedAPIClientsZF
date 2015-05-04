@@ -45,9 +45,12 @@ class Kaltura_Client_Type_UrlTokenizerLevel3 extends Kaltura_Client_Type_UrlToke
 		if(is_null($xml))
 			return;
 		
-		$this->paramName = (string)$xml->paramName;
-		$this->expiryName = (string)$xml->expiryName;
-		$this->gen = (string)$xml->gen;
+		if(count($xml->paramName))
+			$this->paramName = (string)$xml->paramName;
+		if(count($xml->expiryName))
+			$this->expiryName = (string)$xml->expiryName;
+		if(count($xml->gen))
+			$this->gen = (string)$xml->gen;
 	}
 	/**
 	 * paramName

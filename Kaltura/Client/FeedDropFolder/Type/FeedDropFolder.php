@@ -47,7 +47,7 @@ class Kaltura_Client_FeedDropFolder_Type_FeedDropFolder extends Kaltura_Client_D
 		
 		if(count($xml->itemHandlingLimit))
 			$this->itemHandlingLimit = (int)$xml->itemHandlingLimit;
-		if(!empty($xml->feedItemInfo))
+		if(count($xml->feedItemInfo) && !empty($xml->feedItemInfo))
 			$this->feedItemInfo = Kaltura_Client_ParseUtils::unmarshalObject($xml->feedItemInfo, "KalturaFeedItemInfo");
 	}
 	/**

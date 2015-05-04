@@ -45,7 +45,7 @@ class Kaltura_Client_Type_ConcatAttributes extends Kaltura_Client_Type_Operation
 		if(is_null($xml))
 			return;
 		
-		if(!empty($xml->resource))
+		if(count($xml->resource) && !empty($xml->resource))
 			$this->resource = Kaltura_Client_ParseUtils::unmarshalObject($xml->resource, "KalturaDataCenterContentResource");
 	}
 	/**

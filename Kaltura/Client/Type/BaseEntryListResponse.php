@@ -45,10 +45,13 @@ class Kaltura_Client_Type_BaseEntryListResponse extends Kaltura_Client_Type_List
 		if(is_null($xml))
 			return;
 		
-		if(empty($xml->objects))
-			$this->objects = array();
-		else
-			$this->objects = Kaltura_Client_ParseUtils::unmarshalArray($xml->objects, "KalturaBaseEntry");
+		if(count($xml->objects))
+		{
+			if(empty($xml->objects))
+				$this->objects = array();
+			else
+				$this->objects = Kaltura_Client_ParseUtils::unmarshalArray($xml->objects, "KalturaBaseEntry");
+		}
 	}
 	/**
 	 * 

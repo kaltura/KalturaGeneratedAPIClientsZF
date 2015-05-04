@@ -47,22 +47,29 @@ class Kaltura_Client_ContentDistribution_Type_DistributionJobData extends Kaltur
 		
 		if(count($xml->distributionProfileId))
 			$this->distributionProfileId = (int)$xml->distributionProfileId;
-		if(!empty($xml->distributionProfile))
+		if(count($xml->distributionProfile) && !empty($xml->distributionProfile))
 			$this->distributionProfile = Kaltura_Client_ParseUtils::unmarshalObject($xml->distributionProfile, "KalturaDistributionProfile");
 		if(count($xml->entryDistributionId))
 			$this->entryDistributionId = (int)$xml->entryDistributionId;
-		if(!empty($xml->entryDistribution))
+		if(count($xml->entryDistribution) && !empty($xml->entryDistribution))
 			$this->entryDistribution = Kaltura_Client_ParseUtils::unmarshalObject($xml->entryDistribution, "KalturaEntryDistribution");
-		$this->remoteId = (string)$xml->remoteId;
-		$this->providerType = (string)$xml->providerType;
-		if(!empty($xml->providerData))
+		if(count($xml->remoteId))
+			$this->remoteId = (string)$xml->remoteId;
+		if(count($xml->providerType))
+			$this->providerType = (string)$xml->providerType;
+		if(count($xml->providerData) && !empty($xml->providerData))
 			$this->providerData = Kaltura_Client_ParseUtils::unmarshalObject($xml->providerData, "KalturaDistributionJobProviderData");
-		$this->results = (string)$xml->results;
-		$this->sentData = (string)$xml->sentData;
-		if(empty($xml->mediaFiles))
-			$this->mediaFiles = array();
-		else
-			$this->mediaFiles = Kaltura_Client_ParseUtils::unmarshalArray($xml->mediaFiles, "KalturaDistributionRemoteMediaFile");
+		if(count($xml->results))
+			$this->results = (string)$xml->results;
+		if(count($xml->sentData))
+			$this->sentData = (string)$xml->sentData;
+		if(count($xml->mediaFiles))
+		{
+			if(empty($xml->mediaFiles))
+				$this->mediaFiles = array();
+			else
+				$this->mediaFiles = Kaltura_Client_ParseUtils::unmarshalArray($xml->mediaFiles, "KalturaDistributionRemoteMediaFile");
+		}
 	}
 	/**
 	 * 

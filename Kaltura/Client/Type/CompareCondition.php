@@ -45,9 +45,10 @@ abstract class Kaltura_Client_Type_CompareCondition extends Kaltura_Client_Type_
 		if(is_null($xml))
 			return;
 		
-		if(!empty($xml->value))
+		if(count($xml->value) && !empty($xml->value))
 			$this->value = Kaltura_Client_ParseUtils::unmarshalObject($xml->value, "KalturaIntegerValue");
-		$this->comparison = (string)$xml->comparison;
+		if(count($xml->comparison))
+			$this->comparison = (string)$xml->comparison;
 	}
 	/**
 	 * Value to evaluate against the field and operator

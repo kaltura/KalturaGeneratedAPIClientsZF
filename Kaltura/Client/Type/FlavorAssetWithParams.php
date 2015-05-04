@@ -45,11 +45,12 @@ class Kaltura_Client_Type_FlavorAssetWithParams extends Kaltura_Client_ObjectBas
 		if(is_null($xml))
 			return;
 		
-		if(!empty($xml->flavorAsset))
+		if(count($xml->flavorAsset) && !empty($xml->flavorAsset))
 			$this->flavorAsset = Kaltura_Client_ParseUtils::unmarshalObject($xml->flavorAsset, "KalturaFlavorAsset");
-		if(!empty($xml->flavorParams))
+		if(count($xml->flavorParams) && !empty($xml->flavorParams))
 			$this->flavorParams = Kaltura_Client_ParseUtils::unmarshalObject($xml->flavorParams, "KalturaFlavorParams");
-		$this->entryId = (string)$xml->entryId;
+		if(count($xml->entryId))
+			$this->entryId = (string)$xml->entryId;
 	}
 	/**
 	 * The Flavor Asset (Can be null when there are params without asset)

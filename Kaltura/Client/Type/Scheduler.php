@@ -49,25 +49,37 @@ class Kaltura_Client_Type_Scheduler extends Kaltura_Client_ObjectBase
 			$this->id = (int)$xml->id;
 		if(count($xml->configuredId))
 			$this->configuredId = (int)$xml->configuredId;
-		$this->name = (string)$xml->name;
-		$this->host = (string)$xml->host;
-		if(empty($xml->statuses))
-			$this->statuses = array();
-		else
-			$this->statuses = Kaltura_Client_ParseUtils::unmarshalArray($xml->statuses, "KalturaSchedulerStatus");
-		if(empty($xml->configs))
-			$this->configs = array();
-		else
-			$this->configs = Kaltura_Client_ParseUtils::unmarshalArray($xml->configs, "KalturaSchedulerConfig");
-		if(empty($xml->workers))
-			$this->workers = array();
-		else
-			$this->workers = Kaltura_Client_ParseUtils::unmarshalArray($xml->workers, "KalturaSchedulerWorker");
+		if(count($xml->name))
+			$this->name = (string)$xml->name;
+		if(count($xml->host))
+			$this->host = (string)$xml->host;
+		if(count($xml->statuses))
+		{
+			if(empty($xml->statuses))
+				$this->statuses = array();
+			else
+				$this->statuses = Kaltura_Client_ParseUtils::unmarshalArray($xml->statuses, "KalturaSchedulerStatus");
+		}
+		if(count($xml->configs))
+		{
+			if(empty($xml->configs))
+				$this->configs = array();
+			else
+				$this->configs = Kaltura_Client_ParseUtils::unmarshalArray($xml->configs, "KalturaSchedulerConfig");
+		}
+		if(count($xml->workers))
+		{
+			if(empty($xml->workers))
+				$this->workers = array();
+			else
+				$this->workers = Kaltura_Client_ParseUtils::unmarshalArray($xml->workers, "KalturaSchedulerWorker");
+		}
 		if(count($xml->createdAt))
 			$this->createdAt = (int)$xml->createdAt;
 		if(count($xml->lastStatus))
 			$this->lastStatus = (int)$xml->lastStatus;
-		$this->lastStatusStr = (string)$xml->lastStatusStr;
+		if(count($xml->lastStatusStr))
+			$this->lastStatusStr = (string)$xml->lastStatusStr;
 	}
 	/**
 	 * The id of the Scheduler

@@ -45,7 +45,8 @@ class Kaltura_Client_ContentDistribution_Type_DistributionValidationErrorMissing
 		if(is_null($xml))
 			return;
 		
-		$this->flavorParamsId = (string)$xml->flavorParamsId;
+		if(count($xml->flavorParamsId))
+			$this->flavorParamsId = (string)$xml->flavorParamsId;
 	}
 	/**
 	 * 

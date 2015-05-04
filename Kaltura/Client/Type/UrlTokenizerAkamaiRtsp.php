@@ -45,7 +45,8 @@ class Kaltura_Client_Type_UrlTokenizerAkamaiRtsp extends Kaltura_Client_Type_Url
 		if(is_null($xml))
 			return;
 		
-		$this->host = (string)$xml->host;
+		if(count($xml->host))
+			$this->host = (string)$xml->host;
 		if(count($xml->cpcode))
 			$this->cpcode = (int)$xml->cpcode;
 	}

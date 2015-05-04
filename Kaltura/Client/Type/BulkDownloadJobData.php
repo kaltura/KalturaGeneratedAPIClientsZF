@@ -45,10 +45,12 @@ class Kaltura_Client_Type_BulkDownloadJobData extends Kaltura_Client_Type_JobDat
 		if(is_null($xml))
 			return;
 		
-		$this->entryIds = (string)$xml->entryIds;
+		if(count($xml->entryIds))
+			$this->entryIds = (string)$xml->entryIds;
 		if(count($xml->flavorParamsId))
 			$this->flavorParamsId = (int)$xml->flavorParamsId;
-		$this->puserId = (string)$xml->puserId;
+		if(count($xml->puserId))
+			$this->puserId = (string)$xml->puserId;
 	}
 	/**
 	 * Comma separated list of entry ids

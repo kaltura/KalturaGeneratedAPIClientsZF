@@ -45,10 +45,13 @@ class Kaltura_Client_DropFolder_Type_DropFolderFileListResponse extends Kaltura_
 		if(is_null($xml))
 			return;
 		
-		if(empty($xml->objects))
-			$this->objects = array();
-		else
-			$this->objects = Kaltura_Client_ParseUtils::unmarshalArray($xml->objects, "KalturaDropFolderFile");
+		if(count($xml->objects))
+		{
+			if(empty($xml->objects))
+				$this->objects = array();
+			else
+				$this->objects = Kaltura_Client_ParseUtils::unmarshalArray($xml->objects, "KalturaDropFolderFile");
+		}
 	}
 	/**
 	 * 

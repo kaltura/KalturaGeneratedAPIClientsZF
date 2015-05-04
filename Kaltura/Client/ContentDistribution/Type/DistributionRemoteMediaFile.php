@@ -45,9 +45,12 @@ class Kaltura_Client_ContentDistribution_Type_DistributionRemoteMediaFile extend
 		if(is_null($xml))
 			return;
 		
-		$this->version = (string)$xml->version;
-		$this->assetId = (string)$xml->assetId;
-		$this->remoteId = (string)$xml->remoteId;
+		if(count($xml->version))
+			$this->version = (string)$xml->version;
+		if(count($xml->assetId))
+			$this->assetId = (string)$xml->assetId;
+		if(count($xml->remoteId))
+			$this->remoteId = (string)$xml->remoteId;
 	}
 	/**
 	 * 

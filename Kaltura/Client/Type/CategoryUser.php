@@ -47,7 +47,8 @@ class Kaltura_Client_Type_CategoryUser extends Kaltura_Client_ObjectBase
 		
 		if(count($xml->categoryId))
 			$this->categoryId = (int)$xml->categoryId;
-		$this->userId = (string)$xml->userId;
+		if(count($xml->userId))
+			$this->userId = (string)$xml->userId;
 		if(count($xml->partnerId))
 			$this->partnerId = (int)$xml->partnerId;
 		if(count($xml->permissionLevel))
@@ -60,8 +61,10 @@ class Kaltura_Client_Type_CategoryUser extends Kaltura_Client_ObjectBase
 			$this->updatedAt = (int)$xml->updatedAt;
 		if(count($xml->updateMethod))
 			$this->updateMethod = (int)$xml->updateMethod;
-		$this->categoryFullIds = (string)$xml->categoryFullIds;
-		$this->permissionNames = (string)$xml->permissionNames;
+		if(count($xml->categoryFullIds))
+			$this->categoryFullIds = (string)$xml->categoryFullIds;
+		if(count($xml->permissionNames))
+			$this->permissionNames = (string)$xml->permissionNames;
 	}
 	/**
 	 * 

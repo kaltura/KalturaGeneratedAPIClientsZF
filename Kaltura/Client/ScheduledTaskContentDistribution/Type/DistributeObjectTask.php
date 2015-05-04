@@ -45,7 +45,8 @@ class Kaltura_Client_ScheduledTaskContentDistribution_Type_DistributeObjectTask 
 		if(is_null($xml))
 			return;
 		
-		$this->distributionProfileId = (string)$xml->distributionProfileId;
+		if(count($xml->distributionProfileId))
+			$this->distributionProfileId = (string)$xml->distributionProfileId;
 	}
 	/**
 	 * Distribution profile id

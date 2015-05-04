@@ -45,15 +45,16 @@ class Kaltura_Client_CaptionSearch_Type_CaptionAssetItem extends Kaltura_Client_
 		if(is_null($xml))
 			return;
 		
-		if(!empty($xml->asset))
+		if(count($xml->asset) && !empty($xml->asset))
 			$this->asset = Kaltura_Client_ParseUtils::unmarshalObject($xml->asset, "KalturaCaptionAsset");
-		if(!empty($xml->entry))
+		if(count($xml->entry) && !empty($xml->entry))
 			$this->entry = Kaltura_Client_ParseUtils::unmarshalObject($xml->entry, "KalturaBaseEntry");
 		if(count($xml->startTime))
 			$this->startTime = (int)$xml->startTime;
 		if(count($xml->endTime))
 			$this->endTime = (int)$xml->endTime;
-		$this->content = (string)$xml->content;
+		if(count($xml->content))
+			$this->content = (string)$xml->content;
 	}
 	/**
 	 * The Caption Asset object

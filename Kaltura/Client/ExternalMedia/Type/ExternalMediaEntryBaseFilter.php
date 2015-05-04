@@ -45,10 +45,14 @@ abstract class Kaltura_Client_ExternalMedia_Type_ExternalMediaEntryBaseFilter ex
 		if(is_null($xml))
 			return;
 		
-		$this->externalSourceTypeEqual = (string)$xml->externalSourceTypeEqual;
-		$this->externalSourceTypeIn = (string)$xml->externalSourceTypeIn;
-		$this->assetParamsIdsMatchOr = (string)$xml->assetParamsIdsMatchOr;
-		$this->assetParamsIdsMatchAnd = (string)$xml->assetParamsIdsMatchAnd;
+		if(count($xml->externalSourceTypeEqual))
+			$this->externalSourceTypeEqual = (string)$xml->externalSourceTypeEqual;
+		if(count($xml->externalSourceTypeIn))
+			$this->externalSourceTypeIn = (string)$xml->externalSourceTypeIn;
+		if(count($xml->assetParamsIdsMatchOr))
+			$this->assetParamsIdsMatchOr = (string)$xml->assetParamsIdsMatchOr;
+		if(count($xml->assetParamsIdsMatchAnd))
+			$this->assetParamsIdsMatchAnd = (string)$xml->assetParamsIdsMatchAnd;
 	}
 	/**
 	 * 

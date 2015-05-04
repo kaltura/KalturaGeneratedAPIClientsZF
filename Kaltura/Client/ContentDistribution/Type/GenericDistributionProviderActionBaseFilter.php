@@ -47,7 +47,8 @@ abstract class Kaltura_Client_ContentDistribution_Type_GenericDistributionProvid
 		
 		if(count($xml->idEqual))
 			$this->idEqual = (int)$xml->idEqual;
-		$this->idIn = (string)$xml->idIn;
+		if(count($xml->idIn))
+			$this->idIn = (string)$xml->idIn;
 		if(count($xml->createdAtGreaterThanOrEqual))
 			$this->createdAtGreaterThanOrEqual = (int)$xml->createdAtGreaterThanOrEqual;
 		if(count($xml->createdAtLessThanOrEqual))
@@ -58,10 +59,12 @@ abstract class Kaltura_Client_ContentDistribution_Type_GenericDistributionProvid
 			$this->updatedAtLessThanOrEqual = (int)$xml->updatedAtLessThanOrEqual;
 		if(count($xml->genericDistributionProviderIdEqual))
 			$this->genericDistributionProviderIdEqual = (int)$xml->genericDistributionProviderIdEqual;
-		$this->genericDistributionProviderIdIn = (string)$xml->genericDistributionProviderIdIn;
+		if(count($xml->genericDistributionProviderIdIn))
+			$this->genericDistributionProviderIdIn = (string)$xml->genericDistributionProviderIdIn;
 		if(count($xml->actionEqual))
 			$this->actionEqual = (int)$xml->actionEqual;
-		$this->actionIn = (string)$xml->actionIn;
+		if(count($xml->actionIn))
+			$this->actionIn = (string)$xml->actionIn;
 	}
 	/**
 	 * 

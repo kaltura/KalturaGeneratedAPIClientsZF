@@ -45,7 +45,8 @@ class Kaltura_Client_Type_StringResource extends Kaltura_Client_Type_ContentReso
 		if(is_null($xml))
 			return;
 		
-		$this->content = (string)$xml->content;
+		if(count($xml->content))
+			$this->content = (string)$xml->content;
 	}
 	/**
 	 * Textual content

@@ -47,9 +47,12 @@ abstract class Kaltura_Client_Type_ThumbParamsOutputBaseFilter extends Kaltura_C
 		
 		if(count($xml->thumbParamsIdEqual))
 			$this->thumbParamsIdEqual = (int)$xml->thumbParamsIdEqual;
-		$this->thumbParamsVersionEqual = (string)$xml->thumbParamsVersionEqual;
-		$this->thumbAssetIdEqual = (string)$xml->thumbAssetIdEqual;
-		$this->thumbAssetVersionEqual = (string)$xml->thumbAssetVersionEqual;
+		if(count($xml->thumbParamsVersionEqual))
+			$this->thumbParamsVersionEqual = (string)$xml->thumbParamsVersionEqual;
+		if(count($xml->thumbAssetIdEqual))
+			$this->thumbAssetIdEqual = (string)$xml->thumbAssetIdEqual;
+		if(count($xml->thumbAssetVersionEqual))
+			$this->thumbAssetVersionEqual = (string)$xml->thumbAssetVersionEqual;
 	}
 	/**
 	 * 

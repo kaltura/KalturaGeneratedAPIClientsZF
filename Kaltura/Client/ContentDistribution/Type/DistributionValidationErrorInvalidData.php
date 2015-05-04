@@ -45,10 +45,12 @@ class Kaltura_Client_ContentDistribution_Type_DistributionValidationErrorInvalid
 		if(is_null($xml))
 			return;
 		
-		$this->fieldName = (string)$xml->fieldName;
+		if(count($xml->fieldName))
+			$this->fieldName = (string)$xml->fieldName;
 		if(count($xml->validationErrorType))
 			$this->validationErrorType = (int)$xml->validationErrorType;
-		$this->validationErrorParam = (string)$xml->validationErrorParam;
+		if(count($xml->validationErrorParam))
+			$this->validationErrorParam = (string)$xml->validationErrorParam;
 	}
 	/**
 	 * 

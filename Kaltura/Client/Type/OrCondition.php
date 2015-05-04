@@ -45,10 +45,13 @@ class Kaltura_Client_Type_OrCondition extends Kaltura_Client_Type_Condition
 		if(is_null($xml))
 			return;
 		
-		if(empty($xml->conditions))
-			$this->conditions = array();
-		else
-			$this->conditions = Kaltura_Client_ParseUtils::unmarshalArray($xml->conditions, "KalturaCondition");
+		if(count($xml->conditions))
+		{
+			if(empty($xml->conditions))
+				$this->conditions = array();
+			else
+				$this->conditions = Kaltura_Client_ParseUtils::unmarshalArray($xml->conditions, "KalturaCondition");
+		}
 	}
 	/**
 	 * 

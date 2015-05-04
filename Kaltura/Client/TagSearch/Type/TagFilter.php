@@ -45,9 +45,12 @@ class Kaltura_Client_TagSearch_Type_TagFilter extends Kaltura_Client_Type_Filter
 		if(is_null($xml))
 			return;
 		
-		$this->objectTypeEqual = (string)$xml->objectTypeEqual;
-		$this->tagEqual = (string)$xml->tagEqual;
-		$this->tagStartsWith = (string)$xml->tagStartsWith;
+		if(count($xml->objectTypeEqual))
+			$this->objectTypeEqual = (string)$xml->objectTypeEqual;
+		if(count($xml->tagEqual))
+			$this->tagEqual = (string)$xml->tagEqual;
+		if(count($xml->tagStartsWith))
+			$this->tagStartsWith = (string)$xml->tagStartsWith;
 		if(count($xml->instanceCountEqual))
 			$this->instanceCountEqual = (int)$xml->instanceCountEqual;
 		if(count($xml->instanceCountIn))

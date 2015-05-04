@@ -45,7 +45,8 @@ class Kaltura_Client_Type_LiveChannel extends Kaltura_Client_Type_LiveEntry
 		if(is_null($xml))
 			return;
 		
-		$this->playlistId = (string)$xml->playlistId;
+		if(count($xml->playlistId))
+			$this->playlistId = (string)$xml->playlistId;
 		if(count($xml->repeat))
 			$this->repeat = (int)$xml->repeat;
 	}

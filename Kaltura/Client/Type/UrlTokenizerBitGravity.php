@@ -45,7 +45,8 @@ class Kaltura_Client_Type_UrlTokenizerBitGravity extends Kaltura_Client_Type_Url
 		if(is_null($xml))
 			return;
 		
-		$this->hashPatternRegex = (string)$xml->hashPatternRegex;
+		if(count($xml->hashPatternRegex))
+			$this->hashPatternRegex = (string)$xml->hashPatternRegex;
 	}
 	/**
 	 * hashPatternRegex

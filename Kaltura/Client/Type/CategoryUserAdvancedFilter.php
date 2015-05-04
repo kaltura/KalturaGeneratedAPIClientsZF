@@ -45,10 +45,14 @@ class Kaltura_Client_Type_CategoryUserAdvancedFilter extends Kaltura_Client_Type
 		if(is_null($xml))
 			return;
 		
-		$this->memberIdEq = (string)$xml->memberIdEq;
-		$this->memberIdIn = (string)$xml->memberIdIn;
-		$this->memberPermissionsMatchOr = (string)$xml->memberPermissionsMatchOr;
-		$this->memberPermissionsMatchAnd = (string)$xml->memberPermissionsMatchAnd;
+		if(count($xml->memberIdEq))
+			$this->memberIdEq = (string)$xml->memberIdEq;
+		if(count($xml->memberIdIn))
+			$this->memberIdIn = (string)$xml->memberIdIn;
+		if(count($xml->memberPermissionsMatchOr))
+			$this->memberPermissionsMatchOr = (string)$xml->memberPermissionsMatchOr;
+		if(count($xml->memberPermissionsMatchAnd))
+			$this->memberPermissionsMatchAnd = (string)$xml->memberPermissionsMatchAnd;
 	}
 	/**
 	 * 

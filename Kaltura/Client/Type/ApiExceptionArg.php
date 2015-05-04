@@ -31,11 +31,11 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Type_RemotePath extends Kaltura_Client_ObjectBase
+class Kaltura_Client_Type_ApiExceptionArg extends Kaltura_Client_ObjectBase
 {
 	public function getKalturaObjectType()
 	{
-		return 'KalturaRemotePath';
+		return 'KalturaApiExceptionArg';
 	}
 	
 	public function __construct(SimpleXMLElement $xml = null)
@@ -45,26 +45,24 @@ class Kaltura_Client_Type_RemotePath extends Kaltura_Client_ObjectBase
 		if(is_null($xml))
 			return;
 		
-		if(count($xml->storageProfileId))
-			$this->storageProfileId = (int)$xml->storageProfileId;
-		if(count($xml->uri))
-			$this->uri = (string)$xml->uri;
+		if(count($xml->name))
+			$this->name = (string)$xml->name;
+		if(count($xml->value))
+			$this->value = (string)$xml->value;
 	}
 	/**
 	 * 
 	 *
-	 * @var int
-	 * @readonly
+	 * @var string
 	 */
-	public $storageProfileId = null;
+	public $name = null;
 
 	/**
 	 * 
 	 *
 	 * @var string
-	 * @readonly
 	 */
-	public $uri = null;
+	public $value = null;
 
 
 }

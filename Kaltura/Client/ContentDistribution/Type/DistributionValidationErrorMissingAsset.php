@@ -45,7 +45,8 @@ class Kaltura_Client_ContentDistribution_Type_DistributionValidationErrorMissing
 		if(is_null($xml))
 			return;
 		
-		$this->data = (string)$xml->data;
+		if(count($xml->data))
+			$this->data = (string)$xml->data;
 	}
 	/**
 	 * 

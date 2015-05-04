@@ -45,8 +45,10 @@ class Kaltura_Client_EventNotification_Type_EventNotificationScope extends Kaltu
 		if(is_null($xml))
 			return;
 		
-		$this->objectId = (string)$xml->objectId;
-		$this->scopeObjectType = (string)$xml->scopeObjectType;
+		if(count($xml->objectId))
+			$this->objectId = (string)$xml->objectId;
+		if(count($xml->scopeObjectType))
+			$this->scopeObjectType = (string)$xml->scopeObjectType;
 	}
 	/**
 	 * 

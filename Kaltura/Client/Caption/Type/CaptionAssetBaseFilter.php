@@ -47,13 +47,18 @@ abstract class Kaltura_Client_Caption_Type_CaptionAssetBaseFilter extends Kaltur
 		
 		if(count($xml->captionParamsIdEqual))
 			$this->captionParamsIdEqual = (int)$xml->captionParamsIdEqual;
-		$this->captionParamsIdIn = (string)$xml->captionParamsIdIn;
-		$this->formatEqual = (string)$xml->formatEqual;
-		$this->formatIn = (string)$xml->formatIn;
+		if(count($xml->captionParamsIdIn))
+			$this->captionParamsIdIn = (string)$xml->captionParamsIdIn;
+		if(count($xml->formatEqual))
+			$this->formatEqual = (string)$xml->formatEqual;
+		if(count($xml->formatIn))
+			$this->formatIn = (string)$xml->formatIn;
 		if(count($xml->statusEqual))
 			$this->statusEqual = (int)$xml->statusEqual;
-		$this->statusIn = (string)$xml->statusIn;
-		$this->statusNotIn = (string)$xml->statusNotIn;
+		if(count($xml->statusIn))
+			$this->statusIn = (string)$xml->statusIn;
+		if(count($xml->statusNotIn))
+			$this->statusNotIn = (string)$xml->statusNotIn;
 	}
 	/**
 	 * 

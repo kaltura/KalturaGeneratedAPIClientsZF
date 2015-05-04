@@ -47,9 +47,12 @@ class Kaltura_Client_Metadata_Type_MetadataProfileField extends Kaltura_Client_O
 		
 		if(count($xml->id))
 			$this->id = (int)$xml->id;
-		$this->xPath = (string)$xml->xPath;
-		$this->key = (string)$xml->key;
-		$this->label = (string)$xml->label;
+		if(count($xml->xPath))
+			$this->xPath = (string)$xml->xPath;
+		if(count($xml->key))
+			$this->key = (string)$xml->key;
+		if(count($xml->label))
+			$this->label = (string)$xml->label;
 	}
 	/**
 	 * 

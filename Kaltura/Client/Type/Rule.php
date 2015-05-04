@@ -45,21 +45,36 @@ class Kaltura_Client_Type_Rule extends Kaltura_Client_ObjectBase
 		if(is_null($xml))
 			return;
 		
-		$this->message = (string)$xml->message;
-		if(empty($xml->actions))
-			$this->actions = array();
-		else
-			$this->actions = Kaltura_Client_ParseUtils::unmarshalArray($xml->actions, "KalturaRuleAction");
-		if(empty($xml->conditions))
-			$this->conditions = array();
-		else
-			$this->conditions = Kaltura_Client_ParseUtils::unmarshalArray($xml->conditions, "KalturaCondition");
-		if(empty($xml->contexts))
-			$this->contexts = array();
-		else
-			$this->contexts = Kaltura_Client_ParseUtils::unmarshalArray($xml->contexts, "KalturaContextTypeHolder");
-		if(!empty($xml->stopProcessing))
-			$this->stopProcessing = true;
+		if(count($xml->message))
+			$this->message = (string)$xml->message;
+		if(count($xml->actions))
+		{
+			if(empty($xml->actions))
+				$this->actions = array();
+			else
+				$this->actions = Kaltura_Client_ParseUtils::unmarshalArray($xml->actions, "KalturaRuleAction");
+		}
+		if(count($xml->conditions))
+		{
+			if(empty($xml->conditions))
+				$this->conditions = array();
+			else
+				$this->conditions = Kaltura_Client_ParseUtils::unmarshalArray($xml->conditions, "KalturaCondition");
+		}
+		if(count($xml->contexts))
+		{
+			if(empty($xml->contexts))
+				$this->contexts = array();
+			else
+				$this->contexts = Kaltura_Client_ParseUtils::unmarshalArray($xml->contexts, "KalturaContextTypeHolder");
+		}
+		if(count($xml->stopProcessing))
+		{
+			if(!empty($xml->stopProcessing))
+				$this->stopProcessing = true;
+			else
+				$this->stopProcessing = false;
+		}
 	}
 	/**
 	 * Message to be thrown to the player in case the rule is fulfilled

@@ -47,13 +47,16 @@ class Kaltura_Client_DropFolder_Type_DropFolderContentProcessorJobData extends K
 		
 		if(count($xml->dropFolderId))
 			$this->dropFolderId = (int)$xml->dropFolderId;
-		$this->dropFolderFileIds = (string)$xml->dropFolderFileIds;
-		$this->parsedSlug = (string)$xml->parsedSlug;
+		if(count($xml->dropFolderFileIds))
+			$this->dropFolderFileIds = (string)$xml->dropFolderFileIds;
+		if(count($xml->parsedSlug))
+			$this->parsedSlug = (string)$xml->parsedSlug;
 		if(count($xml->contentMatchPolicy))
 			$this->contentMatchPolicy = (int)$xml->contentMatchPolicy;
 		if(count($xml->conversionProfileId))
 			$this->conversionProfileId = (int)$xml->conversionProfileId;
-		$this->parsedUserId = (string)$xml->parsedUserId;
+		if(count($xml->parsedUserId))
+			$this->parsedUserId = (string)$xml->parsedUserId;
 	}
 	/**
 	 * 

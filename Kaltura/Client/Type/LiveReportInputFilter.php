@@ -45,14 +45,16 @@ class Kaltura_Client_Type_LiveReportInputFilter extends Kaltura_Client_ObjectBas
 		if(is_null($xml))
 			return;
 		
-		$this->entryIds = (string)$xml->entryIds;
+		if(count($xml->entryIds))
+			$this->entryIds = (string)$xml->entryIds;
 		if(count($xml->fromTime))
 			$this->fromTime = (int)$xml->fromTime;
 		if(count($xml->toTime))
 			$this->toTime = (int)$xml->toTime;
 		if(count($xml->live))
 			$this->live = (int)$xml->live;
-		$this->orderBy = (string)$xml->orderBy;
+		if(count($xml->orderBy))
+			$this->orderBy = (string)$xml->orderBy;
 	}
 	/**
 	 * 

@@ -45,10 +45,13 @@ class Kaltura_Client_Type_AccessControlProfileListResponse extends Kaltura_Clien
 		if(is_null($xml))
 			return;
 		
-		if(empty($xml->objects))
-			$this->objects = array();
-		else
-			$this->objects = Kaltura_Client_ParseUtils::unmarshalArray($xml->objects, "KalturaAccessControlProfile");
+		if(count($xml->objects))
+		{
+			if(empty($xml->objects))
+				$this->objects = array();
+			else
+				$this->objects = Kaltura_Client_ParseUtils::unmarshalArray($xml->objects, "KalturaAccessControlProfile");
+		}
 	}
 	/**
 	 * 

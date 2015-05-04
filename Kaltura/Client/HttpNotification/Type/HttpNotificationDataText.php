@@ -45,7 +45,7 @@ class Kaltura_Client_HttpNotification_Type_HttpNotificationDataText extends Kalt
 		if(is_null($xml))
 			return;
 		
-		if(!empty($xml->content))
+		if(count($xml->content) && !empty($xml->content))
 			$this->content = Kaltura_Client_ParseUtils::unmarshalObject($xml->content, "KalturaStringValue");
 	}
 	/**

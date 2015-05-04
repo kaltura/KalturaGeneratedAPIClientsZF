@@ -45,28 +45,39 @@ class Kaltura_Client_EmailNotification_Type_EmailNotificationTemplate extends Ka
 		if(is_null($xml))
 			return;
 		
-		$this->format = (string)$xml->format;
-		$this->subject = (string)$xml->subject;
-		$this->body = (string)$xml->body;
-		$this->fromEmail = (string)$xml->fromEmail;
-		$this->fromName = (string)$xml->fromName;
-		if(!empty($xml->to))
+		if(count($xml->format))
+			$this->format = (string)$xml->format;
+		if(count($xml->subject))
+			$this->subject = (string)$xml->subject;
+		if(count($xml->body))
+			$this->body = (string)$xml->body;
+		if(count($xml->fromEmail))
+			$this->fromEmail = (string)$xml->fromEmail;
+		if(count($xml->fromName))
+			$this->fromName = (string)$xml->fromName;
+		if(count($xml->to) && !empty($xml->to))
 			$this->to = Kaltura_Client_ParseUtils::unmarshalObject($xml->to, "KalturaEmailNotificationRecipientProvider");
-		if(!empty($xml->cc))
+		if(count($xml->cc) && !empty($xml->cc))
 			$this->cc = Kaltura_Client_ParseUtils::unmarshalObject($xml->cc, "KalturaEmailNotificationRecipientProvider");
-		if(!empty($xml->bcc))
+		if(count($xml->bcc) && !empty($xml->bcc))
 			$this->bcc = Kaltura_Client_ParseUtils::unmarshalObject($xml->bcc, "KalturaEmailNotificationRecipientProvider");
-		if(!empty($xml->replyTo))
+		if(count($xml->replyTo) && !empty($xml->replyTo))
 			$this->replyTo = Kaltura_Client_ParseUtils::unmarshalObject($xml->replyTo, "KalturaEmailNotificationRecipientProvider");
 		if(count($xml->priority))
 			$this->priority = (int)$xml->priority;
-		$this->confirmReadingTo = (string)$xml->confirmReadingTo;
-		$this->hostname = (string)$xml->hostname;
-		$this->messageID = (string)$xml->messageID;
-		if(empty($xml->customHeaders))
-			$this->customHeaders = array();
-		else
-			$this->customHeaders = Kaltura_Client_ParseUtils::unmarshalArray($xml->customHeaders, "KalturaKeyValue");
+		if(count($xml->confirmReadingTo))
+			$this->confirmReadingTo = (string)$xml->confirmReadingTo;
+		if(count($xml->hostname))
+			$this->hostname = (string)$xml->hostname;
+		if(count($xml->messageID))
+			$this->messageID = (string)$xml->messageID;
+		if(count($xml->customHeaders))
+		{
+			if(empty($xml->customHeaders))
+				$this->customHeaders = array();
+			else
+				$this->customHeaders = Kaltura_Client_ParseUtils::unmarshalArray($xml->customHeaders, "KalturaKeyValue");
+		}
 	}
 	/**
 	 * Define the email body format

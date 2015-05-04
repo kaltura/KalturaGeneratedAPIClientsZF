@@ -47,8 +47,10 @@ class Kaltura_Client_ScheduledTaskMetadata_Type_ExecuteMetadataXsltObjectTask ex
 		
 		if(count($xml->metadataProfileId))
 			$this->metadataProfileId = (int)$xml->metadataProfileId;
-		$this->metadataObjectType = (string)$xml->metadataObjectType;
-		$this->xslt = (string)$xml->xslt;
+		if(count($xml->metadataObjectType))
+			$this->metadataObjectType = (string)$xml->metadataObjectType;
+		if(count($xml->xslt))
+			$this->xslt = (string)$xml->xslt;
 	}
 	/**
 	 * Metadata profile id to lookup the metadata object

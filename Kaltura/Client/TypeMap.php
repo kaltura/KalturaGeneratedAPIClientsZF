@@ -66,6 +66,7 @@ class Kaltura_Client_TypeMap
 		'KalturaApiActionPermissionItem' => 'Kaltura_Client_Type_ApiActionPermissionItem',
 		'KalturaApiActionPermissionItemBaseFilter' => 'Kaltura_Client_Type_ApiActionPermissionItemBaseFilter',
 		'KalturaApiActionPermissionItemFilter' => 'Kaltura_Client_Type_ApiActionPermissionItemFilter',
+		'KalturaApiExceptionArg' => 'Kaltura_Client_Type_ApiExceptionArg',
 		'KalturaApiParameterPermissionItem' => 'Kaltura_Client_Type_ApiParameterPermissionItem',
 		'KalturaApiParameterPermissionItemBaseFilter' => 'Kaltura_Client_Type_ApiParameterPermissionItemBaseFilter',
 		'KalturaApiParameterPermissionItemFilter' => 'Kaltura_Client_Type_ApiParameterPermissionItemFilter',

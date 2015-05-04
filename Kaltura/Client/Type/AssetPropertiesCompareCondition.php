@@ -45,10 +45,13 @@ class Kaltura_Client_Type_AssetPropertiesCompareCondition extends Kaltura_Client
 		if(is_null($xml))
 			return;
 		
-		if(empty($xml->properties))
-			$this->properties = array();
-		else
-			$this->properties = Kaltura_Client_ParseUtils::unmarshalArray($xml->properties, "KalturaKeyValue");
+		if(count($xml->properties))
+		{
+			if(empty($xml->properties))
+				$this->properties = array();
+			else
+				$this->properties = Kaltura_Client_ParseUtils::unmarshalArray($xml->properties, "KalturaKeyValue");
+		}
 	}
 	/**
 	 * Array of key/value objects that holds the property and the value to find and compare on an asset object

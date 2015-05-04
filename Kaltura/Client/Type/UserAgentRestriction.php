@@ -47,7 +47,8 @@ class Kaltura_Client_Type_UserAgentRestriction extends Kaltura_Client_Type_BaseR
 		
 		if(count($xml->userAgentRestrictionType))
 			$this->userAgentRestrictionType = (int)$xml->userAgentRestrictionType;
-		$this->userAgentRegexList = (string)$xml->userAgentRegexList;
+		if(count($xml->userAgentRegexList))
+			$this->userAgentRegexList = (string)$xml->userAgentRegexList;
 	}
 	/**
 	 * User agent restriction type (Allow or deny)

@@ -45,7 +45,8 @@ class Kaltura_Client_Type_FlavorAssetUrlOptions extends Kaltura_Client_ObjectBas
 		if(is_null($xml))
 			return;
 		
-		$this->fileName = (string)$xml->fileName;
+		if(count($xml->fileName))
+			$this->fileName = (string)$xml->fileName;
 	}
 	/**
 	 * The name of the downloaded file

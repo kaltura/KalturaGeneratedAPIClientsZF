@@ -45,10 +45,17 @@ class Kaltura_Client_Type_CategoryUserFilter extends Kaltura_Client_Type_Categor
 		if(is_null($xml))
 			return;
 		
-		if(!empty($xml->categoryDirectMembers))
-			$this->categoryDirectMembers = true;
-		$this->freeText = (string)$xml->freeText;
-		$this->relatedGroupsByUserId = (string)$xml->relatedGroupsByUserId;
+		if(count($xml->categoryDirectMembers))
+		{
+			if(!empty($xml->categoryDirectMembers))
+				$this->categoryDirectMembers = true;
+			else
+				$this->categoryDirectMembers = false;
+		}
+		if(count($xml->freeText))
+			$this->freeText = (string)$xml->freeText;
+		if(count($xml->relatedGroupsByUserId))
+			$this->relatedGroupsByUserId = (string)$xml->relatedGroupsByUserId;
 	}
 	/**
 	 * Return the list of categoryUser that are not inherited from parent category - only the direct categoryUsers.

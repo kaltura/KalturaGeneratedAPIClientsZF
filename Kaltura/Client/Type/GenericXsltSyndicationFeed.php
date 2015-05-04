@@ -45,11 +45,15 @@ class Kaltura_Client_Type_GenericXsltSyndicationFeed extends Kaltura_Client_Type
 		if(is_null($xml))
 			return;
 		
-		$this->xslt = (string)$xml->xslt;
-		if(empty($xml->itemXpathsToExtend))
-			$this->itemXpathsToExtend = array();
-		else
-			$this->itemXpathsToExtend = Kaltura_Client_ParseUtils::unmarshalArray($xml->itemXpathsToExtend, "KalturaExtendingItemMrssParameter");
+		if(count($xml->xslt))
+			$this->xslt = (string)$xml->xslt;
+		if(count($xml->itemXpathsToExtend))
+		{
+			if(empty($xml->itemXpathsToExtend))
+				$this->itemXpathsToExtend = array();
+			else
+				$this->itemXpathsToExtend = Kaltura_Client_ParseUtils::unmarshalArray($xml->itemXpathsToExtend, "KalturaExtendingItemMrssParameter");
+		}
 	}
 	/**
 	 * 

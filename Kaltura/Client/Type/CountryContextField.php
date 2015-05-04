@@ -45,7 +45,8 @@ class Kaltura_Client_Type_CountryContextField extends Kaltura_Client_Type_String
 		if(is_null($xml))
 			return;
 		
-		$this->geoCoderType = (string)$xml->geoCoderType;
+		if(count($xml->geoCoderType))
+			$this->geoCoderType = (string)$xml->geoCoderType;
 	}
 	/**
 	 * The ip geo coder engine to be used

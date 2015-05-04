@@ -45,8 +45,10 @@ class Kaltura_Client_Type_ApiActionPermissionItem extends Kaltura_Client_Type_Pe
 		if(is_null($xml))
 			return;
 		
-		$this->service = (string)$xml->service;
-		$this->action = (string)$xml->action;
+		if(count($xml->service))
+			$this->service = (string)$xml->service;
+		if(count($xml->action))
+			$this->action = (string)$xml->action;
 	}
 	/**
 	 * 

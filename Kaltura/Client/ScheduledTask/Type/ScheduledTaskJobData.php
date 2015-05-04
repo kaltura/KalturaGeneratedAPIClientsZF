@@ -47,7 +47,8 @@ class Kaltura_Client_ScheduledTask_Type_ScheduledTaskJobData extends Kaltura_Cli
 		
 		if(count($xml->maxResults))
 			$this->maxResults = (int)$xml->maxResults;
-		$this->resultsFilePath = (string)$xml->resultsFilePath;
+		if(count($xml->resultsFilePath))
+			$this->resultsFilePath = (string)$xml->resultsFilePath;
 		if(count($xml->referenceTime))
 			$this->referenceTime = (int)$xml->referenceTime;
 	}

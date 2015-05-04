@@ -45,10 +45,13 @@ class Kaltura_Client_EmailNotification_Type_EmailNotificationStaticRecipientJobD
 		if(is_null($xml))
 			return;
 		
-		if(empty($xml->emailRecipients))
-			$this->emailRecipients = array();
-		else
-			$this->emailRecipients = Kaltura_Client_ParseUtils::unmarshalArray($xml->emailRecipients, "KalturaKeyValue");
+		if(count($xml->emailRecipients))
+		{
+			if(empty($xml->emailRecipients))
+				$this->emailRecipients = array();
+			else
+				$this->emailRecipients = Kaltura_Client_ParseUtils::unmarshalArray($xml->emailRecipients, "KalturaKeyValue");
+		}
 	}
 	/**
 	 * Email to emails and names

@@ -45,11 +45,14 @@ class Kaltura_Client_Type_UrlRecognizerAkamaiG2O extends Kaltura_Client_Type_Url
 		if(is_null($xml))
 			return;
 		
-		$this->headerData = (string)$xml->headerData;
-		$this->headerSign = (string)$xml->headerSign;
+		if(count($xml->headerData))
+			$this->headerData = (string)$xml->headerData;
+		if(count($xml->headerSign))
+			$this->headerSign = (string)$xml->headerSign;
 		if(count($xml->timeout))
 			$this->timeout = (int)$xml->timeout;
-		$this->salt = (string)$xml->salt;
+		if(count($xml->salt))
+			$this->salt = (string)$xml->salt;
 	}
 	/**
 	 * headerData

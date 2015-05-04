@@ -47,12 +47,17 @@ class Kaltura_Client_Type_UiConfTypeInfo extends Kaltura_Client_ObjectBase
 		
 		if(count($xml->type))
 			$this->type = (int)$xml->type;
-		if(empty($xml->versions))
-			$this->versions = array();
-		else
-			$this->versions = Kaltura_Client_ParseUtils::unmarshalArray($xml->versions, "KalturaString");
-		$this->directory = (string)$xml->directory;
-		$this->filename = (string)$xml->filename;
+		if(count($xml->versions))
+		{
+			if(empty($xml->versions))
+				$this->versions = array();
+			else
+				$this->versions = Kaltura_Client_ParseUtils::unmarshalArray($xml->versions, "KalturaString");
+		}
+		if(count($xml->directory))
+			$this->directory = (string)$xml->directory;
+		if(count($xml->filename))
+			$this->filename = (string)$xml->filename;
 	}
 	/**
 	 * UiConf Type

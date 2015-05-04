@@ -45,7 +45,8 @@ class Kaltura_Client_ContentDistribution_Type_DistributionValidationErrorConditi
 		if(is_null($xml))
 			return;
 		
-		$this->conditionName = (string)$xml->conditionName;
+		if(count($xml->conditionName))
+			$this->conditionName = (string)$xml->conditionName;
 	}
 	/**
 	 * 

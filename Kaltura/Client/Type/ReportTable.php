@@ -45,8 +45,10 @@ class Kaltura_Client_Type_ReportTable extends Kaltura_Client_ObjectBase
 		if(is_null($xml))
 			return;
 		
-		$this->header = (string)$xml->header;
-		$this->data = (string)$xml->data;
+		if(count($xml->header))
+			$this->header = (string)$xml->header;
+		if(count($xml->data))
+			$this->data = (string)$xml->data;
 		if(count($xml->totalCount))
 			$this->totalCount = (int)$xml->totalCount;
 	}

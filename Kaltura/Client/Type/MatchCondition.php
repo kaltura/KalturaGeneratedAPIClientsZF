@@ -45,10 +45,13 @@ abstract class Kaltura_Client_Type_MatchCondition extends Kaltura_Client_Type_Co
 		if(is_null($xml))
 			return;
 		
-		if(empty($xml->values))
-			$this->values = array();
-		else
-			$this->values = Kaltura_Client_ParseUtils::unmarshalArray($xml->values, "KalturaStringValue");
+		if(count($xml->values))
+		{
+			if(empty($xml->values))
+				$this->values = array();
+			else
+				$this->values = Kaltura_Client_ParseUtils::unmarshalArray($xml->values, "KalturaStringValue");
+		}
 	}
 	/**
 	 * 

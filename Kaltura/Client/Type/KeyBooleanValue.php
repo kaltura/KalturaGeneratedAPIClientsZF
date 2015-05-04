@@ -45,9 +45,15 @@ class Kaltura_Client_Type_KeyBooleanValue extends Kaltura_Client_ObjectBase
 		if(is_null($xml))
 			return;
 		
-		$this->key = (string)$xml->key;
-		if(!empty($xml->value))
-			$this->value = true;
+		if(count($xml->key))
+			$this->key = (string)$xml->key;
+		if(count($xml->value))
+		{
+			if(!empty($xml->value))
+				$this->value = true;
+			else
+				$this->value = false;
+		}
 	}
 	/**
 	 * 

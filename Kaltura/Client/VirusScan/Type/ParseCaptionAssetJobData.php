@@ -45,7 +45,8 @@ class Kaltura_Client_VirusScan_Type_ParseCaptionAssetJobData extends Kaltura_Cli
 		if(is_null($xml))
 			return;
 		
-		$this->captionAssetId = (string)$xml->captionAssetId;
+		if(count($xml->captionAssetId))
+			$this->captionAssetId = (string)$xml->captionAssetId;
 	}
 	/**
 	 * 

@@ -45,7 +45,8 @@ class Kaltura_Client_Type_EvalBooleanField extends Kaltura_Client_Type_BooleanFi
 		if(is_null($xml))
 			return;
 		
-		$this->code = (string)$xml->code;
+		if(count($xml->code))
+			$this->code = (string)$xml->code;
 	}
 	/**
 	 * PHP code

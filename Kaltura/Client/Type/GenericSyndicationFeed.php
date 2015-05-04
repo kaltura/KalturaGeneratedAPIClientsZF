@@ -45,8 +45,10 @@ class Kaltura_Client_Type_GenericSyndicationFeed extends Kaltura_Client_Type_Bas
 		if(is_null($xml))
 			return;
 		
-		$this->feedDescription = (string)$xml->feedDescription;
-		$this->feedLandingPage = (string)$xml->feedLandingPage;
+		if(count($xml->feedDescription))
+			$this->feedDescription = (string)$xml->feedDescription;
+		if(count($xml->feedLandingPage))
+			$this->feedLandingPage = (string)$xml->feedLandingPage;
 	}
 	/**
 	 * feed description

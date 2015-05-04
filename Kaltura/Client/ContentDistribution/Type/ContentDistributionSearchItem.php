@@ -45,8 +45,13 @@ class Kaltura_Client_ContentDistribution_Type_ContentDistributionSearchItem exte
 		if(is_null($xml))
 			return;
 		
-		if(!empty($xml->noDistributionProfiles))
-			$this->noDistributionProfiles = true;
+		if(count($xml->noDistributionProfiles))
+		{
+			if(!empty($xml->noDistributionProfiles))
+				$this->noDistributionProfiles = true;
+			else
+				$this->noDistributionProfiles = false;
+		}
 		if(count($xml->distributionProfileId))
 			$this->distributionProfileId = (int)$xml->distributionProfileId;
 		if(count($xml->distributionSunStatus))
@@ -55,9 +60,15 @@ class Kaltura_Client_ContentDistribution_Type_ContentDistributionSearchItem exte
 			$this->entryDistributionFlag = (int)$xml->entryDistributionFlag;
 		if(count($xml->entryDistributionStatus))
 			$this->entryDistributionStatus = (int)$xml->entryDistributionStatus;
-		if(!empty($xml->hasEntryDistributionValidationErrors))
-			$this->hasEntryDistributionValidationErrors = true;
-		$this->entryDistributionValidationErrors = (string)$xml->entryDistributionValidationErrors;
+		if(count($xml->hasEntryDistributionValidationErrors))
+		{
+			if(!empty($xml->hasEntryDistributionValidationErrors))
+				$this->hasEntryDistributionValidationErrors = true;
+			else
+				$this->hasEntryDistributionValidationErrors = false;
+		}
+		if(count($xml->entryDistributionValidationErrors))
+			$this->entryDistributionValidationErrors = (string)$xml->entryDistributionValidationErrors;
 	}
 	/**
 	 * 

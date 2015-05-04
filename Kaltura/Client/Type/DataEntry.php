@@ -45,9 +45,15 @@ class Kaltura_Client_Type_DataEntry extends Kaltura_Client_Type_BaseEntry
 		if(is_null($xml))
 			return;
 		
-		$this->dataContent = (string)$xml->dataContent;
-		if(!empty($xml->retrieveDataContentByGet))
-			$this->retrieveDataContentByGet = true;
+		if(count($xml->dataContent))
+			$this->dataContent = (string)$xml->dataContent;
+		if(count($xml->retrieveDataContentByGet))
+		{
+			if(!empty($xml->retrieveDataContentByGet))
+				$this->retrieveDataContentByGet = true;
+			else
+				$this->retrieveDataContentByGet = false;
+		}
 	}
 	/**
 	 * The data of the entry

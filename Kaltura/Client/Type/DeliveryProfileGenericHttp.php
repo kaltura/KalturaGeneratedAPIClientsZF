@@ -45,7 +45,8 @@ class Kaltura_Client_Type_DeliveryProfileGenericHttp extends Kaltura_Client_Type
 		if(is_null($xml))
 			return;
 		
-		$this->pattern = (string)$xml->pattern;
+		if(count($xml->pattern))
+			$this->pattern = (string)$xml->pattern;
 	}
 	/**
 	 * 

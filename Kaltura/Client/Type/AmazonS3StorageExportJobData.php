@@ -45,8 +45,10 @@ class Kaltura_Client_Type_AmazonS3StorageExportJobData extends Kaltura_Client_Ty
 		if(is_null($xml))
 			return;
 		
-		$this->filesPermissionInS3 = (string)$xml->filesPermissionInS3;
-		$this->s3Region = (string)$xml->s3Region;
+		if(count($xml->filesPermissionInS3))
+			$this->filesPermissionInS3 = (string)$xml->filesPermissionInS3;
+		if(count($xml->s3Region))
+			$this->s3Region = (string)$xml->s3Region;
 	}
 	/**
 	 * 

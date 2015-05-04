@@ -45,7 +45,8 @@ abstract class Kaltura_Client_Type_UserLoginDataBaseFilter extends Kaltura_Clien
 		if(is_null($xml))
 			return;
 		
-		$this->loginEmailEqual = (string)$xml->loginEmailEqual;
+		if(count($xml->loginEmailEqual))
+			$this->loginEmailEqual = (string)$xml->loginEmailEqual;
 	}
 	/**
 	 * 

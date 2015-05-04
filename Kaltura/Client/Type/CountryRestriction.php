@@ -47,7 +47,8 @@ class Kaltura_Client_Type_CountryRestriction extends Kaltura_Client_Type_BaseRes
 		
 		if(count($xml->countryRestrictionType))
 			$this->countryRestrictionType = (int)$xml->countryRestrictionType;
-		$this->countryList = (string)$xml->countryList;
+		if(count($xml->countryList))
+			$this->countryList = (string)$xml->countryList;
 	}
 	/**
 	 * Country restriction type (Allow or deny)

@@ -53,22 +53,37 @@ class Kaltura_Client_ContentDistribution_Type_GenericDistributionProvider extend
 			$this->updatedAt = (int)$xml->updatedAt;
 		if(count($xml->partnerId))
 			$this->partnerId = (int)$xml->partnerId;
-		if(!empty($xml->isDefault))
-			$this->isDefault = true;
+		if(count($xml->isDefault))
+		{
+			if(!empty($xml->isDefault))
+				$this->isDefault = true;
+			else
+				$this->isDefault = false;
+		}
 		if(count($xml->status))
 			$this->status = (int)$xml->status;
-		$this->optionalFlavorParamsIds = (string)$xml->optionalFlavorParamsIds;
-		$this->requiredFlavorParamsIds = (string)$xml->requiredFlavorParamsIds;
-		if(empty($xml->optionalThumbDimensions))
-			$this->optionalThumbDimensions = array();
-		else
-			$this->optionalThumbDimensions = Kaltura_Client_ParseUtils::unmarshalArray($xml->optionalThumbDimensions, "KalturaDistributionThumbDimensions");
-		if(empty($xml->requiredThumbDimensions))
-			$this->requiredThumbDimensions = array();
-		else
-			$this->requiredThumbDimensions = Kaltura_Client_ParseUtils::unmarshalArray($xml->requiredThumbDimensions, "KalturaDistributionThumbDimensions");
-		$this->editableFields = (string)$xml->editableFields;
-		$this->mandatoryFields = (string)$xml->mandatoryFields;
+		if(count($xml->optionalFlavorParamsIds))
+			$this->optionalFlavorParamsIds = (string)$xml->optionalFlavorParamsIds;
+		if(count($xml->requiredFlavorParamsIds))
+			$this->requiredFlavorParamsIds = (string)$xml->requiredFlavorParamsIds;
+		if(count($xml->optionalThumbDimensions))
+		{
+			if(empty($xml->optionalThumbDimensions))
+				$this->optionalThumbDimensions = array();
+			else
+				$this->optionalThumbDimensions = Kaltura_Client_ParseUtils::unmarshalArray($xml->optionalThumbDimensions, "KalturaDistributionThumbDimensions");
+		}
+		if(count($xml->requiredThumbDimensions))
+		{
+			if(empty($xml->requiredThumbDimensions))
+				$this->requiredThumbDimensions = array();
+			else
+				$this->requiredThumbDimensions = Kaltura_Client_ParseUtils::unmarshalArray($xml->requiredThumbDimensions, "KalturaDistributionThumbDimensions");
+		}
+		if(count($xml->editableFields))
+			$this->editableFields = (string)$xml->editableFields;
+		if(count($xml->mandatoryFields))
+			$this->mandatoryFields = (string)$xml->mandatoryFields;
 	}
 	/**
 	 * Auto generated

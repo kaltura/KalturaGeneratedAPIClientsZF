@@ -45,10 +45,13 @@ class Kaltura_Client_Caption_Type_CaptionParamsListResponse extends Kaltura_Clie
 		if(is_null($xml))
 			return;
 		
-		if(empty($xml->objects))
-			$this->objects = array();
-		else
-			$this->objects = Kaltura_Client_ParseUtils::unmarshalArray($xml->objects, "KalturaCaptionParams");
+		if(count($xml->objects))
+		{
+			if(empty($xml->objects))
+				$this->objects = array();
+			else
+				$this->objects = Kaltura_Client_ParseUtils::unmarshalArray($xml->objects, "KalturaCaptionParams");
+		}
 	}
 	/**
 	 * 

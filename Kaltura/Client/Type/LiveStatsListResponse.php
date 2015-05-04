@@ -45,7 +45,7 @@ class Kaltura_Client_Type_LiveStatsListResponse extends Kaltura_Client_Type_List
 		if(is_null($xml))
 			return;
 		
-		if(!empty($xml->objects))
+		if(count($xml->objects) && !empty($xml->objects))
 			$this->objects = Kaltura_Client_ParseUtils::unmarshalObject($xml->objects, "KalturaLiveStats");
 	}
 	/**

@@ -45,7 +45,8 @@ class Kaltura_Client_ScheduledTask_Type_StorageExportObjectTask extends Kaltura_
 		if(is_null($xml))
 			return;
 		
-		$this->storageId = (string)$xml->storageId;
+		if(count($xml->storageId))
+			$this->storageId = (string)$xml->storageId;
 	}
 	/**
 	 * Storage profile id

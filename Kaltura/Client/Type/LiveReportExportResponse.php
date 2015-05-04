@@ -47,7 +47,8 @@ class Kaltura_Client_Type_LiveReportExportResponse extends Kaltura_Client_Object
 		
 		if(count($xml->referenceJobId))
 			$this->referenceJobId = (string)$xml->referenceJobId;
-		$this->reportEmail = (string)$xml->reportEmail;
+		if(count($xml->reportEmail))
+			$this->reportEmail = (string)$xml->reportEmail;
 	}
 	/**
 	 * 

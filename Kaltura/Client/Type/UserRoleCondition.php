@@ -45,7 +45,8 @@ class Kaltura_Client_Type_UserRoleCondition extends Kaltura_Client_Type_Conditio
 		if(is_null($xml))
 			return;
 		
-		$this->roleIds = (string)$xml->roleIds;
+		if(count($xml->roleIds))
+			$this->roleIds = (string)$xml->roleIds;
 	}
 	/**
 	 * Comma separated list of role ids

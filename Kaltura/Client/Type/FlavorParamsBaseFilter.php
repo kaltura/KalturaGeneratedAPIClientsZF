@@ -45,7 +45,8 @@ abstract class Kaltura_Client_Type_FlavorParamsBaseFilter extends Kaltura_Client
 		if(is_null($xml))
 			return;
 		
-		$this->formatEqual = (string)$xml->formatEqual;
+		if(count($xml->formatEqual))
+			$this->formatEqual = (string)$xml->formatEqual;
 	}
 	/**
 	 * 

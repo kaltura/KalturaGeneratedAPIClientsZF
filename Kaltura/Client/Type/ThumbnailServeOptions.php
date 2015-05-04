@@ -45,8 +45,13 @@ class Kaltura_Client_Type_ThumbnailServeOptions extends Kaltura_Client_ObjectBas
 		if(is_null($xml))
 			return;
 		
-		if(!empty($xml->download))
-			$this->download = true;
+		if(count($xml->download))
+		{
+			if(!empty($xml->download))
+				$this->download = true;
+			else
+				$this->download = false;
+		}
 	}
 	/**
 	 * 

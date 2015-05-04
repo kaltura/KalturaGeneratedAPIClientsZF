@@ -45,8 +45,10 @@ class Kaltura_Client_Type_UrlTokenizerCloudFront extends Kaltura_Client_Type_Url
 		if(is_null($xml))
 			return;
 		
-		$this->keyPairId = (string)$xml->keyPairId;
-		$this->rootDir = (string)$xml->rootDir;
+		if(count($xml->keyPairId))
+			$this->keyPairId = (string)$xml->keyPairId;
+		if(count($xml->rootDir))
+			$this->rootDir = (string)$xml->rootDir;
 	}
 	/**
 	 * 

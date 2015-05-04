@@ -45,7 +45,8 @@ class Kaltura_Client_Type_ContextTypeHolder extends Kaltura_Client_ObjectBase
 		if(is_null($xml))
 			return;
 		
-		$this->type = (string)$xml->type;
+		if(count($xml->type))
+			$this->type = (string)$xml->type;
 	}
 	/**
 	 * The type of the condition context

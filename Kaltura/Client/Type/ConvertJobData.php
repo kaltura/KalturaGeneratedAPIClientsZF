@@ -45,18 +45,29 @@ class Kaltura_Client_Type_ConvertJobData extends Kaltura_Client_Type_Convartable
 		if(is_null($xml))
 			return;
 		
-		$this->destFileSyncLocalPath = (string)$xml->destFileSyncLocalPath;
-		$this->destFileSyncRemoteUrl = (string)$xml->destFileSyncRemoteUrl;
-		$this->logFileSyncLocalPath = (string)$xml->logFileSyncLocalPath;
-		$this->logFileSyncRemoteUrl = (string)$xml->logFileSyncRemoteUrl;
-		$this->flavorAssetId = (string)$xml->flavorAssetId;
-		$this->remoteMediaId = (string)$xml->remoteMediaId;
-		$this->customData = (string)$xml->customData;
-		if(empty($xml->extraDestFileSyncs))
-			$this->extraDestFileSyncs = array();
-		else
-			$this->extraDestFileSyncs = Kaltura_Client_ParseUtils::unmarshalArray($xml->extraDestFileSyncs, "KalturaDestFileSyncDescriptor");
-		$this->engineMessage = (string)$xml->engineMessage;
+		if(count($xml->destFileSyncLocalPath))
+			$this->destFileSyncLocalPath = (string)$xml->destFileSyncLocalPath;
+		if(count($xml->destFileSyncRemoteUrl))
+			$this->destFileSyncRemoteUrl = (string)$xml->destFileSyncRemoteUrl;
+		if(count($xml->logFileSyncLocalPath))
+			$this->logFileSyncLocalPath = (string)$xml->logFileSyncLocalPath;
+		if(count($xml->logFileSyncRemoteUrl))
+			$this->logFileSyncRemoteUrl = (string)$xml->logFileSyncRemoteUrl;
+		if(count($xml->flavorAssetId))
+			$this->flavorAssetId = (string)$xml->flavorAssetId;
+		if(count($xml->remoteMediaId))
+			$this->remoteMediaId = (string)$xml->remoteMediaId;
+		if(count($xml->customData))
+			$this->customData = (string)$xml->customData;
+		if(count($xml->extraDestFileSyncs))
+		{
+			if(empty($xml->extraDestFileSyncs))
+				$this->extraDestFileSyncs = array();
+			else
+				$this->extraDestFileSyncs = Kaltura_Client_ParseUtils::unmarshalArray($xml->extraDestFileSyncs, "KalturaDestFileSyncDescriptor");
+		}
+		if(count($xml->engineMessage))
+			$this->engineMessage = (string)$xml->engineMessage;
 	}
 	/**
 	 * 

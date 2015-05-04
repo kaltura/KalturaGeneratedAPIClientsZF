@@ -45,11 +45,16 @@ abstract class Kaltura_Client_AdCuePoint_Type_AdCuePointBaseFilter extends Kaltu
 		if(is_null($xml))
 			return;
 		
-		$this->protocolTypeEqual = (string)$xml->protocolTypeEqual;
-		$this->protocolTypeIn = (string)$xml->protocolTypeIn;
-		$this->titleLike = (string)$xml->titleLike;
-		$this->titleMultiLikeOr = (string)$xml->titleMultiLikeOr;
-		$this->titleMultiLikeAnd = (string)$xml->titleMultiLikeAnd;
+		if(count($xml->protocolTypeEqual))
+			$this->protocolTypeEqual = (string)$xml->protocolTypeEqual;
+		if(count($xml->protocolTypeIn))
+			$this->protocolTypeIn = (string)$xml->protocolTypeIn;
+		if(count($xml->titleLike))
+			$this->titleLike = (string)$xml->titleLike;
+		if(count($xml->titleMultiLikeOr))
+			$this->titleMultiLikeOr = (string)$xml->titleMultiLikeOr;
+		if(count($xml->titleMultiLikeAnd))
+			$this->titleMultiLikeAnd = (string)$xml->titleMultiLikeAnd;
 		if(count($xml->endTimeGreaterThanOrEqual))
 			$this->endTimeGreaterThanOrEqual = (int)$xml->endTimeGreaterThanOrEqual;
 		if(count($xml->endTimeLessThanOrEqual))

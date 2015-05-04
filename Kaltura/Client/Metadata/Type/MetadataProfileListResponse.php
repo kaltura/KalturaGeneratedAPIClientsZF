@@ -45,10 +45,13 @@ class Kaltura_Client_Metadata_Type_MetadataProfileListResponse extends Kaltura_C
 		if(is_null($xml))
 			return;
 		
-		if(empty($xml->objects))
-			$this->objects = array();
-		else
-			$this->objects = Kaltura_Client_ParseUtils::unmarshalArray($xml->objects, "KalturaMetadataProfile");
+		if(count($xml->objects))
+		{
+			if(empty($xml->objects))
+				$this->objects = array();
+			else
+				$this->objects = Kaltura_Client_ParseUtils::unmarshalArray($xml->objects, "KalturaMetadataProfile");
+		}
 	}
 	/**
 	 * 

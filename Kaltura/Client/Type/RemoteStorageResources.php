@@ -45,10 +45,13 @@ class Kaltura_Client_Type_RemoteStorageResources extends Kaltura_Client_Type_Con
 		if(is_null($xml))
 			return;
 		
-		if(empty($xml->resources))
-			$this->resources = array();
-		else
-			$this->resources = Kaltura_Client_ParseUtils::unmarshalArray($xml->resources, "KalturaRemoteStorageResource");
+		if(count($xml->resources))
+		{
+			if(empty($xml->resources))
+				$this->resources = array();
+			else
+				$this->resources = Kaltura_Client_ParseUtils::unmarshalArray($xml->resources, "KalturaRemoteStorageResource");
+		}
 	}
 	/**
 	 * Array of remote stoage resources 

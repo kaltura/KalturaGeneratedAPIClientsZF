@@ -45,10 +45,13 @@ class Kaltura_Client_ShortLink_Type_ShortLinkListResponse extends Kaltura_Client
 		if(is_null($xml))
 			return;
 		
-		if(empty($xml->objects))
-			$this->objects = array();
-		else
-			$this->objects = Kaltura_Client_ParseUtils::unmarshalArray($xml->objects, "KalturaShortLink");
+		if(count($xml->objects))
+		{
+			if(empty($xml->objects))
+				$this->objects = array();
+			else
+				$this->objects = Kaltura_Client_ParseUtils::unmarshalArray($xml->objects, "KalturaShortLink");
+		}
 	}
 	/**
 	 * 

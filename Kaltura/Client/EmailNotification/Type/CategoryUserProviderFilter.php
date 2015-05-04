@@ -45,11 +45,14 @@ class Kaltura_Client_EmailNotification_Type_CategoryUserProviderFilter extends K
 		if(is_null($xml))
 			return;
 		
-		$this->userIdEqual = (string)$xml->userIdEqual;
-		$this->userIdIn = (string)$xml->userIdIn;
+		if(count($xml->userIdEqual))
+			$this->userIdEqual = (string)$xml->userIdEqual;
+		if(count($xml->userIdIn))
+			$this->userIdIn = (string)$xml->userIdIn;
 		if(count($xml->statusEqual))
 			$this->statusEqual = (int)$xml->statusEqual;
-		$this->statusIn = (string)$xml->statusIn;
+		if(count($xml->statusIn))
+			$this->statusIn = (string)$xml->statusIn;
 		if(count($xml->createdAtGreaterThanOrEqual))
 			$this->createdAtGreaterThanOrEqual = (int)$xml->createdAtGreaterThanOrEqual;
 		if(count($xml->createdAtLessThanOrEqual))
@@ -60,9 +63,12 @@ class Kaltura_Client_EmailNotification_Type_CategoryUserProviderFilter extends K
 			$this->updatedAtLessThanOrEqual = (int)$xml->updatedAtLessThanOrEqual;
 		if(count($xml->updateMethodEqual))
 			$this->updateMethodEqual = (int)$xml->updateMethodEqual;
-		$this->updateMethodIn = (string)$xml->updateMethodIn;
-		$this->permissionNamesMatchAnd = (string)$xml->permissionNamesMatchAnd;
-		$this->permissionNamesMatchOr = (string)$xml->permissionNamesMatchOr;
+		if(count($xml->updateMethodIn))
+			$this->updateMethodIn = (string)$xml->updateMethodIn;
+		if(count($xml->permissionNamesMatchAnd))
+			$this->permissionNamesMatchAnd = (string)$xml->permissionNamesMatchAnd;
+		if(count($xml->permissionNamesMatchOr))
+			$this->permissionNamesMatchOr = (string)$xml->permissionNamesMatchOr;
 	}
 	/**
 	 * 

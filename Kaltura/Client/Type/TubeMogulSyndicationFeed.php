@@ -45,7 +45,8 @@ class Kaltura_Client_Type_TubeMogulSyndicationFeed extends Kaltura_Client_Type_B
 		if(is_null($xml))
 			return;
 		
-		$this->category = (string)$xml->category;
+		if(count($xml->category))
+			$this->category = (string)$xml->category;
 	}
 	/**
 	 * 

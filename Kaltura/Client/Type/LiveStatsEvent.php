@@ -47,21 +47,31 @@ class Kaltura_Client_Type_LiveStatsEvent extends Kaltura_Client_ObjectBase
 		
 		if(count($xml->partnerId))
 			$this->partnerId = (int)$xml->partnerId;
-		$this->entryId = (string)$xml->entryId;
+		if(count($xml->entryId))
+			$this->entryId = (string)$xml->entryId;
 		if(count($xml->eventType))
 			$this->eventType = (int)$xml->eventType;
-		$this->sessionId = (string)$xml->sessionId;
+		if(count($xml->sessionId))
+			$this->sessionId = (string)$xml->sessionId;
 		if(count($xml->eventIndex))
 			$this->eventIndex = (int)$xml->eventIndex;
 		if(count($xml->bufferTime))
 			$this->bufferTime = (int)$xml->bufferTime;
 		if(count($xml->bitrate))
 			$this->bitrate = (int)$xml->bitrate;
-		$this->referrer = (string)$xml->referrer;
-		if(!empty($xml->isLive))
-			$this->isLive = true;
-		$this->startTime = (string)$xml->startTime;
-		$this->deliveryType = (string)$xml->deliveryType;
+		if(count($xml->referrer))
+			$this->referrer = (string)$xml->referrer;
+		if(count($xml->isLive))
+		{
+			if(!empty($xml->isLive))
+				$this->isLive = true;
+			else
+				$this->isLive = false;
+		}
+		if(count($xml->startTime))
+			$this->startTime = (string)$xml->startTime;
+		if(count($xml->deliveryType))
+			$this->deliveryType = (string)$xml->deliveryType;
 	}
 	/**
 	 * 

@@ -47,7 +47,8 @@ class Kaltura_Client_ScheduledTask_Type_DeleteEntryFlavorsObjectTask extends Kal
 		
 		if(count($xml->deleteType))
 			$this->deleteType = (int)$xml->deleteType;
-		$this->flavorParamsIds = (string)$xml->flavorParamsIds;
+		if(count($xml->flavorParamsIds))
+			$this->flavorParamsIds = (string)$xml->flavorParamsIds;
 	}
 	/**
 	 * The logic to use to choose the flavors for deletion

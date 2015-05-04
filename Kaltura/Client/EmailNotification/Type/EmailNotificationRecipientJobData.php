@@ -45,7 +45,8 @@ abstract class Kaltura_Client_EmailNotification_Type_EmailNotificationRecipientJ
 		if(is_null($xml))
 			return;
 		
-		$this->providerType = (string)$xml->providerType;
+		if(count($xml->providerType))
+			$this->providerType = (string)$xml->providerType;
 	}
 	/**
 	 * Provider type of the job data.

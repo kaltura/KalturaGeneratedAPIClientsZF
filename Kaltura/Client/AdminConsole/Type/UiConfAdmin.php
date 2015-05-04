@@ -45,8 +45,13 @@ class Kaltura_Client_AdminConsole_Type_UiConfAdmin extends Kaltura_Client_Type_U
 		if(is_null($xml))
 			return;
 		
-		if(!empty($xml->isPublic))
-			$this->isPublic = true;
+		if(count($xml->isPublic))
+		{
+			if(!empty($xml->isPublic))
+				$this->isPublic = true;
+			else
+				$this->isPublic = false;
+		}
 	}
 	/**
 	 * 

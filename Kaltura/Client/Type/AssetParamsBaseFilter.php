@@ -45,11 +45,14 @@ abstract class Kaltura_Client_Type_AssetParamsBaseFilter extends Kaltura_Client_
 		if(is_null($xml))
 			return;
 		
-		$this->systemNameEqual = (string)$xml->systemNameEqual;
-		$this->systemNameIn = (string)$xml->systemNameIn;
+		if(count($xml->systemNameEqual))
+			$this->systemNameEqual = (string)$xml->systemNameEqual;
+		if(count($xml->systemNameIn))
+			$this->systemNameIn = (string)$xml->systemNameIn;
 		if(count($xml->isSystemDefaultEqual))
 			$this->isSystemDefaultEqual = (int)$xml->isSystemDefaultEqual;
-		$this->tagsEqual = (string)$xml->tagsEqual;
+		if(count($xml->tagsEqual))
+			$this->tagsEqual = (string)$xml->tagsEqual;
 	}
 	/**
 	 * 

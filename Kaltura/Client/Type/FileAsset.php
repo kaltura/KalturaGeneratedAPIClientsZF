@@ -49,18 +49,24 @@ class Kaltura_Client_Type_FileAsset extends Kaltura_Client_ObjectBase
 			$this->id = (int)$xml->id;
 		if(count($xml->partnerId))
 			$this->partnerId = (int)$xml->partnerId;
-		$this->fileAssetObjectType = (string)$xml->fileAssetObjectType;
-		$this->objectId = (string)$xml->objectId;
-		$this->name = (string)$xml->name;
-		$this->systemName = (string)$xml->systemName;
-		$this->fileExt = (string)$xml->fileExt;
+		if(count($xml->fileAssetObjectType))
+			$this->fileAssetObjectType = (string)$xml->fileAssetObjectType;
+		if(count($xml->objectId))
+			$this->objectId = (string)$xml->objectId;
+		if(count($xml->name))
+			$this->name = (string)$xml->name;
+		if(count($xml->systemName))
+			$this->systemName = (string)$xml->systemName;
+		if(count($xml->fileExt))
+			$this->fileExt = (string)$xml->fileExt;
 		if(count($xml->version))
 			$this->version = (int)$xml->version;
 		if(count($xml->createdAt))
 			$this->createdAt = (int)$xml->createdAt;
 		if(count($xml->updatedAt))
 			$this->updatedAt = (int)$xml->updatedAt;
-		$this->status = (string)$xml->status;
+		if(count($xml->status))
+			$this->status = (string)$xml->status;
 	}
 	/**
 	 * 

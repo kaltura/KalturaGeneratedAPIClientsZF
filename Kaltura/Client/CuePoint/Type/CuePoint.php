@@ -45,11 +45,14 @@ abstract class Kaltura_Client_CuePoint_Type_CuePoint extends Kaltura_Client_Obje
 		if(is_null($xml))
 			return;
 		
-		$this->id = (string)$xml->id;
-		$this->cuePointType = (string)$xml->cuePointType;
+		if(count($xml->id))
+			$this->id = (string)$xml->id;
+		if(count($xml->cuePointType))
+			$this->cuePointType = (string)$xml->cuePointType;
 		if(count($xml->status))
 			$this->status = (int)$xml->status;
-		$this->entryId = (string)$xml->entryId;
+		if(count($xml->entryId))
+			$this->entryId = (string)$xml->entryId;
 		if(count($xml->partnerId))
 			$this->partnerId = (int)$xml->partnerId;
 		if(count($xml->createdAt))
@@ -58,18 +61,22 @@ abstract class Kaltura_Client_CuePoint_Type_CuePoint extends Kaltura_Client_Obje
 			$this->updatedAt = (int)$xml->updatedAt;
 		if(count($xml->triggeredAt))
 			$this->triggeredAt = (int)$xml->triggeredAt;
-		$this->tags = (string)$xml->tags;
+		if(count($xml->tags))
+			$this->tags = (string)$xml->tags;
 		if(count($xml->startTime))
 			$this->startTime = (int)$xml->startTime;
-		$this->userId = (string)$xml->userId;
-		$this->partnerData = (string)$xml->partnerData;
+		if(count($xml->userId))
+			$this->userId = (string)$xml->userId;
+		if(count($xml->partnerData))
+			$this->partnerData = (string)$xml->partnerData;
 		if(count($xml->partnerSortValue))
 			$this->partnerSortValue = (int)$xml->partnerSortValue;
 		if(count($xml->forceStop))
 			$this->forceStop = (int)$xml->forceStop;
 		if(count($xml->thumbOffset))
 			$this->thumbOffset = (int)$xml->thumbOffset;
-		$this->systemName = (string)$xml->systemName;
+		if(count($xml->systemName))
+			$this->systemName = (string)$xml->systemName;
 	}
 	/**
 	 * 

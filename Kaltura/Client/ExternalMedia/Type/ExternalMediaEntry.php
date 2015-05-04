@@ -45,8 +45,10 @@ class Kaltura_Client_ExternalMedia_Type_ExternalMediaEntry extends Kaltura_Clien
 		if(is_null($xml))
 			return;
 		
-		$this->externalSourceType = (string)$xml->externalSourceType;
-		$this->assetParamsIds = (string)$xml->assetParamsIds;
+		if(count($xml->externalSourceType))
+			$this->externalSourceType = (string)$xml->externalSourceType;
+		if(count($xml->assetParamsIds))
+			$this->assetParamsIds = (string)$xml->assetParamsIds;
 	}
 	/**
 	 * The source type of the external media

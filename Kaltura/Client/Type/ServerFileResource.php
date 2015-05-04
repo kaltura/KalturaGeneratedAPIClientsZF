@@ -45,7 +45,8 @@ class Kaltura_Client_Type_ServerFileResource extends Kaltura_Client_Type_DataCen
 		if(is_null($xml))
 			return;
 		
-		$this->localFilePath = (string)$xml->localFilePath;
+		if(count($xml->localFilePath))
+			$this->localFilePath = (string)$xml->localFilePath;
 	}
 	/**
 	 * Full path to the local file 

@@ -47,7 +47,8 @@ class Kaltura_Client_Metadata_Type_MetadataSearchItem extends Kaltura_Client_Typ
 		
 		if(count($xml->metadataProfileId))
 			$this->metadataProfileId = (int)$xml->metadataProfileId;
-		$this->orderBy = (string)$xml->orderBy;
+		if(count($xml->orderBy))
+			$this->orderBy = (string)$xml->orderBy;
 	}
 	/**
 	 * 

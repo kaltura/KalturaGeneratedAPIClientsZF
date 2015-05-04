@@ -47,10 +47,13 @@ class Kaltura_Client_Type_SearchOperator extends Kaltura_Client_Type_SearchItem
 		
 		if(count($xml->type))
 			$this->type = (int)$xml->type;
-		if(empty($xml->items))
-			$this->items = array();
-		else
-			$this->items = Kaltura_Client_ParseUtils::unmarshalArray($xml->items, "KalturaSearchItem");
+		if(count($xml->items))
+		{
+			if(empty($xml->items))
+				$this->items = array();
+			else
+				$this->items = Kaltura_Client_ParseUtils::unmarshalArray($xml->items, "KalturaSearchItem");
+		}
 	}
 	/**
 	 * 

@@ -45,7 +45,8 @@ class Kaltura_Client_Type_ExtractMediaJobData extends Kaltura_Client_Type_Convar
 		if(is_null($xml))
 			return;
 		
-		$this->flavorAssetId = (string)$xml->flavorAssetId;
+		if(count($xml->flavorAssetId))
+			$this->flavorAssetId = (string)$xml->flavorAssetId;
 	}
 	/**
 	 * 

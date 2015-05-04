@@ -47,12 +47,16 @@ class Kaltura_Client_Type_AssetParamsOutput extends Kaltura_Client_Type_AssetPar
 		
 		if(count($xml->assetParamsId))
 			$this->assetParamsId = (int)$xml->assetParamsId;
-		$this->assetParamsVersion = (string)$xml->assetParamsVersion;
-		$this->assetId = (string)$xml->assetId;
-		$this->assetVersion = (string)$xml->assetVersion;
+		if(count($xml->assetParamsVersion))
+			$this->assetParamsVersion = (string)$xml->assetParamsVersion;
+		if(count($xml->assetId))
+			$this->assetId = (string)$xml->assetId;
+		if(count($xml->assetVersion))
+			$this->assetVersion = (string)$xml->assetVersion;
 		if(count($xml->readyBehavior))
 			$this->readyBehavior = (int)$xml->readyBehavior;
-		$this->format = (string)$xml->format;
+		if(count($xml->format))
+			$this->format = (string)$xml->format;
 	}
 	/**
 	 * 

@@ -45,9 +45,15 @@ class Kaltura_Client_Type_DeliveryProfileRtmp extends Kaltura_Client_Type_Delive
 		if(is_null($xml))
 			return;
 		
-		if(!empty($xml->enforceRtmpe))
-			$this->enforceRtmpe = true;
-		$this->prefix = (string)$xml->prefix;
+		if(count($xml->enforceRtmpe))
+		{
+			if(!empty($xml->enforceRtmpe))
+				$this->enforceRtmpe = true;
+			else
+				$this->enforceRtmpe = false;
+		}
+		if(count($xml->prefix))
+			$this->prefix = (string)$xml->prefix;
 	}
 	/**
 	 * enforceRtmpe

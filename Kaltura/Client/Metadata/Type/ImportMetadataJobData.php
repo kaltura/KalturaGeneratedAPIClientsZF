@@ -45,8 +45,10 @@ class Kaltura_Client_Metadata_Type_ImportMetadataJobData extends Kaltura_Client_
 		if(is_null($xml))
 			return;
 		
-		$this->srcFileUrl = (string)$xml->srcFileUrl;
-		$this->destFileLocalPath = (string)$xml->destFileLocalPath;
+		if(count($xml->srcFileUrl))
+			$this->srcFileUrl = (string)$xml->srcFileUrl;
+		if(count($xml->destFileLocalPath))
+			$this->destFileLocalPath = (string)$xml->destFileLocalPath;
 		if(count($xml->metadataId))
 			$this->metadataId = (int)$xml->metadataId;
 	}

@@ -45,9 +45,9 @@ class Kaltura_Client_Type_GeoTimeLiveStats extends Kaltura_Client_Type_EntryLive
 		if(is_null($xml))
 			return;
 		
-		if(!empty($xml->city))
+		if(count($xml->city) && !empty($xml->city))
 			$this->city = Kaltura_Client_ParseUtils::unmarshalObject($xml->city, "KalturaCoordinate");
-		if(!empty($xml->country))
+		if(count($xml->country) && !empty($xml->country))
 			$this->country = Kaltura_Client_ParseUtils::unmarshalObject($xml->country, "KalturaCoordinate");
 	}
 	/**

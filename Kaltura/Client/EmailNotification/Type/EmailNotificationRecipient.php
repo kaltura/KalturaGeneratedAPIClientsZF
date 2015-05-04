@@ -45,9 +45,9 @@ class Kaltura_Client_EmailNotification_Type_EmailNotificationRecipient extends K
 		if(is_null($xml))
 			return;
 		
-		if(!empty($xml->email))
+		if(count($xml->email) && !empty($xml->email))
 			$this->email = Kaltura_Client_ParseUtils::unmarshalObject($xml->email, "KalturaStringValue");
-		if(!empty($xml->name))
+		if(count($xml->name) && !empty($xml->name))
 			$this->name = Kaltura_Client_ParseUtils::unmarshalObject($xml->name, "KalturaStringValue");
 	}
 	/**

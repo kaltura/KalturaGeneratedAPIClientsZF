@@ -45,8 +45,10 @@ class Kaltura_Client_Annotation_Type_Annotation extends Kaltura_Client_CuePoint_
 		if(is_null($xml))
 			return;
 		
-		$this->parentId = (string)$xml->parentId;
-		$this->text = (string)$xml->text;
+		if(count($xml->parentId))
+			$this->parentId = (string)$xml->parentId;
+		if(count($xml->text))
+			$this->text = (string)$xml->text;
 		if(count($xml->endTime))
 			$this->endTime = (int)$xml->endTime;
 		if(count($xml->duration))

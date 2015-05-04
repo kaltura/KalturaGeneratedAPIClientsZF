@@ -45,9 +45,15 @@ class Kaltura_Client_ScheduledTask_Type_ConvertEntryFlavorsObjectTask extends Ka
 		if(is_null($xml))
 			return;
 		
-		$this->flavorParamsIds = (string)$xml->flavorParamsIds;
-		if(!empty($xml->reconvert))
-			$this->reconvert = true;
+		if(count($xml->flavorParamsIds))
+			$this->flavorParamsIds = (string)$xml->flavorParamsIds;
+		if(count($xml->reconvert))
+		{
+			if(!empty($xml->reconvert))
+				$this->reconvert = true;
+			else
+				$this->reconvert = false;
+		}
 	}
 	/**
 	 * Comma separated list of flavor param ids to convert

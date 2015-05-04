@@ -45,10 +45,13 @@ class Kaltura_Client_Type_AuthenticatedCondition extends Kaltura_Client_Type_Con
 		if(is_null($xml))
 			return;
 		
-		if(empty($xml->privileges))
-			$this->privileges = array();
-		else
-			$this->privileges = Kaltura_Client_ParseUtils::unmarshalArray($xml->privileges, "KalturaStringValue");
+		if(count($xml->privileges))
+		{
+			if(empty($xml->privileges))
+				$this->privileges = array();
+			else
+				$this->privileges = Kaltura_Client_ParseUtils::unmarshalArray($xml->privileges, "KalturaStringValue");
+		}
 	}
 	/**
 	 * The privelege needed to remove the restriction

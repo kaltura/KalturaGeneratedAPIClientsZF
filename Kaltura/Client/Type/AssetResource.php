@@ -45,7 +45,8 @@ class Kaltura_Client_Type_AssetResource extends Kaltura_Client_Type_ContentResou
 		if(is_null($xml))
 			return;
 		
-		$this->assetId = (string)$xml->assetId;
+		if(count($xml->assetId))
+			$this->assetId = (string)$xml->assetId;
 	}
 	/**
 	 * ID of the source asset 

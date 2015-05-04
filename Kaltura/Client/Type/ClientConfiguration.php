@@ -45,8 +45,10 @@ class Kaltura_Client_Type_ClientConfiguration extends Kaltura_Client_ObjectBase
 		if(is_null($xml))
 			return;
 		
-		$this->clientTag = (string)$xml->clientTag;
-		$this->apiVersion = (string)$xml->apiVersion;
+		if(count($xml->clientTag))
+			$this->clientTag = (string)$xml->clientTag;
+		if(count($xml->apiVersion))
+			$this->apiVersion = (string)$xml->apiVersion;
 	}
 	/**
 	 * 

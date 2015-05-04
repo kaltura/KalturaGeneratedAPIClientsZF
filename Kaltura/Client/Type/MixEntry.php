@@ -45,11 +45,17 @@ class Kaltura_Client_Type_MixEntry extends Kaltura_Client_Type_PlayableEntry
 		if(is_null($xml))
 			return;
 		
-		if(!empty($xml->hasRealThumbnail))
-			$this->hasRealThumbnail = true;
+		if(count($xml->hasRealThumbnail))
+		{
+			if(!empty($xml->hasRealThumbnail))
+				$this->hasRealThumbnail = true;
+			else
+				$this->hasRealThumbnail = false;
+		}
 		if(count($xml->editorType))
 			$this->editorType = (int)$xml->editorType;
-		$this->dataContent = (string)$xml->dataContent;
+		if(count($xml->dataContent))
+			$this->dataContent = (string)$xml->dataContent;
 	}
 	/**
 	 * Indicates whether the user has submited a real thumbnail to the mix (Not the one that was generated automaticaly)

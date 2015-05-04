@@ -45,7 +45,8 @@ class Kaltura_Client_Type_LiveParams extends Kaltura_Client_Type_FlavorParams
 		if(is_null($xml))
 			return;
 		
-		$this->streamSuffix = (string)$xml->streamSuffix;
+		if(count($xml->streamSuffix))
+			$this->streamSuffix = (string)$xml->streamSuffix;
 	}
 	/**
 	 * Suffix to be added to the stream name after the entry id {entry_id}_{stream_suffix}, e.g. for entry id 0_kjdu5jr6 and suffix 1, the stream name will be 0_kjdu5jr6_1

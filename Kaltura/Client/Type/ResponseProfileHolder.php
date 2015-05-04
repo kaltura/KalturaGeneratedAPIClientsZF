@@ -47,7 +47,8 @@ class Kaltura_Client_Type_ResponseProfileHolder extends Kaltura_Client_Type_Base
 		
 		if(count($xml->id))
 			$this->id = (int)$xml->id;
-		$this->systemName = (string)$xml->systemName;
+		if(count($xml->systemName))
+			$this->systemName = (string)$xml->systemName;
 	}
 	/**
 	 * Auto generated numeric identifier

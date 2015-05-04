@@ -45,14 +45,20 @@ class Kaltura_Client_EventNotification_Type_EventNotificationArrayParameter exte
 		if(is_null($xml))
 			return;
 		
-		if(empty($xml->values))
-			$this->values = array();
-		else
-			$this->values = Kaltura_Client_ParseUtils::unmarshalArray($xml->values, "KalturaString");
-		if(empty($xml->allowedValues))
-			$this->allowedValues = array();
-		else
-			$this->allowedValues = Kaltura_Client_ParseUtils::unmarshalArray($xml->allowedValues, "KalturaStringValue");
+		if(count($xml->values))
+		{
+			if(empty($xml->values))
+				$this->values = array();
+			else
+				$this->values = Kaltura_Client_ParseUtils::unmarshalArray($xml->values, "KalturaString");
+		}
+		if(count($xml->allowedValues))
+		{
+			if(empty($xml->allowedValues))
+				$this->allowedValues = array();
+			else
+				$this->allowedValues = Kaltura_Client_ParseUtils::unmarshalArray($xml->allowedValues, "KalturaStringValue");
+		}
 	}
 	/**
 	 * 

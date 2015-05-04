@@ -45,10 +45,13 @@ class Kaltura_Client_CaptionSearch_Type_CaptionAssetItemListResponse extends Kal
 		if(is_null($xml))
 			return;
 		
-		if(empty($xml->objects))
-			$this->objects = array();
-		else
-			$this->objects = Kaltura_Client_ParseUtils::unmarshalArray($xml->objects, "KalturaCaptionAssetItem");
+		if(count($xml->objects))
+		{
+			if(empty($xml->objects))
+				$this->objects = array();
+			else
+				$this->objects = Kaltura_Client_ParseUtils::unmarshalArray($xml->objects, "KalturaCaptionAssetItem");
+		}
 	}
 	/**
 	 * 

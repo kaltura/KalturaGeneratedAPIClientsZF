@@ -45,12 +45,15 @@ class Kaltura_Client_Type_OperationResource extends Kaltura_Client_Type_ContentR
 		if(is_null($xml))
 			return;
 		
-		if(!empty($xml->resource))
+		if(count($xml->resource) && !empty($xml->resource))
 			$this->resource = Kaltura_Client_ParseUtils::unmarshalObject($xml->resource, "KalturaContentResource");
-		if(empty($xml->operationAttributes))
-			$this->operationAttributes = array();
-		else
-			$this->operationAttributes = Kaltura_Client_ParseUtils::unmarshalArray($xml->operationAttributes, "KalturaOperationAttributes");
+		if(count($xml->operationAttributes))
+		{
+			if(empty($xml->operationAttributes))
+				$this->operationAttributes = array();
+			else
+				$this->operationAttributes = Kaltura_Client_ParseUtils::unmarshalArray($xml->operationAttributes, "KalturaOperationAttributes");
+		}
 		if(count($xml->assetParamsId))
 			$this->assetParamsId = (int)$xml->assetParamsId;
 	}

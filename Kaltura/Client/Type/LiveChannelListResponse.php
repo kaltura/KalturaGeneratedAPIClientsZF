@@ -45,10 +45,13 @@ class Kaltura_Client_Type_LiveChannelListResponse extends Kaltura_Client_Type_Li
 		if(is_null($xml))
 			return;
 		
-		if(empty($xml->objects))
-			$this->objects = array();
-		else
-			$this->objects = Kaltura_Client_ParseUtils::unmarshalArray($xml->objects, "KalturaLiveChannel");
+		if(count($xml->objects))
+		{
+			if(empty($xml->objects))
+				$this->objects = array();
+			else
+				$this->objects = Kaltura_Client_ParseUtils::unmarshalArray($xml->objects, "KalturaLiveChannel");
+		}
 	}
 	/**
 	 * 

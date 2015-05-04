@@ -45,8 +45,13 @@ class Kaltura_Client_Type_DeliveryProfileAkamaiHttp extends Kaltura_Client_Type_
 		if(is_null($xml))
 			return;
 		
-		if(!empty($xml->useIntelliseek))
-			$this->useIntelliseek = true;
+		if(count($xml->useIntelliseek))
+		{
+			if(!empty($xml->useIntelliseek))
+				$this->useIntelliseek = true;
+			else
+				$this->useIntelliseek = false;
+		}
 	}
 	/**
 	 * Should we use intelliseek

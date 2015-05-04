@@ -47,8 +47,9 @@ class Kaltura_Client_Type_RequestConfiguration extends Kaltura_Client_ObjectBase
 		
 		if(count($xml->partnerId))
 			$this->partnerId = (int)$xml->partnerId;
-		$this->ks = (string)$xml->ks;
-		if(!empty($xml->responseProfile))
+		if(count($xml->ks))
+			$this->ks = (string)$xml->ks;
+		if(count($xml->responseProfile) && !empty($xml->responseProfile))
 			$this->responseProfile = Kaltura_Client_ParseUtils::unmarshalObject($xml->responseProfile, "KalturaBaseResponseProfile");
 	}
 	/**

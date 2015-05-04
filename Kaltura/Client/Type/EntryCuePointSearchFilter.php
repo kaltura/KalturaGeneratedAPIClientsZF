@@ -45,8 +45,10 @@ class Kaltura_Client_Type_EntryCuePointSearchFilter extends Kaltura_Client_Type_
 		if(is_null($xml))
 			return;
 		
-		$this->cuePointsFreeText = (string)$xml->cuePointsFreeText;
-		$this->cuePointTypeIn = (string)$xml->cuePointTypeIn;
+		if(count($xml->cuePointsFreeText))
+			$this->cuePointsFreeText = (string)$xml->cuePointsFreeText;
+		if(count($xml->cuePointTypeIn))
+			$this->cuePointTypeIn = (string)$xml->cuePointTypeIn;
 		if(count($xml->cuePointSubTypeEqual))
 			$this->cuePointSubTypeEqual = (int)$xml->cuePointSubTypeEqual;
 	}

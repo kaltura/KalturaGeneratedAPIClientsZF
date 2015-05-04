@@ -45,7 +45,8 @@ class Kaltura_Client_Type_DeliveryProfileGenericSilverLight extends Kaltura_Clie
 		if(is_null($xml))
 			return;
 		
-		$this->pattern = (string)$xml->pattern;
+		if(count($xml->pattern))
+			$this->pattern = (string)$xml->pattern;
 	}
 	/**
 	 * 

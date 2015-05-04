@@ -45,8 +45,9 @@ abstract class Kaltura_Client_Type_Filter extends Kaltura_Client_ObjectBase
 		if(is_null($xml))
 			return;
 		
-		$this->orderBy = (string)$xml->orderBy;
-		if(!empty($xml->advancedSearch))
+		if(count($xml->orderBy))
+			$this->orderBy = (string)$xml->orderBy;
+		if(count($xml->advancedSearch) && !empty($xml->advancedSearch))
 			$this->advancedSearch = Kaltura_Client_ParseUtils::unmarshalObject($xml->advancedSearch, "KalturaSearchItem");
 	}
 	/**

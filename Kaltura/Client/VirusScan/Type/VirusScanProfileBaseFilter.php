@@ -47,7 +47,8 @@ abstract class Kaltura_Client_VirusScan_Type_VirusScanProfileBaseFilter extends 
 		
 		if(count($xml->idEqual))
 			$this->idEqual = (int)$xml->idEqual;
-		$this->idIn = (string)$xml->idIn;
+		if(count($xml->idIn))
+			$this->idIn = (string)$xml->idIn;
 		if(count($xml->createdAtGreaterThanOrEqual))
 			$this->createdAtGreaterThanOrEqual = (int)$xml->createdAtGreaterThanOrEqual;
 		if(count($xml->createdAtLessThanOrEqual))
@@ -58,14 +59,20 @@ abstract class Kaltura_Client_VirusScan_Type_VirusScanProfileBaseFilter extends 
 			$this->updatedAtLessThanOrEqual = (int)$xml->updatedAtLessThanOrEqual;
 		if(count($xml->partnerIdEqual))
 			$this->partnerIdEqual = (int)$xml->partnerIdEqual;
-		$this->partnerIdIn = (string)$xml->partnerIdIn;
-		$this->nameEqual = (string)$xml->nameEqual;
-		$this->nameLike = (string)$xml->nameLike;
+		if(count($xml->partnerIdIn))
+			$this->partnerIdIn = (string)$xml->partnerIdIn;
+		if(count($xml->nameEqual))
+			$this->nameEqual = (string)$xml->nameEqual;
+		if(count($xml->nameLike))
+			$this->nameLike = (string)$xml->nameLike;
 		if(count($xml->statusEqual))
 			$this->statusEqual = (int)$xml->statusEqual;
-		$this->statusIn = (string)$xml->statusIn;
-		$this->engineTypeEqual = (string)$xml->engineTypeEqual;
-		$this->engineTypeIn = (string)$xml->engineTypeIn;
+		if(count($xml->statusIn))
+			$this->statusIn = (string)$xml->statusIn;
+		if(count($xml->engineTypeEqual))
+			$this->engineTypeEqual = (string)$xml->engineTypeEqual;
+		if(count($xml->engineTypeIn))
+			$this->engineTypeIn = (string)$xml->engineTypeIn;
 	}
 	/**
 	 * 

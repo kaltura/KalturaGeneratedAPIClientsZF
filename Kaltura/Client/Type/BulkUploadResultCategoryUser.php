@@ -47,8 +47,10 @@ class Kaltura_Client_Type_BulkUploadResultCategoryUser extends Kaltura_Client_Ty
 		
 		if(count($xml->categoryId))
 			$this->categoryId = (int)$xml->categoryId;
-		$this->categoryReferenceId = (string)$xml->categoryReferenceId;
-		$this->userId = (string)$xml->userId;
+		if(count($xml->categoryReferenceId))
+			$this->categoryReferenceId = (string)$xml->categoryReferenceId;
+		if(count($xml->userId))
+			$this->userId = (string)$xml->userId;
 		if(count($xml->permissionLevel))
 			$this->permissionLevel = (int)$xml->permissionLevel;
 		if(count($xml->updateMethod))

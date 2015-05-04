@@ -45,7 +45,8 @@ class Kaltura_Client_Type_ThumbAssetFilter extends Kaltura_Client_Type_ThumbAsse
 		if(is_null($xml))
 			return;
 		
-		$this->typeIn = (string)$xml->typeIn;
+		if(count($xml->typeIn))
+			$this->typeIn = (string)$xml->typeIn;
 	}
 	/**
 	 * 

@@ -45,7 +45,8 @@ class Kaltura_Client_EventCuePoint_Type_EventCuePoint extends Kaltura_Client_Cue
 		if(is_null($xml))
 			return;
 		
-		$this->eventType = (string)$xml->eventType;
+		if(count($xml->eventType))
+			$this->eventType = (string)$xml->eventType;
 	}
 	/**
 	 * 

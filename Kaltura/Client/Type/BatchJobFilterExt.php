@@ -45,7 +45,8 @@ class Kaltura_Client_Type_BatchJobFilterExt extends Kaltura_Client_Type_BatchJob
 		if(is_null($xml))
 			return;
 		
-		$this->jobTypeAndSubTypeIn = (string)$xml->jobTypeAndSubTypeIn;
+		if(count($xml->jobTypeAndSubTypeIn))
+			$this->jobTypeAndSubTypeIn = (string)$xml->jobTypeAndSubTypeIn;
 	}
 	/**
 	 * 

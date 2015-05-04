@@ -45,9 +45,9 @@ class Kaltura_Client_Type_ConversionProfileAssetParamsFilter extends Kaltura_Cli
 		if(is_null($xml))
 			return;
 		
-		if(!empty($xml->conversionProfileIdFilter))
+		if(count($xml->conversionProfileIdFilter) && !empty($xml->conversionProfileIdFilter))
 			$this->conversionProfileIdFilter = Kaltura_Client_ParseUtils::unmarshalObject($xml->conversionProfileIdFilter, "KalturaConversionProfileFilter");
-		if(!empty($xml->assetParamsIdFilter))
+		if(count($xml->assetParamsIdFilter) && !empty($xml->assetParamsIdFilter))
 			$this->assetParamsIdFilter = Kaltura_Client_ParseUtils::unmarshalObject($xml->assetParamsIdFilter, "KalturaAssetParamsFilter");
 	}
 	/**

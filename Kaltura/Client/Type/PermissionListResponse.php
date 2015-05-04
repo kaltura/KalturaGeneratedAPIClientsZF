@@ -45,10 +45,13 @@ class Kaltura_Client_Type_PermissionListResponse extends Kaltura_Client_Type_Lis
 		if(is_null($xml))
 			return;
 		
-		if(empty($xml->objects))
-			$this->objects = array();
-		else
-			$this->objects = Kaltura_Client_ParseUtils::unmarshalArray($xml->objects, "KalturaPermission");
+		if(count($xml->objects))
+		{
+			if(empty($xml->objects))
+				$this->objects = array();
+			else
+				$this->objects = Kaltura_Client_ParseUtils::unmarshalArray($xml->objects, "KalturaPermission");
+		}
 	}
 	/**
 	 * 

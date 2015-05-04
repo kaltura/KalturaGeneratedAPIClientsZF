@@ -45,7 +45,7 @@ class Kaltura_Client_EventNotification_Type_EventFieldCondition extends Kaltura_
 		if(is_null($xml))
 			return;
 		
-		if(!empty($xml->field))
+		if(count($xml->field) && !empty($xml->field))
 			$this->field = Kaltura_Client_ParseUtils::unmarshalObject($xml->field, "KalturaBooleanField");
 	}
 	/**

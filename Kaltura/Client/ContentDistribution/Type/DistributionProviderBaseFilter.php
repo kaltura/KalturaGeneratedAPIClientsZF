@@ -45,8 +45,10 @@ abstract class Kaltura_Client_ContentDistribution_Type_DistributionProviderBaseF
 		if(is_null($xml))
 			return;
 		
-		$this->typeEqual = (string)$xml->typeEqual;
-		$this->typeIn = (string)$xml->typeIn;
+		if(count($xml->typeEqual))
+			$this->typeEqual = (string)$xml->typeEqual;
+		if(count($xml->typeIn))
+			$this->typeIn = (string)$xml->typeIn;
 	}
 	/**
 	 * 

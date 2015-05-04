@@ -55,9 +55,12 @@ abstract class Kaltura_Client_Metadata_Type_MetadataBaseFilter extends Kaltura_C
 			$this->metadataProfileVersionGreaterThanOrEqual = (int)$xml->metadataProfileVersionGreaterThanOrEqual;
 		if(count($xml->metadataProfileVersionLessThanOrEqual))
 			$this->metadataProfileVersionLessThanOrEqual = (int)$xml->metadataProfileVersionLessThanOrEqual;
-		$this->metadataObjectTypeEqual = (string)$xml->metadataObjectTypeEqual;
-		$this->objectIdEqual = (string)$xml->objectIdEqual;
-		$this->objectIdIn = (string)$xml->objectIdIn;
+		if(count($xml->metadataObjectTypeEqual))
+			$this->metadataObjectTypeEqual = (string)$xml->metadataObjectTypeEqual;
+		if(count($xml->objectIdEqual))
+			$this->objectIdEqual = (string)$xml->objectIdEqual;
+		if(count($xml->objectIdIn))
+			$this->objectIdIn = (string)$xml->objectIdIn;
 		if(count($xml->versionEqual))
 			$this->versionEqual = (int)$xml->versionEqual;
 		if(count($xml->versionGreaterThanOrEqual))
@@ -74,7 +77,8 @@ abstract class Kaltura_Client_Metadata_Type_MetadataBaseFilter extends Kaltura_C
 			$this->updatedAtLessThanOrEqual = (int)$xml->updatedAtLessThanOrEqual;
 		if(count($xml->statusEqual))
 			$this->statusEqual = (int)$xml->statusEqual;
-		$this->statusIn = (string)$xml->statusIn;
+		if(count($xml->statusIn))
+			$this->statusIn = (string)$xml->statusIn;
 	}
 	/**
 	 * 

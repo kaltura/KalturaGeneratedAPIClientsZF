@@ -45,7 +45,7 @@ class Kaltura_Client_Type_AssetParamsResourceContainer extends Kaltura_Client_Ty
 		if(is_null($xml))
 			return;
 		
-		if(!empty($xml->resource))
+		if(count($xml->resource) && !empty($xml->resource))
 			$this->resource = Kaltura_Client_ParseUtils::unmarshalObject($xml->resource, "KalturaContentResource");
 		if(count($xml->assetParamsId))
 			$this->assetParamsId = (int)$xml->assetParamsId;

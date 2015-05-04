@@ -49,10 +49,12 @@ class Kaltura_Client_Type_ControlPanelCommand extends Kaltura_Client_ObjectBase
 			$this->id = (int)$xml->id;
 		if(count($xml->createdAt))
 			$this->createdAt = (int)$xml->createdAt;
-		$this->createdBy = (string)$xml->createdBy;
+		if(count($xml->createdBy))
+			$this->createdBy = (string)$xml->createdBy;
 		if(count($xml->updatedAt))
 			$this->updatedAt = (int)$xml->updatedAt;
-		$this->updatedBy = (string)$xml->updatedBy;
+		if(count($xml->updatedBy))
+			$this->updatedBy = (string)$xml->updatedBy;
 		if(count($xml->createdById))
 			$this->createdById = (int)$xml->createdById;
 		if(count($xml->schedulerId))
@@ -71,9 +73,12 @@ class Kaltura_Client_Type_ControlPanelCommand extends Kaltura_Client_ObjectBase
 			$this->targetType = (int)$xml->targetType;
 		if(count($xml->status))
 			$this->status = (int)$xml->status;
-		$this->cause = (string)$xml->cause;
-		$this->description = (string)$xml->description;
-		$this->errorDescription = (string)$xml->errorDescription;
+		if(count($xml->cause))
+			$this->cause = (string)$xml->cause;
+		if(count($xml->description))
+			$this->description = (string)$xml->description;
+		if(count($xml->errorDescription))
+			$this->errorDescription = (string)$xml->errorDescription;
 	}
 	/**
 	 * The id of the Category

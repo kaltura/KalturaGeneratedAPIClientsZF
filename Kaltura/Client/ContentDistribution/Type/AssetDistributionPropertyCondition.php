@@ -45,8 +45,10 @@ class Kaltura_Client_ContentDistribution_Type_AssetDistributionPropertyCondition
 		if(is_null($xml))
 			return;
 		
-		$this->propertyName = (string)$xml->propertyName;
-		$this->propertyValue = (string)$xml->propertyValue;
+		if(count($xml->propertyName))
+			$this->propertyName = (string)$xml->propertyName;
+		if(count($xml->propertyValue))
+			$this->propertyValue = (string)$xml->propertyValue;
 	}
 	/**
 	 * The property name to look for, this will match to a getter on the asset object.

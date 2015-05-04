@@ -47,8 +47,10 @@ class Kaltura_Client_Type_StartWidgetSessionResponse extends Kaltura_Client_Obje
 		
 		if(count($xml->partnerId))
 			$this->partnerId = (int)$xml->partnerId;
-		$this->ks = (string)$xml->ks;
-		$this->userId = (string)$xml->userId;
+		if(count($xml->ks))
+			$this->ks = (string)$xml->ks;
+		if(count($xml->userId))
+			$this->userId = (string)$xml->userId;
 	}
 	/**
 	 * 

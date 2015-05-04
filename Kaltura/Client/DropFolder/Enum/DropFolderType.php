@@ -33,6 +33,7 @@
  */
 class Kaltura_Client_DropFolder_Enum_DropFolderType
 {
+	const FEED = "FeedDropFolder.FEED";
 	const LOCAL = "1";
 	const FTP = "2";
 	const SCP = "3";

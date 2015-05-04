@@ -45,10 +45,13 @@ class Kaltura_Client_Type_ConversionProfileListResponse extends Kaltura_Client_T
 		if(is_null($xml))
 			return;
 		
-		if(empty($xml->objects))
-			$this->objects = array();
-		else
-			$this->objects = Kaltura_Client_ParseUtils::unmarshalArray($xml->objects, "KalturaConversionProfile");
+		if(count($xml->objects))
+		{
+			if(empty($xml->objects))
+				$this->objects = array();
+			else
+				$this->objects = Kaltura_Client_ParseUtils::unmarshalArray($xml->objects, "KalturaConversionProfile");
+		}
 	}
 	/**
 	 * 

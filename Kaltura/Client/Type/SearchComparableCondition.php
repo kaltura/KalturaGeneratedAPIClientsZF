@@ -45,7 +45,8 @@ class Kaltura_Client_Type_SearchComparableCondition extends Kaltura_Client_Type_
 		if(is_null($xml))
 			return;
 		
-		$this->comparison = (string)$xml->comparison;
+		if(count($xml->comparison))
+			$this->comparison = (string)$xml->comparison;
 	}
 	/**
 	 * 

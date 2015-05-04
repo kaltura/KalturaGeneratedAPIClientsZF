@@ -45,10 +45,13 @@ class Kaltura_Client_Type_WidgetListResponse extends Kaltura_Client_Type_ListRes
 		if(is_null($xml))
 			return;
 		
-		if(empty($xml->objects))
-			$this->objects = array();
-		else
-			$this->objects = Kaltura_Client_ParseUtils::unmarshalArray($xml->objects, "KalturaWidget");
+		if(count($xml->objects))
+		{
+			if(empty($xml->objects))
+				$this->objects = array();
+			else
+				$this->objects = Kaltura_Client_ParseUtils::unmarshalArray($xml->objects, "KalturaWidget");
+		}
 	}
 	/**
 	 * 

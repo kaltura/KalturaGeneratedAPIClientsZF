@@ -47,10 +47,13 @@ class Kaltura_Client_ScheduledTask_Type_ModifyCategoriesObjectTask extends Kaltu
 		
 		if(count($xml->addRemoveType))
 			$this->addRemoveType = (int)$xml->addRemoveType;
-		if(empty($xml->categoryIds))
-			$this->categoryIds = array();
-		else
-			$this->categoryIds = Kaltura_Client_ParseUtils::unmarshalArray($xml->categoryIds, "KalturaIntegerValue");
+		if(count($xml->categoryIds))
+		{
+			if(empty($xml->categoryIds))
+				$this->categoryIds = array();
+			else
+				$this->categoryIds = Kaltura_Client_ParseUtils::unmarshalArray($xml->categoryIds, "KalturaIntegerValue");
+		}
 	}
 	/**
 	 * Should the object task add or remove categories?

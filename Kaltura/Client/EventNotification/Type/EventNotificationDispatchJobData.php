@@ -47,10 +47,13 @@ class Kaltura_Client_EventNotification_Type_EventNotificationDispatchJobData ext
 		
 		if(count($xml->templateId))
 			$this->templateId = (int)$xml->templateId;
-		if(empty($xml->contentParameters))
-			$this->contentParameters = array();
-		else
-			$this->contentParameters = Kaltura_Client_ParseUtils::unmarshalArray($xml->contentParameters, "KalturaKeyValue");
+		if(count($xml->contentParameters))
+		{
+			if(empty($xml->contentParameters))
+				$this->contentParameters = array();
+			else
+				$this->contentParameters = Kaltura_Client_ParseUtils::unmarshalArray($xml->contentParameters, "KalturaKeyValue");
+		}
 	}
 	/**
 	 * 

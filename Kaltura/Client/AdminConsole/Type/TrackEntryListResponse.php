@@ -45,10 +45,13 @@ class Kaltura_Client_AdminConsole_Type_TrackEntryListResponse extends Kaltura_Cl
 		if(is_null($xml))
 			return;
 		
-		if(empty($xml->objects))
-			$this->objects = array();
-		else
-			$this->objects = Kaltura_Client_ParseUtils::unmarshalArray($xml->objects, "KalturaTrackEntry");
+		if(count($xml->objects))
+		{
+			if(empty($xml->objects))
+				$this->objects = array();
+			else
+				$this->objects = Kaltura_Client_ParseUtils::unmarshalArray($xml->objects, "KalturaTrackEntry");
+		}
 	}
 	/**
 	 * 

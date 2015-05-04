@@ -45,7 +45,8 @@ class Kaltura_Client_Type_EntryReferrerLiveStats extends Kaltura_Client_Type_Ent
 		if(is_null($xml))
 			return;
 		
-		$this->referrer = (string)$xml->referrer;
+		if(count($xml->referrer))
+			$this->referrer = (string)$xml->referrer;
 	}
 	/**
 	 * 

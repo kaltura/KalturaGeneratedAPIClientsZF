@@ -586,9 +586,9 @@ class Kaltura_Client_Client extends Kaltura_Client_ClientBase
 	/**
 	 * Response profile
 	 * 
-	 * @param KalturaBaseResponseProfile $responseProfile
+	 * @param Kaltura_Client_Type_BaseResponseProfile $responseProfile
 	 */
-	public function setResponseProfile(KalturaBaseResponseProfile $responseProfile)
+	public function setResponseProfile(Kaltura_Client_Type_BaseResponseProfile $responseProfile)
 	{
 		$this->requestConfiguration['responseProfile'] = $responseProfile;
 	}
@@ -596,7 +596,7 @@ class Kaltura_Client_Client extends Kaltura_Client_ClientBase
 	/**
 	 * Response profile
 	 * 
-	 * @return KalturaBaseResponseProfile
+	 * @return Kaltura_Client_Type_BaseResponseProfile
 	 */
 	public function getResponseProfile()
 	{

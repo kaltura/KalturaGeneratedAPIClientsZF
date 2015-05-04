@@ -45,7 +45,8 @@ abstract class Kaltura_Client_ContentDistribution_Type_ConfigurableDistributionJ
 		if(is_null($xml))
 			return;
 		
-		$this->fieldValues = (string)$xml->fieldValues;
+		if(count($xml->fieldValues))
+			$this->fieldValues = (string)$xml->fieldValues;
 	}
 	/**
 	 * 

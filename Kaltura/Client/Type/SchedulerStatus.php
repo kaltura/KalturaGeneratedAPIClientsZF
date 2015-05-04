@@ -51,7 +51,8 @@ class Kaltura_Client_Type_SchedulerStatus extends Kaltura_Client_ObjectBase
 			$this->schedulerConfiguredId = (int)$xml->schedulerConfiguredId;
 		if(count($xml->workerConfiguredId))
 			$this->workerConfiguredId = (int)$xml->workerConfiguredId;
-		$this->workerType = (string)$xml->workerType;
+		if(count($xml->workerType))
+			$this->workerType = (string)$xml->workerType;
 		if(count($xml->type))
 			$this->type = (int)$xml->type;
 		if(count($xml->value))

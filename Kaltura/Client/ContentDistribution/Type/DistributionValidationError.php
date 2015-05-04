@@ -49,7 +49,8 @@ abstract class Kaltura_Client_ContentDistribution_Type_DistributionValidationErr
 			$this->action = (int)$xml->action;
 		if(count($xml->errorType))
 			$this->errorType = (int)$xml->errorType;
-		$this->description = (string)$xml->description;
+		if(count($xml->description))
+			$this->description = (string)$xml->description;
 	}
 	/**
 	 * 

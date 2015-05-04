@@ -45,10 +45,13 @@ class Kaltura_Client_Type_UserRoleListResponse extends Kaltura_Client_Type_ListR
 		if(is_null($xml))
 			return;
 		
-		if(empty($xml->objects))
-			$this->objects = array();
-		else
-			$this->objects = Kaltura_Client_ParseUtils::unmarshalArray($xml->objects, "KalturaUserRole");
+		if(count($xml->objects))
+		{
+			if(empty($xml->objects))
+				$this->objects = array();
+			else
+				$this->objects = Kaltura_Client_ParseUtils::unmarshalArray($xml->objects, "KalturaUserRole");
+		}
 	}
 	/**
 	 * 
