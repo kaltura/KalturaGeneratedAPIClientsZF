@@ -329,6 +329,7 @@ class Kaltura_Client_TypeMap
 		'KalturaEmailNotificationUserRecipientJobData' => 'Kaltura_Client_EmailNotification_Type_EmailNotificationUserRecipientJobData',
 		'KalturaEmailNotificationUserRecipientProvider' => 'Kaltura_Client_EmailNotification_Type_EmailNotificationUserRecipientProvider',
 		'KalturaEndUserReportInputFilter' => 'Kaltura_Client_Type_EndUserReportInputFilter',
+		'KalturaEntryCaptionAssetSearchItem' => 'Kaltura_Client_CaptionSearch_Type_EntryCaptionAssetSearchItem',
 		'KalturaEntryContext' => 'Kaltura_Client_Type_EntryContext',
 		'KalturaEntryContextDataParams' => 'Kaltura_Client_Type_EntryContextDataParams',
 		'KalturaEntryContextDataResult' => 'Kaltura_Client_Type_EntryContextDataResult',
