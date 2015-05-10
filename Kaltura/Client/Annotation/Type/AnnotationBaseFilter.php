@@ -63,6 +63,8 @@ abstract class Kaltura_Client_Annotation_Type_AnnotationBaseFilter extends Kaltu
 			$this->durationGreaterThanOrEqual = (int)$xml->durationGreaterThanOrEqual;
 		if(count($xml->durationLessThanOrEqual))
 			$this->durationLessThanOrEqual = (int)$xml->durationLessThanOrEqual;
+		if(count($xml->isPublicEqual))
+			$this->isPublicEqual = (int)$xml->isPublicEqual;
 	}
 	/**
 	 * 
@@ -126,6 +128,13 @@ abstract class Kaltura_Client_Annotation_Type_AnnotationBaseFilter extends Kaltu
 	 * @var int
 	 */
 	public $durationLessThanOrEqual = null;
+
+	/**
+	 * 
+	 *
+	 * @var Kaltura_Client_Enum_NullableBoolean
+	 */
+	public $isPublicEqual = null;
 
 
 }
