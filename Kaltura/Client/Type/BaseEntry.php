@@ -349,7 +349,7 @@ class Kaltura_Client_Type_BaseEntry extends Kaltura_Client_ObjectBase
 	 * 	 
 	 *
 	 * @var string
-	 * @insertonly
+	 * @readonly
 	 */
 	public $thumbnailUrl = null;
 

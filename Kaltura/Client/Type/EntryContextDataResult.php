@@ -123,6 +123,13 @@ class Kaltura_Client_Type_EntryContextDataResult extends Kaltura_Client_Type_Con
 			else
 				$this->flavorAssets = Kaltura_Client_ParseUtils::unmarshalArray($xml->flavorAssets, "KalturaFlavorAsset");
 		}
+		if(count($xml->pluginData))
+		{
+			if(empty($xml->pluginData))
+				$this->pluginData = array();
+			else
+				$this->pluginData = Kaltura_Client_ParseUtils::unmarshalMap($xml->pluginData, "KalturaPluginData");
+		}
 	}
 	/**
 	 * 
@@ -226,6 +233,14 @@ class Kaltura_Client_Type_EntryContextDataResult extends Kaltura_Client_Type_Con
 	 * @var array of KalturaFlavorAsset
 	 */
 	public $flavorAssets;
+
+	/**
+	 * Array of allowed flavor assets according to access control limitations and requested tags
+	 *      
+	 *
+	 * @var map
+	 */
+	public $pluginData;
 
 
 }
