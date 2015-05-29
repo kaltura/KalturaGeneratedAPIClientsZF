@@ -39,6 +39,7 @@ class Kaltura_Client_TypeMap
 		'KalturaAccessControlBlockAction' => 'Kaltura_Client_Type_AccessControlBlockAction',
 		'KalturaAccessControlContextTypeHolder' => 'Kaltura_Client_Type_AccessControlContextTypeHolder',
 		'KalturaAccessControlFilter' => 'Kaltura_Client_Type_AccessControlFilter',
+		'KalturaAccessControlLimitDeliveryProfilesAction' => 'Kaltura_Client_Type_AccessControlLimitDeliveryProfilesAction',
 		'KalturaAccessControlLimitFlavorsAction' => 'Kaltura_Client_Type_AccessControlLimitFlavorsAction',
 		'KalturaAccessControlListResponse' => 'Kaltura_Client_Type_AccessControlListResponse',
 		'KalturaAccessControlPreviewAction' => 'Kaltura_Client_Type_AccessControlPreviewAction',

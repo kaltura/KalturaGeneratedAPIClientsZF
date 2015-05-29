@@ -31,12 +31,45 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Enum_RuleActionType
+class Kaltura_Client_Type_AccessControlLimitDeliveryProfilesAction extends Kaltura_Client_Type_RuleAction
 {
-	const BLOCK = "1";
-	const PREVIEW = "2";
-	const LIMIT_FLAVORS = "3";
-	const ADD_TO_STORAGE = "4";
-	const LIMIT_DELIVERY_PROFILES = "5";
+	public function getKalturaObjectType()
+	{
+		return 'KalturaAccessControlLimitDeliveryProfilesAction';
+	}
+	
+	public function __construct(SimpleXMLElement $xml = null)
+	{
+		parent::__construct($xml);
+		
+		if(is_null($xml))
+			return;
+		
+		if(count($xml->deliveryProfileIds))
+			$this->deliveryProfileIds = (string)$xml->deliveryProfileIds;
+		if(count($xml->isBlockedList))
+		{
+			if(!empty($xml->isBlockedList))
+				$this->isBlockedList = true;
+			else
+				$this->isBlockedList = false;
+		}
+	}
+	/**
+	 * Comma separated list of delivery profile ids 
+	 * 	 
+	 *
+	 * @var string
+	 */
+	public $deliveryProfileIds = null;
+
+	/**
+	 * 
+	 *
+	 * @var bool
+	 */
+	public $isBlockedList = null;
+
+
 }
 
