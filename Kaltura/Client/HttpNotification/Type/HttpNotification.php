@@ -50,7 +50,7 @@ class Kaltura_Client_HttpNotification_Type_HttpNotification extends Kaltura_Clie
 		if(count($xml->eventObjectType))
 			$this->eventObjectType = (string)$xml->eventObjectType;
 		if(count($xml->eventNotificationJobId))
-			$this->eventNotificationJobId = (int)$xml->eventNotificationJobId;
+			$this->eventNotificationJobId = (string)$xml->eventNotificationJobId;
 		if(count($xml->templateId))
 			$this->templateId = (int)$xml->templateId;
 		if(count($xml->templateName))
@@ -80,7 +80,7 @@ class Kaltura_Client_HttpNotification_Type_HttpNotification extends Kaltura_Clie
 	 * ID of the batch job that execute the notification
 	 * 	 
 	 *
-	 * @var int
+	 * @var bigint
 	 */
 	public $eventNotificationJobId = null;
 
