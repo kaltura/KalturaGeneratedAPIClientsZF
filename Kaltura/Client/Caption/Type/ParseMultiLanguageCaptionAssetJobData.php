@@ -31,36 +31,48 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Enum_ContainerFormat
+class Kaltura_Client_Caption_Type_ParseMultiLanguageCaptionAssetJobData extends Kaltura_Client_Type_JobData
 {
-	const _3GP = "3gp";
-	const APPLEHTTP = "applehttp";
-	const AVI = "avi";
-	const BMP = "bmp";
-	const COPY = "copy";
-	const FLV = "flv";
-	const HLS = "hls";
-	const ISMA = "isma";
-	const ISMV = "ismv";
-	const JPG = "jpg";
-	const M2TS = "m2ts";
-	const M4V = "m4v";
-	const MKV = "mkv";
-	const MOV = "mov";
-	const MP3 = "mp3";
-	const MP4 = "mp4";
-	const MPEG = "mpeg";
-	const MPEGTS = "mpegts";
-	const MXF = "mxf";
-	const OGG = "ogg";
-	const OGV = "ogv";
-	const PDF = "pdf";
-	const PNG = "png";
-	const SWF = "swf";
-	const WAV = "wav";
-	const WEBM = "webm";
-	const WMA = "wma";
-	const WMV = "wmv";
-	const WVM = "wvm";
+	public function getKalturaObjectType()
+	{
+		return 'KalturaParseMultiLanguageCaptionAssetJobData';
+	}
+	
+	public function __construct(SimpleXMLElement $xml = null)
+	{
+		parent::__construct($xml);
+		
+		if(is_null($xml))
+			return;
+		
+		if(count($xml->multiLanaguageCaptionAssetId))
+			$this->multiLanaguageCaptionAssetId = (string)$xml->multiLanaguageCaptionAssetId;
+		if(count($xml->entryId))
+			$this->entryId = (string)$xml->entryId;
+		if(count($xml->fileLocation))
+			$this->fileLocation = (string)$xml->fileLocation;
+	}
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $multiLanaguageCaptionAssetId = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $entryId = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $fileLocation = null;
+
+
 }
 

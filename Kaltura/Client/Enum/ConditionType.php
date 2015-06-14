@@ -49,5 +49,6 @@ class Kaltura_Client_Enum_ConditionType
 	const USER_ROLE = "9";
 	const GEO_DISTANCE = "10";
 	const OR_OPERATOR = "11";
+	const HASH = "12";
 }
 

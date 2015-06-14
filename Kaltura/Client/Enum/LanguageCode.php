@@ -116,6 +116,7 @@ class Kaltura_Client_Enum_LanguageCode
 	const MR = "mr";
 	const MS = "ms";
 	const MT = "mt";
+	const MU = "multilingual";
 	const MY = "my";
 	const NA = "na";
 	const NE = "ne";

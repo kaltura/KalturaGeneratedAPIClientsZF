@@ -31,36 +31,41 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Enum_ContainerFormat
+class Kaltura_Client_Type_HashCondition extends Kaltura_Client_Type_Condition
 {
-	const _3GP = "3gp";
-	const APPLEHTTP = "applehttp";
-	const AVI = "avi";
-	const BMP = "bmp";
-	const COPY = "copy";
-	const FLV = "flv";
-	const HLS = "hls";
-	const ISMA = "isma";
-	const ISMV = "ismv";
-	const JPG = "jpg";
-	const M2TS = "m2ts";
-	const M4V = "m4v";
-	const MKV = "mkv";
-	const MOV = "mov";
-	const MP3 = "mp3";
-	const MP4 = "mp4";
-	const MPEG = "mpeg";
-	const MPEGTS = "mpegts";
-	const MXF = "mxf";
-	const OGG = "ogg";
-	const OGV = "ogv";
-	const PDF = "pdf";
-	const PNG = "png";
-	const SWF = "swf";
-	const WAV = "wav";
-	const WEBM = "webm";
-	const WMA = "wma";
-	const WMV = "wmv";
-	const WVM = "wvm";
+	public function getKalturaObjectType()
+	{
+		return 'KalturaHashCondition';
+	}
+	
+	public function __construct(SimpleXMLElement $xml = null)
+	{
+		parent::__construct($xml);
+		
+		if(is_null($xml))
+			return;
+		
+		if(count($xml->hashName))
+			$this->hashName = (string)$xml->hashName;
+		if(count($xml->hashSecret))
+			$this->hashSecret = (string)$xml->hashSecret;
+	}
+	/**
+	 * hash name
+	 * 	 
+	 *
+	 * @var string
+	 */
+	public $hashName = null;
+
+	/**
+	 * hash secret
+	 * 	 
+	 *
+	 * @var string
+	 */
+	public $hashSecret = null;
+
+
 }
 

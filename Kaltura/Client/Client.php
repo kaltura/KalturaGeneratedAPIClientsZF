@@ -126,6 +126,13 @@ class Kaltura_Client_Client extends Kaltura_Client_ClientBase
 	public $document = null;
 
 	/**
+	 * Edge Server service
+	 *  
+	 * @var Kaltura_Client_EdgeServerService
+	 */
+	public $edgeServer = null;
+
+	/**
 	 * EmailIngestionProfile service lets you manage email ingestion profile records
 	 *  
 	 * @var Kaltura_Client_EmailIngestionProfileService
@@ -425,6 +432,7 @@ class Kaltura_Client_Client extends Kaltura_Client_ClientBase
 		$this->data = new Kaltura_Client_DataService($this);
 		$this->deliveryProfile = new Kaltura_Client_DeliveryProfileService($this);
 		$this->document = new Kaltura_Client_DocumentService($this);
+		$this->edgeServer = new Kaltura_Client_EdgeServerService($this);
 		$this->EmailIngestionProfile = new Kaltura_Client_EmailIngestionProfileService($this);
 		$this->fileAsset = new Kaltura_Client_FileAssetService($this);
 		$this->flavorAsset = new Kaltura_Client_FlavorAssetService($this);

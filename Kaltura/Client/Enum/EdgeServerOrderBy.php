@@ -31,36 +31,11 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Enum_ContainerFormat
+class Kaltura_Client_Enum_EdgeServerOrderBy
 {
-	const _3GP = "3gp";
-	const APPLEHTTP = "applehttp";
-	const AVI = "avi";
-	const BMP = "bmp";
-	const COPY = "copy";
-	const FLV = "flv";
-	const HLS = "hls";
-	const ISMA = "isma";
-	const ISMV = "ismv";
-	const JPG = "jpg";
-	const M2TS = "m2ts";
-	const M4V = "m4v";
-	const MKV = "mkv";
-	const MOV = "mov";
-	const MP3 = "mp3";
-	const MP4 = "mp4";
-	const MPEG = "mpeg";
-	const MPEGTS = "mpegts";
-	const MXF = "mxf";
-	const OGG = "ogg";
-	const OGV = "ogv";
-	const PDF = "pdf";
-	const PNG = "png";
-	const SWF = "swf";
-	const WAV = "wav";
-	const WEBM = "webm";
-	const WMA = "wma";
-	const WMV = "wmv";
-	const WVM = "wvm";
+	const CREATED_AT_ASC = "+createdAt";
+	const UPDATED_AT_ASC = "+updatedAt";
+	const CREATED_AT_DESC = "-createdAt";
+	const UPDATED_AT_DESC = "-updatedAt";
 }
 
