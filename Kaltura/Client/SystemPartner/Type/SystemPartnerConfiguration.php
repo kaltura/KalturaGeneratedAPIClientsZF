@@ -59,6 +59,8 @@ class Kaltura_Client_SystemPartner_Type_SystemPartnerConfiguration extends Kaltu
 			$this->host = (string)$xml->host;
 		if(count($xml->cdnHost))
 			$this->cdnHost = (string)$xml->cdnHost;
+		if(count($xml->cdnHostWhiteList))
+			$this->cdnHostWhiteList = (string)$xml->cdnHostWhiteList;
 		if(count($xml->thumbnailHost))
 			$this->thumbnailHost = (string)$xml->thumbnailHost;
 		if(count($xml->partnerPackage))
@@ -287,6 +289,13 @@ class Kaltura_Client_SystemPartner_Type_SystemPartnerConfiguration extends Kaltu
 	 * @var string
 	 */
 	public $cdnHost = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $cdnHostWhiteList = null;
 
 	/**
 	 * 
