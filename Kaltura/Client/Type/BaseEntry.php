@@ -132,6 +132,8 @@ class Kaltura_Client_Type_BaseEntry extends Kaltura_Client_ObjectBase
 			$this->entitledUsersEdit = (string)$xml->entitledUsersEdit;
 		if(count($xml->entitledUsersPublish))
 			$this->entitledUsersPublish = (string)$xml->entitledUsersPublish;
+		if(count($xml->capabilities))
+			$this->capabilities = (string)$xml->capabilities;
 	}
 	/**
 	 * Auto generated 10 characters alphanumeric string
@@ -476,6 +478,15 @@ class Kaltura_Client_Type_BaseEntry extends Kaltura_Client_ObjectBase
 	 * @var string
 	 */
 	public $entitledUsersPublish = null;
+
+	/**
+	 * Comma seperated string of the capabilities of the entry. Any capability needed can be added to this list.
+	 * 	 
+	 *
+	 * @var string
+	 * @readonly
+	 */
+	public $capabilities = null;
 
 
 }

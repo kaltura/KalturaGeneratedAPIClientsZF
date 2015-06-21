@@ -379,6 +379,12 @@ class Kaltura_Client_Client extends Kaltura_Client_ClientBase
 	public $uploadToken = null;
 
 	/**
+	 * 
+	 * @var Kaltura_Client_UserEntryService
+	 */
+	public $userEntry = null;
+
+	/**
 	 * UserRole service lets you create and manage user roles
 	 *  
 	 * @var Kaltura_Client_UserRoleService
@@ -468,6 +474,7 @@ class Kaltura_Client_Client extends Kaltura_Client_ClientBase
 		$this->uiConf = new Kaltura_Client_UiConfService($this);
 		$this->upload = new Kaltura_Client_UploadService($this);
 		$this->uploadToken = new Kaltura_Client_UploadTokenService($this);
+		$this->userEntry = new Kaltura_Client_UserEntryService($this);
 		$this->userRole = new Kaltura_Client_UserRoleService($this);
 		$this->user = new Kaltura_Client_UserService($this);
 		$this->widget = new Kaltura_Client_WidgetService($this);

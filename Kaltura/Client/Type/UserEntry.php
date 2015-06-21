@@ -31,11 +31,11 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Metadata_Type_MetadataProfile extends Kaltura_Client_ObjectBase
+abstract class Kaltura_Client_Type_UserEntry extends Kaltura_Client_ObjectBase
 {
 	public function getKalturaObjectType()
 	{
-		return 'KalturaMetadataProfile';
+		return 'KalturaUserEntry';
 	}
 	
 	public function __construct(SimpleXMLElement $xml = null)
@@ -47,47 +47,43 @@ class Kaltura_Client_Metadata_Type_MetadataProfile extends Kaltura_Client_Object
 		
 		if(count($xml->id))
 			$this->id = (int)$xml->id;
+		if(count($xml->entryId))
+			$this->entryId = (string)$xml->entryId;
+		if(count($xml->userId))
+			$this->userId = (int)$xml->userId;
 		if(count($xml->partnerId))
 			$this->partnerId = (int)$xml->partnerId;
-		if(count($xml->metadataObjectType))
-			$this->metadataObjectType = (string)$xml->metadataObjectType;
-		if(count($xml->version))
-			$this->version = (int)$xml->version;
-		if(count($xml->name))
-			$this->name = (string)$xml->name;
-		if(count($xml->systemName))
-			$this->systemName = (string)$xml->systemName;
-		if(count($xml->description))
-			$this->description = (string)$xml->description;
+		if(count($xml->status))
+			$this->status = (string)$xml->status;
 		if(count($xml->createdAt))
 			$this->createdAt = (int)$xml->createdAt;
 		if(count($xml->updatedAt))
 			$this->updatedAt = (int)$xml->updatedAt;
-		if(count($xml->status))
-			$this->status = (int)$xml->status;
-		if(count($xml->xsd))
-			$this->xsd = (string)$xml->xsd;
-		if(count($xml->views))
-			$this->views = (string)$xml->views;
-		if(count($xml->xslt))
-			$this->xslt = (string)$xml->xslt;
-		if(count($xml->createMode))
-			$this->createMode = (int)$xml->createMode;
-		if(count($xml->disableReIndexing))
-		{
-			if(!empty($xml->disableReIndexing))
-				$this->disableReIndexing = true;
-			else
-				$this->disableReIndexing = false;
-		}
 	}
 	/**
-	 * 
+	 * unique auto-generated identifier
+	 * 	 
 	 *
 	 * @var int
 	 * @readonly
 	 */
 	public $id = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 * @insertonly
+	 */
+	public $entryId = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 * @insertonly
+	 */
+	public $userId = null;
 
 	/**
 	 * 
@@ -100,38 +96,10 @@ class Kaltura_Client_Metadata_Type_MetadataProfile extends Kaltura_Client_Object
 	/**
 	 * 
 	 *
-	 * @var Kaltura_Client_Metadata_Enum_MetadataObjectType
-	 */
-	public $metadataObjectType = null;
-
-	/**
-	 * 
-	 *
-	 * @var int
+	 * @var Kaltura_Client_Enum_UserEntryStatus
 	 * @readonly
 	 */
-	public $version = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $name = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $systemName = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $description = null;
+	public $status = null;
 
 	/**
 	 * 
@@ -148,52 +116,6 @@ class Kaltura_Client_Metadata_Type_MetadataProfile extends Kaltura_Client_Object
 	 * @readonly
 	 */
 	public $updatedAt = null;
-
-	/**
-	 * 
-	 *
-	 * @var Kaltura_Client_Metadata_Enum_MetadataProfileStatus
-	 * @readonly
-	 */
-	public $status = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 * @readonly
-	 */
-	public $xsd = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 * @readonly
-	 */
-	public $views = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 * @readonly
-	 */
-	public $xslt = null;
-
-	/**
-	 * 
-	 *
-	 * @var Kaltura_Client_Metadata_Enum_MetadataProfileCreateMode
-	 */
-	public $createMode = null;
-
-	/**
-	 * 
-	 *
-	 * @var bool
-	 */
-	public $disableReIndexing = null;
 
 
 }
