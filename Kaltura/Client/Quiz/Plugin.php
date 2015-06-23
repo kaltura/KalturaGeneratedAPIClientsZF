@@ -33,9 +33,15 @@
  */
 class Kaltura_Client_Quiz_Plugin extends Kaltura_Client_Plugin
 {
+	/**
+	 * @var Kaltura_Client_Quiz_QuizService
+	 */
+	public $quiz = null;
+
 	protected function __construct(Kaltura_Client_Client $client)
 	{
 		parent::__construct($client);
+		$this->quiz = new Kaltura_Client_Quiz_QuizService($client);
 	}
 
 	/**
@@ -52,6 +58,7 @@ class Kaltura_Client_Quiz_Plugin extends Kaltura_Client_Plugin
 	public function getServices()
 	{
 		$services = array(
+			'quiz' => $this->quiz,
 		);
 		return $services;
 	}

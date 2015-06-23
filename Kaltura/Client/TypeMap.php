@@ -49,6 +49,7 @@ class Kaltura_Client_TypeMap
 		'KalturaAccessControlProfileFilter' => 'Kaltura_Client_Type_AccessControlProfileFilter',
 		'KalturaAccessControlProfileListResponse' => 'Kaltura_Client_Type_AccessControlProfileListResponse',
 		'KalturaAccessControlScope' => 'Kaltura_Client_Type_AccessControlScope',
+		'KalturaAccessControlServeRemoteEdgeServerAction' => 'Kaltura_Client_Type_AccessControlServeRemoteEdgeServerAction',
 		'KalturaAdCuePoint' => 'Kaltura_Client_AdCuePoint_Type_AdCuePoint',
 		'KalturaAdCuePointBaseFilter' => 'Kaltura_Client_AdCuePoint_Type_AdCuePointBaseFilter',
 		'KalturaAdCuePointFilter' => 'Kaltura_Client_AdCuePoint_Type_AdCuePointFilter',

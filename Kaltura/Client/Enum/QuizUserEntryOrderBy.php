@@ -34,10 +34,8 @@
 class Kaltura_Client_Enum_QuizUserEntryOrderBy
 {
 	const CREATED_AT_ASC = "+createdAt";
-	const SCORE_ASC = "+score";
 	const UPDATED_AT_ASC = "+updatedAt";
 	const CREATED_AT_DESC = "-createdAt";
-	const SCORE_DESC = "-score";
 	const UPDATED_AT_DESC = "-updatedAt";
 }
 

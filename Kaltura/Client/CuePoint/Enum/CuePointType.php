@@ -37,5 +37,7 @@ class Kaltura_Client_CuePoint_Enum_CuePointType
 	const ANNOTATION = "annotation.Annotation";
 	const CODE = "codeCuePoint.Code";
 	const EVENT = "eventCuePoint.Event";
+	const QUIZ_ANSWER = "quiz.QUIZ_ANSWER";
+	const QUIZ_QUESTION = "quiz.QUIZ_QUESTION";
 }
 
