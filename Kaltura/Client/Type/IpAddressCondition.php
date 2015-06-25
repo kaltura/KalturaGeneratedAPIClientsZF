@@ -45,7 +45,32 @@ class Kaltura_Client_Type_IpAddressCondition extends Kaltura_Client_Type_MatchCo
 		if(is_null($xml))
 			return;
 		
+		if(count($xml->acceptInternalIps))
+		{
+			if(!empty($xml->acceptInternalIps))
+				$this->acceptInternalIps = true;
+			else
+				$this->acceptInternalIps = false;
+		}
+		if(count($xml->httpHeader))
+			$this->httpHeader = (string)$xml->httpHeader;
 	}
+	/**
+	 * allow internal ips
+	 * 	 
+	 *
+	 * @var bool
+	 */
+	public $acceptInternalIps = null;
+
+	/**
+	 * http header name for extracting the ip
+	 * 	 
+	 *
+	 * @var string
+	 */
+	public $httpHeader = null;
+
 
 }
 
