@@ -31,11 +31,11 @@
  * @package Kaltura
  * @subpackage Client
  */
-abstract class Kaltura_Client_Type_UserEntry extends Kaltura_Client_ObjectBase
+class Kaltura_Client_Type_AppToken extends Kaltura_Client_ObjectBase
 {
 	public function getKalturaObjectType()
 	{
-		return 'KalturaUserEntry';
+		return 'KalturaAppToken';
 	}
 	
 	public function __construct(SimpleXMLElement $xml = null)
@@ -46,46 +46,45 @@ abstract class Kaltura_Client_Type_UserEntry extends Kaltura_Client_ObjectBase
 			return;
 		
 		if(count($xml->id))
-			$this->id = (int)$xml->id;
-		if(count($xml->entryId))
-			$this->entryId = (string)$xml->entryId;
-		if(count($xml->userId))
-			$this->userId = (string)$xml->userId;
+			$this->id = (string)$xml->id;
+		if(count($xml->token))
+			$this->token = (string)$xml->token;
 		if(count($xml->partnerId))
 			$this->partnerId = (int)$xml->partnerId;
-		if(count($xml->status))
-			$this->status = (string)$xml->status;
 		if(count($xml->createdAt))
 			$this->createdAt = (int)$xml->createdAt;
 		if(count($xml->updatedAt))
 			$this->updatedAt = (int)$xml->updatedAt;
-		if(count($xml->type))
-			$this->type = (string)$xml->type;
+		if(count($xml->status))
+			$this->status = (int)$xml->status;
+		if(count($xml->expiry))
+			$this->expiry = (int)$xml->expiry;
+		if(count($xml->sessionType))
+			$this->sessionType = (int)$xml->sessionType;
+		if(count($xml->sessionUserId))
+			$this->sessionUserId = (string)$xml->sessionUserId;
+		if(count($xml->sessionDuration))
+			$this->sessionDuration = (int)$xml->sessionDuration;
+		if(count($xml->sessionPrivileges))
+			$this->sessionPrivileges = (string)$xml->sessionPrivileges;
 	}
 	/**
-	 * unique auto-generated identifier
+	 * The id of the application token
 	 * 	 
 	 *
-	 * @var int
+	 * @var string
 	 * @readonly
 	 */
 	public $id = null;
 
 	/**
-	 * 
+	 * The application token
+	 * 	 
 	 *
 	 * @var string
-	 * @insertonly
+	 * @readonly
 	 */
-	public $entryId = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 * @insertonly
-	 */
-	public $userId = null;
+	public $token = null;
 
 	/**
 	 * 
@@ -96,15 +95,8 @@ abstract class Kaltura_Client_Type_UserEntry extends Kaltura_Client_ObjectBase
 	public $partnerId = null;
 
 	/**
-	 * 
-	 *
-	 * @var Kaltura_Client_Enum_UserEntryStatus
-	 * @readonly
-	 */
-	public $status = null;
-
-	/**
-	 * 
+	 * Creation time as Unix timestamp (In seconds) 
+	 * 	 
 	 *
 	 * @var int
 	 * @readonly
@@ -112,7 +104,8 @@ abstract class Kaltura_Client_Type_UserEntry extends Kaltura_Client_ObjectBase
 	public $createdAt = null;
 
 	/**
-	 * 
+	 * Update time as Unix timestamp (In seconds) 
+	 * 	 
 	 *
 	 * @var int
 	 * @readonly
@@ -120,12 +113,53 @@ abstract class Kaltura_Client_Type_UserEntry extends Kaltura_Client_ObjectBase
 	public $updatedAt = null;
 
 	/**
-	 * 
+	 * Application token status 
+	 * 	 
 	 *
-	 * @var Kaltura_Client_Enum_UserEntryType
+	 * @var Kaltura_Client_Enum_AppTokenStatus
 	 * @readonly
 	 */
-	public $type = null;
+	public $status = null;
+
+	/**
+	 * Expiry time of current token (unix timestamp in seconds)
+	 * 	 
+	 *
+	 * @var int
+	 */
+	public $expiry = null;
+
+	/**
+	 * Type of KS (Kaltura Session) that created using the current token
+	 * 	 
+	 *
+	 * @var Kaltura_Client_Enum_SessionType
+	 */
+	public $sessionType = null;
+
+	/**
+	 * User id of KS (Kaltura Session) that created using the current token
+	 * 	 
+	 *
+	 * @var string
+	 */
+	public $sessionUserId = null;
+
+	/**
+	 * Expiry duration of KS (Kaltura Session) that created using the current token (in seconds)
+	 * 	 
+	 *
+	 * @var int
+	 */
+	public $sessionDuration = null;
+
+	/**
+	 * Comma separated privileges to be applied on KS (Kaltura Session) that created using the current token
+	 * 	 
+	 *
+	 * @var string
+	 */
+	public $sessionPrivileges = null;
 
 
 }

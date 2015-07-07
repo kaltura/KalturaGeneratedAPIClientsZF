@@ -31,11 +31,11 @@
  * @package Kaltura
  * @subpackage Client
  */
-abstract class Kaltura_Client_Type_UserEntry extends Kaltura_Client_ObjectBase
+class Kaltura_Client_Type_DeliveryProfileCondition extends Kaltura_Client_Type_Condition
 {
 	public function getKalturaObjectType()
 	{
-		return 'KalturaUserEntry';
+		return 'KalturaDeliveryProfileCondition';
 	}
 	
 	public function __construct(SimpleXMLElement $xml = null)
@@ -45,87 +45,21 @@ abstract class Kaltura_Client_Type_UserEntry extends Kaltura_Client_ObjectBase
 		if(is_null($xml))
 			return;
 		
-		if(count($xml->id))
-			$this->id = (int)$xml->id;
-		if(count($xml->entryId))
-			$this->entryId = (string)$xml->entryId;
-		if(count($xml->userId))
-			$this->userId = (string)$xml->userId;
-		if(count($xml->partnerId))
-			$this->partnerId = (int)$xml->partnerId;
-		if(count($xml->status))
-			$this->status = (string)$xml->status;
-		if(count($xml->createdAt))
-			$this->createdAt = (int)$xml->createdAt;
-		if(count($xml->updatedAt))
-			$this->updatedAt = (int)$xml->updatedAt;
-		if(count($xml->type))
-			$this->type = (string)$xml->type;
+		if(count($xml->deliveryProfileIds))
+		{
+			if(empty($xml->deliveryProfileIds))
+				$this->deliveryProfileIds = array();
+			else
+				$this->deliveryProfileIds = Kaltura_Client_ParseUtils::unmarshalArray($xml->deliveryProfileIds, "KalturaIntegerValue");
+		}
 	}
 	/**
-	 * unique auto-generated identifier
+	 * The delivery ids that are accepted by this condition
 	 * 	 
 	 *
-	 * @var int
-	 * @readonly
+	 * @var array of KalturaIntegerValue
 	 */
-	public $id = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 * @insertonly
-	 */
-	public $entryId = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 * @insertonly
-	 */
-	public $userId = null;
-
-	/**
-	 * 
-	 *
-	 * @var int
-	 * @readonly
-	 */
-	public $partnerId = null;
-
-	/**
-	 * 
-	 *
-	 * @var Kaltura_Client_Enum_UserEntryStatus
-	 * @readonly
-	 */
-	public $status = null;
-
-	/**
-	 * 
-	 *
-	 * @var int
-	 * @readonly
-	 */
-	public $createdAt = null;
-
-	/**
-	 * 
-	 *
-	 * @var int
-	 * @readonly
-	 */
-	public $updatedAt = null;
-
-	/**
-	 * 
-	 *
-	 * @var Kaltura_Client_Enum_UserEntryType
-	 * @readonly
-	 */
-	public $type = null;
+	public $deliveryProfileIds;
 
 
 }

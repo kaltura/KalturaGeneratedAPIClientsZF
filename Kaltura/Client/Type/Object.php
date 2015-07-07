@@ -57,6 +57,7 @@ abstract class Kaltura_Client_Type_Object extends Kaltura_Client_ObjectBase
 	 * 
 	 *
 	 * @var map
+	 * @readonly
 	 */
 	public $relatedObjects;
 

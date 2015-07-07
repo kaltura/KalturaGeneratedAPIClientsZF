@@ -31,11 +31,11 @@
  * @package Kaltura
  * @subpackage Client
  */
-abstract class Kaltura_Client_Type_UserEntry extends Kaltura_Client_ObjectBase
+abstract class Kaltura_Client_Type_AppTokenBaseFilter extends Kaltura_Client_Type_Filter
 {
 	public function getKalturaObjectType()
 	{
-		return 'KalturaUserEntry';
+		return 'KalturaAppTokenBaseFilter';
 	}
 	
 	public function __construct(SimpleXMLElement $xml = null)
@@ -45,87 +45,60 @@ abstract class Kaltura_Client_Type_UserEntry extends Kaltura_Client_ObjectBase
 		if(is_null($xml))
 			return;
 		
-		if(count($xml->id))
-			$this->id = (int)$xml->id;
-		if(count($xml->entryId))
-			$this->entryId = (string)$xml->entryId;
-		if(count($xml->userId))
-			$this->userId = (string)$xml->userId;
-		if(count($xml->partnerId))
-			$this->partnerId = (int)$xml->partnerId;
-		if(count($xml->status))
-			$this->status = (string)$xml->status;
-		if(count($xml->createdAt))
-			$this->createdAt = (int)$xml->createdAt;
-		if(count($xml->updatedAt))
-			$this->updatedAt = (int)$xml->updatedAt;
-		if(count($xml->type))
-			$this->type = (string)$xml->type;
+		if(count($xml->idEqual))
+			$this->idEqual = (int)$xml->idEqual;
+		if(count($xml->idIn))
+			$this->idIn = (string)$xml->idIn;
+		if(count($xml->createdAtGreaterThanOrEqual))
+			$this->createdAtGreaterThanOrEqual = (int)$xml->createdAtGreaterThanOrEqual;
+		if(count($xml->createdAtLessThanOrEqual))
+			$this->createdAtLessThanOrEqual = (int)$xml->createdAtLessThanOrEqual;
+		if(count($xml->updatedAtGreaterThanOrEqual))
+			$this->updatedAtGreaterThanOrEqual = (int)$xml->updatedAtGreaterThanOrEqual;
+		if(count($xml->updatedAtLessThanOrEqual))
+			$this->updatedAtLessThanOrEqual = (int)$xml->updatedAtLessThanOrEqual;
 	}
 	/**
-	 * unique auto-generated identifier
-	 * 	 
+	 * 
 	 *
 	 * @var int
-	 * @readonly
 	 */
-	public $id = null;
+	public $idEqual = null;
 
 	/**
 	 * 
 	 *
 	 * @var string
-	 * @insertonly
 	 */
-	public $entryId = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 * @insertonly
-	 */
-	public $userId = null;
+	public $idIn = null;
 
 	/**
 	 * 
 	 *
 	 * @var int
-	 * @readonly
 	 */
-	public $partnerId = null;
-
-	/**
-	 * 
-	 *
-	 * @var Kaltura_Client_Enum_UserEntryStatus
-	 * @readonly
-	 */
-	public $status = null;
+	public $createdAtGreaterThanOrEqual = null;
 
 	/**
 	 * 
 	 *
 	 * @var int
-	 * @readonly
 	 */
-	public $createdAt = null;
+	public $createdAtLessThanOrEqual = null;
 
 	/**
 	 * 
 	 *
 	 * @var int
-	 * @readonly
 	 */
-	public $updatedAt = null;
+	public $updatedAtGreaterThanOrEqual = null;
 
 	/**
 	 * 
 	 *
-	 * @var Kaltura_Client_Enum_UserEntryType
-	 * @readonly
+	 * @var int
 	 */
-	public $type = null;
+	public $updatedAtLessThanOrEqual = null;
 
 
 }

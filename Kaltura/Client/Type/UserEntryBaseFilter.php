@@ -63,6 +63,8 @@ abstract class Kaltura_Client_Type_UserEntryBaseFilter extends Kaltura_Client_Ty
 			$this->userIdIn = (string)$xml->userIdIn;
 		if(count($xml->userIdNotIn))
 			$this->userIdNotIn = (string)$xml->userIdNotIn;
+		if(count($xml->statusEqual))
+			$this->statusEqual = (string)$xml->statusEqual;
 		if(count($xml->createdAtLessThanOrEqual))
 			$this->createdAtLessThanOrEqual = (int)$xml->createdAtLessThanOrEqual;
 		if(count($xml->createdAtGreaterThanOrEqual))
@@ -71,6 +73,8 @@ abstract class Kaltura_Client_Type_UserEntryBaseFilter extends Kaltura_Client_Ty
 			$this->updatedAtLessThanOrEqual = (int)$xml->updatedAtLessThanOrEqual;
 		if(count($xml->updatedAtGreaterThanOrEqual))
 			$this->updatedAtGreaterThanOrEqual = (int)$xml->updatedAtGreaterThanOrEqual;
+		if(count($xml->typeEqual))
+			$this->typeEqual = (string)$xml->typeEqual;
 	}
 	/**
 	 * 
@@ -138,6 +142,13 @@ abstract class Kaltura_Client_Type_UserEntryBaseFilter extends Kaltura_Client_Ty
 	/**
 	 * 
 	 *
+	 * @var Kaltura_Client_Enum_UserEntryStatus
+	 */
+	public $statusEqual = null;
+
+	/**
+	 * 
+	 *
 	 * @var int
 	 */
 	public $createdAtLessThanOrEqual = null;
@@ -162,6 +173,13 @@ abstract class Kaltura_Client_Type_UserEntryBaseFilter extends Kaltura_Client_Ty
 	 * @var int
 	 */
 	public $updatedAtGreaterThanOrEqual = null;
+
+	/**
+	 * 
+	 *
+	 * @var Kaltura_Client_Enum_UserEntryType
+	 */
+	public $typeEqual = null;
 
 
 }
