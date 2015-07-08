@@ -96,6 +96,15 @@ class Kaltura_Client_FileSync_Type_FileSync extends Kaltura_Client_ObjectBase
 			else
 				$this->isCurrentDc = false;
 		}
+		if(count($xml->isDir))
+		{
+			if(!empty($xml->isDir))
+				$this->isDir = true;
+			else
+				$this->isDir = false;
+		}
+		if(count($xml->originalId))
+			$this->originalId = (int)$xml->originalId;
 	}
 	/**
 	 * 
@@ -197,7 +206,6 @@ class Kaltura_Client_FileSync_Type_FileSync extends Kaltura_Client_ObjectBase
 	 * 
 	 *
 	 * @var Kaltura_Client_FileSync_Enum_FileSyncStatus
-	 * @readonly
 	 */
 	public $status = null;
 
@@ -229,7 +237,6 @@ class Kaltura_Client_FileSync_Type_FileSync extends Kaltura_Client_ObjectBase
 	 * 
 	 *
 	 * @var string
-	 * @readonly
 	 */
 	public $fileRoot = null;
 
@@ -237,7 +244,6 @@ class Kaltura_Client_FileSync_Type_FileSync extends Kaltura_Client_ObjectBase
 	 * 
 	 *
 	 * @var string
-	 * @readonly
 	 */
 	public $filePath = null;
 
@@ -280,6 +286,22 @@ class Kaltura_Client_FileSync_Type_FileSync extends Kaltura_Client_ObjectBase
 	 * @readonly
 	 */
 	public $isCurrentDc = null;
+
+	/**
+	 * 
+	 *
+	 * @var bool
+	 * @readonly
+	 */
+	public $isDir = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 * @readonly
+	 */
+	public $originalId = null;
 
 
 }
