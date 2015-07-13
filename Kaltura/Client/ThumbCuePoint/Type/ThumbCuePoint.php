@@ -31,11 +31,11 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Type_ResponseProfile extends Kaltura_Client_Type_DetachedResponseProfile
+class Kaltura_Client_ThumbCuePoint_Type_ThumbCuePoint extends Kaltura_Client_CuePoint_Type_CuePoint
 {
 	public function getKalturaObjectType()
 	{
-		return 'KalturaResponseProfile';
+		return 'KalturaThumbCuePoint';
 	}
 	
 	public function __construct(SimpleXMLElement $xml = null)
@@ -45,79 +45,43 @@ class Kaltura_Client_Type_ResponseProfile extends Kaltura_Client_Type_DetachedRe
 		if(is_null($xml))
 			return;
 		
-		if(count($xml->id))
-			$this->id = (int)$xml->id;
-		if(count($xml->systemName))
-			$this->systemName = (string)$xml->systemName;
-		if(count($xml->partnerId))
-			$this->partnerId = (int)$xml->partnerId;
-		if(count($xml->createdAt))
-			$this->createdAt = (int)$xml->createdAt;
-		if(count($xml->updatedAt))
-			$this->updatedAt = (int)$xml->updatedAt;
-		if(count($xml->status))
-			$this->status = (int)$xml->status;
-		if(count($xml->version))
-			$this->version = (int)$xml->version;
+		if(count($xml->assetId))
+			$this->assetId = (string)$xml->assetId;
+		if(count($xml->description))
+			$this->description = (string)$xml->description;
+		if(count($xml->title))
+			$this->title = (string)$xml->title;
+		if(count($xml->subType))
+			$this->subType = (int)$xml->subType;
 	}
 	/**
-	 * Auto generated numeric identifier
-	 * 	 
-	 *
-	 * @var int
-	 * @readonly
-	 */
-	public $id = null;
-
-	/**
-	 * Unique system name
-	 * 	 
+	 * 
 	 *
 	 * @var string
 	 */
-	public $systemName = null;
+	public $assetId = null;
 
 	/**
 	 * 
 	 *
-	 * @var int
-	 * @readonly
+	 * @var string
 	 */
-	public $partnerId = null;
+	public $description = null;
 
 	/**
-	 * Creation time as Unix timestamp (In seconds) 
+	 * 
+	 *
+	 * @var string
+	 */
+	public $title = null;
+
+	/**
+	 * The sub type of the ThumbCuePoint
 	 * 	 
 	 *
-	 * @var int
-	 * @readonly
+	 * @var Kaltura_Client_CuePoint_Enum_ThumbCuePointSubType
 	 */
-	public $createdAt = null;
-
-	/**
-	 * Update time as Unix timestamp (In seconds) 
-	 * 	 
-	 *
-	 * @var int
-	 * @readonly
-	 */
-	public $updatedAt = null;
-
-	/**
-	 * 
-	 *
-	 * @var Kaltura_Client_Enum_ResponseProfileStatus
-	 * @readonly
-	 */
-	public $status = null;
-
-	/**
-	 * 
-	 *
-	 * @var int
-	 * @readonly
-	 */
-	public $version = null;
+	public $subType = null;
 
 
 }

@@ -86,5 +86,6 @@ class Kaltura_Client_Enum_BatchJobType
 	const VALIDATE_LIVE_MEDIA_SERVERS = "38";
 	const SYNC_CATEGORY_PRIVACY_CONTEXT = "39";
 	const LIVE_REPORT_EXPORT = "40";
+	const RECALCULATE_CACHE = "41";
 }
 

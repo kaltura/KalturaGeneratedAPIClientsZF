@@ -47,6 +47,10 @@ class Kaltura_Client_CuePoint_Type_CuePointFilter extends Kaltura_Client_CuePoin
 		
 		if(count($xml->freeText))
 			$this->freeText = (string)$xml->freeText;
+		if(count($xml->userIdEqualCurrent))
+			$this->userIdEqualCurrent = (int)$xml->userIdEqualCurrent;
+		if(count($xml->userIdCurrent))
+			$this->userIdCurrent = (int)$xml->userIdCurrent;
 	}
 	/**
 	 * 
@@ -54,6 +58,20 @@ class Kaltura_Client_CuePoint_Type_CuePointFilter extends Kaltura_Client_CuePoin
 	 * @var string
 	 */
 	public $freeText = null;
+
+	/**
+	 * 
+	 *
+	 * @var Kaltura_Client_Enum_NullableBoolean
+	 */
+	public $userIdEqualCurrent = null;
+
+	/**
+	 * 
+	 *
+	 * @var Kaltura_Client_Enum_NullableBoolean
+	 */
+	public $userIdCurrent = null;
 
 
 }

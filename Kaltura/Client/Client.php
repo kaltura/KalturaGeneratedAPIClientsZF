@@ -607,7 +607,7 @@ class Kaltura_Client_Client extends Kaltura_Client_ClientBase
 	}
 	
 	/**
-	 * Response profile
+	 * Response profile - this attribute will be automatically unset after every API call.
 	 * 
 	 * @param Kaltura_Client_Type_BaseResponseProfile $responseProfile
 	 */
@@ -617,7 +617,7 @@ class Kaltura_Client_Client extends Kaltura_Client_ClientBase
 	}
 	
 	/**
-	 * Response profile
+	 * Response profile - this attribute will be automatically unset after every API call.
 	 * 
 	 * @return Kaltura_Client_Type_BaseResponseProfile
 	 */

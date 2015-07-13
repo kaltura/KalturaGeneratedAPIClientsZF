@@ -31,16 +31,37 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Metadata_Enum_MetadataObjectType
+class Kaltura_Client_ThumbCuePoint_Plugin extends Kaltura_Client_Plugin
 {
-	const AD_CUE_POINT = "adCuePointMetadata.AdCuePoint";
-	const ANNOTATION = "annotationMetadata.Annotation";
-	const CODE_CUE_POINT = "codeCuePointMetadata.CodeCuePoint";
-	const THUMB_CUE_POINT = "thumbCuePointMetadata.thumbCuePoint";
-	const ENTRY = "1";
-	const CATEGORY = "2";
-	const USER = "3";
-	const PARTNER = "4";
-	const DYNAMIC_OBJECT = "5";
+	protected function __construct(Kaltura_Client_Client $client)
+	{
+		parent::__construct($client);
+	}
+
+	/**
+	 * @return Kaltura_Client_ThumbCuePoint_Plugin
+	 */
+	public static function get(Kaltura_Client_Client $client)
+	{
+		return new Kaltura_Client_ThumbCuePoint_Plugin($client);
+	}
+
+	/**
+	 * @return array<Kaltura_Client_ServiceBase>
+	 */
+	public function getServices()
+	{
+		$services = array(
+		);
+		return $services;
+	}
+
+	/**
+	 * @return string
+	 */
+	public function getName()
+	{
+		return 'thumbCuePoint';
+	}
 }
 

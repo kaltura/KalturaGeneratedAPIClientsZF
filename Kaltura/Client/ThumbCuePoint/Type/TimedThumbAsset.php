@@ -31,11 +31,11 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Type_ResponseProfile extends Kaltura_Client_Type_DetachedResponseProfile
+class Kaltura_Client_ThumbCuePoint_Type_TimedThumbAsset extends Kaltura_Client_Type_ThumbAsset
 {
 	public function getKalturaObjectType()
 	{
-		return 'KalturaResponseProfile';
+		return 'KalturaTimedThumbAsset';
 	}
 	
 	public function __construct(SimpleXMLElement $xml = null)
@@ -45,79 +45,17 @@ class Kaltura_Client_Type_ResponseProfile extends Kaltura_Client_Type_DetachedRe
 		if(is_null($xml))
 			return;
 		
-		if(count($xml->id))
-			$this->id = (int)$xml->id;
-		if(count($xml->systemName))
-			$this->systemName = (string)$xml->systemName;
-		if(count($xml->partnerId))
-			$this->partnerId = (int)$xml->partnerId;
-		if(count($xml->createdAt))
-			$this->createdAt = (int)$xml->createdAt;
-		if(count($xml->updatedAt))
-			$this->updatedAt = (int)$xml->updatedAt;
-		if(count($xml->status))
-			$this->status = (int)$xml->status;
-		if(count($xml->version))
-			$this->version = (int)$xml->version;
+		if(count($xml->cuePointId))
+			$this->cuePointId = (string)$xml->cuePointId;
 	}
 	/**
-	 * Auto generated numeric identifier
-	 * 	 
-	 *
-	 * @var int
-	 * @readonly
-	 */
-	public $id = null;
-
-	/**
-	 * Unique system name
+	 * Associated thumb cue point ID
 	 * 	 
 	 *
 	 * @var string
+	 * @insertonly
 	 */
-	public $systemName = null;
-
-	/**
-	 * 
-	 *
-	 * @var int
-	 * @readonly
-	 */
-	public $partnerId = null;
-
-	/**
-	 * Creation time as Unix timestamp (In seconds) 
-	 * 	 
-	 *
-	 * @var int
-	 * @readonly
-	 */
-	public $createdAt = null;
-
-	/**
-	 * Update time as Unix timestamp (In seconds) 
-	 * 	 
-	 *
-	 * @var int
-	 * @readonly
-	 */
-	public $updatedAt = null;
-
-	/**
-	 * 
-	 *
-	 * @var Kaltura_Client_Enum_ResponseProfileStatus
-	 * @readonly
-	 */
-	public $status = null;
-
-	/**
-	 * 
-	 *
-	 * @var int
-	 * @readonly
-	 */
-	public $version = null;
+	public $cuePointId = null;
 
 
 }

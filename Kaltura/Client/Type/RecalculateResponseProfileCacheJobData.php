@@ -31,11 +31,11 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Type_ResponseProfile extends Kaltura_Client_Type_DetachedResponseProfile
+class Kaltura_Client_Type_RecalculateResponseProfileCacheJobData extends Kaltura_Client_Type_RecalculateCacheJobData
 {
 	public function getKalturaObjectType()
 	{
-		return 'KalturaResponseProfile';
+		return 'KalturaRecalculateResponseProfileCacheJobData';
 	}
 	
 	public function __construct(SimpleXMLElement $xml = null)
@@ -45,79 +45,76 @@ class Kaltura_Client_Type_ResponseProfile extends Kaltura_Client_Type_DetachedRe
 		if(is_null($xml))
 			return;
 		
-		if(count($xml->id))
-			$this->id = (int)$xml->id;
-		if(count($xml->systemName))
-			$this->systemName = (string)$xml->systemName;
-		if(count($xml->partnerId))
-			$this->partnerId = (int)$xml->partnerId;
-		if(count($xml->createdAt))
-			$this->createdAt = (int)$xml->createdAt;
-		if(count($xml->updatedAt))
-			$this->updatedAt = (int)$xml->updatedAt;
-		if(count($xml->status))
-			$this->status = (int)$xml->status;
-		if(count($xml->version))
-			$this->version = (int)$xml->version;
+		if(count($xml->protocol))
+			$this->protocol = (string)$xml->protocol;
+		if(count($xml->ksType))
+			$this->ksType = (int)$xml->ksType;
+		if(count($xml->userRoles))
+		{
+			if(empty($xml->userRoles))
+				$this->userRoles = array();
+			else
+				$this->userRoles = Kaltura_Client_ParseUtils::unmarshalArray($xml->userRoles, "KalturaIntegerValue");
+		}
+		if(count($xml->cachedObjectType))
+			$this->cachedObjectType = (string)$xml->cachedObjectType;
+		if(count($xml->objectId))
+			$this->objectId = (string)$xml->objectId;
+		if(count($xml->startObjectKey))
+			$this->startObjectKey = (string)$xml->startObjectKey;
+		if(count($xml->endObjectKey))
+			$this->endObjectKey = (string)$xml->endObjectKey;
 	}
 	/**
-	 * Auto generated numeric identifier
-	 * 	 
-	 *
-	 * @var int
-	 * @readonly
-	 */
-	public $id = null;
-
-	/**
-	 * Unique system name
+	 * http / https
 	 * 	 
 	 *
 	 * @var string
 	 */
-	public $systemName = null;
+	public $protocol = null;
 
 	/**
 	 * 
 	 *
-	 * @var int
-	 * @readonly
+	 * @var Kaltura_Client_Enum_SessionType
 	 */
-	public $partnerId = null;
+	public $ksType = null;
 
 	/**
-	 * Creation time as Unix timestamp (In seconds) 
+	 * 
+	 *
+	 * @var array of KalturaIntegerValue
+	 */
+	public $userRoles;
+
+	/**
+	 * Class name
 	 * 	 
 	 *
-	 * @var int
-	 * @readonly
+	 * @var string
 	 */
-	public $createdAt = null;
-
-	/**
-	 * Update time as Unix timestamp (In seconds) 
-	 * 	 
-	 *
-	 * @var int
-	 * @readonly
-	 */
-	public $updatedAt = null;
+	public $cachedObjectType = null;
 
 	/**
 	 * 
 	 *
-	 * @var Kaltura_Client_Enum_ResponseProfileStatus
-	 * @readonly
+	 * @var string
 	 */
-	public $status = null;
+	public $objectId = null;
 
 	/**
 	 * 
 	 *
-	 * @var int
-	 * @readonly
+	 * @var string
 	 */
-	public $version = null;
+	public $startObjectKey = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $endObjectKey = null;
 
 
 }

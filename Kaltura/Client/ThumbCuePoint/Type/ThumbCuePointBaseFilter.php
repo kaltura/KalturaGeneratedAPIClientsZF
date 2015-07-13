@@ -31,11 +31,11 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Type_ResponseProfile extends Kaltura_Client_Type_DetachedResponseProfile
+abstract class Kaltura_Client_ThumbCuePoint_Type_ThumbCuePointBaseFilter extends Kaltura_Client_CuePoint_Type_CuePointFilter
 {
 	public function getKalturaObjectType()
 	{
-		return 'KalturaResponseProfile';
+		return 'KalturaThumbCuePointBaseFilter';
 	}
 	
 	public function __construct(SimpleXMLElement $xml = null)
@@ -45,79 +45,78 @@ class Kaltura_Client_Type_ResponseProfile extends Kaltura_Client_Type_DetachedRe
 		if(is_null($xml))
 			return;
 		
-		if(count($xml->id))
-			$this->id = (int)$xml->id;
-		if(count($xml->systemName))
-			$this->systemName = (string)$xml->systemName;
-		if(count($xml->partnerId))
-			$this->partnerId = (int)$xml->partnerId;
-		if(count($xml->createdAt))
-			$this->createdAt = (int)$xml->createdAt;
-		if(count($xml->updatedAt))
-			$this->updatedAt = (int)$xml->updatedAt;
-		if(count($xml->status))
-			$this->status = (int)$xml->status;
-		if(count($xml->version))
-			$this->version = (int)$xml->version;
+		if(count($xml->descriptionLike))
+			$this->descriptionLike = (string)$xml->descriptionLike;
+		if(count($xml->descriptionMultiLikeOr))
+			$this->descriptionMultiLikeOr = (string)$xml->descriptionMultiLikeOr;
+		if(count($xml->descriptionMultiLikeAnd))
+			$this->descriptionMultiLikeAnd = (string)$xml->descriptionMultiLikeAnd;
+		if(count($xml->titleLike))
+			$this->titleLike = (string)$xml->titleLike;
+		if(count($xml->titleMultiLikeOr))
+			$this->titleMultiLikeOr = (string)$xml->titleMultiLikeOr;
+		if(count($xml->titleMultiLikeAnd))
+			$this->titleMultiLikeAnd = (string)$xml->titleMultiLikeAnd;
+		if(count($xml->subTypeEqual))
+			$this->subTypeEqual = (int)$xml->subTypeEqual;
+		if(count($xml->subTypeIn))
+			$this->subTypeIn = (string)$xml->subTypeIn;
 	}
 	/**
-	 * Auto generated numeric identifier
-	 * 	 
-	 *
-	 * @var int
-	 * @readonly
-	 */
-	public $id = null;
-
-	/**
-	 * Unique system name
-	 * 	 
+	 * 
 	 *
 	 * @var string
 	 */
-	public $systemName = null;
+	public $descriptionLike = null;
 
 	/**
 	 * 
 	 *
-	 * @var int
-	 * @readonly
+	 * @var string
 	 */
-	public $partnerId = null;
-
-	/**
-	 * Creation time as Unix timestamp (In seconds) 
-	 * 	 
-	 *
-	 * @var int
-	 * @readonly
-	 */
-	public $createdAt = null;
-
-	/**
-	 * Update time as Unix timestamp (In seconds) 
-	 * 	 
-	 *
-	 * @var int
-	 * @readonly
-	 */
-	public $updatedAt = null;
+	public $descriptionMultiLikeOr = null;
 
 	/**
 	 * 
 	 *
-	 * @var Kaltura_Client_Enum_ResponseProfileStatus
-	 * @readonly
+	 * @var string
 	 */
-	public $status = null;
+	public $descriptionMultiLikeAnd = null;
 
 	/**
 	 * 
 	 *
-	 * @var int
-	 * @readonly
+	 * @var string
 	 */
-	public $version = null;
+	public $titleLike = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $titleMultiLikeOr = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $titleMultiLikeAnd = null;
+
+	/**
+	 * 
+	 *
+	 * @var Kaltura_Client_CuePoint_Enum_ThumbCuePointSubType
+	 */
+	public $subTypeEqual = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $subTypeIn = null;
 
 
 }

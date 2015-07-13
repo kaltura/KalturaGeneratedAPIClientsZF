@@ -31,11 +31,11 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Type_ResponseProfile extends Kaltura_Client_Type_DetachedResponseProfile
+class Kaltura_Client_Type_ResponseProfileCacheRecalculateOptions extends Kaltura_Client_ObjectBase
 {
 	public function getKalturaObjectType()
 	{
-		return 'KalturaResponseProfile';
+		return 'KalturaResponseProfileCacheRecalculateOptions';
 	}
 	
 	public function __construct(SimpleXMLElement $xml = null)
@@ -45,79 +45,76 @@ class Kaltura_Client_Type_ResponseProfile extends Kaltura_Client_Type_DetachedRe
 		if(is_null($xml))
 			return;
 		
-		if(count($xml->id))
-			$this->id = (int)$xml->id;
-		if(count($xml->systemName))
-			$this->systemName = (string)$xml->systemName;
-		if(count($xml->partnerId))
-			$this->partnerId = (int)$xml->partnerId;
-		if(count($xml->createdAt))
-			$this->createdAt = (int)$xml->createdAt;
-		if(count($xml->updatedAt))
-			$this->updatedAt = (int)$xml->updatedAt;
-		if(count($xml->status))
-			$this->status = (int)$xml->status;
-		if(count($xml->version))
-			$this->version = (int)$xml->version;
+		if(count($xml->limit))
+			$this->limit = (int)$xml->limit;
+		if(count($xml->cachedObjectType))
+			$this->cachedObjectType = (string)$xml->cachedObjectType;
+		if(count($xml->objectId))
+			$this->objectId = (string)$xml->objectId;
+		if(count($xml->startObjectKey))
+			$this->startObjectKey = (string)$xml->startObjectKey;
+		if(count($xml->endObjectKey))
+			$this->endObjectKey = (string)$xml->endObjectKey;
+		if(count($xml->jobCreatedAt))
+			$this->jobCreatedAt = (int)$xml->jobCreatedAt;
+		if(count($xml->isFirstLoop))
+		{
+			if(!empty($xml->isFirstLoop))
+				$this->isFirstLoop = true;
+			else
+				$this->isFirstLoop = false;
+		}
 	}
 	/**
-	 * Auto generated numeric identifier
+	 * Maximum number of keys to recalculate
 	 * 	 
 	 *
 	 * @var int
-	 * @readonly
 	 */
-	public $id = null;
+	public $limit = null;
 
 	/**
-	 * Unique system name
+	 * Class name
 	 * 	 
 	 *
 	 * @var string
 	 */
-	public $systemName = null;
+	public $cachedObjectType = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $objectId = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $startObjectKey = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $endObjectKey = null;
 
 	/**
 	 * 
 	 *
 	 * @var int
-	 * @readonly
 	 */
-	public $partnerId = null;
-
-	/**
-	 * Creation time as Unix timestamp (In seconds) 
-	 * 	 
-	 *
-	 * @var int
-	 * @readonly
-	 */
-	public $createdAt = null;
-
-	/**
-	 * Update time as Unix timestamp (In seconds) 
-	 * 	 
-	 *
-	 * @var int
-	 * @readonly
-	 */
-	public $updatedAt = null;
+	public $jobCreatedAt = null;
 
 	/**
 	 * 
 	 *
-	 * @var Kaltura_Client_Enum_ResponseProfileStatus
-	 * @readonly
+	 * @var bool
 	 */
-	public $status = null;
-
-	/**
-	 * 
-	 *
-	 * @var int
-	 * @readonly
-	 */
-	public $version = null;
+	public $isFirstLoop = null;
 
 
 }

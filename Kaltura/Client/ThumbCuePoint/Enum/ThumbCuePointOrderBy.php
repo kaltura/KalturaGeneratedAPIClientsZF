@@ -31,16 +31,17 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Metadata_Enum_MetadataObjectType
+class Kaltura_Client_ThumbCuePoint_Enum_ThumbCuePointOrderBy
 {
-	const AD_CUE_POINT = "adCuePointMetadata.AdCuePoint";
-	const ANNOTATION = "annotationMetadata.Annotation";
-	const CODE_CUE_POINT = "codeCuePointMetadata.CodeCuePoint";
-	const THUMB_CUE_POINT = "thumbCuePointMetadata.thumbCuePoint";
-	const ENTRY = "1";
-	const CATEGORY = "2";
-	const USER = "3";
-	const PARTNER = "4";
-	const DYNAMIC_OBJECT = "5";
+	const CREATED_AT_ASC = "+createdAt";
+	const PARTNER_SORT_VALUE_ASC = "+partnerSortValue";
+	const START_TIME_ASC = "+startTime";
+	const TRIGGERED_AT_ASC = "+triggeredAt";
+	const UPDATED_AT_ASC = "+updatedAt";
+	const CREATED_AT_DESC = "-createdAt";
+	const PARTNER_SORT_VALUE_DESC = "-partnerSortValue";
+	const START_TIME_DESC = "-startTime";
+	const TRIGGERED_AT_DESC = "-triggeredAt";
+	const UPDATED_AT_DESC = "-updatedAt";
 }
 

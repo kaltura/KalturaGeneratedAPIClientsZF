@@ -130,4 +130,19 @@ class Kaltura_Client_ResponseProfileService extends Kaltura_Client_ServiceBase
 		$this->client->validateObjectType($resultObject, "Kaltura_Client_Type_ResponseProfileListResponse");
 		return $resultObject;
 	}
+
+	function recalculate(Kaltura_Client_Type_ResponseProfileCacheRecalculateOptions $options)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "options", $options->toParams());
+		$this->client->queueServiceActionCall("responseprofile", "recalculate", "KalturaResponseProfileCacheRecalculateResults", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultXml = $this->client->doQueue();
+		$resultXmlObject = new \SimpleXMLElement($resultXml);
+		Kaltura_Client_ParseUtils::checkIfError($resultXmlObject->result);
+		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaResponseProfileCacheRecalculateResults");
+		$this->client->validateObjectType($resultObject, "Kaltura_Client_Type_ResponseProfileCacheRecalculateResults");
+		return $resultObject;
+	}
 }

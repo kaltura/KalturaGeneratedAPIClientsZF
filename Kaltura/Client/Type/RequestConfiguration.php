@@ -69,7 +69,7 @@ class Kaltura_Client_Type_RequestConfiguration extends Kaltura_Client_ObjectBase
 	public $ks = null;
 
 	/**
-	 * Response profile
+	 * Response profile - this attribute will be automatically unset after every API call.
 	 * 	 
 	 *
 	 * @var Kaltura_Client_Type_BaseResponseProfile

@@ -45,7 +45,16 @@ class Kaltura_Client_Type_UserEntryFilter extends Kaltura_Client_Type_UserEntryB
 		if(is_null($xml))
 			return;
 		
+		if(count($xml->userIdEqualCurrent))
+			$this->userIdEqualCurrent = (int)$xml->userIdEqualCurrent;
 	}
+	/**
+	 * 
+	 *
+	 * @var Kaltura_Client_Enum_NullableBoolean
+	 */
+	public $userIdEqualCurrent = null;
+
 
 }
 

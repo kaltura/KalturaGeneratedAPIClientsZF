@@ -58,7 +58,7 @@ abstract class Kaltura_Client_Type_UserEntryBaseFilter extends Kaltura_Client_Ty
 		if(count($xml->entryIdNotIn))
 			$this->entryIdNotIn = (string)$xml->entryIdNotIn;
 		if(count($xml->userIdEqual))
-			$this->userIdEqual = (int)$xml->userIdEqual;
+			$this->userIdEqual = (string)$xml->userIdEqual;
 		if(count($xml->userIdIn))
 			$this->userIdIn = (string)$xml->userIdIn;
 		if(count($xml->userIdNotIn))
@@ -121,7 +121,7 @@ abstract class Kaltura_Client_Type_UserEntryBaseFilter extends Kaltura_Client_Ty
 	/**
 	 * 
 	 *
-	 * @var int
+	 * @var string
 	 */
 	public $userIdEqual = null;
 
