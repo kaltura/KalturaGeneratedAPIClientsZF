@@ -57,8 +57,8 @@ class Kaltura_Client_Type_EdgeServer extends Kaltura_Client_ObjectBase
 			$this->name = (string)$xml->name;
 		if(count($xml->systemName))
 			$this->systemName = (string)$xml->systemName;
-		if(count($xml->desciption))
-			$this->desciption = (string)$xml->desciption;
+		if(count($xml->description))
+			$this->description = (string)$xml->description;
 		if(count($xml->status))
 			$this->status = (int)$xml->status;
 		if(count($xml->tags))
@@ -126,7 +126,7 @@ class Kaltura_Client_Type_EdgeServer extends Kaltura_Client_ObjectBase
 	 *
 	 * @var string
 	 */
-	public $desciption = null;
+	public $description = null;
 
 	/**
 	 * 
