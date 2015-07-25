@@ -62,6 +62,8 @@ class Kaltura_Client_Enum_Language
 	const DA = "Danish";
 	const NL = "Dutch";
 	const EN = "English";
+	const EN_US = "English (American)";
+	const EN_GB = "English (British)";
 	const EO = "Esperanto";
 	const ET = "Estonian";
 	const FO = "Faeroese";
@@ -80,13 +82,13 @@ class Kaltura_Client_Enum_Language
 	const GN = "Guarani";
 	const GU = "Gujarati";
 	const HA = "Hausa";
-	const IW = "Hebrew";
 	const HE = "Hebrew";
+	const IW = "Hebrew";
 	const HI = "Hindi";
 	const HU = "Hungarian";
 	const IS = "Icelandic";
-	const IN = "Indonesian";
 	const ID = "Indonesian";
+	const IN = "Indonesian";
 	const IA = "Interlingua";
 	const IE = "Interlingue";
 	const IU = "Inuktitut";

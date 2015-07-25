@@ -58,6 +58,8 @@ class Kaltura_Client_Enum_LanguageCode
 	const DZ = "dz";
 	const EL = "el";
 	const EN = "en";
+	const EN_GB = "en_gb";
+	const EN_US = "en_us";
 	const EO = "eo";
 	const ES = "es";
 	const ET = "et";
