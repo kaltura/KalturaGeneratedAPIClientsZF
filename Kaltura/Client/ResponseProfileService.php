@@ -145,4 +145,20 @@ class Kaltura_Client_ResponseProfileService extends Kaltura_Client_ServiceBase
 		$this->client->validateObjectType($resultObject, "Kaltura_Client_Type_ResponseProfileCacheRecalculateResults");
 		return $resultObject;
 	}
+
+	function cloneAction($id, Kaltura_Client_Type_ResponseProfile $profile)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "id", $id);
+		$this->client->addParam($kparams, "profile", $profile->toParams());
+		$this->client->queueServiceActionCall("responseprofile", "clone", "KalturaResponseProfile", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultXml = $this->client->doQueue();
+		$resultXmlObject = new \SimpleXMLElement($resultXml);
+		Kaltura_Client_ParseUtils::checkIfError($resultXmlObject->result);
+		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaResponseProfile");
+		$this->client->validateObjectType($resultObject, "Kaltura_Client_Type_ResponseProfile");
+		return $resultObject;
+	}
 }

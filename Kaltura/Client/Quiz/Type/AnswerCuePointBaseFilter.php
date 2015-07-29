@@ -45,7 +45,25 @@ abstract class Kaltura_Client_Quiz_Type_AnswerCuePointBaseFilter extends Kaltura
 		if(is_null($xml))
 			return;
 		
+		if(count($xml->parentIdEqual))
+			$this->parentIdEqual = (string)$xml->parentIdEqual;
+		if(count($xml->parentIdIn))
+			$this->parentIdIn = (string)$xml->parentIdIn;
 	}
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $parentIdEqual = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $parentIdIn = null;
+
 
 }
 

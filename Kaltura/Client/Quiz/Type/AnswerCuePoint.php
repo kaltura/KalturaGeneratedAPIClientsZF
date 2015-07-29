@@ -53,8 +53,13 @@ class Kaltura_Client_Quiz_Type_AnswerCuePoint extends Kaltura_Client_CuePoint_Ty
 			$this->answerKey = (string)$xml->answerKey;
 		if(count($xml->isCorrect))
 			$this->isCorrect = (int)$xml->isCorrect;
-		if(count($xml->correctAnswerKeys) && !empty($xml->correctAnswerKeys))
-			$this->correctAnswerKeys = Kaltura_Client_ParseUtils::unmarshalObject($xml->correctAnswerKeys, "KalturaTypedArray");
+		if(count($xml->correctAnswerKeys))
+		{
+			if(empty($xml->correctAnswerKeys))
+				$this->correctAnswerKeys = array();
+			else
+				$this->correctAnswerKeys = Kaltura_Client_ParseUtils::unmarshalArray($xml->correctAnswerKeys, "KalturaString");
+		}
 		if(count($xml->explanation))
 			$this->explanation = (string)$xml->explanation;
 	}
@@ -93,7 +98,7 @@ class Kaltura_Client_Quiz_Type_AnswerCuePoint extends Kaltura_Client_CuePoint_Ty
 	 * Array of string
 	 * 	 
 	 *
-	 * @var Kaltura_Client_Type_TypedArray
+	 * @var array of KalturaString
 	 * @readonly
 	 */
 	public $correctAnswerKeys;
