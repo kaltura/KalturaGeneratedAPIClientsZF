@@ -31,13 +31,35 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Enum_SearchConditionComparison
+class Kaltura_Client_Type_SearchMatchCondition extends Kaltura_Client_Type_SearchCondition
 {
-	const EQUAL = "1";
-	const GREATER_THAN = "2";
-	const GREATER_THAN_OR_EQUAL = "3";
-	const LESS_THAN = "4";
-	const LESS_THAN_OR_EQUAL = "5";
-	const NOT_EQUAL = "6";
+	public function getKalturaObjectType()
+	{
+		return 'KalturaSearchMatchCondition';
+	}
+	
+	public function __construct(SimpleXMLElement $xml = null)
+	{
+		parent::__construct($xml);
+		
+		if(is_null($xml))
+			return;
+		
+		if(count($xml->not))
+		{
+			if(!empty($xml->not))
+				$this->not = true;
+			else
+				$this->not = false;
+		}
+	}
+	/**
+	 * 
+	 *
+	 * @var bool
+	 */
+	public $not = null;
+
+
 }
 

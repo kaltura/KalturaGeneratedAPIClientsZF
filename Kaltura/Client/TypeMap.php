@@ -674,6 +674,7 @@ class Kaltura_Client_TypeMap
 		'KalturaSearchComparableCondition' => 'Kaltura_Client_Type_SearchComparableCondition',
 		'KalturaSearchCondition' => 'Kaltura_Client_Type_SearchCondition',
 		'KalturaSearchItem' => 'Kaltura_Client_Type_SearchItem',
+		'KalturaSearchMatchCondition' => 'Kaltura_Client_Type_SearchMatchCondition',
 		'KalturaSearchOperator' => 'Kaltura_Client_Type_SearchOperator',
 		'KalturaSearchResult' => 'Kaltura_Client_Type_SearchResult',
 		'KalturaSearchResultResponse' => 'Kaltura_Client_Type_SearchResultResponse',
