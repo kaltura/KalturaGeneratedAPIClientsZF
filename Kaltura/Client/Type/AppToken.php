@@ -67,8 +67,6 @@ class Kaltura_Client_Type_AppToken extends Kaltura_Client_ObjectBase
 			$this->sessionDuration = (int)$xml->sessionDuration;
 		if(count($xml->sessionPrivileges))
 			$this->sessionPrivileges = (string)$xml->sessionPrivileges;
-		if(count($xml->hashType))
-			$this->hashType = (string)$xml->hashType;
 	}
 	/**
 	 * The id of the application token
@@ -162,13 +160,6 @@ class Kaltura_Client_Type_AppToken extends Kaltura_Client_ObjectBase
 	 * @var string
 	 */
 	public $sessionPrivileges = null;
-
-	/**
-	 * 
-	 *
-	 * @var Kaltura_Client_Enum_AppTokenHashType
-	 */
-	public $hashType = null;
 
 
 }
