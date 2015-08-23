@@ -27,48 +27,43 @@
 // @ignore
 // ===================================================================================================
 
+
 /**
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Integration_Plugin extends Kaltura_Client_Plugin
+class Kaltura_Client_Integration_IntegrationService extends Kaltura_Client_ServiceBase
 {
-	/**
-	 * @var Kaltura_Client_Integration_IntegrationService
-	 */
-	public $integration = null;
-
-	protected function __construct(Kaltura_Client_Client $client)
+	function __construct(Kaltura_Client_Client $client = null)
 	{
 		parent::__construct($client);
-		$this->integration = new Kaltura_Client_Integration_IntegrationService($client);
 	}
 
-	/**
-	 * @return Kaltura_Client_Integration_Plugin
-	 */
-	public static function get(Kaltura_Client_Client $client)
+	function dispatch(Kaltura_Client_Integration_Type_IntegrationJobData $data, $objectType, $objectId)
 	{
-		return new Kaltura_Client_Integration_Plugin($client);
+		$kparams = array();
+		$this->client->addParam($kparams, "data", $data->toParams());
+		$this->client->addParam($kparams, "objectType", $objectType);
+		$this->client->addParam($kparams, "objectId", $objectId);
+		$this->client->queueServiceActionCall("integration_integration", "dispatch", null, $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultXml = $this->client->doQueue();
+		$resultXmlObject = new \SimpleXMLElement($resultXml);
+		Kaltura_Client_ParseUtils::checkIfError($resultXmlObject->result);
+		$resultObject = (int)Kaltura_Client_ParseUtils::unmarshalSimpleType($resultXmlObject->result);
+		return $resultObject;
 	}
 
-	/**
-	 * @return array<Kaltura_Client_ServiceBase>
-	 */
-	public function getServices()
+	function notify($id)
 	{
-		$services = array(
-			'integration' => $this->integration,
-		);
-		return $services;
-	}
-
-	/**
-	 * @return string
-	 */
-	public function getName()
-	{
-		return 'integration';
+		$kparams = array();
+		$this->client->addParam($kparams, "id", $id);
+		$this->client->queueServiceActionCall("integration_integration", "notify", null, $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultXml = $this->client->doQueue();
+		$resultXmlObject = new \SimpleXMLElement($resultXml);
+		Kaltura_Client_ParseUtils::checkIfError($resultXmlObject->result);
 	}
 }
-

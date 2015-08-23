@@ -46,6 +46,7 @@ class Kaltura_Client_Enum_BatchJobType
 	const DROP_FOLDER_CONTENT_PROCESSOR = "dropFolder.DropFolderContentProcessor";
 	const DROP_FOLDER_WATCHER = "dropFolder.DropFolderWatcher";
 	const EVENT_NOTIFICATION_HANDLER = "eventNotification.EventNotificationHandler";
+	const INTEGRATION = "integration.Integration";
 	const SCHEDULED_TASK = "scheduledTask.ScheduledTask";
 	const INDEX_TAGS = "tagSearch.IndexTagsByPrivacyContext";
 	const TAG_RESOLVE = "tagSearch.TagResolve";

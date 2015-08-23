@@ -31,44 +31,16 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Integration_Plugin extends Kaltura_Client_Plugin
+class Kaltura_Client_Enum_BatchJobObjectType
 {
-	/**
-	 * @var Kaltura_Client_Integration_IntegrationService
-	 */
-	public $integration = null;
-
-	protected function __construct(Kaltura_Client_Client $client)
-	{
-		parent::__construct($client);
-		$this->integration = new Kaltura_Client_Integration_IntegrationService($client);
-	}
-
-	/**
-	 * @return Kaltura_Client_Integration_Plugin
-	 */
-	public static function get(Kaltura_Client_Client $client)
-	{
-		return new Kaltura_Client_Integration_Plugin($client);
-	}
-
-	/**
-	 * @return array<Kaltura_Client_ServiceBase>
-	 */
-	public function getServices()
-	{
-		$services = array(
-			'integration' => $this->integration,
-		);
-		return $services;
-	}
-
-	/**
-	 * @return string
-	 */
-	public function getName()
-	{
-		return 'integration';
-	}
+	const ENTRY_DISTRIBUTION = "contentDistribution.EntryDistribution";
+	const DROP_FOLDER_FILE = "dropFolderXmlBulkUpload.DropFolderFile";
+	const METADATA = "metadata.Metadata";
+	const METADATA_PROFILE = "metadata.MetadataProfile";
+	const SCHEDULED_TASK_PROFILE = "scheduledTask.ScheduledTaskProfile";
+	const ENTRY = "1";
+	const CATEGORY = "2";
+	const FILE_SYNC = "3";
+	const ASSET = "4";
 }
 
