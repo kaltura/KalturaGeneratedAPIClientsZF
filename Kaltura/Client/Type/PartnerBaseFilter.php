@@ -69,6 +69,8 @@ abstract class Kaltura_Client_Type_PartnerBaseFilter extends Kaltura_Client_Type
 			$this->partnerPackageGreaterThanOrEqual = (int)$xml->partnerPackageGreaterThanOrEqual;
 		if(count($xml->partnerPackageLessThanOrEqual))
 			$this->partnerPackageLessThanOrEqual = (int)$xml->partnerPackageLessThanOrEqual;
+		if(count($xml->partnerPackageIn))
+			$this->partnerPackageIn = (string)$xml->partnerPackageIn;
 		if(count($xml->partnerGroupTypeEqual))
 			$this->partnerGroupTypeEqual = (int)$xml->partnerGroupTypeEqual;
 		if(count($xml->partnerNameDescriptionWebsiteAdminNameAdminEmailLike))
@@ -157,6 +159,13 @@ abstract class Kaltura_Client_Type_PartnerBaseFilter extends Kaltura_Client_Type
 	 * @var int
 	 */
 	public $partnerPackageLessThanOrEqual = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $partnerPackageIn = null;
 
 	/**
 	 * 

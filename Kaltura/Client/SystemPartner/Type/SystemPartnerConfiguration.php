@@ -239,6 +239,13 @@ class Kaltura_Client_SystemPartner_Type_SystemPartnerConfiguration extends Kaltu
 			$this->audioThumbEntryId = (string)$xml->audioThumbEntryId;
 		if(count($xml->liveThumbEntryId))
 			$this->liveThumbEntryId = (string)$xml->liveThumbEntryId;
+		if(count($xml->timeAlignedRenditions))
+		{
+			if(!empty($xml->timeAlignedRenditions))
+				$this->timeAlignedRenditions = true;
+			else
+				$this->timeAlignedRenditions = false;
+		}
 	}
 	/**
 	 * 
@@ -677,6 +684,13 @@ class Kaltura_Client_SystemPartner_Type_SystemPartnerConfiguration extends Kaltu
 	 * @var string
 	 */
 	public $liveThumbEntryId = null;
+
+	/**
+	 * 
+	 *
+	 * @var bool
+	 */
+	public $timeAlignedRenditions = null;
 
 
 }

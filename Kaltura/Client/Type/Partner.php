@@ -184,6 +184,13 @@ class Kaltura_Client_Type_Partner extends Kaltura_Client_ObjectBase
 			$this->crmId = (string)$xml->crmId;
 		if(count($xml->referenceId))
 			$this->referenceId = (string)$xml->referenceId;
+		if(count($xml->timeAlignedRenditions))
+		{
+			if(!empty($xml->timeAlignedRenditions))
+				$this->timeAlignedRenditions = true;
+			else
+				$this->timeAlignedRenditions = false;
+		}
 	}
 	/**
 	 * 
@@ -577,6 +584,14 @@ class Kaltura_Client_Type_Partner extends Kaltura_Client_ObjectBase
 	 * @var string
 	 */
 	public $referenceId = null;
+
+	/**
+	 * 
+	 *
+	 * @var bool
+	 * @readonly
+	 */
+	public $timeAlignedRenditions = null;
 
 
 }
