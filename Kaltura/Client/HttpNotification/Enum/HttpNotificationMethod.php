@@ -31,7 +31,7 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_HttpNotification_Enum_HttpNotificationMethod
+class Kaltura_Client_HttpNotification_Enum_HttpNotificationMethod extends Kaltura_Client_EnumBase
 {
 	const GET = 1;
 	const POST = 2;

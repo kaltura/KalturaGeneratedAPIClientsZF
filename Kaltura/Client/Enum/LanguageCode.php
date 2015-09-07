@@ -31,7 +31,7 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Enum_LanguageCode
+class Kaltura_Client_Enum_LanguageCode extends Kaltura_Client_EnumBase
 {
 	const AA = "aa";
 	const AB = "ab";

@@ -31,7 +31,7 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Enum_UiConfObjType
+class Kaltura_Client_Enum_UiConfObjType extends Kaltura_Client_EnumBase
 {
 	const PLAYER = 1;
 	const CONTRIBUTION_WIZARD = 2;

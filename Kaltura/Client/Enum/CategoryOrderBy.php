@@ -31,7 +31,7 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Enum_CategoryOrderBy
+class Kaltura_Client_Enum_CategoryOrderBy extends Kaltura_Client_EnumBase
 {
 	const CREATED_AT_ASC = "+createdAt";
 	const DEPTH_ASC = "+depth";

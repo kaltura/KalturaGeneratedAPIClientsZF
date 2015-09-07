@@ -31,7 +31,7 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Enum_UploadTokenStatus
+class Kaltura_Client_Enum_UploadTokenStatus extends Kaltura_Client_EnumBase
 {
 	const PENDING = 0;
 	const PARTIAL_UPLOAD = 1;

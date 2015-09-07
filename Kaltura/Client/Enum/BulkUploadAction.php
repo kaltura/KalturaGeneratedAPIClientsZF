@@ -31,7 +31,7 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Enum_BulkUploadAction
+class Kaltura_Client_Enum_BulkUploadAction extends Kaltura_Client_EnumBase
 {
 	const ADD = "1";
 	const UPDATE = "2";

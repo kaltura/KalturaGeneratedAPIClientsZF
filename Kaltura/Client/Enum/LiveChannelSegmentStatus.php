@@ -31,7 +31,7 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Enum_LiveChannelSegmentStatus
+class Kaltura_Client_Enum_LiveChannelSegmentStatus extends Kaltura_Client_EnumBase
 {
 	const ACTIVE = "2";
 	const DELETED = "3";

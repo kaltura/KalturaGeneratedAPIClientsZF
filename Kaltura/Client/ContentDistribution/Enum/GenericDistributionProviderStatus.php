@@ -31,7 +31,7 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_ContentDistribution_Enum_GenericDistributionProviderStatus
+class Kaltura_Client_ContentDistribution_Enum_GenericDistributionProviderStatus extends Kaltura_Client_EnumBase
 {
 	const ACTIVE = 2;
 	const DELETED = 3;

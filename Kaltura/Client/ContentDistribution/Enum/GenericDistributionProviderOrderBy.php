@@ -31,7 +31,7 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_ContentDistribution_Enum_GenericDistributionProviderOrderBy
+class Kaltura_Client_ContentDistribution_Enum_GenericDistributionProviderOrderBy extends Kaltura_Client_EnumBase
 {
 	const CREATED_AT_ASC = "+createdAt";
 	const UPDATED_AT_ASC = "+updatedAt";

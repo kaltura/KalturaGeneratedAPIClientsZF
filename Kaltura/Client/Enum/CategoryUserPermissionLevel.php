@@ -31,7 +31,7 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Enum_CategoryUserPermissionLevel
+class Kaltura_Client_Enum_CategoryUserPermissionLevel extends Kaltura_Client_EnumBase
 {
 	const MANAGER = 0;
 	const MODERATOR = 1;

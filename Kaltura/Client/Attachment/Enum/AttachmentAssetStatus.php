@@ -31,7 +31,7 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Attachment_Enum_AttachmentAssetStatus
+class Kaltura_Client_Attachment_Enum_AttachmentAssetStatus extends Kaltura_Client_EnumBase
 {
 	const ERROR = -1;
 	const QUEUED = 0;

@@ -31,7 +31,7 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Enum_MediaFlavorParamsOutputOrderBy
+class Kaltura_Client_Enum_MediaFlavorParamsOutputOrderBy extends Kaltura_Client_EnumBase
 {
 }
 

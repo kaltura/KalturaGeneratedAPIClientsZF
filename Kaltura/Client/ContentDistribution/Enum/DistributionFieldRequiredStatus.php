@@ -31,7 +31,7 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_ContentDistribution_Enum_DistributionFieldRequiredStatus
+class Kaltura_Client_ContentDistribution_Enum_DistributionFieldRequiredStatus extends Kaltura_Client_EnumBase
 {
 	const NOT_REQUIRED = 0;
 	const REQUIRED_BY_PROVIDER = 1;

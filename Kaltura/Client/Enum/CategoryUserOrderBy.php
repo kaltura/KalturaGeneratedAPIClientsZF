@@ -31,7 +31,7 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Enum_CategoryUserOrderBy
+class Kaltura_Client_Enum_CategoryUserOrderBy extends Kaltura_Client_EnumBase
 {
 	const CREATED_AT_ASC = "+createdAt";
 	const UPDATED_AT_ASC = "+updatedAt";

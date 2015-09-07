@@ -31,7 +31,7 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Enum_ConversionProfileStatus
+class Kaltura_Client_Enum_ConversionProfileStatus extends Kaltura_Client_EnumBase
 {
 	const DISABLED = "1";
 	const ENABLED = "2";

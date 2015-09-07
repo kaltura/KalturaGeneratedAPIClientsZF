@@ -31,7 +31,7 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Enum_BitRateMode
+class Kaltura_Client_Enum_BitRateMode extends Kaltura_Client_EnumBase
 {
 	const CBR = 1;
 	const VBR = 2;

@@ -31,7 +31,7 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Enum_ResponseType
+class Kaltura_Client_Enum_ResponseType extends Kaltura_Client_EnumBase
 {
 	const RESPONSE_TYPE_JSON = 1;
 	const RESPONSE_TYPE_XML = 2;

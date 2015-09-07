@@ -31,7 +31,7 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Enum_GoogleVideoSyndicationFeedOrderBy
+class Kaltura_Client_Enum_GoogleVideoSyndicationFeedOrderBy extends Kaltura_Client_EnumBase
 {
 	const CREATED_AT_ASC = "+createdAt";
 	const NAME_ASC = "+name";

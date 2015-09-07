@@ -31,7 +31,7 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Enum_AudioCodec
+class Kaltura_Client_Enum_AudioCodec extends Kaltura_Client_EnumBase
 {
 	const NONE = "";
 	const AAC = "aac";

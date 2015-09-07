@@ -31,7 +31,7 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Enum_NotificationObjectType
+class Kaltura_Client_Enum_NotificationObjectType extends Kaltura_Client_EnumBase
 {
 	const ENTRY = 1;
 	const KSHOW = 2;

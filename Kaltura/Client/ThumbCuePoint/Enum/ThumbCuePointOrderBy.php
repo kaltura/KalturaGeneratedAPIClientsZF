@@ -31,7 +31,7 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_ThumbCuePoint_Enum_ThumbCuePointOrderBy
+class Kaltura_Client_ThumbCuePoint_Enum_ThumbCuePointOrderBy extends Kaltura_Client_EnumBase
 {
 	const CREATED_AT_ASC = "+createdAt";
 	const PARTNER_SORT_VALUE_ASC = "+partnerSortValue";

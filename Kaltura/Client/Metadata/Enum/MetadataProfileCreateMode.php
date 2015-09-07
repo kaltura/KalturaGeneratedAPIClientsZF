@@ -31,7 +31,7 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Metadata_Enum_MetadataProfileCreateMode
+class Kaltura_Client_Metadata_Enum_MetadataProfileCreateMode extends Kaltura_Client_EnumBase
 {
 	const API = 1;
 	const KMC = 2;

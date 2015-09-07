@@ -31,7 +31,7 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Enum_SearchProviderType
+class Kaltura_Client_Enum_SearchProviderType extends Kaltura_Client_EnumBase
 {
 	const FLICKR = 3;
 	const YOUTUBE = 4;

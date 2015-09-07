@@ -31,7 +31,7 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_EventNotification_Enum_EventNotificationEventType
+class Kaltura_Client_EventNotification_Enum_EventNotificationEventType extends Kaltura_Client_EnumBase
 {
 	const BATCH_JOB_STATUS = "1";
 	const OBJECT_ADDED = "2";

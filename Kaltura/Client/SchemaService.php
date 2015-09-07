@@ -41,6 +41,9 @@ class Kaltura_Client_SchemaService extends Kaltura_Client_ServiceBase
 
 	function serve($type)
 	{
+		if ($this->client->isMultiRequest())
+			throw new Kaltura_Client_ClientException("Action is not supported as part of multi-request.", Kaltura_Client_ClientException::ERROR_ACTION_IN_MULTIREQUEST);
+		
 		$kparams = array();
 		$this->client->addParam($kparams, "type", $type);
 		$this->client->queueServiceActionCall('schema', 'serve', null, $kparams);

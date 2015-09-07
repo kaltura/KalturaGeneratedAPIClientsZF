@@ -31,7 +31,7 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_CuePoint_Enum_CuePointStatus
+class Kaltura_Client_CuePoint_Enum_CuePointStatus extends Kaltura_Client_EnumBase
 {
 	const READY = 1;
 	const DELETED = 2;

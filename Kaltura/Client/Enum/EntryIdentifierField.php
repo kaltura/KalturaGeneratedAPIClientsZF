@@ -31,7 +31,7 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Enum_EntryIdentifierField
+class Kaltura_Client_Enum_EntryIdentifierField extends Kaltura_Client_EnumBase
 {
 	const ID = "id";
 	const REFERENCE_ID = "referenceId";

@@ -31,7 +31,7 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Enum_BaseSyndicationFeedOrderBy
+class Kaltura_Client_Enum_BaseSyndicationFeedOrderBy extends Kaltura_Client_EnumBase
 {
 	const CREATED_AT_ASC = "+createdAt";
 	const NAME_ASC = "+name";

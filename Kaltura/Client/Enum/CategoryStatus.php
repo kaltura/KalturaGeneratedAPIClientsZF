@@ -31,7 +31,7 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Enum_CategoryStatus
+class Kaltura_Client_Enum_CategoryStatus extends Kaltura_Client_EnumBase
 {
 	const UPDATING = 1;
 	const ACTIVE = 2;

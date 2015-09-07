@@ -31,7 +31,7 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Enum_CommercialUseType
+class Kaltura_Client_Enum_CommercialUseType extends Kaltura_Client_EnumBase
 {
 	const NON_COMMERCIAL_USE = 0;
 	const COMMERCIAL_USE = 1;

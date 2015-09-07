@@ -31,7 +31,7 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_AdCuePoint_Enum_AdProtocolType
+class Kaltura_Client_AdCuePoint_Enum_AdProtocolType extends Kaltura_Client_EnumBase
 {
 	const CUSTOM = "0";
 	const VAST = "1";

@@ -31,7 +31,7 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_AdminConsole_Enum_TrackEntryEventType
+class Kaltura_Client_AdminConsole_Enum_TrackEntryEventType extends Kaltura_Client_EnumBase
 {
 	const UPLOADED_FILE = 1;
 	const WEBCAM_COMPLETED = 2;

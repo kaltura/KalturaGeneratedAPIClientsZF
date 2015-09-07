@@ -31,7 +31,7 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Enum_DataEntryMatchAttribute
+class Kaltura_Client_Enum_DataEntryMatchAttribute extends Kaltura_Client_EnumBase
 {
 	const ADMIN_TAGS = "adminTags";
 	const CATEGORIES_IDS = "categoriesIds";

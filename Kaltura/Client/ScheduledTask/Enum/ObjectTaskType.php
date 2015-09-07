@@ -31,7 +31,7 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_ScheduledTask_Enum_ObjectTaskType
+class Kaltura_Client_ScheduledTask_Enum_ObjectTaskType extends Kaltura_Client_EnumBase
 {
 	const DISTRIBUTE = "scheduledTaskContentDistribution.Distribute";
 	const DISPATCH_EVENT_NOTIFICATION = "scheduledTaskEventNotification.DispatchEventNotification";

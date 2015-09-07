@@ -31,7 +31,7 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Caption_Enum_CaptionParamsOrderBy
+class Kaltura_Client_Caption_Enum_CaptionParamsOrderBy extends Kaltura_Client_EnumBase
 {
 }
 

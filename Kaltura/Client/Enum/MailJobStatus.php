@@ -31,7 +31,7 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Enum_MailJobStatus
+class Kaltura_Client_Enum_MailJobStatus extends Kaltura_Client_EnumBase
 {
 	const PENDING = 1;
 	const SENT = 2;

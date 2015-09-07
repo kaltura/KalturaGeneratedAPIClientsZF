@@ -89,6 +89,9 @@ class Kaltura_Client_Caption_CaptionAssetService extends Kaltura_Client_ServiceB
 
 	function serveByEntryId($entryId, $captionParamId = null)
 	{
+		if ($this->client->isMultiRequest())
+			throw new Kaltura_Client_ClientException("Action is not supported as part of multi-request.", Kaltura_Client_ClientException::ERROR_ACTION_IN_MULTIREQUEST);
+		
 		$kparams = array();
 		$this->client->addParam($kparams, "entryId", $entryId);
 		$this->client->addParam($kparams, "captionParamId", $captionParamId);
@@ -129,6 +132,9 @@ class Kaltura_Client_Caption_CaptionAssetService extends Kaltura_Client_ServiceB
 
 	function serve($captionAssetId)
 	{
+		if ($this->client->isMultiRequest())
+			throw new Kaltura_Client_ClientException("Action is not supported as part of multi-request.", Kaltura_Client_ClientException::ERROR_ACTION_IN_MULTIREQUEST);
+		
 		$kparams = array();
 		$this->client->addParam($kparams, "captionAssetId", $captionAssetId);
 		$this->client->queueServiceActionCall('caption_captionasset', 'serve', null, $kparams);
@@ -138,6 +144,9 @@ class Kaltura_Client_Caption_CaptionAssetService extends Kaltura_Client_ServiceB
 
 	function serveWebVTT($captionAssetId, $segmentDuration = 30, $segmentIndex = null, $localTimestamp = 10000)
 	{
+		if ($this->client->isMultiRequest())
+			throw new Kaltura_Client_ClientException("Action is not supported as part of multi-request.", Kaltura_Client_ClientException::ERROR_ACTION_IN_MULTIREQUEST);
+		
 		$kparams = array();
 		$this->client->addParam($kparams, "captionAssetId", $captionAssetId);
 		$this->client->addParam($kparams, "segmentDuration", $segmentDuration);

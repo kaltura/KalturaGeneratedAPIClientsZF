@@ -31,7 +31,7 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Enum_ThumbParamsOrderBy
+class Kaltura_Client_Enum_ThumbParamsOrderBy extends Kaltura_Client_EnumBase
 {
 }
 

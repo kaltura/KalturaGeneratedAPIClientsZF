@@ -31,7 +31,7 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Enum_PermissionType
+class Kaltura_Client_Enum_PermissionType extends Kaltura_Client_EnumBase
 {
 	const NORMAL = 1;
 	const SPECIAL_FEATURE = 2;

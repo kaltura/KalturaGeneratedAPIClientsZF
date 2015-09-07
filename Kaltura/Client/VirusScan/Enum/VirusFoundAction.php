@@ -31,7 +31,7 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_VirusScan_Enum_VirusFoundAction
+class Kaltura_Client_VirusScan_Enum_VirusFoundAction extends Kaltura_Client_EnumBase
 {
 	const NONE = 0;
 	const DELETE = 1;

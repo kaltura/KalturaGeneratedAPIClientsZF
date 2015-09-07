@@ -31,7 +31,7 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Enum_IpAddressRestrictionType
+class Kaltura_Client_Enum_IpAddressRestrictionType extends Kaltura_Client_EnumBase
 {
 	const RESTRICT_LIST = 0;
 	const ALLOW_LIST = 1;

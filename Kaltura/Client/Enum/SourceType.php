@@ -31,7 +31,7 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Enum_SourceType
+class Kaltura_Client_Enum_SourceType extends Kaltura_Client_EnumBase
 {
 	const VELOCIX_LIVE = "velocix.VELOCIX_LIVE";
 	const FILE = "1";

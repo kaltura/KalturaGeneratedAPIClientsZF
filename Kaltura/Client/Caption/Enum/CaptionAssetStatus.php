@@ -31,7 +31,7 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Caption_Enum_CaptionAssetStatus
+class Kaltura_Client_Caption_Enum_CaptionAssetStatus extends Kaltura_Client_EnumBase
 {
 	const ERROR = -1;
 	const QUEUED = 0;

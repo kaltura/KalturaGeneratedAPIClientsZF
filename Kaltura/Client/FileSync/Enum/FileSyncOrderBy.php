@@ -31,7 +31,7 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_FileSync_Enum_FileSyncOrderBy
+class Kaltura_Client_FileSync_Enum_FileSyncOrderBy extends Kaltura_Client_EnumBase
 {
 	const CREATED_AT_ASC = "+createdAt";
 	const FILE_SIZE_ASC = "+fileSize";

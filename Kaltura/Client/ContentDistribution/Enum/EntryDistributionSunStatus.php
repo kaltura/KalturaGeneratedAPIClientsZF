@@ -31,7 +31,7 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_ContentDistribution_Enum_EntryDistributionSunStatus
+class Kaltura_Client_ContentDistribution_Enum_EntryDistributionSunStatus extends Kaltura_Client_EnumBase
 {
 	const BEFORE_SUNRISE = 1;
 	const AFTER_SUNRISE = 2;

@@ -31,7 +31,7 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Enum_ModerationObjectType
+class Kaltura_Client_Enum_ModerationObjectType extends Kaltura_Client_EnumBase
 {
 	const ENTRY = "2";
 	const USER = "3";

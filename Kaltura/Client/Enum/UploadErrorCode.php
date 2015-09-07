@@ -31,7 +31,7 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Enum_UploadErrorCode
+class Kaltura_Client_Enum_UploadErrorCode extends Kaltura_Client_EnumBase
 {
 	const NO_ERROR = 0;
 	const GENERAL_ERROR = 1;

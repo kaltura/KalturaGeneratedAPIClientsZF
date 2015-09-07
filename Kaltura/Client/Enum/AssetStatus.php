@@ -31,7 +31,7 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Enum_AssetStatus
+class Kaltura_Client_Enum_AssetStatus extends Kaltura_Client_EnumBase
 {
 	const ERROR = -1;
 	const QUEUED = 0;

@@ -31,7 +31,7 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Enum_FeatureStatusType
+class Kaltura_Client_Enum_FeatureStatusType extends Kaltura_Client_EnumBase
 {
 	const LOCK_CATEGORY = 1;
 	const CATEGORY = 2;

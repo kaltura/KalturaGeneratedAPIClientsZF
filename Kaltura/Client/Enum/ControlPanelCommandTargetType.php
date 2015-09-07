@@ -31,7 +31,7 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Enum_ControlPanelCommandTargetType
+class Kaltura_Client_Enum_ControlPanelCommandTargetType extends Kaltura_Client_EnumBase
 {
 	const DATA_CENTER = 1;
 	const SCHEDULER = 2;

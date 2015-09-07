@@ -31,7 +31,7 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Document_Enum_ImageFlavorParamsOutputOrderBy
+class Kaltura_Client_Document_Enum_ImageFlavorParamsOutputOrderBy extends Kaltura_Client_EnumBase
 {
 }
 

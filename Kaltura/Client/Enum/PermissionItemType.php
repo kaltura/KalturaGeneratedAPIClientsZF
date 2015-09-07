@@ -31,7 +31,7 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Enum_PermissionItemType
+class Kaltura_Client_Enum_PermissionItemType extends Kaltura_Client_EnumBase
 {
 	const API_ACTION_ITEM = "kApiActionPermissionItem";
 	const API_PARAMETER_ITEM = "kApiParameterPermissionItem";

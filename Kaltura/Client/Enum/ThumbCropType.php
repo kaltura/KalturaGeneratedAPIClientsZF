@@ -31,7 +31,7 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Enum_ThumbCropType
+class Kaltura_Client_Enum_ThumbCropType extends Kaltura_Client_EnumBase
 {
 	const RESIZE = 1;
 	const RESIZE_WITH_PADDING = 2;

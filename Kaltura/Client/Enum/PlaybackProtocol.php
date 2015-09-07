@@ -31,7 +31,7 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Enum_PlaybackProtocol
+class Kaltura_Client_Enum_PlaybackProtocol extends Kaltura_Client_EnumBase
 {
 	const APPLE_HTTP = "applehttp";
 	const APPLE_HTTP_TO_MC = "applehttp_to_mc";

@@ -31,7 +31,7 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Integration_Enum_IntegrationTriggerType
+class Kaltura_Client_Integration_Enum_IntegrationTriggerType extends Kaltura_Client_EnumBase
 {
 	const MANUAL = "1";
 }

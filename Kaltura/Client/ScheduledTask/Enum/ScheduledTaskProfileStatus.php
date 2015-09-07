@@ -31,7 +31,7 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_ScheduledTask_Enum_ScheduledTaskProfileStatus
+class Kaltura_Client_ScheduledTask_Enum_ScheduledTaskProfileStatus extends Kaltura_Client_EnumBase
 {
 	const DISABLED = 1;
 	const ACTIVE = 2;

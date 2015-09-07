@@ -118,6 +118,9 @@ class Kaltura_Client_DataService extends Kaltura_Client_ServiceBase
 
 	function serve($entryId, $version = -1, $forceProxy = false)
 	{
+		if ($this->client->isMultiRequest())
+			throw new Kaltura_Client_ClientException("Action is not supported as part of multi-request.", Kaltura_Client_ClientException::ERROR_ACTION_IN_MULTIREQUEST);
+		
 		$kparams = array();
 		$this->client->addParam($kparams, "entryId", $entryId);
 		$this->client->addParam($kparams, "version", $version);

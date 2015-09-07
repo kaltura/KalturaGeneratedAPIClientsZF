@@ -72,6 +72,9 @@ class Kaltura_Client_CuePoint_CuePointService extends Kaltura_Client_ServiceBase
 
 	function serveBulk(Kaltura_Client_CuePoint_Type_CuePointFilter $filter = null, Kaltura_Client_Type_FilterPager $pager = null)
 	{
+		if ($this->client->isMultiRequest())
+			throw new Kaltura_Client_ClientException("Action is not supported as part of multi-request.", Kaltura_Client_ClientException::ERROR_ACTION_IN_MULTIREQUEST);
+		
 		$kparams = array();
 		if ($filter !== null)
 			$this->client->addParam($kparams, "filter", $filter->toParams());

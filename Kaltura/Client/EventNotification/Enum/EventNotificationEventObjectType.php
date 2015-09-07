@@ -31,7 +31,7 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_EventNotification_Enum_EventNotificationEventObjectType
+class Kaltura_Client_EventNotification_Enum_EventNotificationEventObjectType extends Kaltura_Client_EnumBase
 {
 	const AD_CUE_POINT = "adCuePointEventNotifications.AdCuePoint";
 	const ANNOTATION = "annotationEventNotifications.Annotation";

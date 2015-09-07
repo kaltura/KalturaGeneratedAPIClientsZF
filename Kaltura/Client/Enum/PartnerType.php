@@ -31,7 +31,7 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Enum_PartnerType
+class Kaltura_Client_Enum_PartnerType extends Kaltura_Client_EnumBase
 {
 	const KMC = 1;
 	const WIKI = 100;

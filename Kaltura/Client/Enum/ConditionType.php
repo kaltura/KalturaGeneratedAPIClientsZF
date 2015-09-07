@@ -31,7 +31,7 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Enum_ConditionType
+class Kaltura_Client_Enum_ConditionType extends Kaltura_Client_EnumBase
 {
 	const EVENT_NOTIFICATION_FIELD = "eventNotification.BooleanField";
 	const EVENT_NOTIFICATION_OBJECT_CHANGED = "eventNotification.ObjectChanged";

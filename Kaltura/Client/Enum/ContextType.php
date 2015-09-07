@@ -31,7 +31,7 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Enum_ContextType
+class Kaltura_Client_Enum_ContextType extends Kaltura_Client_EnumBase
 {
 	const PLAY = "1";
 	const DOWNLOAD = "2";

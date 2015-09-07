@@ -31,7 +31,7 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Enum_AssetType
+class Kaltura_Client_Enum_AssetType extends Kaltura_Client_EnumBase
 {
 	const ATTACHMENT = "attachment.Attachment";
 	const CAPTION = "caption.Caption";

@@ -31,7 +31,7 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Enum_UserEntryType
+class Kaltura_Client_Enum_UserEntryType extends Kaltura_Client_EnumBase
 {
 	const QUIZ = "quiz.QUIZ";
 }

@@ -31,7 +31,7 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Document_Enum_DocumentType
+class Kaltura_Client_Document_Enum_DocumentType extends Kaltura_Client_EnumBase
 {
 	const DOCUMENT = 11;
 	const SWF = 12;

@@ -31,7 +31,7 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_FileSync_Enum_FileSyncType
+class Kaltura_Client_FileSync_Enum_FileSyncType extends Kaltura_Client_EnumBase
 {
 	const FILE = 1;
 	const LINK = 2;

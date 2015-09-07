@@ -31,7 +31,7 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Enum_LicenseType
+class Kaltura_Client_Enum_LicenseType extends Kaltura_Client_EnumBase
 {
 	const UNKNOWN = -1;
 	const NONE = 0;

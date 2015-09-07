@@ -31,7 +31,7 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Integration_Enum_IntegrationProviderType
+class Kaltura_Client_Integration_Enum_IntegrationProviderType extends Kaltura_Client_EnumBase
 {
 	const VOICEBASE = "voicebase.Voicebase";
 }

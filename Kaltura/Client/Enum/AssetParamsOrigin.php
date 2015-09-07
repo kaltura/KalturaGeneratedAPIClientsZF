@@ -31,7 +31,7 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Enum_AssetParamsOrigin
+class Kaltura_Client_Enum_AssetParamsOrigin extends Kaltura_Client_EnumBase
 {
 	const CONVERT = 0;
 	const INGEST = 1;

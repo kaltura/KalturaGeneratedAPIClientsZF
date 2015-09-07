@@ -31,7 +31,7 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_ContentDistribution_Enum_DistributionErrorType
+class Kaltura_Client_ContentDistribution_Enum_DistributionErrorType extends Kaltura_Client_EnumBase
 {
 	const MISSING_FLAVOR = 1;
 	const MISSING_THUMBNAIL = 2;

@@ -31,7 +31,7 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Enum_MediaServerIndex
+class Kaltura_Client_Enum_MediaServerIndex extends Kaltura_Client_EnumBase
 {
 	const PRIMARY = 0;
 	const SECONDARY = 1;

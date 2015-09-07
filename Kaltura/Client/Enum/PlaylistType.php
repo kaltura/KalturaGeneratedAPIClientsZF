@@ -31,7 +31,7 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Enum_PlaylistType
+class Kaltura_Client_Enum_PlaylistType extends Kaltura_Client_EnumBase
 {
 	const STATIC_LIST = 3;
 	const DYNAMIC = 10;

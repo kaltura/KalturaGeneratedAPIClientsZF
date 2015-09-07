@@ -31,7 +31,7 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_ShortLink_Enum_ShortLinkStatus
+class Kaltura_Client_ShortLink_Enum_ShortLinkStatus extends Kaltura_Client_EnumBase
 {
 	const DISABLED = 1;
 	const ENABLED = 2;

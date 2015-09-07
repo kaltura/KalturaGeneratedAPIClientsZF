@@ -31,7 +31,7 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Enum_PartnerStatus
+class Kaltura_Client_Enum_PartnerStatus extends Kaltura_Client_EnumBase
 {
 	const DELETED = 0;
 	const ACTIVE = 1;

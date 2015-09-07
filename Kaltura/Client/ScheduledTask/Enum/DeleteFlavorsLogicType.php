@@ -31,7 +31,7 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_ScheduledTask_Enum_DeleteFlavorsLogicType
+class Kaltura_Client_ScheduledTask_Enum_DeleteFlavorsLogicType extends Kaltura_Client_EnumBase
 {
 	const KEEP_LIST_DELETE_OTHERS = 1;
 	const DELETE_LIST = 2;

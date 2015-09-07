@@ -31,7 +31,7 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Enum_LiveStreamAdminEntryCompareAttribute
+class Kaltura_Client_Enum_LiveStreamAdminEntryCompareAttribute extends Kaltura_Client_EnumBase
 {
 	const ACCESS_CONTROL_ID = "accessControlId";
 	const CREATED_AT = "createdAt";

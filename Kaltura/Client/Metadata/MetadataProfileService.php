@@ -221,6 +221,9 @@ class Kaltura_Client_Metadata_MetadataProfileService extends Kaltura_Client_Serv
 
 	function serve($id)
 	{
+		if ($this->client->isMultiRequest())
+			throw new Kaltura_Client_ClientException("Action is not supported as part of multi-request.", Kaltura_Client_ClientException::ERROR_ACTION_IN_MULTIREQUEST);
+		
 		$kparams = array();
 		$this->client->addParam($kparams, "id", $id);
 		$this->client->queueServiceActionCall('metadata_metadataprofile', 'serve', null, $kparams);
@@ -230,6 +233,9 @@ class Kaltura_Client_Metadata_MetadataProfileService extends Kaltura_Client_Serv
 
 	function serveView($id)
 	{
+		if ($this->client->isMultiRequest())
+			throw new Kaltura_Client_ClientException("Action is not supported as part of multi-request.", Kaltura_Client_ClientException::ERROR_ACTION_IN_MULTIREQUEST);
+		
 		$kparams = array();
 		$this->client->addParam($kparams, "id", $id);
 		$this->client->queueServiceActionCall('metadata_metadataprofile', 'serveView', null, $kparams);

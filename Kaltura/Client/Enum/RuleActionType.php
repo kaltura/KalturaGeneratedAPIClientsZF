@@ -31,7 +31,7 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Enum_RuleActionType
+class Kaltura_Client_Enum_RuleActionType extends Kaltura_Client_EnumBase
 {
 	const BLOCK = "1";
 	const PREVIEW = "2";

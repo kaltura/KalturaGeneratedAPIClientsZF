@@ -31,7 +31,7 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_ScheduledTask_Enum_ObjectFilterEngineType
+class Kaltura_Client_ScheduledTask_Enum_ObjectFilterEngineType extends Kaltura_Client_EnumBase
 {
 	const ENTRY = "1";
 }

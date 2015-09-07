@@ -31,7 +31,7 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Enum_UpdateMethodType
+class Kaltura_Client_Enum_UpdateMethodType extends Kaltura_Client_EnumBase
 {
 	const MANUAL = 0;
 	const AUTOMATIC = 1;

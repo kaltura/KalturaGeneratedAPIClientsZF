@@ -31,7 +31,7 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Enum_AkamaiUniversalStreamType
+class Kaltura_Client_Enum_AkamaiUniversalStreamType extends Kaltura_Client_EnumBase
 {
 	const HD_IPHONE_IPAD_LIVE = "HD iPhone/iPad Live";
 	const UNIVERSAL_STREAMING_LIVE = "Universal Streaming Live";

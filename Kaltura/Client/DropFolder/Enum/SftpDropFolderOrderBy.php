@@ -31,7 +31,7 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_DropFolder_Enum_SftpDropFolderOrderBy
+class Kaltura_Client_DropFolder_Enum_SftpDropFolderOrderBy extends Kaltura_Client_EnumBase
 {
 	const CREATED_AT_ASC = "+createdAt";
 	const ID_ASC = "+id";

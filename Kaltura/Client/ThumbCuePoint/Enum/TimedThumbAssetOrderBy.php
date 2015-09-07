@@ -31,7 +31,7 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_ThumbCuePoint_Enum_TimedThumbAssetOrderBy
+class Kaltura_Client_ThumbCuePoint_Enum_TimedThumbAssetOrderBy extends Kaltura_Client_EnumBase
 {
 	const CREATED_AT_ASC = "+createdAt";
 	const DELETED_AT_ASC = "+deletedAt";

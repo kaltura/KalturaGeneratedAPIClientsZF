@@ -31,7 +31,7 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Enum_ITunesSyndicationFeedCategories
+class Kaltura_Client_Enum_ITunesSyndicationFeedCategories extends Kaltura_Client_EnumBase
 {
 	const ARTS = "Arts";
 	const ARTS_DESIGN = "Arts/Design";

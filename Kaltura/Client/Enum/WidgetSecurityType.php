@@ -31,7 +31,7 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Enum_WidgetSecurityType
+class Kaltura_Client_Enum_WidgetSecurityType extends Kaltura_Client_EnumBase
 {
 	const NONE = 1;
 	const TIMEHASH = 2;

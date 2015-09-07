@@ -31,7 +31,7 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Enum_FileAssetObjectType
+class Kaltura_Client_Enum_FileAssetObjectType extends Kaltura_Client_EnumBase
 {
 	const UI_CONF = "2";
 }

@@ -31,7 +31,7 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Enum_ContainerFormat
+class Kaltura_Client_Enum_ContainerFormat extends Kaltura_Client_EnumBase
 {
 	const _3GP = "3gp";
 	const APPLEHTTP = "applehttp";

@@ -31,7 +31,7 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Enum_SyndicationFeedType
+class Kaltura_Client_Enum_SyndicationFeedType extends Kaltura_Client_EnumBase
 {
 	const GOOGLE_VIDEO = 1;
 	const YAHOO = 2;

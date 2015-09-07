@@ -31,7 +31,7 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Enum_UserLoginDataOrderBy
+class Kaltura_Client_Enum_UserLoginDataOrderBy extends Kaltura_Client_EnumBase
 {
 }
 

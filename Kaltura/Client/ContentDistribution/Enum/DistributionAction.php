@@ -31,7 +31,7 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_ContentDistribution_Enum_DistributionAction
+class Kaltura_Client_ContentDistribution_Enum_DistributionAction extends Kaltura_Client_EnumBase
 {
 	const SUBMIT = 1;
 	const UPDATE = 2;

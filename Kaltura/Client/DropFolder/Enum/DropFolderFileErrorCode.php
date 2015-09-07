@@ -31,7 +31,7 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_DropFolder_Enum_DropFolderFileErrorCode
+class Kaltura_Client_DropFolder_Enum_DropFolderFileErrorCode extends Kaltura_Client_EnumBase
 {
 	const ERROR_ADDING_BULK_UPLOAD = "dropFolderXmlBulkUpload.ERROR_ADDING_BULK_UPLOAD";
 	const ERROR_ADD_CONTENT_RESOURCE = "dropFolderXmlBulkUpload.ERROR_ADD_CONTENT_RESOURCE";

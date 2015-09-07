@@ -31,7 +31,7 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Enum_SearchOperatorType
+class Kaltura_Client_Enum_SearchOperatorType extends Kaltura_Client_EnumBase
 {
 	const SEARCH_AND = 1;
 	const SEARCH_OR = 2;

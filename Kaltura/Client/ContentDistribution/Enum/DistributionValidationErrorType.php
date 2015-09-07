@@ -31,7 +31,7 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_ContentDistribution_Enum_DistributionValidationErrorType
+class Kaltura_Client_ContentDistribution_Enum_DistributionValidationErrorType extends Kaltura_Client_EnumBase
 {
 	const CUSTOM_ERROR = 0;
 	const STRING_EMPTY = 1;

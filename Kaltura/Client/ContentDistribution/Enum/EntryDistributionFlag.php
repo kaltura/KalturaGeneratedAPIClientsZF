@@ -31,7 +31,7 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_ContentDistribution_Enum_EntryDistributionFlag
+class Kaltura_Client_ContentDistribution_Enum_EntryDistributionFlag extends Kaltura_Client_EnumBase
 {
 	const NONE = 0;
 	const SUBMIT_REQUIRED = 1;

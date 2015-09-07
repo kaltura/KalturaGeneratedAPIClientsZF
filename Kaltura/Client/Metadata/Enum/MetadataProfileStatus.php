@@ -31,7 +31,7 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Metadata_Enum_MetadataProfileStatus
+class Kaltura_Client_Metadata_Enum_MetadataProfileStatus extends Kaltura_Client_EnumBase
 {
 	const ACTIVE = 1;
 	const DEPRECATED = 2;

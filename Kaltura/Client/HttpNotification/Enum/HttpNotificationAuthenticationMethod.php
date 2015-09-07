@@ -31,7 +31,7 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_HttpNotification_Enum_HttpNotificationAuthenticationMethod
+class Kaltura_Client_HttpNotification_Enum_HttpNotificationAuthenticationMethod extends Kaltura_Client_EnumBase
 {
 	const ANYSAFE = -18;
 	const ANY = -17;

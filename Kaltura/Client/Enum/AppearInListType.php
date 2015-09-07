@@ -31,7 +31,7 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Enum_AppearInListType
+class Kaltura_Client_Enum_AppearInListType extends Kaltura_Client_EnumBase
 {
 	const PARTNER_ONLY = 1;
 	const CATEGORY_MEMBERS_ONLY = 3;

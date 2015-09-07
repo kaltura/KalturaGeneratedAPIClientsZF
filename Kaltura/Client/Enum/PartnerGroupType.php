@@ -31,7 +31,7 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Enum_PartnerGroupType
+class Kaltura_Client_Enum_PartnerGroupType extends Kaltura_Client_EnumBase
 {
 	const PUBLISHER = 1;
 	const VAR_GROUP = 2;

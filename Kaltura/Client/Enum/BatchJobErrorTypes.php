@@ -31,7 +31,7 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Enum_BatchJobErrorTypes
+class Kaltura_Client_Enum_BatchJobErrorTypes extends Kaltura_Client_EnumBase
 {
 	const APP = 0;
 	const RUNTIME = 1;

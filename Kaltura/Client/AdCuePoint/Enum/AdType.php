@@ -31,7 +31,7 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_AdCuePoint_Enum_AdType
+class Kaltura_Client_AdCuePoint_Enum_AdType extends Kaltura_Client_EnumBase
 {
 	const VIDEO = "1";
 	const OVERLAY = "2";

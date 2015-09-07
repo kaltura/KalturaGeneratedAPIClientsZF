@@ -31,7 +31,7 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Enum_SyndicationFeedEntriesOrderBy
+class Kaltura_Client_Enum_SyndicationFeedEntriesOrderBy extends Kaltura_Client_EnumBase
 {
 	const CREATED_AT_DESC = "-createdAt";
 	const RECENT = "recent";

@@ -31,7 +31,7 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_EmailNotification_Enum_EmailNotificationRecipientProviderType
+class Kaltura_Client_EmailNotification_Enum_EmailNotificationRecipientProviderType extends Kaltura_Client_EnumBase
 {
 	const STATIC_LIST = "1";
 	const CATEGORY = "2";

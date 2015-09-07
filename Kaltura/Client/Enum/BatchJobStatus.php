@@ -31,7 +31,7 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Enum_BatchJobStatus
+class Kaltura_Client_Enum_BatchJobStatus extends Kaltura_Client_EnumBase
 {
 	const PENDING = 0;
 	const QUEUED = 1;

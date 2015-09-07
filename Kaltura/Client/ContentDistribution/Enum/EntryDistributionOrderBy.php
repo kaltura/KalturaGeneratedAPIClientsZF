@@ -31,7 +31,7 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_ContentDistribution_Enum_EntryDistributionOrderBy
+class Kaltura_Client_ContentDistribution_Enum_EntryDistributionOrderBy extends Kaltura_Client_EnumBase
 {
 	const CREATED_AT_ASC = "+createdAt";
 	const SUBMITTED_AT_ASC = "+submittedAt";

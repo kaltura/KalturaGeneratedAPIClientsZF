@@ -31,7 +31,7 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Metadata_Enum_MetadataOrderBy
+class Kaltura_Client_Metadata_Enum_MetadataOrderBy extends Kaltura_Client_EnumBase
 {
 	const CREATED_AT_ASC = "+createdAt";
 	const METADATA_PROFILE_VERSION_ASC = "+metadataProfileVersion";

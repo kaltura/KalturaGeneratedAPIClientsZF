@@ -31,7 +31,7 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Enum_StatsFeatureType
+class Kaltura_Client_Enum_StatsFeatureType extends Kaltura_Client_EnumBase
 {
 	const NONE = 0;
 	const RELATED = 1;

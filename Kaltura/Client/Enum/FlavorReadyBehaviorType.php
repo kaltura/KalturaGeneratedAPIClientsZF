@@ -31,7 +31,7 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Enum_FlavorReadyBehaviorType
+class Kaltura_Client_Enum_FlavorReadyBehaviorType extends Kaltura_Client_EnumBase
 {
 	const NO_IMPACT = 0;
 	const INHERIT_FLAVOR_PARAMS = 0;

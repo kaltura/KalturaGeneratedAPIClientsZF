@@ -31,7 +31,7 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_FileSync_Enum_FileSyncStatus
+class Kaltura_Client_FileSync_Enum_FileSyncStatus extends Kaltura_Client_EnumBase
 {
 	const ERROR = -1;
 	const PENDING = 1;

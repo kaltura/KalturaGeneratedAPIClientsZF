@@ -31,7 +31,7 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Enum_StorageProfileProtocol
+class Kaltura_Client_Enum_StorageProfileProtocol extends Kaltura_Client_EnumBase
 {
 	const KONTIKI = "kontiki.KONTIKI";
 	const KALTURA_DC = "0";

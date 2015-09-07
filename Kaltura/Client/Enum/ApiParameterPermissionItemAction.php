@@ -31,7 +31,7 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Enum_ApiParameterPermissionItemAction
+class Kaltura_Client_Enum_ApiParameterPermissionItemAction extends Kaltura_Client_EnumBase
 {
 	const USAGE = "all";
 	const INSERT = "insert";

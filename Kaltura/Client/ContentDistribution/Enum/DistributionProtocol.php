@@ -31,7 +31,7 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_ContentDistribution_Enum_DistributionProtocol
+class Kaltura_Client_ContentDistribution_Enum_DistributionProtocol extends Kaltura_Client_EnumBase
 {
 	const FTP = 1;
 	const SCP = 2;

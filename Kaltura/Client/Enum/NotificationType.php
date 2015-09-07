@@ -31,7 +31,7 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Enum_NotificationType
+class Kaltura_Client_Enum_NotificationType extends Kaltura_Client_EnumBase
 {
 	const ENTRY_ADD = 1;
 	const ENTR_UPDATE_PERMISSIONS = 2;

@@ -31,7 +31,7 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Enum_Language
+class Kaltura_Client_Enum_Language extends Kaltura_Client_EnumBase
 {
 	const AB = "Abkhazian";
 	const AA = "Afar";

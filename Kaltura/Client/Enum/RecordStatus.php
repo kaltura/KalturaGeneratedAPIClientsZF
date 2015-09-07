@@ -31,7 +31,7 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Enum_RecordStatus
+class Kaltura_Client_Enum_RecordStatus extends Kaltura_Client_EnumBase
 {
 	const DISABLED = 0;
 	const APPENDED = 1;

@@ -31,7 +31,7 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Metadata_Enum_MetadataObjectType
+class Kaltura_Client_Metadata_Enum_MetadataObjectType extends Kaltura_Client_EnumBase
 {
 	const AD_CUE_POINT = "adCuePointMetadata.AdCuePoint";
 	const ANNOTATION = "annotationMetadata.Annotation";

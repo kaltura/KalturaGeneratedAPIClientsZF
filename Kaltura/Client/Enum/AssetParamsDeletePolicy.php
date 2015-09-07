@@ -31,7 +31,7 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Enum_AssetParamsDeletePolicy
+class Kaltura_Client_Enum_AssetParamsDeletePolicy extends Kaltura_Client_EnumBase
 {
 	const KEEP = 0;
 	const DELETE = 1;

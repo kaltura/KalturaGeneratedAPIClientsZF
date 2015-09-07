@@ -31,7 +31,7 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_CodeCuePoint_Enum_CodeCuePointOrderBy
+class Kaltura_Client_CodeCuePoint_Enum_CodeCuePointOrderBy extends Kaltura_Client_EnumBase
 {
 	const CREATED_AT_ASC = "+createdAt";
 	const DURATION_ASC = "+duration";

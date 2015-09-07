@@ -31,7 +31,7 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Enum_NullableBoolean
+class Kaltura_Client_Enum_NullableBoolean extends Kaltura_Client_EnumBase
 {
 	const NULL_VALUE = -1;
 	const FALSE_VALUE = 0;

@@ -31,7 +31,7 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Enum_ITunesSyndicationFeedAdultValues
+class Kaltura_Client_Enum_ITunesSyndicationFeedAdultValues extends Kaltura_Client_EnumBase
 {
 	const CLEAN = "clean";
 	const NO = "no";

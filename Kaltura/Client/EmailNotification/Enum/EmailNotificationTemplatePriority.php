@@ -31,7 +31,7 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_EmailNotification_Enum_EmailNotificationTemplatePriority
+class Kaltura_Client_EmailNotification_Enum_EmailNotificationTemplatePriority extends Kaltura_Client_EnumBase
 {
 	const HIGH = 1;
 	const NORMAL = 3;

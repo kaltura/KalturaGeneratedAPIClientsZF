@@ -31,7 +31,7 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Enum_ReportType
+class Kaltura_Client_Enum_ReportType extends Kaltura_Client_EnumBase
 {
 	const QUIZ = "quiz.QUIZ";
 	const QUIZ_AGGREGATE_BY_QUESTION = "quiz.QUIZ_AGGREGATE_BY_QUESTION";

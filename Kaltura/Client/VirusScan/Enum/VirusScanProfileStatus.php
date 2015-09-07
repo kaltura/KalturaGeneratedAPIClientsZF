@@ -31,7 +31,7 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_VirusScan_Enum_VirusScanProfileStatus
+class Kaltura_Client_VirusScan_Enum_VirusScanProfileStatus extends Kaltura_Client_EnumBase
 {
 	const DISABLED = 1;
 	const ENABLED = 2;

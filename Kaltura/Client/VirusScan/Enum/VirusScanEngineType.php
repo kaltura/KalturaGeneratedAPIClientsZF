@@ -31,7 +31,7 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_VirusScan_Enum_VirusScanEngineType
+class Kaltura_Client_VirusScan_Enum_VirusScanEngineType extends Kaltura_Client_EnumBase
 {
 	const CLAMAV_SCAN_ENGINE = "clamAVScanEngine.ClamAV";
 }

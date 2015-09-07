@@ -31,7 +31,7 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Enum_EntryStatus
+class Kaltura_Client_Enum_EntryStatus extends Kaltura_Client_EnumBase
 {
 	const ERROR_IMPORTING = "-2";
 	const ERROR_CONVERTING = "-1";

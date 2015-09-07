@@ -31,7 +31,7 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Enum_ReportInterval
+class Kaltura_Client_Enum_ReportInterval extends Kaltura_Client_EnumBase
 {
 	const DAYS = "days";
 	const MONTHS = "months";

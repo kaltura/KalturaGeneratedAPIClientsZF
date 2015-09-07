@@ -31,7 +31,7 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_DropFolder_Enum_DropFolderStatus
+class Kaltura_Client_DropFolder_Enum_DropFolderStatus extends Kaltura_Client_EnumBase
 {
 	const DISABLED = 0;
 	const ENABLED = 1;

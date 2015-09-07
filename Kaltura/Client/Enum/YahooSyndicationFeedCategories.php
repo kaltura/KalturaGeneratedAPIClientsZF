@@ -31,7 +31,7 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Enum_YahooSyndicationFeedCategories
+class Kaltura_Client_Enum_YahooSyndicationFeedCategories extends Kaltura_Client_EnumBase
 {
 	const ACTION = "Action";
 	const ANIMALS = "Animals";

@@ -175,6 +175,7 @@ class Kaltura_Client_TypeMap
 		'KalturaCategoryUserFilter' => 'Kaltura_Client_Type_CategoryUserFilter',
 		'KalturaCategoryUserListResponse' => 'Kaltura_Client_Type_CategoryUserListResponse',
 		'KalturaCategoryUserProviderFilter' => 'Kaltura_Client_EmailNotification_Type_CategoryUserProviderFilter',
+		'KalturaCielo24JobProviderData' => 'Kaltura_Client_Cielo24_Type_Cielo24JobProviderData',
 		'KalturaClientConfiguration' => 'Kaltura_Client_Type_ClientConfiguration',
 		'KalturaClientNotification' => 'Kaltura_Client_Type_ClientNotification',
 		'KalturaClipAttributes' => 'Kaltura_Client_Type_ClipAttributes',

@@ -203,6 +203,9 @@ class Kaltura_Client_Document_DocumentsService extends Kaltura_Client_ServiceBas
 
 	function serve($entryId, $flavorAssetId = null, $forceProxy = false)
 	{
+		if ($this->client->isMultiRequest())
+			throw new Kaltura_Client_ClientException("Action is not supported as part of multi-request.", Kaltura_Client_ClientException::ERROR_ACTION_IN_MULTIREQUEST);
+		
 		$kparams = array();
 		$this->client->addParam($kparams, "entryId", $entryId);
 		$this->client->addParam($kparams, "flavorAssetId", $flavorAssetId);
@@ -214,6 +217,9 @@ class Kaltura_Client_Document_DocumentsService extends Kaltura_Client_ServiceBas
 
 	function serveByFlavorParamsId($entryId, $flavorParamsId = null, $forceProxy = false)
 	{
+		if ($this->client->isMultiRequest())
+			throw new Kaltura_Client_ClientException("Action is not supported as part of multi-request.", Kaltura_Client_ClientException::ERROR_ACTION_IN_MULTIREQUEST);
+		
 		$kparams = array();
 		$this->client->addParam($kparams, "entryId", $entryId);
 		$this->client->addParam($kparams, "flavorParamsId", $flavorParamsId);

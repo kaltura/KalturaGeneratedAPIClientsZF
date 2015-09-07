@@ -31,7 +31,7 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Enum_BatchJobOrderBy
+class Kaltura_Client_Enum_BatchJobOrderBy extends Kaltura_Client_EnumBase
 {
 	const CREATED_AT_ASC = "+createdAt";
 	const ESTIMATED_EFFORT_ASC = "+estimatedEffort";

@@ -31,7 +31,7 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_EmailNotification_Enum_EmailNotificationFormat
+class Kaltura_Client_EmailNotification_Enum_EmailNotificationFormat extends Kaltura_Client_EnumBase
 {
 	const HTML = "1";
 	const TEXT = "2";

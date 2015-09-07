@@ -31,7 +31,7 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_SystemPartner_Enum_SystemPartnerLimitType
+class Kaltura_Client_SystemPartner_Enum_SystemPartnerLimitType extends Kaltura_Client_EnumBase
 {
 	const ACCESS_CONTROLS = "ACCESS_CONTROLS";
 	const ADMIN_LOGIN_USERS = "ADMIN_LOGIN_USERS";

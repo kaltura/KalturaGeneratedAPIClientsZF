@@ -31,7 +31,7 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Enum_MediaInfoOrderBy
+class Kaltura_Client_Enum_MediaInfoOrderBy extends Kaltura_Client_EnumBase
 {
 }
 

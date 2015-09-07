@@ -31,7 +31,7 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Enum_CategoryIdentifierField
+class Kaltura_Client_Enum_CategoryIdentifierField extends Kaltura_Client_EnumBase
 {
 	const FULL_NAME = "fullName";
 	const ID = "id";

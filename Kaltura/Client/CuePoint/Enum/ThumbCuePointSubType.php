@@ -31,7 +31,7 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_CuePoint_Enum_ThumbCuePointSubType
+class Kaltura_Client_CuePoint_Enum_ThumbCuePointSubType extends Kaltura_Client_EnumBase
 {
 	const SLIDE = 1;
 	const CHAPTER = 2;

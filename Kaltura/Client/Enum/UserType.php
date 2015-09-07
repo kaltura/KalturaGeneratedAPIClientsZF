@@ -31,7 +31,7 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Enum_UserType
+class Kaltura_Client_Enum_UserType extends Kaltura_Client_EnumBase
 {
 	const USER = 0;
 	const GROUP = 1;

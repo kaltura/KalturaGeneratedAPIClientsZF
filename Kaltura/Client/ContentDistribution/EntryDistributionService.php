@@ -208,6 +208,9 @@ class Kaltura_Client_ContentDistribution_EntryDistributionService extends Kaltur
 
 	function serveSentData($id, $actionType)
 	{
+		if ($this->client->isMultiRequest())
+			throw new Kaltura_Client_ClientException("Action is not supported as part of multi-request.", Kaltura_Client_ClientException::ERROR_ACTION_IN_MULTIREQUEST);
+		
 		$kparams = array();
 		$this->client->addParam($kparams, "id", $id);
 		$this->client->addParam($kparams, "actionType", $actionType);
@@ -218,6 +221,9 @@ class Kaltura_Client_ContentDistribution_EntryDistributionService extends Kaltur
 
 	function serveReturnedData($id, $actionType)
 	{
+		if ($this->client->isMultiRequest())
+			throw new Kaltura_Client_ClientException("Action is not supported as part of multi-request.", Kaltura_Client_ClientException::ERROR_ACTION_IN_MULTIREQUEST);
+		
 		$kparams = array();
 		$this->client->addParam($kparams, "id", $id);
 		$this->client->addParam($kparams, "actionType", $actionType);

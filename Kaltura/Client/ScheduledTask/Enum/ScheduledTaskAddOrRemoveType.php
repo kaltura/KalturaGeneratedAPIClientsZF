@@ -31,7 +31,7 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_ScheduledTask_Enum_ScheduledTaskAddOrRemoveType
+class Kaltura_Client_ScheduledTask_Enum_ScheduledTaskAddOrRemoveType extends Kaltura_Client_EnumBase
 {
 	const ADD = 1;
 	const REMOVE = 2;

@@ -31,7 +31,7 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Document_Enum_DocumentEntryOrderBy
+class Kaltura_Client_Document_Enum_DocumentEntryOrderBy extends Kaltura_Client_EnumBase
 {
 	const CREATED_AT_ASC = "+createdAt";
 	const END_DATE_ASC = "+endDate";

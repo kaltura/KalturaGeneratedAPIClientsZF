@@ -31,7 +31,7 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Enum_VideoCodec
+class Kaltura_Client_Enum_VideoCodec extends Kaltura_Client_EnumBase
 {
 	const NONE = "";
 	const APCH = "apch";

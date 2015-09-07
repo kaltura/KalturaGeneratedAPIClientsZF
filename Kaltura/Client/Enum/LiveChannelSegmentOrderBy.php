@@ -31,7 +31,7 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Enum_LiveChannelSegmentOrderBy
+class Kaltura_Client_Enum_LiveChannelSegmentOrderBy extends Kaltura_Client_EnumBase
 {
 	const CREATED_AT_ASC = "+createdAt";
 	const START_TIME_ASC = "+startTime";

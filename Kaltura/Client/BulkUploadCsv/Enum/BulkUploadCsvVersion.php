@@ -31,7 +31,7 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_BulkUploadCsv_Enum_BulkUploadCsvVersion
+class Kaltura_Client_BulkUploadCsv_Enum_BulkUploadCsvVersion extends Kaltura_Client_EnumBase
 {
 	const V1 = 1;
 	const V2 = 2;

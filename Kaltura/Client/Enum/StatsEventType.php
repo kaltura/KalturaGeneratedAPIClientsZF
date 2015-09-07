@@ -31,7 +31,7 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Enum_StatsEventType
+class Kaltura_Client_Enum_StatsEventType extends Kaltura_Client_EnumBase
 {
 	const WIDGET_LOADED = 1;
 	const MEDIA_LOADED = 2;

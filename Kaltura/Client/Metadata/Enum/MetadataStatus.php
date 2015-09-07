@@ -31,7 +31,7 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Metadata_Enum_MetadataStatus
+class Kaltura_Client_Metadata_Enum_MetadataStatus extends Kaltura_Client_EnumBase
 {
 	const VALID = 1;
 	const INVALID = 2;

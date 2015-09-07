@@ -31,7 +31,7 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Enum_LiveChannelSegmentType
+class Kaltura_Client_Enum_LiveChannelSegmentType extends Kaltura_Client_EnumBase
 {
 	const VIDEO_AND_AUDIO = "1";
 }

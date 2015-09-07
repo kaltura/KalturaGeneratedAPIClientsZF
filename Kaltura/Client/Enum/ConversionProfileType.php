@@ -31,7 +31,7 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Enum_ConversionProfileType
+class Kaltura_Client_Enum_ConversionProfileType extends Kaltura_Client_EnumBase
 {
 	const MEDIA = "1";
 	const LIVE_STREAM = "2";

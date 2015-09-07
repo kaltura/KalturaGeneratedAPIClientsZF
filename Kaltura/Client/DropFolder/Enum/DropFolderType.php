@@ -31,7 +31,7 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_DropFolder_Enum_DropFolderType
+class Kaltura_Client_DropFolder_Enum_DropFolderType extends Kaltura_Client_EnumBase
 {
 	const FEED = "FeedDropFolder.FEED";
 	const LOCAL = "1";

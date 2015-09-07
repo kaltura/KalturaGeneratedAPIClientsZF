@@ -31,7 +31,7 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Enum_LiveReportType
+class Kaltura_Client_Enum_LiveReportType extends Kaltura_Client_EnumBase
 {
 	const ENTRY_GEO_TIME_LINE = "ENTRY_GEO_TIME_LINE";
 	const ENTRY_SYNDICATION_TOTAL = "ENTRY_SYNDICATION_TOTAL";

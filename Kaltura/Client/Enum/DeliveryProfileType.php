@@ -31,7 +31,7 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Enum_DeliveryProfileType
+class Kaltura_Client_Enum_DeliveryProfileType extends Kaltura_Client_EnumBase
 {
 	const EDGE_CAST_HTTP = "edgeCast.EDGE_CAST_HTTP";
 	const EDGE_CAST_RTMP = "edgeCast.EDGE_CAST_RTMP";

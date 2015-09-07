@@ -31,7 +31,7 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Enum_LiveChannelSegmentTriggerType
+class Kaltura_Client_Enum_LiveChannelSegmentTriggerType extends Kaltura_Client_EnumBase
 {
 	const CHANNEL_RELATIVE = "1";
 	const ABSOLUTE_TIME = "2";

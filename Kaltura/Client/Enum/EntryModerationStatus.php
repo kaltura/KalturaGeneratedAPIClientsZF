@@ -31,7 +31,7 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Enum_EntryModerationStatus
+class Kaltura_Client_Enum_EntryModerationStatus extends Kaltura_Client_EnumBase
 {
 	const PENDING_MODERATION = 1;
 	const APPROVED = 2;

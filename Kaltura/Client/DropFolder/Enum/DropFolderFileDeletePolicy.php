@@ -31,7 +31,7 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_DropFolder_Enum_DropFolderFileDeletePolicy
+class Kaltura_Client_DropFolder_Enum_DropFolderFileDeletePolicy extends Kaltura_Client_EnumBase
 {
 	const MANUAL_DELETE = 1;
 	const AUTO_DELETE = 2;

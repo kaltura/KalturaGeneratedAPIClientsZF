@@ -31,7 +31,7 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Enum_BulkUploadOrderBy
+class Kaltura_Client_Enum_BulkUploadOrderBy extends Kaltura_Client_EnumBase
 {
 }
 

@@ -99,6 +99,9 @@ class Kaltura_Client_FileAssetService extends Kaltura_Client_ServiceBase
 
 	function serve($id)
 	{
+		if ($this->client->isMultiRequest())
+			throw new Kaltura_Client_ClientException("Action is not supported as part of multi-request.", Kaltura_Client_ClientException::ERROR_ACTION_IN_MULTIREQUEST);
+		
 		$kparams = array();
 		$this->client->addParam($kparams, "id", $id);
 		$this->client->queueServiceActionCall('fileasset', 'serve', null, $kparams);

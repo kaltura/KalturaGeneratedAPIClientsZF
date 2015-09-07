@@ -31,7 +31,7 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_VirusScan_Enum_VirusScanJobResult
+class Kaltura_Client_VirusScan_Enum_VirusScanJobResult extends Kaltura_Client_EnumBase
 {
 	const SCAN_ERROR = 1;
 	const FILE_IS_CLEAN = 2;

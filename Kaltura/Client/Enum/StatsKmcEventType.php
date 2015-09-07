@@ -31,7 +31,7 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Enum_StatsKmcEventType
+class Kaltura_Client_Enum_StatsKmcEventType extends Kaltura_Client_EnumBase
 {
 	const CONTENT_PAGE_VIEW = 1001;
 	const CONTENT_ADD_PLAYLIST = 1010;

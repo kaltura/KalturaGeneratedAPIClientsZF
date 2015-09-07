@@ -31,7 +31,7 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Enum_UserEntryStatus
+class Kaltura_Client_Enum_UserEntryStatus extends Kaltura_Client_EnumBase
 {
 	const QUIZ_SUBMITTED = "quiz.3";
 	const ACTIVE = "1";

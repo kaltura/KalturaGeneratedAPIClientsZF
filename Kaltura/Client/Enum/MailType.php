@@ -31,7 +31,7 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Enum_MailType
+class Kaltura_Client_Enum_MailType extends Kaltura_Client_EnumBase
 {
 	const MAIL_TYPE_KALTURA_NEWSLETTER = "10";
 	const MAIL_TYPE_ADDED_TO_FAVORITES = "11";

@@ -31,7 +31,7 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Enum_Gender
+class Kaltura_Client_Enum_Gender extends Kaltura_Client_EnumBase
 {
 	const UNKNOWN = 0;
 	const MALE = 1;

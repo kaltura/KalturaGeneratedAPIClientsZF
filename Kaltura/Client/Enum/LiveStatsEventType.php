@@ -31,7 +31,7 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Enum_LiveStatsEventType
+class Kaltura_Client_Enum_LiveStatsEventType extends Kaltura_Client_EnumBase
 {
 	const LIVE = 1;
 	const DVR = 2;

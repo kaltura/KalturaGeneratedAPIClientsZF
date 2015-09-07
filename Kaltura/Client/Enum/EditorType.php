@@ -31,7 +31,7 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Enum_EditorType
+class Kaltura_Client_Enum_EditorType extends Kaltura_Client_EnumBase
 {
 	const SIMPLE = 1;
 	const ADVANCED = 2;

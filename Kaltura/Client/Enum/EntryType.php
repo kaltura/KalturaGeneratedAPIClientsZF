@@ -31,7 +31,7 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Enum_EntryType
+class Kaltura_Client_Enum_EntryType extends Kaltura_Client_EnumBase
 {
 	const AUTOMATIC = "-1";
 	const EXTERNAL_MEDIA = "externalMedia.externalMedia";

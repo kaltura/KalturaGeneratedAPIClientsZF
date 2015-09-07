@@ -31,7 +31,7 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Enum_SyndicationFeedStatus
+class Kaltura_Client_Enum_SyndicationFeedStatus extends Kaltura_Client_EnumBase
 {
 	const DELETED = -1;
 	const ACTIVE = 1;

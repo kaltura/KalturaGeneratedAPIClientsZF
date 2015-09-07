@@ -31,7 +31,7 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Enum_ControlPanelCommandStatus
+class Kaltura_Client_Enum_ControlPanelCommandStatus extends Kaltura_Client_EnumBase
 {
 	const PENDING = 1;
 	const HANDLED = 2;

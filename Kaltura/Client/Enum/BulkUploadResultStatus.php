@@ -31,7 +31,7 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Enum_BulkUploadResultStatus
+class Kaltura_Client_Enum_BulkUploadResultStatus extends Kaltura_Client_EnumBase
 {
 	const ERROR = "1";
 	const OK = "2";

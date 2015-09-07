@@ -31,7 +31,7 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Enum_TubeMogulSyndicationFeedCategories
+class Kaltura_Client_Enum_TubeMogulSyndicationFeedCategories extends Kaltura_Client_EnumBase
 {
 	const ANIMALS_AND_PETS = "Animals &amp; Pets";
 	const ARTS_AND_ANIMATION = "Arts &amp; Animation";

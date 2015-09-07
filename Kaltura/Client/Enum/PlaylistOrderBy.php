@@ -31,7 +31,7 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Enum_PlaylistOrderBy
+class Kaltura_Client_Enum_PlaylistOrderBy extends Kaltura_Client_EnumBase
 {
 	const CREATED_AT_ASC = "+createdAt";
 	const END_DATE_ASC = "+endDate";

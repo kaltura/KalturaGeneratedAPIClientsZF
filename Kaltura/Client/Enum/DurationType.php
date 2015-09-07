@@ -31,7 +31,7 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Enum_DurationType
+class Kaltura_Client_Enum_DurationType extends Kaltura_Client_EnumBase
 {
 	const LONG = "long";
 	const MEDIUM = "medium";

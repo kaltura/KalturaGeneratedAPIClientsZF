@@ -31,7 +31,7 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Enum_LivePublishStatus
+class Kaltura_Client_Enum_LivePublishStatus extends Kaltura_Client_EnumBase
 {
 	const DISABLED = 0;
 	const ENABLED = 1;

@@ -31,7 +31,7 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Enum_ContributionPolicyType
+class Kaltura_Client_Enum_ContributionPolicyType extends Kaltura_Client_EnumBase
 {
 	const ALL = 1;
 	const MEMBERS_WITH_CONTRIBUTION_PERMISSION = 2;

@@ -31,7 +31,7 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Enum_BatchJobObjectType
+class Kaltura_Client_Enum_BatchJobObjectType extends Kaltura_Client_EnumBase
 {
 	const ENTRY_DISTRIBUTION = "contentDistribution.EntryDistribution";
 	const DROP_FOLDER_FILE = "dropFolderXmlBulkUpload.DropFolderFile";

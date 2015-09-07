@@ -31,7 +31,7 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Attachment_Enum_AttachmentType
+class Kaltura_Client_Attachment_Enum_AttachmentType extends Kaltura_Client_EnumBase
 {
 	const TEXT = "1";
 	const MEDIA = "2";

@@ -31,7 +31,7 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Quiz_Enum_AnswerCuePointOrderBy
+class Kaltura_Client_Quiz_Enum_AnswerCuePointOrderBy extends Kaltura_Client_EnumBase
 {
 	const CREATED_AT_ASC = "+createdAt";
 	const PARTNER_SORT_VALUE_ASC = "+partnerSortValue";

@@ -31,7 +31,7 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Enum_ModerationFlagType
+class Kaltura_Client_Enum_ModerationFlagType extends Kaltura_Client_EnumBase
 {
 	const SEXUAL_CONTENT = 1;
 	const VIOLENT_REPULSIVE = 2;

@@ -31,7 +31,7 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Caption_Enum_CaptionType
+class Kaltura_Client_Caption_Enum_CaptionType extends Kaltura_Client_EnumBase
 {
 	const SRT = "1";
 	const DFXP = "2";

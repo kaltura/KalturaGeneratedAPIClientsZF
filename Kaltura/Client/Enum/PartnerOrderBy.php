@@ -31,7 +31,7 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Enum_PartnerOrderBy
+class Kaltura_Client_Enum_PartnerOrderBy extends Kaltura_Client_EnumBase
 {
 	const ADMIN_EMAIL_ASC = "+adminEmail";
 	const ADMIN_NAME_ASC = "+adminName";

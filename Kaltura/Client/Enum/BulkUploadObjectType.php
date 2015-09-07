@@ -31,7 +31,7 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Enum_BulkUploadObjectType
+class Kaltura_Client_Enum_BulkUploadObjectType extends Kaltura_Client_EnumBase
 {
 	const ENTRY = "1";
 	const CATEGORY = "2";

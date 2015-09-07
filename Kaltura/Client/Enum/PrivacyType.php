@@ -31,7 +31,7 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Enum_PrivacyType
+class Kaltura_Client_Enum_PrivacyType extends Kaltura_Client_EnumBase
 {
 	const ALL = 1;
 	const AUTHENTICATED_USERS = 2;

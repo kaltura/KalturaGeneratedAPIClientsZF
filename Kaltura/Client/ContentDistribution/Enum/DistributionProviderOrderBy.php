@@ -31,7 +31,7 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_ContentDistribution_Enum_DistributionProviderOrderBy
+class Kaltura_Client_ContentDistribution_Enum_DistributionProviderOrderBy extends Kaltura_Client_EnumBase
 {
 }
 

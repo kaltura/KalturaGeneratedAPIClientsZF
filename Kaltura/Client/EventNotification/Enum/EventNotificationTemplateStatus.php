@@ -31,7 +31,7 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_EventNotification_Enum_EventNotificationTemplateStatus
+class Kaltura_Client_EventNotification_Enum_EventNotificationTemplateStatus extends Kaltura_Client_EnumBase
 {
 	const DISABLED = 1;
 	const ACTIVE = 2;

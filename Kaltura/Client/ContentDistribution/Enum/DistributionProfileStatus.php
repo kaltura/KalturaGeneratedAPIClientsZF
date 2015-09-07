@@ -31,7 +31,7 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_ContentDistribution_Enum_DistributionProfileStatus
+class Kaltura_Client_ContentDistribution_Enum_DistributionProfileStatus extends Kaltura_Client_EnumBase
 {
 	const DISABLED = 1;
 	const ENABLED = 2;

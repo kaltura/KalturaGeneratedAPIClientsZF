@@ -31,7 +31,7 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Enum_BatchJobType
+class Kaltura_Client_Enum_BatchJobType extends Kaltura_Client_EnumBase
 {
 	const CONVERT = "0";
 	const PARSE_MULTI_LANGUAGE_CAPTION_ASSET = "caption.parsemultilanguagecaptionasset";

@@ -31,7 +31,7 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Enum_UserStatus
+class Kaltura_Client_Enum_UserStatus extends Kaltura_Client_EnumBase
 {
 	const BLOCKED = 0;
 	const ACTIVE = 1;

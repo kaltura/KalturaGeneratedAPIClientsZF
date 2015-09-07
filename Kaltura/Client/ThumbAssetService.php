@@ -89,6 +89,9 @@ class Kaltura_Client_ThumbAssetService extends Kaltura_Client_ServiceBase
 
 	function serveByEntryId($entryId, $thumbParamId = null)
 	{
+		if ($this->client->isMultiRequest())
+			throw new Kaltura_Client_ClientException("Action is not supported as part of multi-request.", Kaltura_Client_ClientException::ERROR_ACTION_IN_MULTIREQUEST);
+		
 		$kparams = array();
 		$this->client->addParam($kparams, "entryId", $entryId);
 		$this->client->addParam($kparams, "thumbParamId", $thumbParamId);
@@ -99,6 +102,9 @@ class Kaltura_Client_ThumbAssetService extends Kaltura_Client_ServiceBase
 
 	function serve($thumbAssetId, $version = null, Kaltura_Client_Type_ThumbParams $thumbParams = null, Kaltura_Client_Type_ThumbnailServeOptions $options = null)
 	{
+		if ($this->client->isMultiRequest())
+			throw new Kaltura_Client_ClientException("Action is not supported as part of multi-request.", Kaltura_Client_ClientException::ERROR_ACTION_IN_MULTIREQUEST);
+		
 		$kparams = array();
 		$this->client->addParam($kparams, "thumbAssetId", $thumbAssetId);
 		$this->client->addParam($kparams, "version", $version);
