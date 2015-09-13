@@ -49,6 +49,8 @@ class Kaltura_Client_Type_LiveEntryFilter extends Kaltura_Client_Type_LiveEntryB
 			$this->isLive = (int)$xml->isLive;
 		if(count($xml->isRecordedEntryIdEmpty))
 			$this->isRecordedEntryIdEmpty = (int)$xml->isRecordedEntryIdEmpty;
+		if(count($xml->hasMediaServerHostname))
+			$this->hasMediaServerHostname = (string)$xml->hasMediaServerHostname;
 	}
 	/**
 	 * 
@@ -63,6 +65,13 @@ class Kaltura_Client_Type_LiveEntryFilter extends Kaltura_Client_Type_LiveEntryB
 	 * @var Kaltura_Client_Enum_NullableBoolean
 	 */
 	public $isRecordedEntryIdEmpty = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $hasMediaServerHostname = null;
 
 
 }
