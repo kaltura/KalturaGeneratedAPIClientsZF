@@ -33,7 +33,6 @@
  */
 class Kaltura_Client_Integration_Enum_IntegrationProviderType extends Kaltura_Client_EnumBase
 {
-	const CIELO24 = "cielo24.Cielo24";
 	const VOICEBASE = "voicebase.Voicebase";
 }
 
