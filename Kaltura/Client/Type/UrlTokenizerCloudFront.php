@@ -49,6 +49,13 @@ class Kaltura_Client_Type_UrlTokenizerCloudFront extends Kaltura_Client_Type_Url
 			$this->keyPairId = (string)$xml->keyPairId;
 		if(count($xml->rootDir))
 			$this->rootDir = (string)$xml->rootDir;
+		if(count($xml->limitIpAddress))
+		{
+			if(!empty($xml->limitIpAddress))
+				$this->limitIpAddress = true;
+			else
+				$this->limitIpAddress = false;
+		}
 	}
 	/**
 	 * 
@@ -63,6 +70,13 @@ class Kaltura_Client_Type_UrlTokenizerCloudFront extends Kaltura_Client_Type_Url
 	 * @var string
 	 */
 	public $rootDir = null;
+
+	/**
+	 * 
+	 *
+	 * @var bool
+	 */
+	public $limitIpAddress = null;
 
 
 }
