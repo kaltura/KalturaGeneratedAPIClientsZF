@@ -59,6 +59,13 @@ abstract class Kaltura_Client_ContentDistribution_Type_ConfigurableDistributionP
 			else
 				$this->itemXpathsToExtend = Kaltura_Client_ParseUtils::unmarshalArray($xml->itemXpathsToExtend, "KalturaExtendingItemMrssParameter");
 		}
+		if(count($xml->useCategoryEntries))
+		{
+			if(!empty($xml->useCategoryEntries))
+				$this->useCategoryEntries = true;
+			else
+				$this->useCategoryEntries = false;
+		}
 	}
 	/**
 	 * 
@@ -73,6 +80,14 @@ abstract class Kaltura_Client_ContentDistribution_Type_ConfigurableDistributionP
 	 * @var array of KalturaExtendingItemMrssParameter
 	 */
 	public $itemXpathsToExtend;
+
+	/**
+	 * When checking custom XSLT conditions using the fieldConfigArray - address only categories associated with the entry via the categoryEntry object
+	 * 	 
+	 *
+	 * @var bool
+	 */
+	public $useCategoryEntries = null;
 
 
 }
