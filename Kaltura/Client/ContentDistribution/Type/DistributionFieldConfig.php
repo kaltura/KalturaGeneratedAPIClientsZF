@@ -74,6 +74,13 @@ class Kaltura_Client_ContentDistribution_Type_DistributionFieldConfig extends Ka
 			else
 				$this->isDefault = false;
 		}
+		if(count($xml->triggerDeleteOnError))
+		{
+			if(!empty($xml->triggerDeleteOnError))
+				$this->triggerDeleteOnError = true;
+			else
+				$this->triggerDeleteOnError = false;
+		}
 	}
 	/**
 	 * A value taken from a connector field enum which associates the current configuration to that connector field
@@ -133,6 +140,14 @@ class Kaltura_Client_ContentDistribution_Type_DistributionFieldConfig extends Ka
 	 * @readonly
 	 */
 	public $isDefault = null;
+
+	/**
+	 * Is an error on this field going to trigger deletion of distributed content?
+	 *      
+	 *
+	 * @var bool
+	 */
+	public $triggerDeleteOnError = null;
 
 
 }
