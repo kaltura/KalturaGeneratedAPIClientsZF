@@ -81,4 +81,22 @@ class Kaltura_Client_Like_LikeService extends Kaltura_Client_ServiceBase
 		$resultObject = (bool)Kaltura_Client_ParseUtils::unmarshalSimpleType($resultXmlObject->result);
 		return $resultObject;
 	}
+
+	function listAction(Kaltura_Client_Like_Type_LikeFilter $filter = null, Kaltura_Client_Type_FilterPager $pager = null)
+	{
+		$kparams = array();
+		if ($filter !== null)
+			$this->client->addParam($kparams, "filter", $filter->toParams());
+		if ($pager !== null)
+			$this->client->addParam($kparams, "pager", $pager->toParams());
+		$this->client->queueServiceActionCall("like_like", "list", "KalturaLikeListResponse", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultXml = $this->client->doQueue();
+		$resultXmlObject = new \SimpleXMLElement($resultXml);
+		Kaltura_Client_ParseUtils::checkIfError($resultXmlObject->result);
+		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaLikeListResponse");
+		$this->client->validateObjectType($resultObject, "Kaltura_Client_Like_Type_LikeListResponse");
+		return $resultObject;
+	}
 }
