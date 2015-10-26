@@ -62,7 +62,7 @@ class Kaltura_Client_Type_FlavorParams extends Kaltura_Client_Type_AssetParams
 		if(count($xml->height))
 			$this->height = (int)$xml->height;
 		if(count($xml->frameRate))
-			$this->frameRate = (int)$xml->frameRate;
+			$this->frameRate = (float)$xml->frameRate;
 		if(count($xml->gopSize))
 			$this->gopSize = (int)$xml->gopSize;
 		if(count($xml->conversionEngines))
@@ -189,7 +189,7 @@ class Kaltura_Client_Type_FlavorParams extends Kaltura_Client_Type_AssetParams
 	 * The frame rate of the Flavor Params
 	 * 	 
 	 *
-	 * @var int
+	 * @var float
 	 */
 	public $frameRate = null;
 
