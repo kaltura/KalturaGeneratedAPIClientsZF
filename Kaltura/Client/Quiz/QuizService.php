@@ -104,24 +104,24 @@ class Kaltura_Client_Quiz_QuizService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
-	function serve($entryId, $quizFileType)
+	function serve($entryId, $quizOutputType)
 	{
 		if ($this->client->isMultiRequest())
 			throw new Kaltura_Client_ClientException("Action is not supported as part of multi-request.", Kaltura_Client_ClientException::ERROR_ACTION_IN_MULTIREQUEST);
 		
 		$kparams = array();
 		$this->client->addParam($kparams, "entryId", $entryId);
-		$this->client->addParam($kparams, "quizFileType", $quizFileType);
+		$this->client->addParam($kparams, "quizOutputType", $quizOutputType);
 		$this->client->queueServiceActionCall('quiz_quiz', 'serve', null, $kparams);
 		$resultObject = $this->client->getServeUrl();
 		return $resultObject;
 	}
 
-	function getUrl($entryId, $quizFileType)
+	function getUrl($entryId, $quizOutputType)
 	{
 		$kparams = array();
 		$this->client->addParam($kparams, "entryId", $entryId);
-		$this->client->addParam($kparams, "quizFileType", $quizFileType);
+		$this->client->addParam($kparams, "quizOutputType", $quizOutputType);
 		$this->client->queueServiceActionCall("quiz_quiz", "getUrl", null, $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();

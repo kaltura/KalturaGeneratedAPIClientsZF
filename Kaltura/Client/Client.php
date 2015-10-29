@@ -133,13 +133,6 @@ class Kaltura_Client_Client extends Kaltura_Client_ClientBase
 	public $document = null;
 
 	/**
-	 * Edge Server service
-	 *  
-	 * @var Kaltura_Client_EdgeServerService
-	 */
-	public $edgeServer = null;
-
-	/**
 	 * EmailIngestionProfile service lets you manage email ingestion profile records
 	 *  
 	 * @var Kaltura_Client_EmailIngestionProfileService
@@ -223,13 +216,6 @@ class Kaltura_Client_Client extends Kaltura_Client_ClientBase
 	public $mediaInfo = null;
 
 	/**
-	 * Manage media servers
-	 *  
-	 * @var Kaltura_Client_MediaServerService
-	 */
-	public $mediaServer = null;
-
-	/**
 	 * Media service lets you upload and manage media files (images / videos & audio)
 	 *  
 	 * @var Kaltura_Client_MediaService
@@ -308,6 +294,13 @@ class Kaltura_Client_Client extends Kaltura_Client_ClientBase
 	 * @var Kaltura_Client_SearchService
 	 */
 	public $search = null;
+
+	/**
+	 * Server Node service
+	 *  
+	 * @var Kaltura_Client_ServerNodeService
+	 */
+	public $serverNode = null;
 
 	/**
 	 * Session service
@@ -429,7 +422,7 @@ class Kaltura_Client_Client extends Kaltura_Client_ClientBase
 	{
 		parent::__construct($config);
 		
-		$this->setClientTag('php5:15-10-28');
+		$this->setClientTag('php5:15-10-29');
 		$this->setApiVersion('3.3.0');
 		
 		$this->accessControlProfile = new Kaltura_Client_AccessControlProfileService($this);
@@ -446,7 +439,6 @@ class Kaltura_Client_Client extends Kaltura_Client_ClientBase
 		$this->data = new Kaltura_Client_DataService($this);
 		$this->deliveryProfile = new Kaltura_Client_DeliveryProfileService($this);
 		$this->document = new Kaltura_Client_DocumentService($this);
-		$this->edgeServer = new Kaltura_Client_EdgeServerService($this);
 		$this->EmailIngestionProfile = new Kaltura_Client_EmailIngestionProfileService($this);
 		$this->fileAsset = new Kaltura_Client_FileAssetService($this);
 		$this->flavorAsset = new Kaltura_Client_FlavorAssetService($this);
@@ -459,7 +451,6 @@ class Kaltura_Client_Client extends Kaltura_Client_ClientBase
 		$this->liveStats = new Kaltura_Client_LiveStatsService($this);
 		$this->liveStream = new Kaltura_Client_LiveStreamService($this);
 		$this->mediaInfo = new Kaltura_Client_MediaInfoService($this);
-		$this->mediaServer = new Kaltura_Client_MediaServerService($this);
 		$this->media = new Kaltura_Client_MediaService($this);
 		$this->mixing = new Kaltura_Client_MixingService($this);
 		$this->notification = new Kaltura_Client_NotificationService($this);
@@ -471,6 +462,7 @@ class Kaltura_Client_Client extends Kaltura_Client_ClientBase
 		$this->responseProfile = new Kaltura_Client_ResponseProfileService($this);
 		$this->schema = new Kaltura_Client_SchemaService($this);
 		$this->search = new Kaltura_Client_SearchService($this);
+		$this->serverNode = new Kaltura_Client_ServerNodeService($this);
 		$this->session = new Kaltura_Client_SessionService($this);
 		$this->stats = new Kaltura_Client_StatsService($this);
 		$this->storageProfile = new Kaltura_Client_StorageProfileService($this);
