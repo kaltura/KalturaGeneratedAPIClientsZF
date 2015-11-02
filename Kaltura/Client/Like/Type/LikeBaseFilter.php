@@ -49,6 +49,10 @@ abstract class Kaltura_Client_Like_Type_LikeBaseFilter extends Kaltura_Client_Ty
 			$this->entryIdEqual = (string)$xml->entryIdEqual;
 		if(count($xml->userIdEqual))
 			$this->userIdEqual = (string)$xml->userIdEqual;
+		if(count($xml->createdAtGreaterThanOrEqual))
+			$this->createdAtGreaterThanOrEqual = (int)$xml->createdAtGreaterThanOrEqual;
+		if(count($xml->createdAtLessThanOrEqual))
+			$this->createdAtLessThanOrEqual = (int)$xml->createdAtLessThanOrEqual;
 	}
 	/**
 	 * 
@@ -63,6 +67,20 @@ abstract class Kaltura_Client_Like_Type_LikeBaseFilter extends Kaltura_Client_Ty
 	 * @var string
 	 */
 	public $userIdEqual = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $createdAtGreaterThanOrEqual = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $createdAtLessThanOrEqual = null;
 
 
 }
