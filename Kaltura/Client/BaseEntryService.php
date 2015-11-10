@@ -409,10 +409,11 @@ class Kaltura_Client_BaseEntryService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
-	function cloneAction($entryId)
+	function cloneAction($entryId, Kaltura_Client_Type_BaseEntryCloneOptions $cloneOptions)
 	{
 		$kparams = array();
 		$this->client->addParam($kparams, "entryId", $entryId);
+		$this->client->addParam($kparams, "cloneOptions", $cloneOptions->toParams());
 		$this->client->queueServiceActionCall("baseentry", "clone", "KalturaBaseEntry", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();

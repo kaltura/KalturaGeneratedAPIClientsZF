@@ -64,6 +64,8 @@ class Kaltura_Client_Quiz_Type_Quiz extends Kaltura_Client_ObjectBase
 			$this->showCorrectAfterSubmission = (int)$xml->showCorrectAfterSubmission;
 		if(count($xml->allowDownload))
 			$this->allowDownload = (int)$xml->allowDownload;
+		if(count($xml->showGradeAfterSubmission))
+			$this->showGradeAfterSubmission = (int)$xml->showGradeAfterSubmission;
 	}
 	/**
 	 * 
@@ -115,6 +117,13 @@ class Kaltura_Client_Quiz_Type_Quiz extends Kaltura_Client_ObjectBase
 	 * @var Kaltura_Client_Enum_NullableBoolean
 	 */
 	public $allowDownload = null;
+
+	/**
+	 * 
+	 *
+	 * @var Kaltura_Client_Enum_NullableBoolean
+	 */
+	public $showGradeAfterSubmission = null;
 
 
 }
