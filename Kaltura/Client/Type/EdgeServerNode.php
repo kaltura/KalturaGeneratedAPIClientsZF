@@ -45,7 +45,22 @@ class Kaltura_Client_Type_EdgeServerNode extends Kaltura_Client_Type_DeliverySer
 		if(is_null($xml))
 			return;
 		
+		if(count($xml->deliveryProfileIds))
+		{
+			if(empty($xml->deliveryProfileIds))
+				$this->deliveryProfileIds = array();
+			else
+				$this->deliveryProfileIds = Kaltura_Client_ParseUtils::unmarshalArray($xml->deliveryProfileIds, "KalturaKeyValue");
+		}
 	}
+	/**
+	 * Delivery profile ids
+	 * 	 
+	 *
+	 * @var array of KalturaKeyValue
+	 */
+	public $deliveryProfileIds;
+
 
 }
 
