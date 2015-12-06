@@ -10,5 +10,8 @@ notifications:
       - moshe.maor@kaltura.com
       - jess.portnoy@kaltura.com
       - Jonathan.Kanarek@kaltura.com
+      - Noam.Arad@kaltura.com
+      - Elad.Cohen@kaltura.com
+      - Nir.Belinky@kaltura.com
     on_success: change
     on_failure: always
