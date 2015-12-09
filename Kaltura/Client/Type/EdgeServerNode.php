@@ -52,6 +52,8 @@ class Kaltura_Client_Type_EdgeServerNode extends Kaltura_Client_Type_DeliverySer
 			else
 				$this->deliveryProfileIds = Kaltura_Client_ParseUtils::unmarshalArray($xml->deliveryProfileIds, "KalturaKeyValue");
 		}
+		if(count($xml->config))
+			$this->config = (string)$xml->config;
 	}
 	/**
 	 * Delivery profile ids
@@ -60,6 +62,14 @@ class Kaltura_Client_Type_EdgeServerNode extends Kaltura_Client_Type_DeliverySer
 	 * @var array of KalturaKeyValue
 	 */
 	public $deliveryProfileIds;
+
+	/**
+	 * Overdie edge server default configuration - json format
+	 * 	 
+	 *
+	 * @var string
+	 */
+	public $config = null;
 
 
 }

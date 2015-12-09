@@ -60,6 +60,13 @@ class Kaltura_Client_Type_ConcatJobData extends Kaltura_Client_Type_JobData
 			$this->offset = (float)$xml->offset;
 		if(count($xml->duration))
 			$this->duration = (float)$xml->duration;
+		if(count($xml->amfArray))
+		{
+			if(empty($xml->amfArray))
+				$this->amfArray = array();
+			else
+				$this->amfArray = Kaltura_Client_ParseUtils::unmarshalArray($xml->amfArray, "KalturaKeyValue");
+		}
 	}
 	/**
 	 * Source files to be concatenated
@@ -100,6 +107,13 @@ class Kaltura_Client_Type_ConcatJobData extends Kaltura_Client_Type_JobData
 	 * @var float
 	 */
 	public $duration = null;
+
+	/**
+	 * 
+	 *
+	 * @var array of KalturaKeyValue
+	 */
+	public $amfArray;
 
 
 }

@@ -59,6 +59,13 @@ class Kaltura_Client_Type_ConvertLiveSegmentJobData extends Kaltura_Client_Type_
 			$this->destFilePath = (string)$xml->destFilePath;
 		if(count($xml->endTime))
 			$this->endTime = (float)$xml->endTime;
+		if(count($xml->amfArray))
+		{
+			if(empty($xml->amfArray))
+				$this->amfArray = array();
+			else
+				$this->amfArray = Kaltura_Client_ParseUtils::unmarshalArray($xml->amfArray, "KalturaKeyValue");
+		}
 	}
 	/**
 	 * Live stream entry id
@@ -114,6 +121,13 @@ class Kaltura_Client_Type_ConvertLiveSegmentJobData extends Kaltura_Client_Type_
 	 * @var float
 	 */
 	public $endTime = null;
+
+	/**
+	 * 
+	 *
+	 * @var array of KalturaKeyValue
+	 */
+	public $amfArray;
 
 
 }
