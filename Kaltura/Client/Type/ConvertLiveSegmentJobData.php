@@ -66,6 +66,8 @@ class Kaltura_Client_Type_ConvertLiveSegmentJobData extends Kaltura_Client_Type_
 			else
 				$this->amfArray = Kaltura_Client_ParseUtils::unmarshalArray($xml->amfArray, "KalturaKeyValue");
 		}
+		if(count($xml->duration))
+			$this->duration = (float)$xml->duration;
 	}
 	/**
 	 * Live stream entry id
@@ -128,6 +130,15 @@ class Kaltura_Client_Type_ConvertLiveSegmentJobData extends Kaltura_Client_Type_
 	 * @var array of KalturaKeyValue
 	 */
 	public $amfArray;
+
+	/**
+	 * Duration of the live segment.
+	 * 	 filled by the ConvertLiveSegment job
+	 * 	 
+	 *
+	 * @var float
+	 */
+	public $duration = null;
 
 
 }

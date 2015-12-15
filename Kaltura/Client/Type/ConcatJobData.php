@@ -60,13 +60,8 @@ class Kaltura_Client_Type_ConcatJobData extends Kaltura_Client_Type_JobData
 			$this->offset = (float)$xml->offset;
 		if(count($xml->duration))
 			$this->duration = (float)$xml->duration;
-		if(count($xml->amfArray))
-		{
-			if(empty($xml->amfArray))
-				$this->amfArray = array();
-			else
-				$this->amfArray = Kaltura_Client_ParseUtils::unmarshalArray($xml->amfArray, "KalturaKeyValue");
-		}
+		if(count($xml->concatenatedDuration))
+			$this->concatenatedDuration = (float)$xml->concatenatedDuration;
 	}
 	/**
 	 * Source files to be concatenated
@@ -109,11 +104,12 @@ class Kaltura_Client_Type_ConcatJobData extends Kaltura_Client_Type_JobData
 	public $duration = null;
 
 	/**
-	 * 
+	 * duration of the concated video
+	 * 	 
 	 *
-	 * @var array of KalturaKeyValue
+	 * @var float
 	 */
-	public $amfArray;
+	public $concatenatedDuration = null;
 
 
 }
