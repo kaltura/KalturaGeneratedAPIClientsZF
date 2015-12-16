@@ -159,7 +159,9 @@ class Kaltura_Client_SystemPartner_SystemPartnerService extends Kaltura_Client_S
 		$resultXmlObject = new \SimpleXMLElement($resultXml);
 		Kaltura_Client_ParseUtils::checkIfError($resultXmlObject->result);
 		$resultObject = Kaltura_Client_ParseUtils::unmarshalArray($resultXmlObject->result, "KalturaSystemPartnerPackage");
-		$this->client->validateObjectType($resultObject, "array");
+		foreach($resultObject as $resultObjectItem){
+			$this->client->validateObjectType($resultObjectItem, "Kaltura_Client_SystemPartner_Type_SystemPartnerPackage");
+		}
 		return $resultObject;
 	}
 
@@ -173,7 +175,9 @@ class Kaltura_Client_SystemPartner_SystemPartnerService extends Kaltura_Client_S
 		$resultXmlObject = new \SimpleXMLElement($resultXml);
 		Kaltura_Client_ParseUtils::checkIfError($resultXmlObject->result);
 		$resultObject = Kaltura_Client_ParseUtils::unmarshalArray($resultXmlObject->result, "KalturaSystemPartnerPackage");
-		$this->client->validateObjectType($resultObject, "array");
+		foreach($resultObject as $resultObjectItem){
+			$this->client->validateObjectType($resultObjectItem, "Kaltura_Client_SystemPartner_Type_SystemPartnerPackage");
+		}
 		return $resultObject;
 	}
 
@@ -187,7 +191,9 @@ class Kaltura_Client_SystemPartner_SystemPartnerService extends Kaltura_Client_S
 		$resultXmlObject = new \SimpleXMLElement($resultXml);
 		Kaltura_Client_ParseUtils::checkIfError($resultXmlObject->result);
 		$resultObject = Kaltura_Client_ParseUtils::unmarshalArray($resultXmlObject->result, "KalturaSystemPartnerPackage");
-		$this->client->validateObjectType($resultObject, "array");
+		foreach($resultObject as $resultObjectItem){
+			$this->client->validateObjectType($resultObjectItem, "Kaltura_Client_SystemPartner_Type_SystemPartnerPackage");
+		}
 		return $resultObject;
 	}
 
@@ -201,7 +207,9 @@ class Kaltura_Client_SystemPartner_SystemPartnerService extends Kaltura_Client_S
 		$resultXmlObject = new \SimpleXMLElement($resultXml);
 		Kaltura_Client_ParseUtils::checkIfError($resultXmlObject->result);
 		$resultObject = Kaltura_Client_ParseUtils::unmarshalArray($resultXmlObject->result, "KalturaPlayerEmbedCodeType");
-		$this->client->validateObjectType($resultObject, "array");
+		foreach($resultObject as $resultObjectItem){
+			$this->client->validateObjectType($resultObjectItem, "Kaltura_Client_Type_PlayerEmbedCodeType");
+		}
 		return $resultObject;
 	}
 
@@ -215,7 +223,9 @@ class Kaltura_Client_SystemPartner_SystemPartnerService extends Kaltura_Client_S
 		$resultXmlObject = new \SimpleXMLElement($resultXml);
 		Kaltura_Client_ParseUtils::checkIfError($resultXmlObject->result);
 		$resultObject = Kaltura_Client_ParseUtils::unmarshalArray($resultXmlObject->result, "KalturaPlayerDeliveryType");
-		$this->client->validateObjectType($resultObject, "array");
+		foreach($resultObject as $resultObjectItem){
+			$this->client->validateObjectType($resultObjectItem, "Kaltura_Client_Type_PlayerDeliveryType");
+		}
 		return $resultObject;
 	}
 

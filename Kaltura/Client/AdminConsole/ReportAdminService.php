@@ -146,7 +146,9 @@ class Kaltura_Client_AdminConsole_ReportAdminService extends Kaltura_Client_Serv
 		$resultXmlObject = new \SimpleXMLElement($resultXml);
 		Kaltura_Client_ParseUtils::checkIfError($resultXmlObject->result);
 		$resultObject = Kaltura_Client_ParseUtils::unmarshalArray($resultXmlObject->result, "KalturaString");
-		$this->client->validateObjectType($resultObject, "array");
+		foreach($resultObject as $resultObjectItem){
+			$this->client->validateObjectType($resultObjectItem, "Kaltura_Client_Type_String");
+		}
 		return $resultObject;
 	}
 

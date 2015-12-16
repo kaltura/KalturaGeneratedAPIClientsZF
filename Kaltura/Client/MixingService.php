@@ -173,7 +173,9 @@ class Kaltura_Client_MixingService extends Kaltura_Client_ServiceBase
 		$resultXmlObject = new \SimpleXMLElement($resultXml);
 		Kaltura_Client_ParseUtils::checkIfError($resultXmlObject->result);
 		$resultObject = Kaltura_Client_ParseUtils::unmarshalArray($resultXmlObject->result, "KalturaMixEntry");
-		$this->client->validateObjectType($resultObject, "array");
+		foreach($resultObject as $resultObjectItem){
+			$this->client->validateObjectType($resultObjectItem, "Kaltura_Client_Type_MixEntry");
+		}
 		return $resultObject;
 	}
 
@@ -189,7 +191,9 @@ class Kaltura_Client_MixingService extends Kaltura_Client_ServiceBase
 		$resultXmlObject = new \SimpleXMLElement($resultXml);
 		Kaltura_Client_ParseUtils::checkIfError($resultXmlObject->result);
 		$resultObject = Kaltura_Client_ParseUtils::unmarshalArray($resultXmlObject->result, "KalturaMediaEntry");
-		$this->client->validateObjectType($resultObject, "array");
+		foreach($resultObject as $resultObjectItem){
+			$this->client->validateObjectType($resultObjectItem, "Kaltura_Client_Type_MediaEntry");
+		}
 		return $resultObject;
 	}
 

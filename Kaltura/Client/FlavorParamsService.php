@@ -126,7 +126,9 @@ class Kaltura_Client_FlavorParamsService extends Kaltura_Client_ServiceBase
 		$resultXmlObject = new \SimpleXMLElement($resultXml);
 		Kaltura_Client_ParseUtils::checkIfError($resultXmlObject->result);
 		$resultObject = Kaltura_Client_ParseUtils::unmarshalArray($resultXmlObject->result, "KalturaFlavorParams");
-		$this->client->validateObjectType($resultObject, "array");
+		foreach($resultObject as $resultObjectItem){
+			$this->client->validateObjectType($resultObjectItem, "Kaltura_Client_Type_FlavorParams");
+		}
 		return $resultObject;
 	}
 }
