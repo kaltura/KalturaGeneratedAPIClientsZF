@@ -81,6 +81,8 @@ class Kaltura_Client_Type_DeliveryProfile extends Kaltura_Client_ObjectBase
 			$this->mediaProtocols = (string)$xml->mediaProtocols;
 		if(count($xml->priority))
 			$this->priority = (int)$xml->priority;
+		if(count($xml->extraParams))
+			$this->extraParams = (string)$xml->extraParams;
 	}
 	/**
 	 * The id of the Delivery
@@ -226,6 +228,14 @@ class Kaltura_Client_Type_DeliveryProfile extends Kaltura_Client_ObjectBase
 	 * @var int
 	 */
 	public $priority = null;
+
+	/**
+	 * Extra query string parameters that should be added to the url
+	 * 	 
+	 *
+	 * @var string
+	 */
+	public $extraParams = null;
 
 
 }
