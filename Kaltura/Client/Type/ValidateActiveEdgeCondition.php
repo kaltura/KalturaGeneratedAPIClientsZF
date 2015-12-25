@@ -31,11 +31,11 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Type_ConvertLiveSegmentJobData extends Kaltura_Client_Type_JobData
+class Kaltura_Client_Type_ValidateActiveEdgeCondition extends Kaltura_Client_Type_Condition
 {
 	public function getKalturaObjectType()
 	{
-		return 'KalturaConvertLiveSegmentJobData';
+		return 'KalturaValidateActiveEdgeCondition';
 	}
 	
 	public function __construct(SimpleXMLElement $xml = null)
@@ -45,85 +45,16 @@ class Kaltura_Client_Type_ConvertLiveSegmentJobData extends Kaltura_Client_Type_
 		if(is_null($xml))
 			return;
 		
-		if(count($xml->entryId))
-			$this->entryId = (string)$xml->entryId;
-		if(count($xml->assetId))
-			$this->assetId = (string)$xml->assetId;
-		if(count($xml->mediaServerIndex))
-			$this->mediaServerIndex = (int)$xml->mediaServerIndex;
-		if(count($xml->fileIndex))
-			$this->fileIndex = (int)$xml->fileIndex;
-		if(count($xml->srcFilePath))
-			$this->srcFilePath = (string)$xml->srcFilePath;
-		if(count($xml->destFilePath))
-			$this->destFilePath = (string)$xml->destFilePath;
-		if(count($xml->endTime))
-			$this->endTime = (float)$xml->endTime;
-		if(count($xml->destDataFilePath))
-			$this->destDataFilePath = (string)$xml->destDataFilePath;
+		if(count($xml->edgeServerIds))
+			$this->edgeServerIds = (string)$xml->edgeServerIds;
 	}
 	/**
-	 * Live stream entry id
+	 * Comma separated list of edge servers to validate are active
 	 * 	 
 	 *
 	 * @var string
 	 */
-	public $entryId = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $assetId = null;
-
-	/**
-	 * Primary or secondary media server
-	 * 	 
-	 *
-	 * @var Kaltura_Client_Enum_MediaServerIndex
-	 */
-	public $mediaServerIndex = null;
-
-	/**
-	 * The index of the file within the entry
-	 * 	 
-	 *
-	 * @var int
-	 */
-	public $fileIndex = null;
-
-	/**
-	 * The recorded live media
-	 * 	 
-	 *
-	 * @var string
-	 */
-	public $srcFilePath = null;
-
-	/**
-	 * The output file
-	 * 	 
-	 *
-	 * @var string
-	 */
-	public $destFilePath = null;
-
-	/**
-	 * Duration of the live entry including all recorded segments including the current
-	 * 	 
-	 *
-	 * @var float
-	 */
-	public $endTime = null;
-
-	/**
-	 * The data output file
-	 * 	 
-	 *
-	 * @var string
-	 */
-	public $destDataFilePath = null;
+	public $edgeServerIds = null;
 
 
 }

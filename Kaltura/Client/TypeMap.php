@@ -857,6 +857,7 @@ class Kaltura_Client_TypeMap
 		'KalturaUserRoleCondition' => 'Kaltura_Client_Type_UserRoleCondition',
 		'KalturaUserRoleFilter' => 'Kaltura_Client_Type_UserRoleFilter',
 		'KalturaUserRoleListResponse' => 'Kaltura_Client_Type_UserRoleListResponse',
+		'KalturaValidateActiveEdgeCondition' => 'Kaltura_Client_Type_ValidateActiveEdgeCondition',
 		'KalturaValue' => 'Kaltura_Client_Type_Value',
 		'KalturaVarConsolePartnerFilter' => 'Kaltura_Client_VarConsole_Type_VarConsolePartnerFilter',
 		'KalturaVarPartnerUsageItem' => 'Kaltura_Client_VarConsole_Type_VarPartnerUsageItem',
