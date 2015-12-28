@@ -104,6 +104,8 @@ class Kaltura_Client_TypeMap
 		'KalturaAuthenticatedCondition' => 'Kaltura_Client_Type_AuthenticatedCondition',
 		'KalturaBaseEntry' => 'Kaltura_Client_Type_BaseEntry',
 		'KalturaBaseEntryBaseFilter' => 'Kaltura_Client_Type_BaseEntryBaseFilter',
+		'KalturaBaseEntryCloneOptionComponent' => 'Kaltura_Client_Type_BaseEntryCloneOptionComponent',
+		'KalturaBaseEntryCloneOptionItem' => 'Kaltura_Client_Type_BaseEntryCloneOptionItem',
 		'KalturaBaseEntryCompareAttributeCondition' => 'Kaltura_Client_Type_BaseEntryCompareAttributeCondition',
 		'KalturaBaseEntryFilter' => 'Kaltura_Client_Type_BaseEntryFilter',
 		'KalturaBaseEntryListResponse' => 'Kaltura_Client_Type_BaseEntryListResponse',
