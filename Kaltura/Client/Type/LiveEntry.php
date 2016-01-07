@@ -81,6 +81,8 @@ abstract class Kaltura_Client_Type_LiveEntry extends Kaltura_Client_Type_MediaEn
 			$this->currentBroadcastStartTime = (float)$xml->currentBroadcastStartTime;
 		if(count($xml->recordingOptions) && !empty($xml->recordingOptions))
 			$this->recordingOptions = Kaltura_Client_ParseUtils::unmarshalObject($xml->recordingOptions, "KalturaLiveEntryRecordingOptions");
+		if(count($xml->liveStatus))
+			$this->liveStatus = (int)$xml->liveStatus;
 	}
 	/**
 	 * The message to be presented when the stream is offline
@@ -190,6 +192,14 @@ abstract class Kaltura_Client_Type_LiveEntry extends Kaltura_Client_Type_MediaEn
 	 * @insertonly
 	 */
 	public $recordingOptions;
+
+	/**
+	 * the status of the entry of type LiveEntryStatus
+	 * 	 
+	 *
+	 * @var Kaltura_Client_Enum_LiveEntryStatus
+	 */
+	public $liveStatus = null;
 
 
 }
