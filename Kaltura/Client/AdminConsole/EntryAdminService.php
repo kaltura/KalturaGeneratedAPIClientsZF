@@ -85,4 +85,19 @@ class Kaltura_Client_AdminConsole_EntryAdminService extends Kaltura_Client_Servi
 		$this->client->validateObjectType($resultObject, "Kaltura_Client_AdminConsole_Type_TrackEntryListResponse");
 		return $resultObject;
 	}
+
+	function restoreDeletedEntry($entryId)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "entryId", $entryId);
+		$this->client->queueServiceActionCall("adminconsole_entryadmin", "restoreDeletedEntry", "KalturaBaseEntry", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultXml = $this->client->doQueue();
+		$resultXmlObject = new \SimpleXMLElement($resultXml);
+		Kaltura_Client_ParseUtils::checkIfError($resultXmlObject->result);
+		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaBaseEntry");
+		$this->client->validateObjectType($resultObject, "Kaltura_Client_Type_BaseEntry");
+		return $resultObject;
+	}
 }
