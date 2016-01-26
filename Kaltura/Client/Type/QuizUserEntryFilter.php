@@ -45,7 +45,16 @@ class Kaltura_Client_Type_QuizUserEntryFilter extends Kaltura_Client_Type_QuizUs
 		if(is_null($xml))
 			return;
 		
+		if(count($xml->isAnonymous))
+			$this->isAnonymous = (int)$xml->isAnonymous;
 	}
+	/**
+	 * 
+	 *
+	 * @var Kaltura_Client_Enum_NullableBoolean
+	 */
+	public $isAnonymous = null;
+
 
 }
 

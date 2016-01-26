@@ -123,6 +123,8 @@ class Kaltura_Client_Type_EntryContextDataResult extends Kaltura_Client_Type_Con
 			else
 				$this->flavorAssets = Kaltura_Client_ParseUtils::unmarshalArray($xml->flavorAssets, "KalturaFlavorAsset");
 		}
+		if(count($xml->msDuration))
+			$this->msDuration = (int)$xml->msDuration;
 		if(count($xml->pluginData))
 		{
 			if(empty($xml->pluginData))
@@ -233,6 +235,14 @@ class Kaltura_Client_Type_EntryContextDataResult extends Kaltura_Client_Type_Con
 	 * @var array of KalturaFlavorAsset
 	 */
 	public $flavorAssets;
+
+	/**
+	 * The duration of the entry in milliseconds
+	 * 	 
+	 *
+	 * @var int
+	 */
+	public $msDuration = null;
 
 	/**
 	 * Array of allowed flavor assets according to access control limitations and requested tags
