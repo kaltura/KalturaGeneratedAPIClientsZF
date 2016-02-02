@@ -372,6 +372,7 @@ class Kaltura_Client_TypeMap
 		'KalturaEntryReferrerLiveStats' => 'Kaltura_Client_Type_EntryReferrerLiveStats',
 		'KalturaEntryReplacementOptions' => 'Kaltura_Client_Type_EntryReplacementOptions',
 		'KalturaEntryResource' => 'Kaltura_Client_Type_EntryResource',
+		'KalturaEntryTranscriptAssetSearchItem' => 'Kaltura_Client_Transcript_Type_EntryTranscriptAssetSearchItem',
 		'KalturaEvalBooleanField' => 'Kaltura_Client_Type_EvalBooleanField',
 		'KalturaEvalStringField' => 'Kaltura_Client_Type_EvalStringField',
 		'KalturaEventCuePoint' => 'Kaltura_Client_EventCuePoint_Type_EventCuePoint',

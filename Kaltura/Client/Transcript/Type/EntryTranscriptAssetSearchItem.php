@@ -31,11 +31,11 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Type_QuizUserEntry extends Kaltura_Client_Type_UserEntry
+class Kaltura_Client_Transcript_Type_EntryTranscriptAssetSearchItem extends Kaltura_Client_Type_SearchItem
 {
 	public function getKalturaObjectType()
 	{
-		return 'KalturaQuizUserEntry';
+		return 'KalturaEntryTranscriptAssetSearchItem';
 	}
 	
 	public function __construct(SimpleXMLElement $xml = null)
@@ -45,16 +45,33 @@ class Kaltura_Client_Type_QuizUserEntry extends Kaltura_Client_Type_UserEntry
 		if(is_null($xml))
 			return;
 		
-		if(count($xml->score))
-			$this->score = (float)$xml->score;
+		if(count($xml->contentLike))
+			$this->contentLike = (string)$xml->contentLike;
+		if(count($xml->contentMultiLikeOr))
+			$this->contentMultiLikeOr = (string)$xml->contentMultiLikeOr;
+		if(count($xml->contentMultiLikeAnd))
+			$this->contentMultiLikeAnd = (string)$xml->contentMultiLikeAnd;
 	}
 	/**
 	 * 
 	 *
-	 * @var float
-	 * @readonly
+	 * @var string
 	 */
-	public $score = null;
+	public $contentLike = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $contentMultiLikeOr = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $contentMultiLikeAnd = null;
 
 
 }

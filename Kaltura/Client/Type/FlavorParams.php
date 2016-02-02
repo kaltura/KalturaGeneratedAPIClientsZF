@@ -116,6 +116,8 @@ class Kaltura_Client_Type_FlavorParams extends Kaltura_Client_Type_AssetParams
 			$this->videoBitrateTolerance = (int)$xml->videoBitrateTolerance;
 		if(count($xml->watermarkData))
 			$this->watermarkData = (string)$xml->watermarkData;
+		if(count($xml->isEncrypted))
+			$this->isEncrypted = (int)$xml->isEncrypted;
 		if(count($xml->clipOffset))
 			$this->clipOffset = (int)$xml->clipOffset;
 		if(count($xml->clipDuration))
@@ -364,6 +366,13 @@ class Kaltura_Client_Type_FlavorParams extends Kaltura_Client_Type_AssetParams
 	 * @var string
 	 */
 	public $watermarkData = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $isEncrypted = null;
 
 	/**
 	 * 
