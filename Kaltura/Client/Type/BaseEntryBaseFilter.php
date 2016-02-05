@@ -181,8 +181,12 @@ abstract class Kaltura_Client_Type_BaseEntryBaseFilter extends Kaltura_Client_Ty
 			$this->parentEntryIdEqual = (string)$xml->parentEntryIdEqual;
 		if(count($xml->entitledUsersEditMatchAnd))
 			$this->entitledUsersEditMatchAnd = (string)$xml->entitledUsersEditMatchAnd;
+		if(count($xml->entitledUsersEditMatchOr))
+			$this->entitledUsersEditMatchOr = (string)$xml->entitledUsersEditMatchOr;
 		if(count($xml->entitledUsersPublishMatchAnd))
 			$this->entitledUsersPublishMatchAnd = (string)$xml->entitledUsersPublishMatchAnd;
+		if(count($xml->entitledUsersPublishMatchOr))
+			$this->entitledUsersPublishMatchOr = (string)$xml->entitledUsersPublishMatchOr;
 		if(count($xml->tagsNameMultiLikeOr))
 			$this->tagsNameMultiLikeOr = (string)$xml->tagsNameMultiLikeOr;
 		if(count($xml->tagsAdminTagsMultiLikeOr))
@@ -699,7 +703,21 @@ abstract class Kaltura_Client_Type_BaseEntryBaseFilter extends Kaltura_Client_Ty
 	 *
 	 * @var string
 	 */
+	public $entitledUsersEditMatchOr = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
 	public $entitledUsersPublishMatchAnd = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $entitledUsersPublishMatchOr = null;
 
 	/**
 	 * 
