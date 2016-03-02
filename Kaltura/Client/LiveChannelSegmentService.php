@@ -48,7 +48,7 @@ class Kaltura_Client_LiveChannelSegmentService extends Kaltura_Client_ServiceBas
 			return $this->client->getMultiRequestResult();
 		$resultXml = $this->client->doQueue();
 		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		Kaltura_Client_ParseUtils::checkIfError($resultXmlObject->result);
+		$this->client->checkIfError($resultXmlObject->result);
 		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaLiveChannelSegment");
 		$this->client->validateObjectType($resultObject, "Kaltura_Client_Type_LiveChannelSegment");
 		return $resultObject;
@@ -63,7 +63,7 @@ class Kaltura_Client_LiveChannelSegmentService extends Kaltura_Client_ServiceBas
 			return $this->client->getMultiRequestResult();
 		$resultXml = $this->client->doQueue();
 		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		Kaltura_Client_ParseUtils::checkIfError($resultXmlObject->result);
+		$this->client->checkIfError($resultXmlObject->result);
 		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaLiveChannelSegment");
 		$this->client->validateObjectType($resultObject, "Kaltura_Client_Type_LiveChannelSegment");
 		return $resultObject;
@@ -79,7 +79,7 @@ class Kaltura_Client_LiveChannelSegmentService extends Kaltura_Client_ServiceBas
 			return $this->client->getMultiRequestResult();
 		$resultXml = $this->client->doQueue();
 		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		Kaltura_Client_ParseUtils::checkIfError($resultXmlObject->result);
+		$this->client->checkIfError($resultXmlObject->result);
 		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaLiveChannelSegment");
 		$this->client->validateObjectType($resultObject, "Kaltura_Client_Type_LiveChannelSegment");
 		return $resultObject;
@@ -94,7 +94,7 @@ class Kaltura_Client_LiveChannelSegmentService extends Kaltura_Client_ServiceBas
 			return $this->client->getMultiRequestResult();
 		$resultXml = $this->client->doQueue();
 		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		Kaltura_Client_ParseUtils::checkIfError($resultXmlObject->result);
+		$this->client->checkIfError($resultXmlObject->result);
 	}
 
 	function listAction(Kaltura_Client_Type_LiveChannelSegmentFilter $filter = null, Kaltura_Client_Type_FilterPager $pager = null)
@@ -109,7 +109,7 @@ class Kaltura_Client_LiveChannelSegmentService extends Kaltura_Client_ServiceBas
 			return $this->client->getMultiRequestResult();
 		$resultXml = $this->client->doQueue();
 		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		Kaltura_Client_ParseUtils::checkIfError($resultXmlObject->result);
+		$this->client->checkIfError($resultXmlObject->result);
 		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaLiveChannelSegmentListResponse");
 		$this->client->validateObjectType($resultObject, "Kaltura_Client_Type_LiveChannelSegmentListResponse");
 		return $resultObject;

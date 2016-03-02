@@ -48,7 +48,7 @@ class Kaltura_Client_SyndicationFeedService extends Kaltura_Client_ServiceBase
 			return $this->client->getMultiRequestResult();
 		$resultXml = $this->client->doQueue();
 		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		Kaltura_Client_ParseUtils::checkIfError($resultXmlObject->result);
+		$this->client->checkIfError($resultXmlObject->result);
 		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaBaseSyndicationFeed");
 		$this->client->validateObjectType($resultObject, "Kaltura_Client_Type_BaseSyndicationFeed");
 		return $resultObject;
@@ -63,7 +63,7 @@ class Kaltura_Client_SyndicationFeedService extends Kaltura_Client_ServiceBase
 			return $this->client->getMultiRequestResult();
 		$resultXml = $this->client->doQueue();
 		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		Kaltura_Client_ParseUtils::checkIfError($resultXmlObject->result);
+		$this->client->checkIfError($resultXmlObject->result);
 		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaBaseSyndicationFeed");
 		$this->client->validateObjectType($resultObject, "Kaltura_Client_Type_BaseSyndicationFeed");
 		return $resultObject;
@@ -79,7 +79,7 @@ class Kaltura_Client_SyndicationFeedService extends Kaltura_Client_ServiceBase
 			return $this->client->getMultiRequestResult();
 		$resultXml = $this->client->doQueue();
 		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		Kaltura_Client_ParseUtils::checkIfError($resultXmlObject->result);
+		$this->client->checkIfError($resultXmlObject->result);
 		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaBaseSyndicationFeed");
 		$this->client->validateObjectType($resultObject, "Kaltura_Client_Type_BaseSyndicationFeed");
 		return $resultObject;
@@ -94,7 +94,7 @@ class Kaltura_Client_SyndicationFeedService extends Kaltura_Client_ServiceBase
 			return $this->client->getMultiRequestResult();
 		$resultXml = $this->client->doQueue();
 		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		Kaltura_Client_ParseUtils::checkIfError($resultXmlObject->result);
+		$this->client->checkIfError($resultXmlObject->result);
 	}
 
 	function listAction(Kaltura_Client_Type_BaseSyndicationFeedFilter $filter = null, Kaltura_Client_Type_FilterPager $pager = null)
@@ -109,7 +109,7 @@ class Kaltura_Client_SyndicationFeedService extends Kaltura_Client_ServiceBase
 			return $this->client->getMultiRequestResult();
 		$resultXml = $this->client->doQueue();
 		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		Kaltura_Client_ParseUtils::checkIfError($resultXmlObject->result);
+		$this->client->checkIfError($resultXmlObject->result);
 		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaBaseSyndicationFeedListResponse");
 		$this->client->validateObjectType($resultObject, "Kaltura_Client_Type_BaseSyndicationFeedListResponse");
 		return $resultObject;
@@ -124,7 +124,7 @@ class Kaltura_Client_SyndicationFeedService extends Kaltura_Client_ServiceBase
 			return $this->client->getMultiRequestResult();
 		$resultXml = $this->client->doQueue();
 		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		Kaltura_Client_ParseUtils::checkIfError($resultXmlObject->result);
+		$this->client->checkIfError($resultXmlObject->result);
 		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaSyndicationFeedEntryCount");
 		$this->client->validateObjectType($resultObject, "Kaltura_Client_Type_SyndicationFeedEntryCount");
 		return $resultObject;
@@ -139,7 +139,7 @@ class Kaltura_Client_SyndicationFeedService extends Kaltura_Client_ServiceBase
 			return $this->client->getMultiRequestResult();
 		$resultXml = $this->client->doQueue();
 		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		Kaltura_Client_ParseUtils::checkIfError($resultXmlObject->result);
+		$this->client->checkIfError($resultXmlObject->result);
 		$resultObject = (string)Kaltura_Client_ParseUtils::unmarshalSimpleType($resultXmlObject->result);
 		return $resultObject;
 	}

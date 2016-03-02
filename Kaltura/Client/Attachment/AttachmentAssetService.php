@@ -49,7 +49,7 @@ class Kaltura_Client_Attachment_AttachmentAssetService extends Kaltura_Client_Se
 			return $this->client->getMultiRequestResult();
 		$resultXml = $this->client->doQueue();
 		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		Kaltura_Client_ParseUtils::checkIfError($resultXmlObject->result);
+		$this->client->checkIfError($resultXmlObject->result);
 		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaAttachmentAsset");
 		$this->client->validateObjectType($resultObject, "Kaltura_Client_Attachment_Type_AttachmentAsset");
 		return $resultObject;
@@ -65,7 +65,7 @@ class Kaltura_Client_Attachment_AttachmentAssetService extends Kaltura_Client_Se
 			return $this->client->getMultiRequestResult();
 		$resultXml = $this->client->doQueue();
 		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		Kaltura_Client_ParseUtils::checkIfError($resultXmlObject->result);
+		$this->client->checkIfError($resultXmlObject->result);
 		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaAttachmentAsset");
 		$this->client->validateObjectType($resultObject, "Kaltura_Client_Attachment_Type_AttachmentAsset");
 		return $resultObject;
@@ -81,7 +81,7 @@ class Kaltura_Client_Attachment_AttachmentAssetService extends Kaltura_Client_Se
 			return $this->client->getMultiRequestResult();
 		$resultXml = $this->client->doQueue();
 		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		Kaltura_Client_ParseUtils::checkIfError($resultXmlObject->result);
+		$this->client->checkIfError($resultXmlObject->result);
 		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaAttachmentAsset");
 		$this->client->validateObjectType($resultObject, "Kaltura_Client_Attachment_Type_AttachmentAsset");
 		return $resultObject;
@@ -97,7 +97,7 @@ class Kaltura_Client_Attachment_AttachmentAssetService extends Kaltura_Client_Se
 			return $this->client->getMultiRequestResult();
 		$resultXml = $this->client->doQueue();
 		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		Kaltura_Client_ParseUtils::checkIfError($resultXmlObject->result);
+		$this->client->checkIfError($resultXmlObject->result);
 		$resultObject = (string)Kaltura_Client_ParseUtils::unmarshalSimpleType($resultXmlObject->result);
 		return $resultObject;
 	}
@@ -111,7 +111,7 @@ class Kaltura_Client_Attachment_AttachmentAssetService extends Kaltura_Client_Se
 			return $this->client->getMultiRequestResult();
 		$resultXml = $this->client->doQueue();
 		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		Kaltura_Client_ParseUtils::checkIfError($resultXmlObject->result);
+		$this->client->checkIfError($resultXmlObject->result);
 		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaRemotePathListResponse");
 		$this->client->validateObjectType($resultObject, "Kaltura_Client_Type_RemotePathListResponse");
 		return $resultObject;
@@ -120,7 +120,7 @@ class Kaltura_Client_Attachment_AttachmentAssetService extends Kaltura_Client_Se
 	function serve($attachmentAssetId)
 	{
 		if ($this->client->isMultiRequest())
-			throw new Kaltura_Client_ClientException("Action is not supported as part of multi-request.", Kaltura_Client_ClientException::ERROR_ACTION_IN_MULTIREQUEST);
+			throw $this->client->getKalturaClientException("Action is not supported as part of multi-request.", Kaltura_Client_ClientException::ERROR_ACTION_IN_MULTIREQUEST);
 		
 		$kparams = array();
 		$this->client->addParam($kparams, "attachmentAssetId", $attachmentAssetId);
@@ -138,7 +138,7 @@ class Kaltura_Client_Attachment_AttachmentAssetService extends Kaltura_Client_Se
 			return $this->client->getMultiRequestResult();
 		$resultXml = $this->client->doQueue();
 		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		Kaltura_Client_ParseUtils::checkIfError($resultXmlObject->result);
+		$this->client->checkIfError($resultXmlObject->result);
 		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaAttachmentAsset");
 		$this->client->validateObjectType($resultObject, "Kaltura_Client_Attachment_Type_AttachmentAsset");
 		return $resultObject;
@@ -156,7 +156,7 @@ class Kaltura_Client_Attachment_AttachmentAssetService extends Kaltura_Client_Se
 			return $this->client->getMultiRequestResult();
 		$resultXml = $this->client->doQueue();
 		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		Kaltura_Client_ParseUtils::checkIfError($resultXmlObject->result);
+		$this->client->checkIfError($resultXmlObject->result);
 		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaAttachmentAssetListResponse");
 		$this->client->validateObjectType($resultObject, "Kaltura_Client_Attachment_Type_AttachmentAssetListResponse");
 		return $resultObject;
@@ -171,6 +171,6 @@ class Kaltura_Client_Attachment_AttachmentAssetService extends Kaltura_Client_Se
 			return $this->client->getMultiRequestResult();
 		$resultXml = $this->client->doQueue();
 		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		Kaltura_Client_ParseUtils::checkIfError($resultXmlObject->result);
+		$this->client->checkIfError($resultXmlObject->result);
 	}
 }

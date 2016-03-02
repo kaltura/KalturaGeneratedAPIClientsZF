@@ -51,7 +51,7 @@ class Kaltura_Client_ConversionProfileAssetParamsService extends Kaltura_Client_
 			return $this->client->getMultiRequestResult();
 		$resultXml = $this->client->doQueue();
 		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		Kaltura_Client_ParseUtils::checkIfError($resultXmlObject->result);
+		$this->client->checkIfError($resultXmlObject->result);
 		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaConversionProfileAssetParamsListResponse");
 		$this->client->validateObjectType($resultObject, "Kaltura_Client_Type_ConversionProfileAssetParamsListResponse");
 		return $resultObject;
@@ -68,7 +68,7 @@ class Kaltura_Client_ConversionProfileAssetParamsService extends Kaltura_Client_
 			return $this->client->getMultiRequestResult();
 		$resultXml = $this->client->doQueue();
 		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		Kaltura_Client_ParseUtils::checkIfError($resultXmlObject->result);
+		$this->client->checkIfError($resultXmlObject->result);
 		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaConversionProfileAssetParams");
 		$this->client->validateObjectType($resultObject, "Kaltura_Client_Type_ConversionProfileAssetParams");
 		return $resultObject;

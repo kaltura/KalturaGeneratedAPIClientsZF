@@ -48,7 +48,7 @@ class Kaltura_Client_Annotation_AnnotationService extends Kaltura_Client_Service
 			return $this->client->getMultiRequestResult();
 		$resultXml = $this->client->doQueue();
 		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		Kaltura_Client_ParseUtils::checkIfError($resultXmlObject->result);
+		$this->client->checkIfError($resultXmlObject->result);
 		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaAnnotation");
 		$this->client->validateObjectType($resultObject, "Kaltura_Client_Annotation_Type_Annotation");
 		return $resultObject;
@@ -64,7 +64,7 @@ class Kaltura_Client_Annotation_AnnotationService extends Kaltura_Client_Service
 			return $this->client->getMultiRequestResult();
 		$resultXml = $this->client->doQueue();
 		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		Kaltura_Client_ParseUtils::checkIfError($resultXmlObject->result);
+		$this->client->checkIfError($resultXmlObject->result);
 		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaAnnotation");
 		$this->client->validateObjectType($resultObject, "Kaltura_Client_Annotation_Type_Annotation");
 		return $resultObject;
@@ -82,7 +82,7 @@ class Kaltura_Client_Annotation_AnnotationService extends Kaltura_Client_Service
 			return $this->client->getMultiRequestResult();
 		$resultXml = $this->client->doQueue();
 		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		Kaltura_Client_ParseUtils::checkIfError($resultXmlObject->result);
+		$this->client->checkIfError($resultXmlObject->result);
 		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaAnnotationListResponse");
 		$this->client->validateObjectType($resultObject, "Kaltura_Client_Annotation_Type_AnnotationListResponse");
 		return $resultObject;
@@ -98,7 +98,7 @@ class Kaltura_Client_Annotation_AnnotationService extends Kaltura_Client_Service
 			return $this->client->getMultiRequestResult();
 		$resultXml = $this->client->doQueue();
 		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		Kaltura_Client_ParseUtils::checkIfError($resultXmlObject->result);
+		$this->client->checkIfError($resultXmlObject->result);
 		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaCuePointListResponse");
 		$this->client->validateObjectType($resultObject, "Kaltura_Client_CuePoint_Type_CuePointListResponse");
 		return $resultObject;
@@ -107,7 +107,7 @@ class Kaltura_Client_Annotation_AnnotationService extends Kaltura_Client_Service
 	function serveBulk(Kaltura_Client_CuePoint_Type_CuePointFilter $filter = null, Kaltura_Client_Type_FilterPager $pager = null)
 	{
 		if ($this->client->isMultiRequest())
-			throw new Kaltura_Client_ClientException("Action is not supported as part of multi-request.", Kaltura_Client_ClientException::ERROR_ACTION_IN_MULTIREQUEST);
+			throw $this->client->getKalturaClientException("Action is not supported as part of multi-request.", Kaltura_Client_ClientException::ERROR_ACTION_IN_MULTIREQUEST);
 		
 		$kparams = array();
 		if ($filter !== null)
@@ -128,7 +128,7 @@ class Kaltura_Client_Annotation_AnnotationService extends Kaltura_Client_Service
 			return $this->client->getMultiRequestResult();
 		$resultXml = $this->client->doQueue();
 		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		Kaltura_Client_ParseUtils::checkIfError($resultXmlObject->result);
+		$this->client->checkIfError($resultXmlObject->result);
 		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaCuePoint");
 		$this->client->validateObjectType($resultObject, "Kaltura_Client_CuePoint_Type_CuePoint");
 		return $resultObject;
@@ -144,7 +144,7 @@ class Kaltura_Client_Annotation_AnnotationService extends Kaltura_Client_Service
 			return $this->client->getMultiRequestResult();
 		$resultXml = $this->client->doQueue();
 		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		Kaltura_Client_ParseUtils::checkIfError($resultXmlObject->result);
+		$this->client->checkIfError($resultXmlObject->result);
 		$resultObject = (int)Kaltura_Client_ParseUtils::unmarshalSimpleType($resultXmlObject->result);
 		return $resultObject;
 	}
@@ -158,6 +158,6 @@ class Kaltura_Client_Annotation_AnnotationService extends Kaltura_Client_Service
 			return $this->client->getMultiRequestResult();
 		$resultXml = $this->client->doQueue();
 		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		Kaltura_Client_ParseUtils::checkIfError($resultXmlObject->result);
+		$this->client->checkIfError($resultXmlObject->result);
 	}
 }

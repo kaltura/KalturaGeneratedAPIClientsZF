@@ -49,7 +49,7 @@ class Kaltura_Client_ThumbAssetService extends Kaltura_Client_ServiceBase
 			return $this->client->getMultiRequestResult();
 		$resultXml = $this->client->doQueue();
 		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		Kaltura_Client_ParseUtils::checkIfError($resultXmlObject->result);
+		$this->client->checkIfError($resultXmlObject->result);
 		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaThumbAsset");
 		$this->client->validateObjectType($resultObject, "Kaltura_Client_Type_ThumbAsset");
 		return $resultObject;
@@ -65,7 +65,7 @@ class Kaltura_Client_ThumbAssetService extends Kaltura_Client_ServiceBase
 			return $this->client->getMultiRequestResult();
 		$resultXml = $this->client->doQueue();
 		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		Kaltura_Client_ParseUtils::checkIfError($resultXmlObject->result);
+		$this->client->checkIfError($resultXmlObject->result);
 		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaThumbAsset");
 		$this->client->validateObjectType($resultObject, "Kaltura_Client_Type_ThumbAsset");
 		return $resultObject;
@@ -81,7 +81,7 @@ class Kaltura_Client_ThumbAssetService extends Kaltura_Client_ServiceBase
 			return $this->client->getMultiRequestResult();
 		$resultXml = $this->client->doQueue();
 		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		Kaltura_Client_ParseUtils::checkIfError($resultXmlObject->result);
+		$this->client->checkIfError($resultXmlObject->result);
 		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaThumbAsset");
 		$this->client->validateObjectType($resultObject, "Kaltura_Client_Type_ThumbAsset");
 		return $resultObject;
@@ -90,7 +90,7 @@ class Kaltura_Client_ThumbAssetService extends Kaltura_Client_ServiceBase
 	function serveByEntryId($entryId, $thumbParamId = null)
 	{
 		if ($this->client->isMultiRequest())
-			throw new Kaltura_Client_ClientException("Action is not supported as part of multi-request.", Kaltura_Client_ClientException::ERROR_ACTION_IN_MULTIREQUEST);
+			throw $this->client->getKalturaClientException("Action is not supported as part of multi-request.", Kaltura_Client_ClientException::ERROR_ACTION_IN_MULTIREQUEST);
 		
 		$kparams = array();
 		$this->client->addParam($kparams, "entryId", $entryId);
@@ -103,7 +103,7 @@ class Kaltura_Client_ThumbAssetService extends Kaltura_Client_ServiceBase
 	function serve($thumbAssetId, $version = null, Kaltura_Client_Type_ThumbParams $thumbParams = null, Kaltura_Client_Type_ThumbnailServeOptions $options = null)
 	{
 		if ($this->client->isMultiRequest())
-			throw new Kaltura_Client_ClientException("Action is not supported as part of multi-request.", Kaltura_Client_ClientException::ERROR_ACTION_IN_MULTIREQUEST);
+			throw $this->client->getKalturaClientException("Action is not supported as part of multi-request.", Kaltura_Client_ClientException::ERROR_ACTION_IN_MULTIREQUEST);
 		
 		$kparams = array();
 		$this->client->addParam($kparams, "thumbAssetId", $thumbAssetId);
@@ -126,7 +126,7 @@ class Kaltura_Client_ThumbAssetService extends Kaltura_Client_ServiceBase
 			return $this->client->getMultiRequestResult();
 		$resultXml = $this->client->doQueue();
 		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		Kaltura_Client_ParseUtils::checkIfError($resultXmlObject->result);
+		$this->client->checkIfError($resultXmlObject->result);
 	}
 
 	function generateByEntryId($entryId, $destThumbParamsId)
@@ -139,7 +139,7 @@ class Kaltura_Client_ThumbAssetService extends Kaltura_Client_ServiceBase
 			return $this->client->getMultiRequestResult();
 		$resultXml = $this->client->doQueue();
 		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		Kaltura_Client_ParseUtils::checkIfError($resultXmlObject->result);
+		$this->client->checkIfError($resultXmlObject->result);
 		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaThumbAsset");
 		$this->client->validateObjectType($resultObject, "Kaltura_Client_Type_ThumbAsset");
 		return $resultObject;
@@ -156,7 +156,7 @@ class Kaltura_Client_ThumbAssetService extends Kaltura_Client_ServiceBase
 			return $this->client->getMultiRequestResult();
 		$resultXml = $this->client->doQueue();
 		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		Kaltura_Client_ParseUtils::checkIfError($resultXmlObject->result);
+		$this->client->checkIfError($resultXmlObject->result);
 		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaThumbAsset");
 		$this->client->validateObjectType($resultObject, "Kaltura_Client_Type_ThumbAsset");
 		return $resultObject;
@@ -171,7 +171,7 @@ class Kaltura_Client_ThumbAssetService extends Kaltura_Client_ServiceBase
 			return $this->client->getMultiRequestResult();
 		$resultXml = $this->client->doQueue();
 		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		Kaltura_Client_ParseUtils::checkIfError($resultXmlObject->result);
+		$this->client->checkIfError($resultXmlObject->result);
 		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaThumbAsset");
 		$this->client->validateObjectType($resultObject, "Kaltura_Client_Type_ThumbAsset");
 		return $resultObject;
@@ -186,7 +186,7 @@ class Kaltura_Client_ThumbAssetService extends Kaltura_Client_ServiceBase
 			return $this->client->getMultiRequestResult();
 		$resultXml = $this->client->doQueue();
 		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		Kaltura_Client_ParseUtils::checkIfError($resultXmlObject->result);
+		$this->client->checkIfError($resultXmlObject->result);
 		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaThumbAsset");
 		$this->client->validateObjectType($resultObject, "Kaltura_Client_Type_ThumbAsset");
 		return $resultObject;
@@ -201,7 +201,7 @@ class Kaltura_Client_ThumbAssetService extends Kaltura_Client_ServiceBase
 			return $this->client->getMultiRequestResult();
 		$resultXml = $this->client->doQueue();
 		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		Kaltura_Client_ParseUtils::checkIfError($resultXmlObject->result);
+		$this->client->checkIfError($resultXmlObject->result);
 		$resultObject = Kaltura_Client_ParseUtils::unmarshalArray($resultXmlObject->result, "KalturaThumbAsset");
 		foreach($resultObject as $resultObjectItem){
 			$this->client->validateObjectType($resultObjectItem, "Kaltura_Client_Type_ThumbAsset");
@@ -221,7 +221,7 @@ class Kaltura_Client_ThumbAssetService extends Kaltura_Client_ServiceBase
 			return $this->client->getMultiRequestResult();
 		$resultXml = $this->client->doQueue();
 		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		Kaltura_Client_ParseUtils::checkIfError($resultXmlObject->result);
+		$this->client->checkIfError($resultXmlObject->result);
 		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaThumbAssetListResponse");
 		$this->client->validateObjectType($resultObject, "Kaltura_Client_Type_ThumbAssetListResponse");
 		return $resultObject;
@@ -237,7 +237,7 @@ class Kaltura_Client_ThumbAssetService extends Kaltura_Client_ServiceBase
 			return $this->client->getMultiRequestResult();
 		$resultXml = $this->client->doQueue();
 		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		Kaltura_Client_ParseUtils::checkIfError($resultXmlObject->result);
+		$this->client->checkIfError($resultXmlObject->result);
 		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaThumbAsset");
 		$this->client->validateObjectType($resultObject, "Kaltura_Client_Type_ThumbAsset");
 		return $resultObject;
@@ -254,7 +254,7 @@ class Kaltura_Client_ThumbAssetService extends Kaltura_Client_ServiceBase
 			return $this->client->getMultiRequestResult();
 		$resultXml = $this->client->doQueue();
 		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		Kaltura_Client_ParseUtils::checkIfError($resultXmlObject->result);
+		$this->client->checkIfError($resultXmlObject->result);
 		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaThumbAsset");
 		$this->client->validateObjectType($resultObject, "Kaltura_Client_Type_ThumbAsset");
 		return $resultObject;
@@ -269,7 +269,7 @@ class Kaltura_Client_ThumbAssetService extends Kaltura_Client_ServiceBase
 			return $this->client->getMultiRequestResult();
 		$resultXml = $this->client->doQueue();
 		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		Kaltura_Client_ParseUtils::checkIfError($resultXmlObject->result);
+		$this->client->checkIfError($resultXmlObject->result);
 	}
 
 	function getUrl($id, $storageId = null, Kaltura_Client_Type_ThumbParams $thumbParams = null)
@@ -284,7 +284,7 @@ class Kaltura_Client_ThumbAssetService extends Kaltura_Client_ServiceBase
 			return $this->client->getMultiRequestResult();
 		$resultXml = $this->client->doQueue();
 		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		Kaltura_Client_ParseUtils::checkIfError($resultXmlObject->result);
+		$this->client->checkIfError($resultXmlObject->result);
 		$resultObject = (string)Kaltura_Client_ParseUtils::unmarshalSimpleType($resultXmlObject->result);
 		return $resultObject;
 	}
@@ -298,7 +298,7 @@ class Kaltura_Client_ThumbAssetService extends Kaltura_Client_ServiceBase
 			return $this->client->getMultiRequestResult();
 		$resultXml = $this->client->doQueue();
 		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		Kaltura_Client_ParseUtils::checkIfError($resultXmlObject->result);
+		$this->client->checkIfError($resultXmlObject->result);
 		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaRemotePathListResponse");
 		$this->client->validateObjectType($resultObject, "Kaltura_Client_Type_RemotePathListResponse");
 		return $resultObject;

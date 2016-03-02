@@ -49,7 +49,7 @@ class Kaltura_Client_PlaylistService extends Kaltura_Client_ServiceBase
 			return $this->client->getMultiRequestResult();
 		$resultXml = $this->client->doQueue();
 		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		Kaltura_Client_ParseUtils::checkIfError($resultXmlObject->result);
+		$this->client->checkIfError($resultXmlObject->result);
 		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaPlaylist");
 		$this->client->validateObjectType($resultObject, "Kaltura_Client_Type_Playlist");
 		return $resultObject;
@@ -65,7 +65,7 @@ class Kaltura_Client_PlaylistService extends Kaltura_Client_ServiceBase
 			return $this->client->getMultiRequestResult();
 		$resultXml = $this->client->doQueue();
 		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		Kaltura_Client_ParseUtils::checkIfError($resultXmlObject->result);
+		$this->client->checkIfError($resultXmlObject->result);
 		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaPlaylist");
 		$this->client->validateObjectType($resultObject, "Kaltura_Client_Type_Playlist");
 		return $resultObject;
@@ -82,7 +82,7 @@ class Kaltura_Client_PlaylistService extends Kaltura_Client_ServiceBase
 			return $this->client->getMultiRequestResult();
 		$resultXml = $this->client->doQueue();
 		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		Kaltura_Client_ParseUtils::checkIfError($resultXmlObject->result);
+		$this->client->checkIfError($resultXmlObject->result);
 		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaPlaylist");
 		$this->client->validateObjectType($resultObject, "Kaltura_Client_Type_Playlist");
 		return $resultObject;
@@ -97,7 +97,7 @@ class Kaltura_Client_PlaylistService extends Kaltura_Client_ServiceBase
 			return $this->client->getMultiRequestResult();
 		$resultXml = $this->client->doQueue();
 		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		Kaltura_Client_ParseUtils::checkIfError($resultXmlObject->result);
+		$this->client->checkIfError($resultXmlObject->result);
 	}
 
 	function cloneAction($id, Kaltura_Client_Type_Playlist $newPlaylist = null)
@@ -111,7 +111,7 @@ class Kaltura_Client_PlaylistService extends Kaltura_Client_ServiceBase
 			return $this->client->getMultiRequestResult();
 		$resultXml = $this->client->doQueue();
 		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		Kaltura_Client_ParseUtils::checkIfError($resultXmlObject->result);
+		$this->client->checkIfError($resultXmlObject->result);
 		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaPlaylist");
 		$this->client->validateObjectType($resultObject, "Kaltura_Client_Type_Playlist");
 		return $resultObject;
@@ -129,7 +129,7 @@ class Kaltura_Client_PlaylistService extends Kaltura_Client_ServiceBase
 			return $this->client->getMultiRequestResult();
 		$resultXml = $this->client->doQueue();
 		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		Kaltura_Client_ParseUtils::checkIfError($resultXmlObject->result);
+		$this->client->checkIfError($resultXmlObject->result);
 		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaPlaylistListResponse");
 		$this->client->validateObjectType($resultObject, "Kaltura_Client_Type_PlaylistListResponse");
 		return $resultObject;
@@ -151,7 +151,7 @@ class Kaltura_Client_PlaylistService extends Kaltura_Client_ServiceBase
 			return $this->client->getMultiRequestResult();
 		$resultXml = $this->client->doQueue();
 		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		Kaltura_Client_ParseUtils::checkIfError($resultXmlObject->result);
+		$this->client->checkIfError($resultXmlObject->result);
 		$resultObject = Kaltura_Client_ParseUtils::unmarshalArray($resultXmlObject->result, "KalturaBaseEntry");
 		foreach($resultObject as $resultObjectItem){
 			$this->client->validateObjectType($resultObjectItem, "Kaltura_Client_Type_BaseEntry");
@@ -172,7 +172,7 @@ class Kaltura_Client_PlaylistService extends Kaltura_Client_ServiceBase
 			return $this->client->getMultiRequestResult();
 		$resultXml = $this->client->doQueue();
 		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		Kaltura_Client_ParseUtils::checkIfError($resultXmlObject->result);
+		$this->client->checkIfError($resultXmlObject->result);
 		$resultObject = Kaltura_Client_ParseUtils::unmarshalArray($resultXmlObject->result, "KalturaBaseEntry");
 		foreach($resultObject as $resultObjectItem){
 			$this->client->validateObjectType($resultObjectItem, "Kaltura_Client_Type_BaseEntry");
@@ -196,7 +196,7 @@ class Kaltura_Client_PlaylistService extends Kaltura_Client_ServiceBase
 			return $this->client->getMultiRequestResult();
 		$resultXml = $this->client->doQueue();
 		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		Kaltura_Client_ParseUtils::checkIfError($resultXmlObject->result);
+		$this->client->checkIfError($resultXmlObject->result);
 		$resultObject = Kaltura_Client_ParseUtils::unmarshalArray($resultXmlObject->result, "KalturaBaseEntry");
 		foreach($resultObject as $resultObjectItem){
 			$this->client->validateObjectType($resultObjectItem, "Kaltura_Client_Type_BaseEntry");
@@ -214,7 +214,7 @@ class Kaltura_Client_PlaylistService extends Kaltura_Client_ServiceBase
 			return $this->client->getMultiRequestResult();
 		$resultXml = $this->client->doQueue();
 		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		Kaltura_Client_ParseUtils::checkIfError($resultXmlObject->result);
+		$this->client->checkIfError($resultXmlObject->result);
 		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaPlaylist");
 		$this->client->validateObjectType($resultObject, "Kaltura_Client_Type_Playlist");
 		return $resultObject;

@@ -48,7 +48,7 @@ class Kaltura_Client_AdminConsole_UiConfAdminService extends Kaltura_Client_Serv
 			return $this->client->getMultiRequestResult();
 		$resultXml = $this->client->doQueue();
 		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		Kaltura_Client_ParseUtils::checkIfError($resultXmlObject->result);
+		$this->client->checkIfError($resultXmlObject->result);
 		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaUiConfAdmin");
 		$this->client->validateObjectType($resultObject, "Kaltura_Client_AdminConsole_Type_UiConfAdmin");
 		return $resultObject;
@@ -64,7 +64,7 @@ class Kaltura_Client_AdminConsole_UiConfAdminService extends Kaltura_Client_Serv
 			return $this->client->getMultiRequestResult();
 		$resultXml = $this->client->doQueue();
 		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		Kaltura_Client_ParseUtils::checkIfError($resultXmlObject->result);
+		$this->client->checkIfError($resultXmlObject->result);
 		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaUiConfAdmin");
 		$this->client->validateObjectType($resultObject, "Kaltura_Client_AdminConsole_Type_UiConfAdmin");
 		return $resultObject;
@@ -79,7 +79,7 @@ class Kaltura_Client_AdminConsole_UiConfAdminService extends Kaltura_Client_Serv
 			return $this->client->getMultiRequestResult();
 		$resultXml = $this->client->doQueue();
 		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		Kaltura_Client_ParseUtils::checkIfError($resultXmlObject->result);
+		$this->client->checkIfError($resultXmlObject->result);
 		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaUiConfAdmin");
 		$this->client->validateObjectType($resultObject, "Kaltura_Client_AdminConsole_Type_UiConfAdmin");
 		return $resultObject;
@@ -94,7 +94,7 @@ class Kaltura_Client_AdminConsole_UiConfAdminService extends Kaltura_Client_Serv
 			return $this->client->getMultiRequestResult();
 		$resultXml = $this->client->doQueue();
 		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		Kaltura_Client_ParseUtils::checkIfError($resultXmlObject->result);
+		$this->client->checkIfError($resultXmlObject->result);
 	}
 
 	function listAction(Kaltura_Client_Type_UiConfFilter $filter = null, Kaltura_Client_Type_FilterPager $pager = null)
@@ -109,7 +109,7 @@ class Kaltura_Client_AdminConsole_UiConfAdminService extends Kaltura_Client_Serv
 			return $this->client->getMultiRequestResult();
 		$resultXml = $this->client->doQueue();
 		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		Kaltura_Client_ParseUtils::checkIfError($resultXmlObject->result);
+		$this->client->checkIfError($resultXmlObject->result);
 		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaUiConfAdminListResponse");
 		$this->client->validateObjectType($resultObject, "Kaltura_Client_AdminConsole_Type_UiConfAdminListResponse");
 		return $resultObject;

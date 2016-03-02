@@ -49,7 +49,7 @@ class Kaltura_Client_Caption_CaptionAssetService extends Kaltura_Client_ServiceB
 			return $this->client->getMultiRequestResult();
 		$resultXml = $this->client->doQueue();
 		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		Kaltura_Client_ParseUtils::checkIfError($resultXmlObject->result);
+		$this->client->checkIfError($resultXmlObject->result);
 		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaCaptionAsset");
 		$this->client->validateObjectType($resultObject, "Kaltura_Client_Caption_Type_CaptionAsset");
 		return $resultObject;
@@ -65,7 +65,7 @@ class Kaltura_Client_Caption_CaptionAssetService extends Kaltura_Client_ServiceB
 			return $this->client->getMultiRequestResult();
 		$resultXml = $this->client->doQueue();
 		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		Kaltura_Client_ParseUtils::checkIfError($resultXmlObject->result);
+		$this->client->checkIfError($resultXmlObject->result);
 		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaCaptionAsset");
 		$this->client->validateObjectType($resultObject, "Kaltura_Client_Caption_Type_CaptionAsset");
 		return $resultObject;
@@ -81,7 +81,7 @@ class Kaltura_Client_Caption_CaptionAssetService extends Kaltura_Client_ServiceB
 			return $this->client->getMultiRequestResult();
 		$resultXml = $this->client->doQueue();
 		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		Kaltura_Client_ParseUtils::checkIfError($resultXmlObject->result);
+		$this->client->checkIfError($resultXmlObject->result);
 		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaCaptionAsset");
 		$this->client->validateObjectType($resultObject, "Kaltura_Client_Caption_Type_CaptionAsset");
 		return $resultObject;
@@ -90,7 +90,7 @@ class Kaltura_Client_Caption_CaptionAssetService extends Kaltura_Client_ServiceB
 	function serveByEntryId($entryId, $captionParamId = null)
 	{
 		if ($this->client->isMultiRequest())
-			throw new Kaltura_Client_ClientException("Action is not supported as part of multi-request.", Kaltura_Client_ClientException::ERROR_ACTION_IN_MULTIREQUEST);
+			throw $this->client->getKalturaClientException("Action is not supported as part of multi-request.", Kaltura_Client_ClientException::ERROR_ACTION_IN_MULTIREQUEST);
 		
 		$kparams = array();
 		$this->client->addParam($kparams, "entryId", $entryId);
@@ -110,7 +110,7 @@ class Kaltura_Client_Caption_CaptionAssetService extends Kaltura_Client_ServiceB
 			return $this->client->getMultiRequestResult();
 		$resultXml = $this->client->doQueue();
 		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		Kaltura_Client_ParseUtils::checkIfError($resultXmlObject->result);
+		$this->client->checkIfError($resultXmlObject->result);
 		$resultObject = (string)Kaltura_Client_ParseUtils::unmarshalSimpleType($resultXmlObject->result);
 		return $resultObject;
 	}
@@ -124,7 +124,7 @@ class Kaltura_Client_Caption_CaptionAssetService extends Kaltura_Client_ServiceB
 			return $this->client->getMultiRequestResult();
 		$resultXml = $this->client->doQueue();
 		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		Kaltura_Client_ParseUtils::checkIfError($resultXmlObject->result);
+		$this->client->checkIfError($resultXmlObject->result);
 		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaRemotePathListResponse");
 		$this->client->validateObjectType($resultObject, "Kaltura_Client_Type_RemotePathListResponse");
 		return $resultObject;
@@ -133,7 +133,7 @@ class Kaltura_Client_Caption_CaptionAssetService extends Kaltura_Client_ServiceB
 	function serve($captionAssetId)
 	{
 		if ($this->client->isMultiRequest())
-			throw new Kaltura_Client_ClientException("Action is not supported as part of multi-request.", Kaltura_Client_ClientException::ERROR_ACTION_IN_MULTIREQUEST);
+			throw $this->client->getKalturaClientException("Action is not supported as part of multi-request.", Kaltura_Client_ClientException::ERROR_ACTION_IN_MULTIREQUEST);
 		
 		$kparams = array();
 		$this->client->addParam($kparams, "captionAssetId", $captionAssetId);
@@ -145,7 +145,7 @@ class Kaltura_Client_Caption_CaptionAssetService extends Kaltura_Client_ServiceB
 	function serveWebVTT($captionAssetId, $segmentDuration = 30, $segmentIndex = null, $localTimestamp = 10000)
 	{
 		if ($this->client->isMultiRequest())
-			throw new Kaltura_Client_ClientException("Action is not supported as part of multi-request.", Kaltura_Client_ClientException::ERROR_ACTION_IN_MULTIREQUEST);
+			throw $this->client->getKalturaClientException("Action is not supported as part of multi-request.", Kaltura_Client_ClientException::ERROR_ACTION_IN_MULTIREQUEST);
 		
 		$kparams = array();
 		$this->client->addParam($kparams, "captionAssetId", $captionAssetId);
@@ -166,7 +166,7 @@ class Kaltura_Client_Caption_CaptionAssetService extends Kaltura_Client_ServiceB
 			return $this->client->getMultiRequestResult();
 		$resultXml = $this->client->doQueue();
 		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		Kaltura_Client_ParseUtils::checkIfError($resultXmlObject->result);
+		$this->client->checkIfError($resultXmlObject->result);
 	}
 
 	function get($captionAssetId)
@@ -178,7 +178,7 @@ class Kaltura_Client_Caption_CaptionAssetService extends Kaltura_Client_ServiceB
 			return $this->client->getMultiRequestResult();
 		$resultXml = $this->client->doQueue();
 		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		Kaltura_Client_ParseUtils::checkIfError($resultXmlObject->result);
+		$this->client->checkIfError($resultXmlObject->result);
 		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaCaptionAsset");
 		$this->client->validateObjectType($resultObject, "Kaltura_Client_Caption_Type_CaptionAsset");
 		return $resultObject;
@@ -196,7 +196,7 @@ class Kaltura_Client_Caption_CaptionAssetService extends Kaltura_Client_ServiceB
 			return $this->client->getMultiRequestResult();
 		$resultXml = $this->client->doQueue();
 		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		Kaltura_Client_ParseUtils::checkIfError($resultXmlObject->result);
+		$this->client->checkIfError($resultXmlObject->result);
 		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaCaptionAssetListResponse");
 		$this->client->validateObjectType($resultObject, "Kaltura_Client_Caption_Type_CaptionAssetListResponse");
 		return $resultObject;
@@ -211,6 +211,6 @@ class Kaltura_Client_Caption_CaptionAssetService extends Kaltura_Client_ServiceB
 			return $this->client->getMultiRequestResult();
 		$resultXml = $this->client->doQueue();
 		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		Kaltura_Client_ParseUtils::checkIfError($resultXmlObject->result);
+		$this->client->checkIfError($resultXmlObject->result);
 	}
 }

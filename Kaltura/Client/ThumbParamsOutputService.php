@@ -48,7 +48,7 @@ class Kaltura_Client_ThumbParamsOutputService extends Kaltura_Client_ServiceBase
 			return $this->client->getMultiRequestResult();
 		$resultXml = $this->client->doQueue();
 		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		Kaltura_Client_ParseUtils::checkIfError($resultXmlObject->result);
+		$this->client->checkIfError($resultXmlObject->result);
 		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaThumbParamsOutput");
 		$this->client->validateObjectType($resultObject, "Kaltura_Client_Type_ThumbParamsOutput");
 		return $resultObject;
@@ -66,7 +66,7 @@ class Kaltura_Client_ThumbParamsOutputService extends Kaltura_Client_ServiceBase
 			return $this->client->getMultiRequestResult();
 		$resultXml = $this->client->doQueue();
 		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		Kaltura_Client_ParseUtils::checkIfError($resultXmlObject->result);
+		$this->client->checkIfError($resultXmlObject->result);
 		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaThumbParamsOutputListResponse");
 		$this->client->validateObjectType($resultObject, "Kaltura_Client_Type_ThumbParamsOutputListResponse");
 		return $resultObject;

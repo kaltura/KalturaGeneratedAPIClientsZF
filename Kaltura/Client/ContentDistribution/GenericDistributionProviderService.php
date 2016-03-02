@@ -48,7 +48,7 @@ class Kaltura_Client_ContentDistribution_GenericDistributionProviderService exte
 			return $this->client->getMultiRequestResult();
 		$resultXml = $this->client->doQueue();
 		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		Kaltura_Client_ParseUtils::checkIfError($resultXmlObject->result);
+		$this->client->checkIfError($resultXmlObject->result);
 		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaGenericDistributionProvider");
 		$this->client->validateObjectType($resultObject, "Kaltura_Client_ContentDistribution_Type_GenericDistributionProvider");
 		return $resultObject;
@@ -63,7 +63,7 @@ class Kaltura_Client_ContentDistribution_GenericDistributionProviderService exte
 			return $this->client->getMultiRequestResult();
 		$resultXml = $this->client->doQueue();
 		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		Kaltura_Client_ParseUtils::checkIfError($resultXmlObject->result);
+		$this->client->checkIfError($resultXmlObject->result);
 		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaGenericDistributionProvider");
 		$this->client->validateObjectType($resultObject, "Kaltura_Client_ContentDistribution_Type_GenericDistributionProvider");
 		return $resultObject;
@@ -79,7 +79,7 @@ class Kaltura_Client_ContentDistribution_GenericDistributionProviderService exte
 			return $this->client->getMultiRequestResult();
 		$resultXml = $this->client->doQueue();
 		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		Kaltura_Client_ParseUtils::checkIfError($resultXmlObject->result);
+		$this->client->checkIfError($resultXmlObject->result);
 		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaGenericDistributionProvider");
 		$this->client->validateObjectType($resultObject, "Kaltura_Client_ContentDistribution_Type_GenericDistributionProvider");
 		return $resultObject;
@@ -94,7 +94,7 @@ class Kaltura_Client_ContentDistribution_GenericDistributionProviderService exte
 			return $this->client->getMultiRequestResult();
 		$resultXml = $this->client->doQueue();
 		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		Kaltura_Client_ParseUtils::checkIfError($resultXmlObject->result);
+		$this->client->checkIfError($resultXmlObject->result);
 	}
 
 	function listAction(Kaltura_Client_ContentDistribution_Type_GenericDistributionProviderFilter $filter = null, Kaltura_Client_Type_FilterPager $pager = null)
@@ -109,7 +109,7 @@ class Kaltura_Client_ContentDistribution_GenericDistributionProviderService exte
 			return $this->client->getMultiRequestResult();
 		$resultXml = $this->client->doQueue();
 		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		Kaltura_Client_ParseUtils::checkIfError($resultXmlObject->result);
+		$this->client->checkIfError($resultXmlObject->result);
 		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaGenericDistributionProviderListResponse");
 		$this->client->validateObjectType($resultObject, "Kaltura_Client_ContentDistribution_Type_GenericDistributionProviderListResponse");
 		return $resultObject;

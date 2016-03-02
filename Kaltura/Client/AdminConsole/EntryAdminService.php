@@ -49,7 +49,7 @@ class Kaltura_Client_AdminConsole_EntryAdminService extends Kaltura_Client_Servi
 			return $this->client->getMultiRequestResult();
 		$resultXml = $this->client->doQueue();
 		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		Kaltura_Client_ParseUtils::checkIfError($resultXmlObject->result);
+		$this->client->checkIfError($resultXmlObject->result);
 		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaBaseEntry");
 		$this->client->validateObjectType($resultObject, "Kaltura_Client_Type_BaseEntry");
 		return $resultObject;
@@ -65,7 +65,7 @@ class Kaltura_Client_AdminConsole_EntryAdminService extends Kaltura_Client_Servi
 			return $this->client->getMultiRequestResult();
 		$resultXml = $this->client->doQueue();
 		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		Kaltura_Client_ParseUtils::checkIfError($resultXmlObject->result);
+		$this->client->checkIfError($resultXmlObject->result);
 		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaBaseEntry");
 		$this->client->validateObjectType($resultObject, "Kaltura_Client_Type_BaseEntry");
 		return $resultObject;
@@ -80,7 +80,7 @@ class Kaltura_Client_AdminConsole_EntryAdminService extends Kaltura_Client_Servi
 			return $this->client->getMultiRequestResult();
 		$resultXml = $this->client->doQueue();
 		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		Kaltura_Client_ParseUtils::checkIfError($resultXmlObject->result);
+		$this->client->checkIfError($resultXmlObject->result);
 		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaTrackEntryListResponse");
 		$this->client->validateObjectType($resultObject, "Kaltura_Client_AdminConsole_Type_TrackEntryListResponse");
 		return $resultObject;
@@ -95,7 +95,7 @@ class Kaltura_Client_AdminConsole_EntryAdminService extends Kaltura_Client_Servi
 			return $this->client->getMultiRequestResult();
 		$resultXml = $this->client->doQueue();
 		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		Kaltura_Client_ParseUtils::checkIfError($resultXmlObject->result);
+		$this->client->checkIfError($resultXmlObject->result);
 		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaBaseEntry");
 		$this->client->validateObjectType($resultObject, "Kaltura_Client_Type_BaseEntry");
 		return $resultObject;

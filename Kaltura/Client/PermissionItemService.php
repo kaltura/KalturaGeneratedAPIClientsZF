@@ -48,7 +48,7 @@ class Kaltura_Client_PermissionItemService extends Kaltura_Client_ServiceBase
 			return $this->client->getMultiRequestResult();
 		$resultXml = $this->client->doQueue();
 		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		Kaltura_Client_ParseUtils::checkIfError($resultXmlObject->result);
+		$this->client->checkIfError($resultXmlObject->result);
 		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaPermissionItem");
 		$this->client->validateObjectType($resultObject, "Kaltura_Client_Type_PermissionItem");
 		return $resultObject;
@@ -63,7 +63,7 @@ class Kaltura_Client_PermissionItemService extends Kaltura_Client_ServiceBase
 			return $this->client->getMultiRequestResult();
 		$resultXml = $this->client->doQueue();
 		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		Kaltura_Client_ParseUtils::checkIfError($resultXmlObject->result);
+		$this->client->checkIfError($resultXmlObject->result);
 		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaPermissionItem");
 		$this->client->validateObjectType($resultObject, "Kaltura_Client_Type_PermissionItem");
 		return $resultObject;
@@ -79,7 +79,7 @@ class Kaltura_Client_PermissionItemService extends Kaltura_Client_ServiceBase
 			return $this->client->getMultiRequestResult();
 		$resultXml = $this->client->doQueue();
 		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		Kaltura_Client_ParseUtils::checkIfError($resultXmlObject->result);
+		$this->client->checkIfError($resultXmlObject->result);
 		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaPermissionItem");
 		$this->client->validateObjectType($resultObject, "Kaltura_Client_Type_PermissionItem");
 		return $resultObject;
@@ -94,7 +94,7 @@ class Kaltura_Client_PermissionItemService extends Kaltura_Client_ServiceBase
 			return $this->client->getMultiRequestResult();
 		$resultXml = $this->client->doQueue();
 		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		Kaltura_Client_ParseUtils::checkIfError($resultXmlObject->result);
+		$this->client->checkIfError($resultXmlObject->result);
 		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaPermissionItem");
 		$this->client->validateObjectType($resultObject, "Kaltura_Client_Type_PermissionItem");
 		return $resultObject;
@@ -112,7 +112,7 @@ class Kaltura_Client_PermissionItemService extends Kaltura_Client_ServiceBase
 			return $this->client->getMultiRequestResult();
 		$resultXml = $this->client->doQueue();
 		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		Kaltura_Client_ParseUtils::checkIfError($resultXmlObject->result);
+		$this->client->checkIfError($resultXmlObject->result);
 		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaPermissionItemListResponse");
 		$this->client->validateObjectType($resultObject, "Kaltura_Client_Type_PermissionItemListResponse");
 		return $resultObject;

@@ -53,7 +53,7 @@ class Kaltura_Client_CaptionSearch_CaptionAssetItemService extends Kaltura_Clien
 			return $this->client->getMultiRequestResult();
 		$resultXml = $this->client->doQueue();
 		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		Kaltura_Client_ParseUtils::checkIfError($resultXmlObject->result);
+		$this->client->checkIfError($resultXmlObject->result);
 		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaCaptionAssetItemListResponse");
 		$this->client->validateObjectType($resultObject, "Kaltura_Client_CaptionSearch_Type_CaptionAssetItemListResponse");
 		return $resultObject;
@@ -73,7 +73,7 @@ class Kaltura_Client_CaptionSearch_CaptionAssetItemService extends Kaltura_Clien
 			return $this->client->getMultiRequestResult();
 		$resultXml = $this->client->doQueue();
 		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		Kaltura_Client_ParseUtils::checkIfError($resultXmlObject->result);
+		$this->client->checkIfError($resultXmlObject->result);
 		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaBaseEntryListResponse");
 		$this->client->validateObjectType($resultObject, "Kaltura_Client_Type_BaseEntryListResponse");
 		return $resultObject;

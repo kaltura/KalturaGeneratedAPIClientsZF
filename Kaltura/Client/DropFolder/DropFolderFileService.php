@@ -48,7 +48,7 @@ class Kaltura_Client_DropFolder_DropFolderFileService extends Kaltura_Client_Ser
 			return $this->client->getMultiRequestResult();
 		$resultXml = $this->client->doQueue();
 		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		Kaltura_Client_ParseUtils::checkIfError($resultXmlObject->result);
+		$this->client->checkIfError($resultXmlObject->result);
 		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaDropFolderFile");
 		$this->client->validateObjectType($resultObject, "Kaltura_Client_DropFolder_Type_DropFolderFile");
 		return $resultObject;
@@ -63,7 +63,7 @@ class Kaltura_Client_DropFolder_DropFolderFileService extends Kaltura_Client_Ser
 			return $this->client->getMultiRequestResult();
 		$resultXml = $this->client->doQueue();
 		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		Kaltura_Client_ParseUtils::checkIfError($resultXmlObject->result);
+		$this->client->checkIfError($resultXmlObject->result);
 		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaDropFolderFile");
 		$this->client->validateObjectType($resultObject, "Kaltura_Client_DropFolder_Type_DropFolderFile");
 		return $resultObject;
@@ -79,7 +79,7 @@ class Kaltura_Client_DropFolder_DropFolderFileService extends Kaltura_Client_Ser
 			return $this->client->getMultiRequestResult();
 		$resultXml = $this->client->doQueue();
 		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		Kaltura_Client_ParseUtils::checkIfError($resultXmlObject->result);
+		$this->client->checkIfError($resultXmlObject->result);
 		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaDropFolderFile");
 		$this->client->validateObjectType($resultObject, "Kaltura_Client_DropFolder_Type_DropFolderFile");
 		return $resultObject;
@@ -95,7 +95,7 @@ class Kaltura_Client_DropFolder_DropFolderFileService extends Kaltura_Client_Ser
 			return $this->client->getMultiRequestResult();
 		$resultXml = $this->client->doQueue();
 		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		Kaltura_Client_ParseUtils::checkIfError($resultXmlObject->result);
+		$this->client->checkIfError($resultXmlObject->result);
 		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaDropFolderFile");
 		$this->client->validateObjectType($resultObject, "Kaltura_Client_DropFolder_Type_DropFolderFile");
 		return $resultObject;
@@ -110,7 +110,7 @@ class Kaltura_Client_DropFolder_DropFolderFileService extends Kaltura_Client_Ser
 			return $this->client->getMultiRequestResult();
 		$resultXml = $this->client->doQueue();
 		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		Kaltura_Client_ParseUtils::checkIfError($resultXmlObject->result);
+		$this->client->checkIfError($resultXmlObject->result);
 		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaDropFolderFile");
 		$this->client->validateObjectType($resultObject, "Kaltura_Client_DropFolder_Type_DropFolderFile");
 		return $resultObject;
@@ -128,7 +128,7 @@ class Kaltura_Client_DropFolder_DropFolderFileService extends Kaltura_Client_Ser
 			return $this->client->getMultiRequestResult();
 		$resultXml = $this->client->doQueue();
 		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		Kaltura_Client_ParseUtils::checkIfError($resultXmlObject->result);
+		$this->client->checkIfError($resultXmlObject->result);
 		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaDropFolderFileListResponse");
 		$this->client->validateObjectType($resultObject, "Kaltura_Client_DropFolder_Type_DropFolderFileListResponse");
 		return $resultObject;
@@ -143,7 +143,7 @@ class Kaltura_Client_DropFolder_DropFolderFileService extends Kaltura_Client_Ser
 			return $this->client->getMultiRequestResult();
 		$resultXml = $this->client->doQueue();
 		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		Kaltura_Client_ParseUtils::checkIfError($resultXmlObject->result);
+		$this->client->checkIfError($resultXmlObject->result);
 		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaDropFolderFile");
 		$this->client->validateObjectType($resultObject, "Kaltura_Client_DropFolder_Type_DropFolderFile");
 		return $resultObject;

@@ -48,7 +48,7 @@ class Kaltura_Client_StorageProfileService extends Kaltura_Client_ServiceBase
 			return $this->client->getMultiRequestResult();
 		$resultXml = $this->client->doQueue();
 		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		Kaltura_Client_ParseUtils::checkIfError($resultXmlObject->result);
+		$this->client->checkIfError($resultXmlObject->result);
 		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaStorageProfile");
 		$this->client->validateObjectType($resultObject, "Kaltura_Client_Type_StorageProfile");
 		return $resultObject;
@@ -64,7 +64,7 @@ class Kaltura_Client_StorageProfileService extends Kaltura_Client_ServiceBase
 			return $this->client->getMultiRequestResult();
 		$resultXml = $this->client->doQueue();
 		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		Kaltura_Client_ParseUtils::checkIfError($resultXmlObject->result);
+		$this->client->checkIfError($resultXmlObject->result);
 	}
 
 	function get($storageProfileId)
@@ -76,7 +76,7 @@ class Kaltura_Client_StorageProfileService extends Kaltura_Client_ServiceBase
 			return $this->client->getMultiRequestResult();
 		$resultXml = $this->client->doQueue();
 		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		Kaltura_Client_ParseUtils::checkIfError($resultXmlObject->result);
+		$this->client->checkIfError($resultXmlObject->result);
 		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaStorageProfile");
 		$this->client->validateObjectType($resultObject, "Kaltura_Client_Type_StorageProfile");
 		return $resultObject;
@@ -92,7 +92,7 @@ class Kaltura_Client_StorageProfileService extends Kaltura_Client_ServiceBase
 			return $this->client->getMultiRequestResult();
 		$resultXml = $this->client->doQueue();
 		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		Kaltura_Client_ParseUtils::checkIfError($resultXmlObject->result);
+		$this->client->checkIfError($resultXmlObject->result);
 		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaStorageProfile");
 		$this->client->validateObjectType($resultObject, "Kaltura_Client_Type_StorageProfile");
 		return $resultObject;
@@ -110,7 +110,7 @@ class Kaltura_Client_StorageProfileService extends Kaltura_Client_ServiceBase
 			return $this->client->getMultiRequestResult();
 		$resultXml = $this->client->doQueue();
 		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		Kaltura_Client_ParseUtils::checkIfError($resultXmlObject->result);
+		$this->client->checkIfError($resultXmlObject->result);
 		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaStorageProfileListResponse");
 		$this->client->validateObjectType($resultObject, "Kaltura_Client_Type_StorageProfileListResponse");
 		return $resultObject;

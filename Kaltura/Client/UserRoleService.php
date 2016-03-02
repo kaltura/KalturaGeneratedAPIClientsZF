@@ -48,7 +48,7 @@ class Kaltura_Client_UserRoleService extends Kaltura_Client_ServiceBase
 			return $this->client->getMultiRequestResult();
 		$resultXml = $this->client->doQueue();
 		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		Kaltura_Client_ParseUtils::checkIfError($resultXmlObject->result);
+		$this->client->checkIfError($resultXmlObject->result);
 		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaUserRole");
 		$this->client->validateObjectType($resultObject, "Kaltura_Client_Type_UserRole");
 		return $resultObject;
@@ -63,7 +63,7 @@ class Kaltura_Client_UserRoleService extends Kaltura_Client_ServiceBase
 			return $this->client->getMultiRequestResult();
 		$resultXml = $this->client->doQueue();
 		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		Kaltura_Client_ParseUtils::checkIfError($resultXmlObject->result);
+		$this->client->checkIfError($resultXmlObject->result);
 		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaUserRole");
 		$this->client->validateObjectType($resultObject, "Kaltura_Client_Type_UserRole");
 		return $resultObject;
@@ -79,7 +79,7 @@ class Kaltura_Client_UserRoleService extends Kaltura_Client_ServiceBase
 			return $this->client->getMultiRequestResult();
 		$resultXml = $this->client->doQueue();
 		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		Kaltura_Client_ParseUtils::checkIfError($resultXmlObject->result);
+		$this->client->checkIfError($resultXmlObject->result);
 		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaUserRole");
 		$this->client->validateObjectType($resultObject, "Kaltura_Client_Type_UserRole");
 		return $resultObject;
@@ -94,7 +94,7 @@ class Kaltura_Client_UserRoleService extends Kaltura_Client_ServiceBase
 			return $this->client->getMultiRequestResult();
 		$resultXml = $this->client->doQueue();
 		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		Kaltura_Client_ParseUtils::checkIfError($resultXmlObject->result);
+		$this->client->checkIfError($resultXmlObject->result);
 		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaUserRole");
 		$this->client->validateObjectType($resultObject, "Kaltura_Client_Type_UserRole");
 		return $resultObject;
@@ -112,7 +112,7 @@ class Kaltura_Client_UserRoleService extends Kaltura_Client_ServiceBase
 			return $this->client->getMultiRequestResult();
 		$resultXml = $this->client->doQueue();
 		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		Kaltura_Client_ParseUtils::checkIfError($resultXmlObject->result);
+		$this->client->checkIfError($resultXmlObject->result);
 		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaUserRoleListResponse");
 		$this->client->validateObjectType($resultObject, "Kaltura_Client_Type_UserRoleListResponse");
 		return $resultObject;
@@ -127,7 +127,7 @@ class Kaltura_Client_UserRoleService extends Kaltura_Client_ServiceBase
 			return $this->client->getMultiRequestResult();
 		$resultXml = $this->client->doQueue();
 		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		Kaltura_Client_ParseUtils::checkIfError($resultXmlObject->result);
+		$this->client->checkIfError($resultXmlObject->result);
 		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaUserRole");
 		$this->client->validateObjectType($resultObject, "Kaltura_Client_Type_UserRole");
 		return $resultObject;

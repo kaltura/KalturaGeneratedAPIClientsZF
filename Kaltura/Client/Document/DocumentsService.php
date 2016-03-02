@@ -49,7 +49,7 @@ class Kaltura_Client_Document_DocumentsService extends Kaltura_Client_ServiceBas
 			return $this->client->getMultiRequestResult();
 		$resultXml = $this->client->doQueue();
 		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		Kaltura_Client_ParseUtils::checkIfError($resultXmlObject->result);
+		$this->client->checkIfError($resultXmlObject->result);
 		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaDocumentEntry");
 		$this->client->validateObjectType($resultObject, "Kaltura_Client_Document_Type_DocumentEntry");
 		return $resultObject;
@@ -67,7 +67,7 @@ class Kaltura_Client_Document_DocumentsService extends Kaltura_Client_ServiceBas
 			return $this->client->getMultiRequestResult();
 		$resultXml = $this->client->doQueue();
 		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		Kaltura_Client_ParseUtils::checkIfError($resultXmlObject->result);
+		$this->client->checkIfError($resultXmlObject->result);
 		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaDocumentEntry");
 		$this->client->validateObjectType($resultObject, "Kaltura_Client_Document_Type_DocumentEntry");
 		return $resultObject;
@@ -84,7 +84,7 @@ class Kaltura_Client_Document_DocumentsService extends Kaltura_Client_ServiceBas
 			return $this->client->getMultiRequestResult();
 		$resultXml = $this->client->doQueue();
 		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		Kaltura_Client_ParseUtils::checkIfError($resultXmlObject->result);
+		$this->client->checkIfError($resultXmlObject->result);
 		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaDocumentEntry");
 		$this->client->validateObjectType($resultObject, "Kaltura_Client_Document_Type_DocumentEntry");
 		return $resultObject;
@@ -105,7 +105,7 @@ class Kaltura_Client_Document_DocumentsService extends Kaltura_Client_ServiceBas
 			return $this->client->getMultiRequestResult();
 		$resultXml = $this->client->doQueue();
 		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		Kaltura_Client_ParseUtils::checkIfError($resultXmlObject->result);
+		$this->client->checkIfError($resultXmlObject->result);
 		$resultObject = (string)Kaltura_Client_ParseUtils::unmarshalSimpleType($resultXmlObject->result);
 		return $resultObject;
 	}
@@ -120,7 +120,7 @@ class Kaltura_Client_Document_DocumentsService extends Kaltura_Client_ServiceBas
 			return $this->client->getMultiRequestResult();
 		$resultXml = $this->client->doQueue();
 		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		Kaltura_Client_ParseUtils::checkIfError($resultXmlObject->result);
+		$this->client->checkIfError($resultXmlObject->result);
 		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaDocumentEntry");
 		$this->client->validateObjectType($resultObject, "Kaltura_Client_Document_Type_DocumentEntry");
 		return $resultObject;
@@ -136,7 +136,7 @@ class Kaltura_Client_Document_DocumentsService extends Kaltura_Client_ServiceBas
 			return $this->client->getMultiRequestResult();
 		$resultXml = $this->client->doQueue();
 		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		Kaltura_Client_ParseUtils::checkIfError($resultXmlObject->result);
+		$this->client->checkIfError($resultXmlObject->result);
 		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaDocumentEntry");
 		$this->client->validateObjectType($resultObject, "Kaltura_Client_Document_Type_DocumentEntry");
 		return $resultObject;
@@ -151,7 +151,7 @@ class Kaltura_Client_Document_DocumentsService extends Kaltura_Client_ServiceBas
 			return $this->client->getMultiRequestResult();
 		$resultXml = $this->client->doQueue();
 		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		Kaltura_Client_ParseUtils::checkIfError($resultXmlObject->result);
+		$this->client->checkIfError($resultXmlObject->result);
 	}
 
 	function listAction(Kaltura_Client_Document_Type_DocumentEntryFilter $filter = null, Kaltura_Client_Type_FilterPager $pager = null)
@@ -166,7 +166,7 @@ class Kaltura_Client_Document_DocumentsService extends Kaltura_Client_ServiceBas
 			return $this->client->getMultiRequestResult();
 		$resultXml = $this->client->doQueue();
 		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		Kaltura_Client_ParseUtils::checkIfError($resultXmlObject->result);
+		$this->client->checkIfError($resultXmlObject->result);
 		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaDocumentListResponse");
 		$this->client->validateObjectType($resultObject, "Kaltura_Client_Document_Type_DocumentListResponse");
 		return $resultObject;
@@ -182,7 +182,7 @@ class Kaltura_Client_Document_DocumentsService extends Kaltura_Client_ServiceBas
 			return $this->client->getMultiRequestResult();
 		$resultXml = $this->client->doQueue();
 		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		Kaltura_Client_ParseUtils::checkIfError($resultXmlObject->result);
+		$this->client->checkIfError($resultXmlObject->result);
 		$resultObject = (string)Kaltura_Client_ParseUtils::unmarshalSimpleType($resultXmlObject->result);
 		return $resultObject;
 	}
@@ -196,7 +196,7 @@ class Kaltura_Client_Document_DocumentsService extends Kaltura_Client_ServiceBas
 			return $this->client->getMultiRequestResult();
 		$resultXml = $this->client->doQueue();
 		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		Kaltura_Client_ParseUtils::checkIfError($resultXmlObject->result);
+		$this->client->checkIfError($resultXmlObject->result);
 		$resultObject = (string)Kaltura_Client_ParseUtils::unmarshalSimpleType($resultXmlObject->result);
 		return $resultObject;
 	}
@@ -204,7 +204,7 @@ class Kaltura_Client_Document_DocumentsService extends Kaltura_Client_ServiceBas
 	function serve($entryId, $flavorAssetId = null, $forceProxy = false)
 	{
 		if ($this->client->isMultiRequest())
-			throw new Kaltura_Client_ClientException("Action is not supported as part of multi-request.", Kaltura_Client_ClientException::ERROR_ACTION_IN_MULTIREQUEST);
+			throw $this->client->getKalturaClientException("Action is not supported as part of multi-request.", Kaltura_Client_ClientException::ERROR_ACTION_IN_MULTIREQUEST);
 		
 		$kparams = array();
 		$this->client->addParam($kparams, "entryId", $entryId);
@@ -218,7 +218,7 @@ class Kaltura_Client_Document_DocumentsService extends Kaltura_Client_ServiceBas
 	function serveByFlavorParamsId($entryId, $flavorParamsId = null, $forceProxy = false)
 	{
 		if ($this->client->isMultiRequest())
-			throw new Kaltura_Client_ClientException("Action is not supported as part of multi-request.", Kaltura_Client_ClientException::ERROR_ACTION_IN_MULTIREQUEST);
+			throw $this->client->getKalturaClientException("Action is not supported as part of multi-request.", Kaltura_Client_ClientException::ERROR_ACTION_IN_MULTIREQUEST);
 		
 		$kparams = array();
 		$this->client->addParam($kparams, "entryId", $entryId);
@@ -240,7 +240,7 @@ class Kaltura_Client_Document_DocumentsService extends Kaltura_Client_ServiceBas
 			return $this->client->getMultiRequestResult();
 		$resultXml = $this->client->doQueue();
 		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		Kaltura_Client_ParseUtils::checkIfError($resultXmlObject->result);
+		$this->client->checkIfError($resultXmlObject->result);
 		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaDocumentEntry");
 		$this->client->validateObjectType($resultObject, "Kaltura_Client_Document_Type_DocumentEntry");
 		return $resultObject;
@@ -255,7 +255,7 @@ class Kaltura_Client_Document_DocumentsService extends Kaltura_Client_ServiceBas
 			return $this->client->getMultiRequestResult();
 		$resultXml = $this->client->doQueue();
 		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		Kaltura_Client_ParseUtils::checkIfError($resultXmlObject->result);
+		$this->client->checkIfError($resultXmlObject->result);
 		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaDocumentEntry");
 		$this->client->validateObjectType($resultObject, "Kaltura_Client_Document_Type_DocumentEntry");
 		return $resultObject;
@@ -270,7 +270,7 @@ class Kaltura_Client_Document_DocumentsService extends Kaltura_Client_ServiceBas
 			return $this->client->getMultiRequestResult();
 		$resultXml = $this->client->doQueue();
 		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		Kaltura_Client_ParseUtils::checkIfError($resultXmlObject->result);
+		$this->client->checkIfError($resultXmlObject->result);
 		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaDocumentEntry");
 		$this->client->validateObjectType($resultObject, "Kaltura_Client_Document_Type_DocumentEntry");
 		return $resultObject;

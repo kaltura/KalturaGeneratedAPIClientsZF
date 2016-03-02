@@ -51,7 +51,7 @@ class Kaltura_Client_VirusScan_VirusScanProfileService extends Kaltura_Client_Se
 			return $this->client->getMultiRequestResult();
 		$resultXml = $this->client->doQueue();
 		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		Kaltura_Client_ParseUtils::checkIfError($resultXmlObject->result);
+		$this->client->checkIfError($resultXmlObject->result);
 		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaVirusScanProfileListResponse");
 		$this->client->validateObjectType($resultObject, "Kaltura_Client_VirusScan_Type_VirusScanProfileListResponse");
 		return $resultObject;
@@ -66,7 +66,7 @@ class Kaltura_Client_VirusScan_VirusScanProfileService extends Kaltura_Client_Se
 			return $this->client->getMultiRequestResult();
 		$resultXml = $this->client->doQueue();
 		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		Kaltura_Client_ParseUtils::checkIfError($resultXmlObject->result);
+		$this->client->checkIfError($resultXmlObject->result);
 		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaVirusScanProfile");
 		$this->client->validateObjectType($resultObject, "Kaltura_Client_VirusScan_Type_VirusScanProfile");
 		return $resultObject;
@@ -81,7 +81,7 @@ class Kaltura_Client_VirusScan_VirusScanProfileService extends Kaltura_Client_Se
 			return $this->client->getMultiRequestResult();
 		$resultXml = $this->client->doQueue();
 		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		Kaltura_Client_ParseUtils::checkIfError($resultXmlObject->result);
+		$this->client->checkIfError($resultXmlObject->result);
 		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaVirusScanProfile");
 		$this->client->validateObjectType($resultObject, "Kaltura_Client_VirusScan_Type_VirusScanProfile");
 		return $resultObject;
@@ -97,7 +97,7 @@ class Kaltura_Client_VirusScan_VirusScanProfileService extends Kaltura_Client_Se
 			return $this->client->getMultiRequestResult();
 		$resultXml = $this->client->doQueue();
 		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		Kaltura_Client_ParseUtils::checkIfError($resultXmlObject->result);
+		$this->client->checkIfError($resultXmlObject->result);
 		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaVirusScanProfile");
 		$this->client->validateObjectType($resultObject, "Kaltura_Client_VirusScan_Type_VirusScanProfile");
 		return $resultObject;
@@ -112,7 +112,7 @@ class Kaltura_Client_VirusScan_VirusScanProfileService extends Kaltura_Client_Se
 			return $this->client->getMultiRequestResult();
 		$resultXml = $this->client->doQueue();
 		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		Kaltura_Client_ParseUtils::checkIfError($resultXmlObject->result);
+		$this->client->checkIfError($resultXmlObject->result);
 		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaVirusScanProfile");
 		$this->client->validateObjectType($resultObject, "Kaltura_Client_VirusScan_Type_VirusScanProfile");
 		return $resultObject;
@@ -128,7 +128,7 @@ class Kaltura_Client_VirusScan_VirusScanProfileService extends Kaltura_Client_Se
 			return $this->client->getMultiRequestResult();
 		$resultXml = $this->client->doQueue();
 		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		Kaltura_Client_ParseUtils::checkIfError($resultXmlObject->result);
+		$this->client->checkIfError($resultXmlObject->result);
 		$resultObject = (int)Kaltura_Client_ParseUtils::unmarshalSimpleType($resultXmlObject->result);
 		return $resultObject;
 	}

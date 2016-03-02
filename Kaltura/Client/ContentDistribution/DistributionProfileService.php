@@ -48,7 +48,7 @@ class Kaltura_Client_ContentDistribution_DistributionProfileService extends Kalt
 			return $this->client->getMultiRequestResult();
 		$resultXml = $this->client->doQueue();
 		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		Kaltura_Client_ParseUtils::checkIfError($resultXmlObject->result);
+		$this->client->checkIfError($resultXmlObject->result);
 		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaDistributionProfile");
 		$this->client->validateObjectType($resultObject, "Kaltura_Client_ContentDistribution_Type_DistributionProfile");
 		return $resultObject;
@@ -63,7 +63,7 @@ class Kaltura_Client_ContentDistribution_DistributionProfileService extends Kalt
 			return $this->client->getMultiRequestResult();
 		$resultXml = $this->client->doQueue();
 		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		Kaltura_Client_ParseUtils::checkIfError($resultXmlObject->result);
+		$this->client->checkIfError($resultXmlObject->result);
 		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaDistributionProfile");
 		$this->client->validateObjectType($resultObject, "Kaltura_Client_ContentDistribution_Type_DistributionProfile");
 		return $resultObject;
@@ -79,7 +79,7 @@ class Kaltura_Client_ContentDistribution_DistributionProfileService extends Kalt
 			return $this->client->getMultiRequestResult();
 		$resultXml = $this->client->doQueue();
 		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		Kaltura_Client_ParseUtils::checkIfError($resultXmlObject->result);
+		$this->client->checkIfError($resultXmlObject->result);
 		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaDistributionProfile");
 		$this->client->validateObjectType($resultObject, "Kaltura_Client_ContentDistribution_Type_DistributionProfile");
 		return $resultObject;
@@ -95,7 +95,7 @@ class Kaltura_Client_ContentDistribution_DistributionProfileService extends Kalt
 			return $this->client->getMultiRequestResult();
 		$resultXml = $this->client->doQueue();
 		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		Kaltura_Client_ParseUtils::checkIfError($resultXmlObject->result);
+		$this->client->checkIfError($resultXmlObject->result);
 		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaDistributionProfile");
 		$this->client->validateObjectType($resultObject, "Kaltura_Client_ContentDistribution_Type_DistributionProfile");
 		return $resultObject;
@@ -110,7 +110,7 @@ class Kaltura_Client_ContentDistribution_DistributionProfileService extends Kalt
 			return $this->client->getMultiRequestResult();
 		$resultXml = $this->client->doQueue();
 		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		Kaltura_Client_ParseUtils::checkIfError($resultXmlObject->result);
+		$this->client->checkIfError($resultXmlObject->result);
 	}
 
 	function listAction(Kaltura_Client_ContentDistribution_Type_DistributionProfileFilter $filter = null, Kaltura_Client_Type_FilterPager $pager = null)
@@ -125,7 +125,7 @@ class Kaltura_Client_ContentDistribution_DistributionProfileService extends Kalt
 			return $this->client->getMultiRequestResult();
 		$resultXml = $this->client->doQueue();
 		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		Kaltura_Client_ParseUtils::checkIfError($resultXmlObject->result);
+		$this->client->checkIfError($resultXmlObject->result);
 		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaDistributionProfileListResponse");
 		$this->client->validateObjectType($resultObject, "Kaltura_Client_ContentDistribution_Type_DistributionProfileListResponse");
 		return $resultObject;
@@ -143,7 +143,7 @@ class Kaltura_Client_ContentDistribution_DistributionProfileService extends Kalt
 			return $this->client->getMultiRequestResult();
 		$resultXml = $this->client->doQueue();
 		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		Kaltura_Client_ParseUtils::checkIfError($resultXmlObject->result);
+		$this->client->checkIfError($resultXmlObject->result);
 		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaDistributionProfileListResponse");
 		$this->client->validateObjectType($resultObject, "Kaltura_Client_ContentDistribution_Type_DistributionProfileListResponse");
 		return $resultObject;

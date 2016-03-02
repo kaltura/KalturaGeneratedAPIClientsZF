@@ -50,7 +50,7 @@ class Kaltura_Client_SearchService extends Kaltura_Client_ServiceBase
 			return $this->client->getMultiRequestResult();
 		$resultXml = $this->client->doQueue();
 		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		Kaltura_Client_ParseUtils::checkIfError($resultXmlObject->result);
+		$this->client->checkIfError($resultXmlObject->result);
 		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaSearchResultResponse");
 		$this->client->validateObjectType($resultObject, "Kaltura_Client_Type_SearchResultResponse");
 		return $resultObject;
@@ -65,7 +65,7 @@ class Kaltura_Client_SearchService extends Kaltura_Client_ServiceBase
 			return $this->client->getMultiRequestResult();
 		$resultXml = $this->client->doQueue();
 		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		Kaltura_Client_ParseUtils::checkIfError($resultXmlObject->result);
+		$this->client->checkIfError($resultXmlObject->result);
 		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaSearchResult");
 		$this->client->validateObjectType($resultObject, "Kaltura_Client_Type_SearchResult");
 		return $resultObject;
@@ -81,7 +81,7 @@ class Kaltura_Client_SearchService extends Kaltura_Client_ServiceBase
 			return $this->client->getMultiRequestResult();
 		$resultXml = $this->client->doQueue();
 		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		Kaltura_Client_ParseUtils::checkIfError($resultXmlObject->result);
+		$this->client->checkIfError($resultXmlObject->result);
 		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaSearchResult");
 		$this->client->validateObjectType($resultObject, "Kaltura_Client_Type_SearchResult");
 		return $resultObject;
@@ -98,7 +98,7 @@ class Kaltura_Client_SearchService extends Kaltura_Client_ServiceBase
 			return $this->client->getMultiRequestResult();
 		$resultXml = $this->client->doQueue();
 		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		Kaltura_Client_ParseUtils::checkIfError($resultXmlObject->result);
+		$this->client->checkIfError($resultXmlObject->result);
 		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaSearchAuthData");
 		$this->client->validateObjectType($resultObject, "Kaltura_Client_Type_SearchAuthData");
 		return $resultObject;

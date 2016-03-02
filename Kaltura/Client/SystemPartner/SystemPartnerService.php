@@ -48,7 +48,7 @@ class Kaltura_Client_SystemPartner_SystemPartnerService extends Kaltura_Client_S
 			return $this->client->getMultiRequestResult();
 		$resultXml = $this->client->doQueue();
 		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		Kaltura_Client_ParseUtils::checkIfError($resultXmlObject->result);
+		$this->client->checkIfError($resultXmlObject->result);
 		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaPartner");
 		$this->client->validateObjectType($resultObject, "Kaltura_Client_Type_Partner");
 		return $resultObject;
@@ -68,7 +68,7 @@ class Kaltura_Client_SystemPartner_SystemPartnerService extends Kaltura_Client_S
 			return $this->client->getMultiRequestResult();
 		$resultXml = $this->client->doQueue();
 		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		Kaltura_Client_ParseUtils::checkIfError($resultXmlObject->result);
+		$this->client->checkIfError($resultXmlObject->result);
 		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaSystemPartnerUsageListResponse");
 		$this->client->validateObjectType($resultObject, "Kaltura_Client_SystemPartner_Type_SystemPartnerUsageListResponse");
 		return $resultObject;
@@ -86,7 +86,7 @@ class Kaltura_Client_SystemPartner_SystemPartnerService extends Kaltura_Client_S
 			return $this->client->getMultiRequestResult();
 		$resultXml = $this->client->doQueue();
 		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		Kaltura_Client_ParseUtils::checkIfError($resultXmlObject->result);
+		$this->client->checkIfError($resultXmlObject->result);
 		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaPartnerListResponse");
 		$this->client->validateObjectType($resultObject, "Kaltura_Client_Type_PartnerListResponse");
 		return $resultObject;
@@ -103,7 +103,7 @@ class Kaltura_Client_SystemPartner_SystemPartnerService extends Kaltura_Client_S
 			return $this->client->getMultiRequestResult();
 		$resultXml = $this->client->doQueue();
 		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		Kaltura_Client_ParseUtils::checkIfError($resultXmlObject->result);
+		$this->client->checkIfError($resultXmlObject->result);
 	}
 
 	function getAdminSession($partnerId, $userId = null)
@@ -116,7 +116,7 @@ class Kaltura_Client_SystemPartner_SystemPartnerService extends Kaltura_Client_S
 			return $this->client->getMultiRequestResult();
 		$resultXml = $this->client->doQueue();
 		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		Kaltura_Client_ParseUtils::checkIfError($resultXmlObject->result);
+		$this->client->checkIfError($resultXmlObject->result);
 		$resultObject = (string)Kaltura_Client_ParseUtils::unmarshalSimpleType($resultXmlObject->result);
 		return $resultObject;
 	}
@@ -131,7 +131,7 @@ class Kaltura_Client_SystemPartner_SystemPartnerService extends Kaltura_Client_S
 			return $this->client->getMultiRequestResult();
 		$resultXml = $this->client->doQueue();
 		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		Kaltura_Client_ParseUtils::checkIfError($resultXmlObject->result);
+		$this->client->checkIfError($resultXmlObject->result);
 	}
 
 	function getConfiguration($partnerId)
@@ -143,7 +143,7 @@ class Kaltura_Client_SystemPartner_SystemPartnerService extends Kaltura_Client_S
 			return $this->client->getMultiRequestResult();
 		$resultXml = $this->client->doQueue();
 		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		Kaltura_Client_ParseUtils::checkIfError($resultXmlObject->result);
+		$this->client->checkIfError($resultXmlObject->result);
 		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaSystemPartnerConfiguration");
 		$this->client->validateObjectType($resultObject, "Kaltura_Client_SystemPartner_Type_SystemPartnerConfiguration");
 		return $resultObject;
@@ -157,7 +157,7 @@ class Kaltura_Client_SystemPartner_SystemPartnerService extends Kaltura_Client_S
 			return $this->client->getMultiRequestResult();
 		$resultXml = $this->client->doQueue();
 		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		Kaltura_Client_ParseUtils::checkIfError($resultXmlObject->result);
+		$this->client->checkIfError($resultXmlObject->result);
 		$resultObject = Kaltura_Client_ParseUtils::unmarshalArray($resultXmlObject->result, "KalturaSystemPartnerPackage");
 		foreach($resultObject as $resultObjectItem){
 			$this->client->validateObjectType($resultObjectItem, "Kaltura_Client_SystemPartner_Type_SystemPartnerPackage");
@@ -173,7 +173,7 @@ class Kaltura_Client_SystemPartner_SystemPartnerService extends Kaltura_Client_S
 			return $this->client->getMultiRequestResult();
 		$resultXml = $this->client->doQueue();
 		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		Kaltura_Client_ParseUtils::checkIfError($resultXmlObject->result);
+		$this->client->checkIfError($resultXmlObject->result);
 		$resultObject = Kaltura_Client_ParseUtils::unmarshalArray($resultXmlObject->result, "KalturaSystemPartnerPackage");
 		foreach($resultObject as $resultObjectItem){
 			$this->client->validateObjectType($resultObjectItem, "Kaltura_Client_SystemPartner_Type_SystemPartnerPackage");
@@ -189,7 +189,7 @@ class Kaltura_Client_SystemPartner_SystemPartnerService extends Kaltura_Client_S
 			return $this->client->getMultiRequestResult();
 		$resultXml = $this->client->doQueue();
 		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		Kaltura_Client_ParseUtils::checkIfError($resultXmlObject->result);
+		$this->client->checkIfError($resultXmlObject->result);
 		$resultObject = Kaltura_Client_ParseUtils::unmarshalArray($resultXmlObject->result, "KalturaSystemPartnerPackage");
 		foreach($resultObject as $resultObjectItem){
 			$this->client->validateObjectType($resultObjectItem, "Kaltura_Client_SystemPartner_Type_SystemPartnerPackage");
@@ -205,7 +205,7 @@ class Kaltura_Client_SystemPartner_SystemPartnerService extends Kaltura_Client_S
 			return $this->client->getMultiRequestResult();
 		$resultXml = $this->client->doQueue();
 		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		Kaltura_Client_ParseUtils::checkIfError($resultXmlObject->result);
+		$this->client->checkIfError($resultXmlObject->result);
 		$resultObject = Kaltura_Client_ParseUtils::unmarshalArray($resultXmlObject->result, "KalturaPlayerEmbedCodeType");
 		foreach($resultObject as $resultObjectItem){
 			$this->client->validateObjectType($resultObjectItem, "Kaltura_Client_Type_PlayerEmbedCodeType");
@@ -221,7 +221,7 @@ class Kaltura_Client_SystemPartner_SystemPartnerService extends Kaltura_Client_S
 			return $this->client->getMultiRequestResult();
 		$resultXml = $this->client->doQueue();
 		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		Kaltura_Client_ParseUtils::checkIfError($resultXmlObject->result);
+		$this->client->checkIfError($resultXmlObject->result);
 		$resultObject = Kaltura_Client_ParseUtils::unmarshalArray($resultXmlObject->result, "KalturaPlayerDeliveryType");
 		foreach($resultObject as $resultObjectItem){
 			$this->client->validateObjectType($resultObjectItem, "Kaltura_Client_Type_PlayerDeliveryType");
@@ -240,7 +240,7 @@ class Kaltura_Client_SystemPartner_SystemPartnerService extends Kaltura_Client_S
 			return $this->client->getMultiRequestResult();
 		$resultXml = $this->client->doQueue();
 		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		Kaltura_Client_ParseUtils::checkIfError($resultXmlObject->result);
+		$this->client->checkIfError($resultXmlObject->result);
 	}
 
 	function listUserLoginData(Kaltura_Client_Type_UserLoginDataFilter $filter = null, Kaltura_Client_Type_FilterPager $pager = null)
@@ -255,7 +255,7 @@ class Kaltura_Client_SystemPartner_SystemPartnerService extends Kaltura_Client_S
 			return $this->client->getMultiRequestResult();
 		$resultXml = $this->client->doQueue();
 		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		Kaltura_Client_ParseUtils::checkIfError($resultXmlObject->result);
+		$this->client->checkIfError($resultXmlObject->result);
 		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaUserLoginDataListResponse");
 		$this->client->validateObjectType($resultObject, "Kaltura_Client_Type_UserLoginDataListResponse");
 		return $resultObject;

@@ -48,7 +48,7 @@ class Kaltura_Client_EmailIngestionProfileService extends Kaltura_Client_Service
 			return $this->client->getMultiRequestResult();
 		$resultXml = $this->client->doQueue();
 		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		Kaltura_Client_ParseUtils::checkIfError($resultXmlObject->result);
+		$this->client->checkIfError($resultXmlObject->result);
 		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaEmailIngestionProfile");
 		$this->client->validateObjectType($resultObject, "Kaltura_Client_Type_EmailIngestionProfile");
 		return $resultObject;
@@ -63,7 +63,7 @@ class Kaltura_Client_EmailIngestionProfileService extends Kaltura_Client_Service
 			return $this->client->getMultiRequestResult();
 		$resultXml = $this->client->doQueue();
 		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		Kaltura_Client_ParseUtils::checkIfError($resultXmlObject->result);
+		$this->client->checkIfError($resultXmlObject->result);
 		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaEmailIngestionProfile");
 		$this->client->validateObjectType($resultObject, "Kaltura_Client_Type_EmailIngestionProfile");
 		return $resultObject;
@@ -78,7 +78,7 @@ class Kaltura_Client_EmailIngestionProfileService extends Kaltura_Client_Service
 			return $this->client->getMultiRequestResult();
 		$resultXml = $this->client->doQueue();
 		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		Kaltura_Client_ParseUtils::checkIfError($resultXmlObject->result);
+		$this->client->checkIfError($resultXmlObject->result);
 		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaEmailIngestionProfile");
 		$this->client->validateObjectType($resultObject, "Kaltura_Client_Type_EmailIngestionProfile");
 		return $resultObject;
@@ -94,7 +94,7 @@ class Kaltura_Client_EmailIngestionProfileService extends Kaltura_Client_Service
 			return $this->client->getMultiRequestResult();
 		$resultXml = $this->client->doQueue();
 		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		Kaltura_Client_ParseUtils::checkIfError($resultXmlObject->result);
+		$this->client->checkIfError($resultXmlObject->result);
 		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaEmailIngestionProfile");
 		$this->client->validateObjectType($resultObject, "Kaltura_Client_Type_EmailIngestionProfile");
 		return $resultObject;
@@ -109,7 +109,7 @@ class Kaltura_Client_EmailIngestionProfileService extends Kaltura_Client_Service
 			return $this->client->getMultiRequestResult();
 		$resultXml = $this->client->doQueue();
 		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		Kaltura_Client_ParseUtils::checkIfError($resultXmlObject->result);
+		$this->client->checkIfError($resultXmlObject->result);
 	}
 
 	function addMediaEntry(Kaltura_Client_Type_MediaEntry $mediaEntry, $uploadTokenId, $emailProfId, $fromAddress, $emailMsgId)
@@ -125,7 +125,7 @@ class Kaltura_Client_EmailIngestionProfileService extends Kaltura_Client_Service
 			return $this->client->getMultiRequestResult();
 		$resultXml = $this->client->doQueue();
 		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		Kaltura_Client_ParseUtils::checkIfError($resultXmlObject->result);
+		$this->client->checkIfError($resultXmlObject->result);
 		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaMediaEntry");
 		$this->client->validateObjectType($resultObject, "Kaltura_Client_Type_MediaEntry");
 		return $resultObject;

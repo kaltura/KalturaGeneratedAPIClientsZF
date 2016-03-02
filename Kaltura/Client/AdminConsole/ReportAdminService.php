@@ -48,7 +48,7 @@ class Kaltura_Client_AdminConsole_ReportAdminService extends Kaltura_Client_Serv
 			return $this->client->getMultiRequestResult();
 		$resultXml = $this->client->doQueue();
 		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		Kaltura_Client_ParseUtils::checkIfError($resultXmlObject->result);
+		$this->client->checkIfError($resultXmlObject->result);
 		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaReport");
 		$this->client->validateObjectType($resultObject, "Kaltura_Client_Type_Report");
 		return $resultObject;
@@ -63,7 +63,7 @@ class Kaltura_Client_AdminConsole_ReportAdminService extends Kaltura_Client_Serv
 			return $this->client->getMultiRequestResult();
 		$resultXml = $this->client->doQueue();
 		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		Kaltura_Client_ParseUtils::checkIfError($resultXmlObject->result);
+		$this->client->checkIfError($resultXmlObject->result);
 		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaReport");
 		$this->client->validateObjectType($resultObject, "Kaltura_Client_Type_Report");
 		return $resultObject;
@@ -81,7 +81,7 @@ class Kaltura_Client_AdminConsole_ReportAdminService extends Kaltura_Client_Serv
 			return $this->client->getMultiRequestResult();
 		$resultXml = $this->client->doQueue();
 		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		Kaltura_Client_ParseUtils::checkIfError($resultXmlObject->result);
+		$this->client->checkIfError($resultXmlObject->result);
 		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaReportListResponse");
 		$this->client->validateObjectType($resultObject, "Kaltura_Client_Type_ReportListResponse");
 		return $resultObject;
@@ -97,7 +97,7 @@ class Kaltura_Client_AdminConsole_ReportAdminService extends Kaltura_Client_Serv
 			return $this->client->getMultiRequestResult();
 		$resultXml = $this->client->doQueue();
 		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		Kaltura_Client_ParseUtils::checkIfError($resultXmlObject->result);
+		$this->client->checkIfError($resultXmlObject->result);
 		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaReport");
 		$this->client->validateObjectType($resultObject, "Kaltura_Client_Type_Report");
 		return $resultObject;
@@ -112,7 +112,7 @@ class Kaltura_Client_AdminConsole_ReportAdminService extends Kaltura_Client_Serv
 			return $this->client->getMultiRequestResult();
 		$resultXml = $this->client->doQueue();
 		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		Kaltura_Client_ParseUtils::checkIfError($resultXmlObject->result);
+		$this->client->checkIfError($resultXmlObject->result);
 	}
 
 	function executeDebug($id, array $params = null)
@@ -129,7 +129,7 @@ class Kaltura_Client_AdminConsole_ReportAdminService extends Kaltura_Client_Serv
 			return $this->client->getMultiRequestResult();
 		$resultXml = $this->client->doQueue();
 		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		Kaltura_Client_ParseUtils::checkIfError($resultXmlObject->result);
+		$this->client->checkIfError($resultXmlObject->result);
 		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaReportResponse");
 		$this->client->validateObjectType($resultObject, "Kaltura_Client_Type_ReportResponse");
 		return $resultObject;
@@ -144,7 +144,7 @@ class Kaltura_Client_AdminConsole_ReportAdminService extends Kaltura_Client_Serv
 			return $this->client->getMultiRequestResult();
 		$resultXml = $this->client->doQueue();
 		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		Kaltura_Client_ParseUtils::checkIfError($resultXmlObject->result);
+		$this->client->checkIfError($resultXmlObject->result);
 		$resultObject = Kaltura_Client_ParseUtils::unmarshalArray($resultXmlObject->result, "KalturaString");
 		foreach($resultObject as $resultObjectItem){
 			$this->client->validateObjectType($resultObjectItem, "Kaltura_Client_Type_String");
@@ -162,7 +162,7 @@ class Kaltura_Client_AdminConsole_ReportAdminService extends Kaltura_Client_Serv
 			return $this->client->getMultiRequestResult();
 		$resultXml = $this->client->doQueue();
 		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		Kaltura_Client_ParseUtils::checkIfError($resultXmlObject->result);
+		$this->client->checkIfError($resultXmlObject->result);
 		$resultObject = (string)Kaltura_Client_ParseUtils::unmarshalSimpleType($resultXmlObject->result);
 		return $resultObject;
 	}

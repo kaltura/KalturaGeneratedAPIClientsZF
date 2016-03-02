@@ -51,7 +51,7 @@ class Kaltura_Client_ShortLink_ShortLinkService extends Kaltura_Client_ServiceBa
 			return $this->client->getMultiRequestResult();
 		$resultXml = $this->client->doQueue();
 		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		Kaltura_Client_ParseUtils::checkIfError($resultXmlObject->result);
+		$this->client->checkIfError($resultXmlObject->result);
 		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaShortLinkListResponse");
 		$this->client->validateObjectType($resultObject, "Kaltura_Client_ShortLink_Type_ShortLinkListResponse");
 		return $resultObject;
@@ -66,7 +66,7 @@ class Kaltura_Client_ShortLink_ShortLinkService extends Kaltura_Client_ServiceBa
 			return $this->client->getMultiRequestResult();
 		$resultXml = $this->client->doQueue();
 		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		Kaltura_Client_ParseUtils::checkIfError($resultXmlObject->result);
+		$this->client->checkIfError($resultXmlObject->result);
 		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaShortLink");
 		$this->client->validateObjectType($resultObject, "Kaltura_Client_ShortLink_Type_ShortLink");
 		return $resultObject;
@@ -81,7 +81,7 @@ class Kaltura_Client_ShortLink_ShortLinkService extends Kaltura_Client_ServiceBa
 			return $this->client->getMultiRequestResult();
 		$resultXml = $this->client->doQueue();
 		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		Kaltura_Client_ParseUtils::checkIfError($resultXmlObject->result);
+		$this->client->checkIfError($resultXmlObject->result);
 		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaShortLink");
 		$this->client->validateObjectType($resultObject, "Kaltura_Client_ShortLink_Type_ShortLink");
 		return $resultObject;
@@ -97,7 +97,7 @@ class Kaltura_Client_ShortLink_ShortLinkService extends Kaltura_Client_ServiceBa
 			return $this->client->getMultiRequestResult();
 		$resultXml = $this->client->doQueue();
 		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		Kaltura_Client_ParseUtils::checkIfError($resultXmlObject->result);
+		$this->client->checkIfError($resultXmlObject->result);
 		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaShortLink");
 		$this->client->validateObjectType($resultObject, "Kaltura_Client_ShortLink_Type_ShortLink");
 		return $resultObject;
@@ -112,7 +112,7 @@ class Kaltura_Client_ShortLink_ShortLinkService extends Kaltura_Client_ServiceBa
 			return $this->client->getMultiRequestResult();
 		$resultXml = $this->client->doQueue();
 		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		Kaltura_Client_ParseUtils::checkIfError($resultXmlObject->result);
+		$this->client->checkIfError($resultXmlObject->result);
 		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaShortLink");
 		$this->client->validateObjectType($resultObject, "Kaltura_Client_ShortLink_Type_ShortLink");
 		return $resultObject;
@@ -121,7 +121,7 @@ class Kaltura_Client_ShortLink_ShortLinkService extends Kaltura_Client_ServiceBa
 	function gotoAction($id, $proxy = false)
 	{
 		if ($this->client->isMultiRequest())
-			throw new Kaltura_Client_ClientException("Action is not supported as part of multi-request.", Kaltura_Client_ClientException::ERROR_ACTION_IN_MULTIREQUEST);
+			throw $this->client->getKalturaClientException("Action is not supported as part of multi-request.", Kaltura_Client_ClientException::ERROR_ACTION_IN_MULTIREQUEST);
 		
 		$kparams = array();
 		$this->client->addParam($kparams, "id", $id);
