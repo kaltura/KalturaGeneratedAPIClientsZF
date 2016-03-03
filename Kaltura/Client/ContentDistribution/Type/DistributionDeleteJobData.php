@@ -45,7 +45,22 @@ class Kaltura_Client_ContentDistribution_Type_DistributionDeleteJobData extends 
 		if(is_null($xml))
 			return;
 		
+		if(count($xml->keepDistributionItem))
+		{
+			if(!empty($xml->keepDistributionItem))
+				$this->keepDistributionItem = true;
+			else
+				$this->keepDistributionItem = false;
+		}
 	}
+	/**
+	 * Flag signifying that the associated distribution item should not be moved to 'removed' status
+	 * 	 
+	 *
+	 * @var bool
+	 */
+	public $keepDistributionItem = null;
+
 
 }
 
