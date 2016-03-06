@@ -52,6 +52,8 @@ class Kaltura_Client_Type_ThumbnailServeOptions extends Kaltura_Client_ObjectBas
 			else
 				$this->download = false;
 		}
+		if(count($xml->referrer))
+			$this->referrer = (string)$xml->referrer;
 	}
 	/**
 	 * 
@@ -59,6 +61,13 @@ class Kaltura_Client_Type_ThumbnailServeOptions extends Kaltura_Client_ObjectBas
 	 * @var bool
 	 */
 	public $download = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $referrer = null;
 
 
 }
