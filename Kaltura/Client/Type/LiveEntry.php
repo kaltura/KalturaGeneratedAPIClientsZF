@@ -97,7 +97,6 @@ abstract class Kaltura_Client_Type_LiveEntry extends Kaltura_Client_Type_MediaEn
 	 * 	 
 	 *
 	 * @var Kaltura_Client_Enum_RecordStatus
-	 * @insertonly
 	 */
 	public $recordStatus = null;
 
@@ -187,7 +186,6 @@ abstract class Kaltura_Client_Type_LiveEntry extends Kaltura_Client_Type_MediaEn
 	 * 
 	 *
 	 * @var Kaltura_Client_Type_LiveEntryRecordingOptions
-	 * @insertonly
 	 */
 	public $recordingOptions;
 

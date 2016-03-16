@@ -160,4 +160,17 @@ class Kaltura_Client_CuePoint_CuePointService extends Kaltura_Client_ServiceBase
 		$resultXmlObject = new \SimpleXMLElement($resultXml);
 		$this->client->checkIfError($resultXmlObject->result);
 	}
+
+	function updateStatus($id, $status)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "id", $id);
+		$this->client->addParam($kparams, "status", $status);
+		$this->client->queueServiceActionCall("cuepoint_cuepoint", "updateStatus", null, $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultXml = $this->client->doQueue();
+		$resultXmlObject = new \SimpleXMLElement($resultXml);
+		$this->client->checkIfError($resultXmlObject->result);
+	}
 }

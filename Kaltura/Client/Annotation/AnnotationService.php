@@ -160,4 +160,17 @@ class Kaltura_Client_Annotation_AnnotationService extends Kaltura_Client_Service
 		$resultXmlObject = new \SimpleXMLElement($resultXml);
 		$this->client->checkIfError($resultXmlObject->result);
 	}
+
+	function updateStatus($id, $status)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "id", $id);
+		$this->client->addParam($kparams, "status", $status);
+		$this->client->queueServiceActionCall("annotation_annotation", "updateStatus", null, $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultXml = $this->client->doQueue();
+		$resultXmlObject = new \SimpleXMLElement($resultXml);
+		$this->client->checkIfError($resultXmlObject->result);
+	}
 }
