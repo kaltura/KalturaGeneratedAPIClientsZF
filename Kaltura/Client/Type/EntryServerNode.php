@@ -31,11 +31,11 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Type_ConvertLiveSegmentJobData extends Kaltura_Client_Type_JobData
+abstract class Kaltura_Client_Type_EntryServerNode extends Kaltura_Client_ObjectBase
 {
 	public function getKalturaObjectType()
 	{
-		return 'KalturaConvertLiveSegmentJobData';
+		return 'KalturaEntryServerNode';
 	}
 	
 	public function __construct(SimpleXMLElement $xml = null)
@@ -45,85 +45,87 @@ class Kaltura_Client_Type_ConvertLiveSegmentJobData extends Kaltura_Client_Type_
 		if(is_null($xml))
 			return;
 		
+		if(count($xml->id))
+			$this->id = (int)$xml->id;
 		if(count($xml->entryId))
 			$this->entryId = (string)$xml->entryId;
-		if(count($xml->assetId))
-			$this->assetId = (string)$xml->assetId;
-		if(count($xml->mediaServerIndex))
-			$this->mediaServerIndex = (string)$xml->mediaServerIndex;
-		if(count($xml->fileIndex))
-			$this->fileIndex = (int)$xml->fileIndex;
-		if(count($xml->srcFilePath))
-			$this->srcFilePath = (string)$xml->srcFilePath;
-		if(count($xml->destFilePath))
-			$this->destFilePath = (string)$xml->destFilePath;
-		if(count($xml->endTime))
-			$this->endTime = (float)$xml->endTime;
-		if(count($xml->destDataFilePath))
-			$this->destDataFilePath = (string)$xml->destDataFilePath;
+		if(count($xml->serverNodeId))
+			$this->serverNodeId = (int)$xml->serverNodeId;
+		if(count($xml->partnerId))
+			$this->partnerId = (int)$xml->partnerId;
+		if(count($xml->createdAt))
+			$this->createdAt = (int)$xml->createdAt;
+		if(count($xml->updatedAt))
+			$this->updatedAt = (int)$xml->updatedAt;
+		if(count($xml->status))
+			$this->status = (int)$xml->status;
+		if(count($xml->serverType))
+			$this->serverType = (string)$xml->serverType;
 	}
 	/**
-	 * Live stream entry id
+	 * unique auto-generated identifier
 	 * 	 
 	 *
+	 * @var int
+	 * @readonly
+	 */
+	public $id = null;
+
+	/**
+	 * 
+	 *
 	 * @var string
+	 * @readonly
 	 */
 	public $entryId = null;
 
 	/**
 	 * 
 	 *
-	 * @var string
+	 * @var int
+	 * @readonly
 	 */
-	public $assetId = null;
+	public $serverNodeId = null;
 
 	/**
-	 * Primary or secondary media server
-	 * 	 
-	 *
-	 * @var Kaltura_Client_Enum_EntryServerNodeType
-	 */
-	public $mediaServerIndex = null;
-
-	/**
-	 * The index of the file within the entry
-	 * 	 
+	 * 
 	 *
 	 * @var int
+	 * @readonly
 	 */
-	public $fileIndex = null;
+	public $partnerId = null;
 
 	/**
-	 * The recorded live media
-	 * 	 
+	 * 
 	 *
-	 * @var string
+	 * @var int
+	 * @readonly
 	 */
-	public $srcFilePath = null;
+	public $createdAt = null;
 
 	/**
-	 * The output file
-	 * 	 
+	 * 
 	 *
-	 * @var string
+	 * @var int
+	 * @readonly
 	 */
-	public $destFilePath = null;
+	public $updatedAt = null;
 
 	/**
-	 * Duration of the live entry including all recorded segments including the current
-	 * 	 
+	 * 
 	 *
-	 * @var float
+	 * @var Kaltura_Client_Enum_EntryServerNodeStatus
+	 * @readonly
 	 */
-	public $endTime = null;
+	public $status = null;
 
 	/**
-	 * The data output file
-	 * 	 
+	 * 
 	 *
-	 * @var string
+	 * @var Kaltura_Client_Enum_EntryServerNodeType
+	 * @readonly
 	 */
-	public $destDataFilePath = null;
+	public $serverType = null;
 
 
 }

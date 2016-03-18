@@ -140,6 +140,13 @@ class Kaltura_Client_Client extends Kaltura_Client_ClientBase
 	public $EmailIngestionProfile = null;
 
 	/**
+	 * Base class for entry server node
+	 *  
+	 * @var Kaltura_Client_EntryServerNodeService
+	 */
+	public $entryServerNode = null;
+
+	/**
 	 * Manage file assets
 	 *  
 	 * @var Kaltura_Client_FileAssetService
@@ -422,7 +429,7 @@ class Kaltura_Client_Client extends Kaltura_Client_ClientBase
 	{
 		parent::__construct($config);
 		
-		$this->setClientTag('php5:16-03-16');
+		$this->setClientTag('php5:16-03-18');
 		$this->setApiVersion('3.3.0');
 		
 		$this->accessControlProfile = new Kaltura_Client_AccessControlProfileService($this);
@@ -440,6 +447,7 @@ class Kaltura_Client_Client extends Kaltura_Client_ClientBase
 		$this->deliveryProfile = new Kaltura_Client_DeliveryProfileService($this);
 		$this->document = new Kaltura_Client_DocumentService($this);
 		$this->EmailIngestionProfile = new Kaltura_Client_EmailIngestionProfileService($this);
+		$this->entryServerNode = new Kaltura_Client_EntryServerNodeService($this);
 		$this->fileAsset = new Kaltura_Client_FileAssetService($this);
 		$this->flavorAsset = new Kaltura_Client_FlavorAssetService($this);
 		$this->flavorParamsOutput = new Kaltura_Client_FlavorParamsOutputService($this);

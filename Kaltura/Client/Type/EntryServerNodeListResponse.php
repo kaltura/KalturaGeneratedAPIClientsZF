@@ -31,11 +31,11 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Type_ConvertLiveSegmentJobData extends Kaltura_Client_Type_JobData
+class Kaltura_Client_Type_EntryServerNodeListResponse extends Kaltura_Client_Type_ListResponse
 {
 	public function getKalturaObjectType()
 	{
-		return 'KalturaConvertLiveSegmentJobData';
+		return 'KalturaEntryServerNodeListResponse';
 	}
 	
 	public function __construct(SimpleXMLElement $xml = null)
@@ -45,85 +45,21 @@ class Kaltura_Client_Type_ConvertLiveSegmentJobData extends Kaltura_Client_Type_
 		if(is_null($xml))
 			return;
 		
-		if(count($xml->entryId))
-			$this->entryId = (string)$xml->entryId;
-		if(count($xml->assetId))
-			$this->assetId = (string)$xml->assetId;
-		if(count($xml->mediaServerIndex))
-			$this->mediaServerIndex = (string)$xml->mediaServerIndex;
-		if(count($xml->fileIndex))
-			$this->fileIndex = (int)$xml->fileIndex;
-		if(count($xml->srcFilePath))
-			$this->srcFilePath = (string)$xml->srcFilePath;
-		if(count($xml->destFilePath))
-			$this->destFilePath = (string)$xml->destFilePath;
-		if(count($xml->endTime))
-			$this->endTime = (float)$xml->endTime;
-		if(count($xml->destDataFilePath))
-			$this->destDataFilePath = (string)$xml->destDataFilePath;
+		if(count($xml->objects))
+		{
+			if(empty($xml->objects))
+				$this->objects = array();
+			else
+				$this->objects = Kaltura_Client_ParseUtils::unmarshalArray($xml->objects, "KalturaEntryServerNode");
+		}
 	}
-	/**
-	 * Live stream entry id
-	 * 	 
-	 *
-	 * @var string
-	 */
-	public $entryId = null;
-
 	/**
 	 * 
 	 *
-	 * @var string
+	 * @var array of KalturaEntryServerNode
+	 * @readonly
 	 */
-	public $assetId = null;
-
-	/**
-	 * Primary or secondary media server
-	 * 	 
-	 *
-	 * @var Kaltura_Client_Enum_EntryServerNodeType
-	 */
-	public $mediaServerIndex = null;
-
-	/**
-	 * The index of the file within the entry
-	 * 	 
-	 *
-	 * @var int
-	 */
-	public $fileIndex = null;
-
-	/**
-	 * The recorded live media
-	 * 	 
-	 *
-	 * @var string
-	 */
-	public $srcFilePath = null;
-
-	/**
-	 * The output file
-	 * 	 
-	 *
-	 * @var string
-	 */
-	public $destFilePath = null;
-
-	/**
-	 * Duration of the live entry including all recorded segments including the current
-	 * 	 
-	 *
-	 * @var float
-	 */
-	public $endTime = null;
-
-	/**
-	 * The data output file
-	 * 	 
-	 *
-	 * @var string
-	 */
-	public $destDataFilePath = null;
+	public $objects;
 
 
 }
