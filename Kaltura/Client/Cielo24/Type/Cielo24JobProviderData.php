@@ -59,6 +59,8 @@ class Kaltura_Client_Cielo24_Type_Cielo24JobProviderData extends Kaltura_Client_
 			$this->username = (string)$xml->username;
 		if(count($xml->password))
 			$this->password = (string)$xml->password;
+		if(count($xml->baseUrl))
+			$this->baseUrl = (string)$xml->baseUrl;
 		if(count($xml->spokenLanguage))
 			$this->spokenLanguage = (string)$xml->spokenLanguage;
 		if(count($xml->replaceMediaContent))
@@ -124,6 +126,15 @@ class Kaltura_Client_Cielo24_Type_Cielo24JobProviderData extends Kaltura_Client_
 	 * @readonly
 	 */
 	public $password = null;
+
+	/**
+	 * Base url for service provider
+	 * 	 
+	 *
+	 * @var string
+	 * @readonly
+	 */
+	public $baseUrl = null;
 
 	/**
 	 * Transcript content language
