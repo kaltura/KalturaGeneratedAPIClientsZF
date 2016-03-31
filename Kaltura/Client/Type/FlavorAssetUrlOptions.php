@@ -47,6 +47,8 @@ class Kaltura_Client_Type_FlavorAssetUrlOptions extends Kaltura_Client_ObjectBas
 		
 		if(count($xml->fileName))
 			$this->fileName = (string)$xml->fileName;
+		if(count($xml->referrer))
+			$this->referrer = (string)$xml->referrer;
 	}
 	/**
 	 * The name of the downloaded file
@@ -55,6 +57,13 @@ class Kaltura_Client_Type_FlavorAssetUrlOptions extends Kaltura_Client_ObjectBas
 	 * @var string
 	 */
 	public $fileName = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $referrer = null;
 
 
 }
