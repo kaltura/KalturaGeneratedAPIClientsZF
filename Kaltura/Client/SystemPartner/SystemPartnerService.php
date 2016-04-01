@@ -92,10 +92,10 @@ class Kaltura_Client_SystemPartner_SystemPartnerService extends Kaltura_Client_S
 		return $resultObject;
 	}
 
-	function updateStatus($partnerId, $status, $reason)
+	function updateStatus($id, $status, $reason)
 	{
 		$kparams = array();
-		$this->client->addParam($kparams, "partnerId", $partnerId);
+		$this->client->addParam($kparams, "id", $id);
 		$this->client->addParam($kparams, "status", $status);
 		$this->client->addParam($kparams, "reason", $reason);
 		$this->client->queueServiceActionCall("systempartner_systempartner", "updateStatus", null, $kparams);
