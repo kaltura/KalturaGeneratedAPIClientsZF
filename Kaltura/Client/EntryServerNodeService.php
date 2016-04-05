@@ -39,10 +39,11 @@ class Kaltura_Client_EntryServerNodeService extends Kaltura_Client_ServiceBase
 		parent::__construct($client);
 	}
 
-	function listAction(Kaltura_Client_Type_EntryServerNodeFilter $filter, Kaltura_Client_Type_FilterPager $pager = null)
+	function listAction(Kaltura_Client_Type_EntryServerNodeFilter $filter = null, Kaltura_Client_Type_FilterPager $pager = null)
 	{
 		$kparams = array();
-		$this->client->addParam($kparams, "filter", $filter->toParams());
+		if ($filter !== null)
+			$this->client->addParam($kparams, "filter", $filter->toParams());
 		if ($pager !== null)
 			$this->client->addParam($kparams, "pager", $pager->toParams());
 		$this->client->queueServiceActionCall("entryservernode", "list", "KalturaEntryServerNodeListResponse", $kparams);
