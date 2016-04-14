@@ -146,7 +146,7 @@ class Kaltura_Client_Type_BulkUploadResult extends Kaltura_Client_ObjectBase
 	/**
 	 * 
 	 *
-	 * @var Kaltura_Client_Enum_BulkUploadResultObjectType
+	 * @var Kaltura_Client_Enum_BulkUploadObjectType
 	 */
 	public $bulkUploadResultObjectType = null;
 

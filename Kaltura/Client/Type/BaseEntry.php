@@ -134,6 +134,8 @@ class Kaltura_Client_Type_BaseEntry extends Kaltura_Client_ObjectBase
 			$this->entitledUsersPublish = (string)$xml->entitledUsersPublish;
 		if(count($xml->capabilities))
 			$this->capabilities = (string)$xml->capabilities;
+		if(count($xml->templateEntryId))
+			$this->templateEntryId = (string)$xml->templateEntryId;
 	}
 	/**
 	 * Auto generated 10 characters alphanumeric string
@@ -487,6 +489,15 @@ class Kaltura_Client_Type_BaseEntry extends Kaltura_Client_ObjectBase
 	 * @readonly
 	 */
 	public $capabilities = null;
+
+	/**
+	 * Template entry id 
+	 * 	 
+	 *
+	 * @var string
+	 * @insertonly
+	 */
+	public $templateEntryId = null;
 
 
 }
