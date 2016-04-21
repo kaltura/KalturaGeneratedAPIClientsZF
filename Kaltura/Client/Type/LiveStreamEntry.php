@@ -80,6 +80,8 @@ class Kaltura_Client_Type_LiveStreamEntry extends Kaltura_Client_Type_LiveEntry
 			$this->streamPassword = (string)$xml->streamPassword;
 		if(count($xml->streamUsername))
 			$this->streamUsername = (string)$xml->streamUsername;
+		if(count($xml->primaryServerNodeId))
+			$this->primaryServerNodeId = (int)$xml->primaryServerNodeId;
 	}
 	/**
 	 * The stream id as provided by the provider
@@ -198,6 +200,15 @@ class Kaltura_Client_Type_LiveStreamEntry extends Kaltura_Client_Type_LiveEntry
 	 * @readonly
 	 */
 	public $streamUsername = null;
+
+	/**
+	 * The Streams primary server node id 
+	 * 	 
+	 *
+	 * @var int
+	 * @readonly
+	 */
+	public $primaryServerNodeId = null;
 
 
 }
