@@ -46,7 +46,7 @@ class Kaltura_Client_ShortLink_Type_ShortLink extends Kaltura_Client_ObjectBase
 			return;
 		
 		if(count($xml->id))
-			$this->id = (int)$xml->id;
+			$this->id = (string)$xml->id;
 		if(count($xml->createdAt))
 			$this->createdAt = (int)$xml->createdAt;
 		if(count($xml->updatedAt))
@@ -69,7 +69,7 @@ class Kaltura_Client_ShortLink_Type_ShortLink extends Kaltura_Client_ObjectBase
 	/**
 	 * 
 	 *
-	 * @var int
+	 * @var string
 	 * @readonly
 	 */
 	public $id = null;

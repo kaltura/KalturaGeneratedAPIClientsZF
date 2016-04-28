@@ -31,66 +31,37 @@
  * @package Kaltura
  * @subpackage Client
  */
-abstract class Kaltura_Client_Like_Type_LikeBaseFilter extends Kaltura_Client_Type_RelatedFilter
+class Kaltura_Client_ScheduleDropFolder_Plugin extends Kaltura_Client_Plugin
 {
-	public function getKalturaObjectType()
+	protected function __construct(Kaltura_Client_Client $client)
 	{
-		return 'KalturaLikeBaseFilter';
+		parent::__construct($client);
 	}
-	
-	public function __construct(SimpleXMLElement $xml = null)
+
+	/**
+	 * @return Kaltura_Client_ScheduleDropFolder_Plugin
+	 */
+	public static function get(Kaltura_Client_Client $client)
 	{
-		parent::__construct($xml);
-		
-		if(is_null($xml))
-			return;
-		
-		if(count($xml->entryIdEqual))
-			$this->entryIdEqual = (string)$xml->entryIdEqual;
-		if(count($xml->entryIdIn))
-			$this->entryIdIn = (string)$xml->entryIdIn;
-		if(count($xml->userIdEqual))
-			$this->userIdEqual = (string)$xml->userIdEqual;
-		if(count($xml->createdAtGreaterThanOrEqual))
-			$this->createdAtGreaterThanOrEqual = (int)$xml->createdAtGreaterThanOrEqual;
-		if(count($xml->createdAtLessThanOrEqual))
-			$this->createdAtLessThanOrEqual = (int)$xml->createdAtLessThanOrEqual;
+		return new Kaltura_Client_ScheduleDropFolder_Plugin($client);
 	}
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $entryIdEqual = null;
 
 	/**
-	 * 
-	 *
-	 * @var string
+	 * @return array<Kaltura_Client_ServiceBase>
 	 */
-	public $entryIdIn = null;
+	public function getServices()
+	{
+		$services = array(
+		);
+		return $services;
+	}
 
 	/**
-	 * 
-	 *
-	 * @var string
+	 * @return string
 	 */
-	public $userIdEqual = null;
-
-	/**
-	 * 
-	 *
-	 * @var int
-	 */
-	public $createdAtGreaterThanOrEqual = null;
-
-	/**
-	 * 
-	 *
-	 * @var int
-	 */
-	public $createdAtLessThanOrEqual = null;
-
-
+	public function getName()
+	{
+		return 'scheduleDropFolder';
+	}
 }
 

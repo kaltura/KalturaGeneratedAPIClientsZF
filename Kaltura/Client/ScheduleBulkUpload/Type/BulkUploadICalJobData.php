@@ -31,11 +31,11 @@
  * @package Kaltura
  * @subpackage Client
  */
-abstract class Kaltura_Client_Like_Type_LikeBaseFilter extends Kaltura_Client_Type_RelatedFilter
+class Kaltura_Client_ScheduleBulkUpload_Type_BulkUploadICalJobData extends Kaltura_Client_Type_BulkUploadJobData
 {
 	public function getKalturaObjectType()
 	{
-		return 'KalturaLikeBaseFilter';
+		return 'KalturaBulkUploadICalJobData';
 	}
 	
 	public function __construct(SimpleXMLElement $xml = null)
@@ -45,51 +45,16 @@ abstract class Kaltura_Client_Like_Type_LikeBaseFilter extends Kaltura_Client_Ty
 		if(is_null($xml))
 			return;
 		
-		if(count($xml->entryIdEqual))
-			$this->entryIdEqual = (string)$xml->entryIdEqual;
-		if(count($xml->entryIdIn))
-			$this->entryIdIn = (string)$xml->entryIdIn;
-		if(count($xml->userIdEqual))
-			$this->userIdEqual = (string)$xml->userIdEqual;
-		if(count($xml->createdAtGreaterThanOrEqual))
-			$this->createdAtGreaterThanOrEqual = (int)$xml->createdAtGreaterThanOrEqual;
-		if(count($xml->createdAtLessThanOrEqual))
-			$this->createdAtLessThanOrEqual = (int)$xml->createdAtLessThanOrEqual;
+		if(count($xml->eventsType))
+			$this->eventsType = (int)$xml->eventsType;
 	}
 	/**
-	 * 
+	 * The type of the events that ill be created by this upload
+	 * 	 
 	 *
-	 * @var string
+	 * @var Kaltura_Client_Schedule_Enum_ScheduleEventType
 	 */
-	public $entryIdEqual = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $entryIdIn = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $userIdEqual = null;
-
-	/**
-	 * 
-	 *
-	 * @var int
-	 */
-	public $createdAtGreaterThanOrEqual = null;
-
-	/**
-	 * 
-	 *
-	 * @var int
-	 */
-	public $createdAtLessThanOrEqual = null;
+	public $eventsType = null;
 
 
 }
