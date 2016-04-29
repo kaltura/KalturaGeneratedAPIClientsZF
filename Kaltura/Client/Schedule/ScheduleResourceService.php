@@ -117,4 +117,22 @@ class Kaltura_Client_Schedule_ScheduleResourceService extends Kaltura_Client_Ser
 		$this->client->validateObjectType($resultObject, "Kaltura_Client_Schedule_Type_ScheduleResourceListResponse");
 		return $resultObject;
 	}
+
+	function addFromBulkUpload($fileData, Kaltura_Client_BulkUploadCsv_Type_BulkUploadCsvJobData $bulkUploadData = null)
+	{
+		$kparams = array();
+		$kfiles = array();
+		$this->client->addParam($kfiles, "fileData", $fileData);
+		if ($bulkUploadData !== null)
+			$this->client->addParam($kparams, "bulkUploadData", $bulkUploadData->toParams());
+		$this->client->queueServiceActionCall("schedule_scheduleresource", "addFromBulkUpload",  "KalturaBulkUpload", $kparams, $kfiles);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultXml = $this->client->doQueue();
+		$resultXmlObject = new \SimpleXMLElement($resultXml);
+		$this->client->checkIfError($resultXmlObject->result);
+		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaBulkUpload");
+		$this->client->validateObjectType($resultObject, "Kaltura_Client_Type_BulkUpload");
+		return $resultObject;
+	}
 }

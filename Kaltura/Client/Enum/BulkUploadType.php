@@ -37,5 +37,7 @@ class Kaltura_Client_Enum_BulkUploadType extends Kaltura_Client_EnumBase
 	const FILTER = "bulkUploadFilter.FILTER";
 	const XML = "bulkUploadXml.XML";
 	const DROP_FOLDER_XML = "dropFolderXmlBulkUpload.DROP_FOLDER_XML";
+	const ICAL = "scheduleBulkUpload.ICAL";
+	const DROP_FOLDER_ICAL = "scheduleDropFolder.DROP_FOLDER_ICAL";
 }
 

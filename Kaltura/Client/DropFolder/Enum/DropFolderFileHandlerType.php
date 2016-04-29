@@ -34,6 +34,7 @@
 class Kaltura_Client_DropFolder_Enum_DropFolderFileHandlerType extends Kaltura_Client_EnumBase
 {
 	const XML = "dropFolderXmlBulkUpload.XML";
+	const ICAL = "scheduleDropFolder.ICAL";
 	const CONTENT = "1";
 }
 
