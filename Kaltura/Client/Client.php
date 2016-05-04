@@ -55,6 +55,13 @@ class Kaltura_Client_Client extends Kaltura_Client_ClientBase
 	public $adminUser = null;
 
 	/**
+	 * api for getting analytics data
+	 *  
+	 * @var Kaltura_Client_AnalyticsService
+	 */
+	public $analytics = null;
+
+	/**
 	 * Manage application authentication tokens
 	 *  
 	 * @var Kaltura_Client_AppTokenService
@@ -429,12 +436,13 @@ class Kaltura_Client_Client extends Kaltura_Client_ClientBase
 	{
 		parent::__construct($config);
 		
-		$this->setClientTag('php5:16-05-03');
+		$this->setClientTag('php5:16-05-04');
 		$this->setApiVersion('3.3.0');
 		
 		$this->accessControlProfile = new Kaltura_Client_AccessControlProfileService($this);
 		$this->accessControl = new Kaltura_Client_AccessControlService($this);
 		$this->adminUser = new Kaltura_Client_AdminUserService($this);
+		$this->analytics = new Kaltura_Client_AnalyticsService($this);
 		$this->appToken = new Kaltura_Client_AppTokenService($this);
 		$this->baseEntry = new Kaltura_Client_BaseEntryService($this);
 		$this->bulkUpload = new Kaltura_Client_BulkUploadService($this);

@@ -31,11 +31,11 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Type_ReportFilter extends Kaltura_Client_ObjectBase
+class Kaltura_Client_Type_AnalyticsFilter extends Kaltura_Client_ObjectBase
 {
 	public function getKalturaObjectType()
 	{
-		return 'KalturaReportFilter';
+		return 'KalturaAnalyticsFilter';
 	}
 	
 	public function __construct(SimpleXMLElement $xml = null)
@@ -45,26 +45,71 @@ class Kaltura_Client_Type_ReportFilter extends Kaltura_Client_ObjectBase
 		if(is_null($xml))
 			return;
 		
-		if(count($xml->dimension))
-			$this->dimension = (string)$xml->dimension;
-		if(count($xml->values))
-			$this->values = (string)$xml->values;
+		if(count($xml->from_time))
+			$this->from_time = (string)$xml->from_time;
+		if(count($xml->to_time))
+			$this->to_time = (string)$xml->to_time;
+		if(count($xml->metrics))
+			$this->metrics = (string)$xml->metrics;
+		if(count($xml->utcOffset))
+			$this->utcOffset = (float)$xml->utcOffset;
+		if(count($xml->dimensions))
+			$this->dimensions = (string)$xml->dimensions;
+		if(count($xml->filters))
+		{
+			if(empty($xml->filters))
+				$this->filters = array();
+			else
+				$this->filters = Kaltura_Client_ParseUtils::unmarshalArray($xml->filters, "KalturaReportFilter");
+		}
 	}
 	/**
-	 * The dimension whose values should be filtered
+	 * Query start time (in local time)
 	 * 	 
 	 *
 	 * @var string
 	 */
-	public $dimension = null;
+	public $from_time = null;
 
 	/**
-	 * The (comma separated) values to include in the filter
+	 * Query end time (in local time)
 	 * 	 
 	 *
 	 * @var string
 	 */
-	public $values = null;
+	public $to_time = null;
+
+	/**
+	 * Comma separated metrics list
+	 * 	 
+	 *
+	 * @var string
+	 */
+	public $metrics = null;
+
+	/**
+	 * Timezone offset from UTC (in minutes)
+	 * 	 
+	 *
+	 * @var float
+	 */
+	public $utcOffset = null;
+
+	/**
+	 * Comma separated dimensions list
+	 * 	 
+	 *
+	 * @var string
+	 */
+	public $dimensions = null;
+
+	/**
+	 * Array of filters
+	 * 	 
+	 *
+	 * @var array of KalturaReportFilter
+	 */
+	public $filters;
 
 
 }

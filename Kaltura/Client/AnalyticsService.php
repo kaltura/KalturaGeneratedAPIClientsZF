@@ -27,45 +27,30 @@
 // @ignore
 // ===================================================================================================
 
+
 /**
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Type_ReportFilter extends Kaltura_Client_ObjectBase
+class Kaltura_Client_AnalyticsService extends Kaltura_Client_ServiceBase
 {
-	public function getKalturaObjectType()
+	function __construct(Kaltura_Client_Client $client = null)
 	{
-		return 'KalturaReportFilter';
+		parent::__construct($client);
 	}
-	
-	public function __construct(SimpleXMLElement $xml = null)
+
+	function query(Kaltura_Client_Type_AnalyticsFilter $filter)
 	{
-		parent::__construct($xml);
-		
-		if(is_null($xml))
-			return;
-		
-		if(count($xml->dimension))
-			$this->dimension = (string)$xml->dimension;
-		if(count($xml->values))
-			$this->values = (string)$xml->values;
+		$kparams = array();
+		$this->client->addParam($kparams, "filter", $filter->toParams());
+		$this->client->queueServiceActionCall("analytics", "query", "KalturaReportResponse", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultXml = $this->client->doQueue();
+		$resultXmlObject = new \SimpleXMLElement($resultXml);
+		$this->client->checkIfError($resultXmlObject->result);
+		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaReportResponse");
+		$this->client->validateObjectType($resultObject, "Kaltura_Client_Type_ReportResponse");
+		return $resultObject;
 	}
-	/**
-	 * The dimension whose values should be filtered
-	 * 	 
-	 *
-	 * @var string
-	 */
-	public $dimension = null;
-
-	/**
-	 * The (comma separated) values to include in the filter
-	 * 	 
-	 *
-	 * @var string
-	 */
-	public $values = null;
-
-
 }
-

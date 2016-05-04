@@ -31,11 +31,11 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Type_ReportFilter extends Kaltura_Client_ObjectBase
+class Kaltura_Client_Type_UrlTokenizerVnpt extends Kaltura_Client_Type_UrlTokenizer
 {
 	public function getKalturaObjectType()
 	{
-		return 'KalturaReportFilter';
+		return 'KalturaUrlTokenizerVnpt';
 	}
 	
 	public function __construct(SimpleXMLElement $xml = null)
@@ -45,26 +45,15 @@ class Kaltura_Client_Type_ReportFilter extends Kaltura_Client_ObjectBase
 		if(is_null($xml))
 			return;
 		
-		if(count($xml->dimension))
-			$this->dimension = (string)$xml->dimension;
-		if(count($xml->values))
-			$this->values = (string)$xml->values;
+		if(count($xml->tokenizationFormat))
+			$this->tokenizationFormat = (int)$xml->tokenizationFormat;
 	}
 	/**
-	 * The dimension whose values should be filtered
-	 * 	 
+	 * 
 	 *
-	 * @var string
+	 * @var int
 	 */
-	public $dimension = null;
-
-	/**
-	 * The (comma separated) values to include in the filter
-	 * 	 
-	 *
-	 * @var string
-	 */
-	public $values = null;
+	public $tokenizationFormat = null;
 
 
 }

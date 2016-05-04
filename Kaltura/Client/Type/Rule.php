@@ -79,6 +79,8 @@ class Kaltura_Client_Type_Rule extends Kaltura_Client_ObjectBase
 			else
 				$this->stopProcessing = false;
 		}
+		if(count($xml->forceAdminValidation))
+			$this->forceAdminValidation = (int)$xml->forceAdminValidation;
 	}
 	/**
 	 * Short Rule Description
@@ -135,6 +137,14 @@ class Kaltura_Client_Type_Rule extends Kaltura_Client_ObjectBase
 	 * @var bool
 	 */
 	public $stopProcessing = null;
+
+	/**
+	 * Indicates if we should force ks validation for admin ks users as well
+	 * 	 
+	 *
+	 * @var Kaltura_Client_Enum_NullableBoolean
+	 */
+	public $forceAdminValidation = null;
 
 
 }

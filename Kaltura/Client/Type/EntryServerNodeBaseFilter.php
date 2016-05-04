@@ -45,60 +45,27 @@ abstract class Kaltura_Client_Type_EntryServerNodeBaseFilter extends Kaltura_Cli
 		if(is_null($xml))
 			return;
 		
-		if(count($xml->idEqual))
-			$this->idEqual = (int)$xml->idEqual;
-		if(count($xml->idIn))
-			$this->idIn = (string)$xml->idIn;
-		if(count($xml->idNotIn))
-			$this->idNotIn = (string)$xml->idNotIn;
 		if(count($xml->entryIdEqual))
 			$this->entryIdEqual = (string)$xml->entryIdEqual;
 		if(count($xml->entryIdIn))
 			$this->entryIdIn = (string)$xml->entryIdIn;
-		if(count($xml->entryIdNotIn))
-			$this->entryIdNotIn = (string)$xml->entryIdNotIn;
 		if(count($xml->serverNodeIdEqual))
 			$this->serverNodeIdEqual = (int)$xml->serverNodeIdEqual;
-		if(count($xml->serverNodeIdIn))
-			$this->serverNodeIdIn = (string)$xml->serverNodeIdIn;
-		if(count($xml->serverNodeIdNotIn))
-			$this->serverNodeIdNotIn = (string)$xml->serverNodeIdNotIn;
-		if(count($xml->createdAtLessThanOrEqual))
-			$this->createdAtLessThanOrEqual = (int)$xml->createdAtLessThanOrEqual;
 		if(count($xml->createdAtGreaterThanOrEqual))
 			$this->createdAtGreaterThanOrEqual = (int)$xml->createdAtGreaterThanOrEqual;
-		if(count($xml->updatedAtLessThanOrEqual))
-			$this->updatedAtLessThanOrEqual = (int)$xml->updatedAtLessThanOrEqual;
+		if(count($xml->createdAtLessThanOrEqual))
+			$this->createdAtLessThanOrEqual = (int)$xml->createdAtLessThanOrEqual;
 		if(count($xml->updatedAtGreaterThanOrEqual))
 			$this->updatedAtGreaterThanOrEqual = (int)$xml->updatedAtGreaterThanOrEqual;
+		if(count($xml->updatedAtLessThanOrEqual))
+			$this->updatedAtLessThanOrEqual = (int)$xml->updatedAtLessThanOrEqual;
 		if(count($xml->statusEqual))
 			$this->statusEqual = (int)$xml->statusEqual;
 		if(count($xml->statusIn))
-			$this->statusIn = (int)$xml->statusIn;
+			$this->statusIn = (string)$xml->statusIn;
 		if(count($xml->serverTypeEqual))
 			$this->serverTypeEqual = (string)$xml->serverTypeEqual;
 	}
-	/**
-	 * 
-	 *
-	 * @var int
-	 */
-	public $idEqual = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $idIn = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $idNotIn = null;
-
 	/**
 	 * 
 	 *
@@ -116,37 +83,9 @@ abstract class Kaltura_Client_Type_EntryServerNodeBaseFilter extends Kaltura_Cli
 	/**
 	 * 
 	 *
-	 * @var string
-	 */
-	public $entryIdNotIn = null;
-
-	/**
-	 * 
-	 *
 	 * @var int
 	 */
 	public $serverNodeIdEqual = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $serverNodeIdIn = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $serverNodeIdNotIn = null;
-
-	/**
-	 * 
-	 *
-	 * @var int
-	 */
-	public $createdAtLessThanOrEqual = null;
 
 	/**
 	 * 
@@ -160,7 +99,7 @@ abstract class Kaltura_Client_Type_EntryServerNodeBaseFilter extends Kaltura_Cli
 	 *
 	 * @var int
 	 */
-	public $updatedAtLessThanOrEqual = null;
+	public $createdAtLessThanOrEqual = null;
 
 	/**
 	 * 
@@ -172,6 +111,13 @@ abstract class Kaltura_Client_Type_EntryServerNodeBaseFilter extends Kaltura_Cli
 	/**
 	 * 
 	 *
+	 * @var int
+	 */
+	public $updatedAtLessThanOrEqual = null;
+
+	/**
+	 * 
+	 *
 	 * @var Kaltura_Client_Enum_EntryServerNodeStatus
 	 */
 	public $statusEqual = null;
@@ -179,7 +125,7 @@ abstract class Kaltura_Client_Type_EntryServerNodeBaseFilter extends Kaltura_Cli
 	/**
 	 * 
 	 *
-	 * @var Kaltura_Client_Enum_EntryServerNodeStatus
+	 * @var string
 	 */
 	public $statusIn = null;
 
