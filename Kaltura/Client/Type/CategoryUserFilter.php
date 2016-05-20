@@ -59,7 +59,6 @@ class Kaltura_Client_Type_CategoryUserFilter extends Kaltura_Client_Type_Categor
 	}
 	/**
 	 * Return the list of categoryUser that are not inherited from parent category - only the direct categoryUsers.
-	 * 	 
 	 *
 	 * @var bool
 	 */
@@ -67,7 +66,6 @@ class Kaltura_Client_Type_CategoryUserFilter extends Kaltura_Client_Type_Categor
 
 	/**
 	 * Free text search on user id or screen name
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -75,7 +73,6 @@ class Kaltura_Client_Type_CategoryUserFilter extends Kaltura_Client_Type_Categor
 
 	/**
 	 * Return a list of categoryUser that related to the userId in this field by groups
-	 * 	 
 	 *
 	 * @var string
 	 */

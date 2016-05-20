@@ -49,8 +49,7 @@ abstract class Kaltura_Client_Type_ObjectIdentifier extends Kaltura_Client_Objec
 			$this->extendedFeatures = (string)$xml->extendedFeatures;
 	}
 	/**
-	 * Comma separated string of enum values denoting which features of the item need to be included in the MRSS 
-	 * 	 
+	 * Comma separated string of enum values denoting which features of the item need to be included in the MRSS
 	 *
 	 * @var string
 	 */

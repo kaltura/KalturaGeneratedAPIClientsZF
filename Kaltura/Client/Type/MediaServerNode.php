@@ -64,7 +64,6 @@ abstract class Kaltura_Client_Type_MediaServerNode extends Kaltura_Client_Type_D
 	}
 	/**
 	 * Media server application name
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -72,7 +71,6 @@ abstract class Kaltura_Client_Type_MediaServerNode extends Kaltura_Client_Type_D
 
 	/**
 	 * Media server playback port configuration by protocol and format
-	 * 	 
 	 *
 	 * @var array of KalturaKeyValue
 	 */
@@ -80,7 +78,6 @@ abstract class Kaltura_Client_Type_MediaServerNode extends Kaltura_Client_Type_D
 
 	/**
 	 * Media server playback Domain configuration by protocol and format
-	 * 	 
 	 *
 	 * @var array of KalturaKeyValue
 	 */

@@ -140,7 +140,6 @@ abstract class Kaltura_Client_Type_BaseSyndicationFeed extends Kaltura_Client_Ob
 	/**
 	 * link a playlist that will set what content the feed will include
 	 * 	 if empty, all content will be included in feed
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -148,7 +147,6 @@ abstract class Kaltura_Client_Type_BaseSyndicationFeed extends Kaltura_Client_Ob
 
 	/**
 	 * feed name
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -156,7 +154,6 @@ abstract class Kaltura_Client_Type_BaseSyndicationFeed extends Kaltura_Client_Ob
 
 	/**
 	 * feed status
-	 * 	 
 	 *
 	 * @var Kaltura_Client_Enum_SyndicationFeedStatus
 	 * @readonly
@@ -165,7 +162,6 @@ abstract class Kaltura_Client_Type_BaseSyndicationFeed extends Kaltura_Client_Ob
 
 	/**
 	 * feed type
-	 * 	 
 	 *
 	 * @var Kaltura_Client_Enum_SyndicationFeedType
 	 * @insertonly
@@ -175,7 +171,6 @@ abstract class Kaltura_Client_Type_BaseSyndicationFeed extends Kaltura_Client_Ob
 	/**
 	 * Base URL for each video, on the partners site
 	 * 	 This is required by all syndication types.
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -183,7 +178,6 @@ abstract class Kaltura_Client_Type_BaseSyndicationFeed extends Kaltura_Client_Ob
 
 	/**
 	 * Creation date as Unix timestamp (In seconds)
-	 * 	 
 	 *
 	 * @var int
 	 * @readonly
@@ -195,7 +189,6 @@ abstract class Kaltura_Client_Type_BaseSyndicationFeed extends Kaltura_Client_Ob
 	 * 	 or just to provide a link to the landing page.
 	 * 	 it is applied on the video-player_loc property in the XML (google)
 	 * 	 and addes media-player tag (yahoo)
-	 * 	 
 	 *
 	 * @var bool
 	 */
@@ -203,7 +196,6 @@ abstract class Kaltura_Client_Type_BaseSyndicationFeed extends Kaltura_Client_Ob
 
 	/**
 	 * Select a uiconf ID as player skin to include in the kwidget url
-	 * 	 
 	 *
 	 * @var int
 	 */
@@ -253,7 +245,6 @@ abstract class Kaltura_Client_Type_BaseSyndicationFeed extends Kaltura_Client_Ob
 
 	/**
 	 * Should enforce entitlement on feed entries
-	 * 	 
 	 *
 	 * @var bool
 	 */
@@ -261,7 +252,6 @@ abstract class Kaltura_Client_Type_BaseSyndicationFeed extends Kaltura_Client_Ob
 
 	/**
 	 * Set privacy context for search entries that assiged to private and public categories within a category privacy context.
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -269,7 +259,6 @@ abstract class Kaltura_Client_Type_BaseSyndicationFeed extends Kaltura_Client_Ob
 
 	/**
 	 * Update date as Unix timestamp (In seconds)
-	 * 	 
 	 *
 	 * @var int
 	 * @readonly

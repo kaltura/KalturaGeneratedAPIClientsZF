@@ -124,7 +124,6 @@ class Kaltura_Client_Type_UserFilter extends Kaltura_Client_Type_UserBaseFilter
 
 	/**
 	 * Permission names filter expression
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -132,7 +131,6 @@ class Kaltura_Client_Type_UserFilter extends Kaltura_Client_Type_UserBaseFilter
 
 	/**
 	 * Permission names filter expression
-	 * 	 
 	 *
 	 * @var string
 	 */

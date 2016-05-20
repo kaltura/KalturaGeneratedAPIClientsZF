@@ -52,7 +52,6 @@ class Kaltura_Client_FeedDropFolder_Type_FeedDropFolderFile extends Kaltura_Clie
 	}
 	/**
 	 * MD5 or Sha1 encrypted string
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -60,7 +59,6 @@ class Kaltura_Client_FeedDropFolder_Type_FeedDropFolderFile extends Kaltura_Clie
 
 	/**
 	 * Path of the original Feed content XML
-	 * 	 
 	 *
 	 * @var string
 	 */

@@ -54,7 +54,6 @@ class Kaltura_Client_Kontiki_Type_KontikiStorageExportJobData extends Kaltura_Cl
 	}
 	/**
 	 * Holds the id of the exported asset
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -62,7 +61,6 @@ class Kaltura_Client_Kontiki_Type_KontikiStorageExportJobData extends Kaltura_Cl
 
 	/**
 	 * Unique Kontiki MOID for the content uploaded to Kontiki
-	 * 	 
 	 *
 	 * @var string
 	 */

@@ -50,7 +50,6 @@ class Kaltura_Client_ScheduledTaskContentDistribution_Type_DistributeObjectTask 
 	}
 	/**
 	 * Distribution profile id
-	 * 	 
 	 *
 	 * @var string
 	 */

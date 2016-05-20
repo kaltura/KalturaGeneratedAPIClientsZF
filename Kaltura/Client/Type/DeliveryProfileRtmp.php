@@ -57,7 +57,6 @@ class Kaltura_Client_Type_DeliveryProfileRtmp extends Kaltura_Client_Type_Delive
 	}
 	/**
 	 * enforceRtmpe
-	 * 	 
 	 *
 	 * @var bool
 	 */
@@ -65,7 +64,6 @@ class Kaltura_Client_Type_DeliveryProfileRtmp extends Kaltura_Client_Type_Delive
 
 	/**
 	 * a prefix that is added to all stream urls (replaces storageProfile::rtmpPrefix)
-	 * 	 
 	 *
 	 * @var string
 	 */

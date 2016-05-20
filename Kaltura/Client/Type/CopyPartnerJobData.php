@@ -52,7 +52,6 @@ class Kaltura_Client_Type_CopyPartnerJobData extends Kaltura_Client_Type_JobData
 	}
 	/**
 	 * Id of the partner to copy from
-	 * 	 
 	 *
 	 * @var int
 	 */
@@ -60,7 +59,6 @@ class Kaltura_Client_Type_CopyPartnerJobData extends Kaltura_Client_Type_JobData
 
 	/**
 	 * Id of the partner to copy to
-	 * 	 
 	 *
 	 * @var int
 	 */

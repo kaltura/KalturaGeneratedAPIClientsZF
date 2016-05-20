@@ -54,7 +54,6 @@ class Kaltura_Client_Type_SyndicationFeedEntryCount extends Kaltura_Client_Objec
 	}
 	/**
 	 * the total count of entries that should appear in the feed without flavor filtering
-	 * 	 
 	 *
 	 * @var int
 	 */
@@ -62,7 +61,6 @@ class Kaltura_Client_Type_SyndicationFeedEntryCount extends Kaltura_Client_Objec
 
 	/**
 	 * count of entries that will appear in the feed (including all relevant filters)
-	 * 	 
 	 *
 	 * @var int
 	 */
@@ -70,7 +68,6 @@ class Kaltura_Client_Type_SyndicationFeedEntryCount extends Kaltura_Client_Objec
 
 	/**
 	 * count of entries that requires transcoding in order to be included in feed
-	 * 	 
 	 *
 	 * @var int
 	 */

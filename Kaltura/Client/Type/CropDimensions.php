@@ -56,7 +56,6 @@ class Kaltura_Client_Type_CropDimensions extends Kaltura_Client_ObjectBase
 	}
 	/**
 	 * Crop left point
-	 * 	 
 	 *
 	 * @var int
 	 */
@@ -64,7 +63,6 @@ class Kaltura_Client_Type_CropDimensions extends Kaltura_Client_ObjectBase
 
 	/**
 	 * Crop top point
-	 * 	 
 	 *
 	 * @var int
 	 */
@@ -72,7 +70,6 @@ class Kaltura_Client_Type_CropDimensions extends Kaltura_Client_ObjectBase
 
 	/**
 	 * Crop width
-	 * 	 
 	 *
 	 * @var int
 	 */
@@ -80,7 +77,6 @@ class Kaltura_Client_Type_CropDimensions extends Kaltura_Client_ObjectBase
 
 	/**
 	 * Crop height
-	 * 	 
 	 *
 	 * @var int
 	 */

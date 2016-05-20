@@ -52,7 +52,6 @@ class Kaltura_Client_Type_FilterPager extends Kaltura_Client_ObjectBase
 	}
 	/**
 	 * The number of objects to retrieve. (Default is 30, maximum page size is 500).
-	 * 	 
 	 *
 	 * @var int
 	 */
@@ -60,7 +59,6 @@ class Kaltura_Client_Type_FilterPager extends Kaltura_Client_ObjectBase
 
 	/**
 	 * The page number for which {pageSize} of objects should be retrieved (Default is 1).
-	 * 	 
 	 *
 	 * @var int
 	 */

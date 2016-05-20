@@ -76,7 +76,6 @@ class Kaltura_Client_Type_Asset extends Kaltura_Client_ObjectBase
 	}
 	/**
 	 * The ID of the Flavor Asset
-	 * 	 
 	 *
 	 * @var string
 	 * @readonly
@@ -85,7 +84,6 @@ class Kaltura_Client_Type_Asset extends Kaltura_Client_ObjectBase
 
 	/**
 	 * The entry ID of the Flavor Asset
-	 * 	 
 	 *
 	 * @var string
 	 * @readonly
@@ -102,7 +100,6 @@ class Kaltura_Client_Type_Asset extends Kaltura_Client_ObjectBase
 
 	/**
 	 * The version of the Flavor Asset
-	 * 	 
 	 *
 	 * @var int
 	 * @readonly
@@ -111,7 +108,6 @@ class Kaltura_Client_Type_Asset extends Kaltura_Client_ObjectBase
 
 	/**
 	 * The size (in KBytes) of the Flavor Asset
-	 * 	 
 	 *
 	 * @var int
 	 * @readonly
@@ -120,7 +116,6 @@ class Kaltura_Client_Type_Asset extends Kaltura_Client_ObjectBase
 
 	/**
 	 * Tags used to identify the Flavor Asset in various scenarios
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -128,7 +123,6 @@ class Kaltura_Client_Type_Asset extends Kaltura_Client_ObjectBase
 
 	/**
 	 * The file extension
-	 * 	 
 	 *
 	 * @var string
 	 * @insertonly
@@ -161,7 +155,6 @@ class Kaltura_Client_Type_Asset extends Kaltura_Client_ObjectBase
 
 	/**
 	 * System description, error message, warnings and failure cause.
-	 * 	 
 	 *
 	 * @var string
 	 * @readonly
@@ -170,7 +163,6 @@ class Kaltura_Client_Type_Asset extends Kaltura_Client_ObjectBase
 
 	/**
 	 * Partner private data
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -178,7 +170,6 @@ class Kaltura_Client_Type_Asset extends Kaltura_Client_ObjectBase
 
 	/**
 	 * Partner friendly description
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -186,7 +177,6 @@ class Kaltura_Client_Type_Asset extends Kaltura_Client_ObjectBase
 
 	/**
 	 * Comma separated list of source flavor params ids
-	 * 	 
 	 *
 	 * @var string
 	 */

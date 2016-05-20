@@ -87,7 +87,6 @@ class Kaltura_Client_Type_ConvartableJobData extends Kaltura_Client_Type_JobData
 
 	/**
 	 * The translated path as used by the scheduler
-	 * 	 
 	 *
 	 * @var string
 	 */

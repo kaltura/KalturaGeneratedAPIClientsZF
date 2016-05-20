@@ -71,7 +71,6 @@ class Kaltura_Client_Type_AccessControlProfile extends Kaltura_Client_ObjectBase
 	}
 	/**
 	 * The id of the Access Control Profile
-	 * 	 
 	 *
 	 * @var int
 	 * @readonly
@@ -88,7 +87,6 @@ class Kaltura_Client_Type_AccessControlProfile extends Kaltura_Client_ObjectBase
 
 	/**
 	 * The name of the Access Control Profile
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -96,7 +94,6 @@ class Kaltura_Client_Type_AccessControlProfile extends Kaltura_Client_ObjectBase
 
 	/**
 	 * System name of the Access Control Profile
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -104,15 +101,13 @@ class Kaltura_Client_Type_AccessControlProfile extends Kaltura_Client_ObjectBase
 
 	/**
 	 * The description of the Access Control Profile
-	 * 	 
 	 *
 	 * @var string
 	 */
 	public $description = null;
 
 	/**
-	 * Creation time as Unix timestamp (In seconds) 
-	 * 	 
+	 * Creation time as Unix timestamp (In seconds)
 	 *
 	 * @var int
 	 * @readonly
@@ -120,8 +115,7 @@ class Kaltura_Client_Type_AccessControlProfile extends Kaltura_Client_ObjectBase
 	public $createdAt = null;
 
 	/**
-	 * Update time as Unix timestamp (In seconds) 
-	 * 	 
+	 * Update time as Unix timestamp (In seconds)
 	 *
 	 * @var int
 	 * @readonly
@@ -130,7 +124,6 @@ class Kaltura_Client_Type_AccessControlProfile extends Kaltura_Client_ObjectBase
 
 	/**
 	 * True if this access control profile is the partner default
-	 * 	 
 	 *
 	 * @var Kaltura_Client_Enum_NullableBoolean
 	 */
@@ -138,7 +131,6 @@ class Kaltura_Client_Type_AccessControlProfile extends Kaltura_Client_ObjectBase
 
 	/**
 	 * Array of access control rules
-	 * 	 
 	 *
 	 * @var array of KalturaRule
 	 */

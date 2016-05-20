@@ -50,7 +50,6 @@ class Kaltura_Client_Type_EvalStringField extends Kaltura_Client_Type_StringFiel
 	}
 	/**
 	 * PHP code
-	 * 	 
 	 *
 	 * @var string
 	 */

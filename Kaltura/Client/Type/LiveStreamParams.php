@@ -58,7 +58,6 @@ class Kaltura_Client_Type_LiveStreamParams extends Kaltura_Client_ObjectBase
 	}
 	/**
 	 * Bit rate of the stream. (i.e. 900)
-	 * 	 
 	 *
 	 * @var int
 	 */
@@ -66,7 +65,6 @@ class Kaltura_Client_Type_LiveStreamParams extends Kaltura_Client_ObjectBase
 
 	/**
 	 * flavor asset id
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -74,7 +72,6 @@ class Kaltura_Client_Type_LiveStreamParams extends Kaltura_Client_ObjectBase
 
 	/**
 	 * Stream's width
-	 * 	 
 	 *
 	 * @var int
 	 */
@@ -82,7 +79,6 @@ class Kaltura_Client_Type_LiveStreamParams extends Kaltura_Client_ObjectBase
 
 	/**
 	 * Stream's height
-	 * 	 
 	 *
 	 * @var int
 	 */
@@ -90,7 +86,6 @@ class Kaltura_Client_Type_LiveStreamParams extends Kaltura_Client_ObjectBase
 
 	/**
 	 * Live stream's codec
-	 * 	 
 	 *
 	 * @var string
 	 */

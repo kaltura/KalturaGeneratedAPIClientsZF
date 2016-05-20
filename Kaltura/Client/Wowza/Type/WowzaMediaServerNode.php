@@ -60,7 +60,6 @@ class Kaltura_Client_Wowza_Type_WowzaMediaServerNode extends Kaltura_Client_Type
 	}
 	/**
 	 * Wowza Media server app prefix
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -68,7 +67,6 @@ class Kaltura_Client_Wowza_Type_WowzaMediaServerNode extends Kaltura_Client_Type
 
 	/**
 	 * Wowza Media server transcoder configuration overide
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -76,7 +74,6 @@ class Kaltura_Client_Wowza_Type_WowzaMediaServerNode extends Kaltura_Client_Type
 
 	/**
 	 * Wowza Media server GPU index id
-	 * 	 
 	 *
 	 * @var int
 	 */
@@ -84,7 +81,6 @@ class Kaltura_Client_Wowza_Type_WowzaMediaServerNode extends Kaltura_Client_Type
 
 	/**
 	 * Live service port
-	 * 	 
 	 *
 	 * @var int
 	 */
@@ -92,7 +88,6 @@ class Kaltura_Client_Wowza_Type_WowzaMediaServerNode extends Kaltura_Client_Type
 
 	/**
 	 * Live service protocol
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -100,7 +95,6 @@ class Kaltura_Client_Wowza_Type_WowzaMediaServerNode extends Kaltura_Client_Type
 
 	/**
 	 * Wowza media server live service internal domain
-	 * 	 
 	 *
 	 * @var string
 	 */

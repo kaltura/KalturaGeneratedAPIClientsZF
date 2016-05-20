@@ -58,7 +58,6 @@ class Kaltura_Client_Caption_Type_CaptionParams extends Kaltura_Client_Type_Asse
 	}
 	/**
 	 * The language of the caption content
-	 * 	 
 	 *
 	 * @var Kaltura_Client_Enum_Language
 	 * @insertonly
@@ -67,7 +66,6 @@ class Kaltura_Client_Caption_Type_CaptionParams extends Kaltura_Client_Type_Asse
 
 	/**
 	 * Is default caption asset of the entry
-	 * 	 
 	 *
 	 * @var Kaltura_Client_Enum_NullableBoolean
 	 */
@@ -75,7 +73,6 @@ class Kaltura_Client_Caption_Type_CaptionParams extends Kaltura_Client_Type_Asse
 
 	/**
 	 * Friendly label
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -83,7 +80,6 @@ class Kaltura_Client_Caption_Type_CaptionParams extends Kaltura_Client_Type_Asse
 
 	/**
 	 * The caption format
-	 * 	 
 	 *
 	 * @var Kaltura_Client_Caption_Enum_CaptionType
 	 * @insertonly
@@ -92,7 +88,6 @@ class Kaltura_Client_Caption_Type_CaptionParams extends Kaltura_Client_Type_Asse
 
 	/**
 	 * Id of the caption params or the flavor params to be used as source for the caption creation
-	 * 	 
 	 *
 	 * @var int
 	 */

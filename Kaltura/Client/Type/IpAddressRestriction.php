@@ -52,15 +52,13 @@ class Kaltura_Client_Type_IpAddressRestriction extends Kaltura_Client_Type_BaseR
 	}
 	/**
 	 * Ip address restriction type (Allow or deny)
-	 * 	 
 	 *
 	 * @var Kaltura_Client_Enum_IpAddressRestrictionType
 	 */
 	public $ipAddressRestrictionType = null;
 
 	/**
-	 * Comma separated list of ip address to allow to deny 
-	 * 	 
+	 * Comma separated list of ip address to allow to deny
 	 *
 	 * @var string
 	 */

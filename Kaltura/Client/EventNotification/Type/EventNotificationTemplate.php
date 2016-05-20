@@ -174,7 +174,6 @@ class Kaltura_Client_EventNotification_Type_EventNotificationTemplate extends Ka
 
 	/**
 	 * Define that the template could be dispatched manually from the API
-	 * 	 
 	 *
 	 * @var bool
 	 */
@@ -182,7 +181,6 @@ class Kaltura_Client_EventNotification_Type_EventNotificationTemplate extends Ka
 
 	/**
 	 * Define that the template could be dispatched automatically by the system
-	 * 	 
 	 *
 	 * @var bool
 	 */
@@ -190,7 +188,6 @@ class Kaltura_Client_EventNotification_Type_EventNotificationTemplate extends Ka
 
 	/**
 	 * Define the event that should trigger this notification
-	 * 	 
 	 *
 	 * @var Kaltura_Client_EventNotification_Enum_EventNotificationEventType
 	 */
@@ -198,7 +195,6 @@ class Kaltura_Client_EventNotification_Type_EventNotificationTemplate extends Ka
 
 	/**
 	 * Define the object that raied the event that should trigger this notification
-	 * 	 
 	 *
 	 * @var Kaltura_Client_EventNotification_Enum_EventNotificationEventObjectType
 	 */
@@ -206,7 +202,6 @@ class Kaltura_Client_EventNotification_Type_EventNotificationTemplate extends Ka
 
 	/**
 	 * Define the conditions that cause this notification to be triggered
-	 * 	 
 	 *
 	 * @var array of KalturaCondition
 	 */
@@ -214,7 +209,6 @@ class Kaltura_Client_EventNotification_Type_EventNotificationTemplate extends Ka
 
 	/**
 	 * Define the content dynamic parameters
-	 * 	 
 	 *
 	 * @var array of KalturaEventNotificationParameter
 	 */
@@ -222,7 +216,6 @@ class Kaltura_Client_EventNotification_Type_EventNotificationTemplate extends Ka
 
 	/**
 	 * Define the content dynamic parameters
-	 * 	 
 	 *
 	 * @var array of KalturaEventNotificationParameter
 	 */

@@ -55,7 +55,6 @@ class Kaltura_Client_EmailNotification_Type_EmailNotificationStaticRecipientJobD
 	}
 	/**
 	 * Email to emails and names
-	 * 	 
 	 *
 	 * @var array of KalturaKeyValue
 	 */

@@ -55,7 +55,6 @@ class Kaltura_Client_Type_LiveEntryServerNode extends Kaltura_Client_Type_EntryS
 	}
 	/**
 	 * parameters of the stream we got
-	 * 	 
 	 *
 	 * @var array of KalturaLiveStreamParams
 	 */

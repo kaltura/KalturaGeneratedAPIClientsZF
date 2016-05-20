@@ -57,7 +57,6 @@ class Kaltura_Client_ContentDistribution_Type_AssetDistributionRule extends Kalt
 	}
 	/**
 	 * The validation error description that will be set on the "data" property on KalturaDistributionValidationErrorMissingAsset if rule was not fulfilled
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -65,7 +64,6 @@ class Kaltura_Client_ContentDistribution_Type_AssetDistributionRule extends Kalt
 
 	/**
 	 * An array of asset distribution conditions
-	 * 	 
 	 *
 	 * @var array of KalturaAssetDistributionCondition
 	 */

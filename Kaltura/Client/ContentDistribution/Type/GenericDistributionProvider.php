@@ -87,7 +87,6 @@ class Kaltura_Client_ContentDistribution_Type_GenericDistributionProvider extend
 	}
 	/**
 	 * Auto generated
-	 * 	 
 	 *
 	 * @var int
 	 * @readonly
@@ -96,7 +95,6 @@ class Kaltura_Client_ContentDistribution_Type_GenericDistributionProvider extend
 
 	/**
 	 * Generic distribution provider creation date as Unix timestamp (In seconds)
-	 * 	 
 	 *
 	 * @var int
 	 * @readonly
@@ -105,7 +103,6 @@ class Kaltura_Client_ContentDistribution_Type_GenericDistributionProvider extend
 
 	/**
 	 * Generic distribution provider last update date as Unix timestamp (In seconds)
-	 * 	 
 	 *
 	 * @var int
 	 * @readonly

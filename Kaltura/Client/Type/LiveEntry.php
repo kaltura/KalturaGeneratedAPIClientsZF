@@ -86,7 +86,6 @@ abstract class Kaltura_Client_Type_LiveEntry extends Kaltura_Client_Type_MediaEn
 	}
 	/**
 	 * The message to be presented when the stream is offline
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -94,7 +93,6 @@ abstract class Kaltura_Client_Type_LiveEntry extends Kaltura_Client_Type_MediaEn
 
 	/**
 	 * Recording Status Enabled/Disabled
-	 * 	 
 	 *
 	 * @var Kaltura_Client_Enum_RecordStatus
 	 */
@@ -102,7 +100,6 @@ abstract class Kaltura_Client_Type_LiveEntry extends Kaltura_Client_Type_MediaEn
 
 	/**
 	 * DVR Status Enabled/Disabled
-	 * 	 
 	 *
 	 * @var Kaltura_Client_Enum_DVRStatus
 	 */
@@ -110,7 +107,6 @@ abstract class Kaltura_Client_Type_LiveEntry extends Kaltura_Client_Type_MediaEn
 
 	/**
 	 * Window of time which the DVR allows for backwards scrubbing (in minutes)
-	 * 	 
 	 *
 	 * @var int
 	 */
@@ -118,7 +114,6 @@ abstract class Kaltura_Client_Type_LiveEntry extends Kaltura_Client_Type_MediaEn
 
 	/**
 	 * Elapsed recording time (in msec) up to the point where the live stream was last stopped (unpublished).
-	 * 	 
 	 *
 	 * @var int
 	 */
@@ -126,7 +121,6 @@ abstract class Kaltura_Client_Type_LiveEntry extends Kaltura_Client_Type_MediaEn
 
 	/**
 	 * Array of key value protocol->live stream url objects
-	 * 	 
 	 *
 	 * @var array of KalturaLiveStreamConfiguration
 	 */
@@ -134,7 +128,6 @@ abstract class Kaltura_Client_Type_LiveEntry extends Kaltura_Client_Type_MediaEn
 
 	/**
 	 * Recorded entry id
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -142,7 +135,6 @@ abstract class Kaltura_Client_Type_LiveEntry extends Kaltura_Client_Type_MediaEn
 
 	/**
 	 * Flag denoting whether entry should be published by the media server
-	 * 	 
 	 *
 	 * @var Kaltura_Client_Enum_LivePublishStatus
 	 */
@@ -150,7 +142,6 @@ abstract class Kaltura_Client_Type_LiveEntry extends Kaltura_Client_Type_MediaEn
 
 	/**
 	 * Array of publish configurations
-	 * 	 
 	 *
 	 * @var array of KalturaLiveStreamPushPublishConfiguration
 	 */
@@ -158,7 +149,6 @@ abstract class Kaltura_Client_Type_LiveEntry extends Kaltura_Client_Type_MediaEn
 
 	/**
 	 * The first time in which the entry was broadcast
-	 * 	 
 	 *
 	 * @var int
 	 * @readonly
@@ -167,7 +157,6 @@ abstract class Kaltura_Client_Type_LiveEntry extends Kaltura_Client_Type_MediaEn
 
 	/**
 	 * The Last time in which the entry was broadcast
-	 * 	 
 	 *
 	 * @var int
 	 * @readonly
@@ -176,7 +165,6 @@ abstract class Kaltura_Client_Type_LiveEntry extends Kaltura_Client_Type_MediaEn
 
 	/**
 	 * The time (unix timestamp in milliseconds) in which the entry broadcast started or 0 when the entry is off the air
-	 * 	 
 	 *
 	 * @var float
 	 */
@@ -191,7 +179,6 @@ abstract class Kaltura_Client_Type_LiveEntry extends Kaltura_Client_Type_MediaEn
 
 	/**
 	 * the status of the entry of type EntryServerNodeStatus
-	 * 	 
 	 *
 	 * @var Kaltura_Client_Enum_EntryServerNodeStatus
 	 * @readonly

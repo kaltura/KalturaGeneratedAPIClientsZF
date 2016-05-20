@@ -57,7 +57,6 @@ class Kaltura_Client_Type_DataEntry extends Kaltura_Client_Type_BaseEntry
 	}
 	/**
 	 * The data of the entry
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -65,7 +64,6 @@ class Kaltura_Client_Type_DataEntry extends Kaltura_Client_Type_BaseEntry
 
 	/**
 	 * indicator whether to return the object for get action with the dataContent field.
-	 * 	 
 	 *
 	 * @var bool
 	 * @insertonly

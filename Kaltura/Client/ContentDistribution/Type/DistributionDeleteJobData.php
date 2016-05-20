@@ -55,7 +55,6 @@ class Kaltura_Client_ContentDistribution_Type_DistributionDeleteJobData extends 
 	}
 	/**
 	 * Flag signifying that the associated distribution item should not be moved to 'removed' status
-	 * 	 
 	 *
 	 * @var bool
 	 */

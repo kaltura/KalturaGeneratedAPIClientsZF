@@ -84,15 +84,13 @@ class Kaltura_Client_Type_Rule extends Kaltura_Client_ObjectBase
 	}
 	/**
 	 * Short Rule Description
-	 * 	 
 	 *
 	 * @var string
 	 */
 	public $description = null;
 
 	/**
-	 * Rule Custom Data to allow saving rule specific information 
-	 * 	 
+	 * Rule Custom Data to allow saving rule specific information
 	 *
 	 * @var string
 	 */
@@ -100,7 +98,6 @@ class Kaltura_Client_Type_Rule extends Kaltura_Client_ObjectBase
 
 	/**
 	 * Message to be thrown to the player in case the rule is fulfilled
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -108,7 +105,6 @@ class Kaltura_Client_Type_Rule extends Kaltura_Client_ObjectBase
 
 	/**
 	 * Actions to be performed by the player in case the rule is fulfilled
-	 * 	 
 	 *
 	 * @var array of KalturaRuleAction
 	 */
@@ -116,23 +112,20 @@ class Kaltura_Client_Type_Rule extends Kaltura_Client_ObjectBase
 
 	/**
 	 * Conditions to validate the rule
-	 * 	 
 	 *
 	 * @var array of KalturaCondition
 	 */
 	public $conditions;
 
 	/**
-	 * Indicates what contexts should be tested by this rule 
-	 * 	 
+	 * Indicates what contexts should be tested by this rule
 	 *
 	 * @var array of KalturaContextTypeHolder
 	 */
 	public $contexts;
 
 	/**
-	 * Indicates that this rule is enough and no need to continue checking the rest of the rules 
-	 * 	 
+	 * Indicates that this rule is enough and no need to continue checking the rest of the rules
 	 *
 	 * @var bool
 	 */
@@ -140,7 +133,6 @@ class Kaltura_Client_Type_Rule extends Kaltura_Client_ObjectBase
 
 	/**
 	 * Indicates if we should force ks validation for admin ks users as well
-	 * 	 
 	 *
 	 * @var Kaltura_Client_Enum_NullableBoolean
 	 */

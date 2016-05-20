@@ -52,7 +52,6 @@ class Kaltura_Client_Type_UrlRecognizer extends Kaltura_Client_ObjectBase
 	}
 	/**
 	 * The hosts that are recognized
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -60,7 +59,6 @@ class Kaltura_Client_Type_UrlRecognizer extends Kaltura_Client_ObjectBase
 
 	/**
 	 * The URI prefix we use for security
-	 * 	 
 	 *
 	 * @var string
 	 */

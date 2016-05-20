@@ -62,7 +62,6 @@ class Kaltura_Client_Type_ResponseProfile extends Kaltura_Client_Type_DetachedRe
 	}
 	/**
 	 * Auto generated numeric identifier
-	 * 	 
 	 *
 	 * @var int
 	 * @readonly
@@ -71,7 +70,6 @@ class Kaltura_Client_Type_ResponseProfile extends Kaltura_Client_Type_DetachedRe
 
 	/**
 	 * Unique system name
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -86,8 +84,7 @@ class Kaltura_Client_Type_ResponseProfile extends Kaltura_Client_Type_DetachedRe
 	public $partnerId = null;
 
 	/**
-	 * Creation time as Unix timestamp (In seconds) 
-	 * 	 
+	 * Creation time as Unix timestamp (In seconds)
 	 *
 	 * @var int
 	 * @readonly
@@ -95,8 +92,7 @@ class Kaltura_Client_Type_ResponseProfile extends Kaltura_Client_Type_DetachedRe
 	public $createdAt = null;
 
 	/**
-	 * Update time as Unix timestamp (In seconds) 
-	 * 	 
+	 * Update time as Unix timestamp (In seconds)
 	 *
 	 * @var int
 	 * @readonly

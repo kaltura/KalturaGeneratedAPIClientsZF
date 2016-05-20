@@ -164,8 +164,7 @@ class Kaltura_Client_Type_Widget extends Kaltura_Client_ObjectBase
 	public $updatedAt = null;
 
 	/**
-	 * Can be used to store various partner related data as a string 
-	 * 	 
+	 * Can be used to store various partner related data as a string
 	 *
 	 * @var string
 	 */
@@ -181,7 +180,6 @@ class Kaltura_Client_Type_Widget extends Kaltura_Client_ObjectBase
 
 	/**
 	 * Should enforce entitlement on feed entries
-	 * 	 
 	 *
 	 * @var bool
 	 */
@@ -189,7 +187,6 @@ class Kaltura_Client_Type_Widget extends Kaltura_Client_ObjectBase
 
 	/**
 	 * Set privacy context for search entries that assiged to private and public categories within a category privacy context.
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -197,7 +194,6 @@ class Kaltura_Client_Type_Widget extends Kaltura_Client_ObjectBase
 
 	/**
 	 * Addes the HTML5 script line to the widget's embed code
-	 * 	 
 	 *
 	 * @var bool
 	 */

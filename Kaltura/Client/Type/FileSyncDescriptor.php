@@ -61,7 +61,6 @@ class Kaltura_Client_Type_FileSyncDescriptor extends Kaltura_Client_ObjectBase
 
 	/**
 	 * The translated path as used by the scheduler
-	 * 	 
 	 *
 	 * @var string
 	 */

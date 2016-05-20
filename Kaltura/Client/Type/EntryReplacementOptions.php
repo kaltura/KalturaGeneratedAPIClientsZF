@@ -50,7 +50,6 @@ class Kaltura_Client_Type_EntryReplacementOptions extends Kaltura_Client_ObjectB
 	}
 	/**
 	 * If true manually created thumbnails will not be deleted on entry replacement
-	 * 	 
 	 *
 	 * @var int
 	 */

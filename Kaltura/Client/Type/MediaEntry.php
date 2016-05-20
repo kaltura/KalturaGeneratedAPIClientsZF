@@ -70,7 +70,6 @@ class Kaltura_Client_Type_MediaEntry extends Kaltura_Client_Type_PlayableEntry
 	}
 	/**
 	 * The media type of the entry
-	 * 	 
 	 *
 	 * @var Kaltura_Client_Enum_MediaType
 	 * @insertonly
@@ -78,8 +77,7 @@ class Kaltura_Client_Type_MediaEntry extends Kaltura_Client_Type_PlayableEntry
 	public $mediaType = null;
 
 	/**
-	 * Override the default conversion quality  
-	 * 	 
+	 * Override the default conversion quality
 	 *
 	 * @var string
 	 * @insertonly
@@ -87,8 +85,7 @@ class Kaltura_Client_Type_MediaEntry extends Kaltura_Client_Type_PlayableEntry
 	public $conversionQuality = null;
 
 	/**
-	 * The source type of the entry 
-	 * 	 
+	 * The source type of the entry
 	 *
 	 * @var Kaltura_Client_Enum_SourceType
 	 * @insertonly
@@ -97,7 +94,6 @@ class Kaltura_Client_Type_MediaEntry extends Kaltura_Client_Type_PlayableEntry
 
 	/**
 	 * The search provider type used to import this entry
-	 * 	 
 	 *
 	 * @var Kaltura_Client_Enum_SearchProviderType
 	 * @insertonly
@@ -106,7 +102,6 @@ class Kaltura_Client_Type_MediaEntry extends Kaltura_Client_Type_PlayableEntry
 
 	/**
 	 * The ID of the media in the importing site
-	 * 	 
 	 *
 	 * @var string
 	 * @insertonly
@@ -115,7 +110,6 @@ class Kaltura_Client_Type_MediaEntry extends Kaltura_Client_Type_PlayableEntry
 
 	/**
 	 * The user name used for credits
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -123,7 +117,6 @@ class Kaltura_Client_Type_MediaEntry extends Kaltura_Client_Type_PlayableEntry
 
 	/**
 	 * The URL for credits
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -131,7 +124,6 @@ class Kaltura_Client_Type_MediaEntry extends Kaltura_Client_Type_PlayableEntry
 
 	/**
 	 * The media date extracted from EXIF data (For images) as Unix timestamp (In seconds)
-	 * 	 
 	 *
 	 * @var int
 	 * @readonly
@@ -140,7 +132,6 @@ class Kaltura_Client_Type_MediaEntry extends Kaltura_Client_Type_PlayableEntry
 
 	/**
 	 * The URL used for playback. This is not the download URL.
-	 * 	 
 	 *
 	 * @var string
 	 * @readonly
@@ -149,7 +140,6 @@ class Kaltura_Client_Type_MediaEntry extends Kaltura_Client_Type_PlayableEntry
 
 	/**
 	 * Comma separated flavor params ids that exists for this media entry
-	 * 	 
 	 *
 	 * @var string
 	 * @readonly
@@ -158,7 +148,6 @@ class Kaltura_Client_Type_MediaEntry extends Kaltura_Client_Type_PlayableEntry
 
 	/**
 	 * True if trim action is disabled for this entry
-	 * 	 
 	 *
 	 * @var Kaltura_Client_Enum_NullableBoolean
 	 * @readonly

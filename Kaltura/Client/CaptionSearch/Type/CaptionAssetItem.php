@@ -58,7 +58,6 @@ class Kaltura_Client_CaptionSearch_Type_CaptionAssetItem extends Kaltura_Client_
 	}
 	/**
 	 * The Caption Asset object
-	 * 	 
 	 *
 	 * @var Kaltura_Client_Caption_Type_CaptionAsset
 	 */
@@ -66,7 +65,6 @@ class Kaltura_Client_CaptionSearch_Type_CaptionAssetItem extends Kaltura_Client_
 
 	/**
 	 * The entry object
-	 * 	 
 	 *
 	 * @var Kaltura_Client_Type_BaseEntry
 	 */

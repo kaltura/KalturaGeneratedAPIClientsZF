@@ -84,7 +84,6 @@ class Kaltura_Client_Type_BulkUploadJobData extends Kaltura_Client_Type_JobData
 
 	/**
 	 * The screen name of the user
-	 * 	 
 	 *
 	 * @var string
 	 * @readonly
@@ -93,7 +92,6 @@ class Kaltura_Client_Type_BulkUploadJobData extends Kaltura_Client_Type_JobData
 
 	/**
 	 * Selected profile id for all bulk entries
-	 * 	 
 	 *
 	 * @var int
 	 * @readonly
@@ -102,7 +100,6 @@ class Kaltura_Client_Type_BulkUploadJobData extends Kaltura_Client_Type_JobData
 
 	/**
 	 * Created by the API
-	 * 	 
 	 *
 	 * @var string
 	 * @readonly
@@ -111,7 +108,6 @@ class Kaltura_Client_Type_BulkUploadJobData extends Kaltura_Client_Type_JobData
 
 	/**
 	 * Created by the API
-	 * 	 
 	 *
 	 * @var string
 	 * @readonly
@@ -120,7 +116,6 @@ class Kaltura_Client_Type_BulkUploadJobData extends Kaltura_Client_Type_JobData
 
 	/**
 	 * Number of created entries
-	 * 	 
 	 *
 	 * @var int
 	 * @readonly
@@ -129,7 +124,6 @@ class Kaltura_Client_Type_BulkUploadJobData extends Kaltura_Client_Type_JobData
 
 	/**
 	 * Number of created objects
-	 * 	 
 	 *
 	 * @var int
 	 * @readonly
@@ -138,7 +132,6 @@ class Kaltura_Client_Type_BulkUploadJobData extends Kaltura_Client_Type_JobData
 
 	/**
 	 * The bulk upload file path
-	 * 	 
 	 *
 	 * @var string
 	 * @readonly
@@ -147,7 +140,6 @@ class Kaltura_Client_Type_BulkUploadJobData extends Kaltura_Client_Type_JobData
 
 	/**
 	 * Type of object for bulk upload
-	 * 	 
 	 *
 	 * @var Kaltura_Client_Enum_BulkUploadObjectType
 	 * @readonly
@@ -156,7 +148,6 @@ class Kaltura_Client_Type_BulkUploadJobData extends Kaltura_Client_Type_JobData
 
 	/**
 	 * Friendly name of the file, used to be recognized later in the logs.
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -164,7 +155,6 @@ class Kaltura_Client_Type_BulkUploadJobData extends Kaltura_Client_Type_JobData
 
 	/**
 	 * Data pertaining to the objects being uploaded
-	 * 	 
 	 *
 	 * @var Kaltura_Client_Type_BulkUploadObjectData
 	 * @readonly
@@ -173,7 +163,6 @@ class Kaltura_Client_Type_BulkUploadJobData extends Kaltura_Client_Type_JobData
 
 	/**
 	 * Type of bulk upload
-	 * 	 
 	 *
 	 * @var Kaltura_Client_Enum_BulkUploadType
 	 * @readonly
@@ -182,7 +171,6 @@ class Kaltura_Client_Type_BulkUploadJobData extends Kaltura_Client_Type_JobData
 
 	/**
 	 * Recipients of the email for bulk upload success/failure
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -190,7 +178,6 @@ class Kaltura_Client_Type_BulkUploadJobData extends Kaltura_Client_Type_JobData
 
 	/**
 	 * Number of objects that finished on error status
-	 * 	 
 	 *
 	 * @var int
 	 */

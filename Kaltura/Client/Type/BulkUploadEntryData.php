@@ -50,7 +50,6 @@ class Kaltura_Client_Type_BulkUploadEntryData extends Kaltura_Client_Type_BulkUp
 	}
 	/**
 	 * Selected profile id for all bulk entries
-	 *      
 	 *
 	 * @var int
 	 */

@@ -55,7 +55,6 @@ class Kaltura_Client_Type_DeliveryProfileAkamaiAppleHttpManifest extends Kaltura
 	}
 	/**
 	 * Should we use timing parameters - clipTo / seekFrom
-	 * 	 
 	 *
 	 * @var bool
 	 */

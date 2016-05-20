@@ -106,7 +106,6 @@ class Kaltura_Client_Type_CategoryFilter extends Kaltura_Client_Type_CategoryBas
 
 	/**
 	 * not includes the category itself (only sub categories)
-	 * 	 
 	 *
 	 * @var string
 	 */

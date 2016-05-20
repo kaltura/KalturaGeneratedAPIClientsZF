@@ -70,7 +70,6 @@ class Kaltura_Client_Type_ModerationFlag extends Kaltura_Client_ObjectBase
 	}
 	/**
 	 * Moderation flag id
-	 * 	 
 	 *
 	 * @var int
 	 * @readonly
@@ -87,7 +86,6 @@ class Kaltura_Client_Type_ModerationFlag extends Kaltura_Client_ObjectBase
 
 	/**
 	 * The user id that added the moderation flag
-	 * 	 
 	 *
 	 * @var string
 	 * @readonly
@@ -96,7 +94,6 @@ class Kaltura_Client_Type_ModerationFlag extends Kaltura_Client_ObjectBase
 
 	/**
 	 * The type of the moderation flag (entry or user)
-	 * 	 
 	 *
 	 * @var Kaltura_Client_Enum_ModerationObjectType
 	 * @readonly
@@ -105,7 +102,6 @@ class Kaltura_Client_Type_ModerationFlag extends Kaltura_Client_ObjectBase
 
 	/**
 	 * If moderation flag is set for entry, this is the flagged entry id
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -113,7 +109,6 @@ class Kaltura_Client_Type_ModerationFlag extends Kaltura_Client_ObjectBase
 
 	/**
 	 * If moderation flag is set for user, this is the flagged user id
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -121,7 +116,6 @@ class Kaltura_Client_Type_ModerationFlag extends Kaltura_Client_ObjectBase
 
 	/**
 	 * The moderation flag status
-	 * 	 
 	 *
 	 * @var Kaltura_Client_Enum_ModerationFlagStatus
 	 * @readonly
@@ -130,7 +124,6 @@ class Kaltura_Client_Type_ModerationFlag extends Kaltura_Client_ObjectBase
 
 	/**
 	 * The comment that was added to the flag
-	 * 	 
 	 *
 	 * @var string
 	 */

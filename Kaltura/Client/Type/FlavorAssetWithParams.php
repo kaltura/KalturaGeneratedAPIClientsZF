@@ -54,7 +54,6 @@ class Kaltura_Client_Type_FlavorAssetWithParams extends Kaltura_Client_ObjectBas
 	}
 	/**
 	 * The Flavor Asset (Can be null when there are params without asset)
-	 * 	 
 	 *
 	 * @var Kaltura_Client_Type_FlavorAsset
 	 */
@@ -62,7 +61,6 @@ class Kaltura_Client_Type_FlavorAssetWithParams extends Kaltura_Client_ObjectBas
 
 	/**
 	 * The Flavor Params
-	 * 	 
 	 *
 	 * @var Kaltura_Client_Type_FlavorParams
 	 */
@@ -70,7 +68,6 @@ class Kaltura_Client_Type_FlavorAssetWithParams extends Kaltura_Client_ObjectBas
 
 	/**
 	 * The entry id
-	 * 	 
 	 *
 	 * @var string
 	 */

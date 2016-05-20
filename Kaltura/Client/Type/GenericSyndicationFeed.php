@@ -52,7 +52,6 @@ class Kaltura_Client_Type_GenericSyndicationFeed extends Kaltura_Client_Type_Bas
 	}
 	/**
 	 * feed description
-	 *     
 	 *
 	 * @var string
 	 */
@@ -60,7 +59,6 @@ class Kaltura_Client_Type_GenericSyndicationFeed extends Kaltura_Client_Type_Bas
 
 	/**
 	 * feed landing page (i.e publisher website)
-	 * 	
 	 *
 	 * @var string
 	 */

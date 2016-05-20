@@ -50,7 +50,6 @@ class Kaltura_Client_Type_ContextTypeHolder extends Kaltura_Client_ObjectBase
 	}
 	/**
 	 * The type of the condition context
-	 * 	 
 	 *
 	 * @var Kaltura_Client_Enum_ContextType
 	 */

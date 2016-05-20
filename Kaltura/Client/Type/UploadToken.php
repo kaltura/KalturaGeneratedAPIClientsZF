@@ -66,7 +66,6 @@ class Kaltura_Client_Type_UploadToken extends Kaltura_Client_ObjectBase
 	}
 	/**
 	 * Upload token unique ID
-	 * 	 
 	 *
 	 * @var string
 	 * @readonly
@@ -75,7 +74,6 @@ class Kaltura_Client_Type_UploadToken extends Kaltura_Client_ObjectBase
 
 	/**
 	 * Partner ID of the upload token
-	 * 	 
 	 *
 	 * @var int
 	 * @readonly
@@ -84,7 +82,6 @@ class Kaltura_Client_Type_UploadToken extends Kaltura_Client_ObjectBase
 
 	/**
 	 * User id for the upload token
-	 * 	 
 	 *
 	 * @var string
 	 * @readonly
@@ -93,7 +90,6 @@ class Kaltura_Client_Type_UploadToken extends Kaltura_Client_ObjectBase
 
 	/**
 	 * Status of the upload token
-	 * 	 
 	 *
 	 * @var Kaltura_Client_Enum_UploadTokenStatus
 	 * @readonly
@@ -102,7 +98,6 @@ class Kaltura_Client_Type_UploadToken extends Kaltura_Client_ObjectBase
 
 	/**
 	 * Name of the file for the upload token, can be empty when the upload token is created and will be updated internally after the file is uploaded
-	 * 	 
 	 *
 	 * @var string
 	 * @insertonly
@@ -111,7 +106,6 @@ class Kaltura_Client_Type_UploadToken extends Kaltura_Client_ObjectBase
 
 	/**
 	 * File size in bytes, can be empty when the upload token is created and will be updated internally after the file is uploaded
-	 * 	 
 	 *
 	 * @var float
 	 * @insertonly
@@ -120,7 +114,6 @@ class Kaltura_Client_Type_UploadToken extends Kaltura_Client_ObjectBase
 
 	/**
 	 * Uploaded file size in bytes, can be used to identify how many bytes were uploaded before resuming
-	 * 	 
 	 *
 	 * @var float
 	 * @readonly
@@ -129,7 +122,6 @@ class Kaltura_Client_Type_UploadToken extends Kaltura_Client_ObjectBase
 
 	/**
 	 * Creation date as Unix timestamp (In seconds)
-	 * 	 
 	 *
 	 * @var int
 	 * @readonly
@@ -138,7 +130,6 @@ class Kaltura_Client_Type_UploadToken extends Kaltura_Client_ObjectBase
 
 	/**
 	 * Last update date as Unix timestamp (In seconds)
-	 * 	 
 	 *
 	 * @var int
 	 * @readonly

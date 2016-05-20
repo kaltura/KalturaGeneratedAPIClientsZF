@@ -52,7 +52,6 @@ class Kaltura_Client_Type_UrlTokenizerAkamaiHttp extends Kaltura_Client_Type_Url
 	}
 	/**
 	 * param
-	 * 	 
 	 *
 	 * @var string
 	 */

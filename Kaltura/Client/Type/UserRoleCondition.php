@@ -50,7 +50,6 @@ class Kaltura_Client_Type_UserRoleCondition extends Kaltura_Client_Type_Conditio
 	}
 	/**
 	 * Comma separated list of role ids
-	 * 	 
 	 *
 	 * @var string
 	 */

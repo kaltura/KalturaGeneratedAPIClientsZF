@@ -53,7 +53,6 @@ class Kaltura_Client_ContentDistribution_Type_AssetDistributionPropertyCondition
 	/**
 	 * The property name to look for, this will match to a getter on the asset object.
 	 * 	 Should be camelCase naming convention (defining "myPropertyName" will look for getMyPropertyName())
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -61,7 +60,6 @@ class Kaltura_Client_ContentDistribution_Type_AssetDistributionPropertyCondition
 
 	/**
 	 * The value to compare
-	 * 	 
 	 *
 	 * @var string
 	 */

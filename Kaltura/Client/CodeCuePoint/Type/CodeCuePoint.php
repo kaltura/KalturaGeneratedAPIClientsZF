@@ -77,7 +77,6 @@ class Kaltura_Client_CodeCuePoint_Type_CodeCuePoint extends Kaltura_Client_CuePo
 
 	/**
 	 * Duration in milliseconds
-	 * 	 
 	 *
 	 * @var int
 	 * @readonly

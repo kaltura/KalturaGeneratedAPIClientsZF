@@ -61,7 +61,6 @@ class Kaltura_Client_Quiz_Type_QuestionCuePoint extends Kaltura_Client_CuePoint_
 	}
 	/**
 	 * Array of key value answerKey->optionAnswer objects
-	 * 	 
 	 *
 	 * @var map
 	 */

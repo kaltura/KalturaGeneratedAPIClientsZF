@@ -92,7 +92,6 @@ class Kaltura_Client_Type_GroupUser extends Kaltura_Client_ObjectBase
 
 	/**
 	 * Creation date as Unix timestamp (In seconds)
-	 * 	 
 	 *
 	 * @var int
 	 * @readonly
@@ -101,7 +100,6 @@ class Kaltura_Client_Type_GroupUser extends Kaltura_Client_ObjectBase
 
 	/**
 	 * Last update date as Unix timestamp (In seconds)
-	 * 	 
 	 *
 	 * @var int
 	 * @readonly

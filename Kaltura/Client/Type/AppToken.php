@@ -72,7 +72,6 @@ class Kaltura_Client_Type_AppToken extends Kaltura_Client_ObjectBase
 	}
 	/**
 	 * The id of the application token
-	 * 	 
 	 *
 	 * @var string
 	 * @readonly
@@ -81,7 +80,6 @@ class Kaltura_Client_Type_AppToken extends Kaltura_Client_ObjectBase
 
 	/**
 	 * The application token
-	 * 	 
 	 *
 	 * @var string
 	 * @readonly
@@ -97,8 +95,7 @@ class Kaltura_Client_Type_AppToken extends Kaltura_Client_ObjectBase
 	public $partnerId = null;
 
 	/**
-	 * Creation time as Unix timestamp (In seconds) 
-	 * 	 
+	 * Creation time as Unix timestamp (In seconds)
 	 *
 	 * @var int
 	 * @readonly
@@ -106,8 +103,7 @@ class Kaltura_Client_Type_AppToken extends Kaltura_Client_ObjectBase
 	public $createdAt = null;
 
 	/**
-	 * Update time as Unix timestamp (In seconds) 
-	 * 	 
+	 * Update time as Unix timestamp (In seconds)
 	 *
 	 * @var int
 	 * @readonly
@@ -115,8 +111,7 @@ class Kaltura_Client_Type_AppToken extends Kaltura_Client_ObjectBase
 	public $updatedAt = null;
 
 	/**
-	 * Application token status 
-	 * 	 
+	 * Application token status
 	 *
 	 * @var Kaltura_Client_Enum_AppTokenStatus
 	 * @readonly
@@ -125,7 +120,6 @@ class Kaltura_Client_Type_AppToken extends Kaltura_Client_ObjectBase
 
 	/**
 	 * Expiry time of current token (unix timestamp in seconds)
-	 * 	 
 	 *
 	 * @var int
 	 */
@@ -133,7 +127,6 @@ class Kaltura_Client_Type_AppToken extends Kaltura_Client_ObjectBase
 
 	/**
 	 * Type of KS (Kaltura Session) that created using the current token
-	 * 	 
 	 *
 	 * @var Kaltura_Client_Enum_SessionType
 	 */
@@ -141,7 +134,6 @@ class Kaltura_Client_Type_AppToken extends Kaltura_Client_ObjectBase
 
 	/**
 	 * User id of KS (Kaltura Session) that created using the current token
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -149,7 +141,6 @@ class Kaltura_Client_Type_AppToken extends Kaltura_Client_ObjectBase
 
 	/**
 	 * Expiry duration of KS (Kaltura Session) that created using the current token (in seconds)
-	 * 	 
 	 *
 	 * @var int
 	 */
@@ -157,7 +148,6 @@ class Kaltura_Client_Type_AppToken extends Kaltura_Client_ObjectBase
 
 	/**
 	 * Comma separated privileges to be applied on KS (Kaltura Session) that created using the current token
-	 * 	 
 	 *
 	 * @var string
 	 */

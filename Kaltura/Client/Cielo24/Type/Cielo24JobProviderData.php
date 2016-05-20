@@ -73,7 +73,6 @@ class Kaltura_Client_Cielo24_Type_Cielo24JobProviderData extends Kaltura_Client_
 	}
 	/**
 	 * Entry ID
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -81,7 +80,6 @@ class Kaltura_Client_Cielo24_Type_Cielo24JobProviderData extends Kaltura_Client_
 
 	/**
 	 * Flavor ID
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -89,7 +87,6 @@ class Kaltura_Client_Cielo24_Type_Cielo24JobProviderData extends Kaltura_Client_
 
 	/**
 	 * Caption formats
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -111,7 +108,6 @@ class Kaltura_Client_Cielo24_Type_Cielo24JobProviderData extends Kaltura_Client_
 
 	/**
 	 * Api key for service provider
-	 * 	 
 	 *
 	 * @var string
 	 * @readonly
@@ -120,7 +116,6 @@ class Kaltura_Client_Cielo24_Type_Cielo24JobProviderData extends Kaltura_Client_
 
 	/**
 	 * Api key for service provider
-	 * 	 
 	 *
 	 * @var string
 	 * @readonly
@@ -129,7 +124,6 @@ class Kaltura_Client_Cielo24_Type_Cielo24JobProviderData extends Kaltura_Client_
 
 	/**
 	 * Base url for service provider
-	 * 	 
 	 *
 	 * @var string
 	 * @readonly
@@ -138,7 +132,6 @@ class Kaltura_Client_Cielo24_Type_Cielo24JobProviderData extends Kaltura_Client_
 
 	/**
 	 * Transcript content language
-	 * 	 
 	 *
 	 * @var Kaltura_Client_Enum_Language
 	 */
@@ -146,7 +139,6 @@ class Kaltura_Client_Cielo24_Type_Cielo24JobProviderData extends Kaltura_Client_
 
 	/**
 	 * should replace remote media content
-	 * 	 
 	 *
 	 * @var bool
 	 */

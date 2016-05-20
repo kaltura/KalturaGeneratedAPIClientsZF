@@ -86,7 +86,6 @@ class Kaltura_Client_Type_DeliveryProfile extends Kaltura_Client_ObjectBase
 	}
 	/**
 	 * The id of the Delivery
-	 * 	 
 	 *
 	 * @var int
 	 * @readonly
@@ -103,7 +102,6 @@ class Kaltura_Client_Type_DeliveryProfile extends Kaltura_Client_ObjectBase
 
 	/**
 	 * The name of the Delivery
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -111,7 +109,6 @@ class Kaltura_Client_Type_DeliveryProfile extends Kaltura_Client_ObjectBase
 
 	/**
 	 * Delivery type
-	 * 	 
 	 *
 	 * @var Kaltura_Client_Enum_DeliveryProfileType
 	 */
@@ -119,7 +116,6 @@ class Kaltura_Client_Type_DeliveryProfile extends Kaltura_Client_ObjectBase
 
 	/**
 	 * System name of the delivery
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -127,7 +123,6 @@ class Kaltura_Client_Type_DeliveryProfile extends Kaltura_Client_ObjectBase
 
 	/**
 	 * The description of the Delivery
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -135,7 +130,6 @@ class Kaltura_Client_Type_DeliveryProfile extends Kaltura_Client_ObjectBase
 
 	/**
 	 * Creation time as Unix timestamp (In seconds)
-	 * 	 
 	 *
 	 * @var int
 	 * @readonly
@@ -144,7 +138,6 @@ class Kaltura_Client_Type_DeliveryProfile extends Kaltura_Client_ObjectBase
 
 	/**
 	 * Update time as Unix timestamp (In seconds)
-	 * 	 
 	 *
 	 * @var int
 	 * @readonly
@@ -167,7 +160,6 @@ class Kaltura_Client_Type_DeliveryProfile extends Kaltura_Client_ObjectBase
 
 	/**
 	 * the host part of the url
-	 * 	 
 	 *
 	 * @var string
 	 * @readonly
@@ -197,7 +189,6 @@ class Kaltura_Client_Type_DeliveryProfile extends Kaltura_Client_ObjectBase
 
 	/**
 	 * True if this is the systemwide default for the protocol
-	 * 	 
 	 *
 	 * @var Kaltura_Client_Enum_NullableBoolean
 	 * @readonly
@@ -206,7 +197,6 @@ class Kaltura_Client_Type_DeliveryProfile extends Kaltura_Client_ObjectBase
 
 	/**
 	 * the object from which this object was cloned (or 0)
-	 * 	 
 	 *
 	 * @var int
 	 * @readonly
@@ -215,7 +205,6 @@ class Kaltura_Client_Type_DeliveryProfile extends Kaltura_Client_ObjectBase
 
 	/**
 	 * Comma separated list of supported media protocols. f.i. rtmpe
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -223,7 +212,6 @@ class Kaltura_Client_Type_DeliveryProfile extends Kaltura_Client_ObjectBase
 
 	/**
 	 * priority used for ordering similar delivery profiles
-	 * 	 
 	 *
 	 * @var int
 	 */
@@ -231,7 +219,6 @@ class Kaltura_Client_Type_DeliveryProfile extends Kaltura_Client_ObjectBase
 
 	/**
 	 * Extra query string parameters that should be added to the url
-	 * 	 
 	 *
 	 * @var string
 	 */

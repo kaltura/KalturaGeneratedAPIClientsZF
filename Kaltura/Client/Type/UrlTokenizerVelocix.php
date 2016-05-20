@@ -54,7 +54,6 @@ class Kaltura_Client_Type_UrlTokenizerVelocix extends Kaltura_Client_Type_UrlTok
 	}
 	/**
 	 * hdsPaths
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -62,7 +61,6 @@ class Kaltura_Client_Type_UrlTokenizerVelocix extends Kaltura_Client_Type_UrlTok
 
 	/**
 	 * tokenParamName
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -70,7 +68,6 @@ class Kaltura_Client_Type_UrlTokenizerVelocix extends Kaltura_Client_Type_UrlTok
 
 	/**
 	 * secure URL prefix
-	 * 	 
 	 *
 	 * @var string
 	 */

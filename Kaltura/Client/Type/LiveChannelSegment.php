@@ -78,7 +78,6 @@ class Kaltura_Client_Type_LiveChannelSegment extends Kaltura_Client_ObjectBase
 	}
 	/**
 	 * Unique identifier
-	 * 	 
 	 *
 	 * @var string
 	 * @readonly
@@ -95,7 +94,6 @@ class Kaltura_Client_Type_LiveChannelSegment extends Kaltura_Client_ObjectBase
 
 	/**
 	 * Segment creation date as Unix timestamp (In seconds)
-	 * 	 
 	 *
 	 * @var int
 	 * @readonly
@@ -104,7 +102,6 @@ class Kaltura_Client_Type_LiveChannelSegment extends Kaltura_Client_ObjectBase
 
 	/**
 	 * Segment update date as Unix timestamp (In seconds)
-	 * 	 
 	 *
 	 * @var int
 	 * @readonly
@@ -113,7 +110,6 @@ class Kaltura_Client_Type_LiveChannelSegment extends Kaltura_Client_ObjectBase
 
 	/**
 	 * Segment name
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -121,7 +117,6 @@ class Kaltura_Client_Type_LiveChannelSegment extends Kaltura_Client_ObjectBase
 
 	/**
 	 * Segment description
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -129,7 +124,6 @@ class Kaltura_Client_Type_LiveChannelSegment extends Kaltura_Client_ObjectBase
 
 	/**
 	 * Segment tags
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -137,7 +131,6 @@ class Kaltura_Client_Type_LiveChannelSegment extends Kaltura_Client_ObjectBase
 
 	/**
 	 * Segment could be associated with the main stream, as additional stream or as overlay
-	 * 	 
 	 *
 	 * @var Kaltura_Client_Enum_LiveChannelSegmentType
 	 */
@@ -153,7 +146,6 @@ class Kaltura_Client_Type_LiveChannelSegment extends Kaltura_Client_ObjectBase
 
 	/**
 	 * Live channel id
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -161,7 +153,6 @@ class Kaltura_Client_Type_LiveChannelSegment extends Kaltura_Client_ObjectBase
 
 	/**
 	 * Entry id to be played
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -169,7 +160,6 @@ class Kaltura_Client_Type_LiveChannelSegment extends Kaltura_Client_ObjectBase
 
 	/**
 	 * Segment start time trigger type
-	 * 	 
 	 *
 	 * @var Kaltura_Client_Enum_LiveChannelSegmentTriggerType
 	 */
@@ -177,7 +167,6 @@ class Kaltura_Client_Type_LiveChannelSegment extends Kaltura_Client_ObjectBase
 
 	/**
 	 * Live channel segment that the trigger relates to
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -185,7 +174,6 @@ class Kaltura_Client_Type_LiveChannelSegment extends Kaltura_Client_ObjectBase
 
 	/**
 	 * Segment play start time, in mili-seconds, according to trigger type
-	 * 	 
 	 *
 	 * @var float
 	 */
@@ -193,7 +181,6 @@ class Kaltura_Client_Type_LiveChannelSegment extends Kaltura_Client_ObjectBase
 
 	/**
 	 * Segment play duration time, in mili-seconds
-	 * 	 
 	 *
 	 * @var float
 	 */

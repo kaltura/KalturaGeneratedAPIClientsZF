@@ -61,7 +61,6 @@ class Kaltura_Client_HttpNotification_Type_HttpNotificationObjectData extends Ka
 	}
 	/**
 	 * Kaltura API object type
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -69,7 +68,6 @@ class Kaltura_Client_HttpNotification_Type_HttpNotificationObjectData extends Ka
 
 	/**
 	 * Data format
-	 * 	 
 	 *
 	 * @var Kaltura_Client_Enum_ResponseType
 	 */
@@ -77,7 +75,6 @@ class Kaltura_Client_HttpNotification_Type_HttpNotificationObjectData extends Ka
 
 	/**
 	 * Ignore null attributes during serialization
-	 * 	 
 	 *
 	 * @var bool
 	 */
@@ -85,7 +82,6 @@ class Kaltura_Client_HttpNotification_Type_HttpNotificationObjectData extends Ka
 
 	/**
 	 * PHP code
-	 * 	 
 	 *
 	 * @var string
 	 */

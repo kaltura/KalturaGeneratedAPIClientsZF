@@ -50,7 +50,6 @@ class Kaltura_Client_ThumbCuePoint_Type_TimedThumbAsset extends Kaltura_Client_T
 	}
 	/**
 	 * Associated thumb cue point ID
-	 * 	 
 	 *
 	 * @var string
 	 * @insertonly

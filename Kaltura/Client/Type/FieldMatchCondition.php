@@ -50,7 +50,6 @@ class Kaltura_Client_Type_FieldMatchCondition extends Kaltura_Client_Type_MatchC
 	}
 	/**
 	 * Field to evaluate
-	 * 	 
 	 *
 	 * @var Kaltura_Client_Type_StringField
 	 */

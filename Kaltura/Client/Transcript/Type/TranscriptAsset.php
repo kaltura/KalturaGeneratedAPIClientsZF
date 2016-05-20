@@ -54,7 +54,6 @@ class Kaltura_Client_Transcript_Type_TranscriptAsset extends Kaltura_Client_Atta
 	}
 	/**
 	 * The accuracy of the transcript - values between 0 and 1
-	 * 	 
 	 *
 	 * @var float
 	 */
@@ -62,7 +61,6 @@ class Kaltura_Client_Transcript_Type_TranscriptAsset extends Kaltura_Client_Atta
 
 	/**
 	 * Was verified by human or machine
-	 * 	 
 	 *
 	 * @var Kaltura_Client_Enum_NullableBoolean
 	 */
@@ -70,7 +68,6 @@ class Kaltura_Client_Transcript_Type_TranscriptAsset extends Kaltura_Client_Atta
 
 	/**
 	 * The language of the transcript
-	 * 	 
 	 *
 	 * @var Kaltura_Client_Enum_Language
 	 */

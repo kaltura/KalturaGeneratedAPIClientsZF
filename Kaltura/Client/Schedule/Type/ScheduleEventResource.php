@@ -82,7 +82,6 @@ class Kaltura_Client_Schedule_Type_ScheduleEventResource extends Kaltura_Client_
 
 	/**
 	 * Creation date as Unix timestamp (In seconds)
-	 * 	 
 	 *
 	 * @var int
 	 * @readonly
@@ -91,7 +90,6 @@ class Kaltura_Client_Schedule_Type_ScheduleEventResource extends Kaltura_Client_
 
 	/**
 	 * Last update as Unix timestamp (In seconds)
-	 * 	 
 	 *
 	 * @var int
 	 * @readonly

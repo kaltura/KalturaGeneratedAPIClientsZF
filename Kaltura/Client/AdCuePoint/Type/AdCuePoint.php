@@ -96,7 +96,6 @@ class Kaltura_Client_AdCuePoint_Type_AdCuePoint extends Kaltura_Client_CuePoint_
 
 	/**
 	 * Duration in milliseconds
-	 * 	 
 	 *
 	 * @var int
 	 */

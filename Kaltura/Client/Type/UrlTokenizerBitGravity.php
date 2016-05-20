@@ -50,7 +50,6 @@ class Kaltura_Client_Type_UrlTokenizerBitGravity extends Kaltura_Client_Type_Url
 	}
 	/**
 	 * hashPatternRegex
-	 * 	 
 	 *
 	 * @var string
 	 */

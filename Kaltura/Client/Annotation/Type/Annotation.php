@@ -81,7 +81,6 @@ class Kaltura_Client_Annotation_Type_Annotation extends Kaltura_Client_CuePoint_
 
 	/**
 	 * End time in milliseconds
-	 * 	 
 	 *
 	 * @var int
 	 */
@@ -89,7 +88,6 @@ class Kaltura_Client_Annotation_Type_Annotation extends Kaltura_Client_CuePoint_
 
 	/**
 	 * Duration in milliseconds
-	 * 	 
 	 *
 	 * @var int
 	 * @readonly
@@ -98,7 +96,6 @@ class Kaltura_Client_Annotation_Type_Annotation extends Kaltura_Client_CuePoint_
 
 	/**
 	 * Depth in the tree
-	 * 	 
 	 *
 	 * @var int
 	 * @readonly
@@ -107,7 +104,6 @@ class Kaltura_Client_Annotation_Type_Annotation extends Kaltura_Client_CuePoint_
 
 	/**
 	 * Number of all descendants
-	 * 	 
 	 *
 	 * @var int
 	 * @readonly
@@ -116,7 +112,6 @@ class Kaltura_Client_Annotation_Type_Annotation extends Kaltura_Client_CuePoint_
 
 	/**
 	 * Number of children, first generation only.
-	 * 	 
 	 *
 	 * @var int
 	 * @readonly
@@ -125,7 +120,6 @@ class Kaltura_Client_Annotation_Type_Annotation extends Kaltura_Client_CuePoint_
 
 	/**
 	 * Is the annotation public.
-	 * 	 
 	 *
 	 * @var Kaltura_Client_Enum_NullableBoolean
 	 */
@@ -133,7 +127,6 @@ class Kaltura_Client_Annotation_Type_Annotation extends Kaltura_Client_CuePoint_
 
 	/**
 	 * Should the cue point get indexed on the entry.
-	 * 	 
 	 *
 	 * @var Kaltura_Client_Enum_NullableBoolean
 	 */

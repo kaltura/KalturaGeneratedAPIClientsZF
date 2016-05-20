@@ -54,7 +54,6 @@ class Kaltura_Client_VarConsole_Type_VarConsolePartnerFilter extends Kaltura_Cli
 	}
 	/**
 	 * Eq filter for the partner's group type
-	 *      
 	 *
 	 * @var Kaltura_Client_Enum_PartnerGroupType
 	 */
@@ -62,7 +61,6 @@ class Kaltura_Client_VarConsole_Type_VarConsolePartnerFilter extends Kaltura_Cli
 
 	/**
 	 * In filter for the partner's group type
-	 *      
 	 *
 	 * @var string
 	 */
@@ -70,7 +68,6 @@ class Kaltura_Client_VarConsole_Type_VarConsolePartnerFilter extends Kaltura_Cli
 
 	/**
 	 * Filter for partner permissions- filter contains comma-separated string of permission names which the returned partners should have.
-	 *      
 	 *
 	 * @var string
 	 */

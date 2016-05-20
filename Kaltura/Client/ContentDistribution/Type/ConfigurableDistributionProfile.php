@@ -83,7 +83,6 @@ abstract class Kaltura_Client_ContentDistribution_Type_ConfigurableDistributionP
 
 	/**
 	 * When checking custom XSLT conditions using the fieldConfigArray - address only categories associated with the entry via the categoryEntry object
-	 * 	 
 	 *
 	 * @var bool
 	 */

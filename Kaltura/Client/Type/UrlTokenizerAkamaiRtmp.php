@@ -61,7 +61,6 @@ class Kaltura_Client_Type_UrlTokenizerAkamaiRtmp extends Kaltura_Client_Type_Url
 	}
 	/**
 	 * profile
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -69,7 +68,6 @@ class Kaltura_Client_Type_UrlTokenizerAkamaiRtmp extends Kaltura_Client_Type_Url
 
 	/**
 	 * Type
-	 * 	 
 	 *
 	 * @var string
 	 */

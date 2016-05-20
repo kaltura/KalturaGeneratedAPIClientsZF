@@ -74,7 +74,6 @@ class Kaltura_Client_Type_PostConvertJobData extends Kaltura_Client_Type_Convart
 
 	/**
 	 * Indicates if a thumbnail should be created
-	 * 	 
 	 *
 	 * @var bool
 	 */
@@ -82,7 +81,6 @@ class Kaltura_Client_Type_PostConvertJobData extends Kaltura_Client_Type_Convart
 
 	/**
 	 * The path of the created thumbnail
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -90,7 +88,6 @@ class Kaltura_Client_Type_PostConvertJobData extends Kaltura_Client_Type_Convart
 
 	/**
 	 * The position of the thumbnail in the media file
-	 * 	 
 	 *
 	 * @var int
 	 */
@@ -98,7 +95,6 @@ class Kaltura_Client_Type_PostConvertJobData extends Kaltura_Client_Type_Convart
 
 	/**
 	 * The height of the movie, will be used to comapare if this thumbnail is the best we can have
-	 * 	 
 	 *
 	 * @var int
 	 */
@@ -106,7 +102,6 @@ class Kaltura_Client_Type_PostConvertJobData extends Kaltura_Client_Type_Convart
 
 	/**
 	 * The bit rate of the movie, will be used to comapare if this thumbnail is the best we can have
-	 * 	 
 	 *
 	 * @var int
 	 */

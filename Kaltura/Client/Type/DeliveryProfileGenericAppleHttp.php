@@ -61,7 +61,6 @@ class Kaltura_Client_Type_DeliveryProfileGenericAppleHttp extends Kaltura_Client
 
 	/**
 	 * rendererClass
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -69,7 +68,6 @@ class Kaltura_Client_Type_DeliveryProfileGenericAppleHttp extends Kaltura_Client
 
 	/**
 	 * Enable to make playManifest redirect to the domain of the delivery profile
-	 * 	 
 	 *
 	 * @var Kaltura_Client_Enum_NullableBoolean
 	 */

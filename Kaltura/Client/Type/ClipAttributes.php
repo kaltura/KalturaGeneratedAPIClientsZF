@@ -52,7 +52,6 @@ class Kaltura_Client_Type_ClipAttributes extends Kaltura_Client_Type_OperationAt
 	}
 	/**
 	 * Offset in milliseconds
-	 * 	 
 	 *
 	 * @var int
 	 */
@@ -60,7 +59,6 @@ class Kaltura_Client_Type_ClipAttributes extends Kaltura_Client_Type_OperationAt
 
 	/**
 	 * Duration in milliseconds
-	 * 	 
 	 *
 	 * @var int
 	 */

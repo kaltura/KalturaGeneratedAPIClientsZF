@@ -72,7 +72,6 @@ class Kaltura_Client_Type_DetachedResponseProfile extends Kaltura_Client_Type_Ba
 	}
 	/**
 	 * Friendly name
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -87,7 +86,6 @@ class Kaltura_Client_Type_DetachedResponseProfile extends Kaltura_Client_Type_Ba
 
 	/**
 	 * Comma separated fields list to be included or excluded
-	 * 	 
 	 *
 	 * @var string
 	 */

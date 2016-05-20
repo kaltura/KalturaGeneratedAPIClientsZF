@@ -64,7 +64,6 @@ class Kaltura_Client_Type_PlayableEntry extends Kaltura_Client_Type_BaseEntry
 	}
 	/**
 	 * Number of plays
-	 * 	 
 	 *
 	 * @var int
 	 * @readonly
@@ -73,7 +72,6 @@ class Kaltura_Client_Type_PlayableEntry extends Kaltura_Client_Type_BaseEntry
 
 	/**
 	 * Number of views
-	 * 	 
 	 *
 	 * @var int
 	 * @readonly
@@ -82,7 +80,6 @@ class Kaltura_Client_Type_PlayableEntry extends Kaltura_Client_Type_BaseEntry
 
 	/**
 	 * The last time the entry was played
-	 * 	 
 	 *
 	 * @var int
 	 * @readonly
@@ -91,7 +88,6 @@ class Kaltura_Client_Type_PlayableEntry extends Kaltura_Client_Type_BaseEntry
 
 	/**
 	 * The width in pixels
-	 * 	 
 	 *
 	 * @var int
 	 * @readonly
@@ -100,7 +96,6 @@ class Kaltura_Client_Type_PlayableEntry extends Kaltura_Client_Type_BaseEntry
 
 	/**
 	 * The height in pixels
-	 * 	 
 	 *
 	 * @var int
 	 * @readonly
@@ -109,7 +104,6 @@ class Kaltura_Client_Type_PlayableEntry extends Kaltura_Client_Type_BaseEntry
 
 	/**
 	 * The duration in seconds
-	 * 	 
 	 *
 	 * @var int
 	 * @readonly
@@ -118,7 +112,6 @@ class Kaltura_Client_Type_PlayableEntry extends Kaltura_Client_Type_BaseEntry
 
 	/**
 	 * The duration in miliseconds
-	 * 	 
 	 *
 	 * @var int
 	 */
@@ -126,7 +119,6 @@ class Kaltura_Client_Type_PlayableEntry extends Kaltura_Client_Type_BaseEntry
 
 	/**
 	 * The duration type (short for 0-4 mins, medium for 4-20 mins, long for 20+ mins)
-	 * 	 
 	 *
 	 * @var Kaltura_Client_Enum_DurationType
 	 * @readonly

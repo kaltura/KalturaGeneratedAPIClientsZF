@@ -50,7 +50,6 @@ class Kaltura_Client_EventNotification_Type_EventFieldCondition extends Kaltura_
 	}
 	/**
 	 * The field to be evaluated at runtime
-	 * 	 
 	 *
 	 * @var Kaltura_Client_Type_BooleanField
 	 */

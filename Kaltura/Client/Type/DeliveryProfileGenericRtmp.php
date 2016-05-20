@@ -59,7 +59,6 @@ class Kaltura_Client_Type_DeliveryProfileGenericRtmp extends Kaltura_Client_Type
 
 	/**
 	 * rendererClass
-	 * 	 
 	 *
 	 * @var string
 	 */

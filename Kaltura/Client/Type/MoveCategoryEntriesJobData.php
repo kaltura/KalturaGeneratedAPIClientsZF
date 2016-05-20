@@ -67,7 +67,6 @@ class Kaltura_Client_Type_MoveCategoryEntriesJobData extends Kaltura_Client_Type
 	}
 	/**
 	 * Source category id
-	 * 	 
 	 *
 	 * @var int
 	 */
@@ -75,7 +74,6 @@ class Kaltura_Client_Type_MoveCategoryEntriesJobData extends Kaltura_Client_Type
 
 	/**
 	 * Destination category id
-	 *      
 	 *
 	 * @var int
 	 */
@@ -84,7 +82,6 @@ class Kaltura_Client_Type_MoveCategoryEntriesJobData extends Kaltura_Client_Type
 	/**
 	 * Saves the last category id that its entries moved completely
 	 *      In case of crash the batch will restart from that point
-	 *      
 	 *
 	 * @var int
 	 */
@@ -93,7 +90,6 @@ class Kaltura_Client_Type_MoveCategoryEntriesJobData extends Kaltura_Client_Type
 	/**
 	 * Saves the last page index of the child categories filter pager
 	 *      In case of crash the batch will restart from that point
-	 *      
 	 *
 	 * @var int
 	 */
@@ -102,7 +98,6 @@ class Kaltura_Client_Type_MoveCategoryEntriesJobData extends Kaltura_Client_Type
 	/**
 	 * Saves the last page index of the category entries filter pager
 	 *      In case of crash the batch will restart from that point
-	 *      
 	 *
 	 * @var int
 	 */
@@ -110,7 +105,6 @@ class Kaltura_Client_Type_MoveCategoryEntriesJobData extends Kaltura_Client_Type
 
 	/**
 	 * All entries from all child categories will be moved as well
-	 *      
 	 *
 	 * @var bool
 	 */
@@ -118,7 +112,6 @@ class Kaltura_Client_Type_MoveCategoryEntriesJobData extends Kaltura_Client_Type
 
 	/**
 	 * Destination categories fallback ids
-	 *      
 	 *
 	 * @var string
 	 */

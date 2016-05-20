@@ -50,7 +50,6 @@ class Kaltura_Client_Type_StringResource extends Kaltura_Client_Type_ContentReso
 	}
 	/**
 	 * Textual content
-	 * 	 
 	 *
 	 * @var string
 	 */

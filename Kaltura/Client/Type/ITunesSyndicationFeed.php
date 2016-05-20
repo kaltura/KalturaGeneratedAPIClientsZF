@@ -68,7 +68,6 @@ class Kaltura_Client_Type_ITunesSyndicationFeed extends Kaltura_Client_Type_Base
 	}
 	/**
 	 * feed description
-	 *          
 	 *
 	 * @var string
 	 */
@@ -76,7 +75,6 @@ class Kaltura_Client_Type_ITunesSyndicationFeed extends Kaltura_Client_Type_Base
 
 	/**
 	 * feed language
-	 *          
 	 *
 	 * @var string
 	 */
@@ -84,7 +82,6 @@ class Kaltura_Client_Type_ITunesSyndicationFeed extends Kaltura_Client_Type_Base
 
 	/**
 	 * feed landing page (i.e publisher website)
-	 *          
 	 *
 	 * @var string
 	 */
@@ -92,7 +89,6 @@ class Kaltura_Client_Type_ITunesSyndicationFeed extends Kaltura_Client_Type_Base
 
 	/**
 	 * author/publisher name
-	 *          
 	 *
 	 * @var string
 	 */
@@ -100,7 +96,6 @@ class Kaltura_Client_Type_ITunesSyndicationFeed extends Kaltura_Client_Type_Base
 
 	/**
 	 * publisher email
-	 *          
 	 *
 	 * @var string
 	 */
@@ -108,7 +103,6 @@ class Kaltura_Client_Type_ITunesSyndicationFeed extends Kaltura_Client_Type_Base
 
 	/**
 	 * podcast thumbnail
-	 *          
 	 *
 	 * @var string
 	 */
@@ -137,8 +131,7 @@ class Kaltura_Client_Type_ITunesSyndicationFeed extends Kaltura_Client_Type_Base
 	public $feedAuthor = null;
 
 	/**
-	 * true in case you want to enfore the palylist order on the 
-	 * 		 
+	 * true in case you want to enfore the palylist order on the
 	 *
 	 * @var Kaltura_Client_Enum_NullableBoolean
 	 */

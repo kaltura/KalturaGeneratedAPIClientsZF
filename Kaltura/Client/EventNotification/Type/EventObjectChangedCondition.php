@@ -50,7 +50,6 @@ class Kaltura_Client_EventNotification_Type_EventObjectChangedCondition extends 
 	}
 	/**
 	 * Comma seperated column names to be tested
-	 * 	 
 	 *
 	 * @var string
 	 */

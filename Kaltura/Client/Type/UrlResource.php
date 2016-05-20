@@ -56,16 +56,14 @@ class Kaltura_Client_Type_UrlResource extends Kaltura_Client_Type_ContentResourc
 		}
 	}
 	/**
-	 * Remote URL, FTP, HTTP or HTTPS 
-	 * 	 
+	 * Remote URL, FTP, HTTP or HTTPS
 	 *
 	 * @var string
 	 */
 	public $url = null;
 
 	/**
-	 * Force Import Job 
-	 * 	 
+	 * Force Import Job
 	 *
 	 * @var bool
 	 */

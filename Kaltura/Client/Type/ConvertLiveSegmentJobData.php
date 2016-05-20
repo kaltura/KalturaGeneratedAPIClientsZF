@@ -64,7 +64,6 @@ class Kaltura_Client_Type_ConvertLiveSegmentJobData extends Kaltura_Client_Type_
 	}
 	/**
 	 * Live stream entry id
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -79,7 +78,6 @@ class Kaltura_Client_Type_ConvertLiveSegmentJobData extends Kaltura_Client_Type_
 
 	/**
 	 * Primary or secondary media server
-	 * 	 
 	 *
 	 * @var Kaltura_Client_Enum_EntryServerNodeType
 	 */
@@ -87,7 +85,6 @@ class Kaltura_Client_Type_ConvertLiveSegmentJobData extends Kaltura_Client_Type_
 
 	/**
 	 * The index of the file within the entry
-	 * 	 
 	 *
 	 * @var int
 	 */
@@ -95,7 +92,6 @@ class Kaltura_Client_Type_ConvertLiveSegmentJobData extends Kaltura_Client_Type_
 
 	/**
 	 * The recorded live media
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -103,7 +99,6 @@ class Kaltura_Client_Type_ConvertLiveSegmentJobData extends Kaltura_Client_Type_
 
 	/**
 	 * The output file
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -111,7 +106,6 @@ class Kaltura_Client_Type_ConvertLiveSegmentJobData extends Kaltura_Client_Type_
 
 	/**
 	 * Duration of the live entry including all recorded segments including the current
-	 * 	 
 	 *
 	 * @var float
 	 */
@@ -119,7 +113,6 @@ class Kaltura_Client_Type_ConvertLiveSegmentJobData extends Kaltura_Client_Type_
 
 	/**
 	 * The data output file
-	 * 	 
 	 *
 	 * @var string
 	 */

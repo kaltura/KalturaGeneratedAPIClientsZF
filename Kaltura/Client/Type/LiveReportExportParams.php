@@ -70,7 +70,6 @@ class Kaltura_Client_Type_LiveReportExportParams extends Kaltura_Client_ObjectBa
 
 	/**
 	 * Time zone offset in minutes (between client to UTC)
-	 * 	 
 	 *
 	 * @var int
 	 */
@@ -78,7 +77,6 @@ class Kaltura_Client_Type_LiveReportExportParams extends Kaltura_Client_ObjectBa
 
 	/**
 	 * Optional argument that allows controlling the prefix of the exported csv url
-	 * 	 
 	 *
 	 * @var string
 	 */

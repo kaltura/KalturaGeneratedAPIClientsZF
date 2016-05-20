@@ -35,42 +35,36 @@ class Kaltura_Client_Client extends Kaltura_Client_ClientBase
 {
 	/**
 	 * Manage access control profiles
-	 *  
 	 * @var Kaltura_Client_AccessControlProfileService
 	 */
 	public $accessControlProfile = null;
 
 	/**
 	 * Add & Manage Access Controls
-	 *  
 	 * @var Kaltura_Client_AccessControlService
 	 */
 	public $accessControl = null;
 
 	/**
 	 * Manage details for the administrative user
-	 *  
 	 * @var Kaltura_Client_AdminUserService
 	 */
 	public $adminUser = null;
 
 	/**
 	 * api for getting analytics data
-	 *  
 	 * @var Kaltura_Client_AnalyticsService
 	 */
 	public $analytics = null;
 
 	/**
 	 * Manage application authentication tokens
-	 *  
 	 * @var Kaltura_Client_AppTokenService
 	 */
 	public $appToken = null;
 
 	/**
 	 * Base Entry Service
-	 *  
 	 * @var Kaltura_Client_BaseEntryService
 	 */
 	public $baseEntry = null;
@@ -78,126 +72,102 @@ class Kaltura_Client_Client extends Kaltura_Client_ClientBase
 	/**
 	 * Bulk upload service is used to upload & manage bulk uploads using CSV files.
 	 *  This service manages only entry bulk uploads.
-	 *  
 	 * @var Kaltura_Client_BulkUploadService
 	 */
 	public $bulkUpload = null;
 
 	/**
 	 * Add & Manage CategoryEntry - assign entry to category
-	 *  
 	 * @var Kaltura_Client_CategoryEntryService
 	 */
 	public $categoryEntry = null;
 
 	/**
 	 * Add & Manage Categories
-	 *  
 	 * @var Kaltura_Client_CategoryService
 	 */
 	public $category = null;
 
 	/**
 	 * Add & Manage CategoryUser - membership of a user in a category
-	 *  
 	 * @var Kaltura_Client_CategoryUserService
 	 */
 	public $categoryUser = null;
 
 	/**
 	 * Manage the connection between Conversion Profiles and Asset Params
-	 *  
 	 * @var Kaltura_Client_ConversionProfileAssetParamsService
 	 */
 	public $conversionProfileAssetParams = null;
 
 	/**
 	 * Add & Manage Conversion Profiles
-	 *  
 	 * @var Kaltura_Client_ConversionProfileService
 	 */
 	public $conversionProfile = null;
 
 	/**
 	 * Data service lets you manage data content (textual content)
-	 *  
 	 * @var Kaltura_Client_DataService
 	 */
 	public $data = null;
 
 	/**
 	 * delivery service is used to control delivery objects
-	 *  
 	 * @var Kaltura_Client_DeliveryProfileService
 	 */
 	public $deliveryProfile = null;
 
 	/**
-	 * Document service
-	 *  
-	 * @var Kaltura_Client_DocumentService
-	 */
-	public $document = null;
-
-	/**
 	 * EmailIngestionProfile service lets you manage email ingestion profile records
-	 *  
 	 * @var Kaltura_Client_EmailIngestionProfileService
 	 */
 	public $EmailIngestionProfile = null;
 
 	/**
 	 * Base class for entry server node
-	 *  
 	 * @var Kaltura_Client_EntryServerNodeService
 	 */
 	public $entryServerNode = null;
 
 	/**
 	 * Manage file assets
-	 *  
 	 * @var Kaltura_Client_FileAssetService
 	 */
 	public $fileAsset = null;
 
 	/**
 	 * Retrieve information and invoke actions on Flavor Asset
-	 *  
 	 * @var Kaltura_Client_FlavorAssetService
 	 */
 	public $flavorAsset = null;
 
 	/**
 	 * Flavor Params Output service
-	 *  
 	 * @var Kaltura_Client_FlavorParamsOutputService
 	 */
 	public $flavorParamsOutput = null;
 
 	/**
 	 * Add & Manage Flavor Params
-	 *  
 	 * @var Kaltura_Client_FlavorParamsService
 	 */
 	public $flavorParams = null;
 
 	/**
 	 * Add & Manage GroupUser
-	 *  
 	 * @var Kaltura_Client_GroupUserService
 	 */
 	public $groupUser = null;
 
 	/**
 	 * Manage live channel segments
-	 *  
 	 * @var Kaltura_Client_LiveChannelSegmentService
 	 */
 	public $liveChannelSegment = null;
 
 	/**
 	 * Live Channel service lets you manage live channels
-	 *  
 	 * @var Kaltura_Client_LiveChannelService
 	 */
 	public $liveChannel = null;
@@ -210,64 +180,55 @@ class Kaltura_Client_Client extends Kaltura_Client_ClientBase
 
 	/**
 	 * Stats Service
-	 *  
 	 * @var Kaltura_Client_LiveStatsService
 	 */
 	public $liveStats = null;
 
 	/**
 	 * Live Stream service lets you manage live stream entries
-	 *  
 	 * @var Kaltura_Client_LiveStreamService
 	 */
 	public $liveStream = null;
 
 	/**
 	 * Media Info service
-	 *  
 	 * @var Kaltura_Client_MediaInfoService
 	 */
 	public $mediaInfo = null;
 
 	/**
 	 * Media service lets you upload and manage media files (images / videos & audio)
-	 *  
 	 * @var Kaltura_Client_MediaService
 	 */
 	public $media = null;
 
 	/**
 	 * A Mix is an XML unique format invented by Kaltura, it allows the user to create a mix of videos and images, in and out points, transitions, text overlays, soundtrack, effects and much more...
-	 *  Mixing service lets you create a new mix, manage its metadata and make basic manipulations.   
-	 *  
+	 *  Mixing service lets you create a new mix, manage its metadata and make basic manipulations.
 	 * @var Kaltura_Client_MixingService
 	 */
 	public $mixing = null;
 
 	/**
 	 * Notification Service
-	 *  
 	 * @var Kaltura_Client_NotificationService
 	 */
 	public $notification = null;
 
 	/**
 	 * partner service allows you to change/manage your partner personal details and settings as well
-	 *  
 	 * @var Kaltura_Client_PartnerService
 	 */
 	public $partner = null;
 
 	/**
 	 * PermissionItem service lets you create and manage permission items
-	 *  
 	 * @var Kaltura_Client_PermissionItemService
 	 */
 	public $permissionItem = null;
 
 	/**
 	 * Permission service lets you create and manage user permissions
-	 *  
 	 * @var Kaltura_Client_PermissionService
 	 */
 	public $permission = null;
@@ -275,28 +236,24 @@ class Kaltura_Client_Client extends Kaltura_Client_ClientBase
 	/**
 	 * Playlist service lets you create,manage and play your playlists
 	 *  Playlists could be static (containing a fixed list of entries) or dynamic (baseed on a filter)
-	 *  
 	 * @var Kaltura_Client_PlaylistService
 	 */
 	public $playlist = null;
 
 	/**
 	 * api for getting reports data by the report type and some inputFilter
-	 *  
 	 * @var Kaltura_Client_ReportService
 	 */
 	public $report = null;
 
 	/**
 	 * Manage response profiles
-	 *  
 	 * @var Kaltura_Client_ResponseProfileService
 	 */
 	public $responseProfile = null;
 
 	/**
-	 * Expose the schema definitions for syndication MRSS, bulk upload XML and other schema types. 
-	 *  
+	 * Expose the schema definitions for syndication MRSS, bulk upload XML and other schema types.
 	 * @var Kaltura_Client_SchemaService
 	 */
 	public $schema = null;
@@ -304,70 +261,60 @@ class Kaltura_Client_Client extends Kaltura_Client_ClientBase
 	/**
 	 * Search service allows you to search for media in various media providers
 	 *  This service is being used mostly by the CW component
-	 *  
 	 * @var Kaltura_Client_SearchService
 	 */
 	public $search = null;
 
 	/**
 	 * Server Node service
-	 *  
 	 * @var Kaltura_Client_ServerNodeService
 	 */
 	public $serverNode = null;
 
 	/**
 	 * Session service
-	 *  
 	 * @var Kaltura_Client_SessionService
 	 */
 	public $session = null;
 
 	/**
 	 * Stats Service
-	 *  
 	 * @var Kaltura_Client_StatsService
 	 */
 	public $stats = null;
 
 	/**
 	 * Storage Profiles service
-	 *  
 	 * @var Kaltura_Client_StorageProfileService
 	 */
 	public $storageProfile = null;
 
 	/**
 	 * Add & Manage Syndication Feeds
-	 *  
 	 * @var Kaltura_Client_SyndicationFeedService
 	 */
 	public $syndicationFeed = null;
 
 	/**
 	 * System service is used for internal system helpers & to retrieve system level information
-	 *  
 	 * @var Kaltura_Client_SystemService
 	 */
 	public $system = null;
 
 	/**
 	 * Retrieve information and invoke actions on Thumb Asset
-	 *  
 	 * @var Kaltura_Client_ThumbAssetService
 	 */
 	public $thumbAsset = null;
 
 	/**
 	 * Thumbnail Params Output service
-	 *  
 	 * @var Kaltura_Client_ThumbParamsOutputService
 	 */
 	public $thumbParamsOutput = null;
 
 	/**
 	 * Add & Manage Thumb Params
-	 *  
 	 * @var Kaltura_Client_ThumbParamsService
 	 */
 	public $thumbParams = null;
@@ -375,7 +322,6 @@ class Kaltura_Client_Client extends Kaltura_Client_ClientBase
 	/**
 	 * UiConf service lets you create and manage your UIConfs for the various flash components
 	 *  This service is used by the KMC-ApplicationStudio
-	 *  
 	 * @var Kaltura_Client_UiConfService
 	 */
 	public $uiConf = null;
@@ -400,7 +346,6 @@ class Kaltura_Client_Client extends Kaltura_Client_ClientBase
 
 	/**
 	 * UserRole service lets you create and manage user roles
-	 *  
 	 * @var Kaltura_Client_UserRoleService
 	 */
 	public $userRole = null;
@@ -408,21 +353,18 @@ class Kaltura_Client_Client extends Kaltura_Client_ClientBase
 	/**
 	 * Manage partner users on Kaltura's side
 	 *  The userId in kaltura is the unique Id in the partner's system, and the [partnerId,Id] couple are unique key in kaltura's DB
-	 *  
 	 * @var Kaltura_Client_UserService
 	 */
 	public $user = null;
 
 	/**
 	 * widget service for full widget management
-	 *  
 	 * @var Kaltura_Client_WidgetService
 	 */
 	public $widget = null;
 
 	/**
 	 * Internal Service is used for actions that are used internally in Kaltura applications and might be changed in the future without any notice.
-	 *  
 	 * @var Kaltura_Client_XInternalService
 	 */
 	public $xInternal = null;
@@ -436,7 +378,7 @@ class Kaltura_Client_Client extends Kaltura_Client_ClientBase
 	{
 		parent::__construct($config);
 		
-		$this->setClientTag('php5:16-05-11');
+		$this->setClientTag('php5:16-05-20');
 		$this->setApiVersion('3.3.0');
 		
 		$this->accessControlProfile = new Kaltura_Client_AccessControlProfileService($this);
@@ -453,7 +395,6 @@ class Kaltura_Client_Client extends Kaltura_Client_ClientBase
 		$this->conversionProfile = new Kaltura_Client_ConversionProfileService($this);
 		$this->data = new Kaltura_Client_DataService($this);
 		$this->deliveryProfile = new Kaltura_Client_DeliveryProfileService($this);
-		$this->document = new Kaltura_Client_DocumentService($this);
 		$this->EmailIngestionProfile = new Kaltura_Client_EmailIngestionProfileService($this);
 		$this->entryServerNode = new Kaltura_Client_EntryServerNodeService($this);
 		$this->fileAsset = new Kaltura_Client_FileAssetService($this);

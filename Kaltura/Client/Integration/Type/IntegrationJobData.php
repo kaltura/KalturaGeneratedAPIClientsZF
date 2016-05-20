@@ -73,7 +73,6 @@ class Kaltura_Client_Integration_Type_IntegrationJobData extends Kaltura_Client_
 
 	/**
 	 * Additional data that relevant for the provider only
-	 * 	 
 	 *
 	 * @var Kaltura_Client_Integration_Type_IntegrationJobProviderData
 	 */
@@ -88,7 +87,6 @@ class Kaltura_Client_Integration_Type_IntegrationJobData extends Kaltura_Client_
 
 	/**
 	 * Additional data that relevant for the trigger only
-	 * 	 
 	 *
 	 * @var Kaltura_Client_Integration_Type_IntegrationJobTriggerData
 	 */

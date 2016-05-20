@@ -54,7 +54,6 @@ class Kaltura_Client_Type_SearchAuthData extends Kaltura_Client_ObjectBase
 	}
 	/**
 	 * The authentication data that further should be used for search
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -62,7 +61,6 @@ class Kaltura_Client_Type_SearchAuthData extends Kaltura_Client_ObjectBase
 
 	/**
 	 * Login URL when user need to sign-in and authorize the search
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -70,7 +68,6 @@ class Kaltura_Client_Type_SearchAuthData extends Kaltura_Client_ObjectBase
 
 	/**
 	 * Information when there was an error
-	 * 	 
 	 *
 	 * @var string
 	 */

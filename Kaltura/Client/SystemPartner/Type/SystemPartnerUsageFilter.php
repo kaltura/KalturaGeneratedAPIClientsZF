@@ -54,7 +54,6 @@ class Kaltura_Client_SystemPartner_Type_SystemPartnerUsageFilter extends Kaltura
 	}
 	/**
 	 * Date range from
-	 * 	 
 	 *
 	 * @var int
 	 */
@@ -62,7 +61,6 @@ class Kaltura_Client_SystemPartner_Type_SystemPartnerUsageFilter extends Kaltura
 
 	/**
 	 * Date range to
-	 * 	 
 	 *
 	 * @var int
 	 */
@@ -70,7 +68,6 @@ class Kaltura_Client_SystemPartner_Type_SystemPartnerUsageFilter extends Kaltura
 
 	/**
 	 * Time zone offset
-	 * 	 
 	 *
 	 * @var int
 	 */

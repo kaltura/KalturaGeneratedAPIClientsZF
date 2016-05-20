@@ -236,7 +236,6 @@ class Kaltura_Client_Type_User extends Kaltura_Client_ObjectBase
 
 	/**
 	 * Admin tags can be updated only by using an admin session
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -258,7 +257,6 @@ class Kaltura_Client_Type_User extends Kaltura_Client_ObjectBase
 
 	/**
 	 * Creation date as Unix timestamp (In seconds)
-	 * 	 
 	 *
 	 * @var int
 	 * @readonly
@@ -267,7 +265,6 @@ class Kaltura_Client_Type_User extends Kaltura_Client_ObjectBase
 
 	/**
 	 * Last update date as Unix timestamp (In seconds)
-	 * 	 
 	 *
 	 * @var int
 	 * @readonly
@@ -275,8 +272,7 @@ class Kaltura_Client_Type_User extends Kaltura_Client_ObjectBase
 	public $updatedAt = null;
 
 	/**
-	 * Can be used to store various partner related data as a string 
-	 * 	 
+	 * Can be used to store various partner related data as a string
 	 *
 	 * @var string
 	 */

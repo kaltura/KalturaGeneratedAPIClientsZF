@@ -55,7 +55,6 @@ class Kaltura_Client_Type_AuthenticatedCondition extends Kaltura_Client_Type_Con
 	}
 	/**
 	 * The privelege needed to remove the restriction
-	 * 	 
 	 *
 	 * @var array of KalturaStringValue
 	 */

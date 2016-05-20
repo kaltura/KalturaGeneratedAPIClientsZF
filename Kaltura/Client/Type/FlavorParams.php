@@ -127,7 +127,6 @@ class Kaltura_Client_Type_FlavorParams extends Kaltura_Client_Type_AssetParams
 	}
 	/**
 	 * The video codec of the Flavor Params
-	 * 	 
 	 *
 	 * @var Kaltura_Client_Enum_VideoCodec
 	 */
@@ -135,7 +134,6 @@ class Kaltura_Client_Type_FlavorParams extends Kaltura_Client_Type_AssetParams
 
 	/**
 	 * The video bitrate (in KBits) of the Flavor Params
-	 * 	 
 	 *
 	 * @var int
 	 */
@@ -143,7 +141,6 @@ class Kaltura_Client_Type_FlavorParams extends Kaltura_Client_Type_AssetParams
 
 	/**
 	 * The audio codec of the Flavor Params
-	 * 	 
 	 *
 	 * @var Kaltura_Client_Enum_AudioCodec
 	 */
@@ -151,7 +148,6 @@ class Kaltura_Client_Type_FlavorParams extends Kaltura_Client_Type_AssetParams
 
 	/**
 	 * The audio bitrate (in KBits) of the Flavor Params
-	 * 	 
 	 *
 	 * @var int
 	 */
@@ -159,7 +155,6 @@ class Kaltura_Client_Type_FlavorParams extends Kaltura_Client_Type_AssetParams
 
 	/**
 	 * The number of audio channels for "downmixing"
-	 * 	 
 	 *
 	 * @var int
 	 */
@@ -167,7 +162,6 @@ class Kaltura_Client_Type_FlavorParams extends Kaltura_Client_Type_AssetParams
 
 	/**
 	 * The audio sample rate of the Flavor Params
-	 * 	 
 	 *
 	 * @var int
 	 */
@@ -175,7 +169,6 @@ class Kaltura_Client_Type_FlavorParams extends Kaltura_Client_Type_AssetParams
 
 	/**
 	 * The desired width of the Flavor Params
-	 * 	 
 	 *
 	 * @var int
 	 */
@@ -183,7 +176,6 @@ class Kaltura_Client_Type_FlavorParams extends Kaltura_Client_Type_AssetParams
 
 	/**
 	 * The desired height of the Flavor Params
-	 * 	 
 	 *
 	 * @var int
 	 */
@@ -191,7 +183,6 @@ class Kaltura_Client_Type_FlavorParams extends Kaltura_Client_Type_AssetParams
 
 	/**
 	 * The frame rate of the Flavor Params
-	 * 	 
 	 *
 	 * @var float
 	 */
@@ -199,7 +190,6 @@ class Kaltura_Client_Type_FlavorParams extends Kaltura_Client_Type_AssetParams
 
 	/**
 	 * The gop size of the Flavor Params
-	 * 	 
 	 *
 	 * @var int
 	 */
@@ -207,7 +197,6 @@ class Kaltura_Client_Type_FlavorParams extends Kaltura_Client_Type_AssetParams
 
 	/**
 	 * The list of conversion engines (comma separated)
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -215,7 +204,6 @@ class Kaltura_Client_Type_FlavorParams extends Kaltura_Client_Type_AssetParams
 
 	/**
 	 * The list of conversion engines extra params (separated with "|")
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -258,7 +246,6 @@ class Kaltura_Client_Type_FlavorParams extends Kaltura_Client_Type_AssetParams
 
 	/**
 	 * The container format of the Flavor Params
-	 * 	 
 	 *
 	 * @var Kaltura_Client_Enum_ContainerFormat
 	 */

@@ -70,7 +70,6 @@ class Kaltura_Client_Type_ReportInputFilter extends Kaltura_Client_Type_ReportIn
 	}
 	/**
 	 * Search keywords to filter objects
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -78,7 +77,6 @@ class Kaltura_Client_Type_ReportInputFilter extends Kaltura_Client_Type_ReportIn
 
 	/**
 	 * Search keywords in onjects tags
-	 * 	 
 	 *
 	 * @var bool
 	 */
@@ -86,7 +84,6 @@ class Kaltura_Client_Type_ReportInputFilter extends Kaltura_Client_Type_ReportIn
 
 	/**
 	 * Search keywords in onjects admin tags
-	 * 	 
 	 *
 	 * @var bool
 	 */
@@ -94,7 +91,6 @@ class Kaltura_Client_Type_ReportInputFilter extends Kaltura_Client_Type_ReportIn
 
 	/**
 	 * Search onjects in specified categories
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -102,7 +98,6 @@ class Kaltura_Client_Type_ReportInputFilter extends Kaltura_Client_Type_ReportIn
 
 	/**
 	 * Time zone offset in minutes
-	 * 	 
 	 *
 	 * @var int
 	 */
@@ -110,7 +105,6 @@ class Kaltura_Client_Type_ReportInputFilter extends Kaltura_Client_Type_ReportIn
 
 	/**
 	 * Aggregated results according to interval
-	 * 	 
 	 *
 	 * @var Kaltura_Client_Enum_ReportInterval
 	 */

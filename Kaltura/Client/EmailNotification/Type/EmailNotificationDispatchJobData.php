@@ -75,7 +75,6 @@ class Kaltura_Client_EmailNotification_Type_EmailNotificationDispatchJobData ext
 	}
 	/**
 	 * Define the email sender email
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -83,7 +82,6 @@ class Kaltura_Client_EmailNotification_Type_EmailNotificationDispatchJobData ext
 
 	/**
 	 * Define the email sender name
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -91,7 +89,6 @@ class Kaltura_Client_EmailNotification_Type_EmailNotificationDispatchJobData ext
 
 	/**
 	 * Email recipient emails and names, key is mail address and value is the name
-	 * 	 
 	 *
 	 * @var Kaltura_Client_EmailNotification_Type_EmailNotificationRecipientJobData
 	 */
@@ -99,7 +96,6 @@ class Kaltura_Client_EmailNotification_Type_EmailNotificationDispatchJobData ext
 
 	/**
 	 * Email cc emails and names, key is mail address and value is the name
-	 * 	 
 	 *
 	 * @var Kaltura_Client_EmailNotification_Type_EmailNotificationRecipientJobData
 	 */
@@ -107,7 +103,6 @@ class Kaltura_Client_EmailNotification_Type_EmailNotificationDispatchJobData ext
 
 	/**
 	 * Email bcc emails and names, key is mail address and value is the name
-	 * 	 
 	 *
 	 * @var Kaltura_Client_EmailNotification_Type_EmailNotificationRecipientJobData
 	 */
@@ -115,7 +110,6 @@ class Kaltura_Client_EmailNotification_Type_EmailNotificationDispatchJobData ext
 
 	/**
 	 * Email addresses that a replies should be sent to, key is mail address and value is the name
-	 * 	 
 	 *
 	 * @var Kaltura_Client_EmailNotification_Type_EmailNotificationRecipientJobData
 	 */
@@ -123,7 +117,6 @@ class Kaltura_Client_EmailNotification_Type_EmailNotificationDispatchJobData ext
 
 	/**
 	 * Define the email priority
-	 * 	 
 	 *
 	 * @var Kaltura_Client_EmailNotification_Enum_EmailNotificationTemplatePriority
 	 */
@@ -131,7 +124,6 @@ class Kaltura_Client_EmailNotification_Type_EmailNotificationDispatchJobData ext
 
 	/**
 	 * Email address that a reading confirmation will be sent to
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -140,7 +132,6 @@ class Kaltura_Client_EmailNotification_Type_EmailNotificationDispatchJobData ext
 	/**
 	 * Hostname to use in Message-Id and Received headers and as default HELO string. 
 	 * 	 If empty, the value returned by SERVER_NAME is used or 'localhost.localdomain'.
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -149,7 +140,6 @@ class Kaltura_Client_EmailNotification_Type_EmailNotificationDispatchJobData ext
 	/**
 	 * Sets the message ID to be used in the Message-Id header.
 	 * 	 If empty, a unique id will be generated.
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -157,7 +147,6 @@ class Kaltura_Client_EmailNotification_Type_EmailNotificationDispatchJobData ext
 
 	/**
 	 * Adds a e-mail custom header
-	 * 	 
 	 *
 	 * @var array of KalturaKeyValue
 	 */

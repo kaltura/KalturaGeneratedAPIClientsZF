@@ -52,7 +52,6 @@ class Kaltura_Client_Type_AccessControlModifyRequestHostRegexAction extends Kalt
 	}
 	/**
 	 * Request host regex pattern
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -60,7 +59,6 @@ class Kaltura_Client_Type_AccessControlModifyRequestHostRegexAction extends Kalt
 
 	/**
 	 * Request host regex replacment
-	 * 	 
 	 *
 	 * @var string
 	 */

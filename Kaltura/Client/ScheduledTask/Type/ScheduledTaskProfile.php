@@ -123,7 +123,6 @@ class Kaltura_Client_ScheduledTask_Type_ScheduledTaskProfile extends Kaltura_Cli
 
 	/**
 	 * The type of engine to use to list objects using the given "objectFilter"
-	 * 	 
 	 *
 	 * @var Kaltura_Client_ScheduledTask_Enum_ObjectFilterEngineType
 	 */
@@ -131,7 +130,6 @@ class Kaltura_Client_ScheduledTask_Type_ScheduledTaskProfile extends Kaltura_Cli
 
 	/**
 	 * A filter object (inherits KalturaFilter) that is used to list objects for scheduled tasks
-	 * 	 
 	 *
 	 * @var Kaltura_Client_Type_Filter
 	 */
@@ -139,7 +137,6 @@ class Kaltura_Client_ScheduledTask_Type_ScheduledTaskProfile extends Kaltura_Cli
 
 	/**
 	 * A list of tasks to execute on the founded objects
-	 * 	 
 	 *
 	 * @var array of KalturaObjectTask
 	 */
@@ -170,7 +167,6 @@ class Kaltura_Client_ScheduledTask_Type_ScheduledTaskProfile extends Kaltura_Cli
 
 	/**
 	 * The maximum number of result count allowed to be processed by this profile per execution
-	 * 	 
 	 *
 	 * @var int
 	 */

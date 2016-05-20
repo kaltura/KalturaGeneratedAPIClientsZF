@@ -85,7 +85,6 @@ class Kaltura_Client_Type_LiveStreamEntry extends Kaltura_Client_Type_LiveEntry
 	}
 	/**
 	 * The stream id as provided by the provider
-	 * 	 
 	 *
 	 * @var string
 	 * @readonly
@@ -94,7 +93,6 @@ class Kaltura_Client_Type_LiveStreamEntry extends Kaltura_Client_Type_LiveEntry
 
 	/**
 	 * The backup stream id as provided by the provider
-	 * 	 
 	 *
 	 * @var string
 	 * @readonly
@@ -103,7 +101,6 @@ class Kaltura_Client_Type_LiveStreamEntry extends Kaltura_Client_Type_LiveEntry
 
 	/**
 	 * Array of supported bitrates
-	 * 	 
 	 *
 	 * @var array of KalturaLiveStreamBitrate
 	 */
@@ -146,7 +143,6 @@ class Kaltura_Client_Type_LiveStreamEntry extends Kaltura_Client_Type_LiveEntry
 
 	/**
 	 * The stream url
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -154,7 +150,6 @@ class Kaltura_Client_Type_LiveStreamEntry extends Kaltura_Client_Type_LiveEntry
 
 	/**
 	 * HLS URL - URL for live stream playback on mobile device
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -162,7 +157,6 @@ class Kaltura_Client_Type_LiveStreamEntry extends Kaltura_Client_Type_LiveEntry
 
 	/**
 	 * URL Manager to handle the live stream URL (for instance, add token)
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -170,7 +164,6 @@ class Kaltura_Client_Type_LiveStreamEntry extends Kaltura_Client_Type_LiveEntry
 
 	/**
 	 * The broadcast primary ip
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -178,7 +171,6 @@ class Kaltura_Client_Type_LiveStreamEntry extends Kaltura_Client_Type_LiveEntry
 
 	/**
 	 * The broadcast secondary ip
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -186,7 +178,6 @@ class Kaltura_Client_Type_LiveStreamEntry extends Kaltura_Client_Type_LiveEntry
 
 	/**
 	 * The broadcast password
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -194,7 +185,6 @@ class Kaltura_Client_Type_LiveStreamEntry extends Kaltura_Client_Type_LiveEntry
 
 	/**
 	 * The broadcast username
-	 * 	 
 	 *
 	 * @var string
 	 * @readonly
@@ -202,8 +192,7 @@ class Kaltura_Client_Type_LiveStreamEntry extends Kaltura_Client_Type_LiveEntry
 	public $streamUsername = null;
 
 	/**
-	 * The Streams primary server node id 
-	 * 	 
+	 * The Streams primary server node id
 	 *
 	 * @var int
 	 * @readonly

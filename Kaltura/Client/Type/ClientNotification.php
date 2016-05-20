@@ -51,8 +51,7 @@ class Kaltura_Client_Type_ClientNotification extends Kaltura_Client_ObjectBase
 			$this->data = (string)$xml->data;
 	}
 	/**
-	 * The URL where the notification should be sent to 
-	 *      
+	 * The URL where the notification should be sent to
 	 *
 	 * @var string
 	 */
@@ -60,7 +59,6 @@ class Kaltura_Client_Type_ClientNotification extends Kaltura_Client_ObjectBase
 
 	/**
 	 * The serialized notification data to send
-	 *      
 	 *
 	 * @var string
 	 */

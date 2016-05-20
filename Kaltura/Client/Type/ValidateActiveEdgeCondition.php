@@ -50,7 +50,6 @@ class Kaltura_Client_Type_ValidateActiveEdgeCondition extends Kaltura_Client_Typ
 	}
 	/**
 	 * Comma separated list of edge servers to validate are active
-	 * 	 
 	 *
 	 * @var string
 	 */

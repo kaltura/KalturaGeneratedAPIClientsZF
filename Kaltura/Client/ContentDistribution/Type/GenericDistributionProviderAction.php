@@ -82,7 +82,6 @@ class Kaltura_Client_ContentDistribution_Type_GenericDistributionProviderAction 
 	}
 	/**
 	 * Auto generated
-	 * 	 
 	 *
 	 * @var int
 	 * @readonly
@@ -91,7 +90,6 @@ class Kaltura_Client_ContentDistribution_Type_GenericDistributionProviderAction 
 
 	/**
 	 * Generic distribution provider action creation date as Unix timestamp (In seconds)
-	 * 	 
 	 *
 	 * @var int
 	 * @readonly
@@ -100,7 +98,6 @@ class Kaltura_Client_ContentDistribution_Type_GenericDistributionProviderAction 
 
 	/**
 	 * Generic distribution provider action last update date as Unix timestamp (In seconds)
-	 * 	 
 	 *
 	 * @var int
 	 * @readonly

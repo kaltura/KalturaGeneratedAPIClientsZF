@@ -57,7 +57,6 @@ class Kaltura_Client_BulkUploadCsv_Type_BulkUploadCsvJobData extends Kaltura_Cli
 	}
 	/**
 	 * The version of the csv file
-	 * 	 
 	 *
 	 * @var Kaltura_Client_BulkUploadCsv_Enum_BulkUploadCsvVersion
 	 * @readonly
@@ -66,7 +65,6 @@ class Kaltura_Client_BulkUploadCsv_Type_BulkUploadCsvJobData extends Kaltura_Cli
 
 	/**
 	 * Array containing CSV headers
-	 * 	 
 	 *
 	 * @var array of KalturaString
 	 */

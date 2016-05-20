@@ -116,7 +116,6 @@ abstract class Kaltura_Client_Type_ServerNode extends Kaltura_Client_ObjectBase
 
 	/**
 	 * serverNode name
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -124,7 +123,6 @@ abstract class Kaltura_Client_Type_ServerNode extends Kaltura_Client_ObjectBase
 
 	/**
 	 * serverNode uniqe system name
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -139,7 +137,6 @@ abstract class Kaltura_Client_Type_ServerNode extends Kaltura_Client_ObjectBase
 
 	/**
 	 * serverNode hostName
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -163,7 +160,6 @@ abstract class Kaltura_Client_Type_ServerNode extends Kaltura_Client_ObjectBase
 
 	/**
 	 * serverNode tags
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -171,7 +167,6 @@ abstract class Kaltura_Client_Type_ServerNode extends Kaltura_Client_ObjectBase
 
 	/**
 	 * DC where the serverNode is located
-	 * 	 
 	 *
 	 * @var int
 	 * @readonly
@@ -180,7 +175,6 @@ abstract class Kaltura_Client_Type_ServerNode extends Kaltura_Client_ObjectBase
 
 	/**
 	 * Id of the parent serverNode
-	 * 	 
 	 *
 	 * @var int
 	 */

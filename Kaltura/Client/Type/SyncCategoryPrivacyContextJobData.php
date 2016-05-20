@@ -54,7 +54,6 @@ class Kaltura_Client_Type_SyncCategoryPrivacyContextJobData extends Kaltura_Clie
 	}
 	/**
 	 * category id
-	 * 	 
 	 *
 	 * @var int
 	 */
@@ -63,7 +62,6 @@ class Kaltura_Client_Type_SyncCategoryPrivacyContextJobData extends Kaltura_Clie
 	/**
 	 * Saves the last category entry creation date that was updated
 	 *      In case of crash the batch will restart from that point
-	 *      
 	 *
 	 * @var int
 	 */
@@ -72,7 +70,6 @@ class Kaltura_Client_Type_SyncCategoryPrivacyContextJobData extends Kaltura_Clie
 	/**
 	 * Saves the last sub category creation date that was updated
 	 *      In case of crash the batch will restart from that point
-	 *      
 	 *
 	 * @var int
 	 */

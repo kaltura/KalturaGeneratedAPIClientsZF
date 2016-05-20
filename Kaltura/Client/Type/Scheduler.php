@@ -83,7 +83,6 @@ class Kaltura_Client_Type_Scheduler extends Kaltura_Client_ObjectBase
 	}
 	/**
 	 * The id of the Scheduler
-	 * 	 
 	 *
 	 * @var int
 	 * @readonly
@@ -92,7 +91,6 @@ class Kaltura_Client_Type_Scheduler extends Kaltura_Client_ObjectBase
 
 	/**
 	 * The id as configured in the batch config
-	 * 	 
 	 *
 	 * @var int
 	 */
@@ -100,7 +98,6 @@ class Kaltura_Client_Type_Scheduler extends Kaltura_Client_ObjectBase
 
 	/**
 	 * The scheduler name
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -108,7 +105,6 @@ class Kaltura_Client_Type_Scheduler extends Kaltura_Client_ObjectBase
 
 	/**
 	 * The host name
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -116,7 +112,6 @@ class Kaltura_Client_Type_Scheduler extends Kaltura_Client_ObjectBase
 
 	/**
 	 * Array of the last statuses
-	 * 	 
 	 *
 	 * @var array of KalturaSchedulerStatus
 	 * @readonly
@@ -125,7 +120,6 @@ class Kaltura_Client_Type_Scheduler extends Kaltura_Client_ObjectBase
 
 	/**
 	 * Array of the last configs
-	 * 	 
 	 *
 	 * @var array of KalturaSchedulerConfig
 	 * @readonly
@@ -134,7 +128,6 @@ class Kaltura_Client_Type_Scheduler extends Kaltura_Client_ObjectBase
 
 	/**
 	 * Array of the workers
-	 * 	 
 	 *
 	 * @var array of KalturaSchedulerWorker
 	 * @readonly
@@ -143,7 +136,6 @@ class Kaltura_Client_Type_Scheduler extends Kaltura_Client_ObjectBase
 
 	/**
 	 * creation time
-	 * 	 
 	 *
 	 * @var int
 	 * @readonly
@@ -152,7 +144,6 @@ class Kaltura_Client_Type_Scheduler extends Kaltura_Client_ObjectBase
 
 	/**
 	 * last status time
-	 * 	 
 	 *
 	 * @var int
 	 * @readonly
@@ -161,7 +152,6 @@ class Kaltura_Client_Type_Scheduler extends Kaltura_Client_ObjectBase
 
 	/**
 	 * last status formated
-	 * 	 
 	 *
 	 * @var string
 	 * @readonly

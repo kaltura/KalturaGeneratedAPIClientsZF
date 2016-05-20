@@ -52,7 +52,6 @@ class Kaltura_Client_Type_UrlTokenizerAkamaiRtsp extends Kaltura_Client_Type_Url
 	}
 	/**
 	 * host
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -60,7 +59,6 @@ class Kaltura_Client_Type_UrlTokenizerAkamaiRtsp extends Kaltura_Client_Type_Url
 
 	/**
 	 * Cp-Code
-	 * 	 
 	 *
 	 * @var int
 	 */

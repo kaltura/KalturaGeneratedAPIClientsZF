@@ -50,7 +50,6 @@ class Kaltura_Client_Type_WebcamTokenResource extends Kaltura_Client_Type_DataCe
 	}
 	/**
 	 * Token that returned from media server such as FMS or red5.
-	 * 	 
 	 *
 	 * @var string
 	 */

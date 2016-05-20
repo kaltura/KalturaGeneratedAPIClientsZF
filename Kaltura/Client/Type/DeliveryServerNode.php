@@ -50,7 +50,6 @@ abstract class Kaltura_Client_Type_DeliveryServerNode extends Kaltura_Client_Typ
 	}
 	/**
 	 * Delivery server playback Domain
-	 * 	 
 	 *
 	 * @var string
 	 */

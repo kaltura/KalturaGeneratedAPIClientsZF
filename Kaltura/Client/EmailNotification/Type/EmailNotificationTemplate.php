@@ -81,15 +81,13 @@ class Kaltura_Client_EmailNotification_Type_EmailNotificationTemplate extends Ka
 	}
 	/**
 	 * Define the email body format
-	 * 	 
 	 *
 	 * @var Kaltura_Client_EmailNotification_Enum_EmailNotificationFormat
 	 */
 	public $format = null;
 
 	/**
-	 * Define the email subject 
-	 * 	 
+	 * Define the email subject
 	 *
 	 * @var string
 	 */
@@ -97,7 +95,6 @@ class Kaltura_Client_EmailNotification_Type_EmailNotificationTemplate extends Ka
 
 	/**
 	 * Define the email body content
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -105,7 +102,6 @@ class Kaltura_Client_EmailNotification_Type_EmailNotificationTemplate extends Ka
 
 	/**
 	 * Define the email sender email
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -113,7 +109,6 @@ class Kaltura_Client_EmailNotification_Type_EmailNotificationTemplate extends Ka
 
 	/**
 	 * Define the email sender name
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -121,7 +116,6 @@ class Kaltura_Client_EmailNotification_Type_EmailNotificationTemplate extends Ka
 
 	/**
 	 * Email recipient emails and names
-	 * 	 
 	 *
 	 * @var Kaltura_Client_EmailNotification_Type_EmailNotificationRecipientProvider
 	 */
@@ -129,7 +123,6 @@ class Kaltura_Client_EmailNotification_Type_EmailNotificationTemplate extends Ka
 
 	/**
 	 * Email recipient emails and names
-	 * 	 
 	 *
 	 * @var Kaltura_Client_EmailNotification_Type_EmailNotificationRecipientProvider
 	 */
@@ -137,15 +130,13 @@ class Kaltura_Client_EmailNotification_Type_EmailNotificationTemplate extends Ka
 
 	/**
 	 * Email recipient emails and names
-	 * 	 
 	 *
 	 * @var Kaltura_Client_EmailNotification_Type_EmailNotificationRecipientProvider
 	 */
 	public $bcc;
 
 	/**
-	 * Default email addresses to whom the reply should be sent. 
-	 * 	 
+	 * Default email addresses to whom the reply should be sent.
 	 *
 	 * @var Kaltura_Client_EmailNotification_Type_EmailNotificationRecipientProvider
 	 */
@@ -153,7 +144,6 @@ class Kaltura_Client_EmailNotification_Type_EmailNotificationTemplate extends Ka
 
 	/**
 	 * Define the email priority
-	 * 	 
 	 *
 	 * @var Kaltura_Client_EmailNotification_Enum_EmailNotificationTemplatePriority
 	 */
@@ -161,7 +151,6 @@ class Kaltura_Client_EmailNotification_Type_EmailNotificationTemplate extends Ka
 
 	/**
 	 * Email address that a reading confirmation will be sent
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -170,7 +159,6 @@ class Kaltura_Client_EmailNotification_Type_EmailNotificationTemplate extends Ka
 	/**
 	 * Hostname to use in Message-Id and Received headers and as default HELLO string. 
 	 * 	 If empty, the value returned by SERVER_NAME is used or 'localhost.localdomain'.
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -179,7 +167,6 @@ class Kaltura_Client_EmailNotification_Type_EmailNotificationTemplate extends Ka
 	/**
 	 * Sets the message ID to be used in the Message-Id header.
 	 * 	 If empty, a unique id will be generated.
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -187,7 +174,6 @@ class Kaltura_Client_EmailNotification_Type_EmailNotificationTemplate extends Ka
 
 	/**
 	 * Adds a e-mail custom header
-	 * 	 
 	 *
 	 * @var array of KalturaKeyValue
 	 */

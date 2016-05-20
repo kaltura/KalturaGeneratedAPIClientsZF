@@ -76,7 +76,6 @@ class Kaltura_Client_Type_CategoryUser extends Kaltura_Client_ObjectBase
 
 	/**
 	 * User id
-	 * 	 
 	 *
 	 * @var string
 	 * @insertonly
@@ -85,7 +84,6 @@ class Kaltura_Client_Type_CategoryUser extends Kaltura_Client_ObjectBase
 
 	/**
 	 * Partner id
-	 * 	 
 	 *
 	 * @var int
 	 * @readonly
@@ -94,7 +92,6 @@ class Kaltura_Client_Type_CategoryUser extends Kaltura_Client_ObjectBase
 
 	/**
 	 * Permission level
-	 * 	 
 	 *
 	 * @var Kaltura_Client_Enum_CategoryUserPermissionLevel
 	 */
@@ -102,7 +99,6 @@ class Kaltura_Client_Type_CategoryUser extends Kaltura_Client_ObjectBase
 
 	/**
 	 * Status
-	 * 	 
 	 *
 	 * @var Kaltura_Client_Enum_CategoryUserStatus
 	 * @readonly
@@ -111,7 +107,6 @@ class Kaltura_Client_Type_CategoryUser extends Kaltura_Client_ObjectBase
 
 	/**
 	 * CategoryUser creation date as Unix timestamp (In seconds)
-	 * 	 
 	 *
 	 * @var int
 	 * @readonly
@@ -120,7 +115,6 @@ class Kaltura_Client_Type_CategoryUser extends Kaltura_Client_ObjectBase
 
 	/**
 	 * CategoryUser update date as Unix timestamp (In seconds)
-	 * 	 
 	 *
 	 * @var int
 	 * @readonly
@@ -128,8 +122,7 @@ class Kaltura_Client_Type_CategoryUser extends Kaltura_Client_ObjectBase
 	public $updatedAt = null;
 
 	/**
-	 * Update method can be either manual or automatic to distinguish between manual operations (for example in KMC) on automatic - using bulk upload 
-	 * 	 
+	 * Update method can be either manual or automatic to distinguish between manual operations (for example in KMC) on automatic - using bulk upload
 	 *
 	 * @var Kaltura_Client_Enum_UpdateMethodType
 	 */
@@ -137,7 +130,6 @@ class Kaltura_Client_Type_CategoryUser extends Kaltura_Client_ObjectBase
 
 	/**
 	 * The full ids of the Category
-	 * 	 
 	 *
 	 * @var string
 	 * @readonly
@@ -146,7 +138,6 @@ class Kaltura_Client_Type_CategoryUser extends Kaltura_Client_ObjectBase
 
 	/**
 	 * Set of category-related permissions for the current category user.
-	 * 	 
 	 *
 	 * @var string
 	 */

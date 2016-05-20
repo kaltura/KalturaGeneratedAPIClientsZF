@@ -54,7 +54,6 @@ class Kaltura_Client_ScheduledTaskMetadata_Type_ExecuteMetadataXsltObjectTask ex
 	}
 	/**
 	 * Metadata profile id to lookup the metadata object
-	 * 	 
 	 *
 	 * @var int
 	 */
@@ -62,7 +61,6 @@ class Kaltura_Client_ScheduledTaskMetadata_Type_ExecuteMetadataXsltObjectTask ex
 
 	/**
 	 * Metadata object type to lookup the metadata object
-	 * 	 
 	 *
 	 * @var Kaltura_Client_Metadata_Enum_MetadataObjectType
 	 */
@@ -70,7 +68,6 @@ class Kaltura_Client_ScheduledTaskMetadata_Type_ExecuteMetadataXsltObjectTask ex
 
 	/**
 	 * The XSLT to execute
-	 * 	 
 	 *
 	 * @var string
 	 */

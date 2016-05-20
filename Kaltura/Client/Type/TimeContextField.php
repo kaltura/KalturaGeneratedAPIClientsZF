@@ -50,7 +50,6 @@ class Kaltura_Client_Type_TimeContextField extends Kaltura_Client_Type_IntegerFi
 	}
 	/**
 	 * Time offset in seconds since current time
-	 * 	 
 	 *
 	 * @var int
 	 */

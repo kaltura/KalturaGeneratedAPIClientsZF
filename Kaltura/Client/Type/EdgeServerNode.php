@@ -57,7 +57,6 @@ class Kaltura_Client_Type_EdgeServerNode extends Kaltura_Client_Type_DeliverySer
 	}
 	/**
 	 * Delivery profile ids
-	 * 	 
 	 *
 	 * @var array of KalturaKeyValue
 	 */
@@ -65,7 +64,6 @@ class Kaltura_Client_Type_EdgeServerNode extends Kaltura_Client_Type_DeliverySer
 
 	/**
 	 * Overdie edge server default configuration - json format
-	 * 	 
 	 *
 	 * @var string
 	 */

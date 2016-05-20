@@ -78,8 +78,7 @@ class Kaltura_Client_Type_BaseEntryFilter extends Kaltura_Client_Type_BaseEntryB
 	public $categoriesFullNameIn = null;
 
 	/**
-	 * All entries within this categoy or in child categories  
-	 * 	 
+	 * All entries within this categoy or in child categories
 	 *
 	 * @var string
 	 */
@@ -87,7 +86,6 @@ class Kaltura_Client_Type_BaseEntryFilter extends Kaltura_Client_Type_BaseEntryB
 
 	/**
 	 * The id of the original entry
-	 * 	 
 	 *
 	 * @var string
 	 */

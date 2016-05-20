@@ -71,7 +71,6 @@ class Kaltura_Client_Type_YahooSyndicationFeed extends Kaltura_Client_Type_BaseS
 
 	/**
 	 * feed description
-	 *          
 	 *
 	 * @var string
 	 */
@@ -79,7 +78,6 @@ class Kaltura_Client_Type_YahooSyndicationFeed extends Kaltura_Client_Type_BaseS
 
 	/**
 	 * feed landing page (i.e publisher website)
-	 *          
 	 *
 	 * @var string
 	 */

@@ -71,6 +71,23 @@ class Kaltura_Client_MediaService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	function addFromBulk(Kaltura_Client_Type_MediaEntry $mediaEntry, $url, $bulkUploadId)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "mediaEntry", $mediaEntry->toParams());
+		$this->client->addParam($kparams, "url", $url);
+		$this->client->addParam($kparams, "bulkUploadId", $bulkUploadId);
+		$this->client->queueServiceActionCall("media", "addFromBulk", "KalturaMediaEntry", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultXml = $this->client->doQueue();
+		$resultXmlObject = new \SimpleXMLElement($resultXml);
+		$this->client->checkIfError($resultXmlObject->result);
+		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaMediaEntry");
+		$this->client->validateObjectType($resultObject, "Kaltura_Client_Type_MediaEntry");
+		return $resultObject;
+	}
+
 	function addFromUrl(Kaltura_Client_Type_MediaEntry $mediaEntry, $url)
 	{
 		$kparams = array();

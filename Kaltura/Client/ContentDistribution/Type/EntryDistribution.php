@@ -109,7 +109,6 @@ class Kaltura_Client_ContentDistribution_Type_EntryDistribution extends Kaltura_
 	}
 	/**
 	 * Auto generated unique id
-	 * 	 
 	 *
 	 * @var int
 	 * @readonly
@@ -118,7 +117,6 @@ class Kaltura_Client_ContentDistribution_Type_EntryDistribution extends Kaltura_
 
 	/**
 	 * Entry distribution creation date as Unix timestamp (In seconds)
-	 * 	 
 	 *
 	 * @var int
 	 * @readonly
@@ -127,7 +125,6 @@ class Kaltura_Client_ContentDistribution_Type_EntryDistribution extends Kaltura_
 
 	/**
 	 * Entry distribution last update date as Unix timestamp (In seconds)
-	 * 	 
 	 *
 	 * @var int
 	 * @readonly
@@ -136,7 +133,6 @@ class Kaltura_Client_ContentDistribution_Type_EntryDistribution extends Kaltura_
 
 	/**
 	 * Entry distribution submission date as Unix timestamp (In seconds)
-	 * 	 
 	 *
 	 * @var int
 	 * @readonly
@@ -193,7 +189,6 @@ class Kaltura_Client_ContentDistribution_Type_EntryDistribution extends Kaltura_
 
 	/**
 	 * Comma separated thumbnail asset ids
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -201,7 +196,6 @@ class Kaltura_Client_ContentDistribution_Type_EntryDistribution extends Kaltura_
 
 	/**
 	 * Comma separated flavor asset ids
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -209,7 +203,6 @@ class Kaltura_Client_ContentDistribution_Type_EntryDistribution extends Kaltura_
 
 	/**
 	 * Comma separated asset ids
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -217,7 +210,6 @@ class Kaltura_Client_ContentDistribution_Type_EntryDistribution extends Kaltura_
 
 	/**
 	 * Entry distribution publish time as Unix timestamp (In seconds)
-	 * 	 
 	 *
 	 * @var int
 	 */
@@ -225,7 +217,6 @@ class Kaltura_Client_ContentDistribution_Type_EntryDistribution extends Kaltura_
 
 	/**
 	 * Entry distribution un-publish time as Unix timestamp (In seconds)
-	 * 	 
 	 *
 	 * @var int
 	 */
@@ -233,7 +224,6 @@ class Kaltura_Client_ContentDistribution_Type_EntryDistribution extends Kaltura_
 
 	/**
 	 * The id as returned from the distributed destination
-	 * 	 
 	 *
 	 * @var string
 	 * @readonly
@@ -242,7 +232,6 @@ class Kaltura_Client_ContentDistribution_Type_EntryDistribution extends Kaltura_
 
 	/**
 	 * The plays as retrieved from the remote destination reports
-	 * 	 
 	 *
 	 * @var int
 	 * @readonly
@@ -251,7 +240,6 @@ class Kaltura_Client_ContentDistribution_Type_EntryDistribution extends Kaltura_
 
 	/**
 	 * The views as retrieved from the remote destination reports
-	 * 	 
 	 *
 	 * @var int
 	 * @readonly

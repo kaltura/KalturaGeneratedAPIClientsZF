@@ -52,7 +52,6 @@ class Kaltura_Client_Type_ReportFilter extends Kaltura_Client_ObjectBase
 	}
 	/**
 	 * The dimension whose values should be filtered
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -60,7 +59,6 @@ class Kaltura_Client_Type_ReportFilter extends Kaltura_Client_ObjectBase
 
 	/**
 	 * The (comma separated) values to include in the filter
-	 * 	 
 	 *
 	 * @var string
 	 */

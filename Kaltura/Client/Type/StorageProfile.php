@@ -279,7 +279,6 @@ class Kaltura_Client_Type_StorageProfile extends Kaltura_Client_ObjectBase
 
 	/**
 	 * No need to create enum for temp field
-	 * 	 
 	 *
 	 * @var int
 	 */
@@ -287,7 +286,6 @@ class Kaltura_Client_Type_StorageProfile extends Kaltura_Client_ObjectBase
 
 	/**
 	 * Delivery Priority
-	 * 	 
 	 *
 	 * @var int
 	 */
@@ -309,7 +307,6 @@ class Kaltura_Client_Type_StorageProfile extends Kaltura_Client_ObjectBase
 
 	/**
 	 * Flag sugnifying that the storage exported content should be deleted when soure entry is deleted
-	 * 	 
 	 *
 	 * @var int
 	 */
@@ -317,7 +314,6 @@ class Kaltura_Client_Type_StorageProfile extends Kaltura_Client_ObjectBase
 
 	/**
 	 * Indicates to the local file transfer manager to create a link to the file instead of copying it
-	 * 	 
 	 *
 	 * @var bool
 	 */
@@ -325,7 +321,6 @@ class Kaltura_Client_Type_StorageProfile extends Kaltura_Client_ObjectBase
 
 	/**
 	 * Holds storage profile export rules
-	 * 	 
 	 *
 	 * @var array of KalturaRule
 	 */
@@ -333,7 +328,6 @@ class Kaltura_Client_Type_StorageProfile extends Kaltura_Client_ObjectBase
 
 	/**
 	 * Delivery profile ids
-	 * 	 
 	 *
 	 * @var array of KalturaKeyValue
 	 */

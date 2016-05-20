@@ -56,8 +56,7 @@ class Kaltura_Client_Type_AccessControlLimitDeliveryProfilesAction extends Kaltu
 		}
 	}
 	/**
-	 * Comma separated list of delivery profile ids 
-	 * 	 
+	 * Comma separated list of delivery profile ids
 	 *
 	 * @var string
 	 */

@@ -71,8 +71,7 @@ class Kaltura_Client_Type_Playlist extends Kaltura_Client_Type_BaseEntry
 	 * Content of the playlist - 
 	 * 	 XML if the playlistType is dynamic 
 	 * 	 text if the playlistType is static 
-	 * 	 url if the playlistType is mRss 
-	 * 	 
+	 * 	 url if the playlistType is mRss
 	 *
 	 * @var string
 	 */
@@ -87,7 +86,6 @@ class Kaltura_Client_Type_Playlist extends Kaltura_Client_Type_BaseEntry
 
 	/**
 	 * Maximum count of results to be returned in playlist execution
-	 * 	 
 	 *
 	 * @var int
 	 */
@@ -95,7 +93,6 @@ class Kaltura_Client_Type_Playlist extends Kaltura_Client_Type_BaseEntry
 
 	/**
 	 * Type of playlist
-	 * 	 
 	 *
 	 * @var Kaltura_Client_Enum_PlaylistType
 	 */
@@ -103,7 +100,6 @@ class Kaltura_Client_Type_Playlist extends Kaltura_Client_Type_BaseEntry
 
 	/**
 	 * Number of plays
-	 * 	 
 	 *
 	 * @var int
 	 * @readonly
@@ -112,7 +108,6 @@ class Kaltura_Client_Type_Playlist extends Kaltura_Client_Type_BaseEntry
 
 	/**
 	 * Number of views
-	 * 	 
 	 *
 	 * @var int
 	 * @readonly
@@ -121,7 +116,6 @@ class Kaltura_Client_Type_Playlist extends Kaltura_Client_Type_BaseEntry
 
 	/**
 	 * The duration in seconds
-	 * 	 
 	 *
 	 * @var int
 	 * @readonly
@@ -130,7 +124,6 @@ class Kaltura_Client_Type_Playlist extends Kaltura_Client_Type_BaseEntry
 
 	/**
 	 * The url for this playlist
-	 * 	 
 	 *
 	 * @var string
 	 * @readonly

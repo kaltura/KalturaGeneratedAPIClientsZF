@@ -50,7 +50,6 @@ class Kaltura_Client_Type_CountryCondition extends Kaltura_Client_Type_MatchCond
 	}
 	/**
 	 * The ip geo coder engine to be used
-	 * 	 
 	 *
 	 * @var Kaltura_Client_Enum_GeoCoderType
 	 */

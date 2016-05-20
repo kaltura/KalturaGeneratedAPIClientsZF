@@ -67,7 +67,6 @@ class Kaltura_Client_Type_ResponseProfileCacheRecalculateOptions extends Kaltura
 	}
 	/**
 	 * Maximum number of keys to recalculate
-	 * 	 
 	 *
 	 * @var int
 	 */
@@ -75,7 +74,6 @@ class Kaltura_Client_Type_ResponseProfileCacheRecalculateOptions extends Kaltura
 
 	/**
 	 * Class name
-	 * 	 
 	 *
 	 * @var string
 	 */

@@ -278,7 +278,6 @@ class Kaltura_Client_Type_BatchJob extends Kaltura_Client_ObjectBase
 
 	/**
 	 * The id of the bulk upload job that initiated this job
-	 * 	 
 	 *
 	 * @var int
 	 */
@@ -293,7 +292,6 @@ class Kaltura_Client_Type_BatchJob extends Kaltura_Client_ObjectBase
 
 	/**
 	 * When one job creates another - the parent should set this parentJobId to be its own id.
-	 * 	 
 	 *
 	 * @var int
 	 */
@@ -301,7 +299,6 @@ class Kaltura_Client_Type_BatchJob extends Kaltura_Client_ObjectBase
 
 	/**
 	 * The id of the root parent job
-	 * 	 
 	 *
 	 * @var int
 	 */
@@ -309,7 +306,6 @@ class Kaltura_Client_Type_BatchJob extends Kaltura_Client_ObjectBase
 
 	/**
 	 * The time that the job was pulled from the queue
-	 * 	 
 	 *
 	 * @var int
 	 */
@@ -317,7 +313,6 @@ class Kaltura_Client_Type_BatchJob extends Kaltura_Client_ObjectBase
 
 	/**
 	 * The time that the job was finished or closed as failed
-	 * 	 
 	 *
 	 * @var int
 	 */

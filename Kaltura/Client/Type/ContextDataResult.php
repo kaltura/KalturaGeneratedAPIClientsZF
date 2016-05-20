@@ -62,7 +62,6 @@ class Kaltura_Client_Type_ContextDataResult extends Kaltura_Client_ObjectBase
 	}
 	/**
 	 * Array of messages as received from the rules that invalidated
-	 * 	 
 	 *
 	 * @var array of KalturaString
 	 */
@@ -70,7 +69,6 @@ class Kaltura_Client_Type_ContextDataResult extends Kaltura_Client_ObjectBase
 
 	/**
 	 * Array of actions as received from the rules that invalidated
-	 * 	 
 	 *
 	 * @var array of KalturaRuleAction
 	 */

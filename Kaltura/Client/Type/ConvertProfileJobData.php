@@ -61,7 +61,6 @@ class Kaltura_Client_Type_ConvertProfileJobData extends Kaltura_Client_Type_JobD
 
 	/**
 	 * The height of last created thumbnail, will be used to comapare if this thumbnail is the best we can have
-	 * 	 
 	 *
 	 * @var int
 	 */
@@ -69,7 +68,6 @@ class Kaltura_Client_Type_ConvertProfileJobData extends Kaltura_Client_Type_JobD
 
 	/**
 	 * The bit rate of last created thumbnail, will be used to comapare if this thumbnail is the best we can have
-	 * 	 
 	 *
 	 * @var int
 	 */

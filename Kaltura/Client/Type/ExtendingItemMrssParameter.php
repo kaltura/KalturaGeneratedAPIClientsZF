@@ -54,7 +54,6 @@ class Kaltura_Client_Type_ExtendingItemMrssParameter extends Kaltura_Client_Obje
 	}
 	/**
 	 * XPath for the extending item
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -62,7 +61,6 @@ class Kaltura_Client_Type_ExtendingItemMrssParameter extends Kaltura_Client_Obje
 
 	/**
 	 * Object identifier
-	 * 	 
 	 *
 	 * @var Kaltura_Client_Type_ObjectIdentifier
 	 */
@@ -70,7 +68,6 @@ class Kaltura_Client_Type_ExtendingItemMrssParameter extends Kaltura_Client_Obje
 
 	/**
 	 * Mode of extension - append to MRSS or replace the xpath content.
-	 * 	 
 	 *
 	 * @var Kaltura_Client_Enum_MrssExtensionMode
 	 */

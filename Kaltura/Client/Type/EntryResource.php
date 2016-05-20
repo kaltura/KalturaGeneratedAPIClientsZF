@@ -51,8 +51,7 @@ class Kaltura_Client_Type_EntryResource extends Kaltura_Client_Type_ContentResou
 			$this->flavorParamsId = (int)$xml->flavorParamsId;
 	}
 	/**
-	 * ID of the source entry 
-	 * 	 
+	 * ID of the source entry
 	 *
 	 * @var string
 	 */
@@ -60,7 +59,6 @@ class Kaltura_Client_Type_EntryResource extends Kaltura_Client_Type_ContentResou
 
 	/**
 	 * ID of the source flavor params, set to null to use the source flavor
-	 * 	 
 	 *
 	 * @var int
 	 */

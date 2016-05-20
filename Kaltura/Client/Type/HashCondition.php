@@ -52,7 +52,6 @@ class Kaltura_Client_Type_HashCondition extends Kaltura_Client_Type_Condition
 	}
 	/**
 	 * hash name
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -60,7 +59,6 @@ class Kaltura_Client_Type_HashCondition extends Kaltura_Client_Type_Condition
 
 	/**
 	 * hash secret
-	 * 	 
 	 *
 	 * @var string
 	 */

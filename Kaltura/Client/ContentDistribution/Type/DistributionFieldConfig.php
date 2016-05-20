@@ -85,7 +85,6 @@ class Kaltura_Client_ContentDistribution_Type_DistributionFieldConfig extends Ka
 	/**
 	 * A value taken from a connector field enum which associates the current configuration to that connector field
 	 *      Field enum class should be returned by the provider's getFieldEnumClass function.
-	 *      
 	 *
 	 * @var string
 	 */
@@ -93,7 +92,6 @@ class Kaltura_Client_ContentDistribution_Type_DistributionFieldConfig extends Ka
 
 	/**
 	 * A string that will be shown to the user as the field name in error messages related to the current field
-	 *      
 	 *
 	 * @var string
 	 */
@@ -102,7 +100,6 @@ class Kaltura_Client_ContentDistribution_Type_DistributionFieldConfig extends Ka
 	/**
 	 * An XSLT string that extracts the right value from the Kaltura entry MRSS XML.
 	 *      The value of the current connector field will be the one that is returned from transforming the Kaltura entry MRSS XML using this XSLT string.
-	 *      
 	 *
 	 * @var string
 	 */
@@ -110,7 +107,6 @@ class Kaltura_Client_ContentDistribution_Type_DistributionFieldConfig extends Ka
 
 	/**
 	 * Is the field required to have a value for submission ?
-	 *      
 	 *
 	 * @var Kaltura_Client_ContentDistribution_Enum_DistributionFieldRequiredStatus
 	 */
@@ -118,7 +114,6 @@ class Kaltura_Client_ContentDistribution_Type_DistributionFieldConfig extends Ka
 
 	/**
 	 * Trigger distribution update when this field changes or not ?
-	 *      
 	 *
 	 * @var bool
 	 */
@@ -126,7 +121,6 @@ class Kaltura_Client_ContentDistribution_Type_DistributionFieldConfig extends Ka
 
 	/**
 	 * Entry column or metadata xpath that should trigger an update
-	 *      
 	 *
 	 * @var array of KalturaString
 	 */
@@ -134,7 +128,6 @@ class Kaltura_Client_ContentDistribution_Type_DistributionFieldConfig extends Ka
 
 	/**
 	 * Is this field config is the default for the distribution provider?
-	 *      
 	 *
 	 * @var bool
 	 * @readonly
@@ -143,7 +136,6 @@ class Kaltura_Client_ContentDistribution_Type_DistributionFieldConfig extends Ka
 
 	/**
 	 * Is an error on this field going to trigger deletion of distributed content?
-	 *      
 	 *
 	 * @var bool
 	 */

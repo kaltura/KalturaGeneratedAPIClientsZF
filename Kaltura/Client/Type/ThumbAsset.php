@@ -56,7 +56,6 @@ class Kaltura_Client_Type_ThumbAsset extends Kaltura_Client_Type_Asset
 	}
 	/**
 	 * The Flavor Params used to create this Flavor Asset
-	 * 	 
 	 *
 	 * @var int
 	 * @insertonly
@@ -64,8 +63,7 @@ class Kaltura_Client_Type_ThumbAsset extends Kaltura_Client_Type_Asset
 	public $thumbParamsId = null;
 
 	/**
-	 * The width of the Flavor Asset 
-	 * 	 
+	 * The width of the Flavor Asset
 	 *
 	 * @var int
 	 * @readonly
@@ -74,7 +72,6 @@ class Kaltura_Client_Type_ThumbAsset extends Kaltura_Client_Type_Asset
 
 	/**
 	 * The height of the Flavor Asset
-	 * 	 
 	 *
 	 * @var int
 	 * @readonly
@@ -83,7 +80,6 @@ class Kaltura_Client_Type_ThumbAsset extends Kaltura_Client_Type_Asset
 
 	/**
 	 * The status of the asset
-	 * 	 
 	 *
 	 * @var Kaltura_Client_Enum_ThumbAssetStatus
 	 * @readonly

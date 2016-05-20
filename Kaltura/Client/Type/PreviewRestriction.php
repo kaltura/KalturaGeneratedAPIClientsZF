@@ -49,8 +49,7 @@ class Kaltura_Client_Type_PreviewRestriction extends Kaltura_Client_Type_Session
 			$this->previewLength = (int)$xml->previewLength;
 	}
 	/**
-	 * The preview restriction length 
-	 * 	 
+	 * The preview restriction length
 	 *
 	 * @var int
 	 */

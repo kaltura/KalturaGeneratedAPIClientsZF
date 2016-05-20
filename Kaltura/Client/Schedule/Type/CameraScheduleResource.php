@@ -50,7 +50,6 @@ class Kaltura_Client_Schedule_Type_CameraScheduleResource extends Kaltura_Client
 	}
 	/**
 	 * URL of the stream
-	 * 	 
 	 *
 	 * @var string
 	 */

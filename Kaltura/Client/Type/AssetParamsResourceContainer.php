@@ -52,7 +52,6 @@ class Kaltura_Client_Type_AssetParamsResourceContainer extends Kaltura_Client_Ty
 	}
 	/**
 	 * The content resource to associate with asset params
-	 * 	 
 	 *
 	 * @var Kaltura_Client_Type_ContentResource
 	 */
@@ -60,7 +59,6 @@ class Kaltura_Client_Type_AssetParamsResourceContainer extends Kaltura_Client_Ty
 
 	/**
 	 * The asset params to associate with the reaource
-	 * 	 
 	 *
 	 * @var int
 	 */

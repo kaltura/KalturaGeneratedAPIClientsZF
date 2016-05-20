@@ -50,7 +50,6 @@ class Kaltura_Client_Type_ConcatAttributes extends Kaltura_Client_Type_Operation
 	}
 	/**
 	 * The resource to be concatenated
-	 * 	 
 	 *
 	 * @var Kaltura_Client_Type_DataCenterContentResource
 	 */

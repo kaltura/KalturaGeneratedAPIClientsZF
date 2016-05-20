@@ -76,7 +76,6 @@ class Kaltura_Client_Type_SchedulerConfig extends Kaltura_Client_ObjectBase
 	}
 	/**
 	 * The id of the Category
-	 * 	 
 	 *
 	 * @var int
 	 * @readonly
@@ -85,7 +84,6 @@ class Kaltura_Client_Type_SchedulerConfig extends Kaltura_Client_ObjectBase
 
 	/**
 	 * Creator name
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -93,47 +91,41 @@ class Kaltura_Client_Type_SchedulerConfig extends Kaltura_Client_ObjectBase
 
 	/**
 	 * Updater name
-	 * 	 
 	 *
 	 * @var string
 	 */
 	public $updatedBy = null;
 
 	/**
-	 * Id of the control panel command that created this config item 
-	 * 	 
+	 * Id of the control panel command that created this config item
 	 *
 	 * @var string
 	 */
 	public $commandId = null;
 
 	/**
-	 * The status of the control panel command 
-	 * 	 
+	 * The status of the control panel command
 	 *
 	 * @var string
 	 */
 	public $commandStatus = null;
 
 	/**
-	 * The id of the scheduler 
-	 * 	 
+	 * The id of the scheduler
 	 *
 	 * @var int
 	 */
 	public $schedulerId = null;
 
 	/**
-	 * The configured id of the scheduler 
-	 * 	 
+	 * The configured id of the scheduler
 	 *
 	 * @var int
 	 */
 	public $schedulerConfiguredId = null;
 
 	/**
-	 * The name of the scheduler 
-	 * 	 
+	 * The name of the scheduler
 	 *
 	 * @var string
 	 */
@@ -141,7 +133,6 @@ class Kaltura_Client_Type_SchedulerConfig extends Kaltura_Client_ObjectBase
 
 	/**
 	 * The id of the job worker
-	 * 	 
 	 *
 	 * @var int
 	 */
@@ -149,7 +140,6 @@ class Kaltura_Client_Type_SchedulerConfig extends Kaltura_Client_ObjectBase
 
 	/**
 	 * The configured id of the job worker
-	 * 	 
 	 *
 	 * @var int
 	 */
@@ -157,7 +147,6 @@ class Kaltura_Client_Type_SchedulerConfig extends Kaltura_Client_ObjectBase
 
 	/**
 	 * The name of the job worker
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -165,7 +154,6 @@ class Kaltura_Client_Type_SchedulerConfig extends Kaltura_Client_ObjectBase
 
 	/**
 	 * The name of the variable
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -173,7 +161,6 @@ class Kaltura_Client_Type_SchedulerConfig extends Kaltura_Client_ObjectBase
 
 	/**
 	 * The part of the variable
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -181,7 +168,6 @@ class Kaltura_Client_Type_SchedulerConfig extends Kaltura_Client_ObjectBase
 
 	/**
 	 * The value of the variable
-	 * 	 
 	 *
 	 * @var string
 	 */

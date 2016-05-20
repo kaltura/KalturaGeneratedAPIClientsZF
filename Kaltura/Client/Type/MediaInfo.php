@@ -114,7 +114,6 @@ class Kaltura_Client_Type_MediaInfo extends Kaltura_Client_ObjectBase
 	}
 	/**
 	 * The id of the media info
-	 * 	 
 	 *
 	 * @var int
 	 * @readonly
@@ -123,7 +122,6 @@ class Kaltura_Client_Type_MediaInfo extends Kaltura_Client_ObjectBase
 
 	/**
 	 * The id of the related flavor asset
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -131,7 +129,6 @@ class Kaltura_Client_Type_MediaInfo extends Kaltura_Client_ObjectBase
 
 	/**
 	 * The file size
-	 * 	 
 	 *
 	 * @var int
 	 */
@@ -139,7 +136,6 @@ class Kaltura_Client_Type_MediaInfo extends Kaltura_Client_ObjectBase
 
 	/**
 	 * The container format
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -147,7 +143,6 @@ class Kaltura_Client_Type_MediaInfo extends Kaltura_Client_ObjectBase
 
 	/**
 	 * The container id
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -155,7 +150,6 @@ class Kaltura_Client_Type_MediaInfo extends Kaltura_Client_ObjectBase
 
 	/**
 	 * The container profile
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -163,7 +157,6 @@ class Kaltura_Client_Type_MediaInfo extends Kaltura_Client_ObjectBase
 
 	/**
 	 * The container duration
-	 * 	 
 	 *
 	 * @var int
 	 */
@@ -171,7 +164,6 @@ class Kaltura_Client_Type_MediaInfo extends Kaltura_Client_ObjectBase
 
 	/**
 	 * The container bit rate
-	 * 	 
 	 *
 	 * @var int
 	 */
@@ -179,7 +171,6 @@ class Kaltura_Client_Type_MediaInfo extends Kaltura_Client_ObjectBase
 
 	/**
 	 * The video format
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -187,7 +178,6 @@ class Kaltura_Client_Type_MediaInfo extends Kaltura_Client_ObjectBase
 
 	/**
 	 * The video codec id
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -195,7 +185,6 @@ class Kaltura_Client_Type_MediaInfo extends Kaltura_Client_ObjectBase
 
 	/**
 	 * The video duration
-	 * 	 
 	 *
 	 * @var int
 	 */
@@ -203,7 +192,6 @@ class Kaltura_Client_Type_MediaInfo extends Kaltura_Client_ObjectBase
 
 	/**
 	 * The video bit rate
-	 * 	 
 	 *
 	 * @var int
 	 */
@@ -211,7 +199,6 @@ class Kaltura_Client_Type_MediaInfo extends Kaltura_Client_ObjectBase
 
 	/**
 	 * The video bit rate mode
-	 * 	 
 	 *
 	 * @var Kaltura_Client_Enum_BitRateMode
 	 */
@@ -219,7 +206,6 @@ class Kaltura_Client_Type_MediaInfo extends Kaltura_Client_ObjectBase
 
 	/**
 	 * The video width
-	 * 	 
 	 *
 	 * @var int
 	 */
@@ -227,7 +213,6 @@ class Kaltura_Client_Type_MediaInfo extends Kaltura_Client_ObjectBase
 
 	/**
 	 * The video height
-	 * 	 
 	 *
 	 * @var int
 	 */
@@ -235,7 +220,6 @@ class Kaltura_Client_Type_MediaInfo extends Kaltura_Client_ObjectBase
 
 	/**
 	 * The video frame rate
-	 * 	 
 	 *
 	 * @var float
 	 */
@@ -243,7 +227,6 @@ class Kaltura_Client_Type_MediaInfo extends Kaltura_Client_ObjectBase
 
 	/**
 	 * The video display aspect ratio (dar)
-	 * 	 
 	 *
 	 * @var float
 	 */
@@ -258,7 +241,6 @@ class Kaltura_Client_Type_MediaInfo extends Kaltura_Client_ObjectBase
 
 	/**
 	 * The audio format
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -266,7 +248,6 @@ class Kaltura_Client_Type_MediaInfo extends Kaltura_Client_ObjectBase
 
 	/**
 	 * The audio codec id
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -274,7 +255,6 @@ class Kaltura_Client_Type_MediaInfo extends Kaltura_Client_ObjectBase
 
 	/**
 	 * The audio duration
-	 * 	 
 	 *
 	 * @var int
 	 */
@@ -282,7 +262,6 @@ class Kaltura_Client_Type_MediaInfo extends Kaltura_Client_ObjectBase
 
 	/**
 	 * The audio bit rate
-	 * 	 
 	 *
 	 * @var int
 	 */
@@ -290,7 +269,6 @@ class Kaltura_Client_Type_MediaInfo extends Kaltura_Client_ObjectBase
 
 	/**
 	 * The audio bit rate mode
-	 * 	 
 	 *
 	 * @var Kaltura_Client_Enum_BitRateMode
 	 */
@@ -298,7 +276,6 @@ class Kaltura_Client_Type_MediaInfo extends Kaltura_Client_ObjectBase
 
 	/**
 	 * The number of audio channels
-	 * 	 
 	 *
 	 * @var int
 	 */
@@ -306,7 +283,6 @@ class Kaltura_Client_Type_MediaInfo extends Kaltura_Client_ObjectBase
 
 	/**
 	 * The audio sampling rate
-	 * 	 
 	 *
 	 * @var int
 	 */
@@ -314,7 +290,6 @@ class Kaltura_Client_Type_MediaInfo extends Kaltura_Client_ObjectBase
 
 	/**
 	 * The audio resolution
-	 * 	 
 	 *
 	 * @var int
 	 */
@@ -322,7 +297,6 @@ class Kaltura_Client_Type_MediaInfo extends Kaltura_Client_ObjectBase
 
 	/**
 	 * The writing library
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -330,7 +304,6 @@ class Kaltura_Client_Type_MediaInfo extends Kaltura_Client_ObjectBase
 
 	/**
 	 * The data as returned by the mediainfo command line
-	 * 	 
 	 *
 	 * @var string
 	 */

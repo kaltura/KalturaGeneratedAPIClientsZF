@@ -71,7 +71,6 @@ class Kaltura_Client_Voicebase_Type_VoicebaseJobProviderData extends Kaltura_Cli
 	}
 	/**
 	 * Entry ID
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -79,7 +78,6 @@ class Kaltura_Client_Voicebase_Type_VoicebaseJobProviderData extends Kaltura_Cli
 
 	/**
 	 * Flavor ID
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -87,7 +85,6 @@ class Kaltura_Client_Voicebase_Type_VoicebaseJobProviderData extends Kaltura_Cli
 
 	/**
 	 * input Transcript-asset ID
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -95,7 +92,6 @@ class Kaltura_Client_Voicebase_Type_VoicebaseJobProviderData extends Kaltura_Cli
 
 	/**
 	 * Caption formats
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -103,7 +99,6 @@ class Kaltura_Client_Voicebase_Type_VoicebaseJobProviderData extends Kaltura_Cli
 
 	/**
 	 * Api key for service provider
-	 * 	 
 	 *
 	 * @var string
 	 * @readonly
@@ -112,7 +107,6 @@ class Kaltura_Client_Voicebase_Type_VoicebaseJobProviderData extends Kaltura_Cli
 
 	/**
 	 * Api key for service provider
-	 * 	 
 	 *
 	 * @var string
 	 * @readonly
@@ -121,7 +115,6 @@ class Kaltura_Client_Voicebase_Type_VoicebaseJobProviderData extends Kaltura_Cli
 
 	/**
 	 * Transcript content language
-	 * 	 
 	 *
 	 * @var Kaltura_Client_Enum_Language
 	 */
@@ -129,7 +122,6 @@ class Kaltura_Client_Voicebase_Type_VoicebaseJobProviderData extends Kaltura_Cli
 
 	/**
 	 * Transcript Content location
-	 * 	 
 	 *
 	 * @var string
 	 * @readonly
@@ -138,7 +130,6 @@ class Kaltura_Client_Voicebase_Type_VoicebaseJobProviderData extends Kaltura_Cli
 
 	/**
 	 * should replace remote media content
-	 * 	 
 	 *
 	 * @var bool
 	 */

@@ -52,7 +52,6 @@ class Kaltura_Client_Type_LiveChannel extends Kaltura_Client_Type_LiveEntry
 	}
 	/**
 	 * Playlist id to be played
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -60,7 +59,6 @@ class Kaltura_Client_Type_LiveChannel extends Kaltura_Client_Type_LiveEntry
 
 	/**
 	 * Indicates that the segments should be repeated for ever
-	 * 	 
 	 *
 	 * @var Kaltura_Client_Enum_NullableBoolean
 	 */

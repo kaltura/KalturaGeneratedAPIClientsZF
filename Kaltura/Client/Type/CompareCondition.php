@@ -52,7 +52,6 @@ abstract class Kaltura_Client_Type_CompareCondition extends Kaltura_Client_Type_
 	}
 	/**
 	 * Value to evaluate against the field and operator
-	 * 	 
 	 *
 	 * @var Kaltura_Client_Type_IntegerValue
 	 */
@@ -60,7 +59,6 @@ abstract class Kaltura_Client_Type_CompareCondition extends Kaltura_Client_Type_
 
 	/**
 	 * Comparing operator
-	 * 	 
 	 *
 	 * @var Kaltura_Client_Enum_SearchConditionComparison
 	 */

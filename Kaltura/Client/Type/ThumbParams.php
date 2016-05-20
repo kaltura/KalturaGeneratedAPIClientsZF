@@ -164,7 +164,6 @@ class Kaltura_Client_Type_ThumbParams extends Kaltura_Client_Type_AssetParams
 
 	/**
 	 * Hexadecimal value
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -172,7 +171,6 @@ class Kaltura_Client_Type_ThumbParams extends Kaltura_Client_Type_AssetParams
 
 	/**
 	 * Id of the flavor params or the thumbnail params to be used as source for the thumbnail creation
-	 * 	 
 	 *
 	 * @var int
 	 */
@@ -180,7 +178,6 @@ class Kaltura_Client_Type_ThumbParams extends Kaltura_Client_Type_AssetParams
 
 	/**
 	 * The container format of the Flavor Params
-	 * 	 
 	 *
 	 * @var Kaltura_Client_Enum_ContainerFormat
 	 */
@@ -188,7 +185,6 @@ class Kaltura_Client_Type_ThumbParams extends Kaltura_Client_Type_AssetParams
 
 	/**
 	 * The image density (dpi) for example: 72 or 96
-	 * 	 
 	 *
 	 * @var int
 	 */
@@ -196,7 +192,6 @@ class Kaltura_Client_Type_ThumbParams extends Kaltura_Client_Type_AssetParams
 
 	/**
 	 * Strip profiles and comments
-	 * 	 
 	 *
 	 * @var bool
 	 */
@@ -204,7 +199,6 @@ class Kaltura_Client_Type_ThumbParams extends Kaltura_Client_Type_AssetParams
 
 	/**
 	 * Create thumbnail from the videoLengthpercentage second
-	 *      
 	 *
 	 * @var int
 	 */

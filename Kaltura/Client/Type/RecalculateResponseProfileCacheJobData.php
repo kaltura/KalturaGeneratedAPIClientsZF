@@ -67,7 +67,6 @@ class Kaltura_Client_Type_RecalculateResponseProfileCacheJobData extends Kaltura
 	}
 	/**
 	 * http / https
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -89,7 +88,6 @@ class Kaltura_Client_Type_RecalculateResponseProfileCacheJobData extends Kaltura
 
 	/**
 	 * Class name
-	 * 	 
 	 *
 	 * @var string
 	 */

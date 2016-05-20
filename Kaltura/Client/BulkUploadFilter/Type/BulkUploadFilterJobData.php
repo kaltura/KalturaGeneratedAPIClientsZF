@@ -51,8 +51,7 @@ class Kaltura_Client_BulkUploadFilter_Type_BulkUploadFilterJobData extends Kaltu
 			$this->templateObject = Kaltura_Client_ParseUtils::unmarshalObject($xml->templateObject, "KalturaObjectBase");
 	}
 	/**
-	 * Filter for extracting the objects list to upload 
-	 * 	 
+	 * Filter for extracting the objects list to upload
 	 *
 	 * @var Kaltura_Client_Type_Filter
 	 */
@@ -60,7 +59,6 @@ class Kaltura_Client_BulkUploadFilter_Type_BulkUploadFilterJobData extends Kaltu
 
 	/**
 	 * Template object for new object creation
-	 * 	 
 	 *
 	 * @var KalturaObjectBase
 	 */

@@ -92,7 +92,6 @@ class Kaltura_Client_VarConsole_Type_VarPartnerUsageItem extends Kaltura_Client_
 	}
 	/**
 	 * Partner ID
-	 * 	 
 	 *
 	 * @var int
 	 */
@@ -100,7 +99,6 @@ class Kaltura_Client_VarConsole_Type_VarPartnerUsageItem extends Kaltura_Client_
 
 	/**
 	 * Partner name
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -108,7 +106,6 @@ class Kaltura_Client_VarConsole_Type_VarPartnerUsageItem extends Kaltura_Client_
 
 	/**
 	 * Partner status
-	 * 	 
 	 *
 	 * @var Kaltura_Client_Enum_PartnerStatus
 	 */
@@ -116,7 +113,6 @@ class Kaltura_Client_VarConsole_Type_VarPartnerUsageItem extends Kaltura_Client_
 
 	/**
 	 * Partner package
-	 * 	 
 	 *
 	 * @var int
 	 */
@@ -124,7 +120,6 @@ class Kaltura_Client_VarConsole_Type_VarPartnerUsageItem extends Kaltura_Client_
 
 	/**
 	 * Partner creation date (Unix timestamp)
-	 * 	 
 	 *
 	 * @var int
 	 */
@@ -132,7 +127,6 @@ class Kaltura_Client_VarConsole_Type_VarPartnerUsageItem extends Kaltura_Client_
 
 	/**
 	 * Number of player loads in the specific date range
-	 * 	 
 	 *
 	 * @var int
 	 */
@@ -140,7 +134,6 @@ class Kaltura_Client_VarConsole_Type_VarPartnerUsageItem extends Kaltura_Client_
 
 	/**
 	 * Number of plays in the specific date range
-	 * 	 
 	 *
 	 * @var int
 	 */
@@ -148,7 +141,6 @@ class Kaltura_Client_VarConsole_Type_VarPartnerUsageItem extends Kaltura_Client_
 
 	/**
 	 * Number of new entries created during specific date range
-	 * 	 
 	 *
 	 * @var int
 	 */
@@ -156,7 +148,6 @@ class Kaltura_Client_VarConsole_Type_VarPartnerUsageItem extends Kaltura_Client_
 
 	/**
 	 * Total number of entries
-	 * 	 
 	 *
 	 * @var int
 	 */
@@ -164,7 +155,6 @@ class Kaltura_Client_VarConsole_Type_VarPartnerUsageItem extends Kaltura_Client_
 
 	/**
 	 * Number of new video entries created during specific date range
-	 * 	 
 	 *
 	 * @var int
 	 */
@@ -172,7 +162,6 @@ class Kaltura_Client_VarConsole_Type_VarPartnerUsageItem extends Kaltura_Client_
 
 	/**
 	 * Number of new image entries created during specific date range
-	 * 	 
 	 *
 	 * @var int
 	 */
@@ -180,7 +169,6 @@ class Kaltura_Client_VarConsole_Type_VarPartnerUsageItem extends Kaltura_Client_
 
 	/**
 	 * Number of new audio entries created during specific date range
-	 * 	 
 	 *
 	 * @var int
 	 */
@@ -188,7 +176,6 @@ class Kaltura_Client_VarConsole_Type_VarPartnerUsageItem extends Kaltura_Client_
 
 	/**
 	 * Number of new mix entries created during specific date range
-	 * 	 
 	 *
 	 * @var int
 	 */
@@ -196,7 +183,6 @@ class Kaltura_Client_VarConsole_Type_VarPartnerUsageItem extends Kaltura_Client_
 
 	/**
 	 * The total bandwidth usage during the given date range (in MB)
-	 * 	 
 	 *
 	 * @var float
 	 */
@@ -204,7 +190,6 @@ class Kaltura_Client_VarConsole_Type_VarPartnerUsageItem extends Kaltura_Client_
 
 	/**
 	 * The total storage consumption (in MB)
-	 * 	 
 	 *
 	 * @var float
 	 */
@@ -212,7 +197,6 @@ class Kaltura_Client_VarConsole_Type_VarPartnerUsageItem extends Kaltura_Client_
 
 	/**
 	 * The added storage consumption (new uploads) during the given date range (in MB)
-	 * 	 
 	 *
 	 * @var float
 	 */
@@ -220,7 +204,6 @@ class Kaltura_Client_VarConsole_Type_VarPartnerUsageItem extends Kaltura_Client_
 
 	/**
 	 * The deleted storage consumption (new uploads) during the given date range (in MB)
-	 * 	 
 	 *
 	 * @var float
 	 */
@@ -228,7 +211,6 @@ class Kaltura_Client_VarConsole_Type_VarPartnerUsageItem extends Kaltura_Client_
 
 	/**
 	 * The peak amount of storage consumption during the given date range for the specific publisher
-	 * 	 
 	 *
 	 * @var float
 	 */
@@ -236,7 +218,6 @@ class Kaltura_Client_VarConsole_Type_VarPartnerUsageItem extends Kaltura_Client_
 
 	/**
 	 * The average amount of storage consumption during the given date range for the specific publisher
-	 * 	 
 	 *
 	 * @var float
 	 */
@@ -244,7 +225,6 @@ class Kaltura_Client_VarConsole_Type_VarPartnerUsageItem extends Kaltura_Client_
 
 	/**
 	 * The combined amount of bandwidth and storage consumed during the given date range for the specific publisher
-	 * 	 
 	 *
 	 * @var float
 	 */
@@ -252,7 +232,6 @@ class Kaltura_Client_VarConsole_Type_VarPartnerUsageItem extends Kaltura_Client_
 
 	/**
 	 * Amount of transcoding usage in MB
-	 * 	 
 	 *
 	 * @var float
 	 */
@@ -260,7 +239,6 @@ class Kaltura_Client_VarConsole_Type_VarPartnerUsageItem extends Kaltura_Client_
 
 	/**
 	 * TGhe date at which the report was taken - Unix Timestamp
-	 * 	 
 	 *
 	 * @var string
 	 */

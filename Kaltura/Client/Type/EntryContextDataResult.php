@@ -191,7 +191,6 @@ class Kaltura_Client_Type_EntryContextDataResult extends Kaltura_Client_Type_Con
 
 	/**
 	 * http/rtmp/hdnetwork
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -199,7 +198,6 @@ class Kaltura_Client_Type_EntryContextDataResult extends Kaltura_Client_Type_Con
 
 	/**
 	 * http/https, rtmp/rtmpe
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -214,7 +212,6 @@ class Kaltura_Client_Type_EntryContextDataResult extends Kaltura_Client_Type_Con
 
 	/**
 	 * Array of messages as received from the access control rules that invalidated
-	 * 	 
 	 *
 	 * @var array of KalturaString
 	 */
@@ -222,7 +219,6 @@ class Kaltura_Client_Type_EntryContextDataResult extends Kaltura_Client_Type_Con
 
 	/**
 	 * Array of actions as received from the access control rules that invalidated
-	 * 	 
 	 *
 	 * @var array of KalturaRuleAction
 	 */
@@ -230,7 +226,6 @@ class Kaltura_Client_Type_EntryContextDataResult extends Kaltura_Client_Type_Con
 
 	/**
 	 * Array of allowed flavor assets according to access control limitations and requested tags
-	 * 	 
 	 *
 	 * @var array of KalturaFlavorAsset
 	 */
@@ -238,7 +233,6 @@ class Kaltura_Client_Type_EntryContextDataResult extends Kaltura_Client_Type_Con
 
 	/**
 	 * The duration of the entry in milliseconds
-	 * 	 
 	 *
 	 * @var int
 	 */
@@ -246,7 +240,6 @@ class Kaltura_Client_Type_EntryContextDataResult extends Kaltura_Client_Type_Con
 
 	/**
 	 * Array of allowed flavor assets according to access control limitations and requested tags
-	 *      
 	 *
 	 * @var map
 	 */

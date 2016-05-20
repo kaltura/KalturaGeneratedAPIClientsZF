@@ -52,7 +52,6 @@ class Kaltura_Client_Type_SiteRestriction extends Kaltura_Client_Type_BaseRestri
 	}
 	/**
 	 * The site restriction type (allow or deny)
-	 * 	 
 	 *
 	 * @var Kaltura_Client_Enum_SiteRestrictionType
 	 */
@@ -60,7 +59,6 @@ class Kaltura_Client_Type_SiteRestriction extends Kaltura_Client_Type_BaseRestri
 
 	/**
 	 * Comma separated list of sites (domains) to allow or deny
-	 * 	 
 	 *
 	 * @var string
 	 */

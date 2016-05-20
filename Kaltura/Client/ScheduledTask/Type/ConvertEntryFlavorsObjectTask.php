@@ -57,7 +57,6 @@ class Kaltura_Client_ScheduledTask_Type_ConvertEntryFlavorsObjectTask extends Ka
 	}
 	/**
 	 * Comma separated list of flavor param ids to convert
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -65,7 +64,6 @@ class Kaltura_Client_ScheduledTask_Type_ConvertEntryFlavorsObjectTask extends Ka
 
 	/**
 	 * Should reconvert when flavor already exists?
-	 * 	 
 	 *
 	 * @var bool
 	 */

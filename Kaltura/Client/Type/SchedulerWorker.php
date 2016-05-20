@@ -91,7 +91,6 @@ class Kaltura_Client_Type_SchedulerWorker extends Kaltura_Client_ObjectBase
 	}
 	/**
 	 * The id of the Worker
-	 * 	 
 	 *
 	 * @var int
 	 * @readonly
@@ -100,7 +99,6 @@ class Kaltura_Client_Type_SchedulerWorker extends Kaltura_Client_ObjectBase
 
 	/**
 	 * The id as configured in the batch config
-	 * 	 
 	 *
 	 * @var int
 	 */
@@ -108,7 +106,6 @@ class Kaltura_Client_Type_SchedulerWorker extends Kaltura_Client_ObjectBase
 
 	/**
 	 * The id of the Scheduler
-	 * 	 
 	 *
 	 * @var int
 	 */
@@ -116,7 +113,6 @@ class Kaltura_Client_Type_SchedulerWorker extends Kaltura_Client_ObjectBase
 
 	/**
 	 * The id of the scheduler as configured in the batch config
-	 * 	 
 	 *
 	 * @var int
 	 */
@@ -124,7 +120,6 @@ class Kaltura_Client_Type_SchedulerWorker extends Kaltura_Client_ObjectBase
 
 	/**
 	 * The worker type
-	 * 	 
 	 *
 	 * @var Kaltura_Client_Enum_BatchJobType
 	 */
@@ -132,7 +127,6 @@ class Kaltura_Client_Type_SchedulerWorker extends Kaltura_Client_ObjectBase
 
 	/**
 	 * The friendly name of the type
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -140,7 +134,6 @@ class Kaltura_Client_Type_SchedulerWorker extends Kaltura_Client_ObjectBase
 
 	/**
 	 * The scheduler name
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -148,7 +141,6 @@ class Kaltura_Client_Type_SchedulerWorker extends Kaltura_Client_ObjectBase
 
 	/**
 	 * Array of the last statuses
-	 * 	 
 	 *
 	 * @var array of KalturaSchedulerStatus
 	 */
@@ -156,7 +148,6 @@ class Kaltura_Client_Type_SchedulerWorker extends Kaltura_Client_ObjectBase
 
 	/**
 	 * Array of the last configs
-	 * 	 
 	 *
 	 * @var array of KalturaSchedulerConfig
 	 */
@@ -164,7 +155,6 @@ class Kaltura_Client_Type_SchedulerWorker extends Kaltura_Client_ObjectBase
 
 	/**
 	 * Array of jobs that locked to this worker
-	 * 	 
 	 *
 	 * @var array of KalturaBatchJob
 	 */
@@ -172,7 +162,6 @@ class Kaltura_Client_Type_SchedulerWorker extends Kaltura_Client_ObjectBase
 
 	/**
 	 * Avarage time between creation and queue time
-	 * 	 
 	 *
 	 * @var int
 	 */
@@ -180,7 +169,6 @@ class Kaltura_Client_Type_SchedulerWorker extends Kaltura_Client_ObjectBase
 
 	/**
 	 * Avarage time between queue time end finish time
-	 * 	 
 	 *
 	 * @var int
 	 */
@@ -188,7 +176,6 @@ class Kaltura_Client_Type_SchedulerWorker extends Kaltura_Client_ObjectBase
 
 	/**
 	 * last status time
-	 * 	 
 	 *
 	 * @var int
 	 */
@@ -196,7 +183,6 @@ class Kaltura_Client_Type_SchedulerWorker extends Kaltura_Client_ObjectBase
 
 	/**
 	 * last status formated
-	 * 	 
 	 *
 	 * @var string
 	 */

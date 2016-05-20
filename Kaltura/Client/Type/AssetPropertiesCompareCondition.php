@@ -55,7 +55,6 @@ class Kaltura_Client_Type_AssetPropertiesCompareCondition extends Kaltura_Client
 	}
 	/**
 	 * Array of key/value objects that holds the property and the value to find and compare on an asset object
-	 * 	 
 	 *
 	 * @var array of KalturaKeyValue
 	 */

@@ -64,7 +64,6 @@ class Kaltura_Client_Type_SchedulerStatus extends Kaltura_Client_ObjectBase
 	}
 	/**
 	 * The id of the Category
-	 * 	 
 	 *
 	 * @var int
 	 * @readonly
@@ -73,7 +72,6 @@ class Kaltura_Client_Type_SchedulerStatus extends Kaltura_Client_ObjectBase
 
 	/**
 	 * The configured id of the scheduler
-	 * 	 
 	 *
 	 * @var int
 	 */
@@ -81,7 +79,6 @@ class Kaltura_Client_Type_SchedulerStatus extends Kaltura_Client_ObjectBase
 
 	/**
 	 * The configured id of the job worker
-	 * 	 
 	 *
 	 * @var int
 	 */
@@ -89,7 +86,6 @@ class Kaltura_Client_Type_SchedulerStatus extends Kaltura_Client_ObjectBase
 
 	/**
 	 * The type of the job worker.
-	 * 	 
 	 *
 	 * @var Kaltura_Client_Enum_BatchJobType
 	 */
@@ -97,7 +93,6 @@ class Kaltura_Client_Type_SchedulerStatus extends Kaltura_Client_ObjectBase
 
 	/**
 	 * The status type
-	 * 	 
 	 *
 	 * @var Kaltura_Client_Enum_SchedulerStatusType
 	 */
@@ -105,7 +100,6 @@ class Kaltura_Client_Type_SchedulerStatus extends Kaltura_Client_ObjectBase
 
 	/**
 	 * The status value
-	 * 	 
 	 *
 	 * @var int
 	 */
@@ -113,7 +107,6 @@ class Kaltura_Client_Type_SchedulerStatus extends Kaltura_Client_ObjectBase
 
 	/**
 	 * The id of the scheduler
-	 * 	 
 	 *
 	 * @var int
 	 * @readonly
@@ -122,7 +115,6 @@ class Kaltura_Client_Type_SchedulerStatus extends Kaltura_Client_ObjectBase
 
 	/**
 	 * The id of the worker
-	 * 	 
 	 *
 	 * @var int
 	 * @readonly

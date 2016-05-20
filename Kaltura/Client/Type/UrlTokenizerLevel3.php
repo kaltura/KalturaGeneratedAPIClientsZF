@@ -54,7 +54,6 @@ class Kaltura_Client_Type_UrlTokenizerLevel3 extends Kaltura_Client_Type_UrlToke
 	}
 	/**
 	 * paramName
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -62,7 +61,6 @@ class Kaltura_Client_Type_UrlTokenizerLevel3 extends Kaltura_Client_Type_UrlToke
 
 	/**
 	 * expiryName
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -70,7 +68,6 @@ class Kaltura_Client_Type_UrlTokenizerLevel3 extends Kaltura_Client_Type_UrlToke
 
 	/**
 	 * gen
-	 * 	 
 	 *
 	 * @var string
 	 */

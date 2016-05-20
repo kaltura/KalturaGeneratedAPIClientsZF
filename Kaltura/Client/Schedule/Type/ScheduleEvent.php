@@ -98,7 +98,6 @@ abstract class Kaltura_Client_Schedule_Type_ScheduleEvent extends Kaltura_Client
 	}
 	/**
 	 * Auto-generated unique identifier
-	 * 	 
 	 *
 	 * @var int
 	 * @readonly
@@ -123,7 +122,6 @@ abstract class Kaltura_Client_Schedule_Type_ScheduleEvent extends Kaltura_Client
 
 	/**
 	 * Defines a short summary or subject for the event
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -174,7 +172,6 @@ abstract class Kaltura_Client_Schedule_Type_ScheduleEvent extends Kaltura_Client
 
 	/**
 	 * Specifies the global position for the activity
-	 * 	 
 	 *
 	 * @var float
 	 */
@@ -182,7 +179,6 @@ abstract class Kaltura_Client_Schedule_Type_ScheduleEvent extends Kaltura_Client
 
 	/**
 	 * Specifies the global position for the activity
-	 * 	 
 	 *
 	 * @var float
 	 */
@@ -190,7 +186,6 @@ abstract class Kaltura_Client_Schedule_Type_ScheduleEvent extends Kaltura_Client
 
 	/**
 	 * Defines the intended venue for the activity
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -212,7 +207,6 @@ abstract class Kaltura_Client_Schedule_Type_ScheduleEvent extends Kaltura_Client
 
 	/**
 	 * The value for the priority field.
-	 * 	 
 	 *
 	 * @var int
 	 */
@@ -220,7 +214,6 @@ abstract class Kaltura_Client_Schedule_Type_ScheduleEvent extends Kaltura_Client
 
 	/**
 	 * Defines the revision sequence number.
-	 * 	 
 	 *
 	 * @var int
 	 */
@@ -236,7 +229,6 @@ abstract class Kaltura_Client_Schedule_Type_ScheduleEvent extends Kaltura_Client
 
 	/**
 	 * Duration in seconds
-	 * 	 
 	 *
 	 * @var int
 	 */
@@ -244,7 +236,6 @@ abstract class Kaltura_Client_Schedule_Type_ScheduleEvent extends Kaltura_Client
 
 	/**
 	 * Used to represent contact information or alternately a reference to contact information.
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -252,7 +243,6 @@ abstract class Kaltura_Client_Schedule_Type_ScheduleEvent extends Kaltura_Client
 
 	/**
 	 * Specifies non-processing information intended to provide a comment to the calendar user.
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -267,7 +257,6 @@ abstract class Kaltura_Client_Schedule_Type_ScheduleEvent extends Kaltura_Client
 
 	/**
 	 * Creation date as Unix timestamp (In seconds)
-	 * 	 
 	 *
 	 * @var int
 	 * @readonly
@@ -276,7 +265,6 @@ abstract class Kaltura_Client_Schedule_Type_ScheduleEvent extends Kaltura_Client
 
 	/**
 	 * Last update as Unix timestamp (In seconds)
-	 * 	 
 	 *
 	 * @var int
 	 * @readonly

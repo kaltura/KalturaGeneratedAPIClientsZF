@@ -56,7 +56,6 @@ class Kaltura_Client_Attachment_Type_AttachmentAsset extends Kaltura_Client_Type
 	}
 	/**
 	 * The filename of the attachment asset content
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -64,7 +63,6 @@ class Kaltura_Client_Attachment_Type_AttachmentAsset extends Kaltura_Client_Type
 
 	/**
 	 * Attachment asset title
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -72,7 +70,6 @@ class Kaltura_Client_Attachment_Type_AttachmentAsset extends Kaltura_Client_Type
 
 	/**
 	 * The attachment format
-	 * 	 
 	 *
 	 * @var Kaltura_Client_Attachment_Enum_AttachmentType
 	 */
@@ -80,7 +77,6 @@ class Kaltura_Client_Attachment_Type_AttachmentAsset extends Kaltura_Client_Type
 
 	/**
 	 * The status of the asset
-	 * 	 
 	 *
 	 * @var Kaltura_Client_Attachment_Enum_AttachmentAssetStatus
 	 * @readonly

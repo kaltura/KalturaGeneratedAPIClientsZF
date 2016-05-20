@@ -62,7 +62,6 @@ class Kaltura_Client_HttpNotification_Type_HttpNotification extends Kaltura_Clie
 	}
 	/**
 	 * Object that triggered the notification
-	 * 	 
 	 *
 	 * @var KalturaObjectBase
 	 */
@@ -70,7 +69,6 @@ class Kaltura_Client_HttpNotification_Type_HttpNotification extends Kaltura_Clie
 
 	/**
 	 * Object type that triggered the notification
-	 * 	 
 	 *
 	 * @var Kaltura_Client_EventNotification_Enum_EventNotificationEventObjectType
 	 */
@@ -78,7 +76,6 @@ class Kaltura_Client_HttpNotification_Type_HttpNotification extends Kaltura_Clie
 
 	/**
 	 * ID of the batch job that execute the notification
-	 * 	 
 	 *
 	 * @var bigint
 	 */
@@ -86,7 +83,6 @@ class Kaltura_Client_HttpNotification_Type_HttpNotification extends Kaltura_Clie
 
 	/**
 	 * ID of the template that triggered the notification
-	 * 	 
 	 *
 	 * @var int
 	 */
@@ -94,7 +90,6 @@ class Kaltura_Client_HttpNotification_Type_HttpNotification extends Kaltura_Clie
 
 	/**
 	 * Name of the template that triggered the notification
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -102,7 +97,6 @@ class Kaltura_Client_HttpNotification_Type_HttpNotification extends Kaltura_Clie
 
 	/**
 	 * System name of the template that triggered the notification
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -110,7 +104,6 @@ class Kaltura_Client_HttpNotification_Type_HttpNotification extends Kaltura_Clie
 
 	/**
 	 * Ecent type that triggered the notification
-	 * 	 
 	 *
 	 * @var Kaltura_Client_EventNotification_Enum_EventNotificationEventType
 	 */

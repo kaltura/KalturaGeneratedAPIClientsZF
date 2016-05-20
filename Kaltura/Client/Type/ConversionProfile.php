@@ -91,7 +91,6 @@ class Kaltura_Client_Type_ConversionProfile extends Kaltura_Client_ObjectBase
 	}
 	/**
 	 * The id of the Conversion Profile
-	 * 	 
 	 *
 	 * @var int
 	 * @readonly
@@ -123,7 +122,6 @@ class Kaltura_Client_Type_ConversionProfile extends Kaltura_Client_ObjectBase
 
 	/**
 	 * The name of the Conversion Profile
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -131,7 +129,6 @@ class Kaltura_Client_Type_ConversionProfile extends Kaltura_Client_ObjectBase
 
 	/**
 	 * System name of the Conversion Profile
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -139,7 +136,6 @@ class Kaltura_Client_Type_ConversionProfile extends Kaltura_Client_ObjectBase
 
 	/**
 	 * Comma separated tags
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -147,7 +143,6 @@ class Kaltura_Client_Type_ConversionProfile extends Kaltura_Client_ObjectBase
 
 	/**
 	 * The description of the Conversion Profile
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -155,15 +150,13 @@ class Kaltura_Client_Type_ConversionProfile extends Kaltura_Client_ObjectBase
 
 	/**
 	 * ID of the default entry to be used for template data
-	 * 	 
 	 *
 	 * @var string
 	 */
 	public $defaultEntryId = null;
 
 	/**
-	 * Creation date as Unix timestamp (In seconds) 
-	 * 	 
+	 * Creation date as Unix timestamp (In seconds)
 	 *
 	 * @var int
 	 * @readonly
@@ -172,7 +165,6 @@ class Kaltura_Client_Type_ConversionProfile extends Kaltura_Client_ObjectBase
 
 	/**
 	 * List of included flavor ids (comma separated)
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -180,7 +172,6 @@ class Kaltura_Client_Type_ConversionProfile extends Kaltura_Client_ObjectBase
 
 	/**
 	 * Indicates that this conversion profile is system default
-	 * 	 
 	 *
 	 * @var Kaltura_Client_Enum_NullableBoolean
 	 */
@@ -188,7 +179,6 @@ class Kaltura_Client_Type_ConversionProfile extends Kaltura_Client_ObjectBase
 
 	/**
 	 * Indicates that this conversion profile is partner default
-	 * 	 
 	 *
 	 * @var bool
 	 * @readonly
@@ -197,7 +187,6 @@ class Kaltura_Client_Type_ConversionProfile extends Kaltura_Client_ObjectBase
 
 	/**
 	 * Cropping dimensions
-	 * 	 
 	 *
 	 * @var Kaltura_Client_Type_CropDimensions
 	 */
@@ -205,7 +194,6 @@ class Kaltura_Client_Type_ConversionProfile extends Kaltura_Client_ObjectBase
 
 	/**
 	 * Clipping start position (in miliseconds)
-	 * 	 
 	 *
 	 * @var int
 	 */
@@ -213,7 +201,6 @@ class Kaltura_Client_Type_ConversionProfile extends Kaltura_Client_ObjectBase
 
 	/**
 	 * Clipping duration (in miliseconds)
-	 * 	 
 	 *
 	 * @var int
 	 */
@@ -221,7 +208,6 @@ class Kaltura_Client_Type_ConversionProfile extends Kaltura_Client_ObjectBase
 
 	/**
 	 * XSL to transform ingestion MRSS XML
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -229,7 +215,6 @@ class Kaltura_Client_Type_ConversionProfile extends Kaltura_Client_ObjectBase
 
 	/**
 	 * ID of default storage profile to be used for linked net-storage file syncs
-	 * 	 
 	 *
 	 * @var int
 	 */
@@ -237,7 +222,6 @@ class Kaltura_Client_Type_ConversionProfile extends Kaltura_Client_ObjectBase
 
 	/**
 	 * Media parser type to be used for extract media
-	 * 	 
 	 *
 	 * @var Kaltura_Client_Enum_MediaParserType
 	 */

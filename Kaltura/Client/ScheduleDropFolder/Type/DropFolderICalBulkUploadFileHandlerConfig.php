@@ -50,7 +50,6 @@ class Kaltura_Client_ScheduleDropFolder_Type_DropFolderICalBulkUploadFileHandler
 	}
 	/**
 	 * The type of the events that ill be created by this upload
-	 * 	 
 	 *
 	 * @var Kaltura_Client_Schedule_Enum_ScheduleEventType
 	 */

@@ -113,7 +113,6 @@ class Kaltura_Client_Schedule_Type_ScheduleEventRecurrence extends Kaltura_Clien
 
 	/**
 	 * Comma separated numbers between 0 to 59
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -121,7 +120,6 @@ class Kaltura_Client_Schedule_Type_ScheduleEventRecurrence extends Kaltura_Clien
 
 	/**
 	 * Comma separated numbers between 0 to 59
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -129,7 +127,6 @@ class Kaltura_Client_Schedule_Type_ScheduleEventRecurrence extends Kaltura_Clien
 
 	/**
 	 * Comma separated numbers between 0 to 23
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -142,7 +139,6 @@ class Kaltura_Client_Schedule_Type_ScheduleEventRecurrence extends Kaltura_Clien
 	 * 	 For example, within a MONTHLY rule, +1MO (or simply 1MO) represents the first Monday within the month, whereas -1MO represents the last Monday of the month.
 	 * 	 If an integer modifier is not present, it means all days of this type within the specified frequency.
 	 * 	 For example, within a MONTHLY rule, MO represents all Mondays within the month.
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -151,7 +147,6 @@ class Kaltura_Client_Schedule_Type_ScheduleEventRecurrence extends Kaltura_Clien
 	/**
 	 * Comma separated of numbers between -31 to 31, excluding 0.
 	 * 	 For example, -10 represents the tenth to the last day of the month.
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -160,7 +155,6 @@ class Kaltura_Client_Schedule_Type_ScheduleEventRecurrence extends Kaltura_Clien
 	/**
 	 * Comma separated of numbers between -366 to 366, excluding 0.
 	 * 	 For example, -1 represents the last day of the year (December 31st) and -306 represents the 306th to the last day of the year (March 1st).
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -173,7 +167,6 @@ class Kaltura_Client_Schedule_Type_ScheduleEventRecurrence extends Kaltura_Clien
 	 * 	 Week number one of the calendar year is the first week which contains at least four (4) days in that calendar year.
 	 * 	 This rule part is only valid for YEARLY frequency.
 	 * 	 For example, 3 represents the third week of the year.
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -181,7 +174,6 @@ class Kaltura_Client_Schedule_Type_ScheduleEventRecurrence extends Kaltura_Clien
 
 	/**
 	 * Comma separated numbers between 1 to 12
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -194,7 +186,6 @@ class Kaltura_Client_Schedule_Type_ScheduleEventRecurrence extends Kaltura_Clien
 	 * 	 For example "the last work day of the month" could be represented as: frequency=MONTHLY;byDay=MO,TU,WE,TH,FR;byOffset=-1
 	 * 	 Each byOffset value can include a positive (+n) or negative (-n) integer.
 	 * 	 If present, this indicates the nth occurrence of the specific occurrence within the set of events specified by the rule.
-	 * 	 
 	 *
 	 * @var string
 	 */

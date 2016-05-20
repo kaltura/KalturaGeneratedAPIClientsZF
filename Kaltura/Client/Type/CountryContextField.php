@@ -50,7 +50,6 @@ class Kaltura_Client_Type_CountryContextField extends Kaltura_Client_Type_String
 	}
 	/**
 	 * The ip geo coder engine to be used
-	 * 	 
 	 *
 	 * @var Kaltura_Client_Enum_GeoCoderType
 	 */

@@ -55,7 +55,6 @@ class Kaltura_Client_Type_DeliveryProfileAkamaiHds extends Kaltura_Client_Type_D
 	}
 	/**
 	 * Should we use timing parameters - clipTo / seekFrom
-	 * 	 
 	 *
 	 * @var bool
 	 */

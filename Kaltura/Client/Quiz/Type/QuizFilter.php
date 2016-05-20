@@ -52,7 +52,6 @@ class Kaltura_Client_Quiz_Type_QuizFilter extends Kaltura_Client_Type_RelatedFil
 	}
 	/**
 	 * This filter should be in use for retrieving only a specific quiz entry (identified by its entryId).
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -60,7 +59,6 @@ class Kaltura_Client_Quiz_Type_QuizFilter extends Kaltura_Client_Type_RelatedFil
 
 	/**
 	 * This filter should be in use for retrieving few specific quiz entries (string should include comma separated list of entryId strings).
-	 * 	 
 	 *
 	 * @var string
 	 */

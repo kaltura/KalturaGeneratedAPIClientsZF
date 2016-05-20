@@ -49,8 +49,7 @@ class Kaltura_Client_Type_RemoteStorageResource extends Kaltura_Client_Type_UrlR
 			$this->storageProfileId = (int)$xml->storageProfileId;
 	}
 	/**
-	 * ID of storage profile to be associated with the created file sync, used for file serving URL composing. 
-	 * 	 
+	 * ID of storage profile to be associated with the created file sync, used for file serving URL composing.
 	 *
 	 * @var int
 	 */

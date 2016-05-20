@@ -52,7 +52,6 @@ class Kaltura_Client_ExternalMedia_Type_ExternalMediaEntry extends Kaltura_Clien
 	}
 	/**
 	 * The source type of the external media
-	 * 	 
 	 *
 	 * @var Kaltura_Client_ExternalMedia_Enum_ExternalMediaSourceType
 	 * @insertonly
@@ -61,7 +60,6 @@ class Kaltura_Client_ExternalMedia_Type_ExternalMediaEntry extends Kaltura_Clien
 
 	/**
 	 * Comma separated asset params ids that exists for this external media entry
-	 * 	 
 	 *
 	 * @var string
 	 * @readonly

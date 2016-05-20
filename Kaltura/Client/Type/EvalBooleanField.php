@@ -50,7 +50,6 @@ class Kaltura_Client_Type_EvalBooleanField extends Kaltura_Client_Type_BooleanFi
 	}
 	/**
 	 * PHP code
-	 * 	 
 	 *
 	 * @var string
 	 */

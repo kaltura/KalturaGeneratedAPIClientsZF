@@ -54,7 +54,6 @@ class Kaltura_Client_Type_SshUrlResource extends Kaltura_Client_Type_UrlResource
 	}
 	/**
 	 * SSH private key
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -62,7 +61,6 @@ class Kaltura_Client_Type_SshUrlResource extends Kaltura_Client_Type_UrlResource
 
 	/**
 	 * SSH public key
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -70,7 +68,6 @@ class Kaltura_Client_Type_SshUrlResource extends Kaltura_Client_Type_UrlResource
 
 	/**
 	 * Passphrase for SSH keys
-	 * 	 
 	 *
 	 * @var string
 	 */

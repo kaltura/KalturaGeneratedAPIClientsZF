@@ -54,7 +54,6 @@ class Kaltura_Client_EventNotification_Type_EventNotificationParameter extends K
 	}
 	/**
 	 * The key in the subject and body to be replaced with the dynamic value
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -69,7 +68,6 @@ class Kaltura_Client_EventNotification_Type_EventNotificationParameter extends K
 
 	/**
 	 * The dynamic value to be placed in the final output
-	 * 	 
 	 *
 	 * @var Kaltura_Client_Type_StringValue
 	 */

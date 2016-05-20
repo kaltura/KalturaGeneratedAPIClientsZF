@@ -50,7 +50,6 @@ class Kaltura_Client_Type_EntryIdentifier extends Kaltura_Client_Type_ObjectIden
 	}
 	/**
 	 * Identifier of the object
-	 * 	 
 	 *
 	 * @var Kaltura_Client_Enum_EntryIdentifierField
 	 */

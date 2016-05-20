@@ -57,7 +57,6 @@ class Kaltura_Client_Type_IpAddressCondition extends Kaltura_Client_Type_MatchCo
 	}
 	/**
 	 * allow internal ips
-	 * 	 
 	 *
 	 * @var bool
 	 */
@@ -65,7 +64,6 @@ class Kaltura_Client_Type_IpAddressCondition extends Kaltura_Client_Type_MatchCo
 
 	/**
 	 * http header name for extracting the ip
-	 * 	 
 	 *
 	 * @var string
 	 */

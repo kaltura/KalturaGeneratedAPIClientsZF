@@ -49,8 +49,7 @@ class Kaltura_Client_Type_AssetResource extends Kaltura_Client_Type_ContentResou
 			$this->assetId = (string)$xml->assetId;
 	}
 	/**
-	 * ID of the source asset 
-	 * 	 
+	 * ID of the source asset
 	 *
 	 * @var string
 	 */

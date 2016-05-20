@@ -56,7 +56,6 @@ class Kaltura_Client_Type_UrlRecognizerAkamaiG2O extends Kaltura_Client_Type_Url
 	}
 	/**
 	 * headerData
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -64,7 +63,6 @@ class Kaltura_Client_Type_UrlRecognizerAkamaiG2O extends Kaltura_Client_Type_Url
 
 	/**
 	 * headerSign
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -72,7 +70,6 @@ class Kaltura_Client_Type_UrlRecognizerAkamaiG2O extends Kaltura_Client_Type_Url
 
 	/**
 	 * timeout
-	 * 	 
 	 *
 	 * @var int
 	 */
@@ -80,7 +77,6 @@ class Kaltura_Client_Type_UrlRecognizerAkamaiG2O extends Kaltura_Client_Type_Url
 
 	/**
 	 * salt
-	 * 	 
 	 *
 	 * @var string
 	 */

@@ -65,7 +65,6 @@ class Kaltura_Client_Type_ConcatJobData extends Kaltura_Client_Type_JobData
 	}
 	/**
 	 * Source files to be concatenated
-	 * 	 
 	 *
 	 * @var array of KalturaString
 	 */
@@ -73,7 +72,6 @@ class Kaltura_Client_Type_ConcatJobData extends Kaltura_Client_Type_JobData
 
 	/**
 	 * Output file
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -81,7 +79,6 @@ class Kaltura_Client_Type_ConcatJobData extends Kaltura_Client_Type_JobData
 
 	/**
 	 * Flavor asset to be ingested with the output
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -89,7 +86,6 @@ class Kaltura_Client_Type_ConcatJobData extends Kaltura_Client_Type_JobData
 
 	/**
 	 * Clipping offset in seconds
-	 * 	 
 	 *
 	 * @var float
 	 */
@@ -97,7 +93,6 @@ class Kaltura_Client_Type_ConcatJobData extends Kaltura_Client_Type_JobData
 
 	/**
 	 * Clipping duration in seconds
-	 * 	 
 	 *
 	 * @var float
 	 */
@@ -105,7 +100,6 @@ class Kaltura_Client_Type_ConcatJobData extends Kaltura_Client_Type_JobData
 
 	/**
 	 * duration of the concated video
-	 * 	 
 	 *
 	 * @var float
 	 */

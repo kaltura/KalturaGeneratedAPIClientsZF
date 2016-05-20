@@ -85,7 +85,6 @@ class Kaltura_Client_Type_BulkUploadResult extends Kaltura_Client_ObjectBase
 	}
 	/**
 	 * The id of the result
-	 *      
 	 *
 	 * @var int
 	 * @readonly
@@ -94,7 +93,6 @@ class Kaltura_Client_Type_BulkUploadResult extends Kaltura_Client_ObjectBase
 
 	/**
 	 * The id of the parent job
-	 * 	 
 	 *
 	 * @var bigint
 	 */
@@ -102,7 +100,6 @@ class Kaltura_Client_Type_BulkUploadResult extends Kaltura_Client_ObjectBase
 
 	/**
 	 * The index of the line in the CSV
-	 * 	 
 	 *
 	 * @var int
 	 */
@@ -152,7 +149,6 @@ class Kaltura_Client_Type_BulkUploadResult extends Kaltura_Client_ObjectBase
 
 	/**
 	 * The data as recieved in the csv
-	 * 	 
 	 *
 	 * @var string
 	 */

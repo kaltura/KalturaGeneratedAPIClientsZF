@@ -50,7 +50,6 @@ class Kaltura_Client_ScheduledTask_Type_StorageExportObjectTask extends Kaltura_
 	}
 	/**
 	 * Storage profile id
-	 * 	 
 	 *
 	 * @var string
 	 */

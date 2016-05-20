@@ -59,7 +59,6 @@ abstract class Kaltura_Client_Type_Condition extends Kaltura_Client_ObjectBase
 	}
 	/**
 	 * The type of the access control condition
-	 * 	 
 	 *
 	 * @var Kaltura_Client_Enum_ConditionType
 	 * @readonly

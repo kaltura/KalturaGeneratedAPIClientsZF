@@ -52,7 +52,6 @@ class Kaltura_Client_ScheduledTask_Type_DeleteEntryFlavorsObjectTask extends Kal
 	}
 	/**
 	 * The logic to use to choose the flavors for deletion
-	 * 	 
 	 *
 	 * @var Kaltura_Client_ScheduledTask_Enum_DeleteFlavorsLogicType
 	 */
@@ -60,7 +59,6 @@ class Kaltura_Client_ScheduledTask_Type_DeleteEntryFlavorsObjectTask extends Kal
 
 	/**
 	 * Comma separated list of flavor param ids to delete or keep
-	 * 	 
 	 *
 	 * @var string
 	 */

@@ -49,8 +49,7 @@ class Kaltura_Client_Type_UploadedFileTokenResource extends Kaltura_Client_Type_
 			$this->token = (string)$xml->token;
 	}
 	/**
-	 * Token that returned from upload.upload action or uploadToken.add action. 
-	 * 	 
+	 * Token that returned from upload.upload action or uploadToken.add action.
 	 *
 	 * @var string
 	 */

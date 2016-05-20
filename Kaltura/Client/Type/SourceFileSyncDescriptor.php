@@ -54,7 +54,6 @@ class Kaltura_Client_Type_SourceFileSyncDescriptor extends Kaltura_Client_Type_F
 	}
 	/**
 	 * The translated path as used by the scheduler
-	 * 	 
 	 *
 	 * @var string
 	 */

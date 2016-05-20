@@ -65,7 +65,6 @@ class Kaltura_Client_Type_CategoryEntry extends Kaltura_Client_ObjectBase
 
 	/**
 	 * entry id
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -73,7 +72,6 @@ class Kaltura_Client_Type_CategoryEntry extends Kaltura_Client_ObjectBase
 
 	/**
 	 * Creation date as Unix timestamp (In seconds)
-	 * 	 
 	 *
 	 * @var int
 	 * @readonly
@@ -82,7 +80,6 @@ class Kaltura_Client_Type_CategoryEntry extends Kaltura_Client_ObjectBase
 
 	/**
 	 * The full ids of the Category
-	 * 	 
 	 *
 	 * @var string
 	 * @readonly
@@ -91,7 +88,6 @@ class Kaltura_Client_Type_CategoryEntry extends Kaltura_Client_ObjectBase
 
 	/**
 	 * CategroyEntry status
-	 * 	 
 	 *
 	 * @var Kaltura_Client_Enum_CategoryEntryStatus
 	 * @readonly

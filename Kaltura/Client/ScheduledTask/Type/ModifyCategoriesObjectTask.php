@@ -57,7 +57,6 @@ class Kaltura_Client_ScheduledTask_Type_ModifyCategoriesObjectTask extends Kaltu
 	}
 	/**
 	 * Should the object task add or remove categories?
-	 * 	 
 	 *
 	 * @var Kaltura_Client_ScheduledTask_Enum_ScheduledTaskAddOrRemoveType
 	 */
@@ -65,7 +64,6 @@ class Kaltura_Client_ScheduledTask_Type_ModifyCategoriesObjectTask extends Kaltu
 
 	/**
 	 * The list of category ids to add or remove
-	 * 	 
 	 *
 	 * @var array of KalturaIntegerValue
 	 */

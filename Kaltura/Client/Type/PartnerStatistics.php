@@ -60,7 +60,6 @@ class Kaltura_Client_Type_PartnerStatistics extends Kaltura_Client_ObjectBase
 	}
 	/**
 	 * Package total allowed bandwidth and storage
-	 * 	 
 	 *
 	 * @var int
 	 * @readonly
@@ -69,7 +68,6 @@ class Kaltura_Client_Type_PartnerStatistics extends Kaltura_Client_ObjectBase
 
 	/**
 	 * Partner total hosting in GB on the disk
-	 * 	 
 	 *
 	 * @var float
 	 * @readonly
@@ -78,7 +76,6 @@ class Kaltura_Client_Type_PartnerStatistics extends Kaltura_Client_ObjectBase
 
 	/**
 	 * Partner total bandwidth in GB
-	 * 	 
 	 *
 	 * @var float
 	 * @readonly
@@ -87,7 +84,6 @@ class Kaltura_Client_Type_PartnerStatistics extends Kaltura_Client_ObjectBase
 
 	/**
 	 * total usage in GB - including bandwidth and storage
-	 * 	 
 	 *
 	 * @var int
 	 * @readonly
@@ -96,7 +92,6 @@ class Kaltura_Client_Type_PartnerStatistics extends Kaltura_Client_ObjectBase
 
 	/**
 	 * Percent of usage out of partner's package. if usage is 5GB and package is 10GB, this value will be 50
-	 * 	 
 	 *
 	 * @var float
 	 * @readonly
@@ -105,7 +100,6 @@ class Kaltura_Client_Type_PartnerStatistics extends Kaltura_Client_ObjectBase
 
 	/**
 	 * date when partner reached the limit of his package (timestamp)
-	 * 	 
 	 *
 	 * @var int
 	 * @readonly

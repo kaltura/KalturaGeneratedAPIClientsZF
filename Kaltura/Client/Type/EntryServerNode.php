@@ -64,7 +64,6 @@ abstract class Kaltura_Client_Type_EntryServerNode extends Kaltura_Client_Object
 	}
 	/**
 	 * unique auto-generated identifier
-	 * 	 
 	 *
 	 * @var int
 	 * @readonly

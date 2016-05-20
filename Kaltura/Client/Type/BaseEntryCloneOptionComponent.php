@@ -59,7 +59,6 @@ class Kaltura_Client_Type_BaseEntryCloneOptionComponent extends Kaltura_Client_T
 
 	/**
 	 * condition rule (include/exclude)
-	 *      
 	 *
 	 * @var Kaltura_Client_Enum_CloneComponentSelectorType
 	 */

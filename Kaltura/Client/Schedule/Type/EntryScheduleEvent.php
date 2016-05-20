@@ -54,7 +54,6 @@ abstract class Kaltura_Client_Schedule_Type_EntryScheduleEvent extends Kaltura_C
 	}
 	/**
 	 * Entry to be used as template during content ingestion
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -62,7 +61,6 @@ abstract class Kaltura_Client_Schedule_Type_EntryScheduleEvent extends Kaltura_C
 
 	/**
 	 * Entries that associated with this event
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -70,7 +68,6 @@ abstract class Kaltura_Client_Schedule_Type_EntryScheduleEvent extends Kaltura_C
 
 	/**
 	 * Categories that associated with this event
-	 * 	 
 	 *
 	 * @var string
 	 */

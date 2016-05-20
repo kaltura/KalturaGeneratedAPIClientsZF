@@ -52,7 +52,6 @@ class Kaltura_Client_Kontiki_Type_KontikiStorageDeleteJobData extends Kaltura_Cl
 	}
 	/**
 	 * Unique Kontiki MOID for the content uploaded to Kontiki
-	 *      
 	 *
 	 * @var string
 	 */

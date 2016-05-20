@@ -56,8 +56,7 @@ class Kaltura_Client_Type_AccessControlLimitFlavorsAction extends Kaltura_Client
 		}
 	}
 	/**
-	 * Comma separated list of flavor ids 
-	 * 	 
+	 * Comma separated list of flavor ids
 	 *
 	 * @var string
 	 */

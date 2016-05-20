@@ -50,7 +50,6 @@ class Kaltura_Client_ScheduledTaskEventNotification_Type_DispatchEventNotificati
 	}
 	/**
 	 * The event notification template id to dispatch
-	 * 	 
 	 *
 	 * @var int
 	 */

@@ -56,7 +56,6 @@ class Kaltura_Client_Type_EntryContextDataParams extends Kaltura_Client_Type_Acc
 	}
 	/**
 	 * Id of the current flavor.
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -64,7 +63,6 @@ class Kaltura_Client_Type_EntryContextDataParams extends Kaltura_Client_Type_Acc
 
 	/**
 	 * The tags of the flavors that should be used for playback.
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -72,7 +70,6 @@ class Kaltura_Client_Type_EntryContextDataParams extends Kaltura_Client_Type_Acc
 
 	/**
 	 * Playback streamer type: RTMP, HTTP, appleHttps, rtsp, sl.
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -80,7 +77,6 @@ class Kaltura_Client_Type_EntryContextDataParams extends Kaltura_Client_Type_Acc
 
 	/**
 	 * Protocol of the specific media object.
-	 * 	 
 	 *
 	 * @var string
 	 */

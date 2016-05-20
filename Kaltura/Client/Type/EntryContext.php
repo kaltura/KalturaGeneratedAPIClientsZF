@@ -52,7 +52,6 @@ class Kaltura_Client_Type_EntryContext extends Kaltura_Client_Type_Context
 	}
 	/**
 	 * The entry ID in the context of which the playlist should be built
-	 *      
 	 *
 	 * @var string
 	 */
@@ -60,7 +59,6 @@ class Kaltura_Client_Type_EntryContext extends Kaltura_Client_Type_Context
 
 	/**
 	 * Is this a redirected entry followup?
-	 *      
 	 *
 	 * @var Kaltura_Client_Enum_NullableBoolean
 	 */

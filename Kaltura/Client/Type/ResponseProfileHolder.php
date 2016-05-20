@@ -52,7 +52,6 @@ class Kaltura_Client_Type_ResponseProfileHolder extends Kaltura_Client_Type_Base
 	}
 	/**
 	 * Auto generated numeric identifier
-	 * 	 
 	 *
 	 * @var int
 	 */
@@ -60,7 +59,6 @@ class Kaltura_Client_Type_ResponseProfileHolder extends Kaltura_Client_Type_Base
 
 	/**
 	 * Unique system name
-	 * 	 
 	 *
 	 * @var string
 	 */

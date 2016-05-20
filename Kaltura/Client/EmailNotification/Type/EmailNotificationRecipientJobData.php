@@ -50,7 +50,6 @@ abstract class Kaltura_Client_EmailNotification_Type_EmailNotificationRecipientJ
 	}
 	/**
 	 * Provider type of the job data.
-	 * 	  
 	 *
 	 * @var Kaltura_Client_EmailNotification_Enum_EmailNotificationRecipientProviderType
 	 * @readonly

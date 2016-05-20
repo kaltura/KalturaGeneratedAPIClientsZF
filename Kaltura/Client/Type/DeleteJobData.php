@@ -50,7 +50,6 @@ class Kaltura_Client_Type_DeleteJobData extends Kaltura_Client_Type_JobData
 	}
 	/**
 	 * The filter should return the list of objects that need to be deleted.
-	 * 	 
 	 *
 	 * @var Kaltura_Client_Type_Filter
 	 */

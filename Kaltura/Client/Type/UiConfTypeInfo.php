@@ -61,7 +61,6 @@ class Kaltura_Client_Type_UiConfTypeInfo extends Kaltura_Client_ObjectBase
 	}
 	/**
 	 * UiConf Type
-	 * 	 
 	 *
 	 * @var Kaltura_Client_Enum_UiConfObjType
 	 */
@@ -69,7 +68,6 @@ class Kaltura_Client_Type_UiConfTypeInfo extends Kaltura_Client_ObjectBase
 
 	/**
 	 * Available versions
-	 *      
 	 *
 	 * @var array of KalturaString
 	 */
@@ -77,7 +75,6 @@ class Kaltura_Client_Type_UiConfTypeInfo extends Kaltura_Client_ObjectBase
 
 	/**
 	 * The direcotry this type is saved at
-	 *      
 	 *
 	 * @var string
 	 */
@@ -85,7 +82,6 @@ class Kaltura_Client_Type_UiConfTypeInfo extends Kaltura_Client_ObjectBase
 
 	/**
 	 * Filename for this UiConf type
-	 *      
 	 *
 	 * @var string
 	 */

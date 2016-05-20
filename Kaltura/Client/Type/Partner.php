@@ -238,7 +238,6 @@ class Kaltura_Client_Type_Partner extends Kaltura_Client_ObjectBase
 
 	/**
 	 * deprecated - lastName and firstName replaces this field
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -420,7 +419,6 @@ class Kaltura_Client_Type_Partner extends Kaltura_Client_ObjectBase
 
 	/**
 	 * firstName and lastName replace the old (deprecated) adminName
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -428,7 +426,6 @@ class Kaltura_Client_Type_Partner extends Kaltura_Client_ObjectBase
 
 	/**
 	 * lastName and firstName replace the old (deprecated) adminName
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -436,7 +433,6 @@ class Kaltura_Client_Type_Partner extends Kaltura_Client_ObjectBase
 
 	/**
 	 * country code (2char) - this field is optional
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -444,7 +440,6 @@ class Kaltura_Client_Type_Partner extends Kaltura_Client_ObjectBase
 
 	/**
 	 * state code (2char) - this field is optional
-	 * 	 
 	 *
 	 * @var string
 	 */

@@ -64,7 +64,6 @@ abstract class Kaltura_Client_Type_UserEntry extends Kaltura_Client_ObjectBase
 	}
 	/**
 	 * unique auto-generated identifier
-	 * 	 
 	 *
 	 * @var int
 	 * @readonly

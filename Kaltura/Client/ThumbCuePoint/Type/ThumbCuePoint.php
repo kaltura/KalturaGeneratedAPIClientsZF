@@ -77,7 +77,6 @@ class Kaltura_Client_ThumbCuePoint_Type_ThumbCuePoint extends Kaltura_Client_Cue
 
 	/**
 	 * The sub type of the ThumbCuePoint
-	 * 	 
 	 *
 	 * @var Kaltura_Client_CuePoint_Enum_ThumbCuePointSubType
 	 */

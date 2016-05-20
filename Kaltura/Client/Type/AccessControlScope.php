@@ -72,7 +72,6 @@ class Kaltura_Client_Type_AccessControlScope extends Kaltura_Client_ObjectBase
 	}
 	/**
 	 * URL to be used to test domain conditions.
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -80,7 +79,6 @@ class Kaltura_Client_Type_AccessControlScope extends Kaltura_Client_ObjectBase
 
 	/**
 	 * IP to be used to test geographic location conditions.
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -88,7 +86,6 @@ class Kaltura_Client_Type_AccessControlScope extends Kaltura_Client_ObjectBase
 
 	/**
 	 * Kaltura session to be used to test session and user conditions.
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -96,7 +93,6 @@ class Kaltura_Client_Type_AccessControlScope extends Kaltura_Client_ObjectBase
 
 	/**
 	 * Browser or client application to be used to test agent conditions.
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -104,7 +100,6 @@ class Kaltura_Client_Type_AccessControlScope extends Kaltura_Client_ObjectBase
 
 	/**
 	 * Unix timestamp (In seconds) to be used to test entry scheduling, keep null to use now.
-	 * 	 
 	 *
 	 * @var int
 	 */
@@ -112,7 +107,6 @@ class Kaltura_Client_Type_AccessControlScope extends Kaltura_Client_ObjectBase
 
 	/**
 	 * Indicates what contexts should be tested. No contexts means any context.
-	 * 	 
 	 *
 	 * @var array of KalturaAccessControlContextTypeHolder
 	 */
@@ -120,7 +114,6 @@ class Kaltura_Client_Type_AccessControlScope extends Kaltura_Client_ObjectBase
 
 	/**
 	 * Array of hashes to pass to the access control profile scope
-	 * 	 
 	 *
 	 * @var array of KalturaKeyValue
 	 */

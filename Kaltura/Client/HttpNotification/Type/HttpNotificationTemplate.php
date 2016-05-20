@@ -89,7 +89,6 @@ class Kaltura_Client_HttpNotification_Type_HttpNotificationTemplate extends Kalt
 	}
 	/**
 	 * Remote server URL
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -97,7 +96,6 @@ class Kaltura_Client_HttpNotification_Type_HttpNotificationTemplate extends Kalt
 
 	/**
 	 * Request method.
-	 * 	 
 	 *
 	 * @var Kaltura_Client_HttpNotification_Enum_HttpNotificationMethod
 	 */
@@ -105,7 +103,6 @@ class Kaltura_Client_HttpNotification_Type_HttpNotificationTemplate extends Kalt
 
 	/**
 	 * Data to send.
-	 * 	 
 	 *
 	 * @var Kaltura_Client_HttpNotification_Type_HttpNotificationData
 	 */
@@ -113,7 +110,6 @@ class Kaltura_Client_HttpNotification_Type_HttpNotificationTemplate extends Kalt
 
 	/**
 	 * The maximum number of seconds to allow cURL functions to execute.
-	 * 	 
 	 *
 	 * @var int
 	 */
@@ -122,7 +118,6 @@ class Kaltura_Client_HttpNotification_Type_HttpNotificationTemplate extends Kalt
 	/**
 	 * The number of seconds to wait while trying to connect.
 	 * 	 Must be larger than zero.
-	 * 	 
 	 *
 	 * @var int
 	 */
@@ -130,7 +125,6 @@ class Kaltura_Client_HttpNotification_Type_HttpNotificationTemplate extends Kalt
 
 	/**
 	 * A username to use for the connection.
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -138,7 +132,6 @@ class Kaltura_Client_HttpNotification_Type_HttpNotificationTemplate extends Kalt
 
 	/**
 	 * A password to use for the connection.
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -146,7 +139,6 @@ class Kaltura_Client_HttpNotification_Type_HttpNotificationTemplate extends Kalt
 
 	/**
 	 * The HTTP authentication method to use.
-	 * 	 
 	 *
 	 * @var Kaltura_Client_HttpNotification_Enum_HttpNotificationAuthenticationMethod
 	 */
@@ -155,7 +147,6 @@ class Kaltura_Client_HttpNotification_Type_HttpNotificationTemplate extends Kalt
 	/**
 	 * The SSL version (2 or 3) to use.
 	 * 	 By default PHP will try to determine this itself, although in some cases this must be set manually.
-	 * 	 
 	 *
 	 * @var Kaltura_Client_HttpNotification_Enum_HttpNotificationSslVersion
 	 */
@@ -163,7 +154,6 @@ class Kaltura_Client_HttpNotification_Type_HttpNotificationTemplate extends Kalt
 
 	/**
 	 * SSL certificate to verify the peer with.
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -171,7 +161,6 @@ class Kaltura_Client_HttpNotification_Type_HttpNotificationTemplate extends Kalt
 
 	/**
 	 * The format of the certificate.
-	 * 	 
 	 *
 	 * @var Kaltura_Client_HttpNotification_Enum_HttpNotificationCertificateType
 	 */
@@ -179,7 +168,6 @@ class Kaltura_Client_HttpNotification_Type_HttpNotificationTemplate extends Kalt
 
 	/**
 	 * The password required to use the certificate.
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -187,7 +175,6 @@ class Kaltura_Client_HttpNotification_Type_HttpNotificationTemplate extends Kalt
 
 	/**
 	 * The identifier for the crypto engine of the private SSL key specified in ssl key.
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -195,7 +182,6 @@ class Kaltura_Client_HttpNotification_Type_HttpNotificationTemplate extends Kalt
 
 	/**
 	 * The identifier for the crypto engine used for asymmetric crypto operations.
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -203,7 +189,6 @@ class Kaltura_Client_HttpNotification_Type_HttpNotificationTemplate extends Kalt
 
 	/**
 	 * The key type of the private SSL key specified in ssl key - PEM / DER / ENG.
-	 * 	 
 	 *
 	 * @var Kaltura_Client_HttpNotification_Enum_HttpNotificationSslKeyType
 	 */
@@ -211,7 +196,6 @@ class Kaltura_Client_HttpNotification_Type_HttpNotificationTemplate extends Kalt
 
 	/**
 	 * Private SSL key.
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -219,7 +203,6 @@ class Kaltura_Client_HttpNotification_Type_HttpNotificationTemplate extends Kalt
 
 	/**
 	 * The secret password needed to use the private SSL key specified in ssl key.
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -227,7 +210,6 @@ class Kaltura_Client_HttpNotification_Type_HttpNotificationTemplate extends Kalt
 
 	/**
 	 * Adds a e-mail custom header
-	 * 	 
 	 *
 	 * @var array of KalturaKeyValue
 	 */

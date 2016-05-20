@@ -55,7 +55,6 @@ class Kaltura_Client_Type_DeliveryProfileAkamaiHttp extends Kaltura_Client_Type_
 	}
 	/**
 	 * Should we use intelliseek
-	 * 	 
 	 *
 	 * @var bool
 	 */

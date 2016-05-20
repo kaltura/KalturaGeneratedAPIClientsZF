@@ -54,7 +54,6 @@ class Kaltura_Client_Type_BulkDownloadJobData extends Kaltura_Client_Type_JobDat
 	}
 	/**
 	 * Comma separated list of entry ids
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -62,7 +61,6 @@ class Kaltura_Client_Type_BulkDownloadJobData extends Kaltura_Client_Type_JobDat
 
 	/**
 	 * Flavor params id to use for conversion
-	 * 	 
 	 *
 	 * @var int
 	 */
@@ -70,7 +68,6 @@ class Kaltura_Client_Type_BulkDownloadJobData extends Kaltura_Client_Type_JobDat
 
 	/**
 	 * The id of the requesting user
-	 * 	 
 	 *
 	 * @var string
 	 */

@@ -64,7 +64,6 @@ class Kaltura_Client_Type_Report extends Kaltura_Client_ObjectBase
 	}
 	/**
 	 * Report id
-	 * 	 
 	 *
 	 * @var int
 	 * @readonly
@@ -73,7 +72,6 @@ class Kaltura_Client_Type_Report extends Kaltura_Client_ObjectBase
 
 	/**
 	 * Partner id associated with the report
-	 * 	 
 	 *
 	 * @var int
 	 */
@@ -81,7 +79,6 @@ class Kaltura_Client_Type_Report extends Kaltura_Client_ObjectBase
 
 	/**
 	 * Report name
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -89,7 +86,6 @@ class Kaltura_Client_Type_Report extends Kaltura_Client_ObjectBase
 
 	/**
 	 * Used to identify system reports in a friendly way
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -97,7 +93,6 @@ class Kaltura_Client_Type_Report extends Kaltura_Client_ObjectBase
 
 	/**
 	 * Report description
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -105,7 +100,6 @@ class Kaltura_Client_Type_Report extends Kaltura_Client_ObjectBase
 
 	/**
 	 * Report query
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -113,7 +107,6 @@ class Kaltura_Client_Type_Report extends Kaltura_Client_ObjectBase
 
 	/**
 	 * Creation date as Unix timestamp (In seconds)
-	 * 	 
 	 *
 	 * @var int
 	 * @readonly
@@ -122,7 +115,6 @@ class Kaltura_Client_Type_Report extends Kaltura_Client_ObjectBase
 
 	/**
 	 * Last update date as Unix timestamp (In seconds)
-	 * 	 
 	 *
 	 * @var int
 	 * @readonly

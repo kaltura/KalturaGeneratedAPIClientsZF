@@ -71,7 +71,6 @@ class Kaltura_Client_Type_CaptureThumbJobData extends Kaltura_Client_Type_JobDat
 
 	/**
 	 * The translated path as used by the scheduler
-	 * 	 
 	 *
 	 * @var string
 	 */

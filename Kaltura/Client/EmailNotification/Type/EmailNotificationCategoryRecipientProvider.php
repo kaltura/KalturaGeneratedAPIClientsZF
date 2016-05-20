@@ -52,7 +52,6 @@ class Kaltura_Client_EmailNotification_Type_EmailNotificationCategoryRecipientPr
 	}
 	/**
 	 * The ID of the category whose subscribers should receive the email notification.
-	 * 	 
 	 *
 	 * @var Kaltura_Client_Type_StringValue
 	 */

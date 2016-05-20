@@ -66,7 +66,6 @@ class Kaltura_Client_Caption_Type_CaptionAsset extends Kaltura_Client_Type_Asset
 	}
 	/**
 	 * The Caption Params used to create this Caption Asset
-	 * 	 
 	 *
 	 * @var int
 	 * @insertonly
@@ -75,7 +74,6 @@ class Kaltura_Client_Caption_Type_CaptionAsset extends Kaltura_Client_Type_Asset
 
 	/**
 	 * The language of the caption asset content
-	 * 	 
 	 *
 	 * @var Kaltura_Client_Enum_Language
 	 */
@@ -83,7 +81,6 @@ class Kaltura_Client_Caption_Type_CaptionAsset extends Kaltura_Client_Type_Asset
 
 	/**
 	 * The language of the caption asset content
-	 * 	 
 	 *
 	 * @var Kaltura_Client_Enum_LanguageCode
 	 * @readonly
@@ -92,7 +89,6 @@ class Kaltura_Client_Caption_Type_CaptionAsset extends Kaltura_Client_Type_Asset
 
 	/**
 	 * Is default caption asset of the entry
-	 * 	 
 	 *
 	 * @var Kaltura_Client_Enum_NullableBoolean
 	 */
@@ -100,7 +96,6 @@ class Kaltura_Client_Caption_Type_CaptionAsset extends Kaltura_Client_Type_Asset
 
 	/**
 	 * Friendly label
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -108,7 +103,6 @@ class Kaltura_Client_Caption_Type_CaptionAsset extends Kaltura_Client_Type_Asset
 
 	/**
 	 * The caption format
-	 * 	 
 	 *
 	 * @var Kaltura_Client_Caption_Enum_CaptionType
 	 * @insertonly
@@ -117,7 +111,6 @@ class Kaltura_Client_Caption_Type_CaptionAsset extends Kaltura_Client_Type_Asset
 
 	/**
 	 * The status of the asset
-	 * 	 
 	 *
 	 * @var Kaltura_Client_Caption_Enum_CaptionAssetStatus
 	 * @readonly
@@ -126,7 +119,6 @@ class Kaltura_Client_Caption_Type_CaptionAsset extends Kaltura_Client_Type_Asset
 
 	/**
 	 * The parent id of the asset
-	 * 	 
 	 *
 	 * @var string
 	 * @insertonly
@@ -135,7 +127,6 @@ class Kaltura_Client_Caption_Type_CaptionAsset extends Kaltura_Client_Type_Asset
 
 	/**
 	 * The Accuracy of the caption content
-	 * 	 
 	 *
 	 * @var int
 	 */

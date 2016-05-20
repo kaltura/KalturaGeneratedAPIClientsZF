@@ -50,7 +50,6 @@ class Kaltura_Client_Type_AccessControlServeRemoteEdgeServerAction extends Kaltu
 	}
 	/**
 	 * Comma separated list of edge servers playBack should be done from
-	 * 	 
 	 *
 	 * @var string
 	 */

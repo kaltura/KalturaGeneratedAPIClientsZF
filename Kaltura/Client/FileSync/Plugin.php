@@ -33,9 +33,15 @@
  */
 class Kaltura_Client_FileSync_Plugin extends Kaltura_Client_Plugin
 {
+	/**
+	 * @var Kaltura_Client_FileSync_FileSyncService
+	 */
+	public $fileSync = null;
+
 	protected function __construct(Kaltura_Client_Client $client)
 	{
 		parent::__construct($client);
+		$this->fileSync = new Kaltura_Client_FileSync_FileSyncService($client);
 	}
 
 	/**
@@ -52,6 +58,7 @@ class Kaltura_Client_FileSync_Plugin extends Kaltura_Client_Plugin
 	public function getServices()
 	{
 		$services = array(
+			'fileSync' => $this->fileSync,
 		);
 		return $services;
 	}

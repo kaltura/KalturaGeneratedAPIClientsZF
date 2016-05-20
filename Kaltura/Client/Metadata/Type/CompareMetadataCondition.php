@@ -57,7 +57,6 @@ class Kaltura_Client_Metadata_Type_CompareMetadataCondition extends Kaltura_Clie
 	 * 	 1. Slashed xPath, e.g. /metadata/myElementName
 	 * 	 2. Using local-name function, e.g. /[local-name()='metadata']/[local-name()='myElementName']
 	 * 	 3. Using only the field name, e.g. myElementName, it will be searched as //myElementName
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -65,7 +64,6 @@ class Kaltura_Client_Metadata_Type_CompareMetadataCondition extends Kaltura_Clie
 
 	/**
 	 * Metadata profile id
-	 * 	 
 	 *
 	 * @var int
 	 */
@@ -73,7 +71,6 @@ class Kaltura_Client_Metadata_Type_CompareMetadataCondition extends Kaltura_Clie
 
 	/**
 	 * Metadata profile system name
-	 * 	 
 	 *
 	 * @var string
 	 */

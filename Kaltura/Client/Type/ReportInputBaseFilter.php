@@ -56,7 +56,6 @@ class Kaltura_Client_Type_ReportInputBaseFilter extends Kaltura_Client_ObjectBas
 	}
 	/**
 	 * Start date as Unix timestamp (In seconds)
-	 * 	 
 	 *
 	 * @var int
 	 */
@@ -64,7 +63,6 @@ class Kaltura_Client_Type_ReportInputBaseFilter extends Kaltura_Client_ObjectBas
 
 	/**
 	 * End date as Unix timestamp (In seconds)
-	 * 	 
 	 *
 	 * @var int
 	 */
@@ -72,7 +70,6 @@ class Kaltura_Client_Type_ReportInputBaseFilter extends Kaltura_Client_ObjectBas
 
 	/**
 	 * Start day as string (YYYYMMDD)
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -80,7 +77,6 @@ class Kaltura_Client_Type_ReportInputBaseFilter extends Kaltura_Client_ObjectBas
 
 	/**
 	 * End date as string (YYYYMMDD)
-	 * 	 
 	 *
 	 * @var string
 	 */

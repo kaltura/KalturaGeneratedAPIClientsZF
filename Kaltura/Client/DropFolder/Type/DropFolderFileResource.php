@@ -50,7 +50,6 @@ class Kaltura_Client_DropFolder_Type_DropFolderFileResource extends Kaltura_Clie
 	}
 	/**
 	 * Id of the drop folder file object
-	 * 	 
 	 *
 	 * @var int
 	 */

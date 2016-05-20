@@ -50,7 +50,6 @@ class Kaltura_Client_Type_DirectoryRestriction extends Kaltura_Client_Type_BaseR
 	}
 	/**
 	 * Kaltura directory restriction type
-	 * 	 
 	 *
 	 * @var Kaltura_Client_Enum_DirectoryRestrictionType
 	 */

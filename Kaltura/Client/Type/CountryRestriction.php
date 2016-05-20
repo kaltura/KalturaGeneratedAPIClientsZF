@@ -52,15 +52,13 @@ class Kaltura_Client_Type_CountryRestriction extends Kaltura_Client_Type_BaseRes
 	}
 	/**
 	 * Country restriction type (Allow or deny)
-	 * 	 
 	 *
 	 * @var Kaltura_Client_Enum_CountryRestrictionType
 	 */
 	public $countryRestrictionType = null;
 
 	/**
-	 * Comma separated list of country codes to allow to deny 
-	 * 	 
+	 * Comma separated list of country codes to allow to deny
 	 *
 	 * @var string
 	 */

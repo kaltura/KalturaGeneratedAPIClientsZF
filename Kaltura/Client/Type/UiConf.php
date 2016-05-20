@@ -109,7 +109,6 @@ class Kaltura_Client_Type_UiConf extends Kaltura_Client_ObjectBase
 
 	/**
 	 * Name of the uiConf, this is not a primary key
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -232,7 +231,6 @@ class Kaltura_Client_Type_UiConf extends Kaltura_Client_ObjectBase
 
 	/**
 	 * Entry creation date as Unix timestamp (In seconds)
-	 * 	 
 	 *
 	 * @var int
 	 * @readonly
@@ -241,7 +239,6 @@ class Kaltura_Client_Type_UiConf extends Kaltura_Client_ObjectBase
 
 	/**
 	 * Entry creation date as Unix timestamp (In seconds)
-	 * 	 
 	 *
 	 * @var int
 	 * @readonly
@@ -264,7 +261,6 @@ class Kaltura_Client_Type_UiConf extends Kaltura_Client_ObjectBase
 
 	/**
 	 * UiConf version
-	 * 	 
 	 *
 	 * @var string
 	 * @readonly

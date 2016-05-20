@@ -101,7 +101,6 @@ class Kaltura_Client_ContentDistribution_Type_DistributionJobData extends Kaltur
 
 	/**
 	 * Id of the media in the remote system
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -116,7 +115,6 @@ class Kaltura_Client_ContentDistribution_Type_DistributionJobData extends Kaltur
 
 	/**
 	 * Additional data that relevant for the provider only
-	 * 	 
 	 *
 	 * @var Kaltura_Client_ContentDistribution_Type_DistributionJobProviderData
 	 */
@@ -124,7 +122,6 @@ class Kaltura_Client_ContentDistribution_Type_DistributionJobData extends Kaltur
 
 	/**
 	 * The results as returned from the remote destination
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -132,7 +129,6 @@ class Kaltura_Client_ContentDistribution_Type_DistributionJobData extends Kaltur
 
 	/**
 	 * The data as sent to the remote destination
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -140,8 +136,7 @@ class Kaltura_Client_ContentDistribution_Type_DistributionJobData extends Kaltur
 
 	/**
 	 * Stores array of media files that submitted to the destination site
-	 * 	 Could be used later for media update 
-	 * 	 
+	 * 	 Could be used later for media update
 	 *
 	 * @var array of KalturaDistributionRemoteMediaFile
 	 */

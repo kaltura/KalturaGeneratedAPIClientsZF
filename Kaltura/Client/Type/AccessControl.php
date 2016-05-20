@@ -76,7 +76,6 @@ class Kaltura_Client_Type_AccessControl extends Kaltura_Client_ObjectBase
 	}
 	/**
 	 * The id of the Access Control Profile
-	 * 	 
 	 *
 	 * @var int
 	 * @readonly
@@ -93,7 +92,6 @@ class Kaltura_Client_Type_AccessControl extends Kaltura_Client_ObjectBase
 
 	/**
 	 * The name of the Access Control Profile
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -101,7 +99,6 @@ class Kaltura_Client_Type_AccessControl extends Kaltura_Client_ObjectBase
 
 	/**
 	 * System name of the Access Control Profile
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -109,15 +106,13 @@ class Kaltura_Client_Type_AccessControl extends Kaltura_Client_ObjectBase
 
 	/**
 	 * The description of the Access Control Profile
-	 * 	 
 	 *
 	 * @var string
 	 */
 	public $description = null;
 
 	/**
-	 * Creation date as Unix timestamp (In seconds) 
-	 * 	 
+	 * Creation date as Unix timestamp (In seconds)
 	 *
 	 * @var int
 	 * @readonly
@@ -126,7 +121,6 @@ class Kaltura_Client_Type_AccessControl extends Kaltura_Client_ObjectBase
 
 	/**
 	 * True if this Conversion Profile is the default
-	 * 	 
 	 *
 	 * @var Kaltura_Client_Enum_NullableBoolean
 	 */
@@ -134,7 +128,6 @@ class Kaltura_Client_Type_AccessControl extends Kaltura_Client_ObjectBase
 
 	/**
 	 * Array of Access Control Restrictions
-	 * 	 
 	 *
 	 * @var array of KalturaBaseRestriction
 	 */
@@ -142,7 +135,6 @@ class Kaltura_Client_Type_AccessControl extends Kaltura_Client_ObjectBase
 
 	/**
 	 * Indicates that the access control profile is new and should be handled using KalturaAccessControlProfile object and accessControlProfile service
-	 * 	 
 	 *
 	 * @var bool
 	 * @readonly

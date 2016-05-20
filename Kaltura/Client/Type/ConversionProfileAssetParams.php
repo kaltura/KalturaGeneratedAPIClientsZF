@@ -62,7 +62,6 @@ class Kaltura_Client_Type_ConversionProfileAssetParams extends Kaltura_Client_Ob
 	}
 	/**
 	 * The id of the conversion profile
-	 * 	 
 	 *
 	 * @var int
 	 * @readonly
@@ -71,7 +70,6 @@ class Kaltura_Client_Type_ConversionProfileAssetParams extends Kaltura_Client_Ob
 
 	/**
 	 * The id of the asset params
-	 * 	 
 	 *
 	 * @var int
 	 * @readonly
@@ -80,7 +78,6 @@ class Kaltura_Client_Type_ConversionProfileAssetParams extends Kaltura_Client_Ob
 
 	/**
 	 * The ingestion origin of the asset params
-	 * 	 
 	 *
 	 * @var Kaltura_Client_Enum_FlavorReadyBehaviorType
 	 */
@@ -88,7 +85,6 @@ class Kaltura_Client_Type_ConversionProfileAssetParams extends Kaltura_Client_Ob
 
 	/**
 	 * The ingestion origin of the asset params
-	 * 	 
 	 *
 	 * @var Kaltura_Client_Enum_AssetParamsOrigin
 	 */
@@ -96,7 +92,6 @@ class Kaltura_Client_Type_ConversionProfileAssetParams extends Kaltura_Client_Ob
 
 	/**
 	 * Asset params system name
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -104,7 +99,6 @@ class Kaltura_Client_Type_ConversionProfileAssetParams extends Kaltura_Client_Ob
 
 	/**
 	 * Starts conversion even if the decision layer reduced the configuration to comply with the source
-	 * 	 
 	 *
 	 * @var Kaltura_Client_Enum_NullableBoolean
 	 */
@@ -112,7 +106,6 @@ class Kaltura_Client_Type_ConversionProfileAssetParams extends Kaltura_Client_Ob
 
 	/**
 	 * Specifies how to treat the flavor after conversion is finished
-	 * 	 
 	 *
 	 * @var Kaltura_Client_Enum_AssetParamsDeletePolicy
 	 */

@@ -59,7 +59,6 @@ class Kaltura_Client_Type_DeliveryProfileGenericHds extends Kaltura_Client_Type_
 
 	/**
 	 * rendererClass
-	 * 	 
 	 *
 	 * @var string
 	 */

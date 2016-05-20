@@ -59,7 +59,6 @@ class Kaltura_Client_Type_OperationResource extends Kaltura_Client_Type_ContentR
 	}
 	/**
 	 * Only KalturaEntryResource and KalturaAssetResource are supported
-	 * 	 
 	 *
 	 * @var Kaltura_Client_Type_ContentResource
 	 */
@@ -73,8 +72,7 @@ class Kaltura_Client_Type_OperationResource extends Kaltura_Client_Type_ContentR
 	public $operationAttributes;
 
 	/**
-	 * ID of alternative asset params to be used instead of the system default flavor params 
-	 * 	 
+	 * ID of alternative asset params to be used instead of the system default flavor params
 	 *
 	 * @var int
 	 */

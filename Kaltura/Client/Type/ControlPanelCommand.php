@@ -82,7 +82,6 @@ class Kaltura_Client_Type_ControlPanelCommand extends Kaltura_Client_ObjectBase
 	}
 	/**
 	 * The id of the Category
-	 * 	 
 	 *
 	 * @var int
 	 * @readonly
@@ -91,7 +90,6 @@ class Kaltura_Client_Type_ControlPanelCommand extends Kaltura_Client_ObjectBase
 
 	/**
 	 * Creation date as Unix timestamp (In seconds)
-	 * 	 
 	 *
 	 * @var int
 	 * @readonly
@@ -100,7 +98,6 @@ class Kaltura_Client_Type_ControlPanelCommand extends Kaltura_Client_ObjectBase
 
 	/**
 	 * Creator name
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -108,7 +105,6 @@ class Kaltura_Client_Type_ControlPanelCommand extends Kaltura_Client_ObjectBase
 
 	/**
 	 * Update date as Unix timestamp (In seconds)
-	 * 	 
 	 *
 	 * @var int
 	 * @readonly
@@ -117,7 +113,6 @@ class Kaltura_Client_Type_ControlPanelCommand extends Kaltura_Client_ObjectBase
 
 	/**
 	 * Updater name
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -125,7 +120,6 @@ class Kaltura_Client_Type_ControlPanelCommand extends Kaltura_Client_ObjectBase
 
 	/**
 	 * Creator id
-	 * 	 
 	 *
 	 * @var int
 	 */
@@ -133,7 +127,6 @@ class Kaltura_Client_Type_ControlPanelCommand extends Kaltura_Client_ObjectBase
 
 	/**
 	 * The id of the scheduler that the command refers to
-	 * 	 
 	 *
 	 * @var int
 	 */
@@ -141,7 +134,6 @@ class Kaltura_Client_Type_ControlPanelCommand extends Kaltura_Client_ObjectBase
 
 	/**
 	 * The id of the scheduler worker that the command refers to
-	 * 	 
 	 *
 	 * @var int
 	 */
@@ -149,7 +141,6 @@ class Kaltura_Client_Type_ControlPanelCommand extends Kaltura_Client_ObjectBase
 
 	/**
 	 * The id of the scheduler worker as configured in the ini file
-	 * 	 
 	 *
 	 * @var int
 	 */
@@ -157,7 +148,6 @@ class Kaltura_Client_Type_ControlPanelCommand extends Kaltura_Client_ObjectBase
 
 	/**
 	 * The name of the scheduler worker that the command refers to
-	 * 	 
 	 *
 	 * @var int
 	 */
@@ -165,7 +155,6 @@ class Kaltura_Client_Type_ControlPanelCommand extends Kaltura_Client_ObjectBase
 
 	/**
 	 * The index of the batch process that the command refers to
-	 * 	 
 	 *
 	 * @var int
 	 */
@@ -173,7 +162,6 @@ class Kaltura_Client_Type_ControlPanelCommand extends Kaltura_Client_ObjectBase
 
 	/**
 	 * The command type - stop / start / config
-	 * 	 
 	 *
 	 * @var Kaltura_Client_Enum_ControlPanelCommandType
 	 */
@@ -181,7 +169,6 @@ class Kaltura_Client_Type_ControlPanelCommand extends Kaltura_Client_ObjectBase
 
 	/**
 	 * The command target type - data center / scheduler / job / job type
-	 * 	 
 	 *
 	 * @var Kaltura_Client_Enum_ControlPanelCommandTargetType
 	 */
@@ -189,7 +176,6 @@ class Kaltura_Client_Type_ControlPanelCommand extends Kaltura_Client_ObjectBase
 
 	/**
 	 * The command status
-	 * 	 
 	 *
 	 * @var Kaltura_Client_Enum_ControlPanelCommandStatus
 	 */
@@ -197,7 +183,6 @@ class Kaltura_Client_Type_ControlPanelCommand extends Kaltura_Client_ObjectBase
 
 	/**
 	 * The reason for the command
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -205,7 +190,6 @@ class Kaltura_Client_Type_ControlPanelCommand extends Kaltura_Client_ObjectBase
 
 	/**
 	 * Command description
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -213,7 +197,6 @@ class Kaltura_Client_Type_ControlPanelCommand extends Kaltura_Client_ObjectBase
 
 	/**
 	 * Error description
-	 * 	 
 	 *
 	 * @var string
 	 */

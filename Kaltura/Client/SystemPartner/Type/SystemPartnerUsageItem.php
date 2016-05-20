@@ -90,7 +90,6 @@ class Kaltura_Client_SystemPartner_Type_SystemPartnerUsageItem extends Kaltura_C
 	}
 	/**
 	 * Partner ID
-	 * 	 
 	 *
 	 * @var int
 	 */
@@ -98,7 +97,6 @@ class Kaltura_Client_SystemPartner_Type_SystemPartnerUsageItem extends Kaltura_C
 
 	/**
 	 * Partner name
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -106,7 +104,6 @@ class Kaltura_Client_SystemPartner_Type_SystemPartnerUsageItem extends Kaltura_C
 
 	/**
 	 * Partner status
-	 * 	 
 	 *
 	 * @var Kaltura_Client_Enum_PartnerStatus
 	 */
@@ -114,7 +111,6 @@ class Kaltura_Client_SystemPartner_Type_SystemPartnerUsageItem extends Kaltura_C
 
 	/**
 	 * Partner package
-	 * 	 
 	 *
 	 * @var int
 	 */
@@ -122,7 +118,6 @@ class Kaltura_Client_SystemPartner_Type_SystemPartnerUsageItem extends Kaltura_C
 
 	/**
 	 * Partner creation date (Unix timestamp)
-	 * 	 
 	 *
 	 * @var int
 	 */
@@ -130,7 +125,6 @@ class Kaltura_Client_SystemPartner_Type_SystemPartnerUsageItem extends Kaltura_C
 
 	/**
 	 * Number of player loads in the specific date range
-	 * 	 
 	 *
 	 * @var int
 	 */
@@ -138,7 +132,6 @@ class Kaltura_Client_SystemPartner_Type_SystemPartnerUsageItem extends Kaltura_C
 
 	/**
 	 * Number of plays in the specific date range
-	 * 	 
 	 *
 	 * @var int
 	 */
@@ -146,7 +139,6 @@ class Kaltura_Client_SystemPartner_Type_SystemPartnerUsageItem extends Kaltura_C
 
 	/**
 	 * Number of new entries created during specific date range
-	 * 	 
 	 *
 	 * @var int
 	 */
@@ -154,7 +146,6 @@ class Kaltura_Client_SystemPartner_Type_SystemPartnerUsageItem extends Kaltura_C
 
 	/**
 	 * Total number of entries
-	 * 	 
 	 *
 	 * @var int
 	 */
@@ -162,7 +153,6 @@ class Kaltura_Client_SystemPartner_Type_SystemPartnerUsageItem extends Kaltura_C
 
 	/**
 	 * Number of new video entries created during specific date range
-	 * 	 
 	 *
 	 * @var int
 	 */
@@ -170,7 +160,6 @@ class Kaltura_Client_SystemPartner_Type_SystemPartnerUsageItem extends Kaltura_C
 
 	/**
 	 * Number of new image entries created during specific date range
-	 * 	 
 	 *
 	 * @var int
 	 */
@@ -178,7 +167,6 @@ class Kaltura_Client_SystemPartner_Type_SystemPartnerUsageItem extends Kaltura_C
 
 	/**
 	 * Number of new audio entries created during specific date range
-	 * 	 
 	 *
 	 * @var int
 	 */
@@ -186,7 +174,6 @@ class Kaltura_Client_SystemPartner_Type_SystemPartnerUsageItem extends Kaltura_C
 
 	/**
 	 * Number of new mix entries created during specific date range
-	 * 	 
 	 *
 	 * @var int
 	 */
@@ -194,7 +181,6 @@ class Kaltura_Client_SystemPartner_Type_SystemPartnerUsageItem extends Kaltura_C
 
 	/**
 	 * The total bandwidth usage during the given date range (in MB)
-	 * 	 
 	 *
 	 * @var float
 	 */
@@ -202,7 +188,6 @@ class Kaltura_Client_SystemPartner_Type_SystemPartnerUsageItem extends Kaltura_C
 
 	/**
 	 * The total storage consumption (in MB)
-	 * 	 
 	 *
 	 * @var float
 	 */
@@ -210,7 +195,6 @@ class Kaltura_Client_SystemPartner_Type_SystemPartnerUsageItem extends Kaltura_C
 
 	/**
 	 * The change in storage consumption (new uploads) during the given date range (in MB)
-	 * 	 
 	 *
 	 * @var float
 	 */
@@ -218,7 +202,6 @@ class Kaltura_Client_SystemPartner_Type_SystemPartnerUsageItem extends Kaltura_C
 
 	/**
 	 * The peak amount of storage consumption during the given date range for the specific publisher
-	 * 	 
 	 *
 	 * @var float
 	 */
@@ -226,7 +209,6 @@ class Kaltura_Client_SystemPartner_Type_SystemPartnerUsageItem extends Kaltura_C
 
 	/**
 	 * The average amount of storage consumption during the given date range for the specific publisher
-	 * 	 
 	 *
 	 * @var float
 	 */
@@ -234,7 +216,6 @@ class Kaltura_Client_SystemPartner_Type_SystemPartnerUsageItem extends Kaltura_C
 
 	/**
 	 * The combined amount of bandwidth and storage consumed during the given date range for the specific publisher
-	 * 	 
 	 *
 	 * @var float
 	 */
@@ -242,7 +223,6 @@ class Kaltura_Client_SystemPartner_Type_SystemPartnerUsageItem extends Kaltura_C
 
 	/**
 	 * Amount of deleted storage in MB
-	 * 	 
 	 *
 	 * @var float
 	 */
@@ -250,7 +230,6 @@ class Kaltura_Client_SystemPartner_Type_SystemPartnerUsageItem extends Kaltura_C
 
 	/**
 	 * Amount of transcoding usage in MB
-	 * 	 
 	 *
 	 * @var float
 	 */

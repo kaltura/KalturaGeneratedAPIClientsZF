@@ -52,7 +52,6 @@ class Kaltura_Client_Type_ResponseProfileCacheRecalculateResults extends Kaltura
 	}
 	/**
 	 * Last recalculated id
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -60,7 +59,6 @@ class Kaltura_Client_Type_ResponseProfileCacheRecalculateResults extends Kaltura
 
 	/**
 	 * Number of recalculated keys
-	 * 	 
 	 *
 	 * @var int
 	 */

@@ -50,7 +50,6 @@ abstract class Kaltura_Client_Type_RuleAction extends Kaltura_Client_ObjectBase
 	}
 	/**
 	 * The type of the action
-	 * 	 
 	 *
 	 * @var Kaltura_Client_Enum_RuleActionType
 	 * @readonly

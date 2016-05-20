@@ -52,7 +52,6 @@ class Kaltura_Client_EmailNotification_Type_EmailNotificationRecipient extends K
 	}
 	/**
 	 * Recipient e-mail address
-	 * 	 
 	 *
 	 * @var Kaltura_Client_Type_StringValue
 	 */
@@ -60,7 +59,6 @@ class Kaltura_Client_EmailNotification_Type_EmailNotificationRecipient extends K
 
 	/**
 	 * Recipient name
-	 * 	 
 	 *
 	 * @var Kaltura_Client_Type_StringValue
 	 */

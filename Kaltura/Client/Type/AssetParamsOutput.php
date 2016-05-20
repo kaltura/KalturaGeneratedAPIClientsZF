@@ -95,7 +95,6 @@ class Kaltura_Client_Type_AssetParamsOutput extends Kaltura_Client_Type_AssetPar
 
 	/**
 	 * The container format of the Flavor Params
-	 * 	 
 	 *
 	 * @var Kaltura_Client_Enum_ContainerFormat
 	 */

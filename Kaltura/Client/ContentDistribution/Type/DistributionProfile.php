@@ -116,7 +116,6 @@ abstract class Kaltura_Client_ContentDistribution_Type_DistributionProfile exten
 	}
 	/**
 	 * Auto generated unique id
-	 * 	 
 	 *
 	 * @var int
 	 * @readonly
@@ -125,7 +124,6 @@ abstract class Kaltura_Client_ContentDistribution_Type_DistributionProfile exten
 
 	/**
 	 * Profile creation date as Unix timestamp (In seconds)
-	 * 	 
 	 *
 	 * @var int
 	 * @readonly
@@ -134,7 +132,6 @@ abstract class Kaltura_Client_ContentDistribution_Type_DistributionProfile exten
 
 	/**
 	 * Profile last update date as Unix timestamp (In seconds)
-	 * 	 
 	 *
 	 * @var int
 	 * @readonly
@@ -201,7 +198,6 @@ abstract class Kaltura_Client_ContentDistribution_Type_DistributionProfile exten
 
 	/**
 	 * Comma separated flavor params ids that should be auto converted
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -209,7 +205,6 @@ abstract class Kaltura_Client_ContentDistribution_Type_DistributionProfile exten
 
 	/**
 	 * Comma separated thumbnail params ids that should be auto generated
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -217,7 +212,6 @@ abstract class Kaltura_Client_ContentDistribution_Type_DistributionProfile exten
 
 	/**
 	 * Comma separated flavor params ids that should be submitted if ready
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -225,7 +219,6 @@ abstract class Kaltura_Client_ContentDistribution_Type_DistributionProfile exten
 
 	/**
 	 * Comma separated flavor params ids that required to be ready before submission
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -233,7 +226,6 @@ abstract class Kaltura_Client_ContentDistribution_Type_DistributionProfile exten
 
 	/**
 	 * Thumbnail dimensions that should be submitted if ready
-	 * 	 
 	 *
 	 * @var array of KalturaDistributionThumbDimensions
 	 */
@@ -241,7 +233,6 @@ abstract class Kaltura_Client_ContentDistribution_Type_DistributionProfile exten
 
 	/**
 	 * Thumbnail dimensions that required to be readt before submission
-	 * 	 
 	 *
 	 * @var array of KalturaDistributionThumbDimensions
 	 */
@@ -249,7 +240,6 @@ abstract class Kaltura_Client_ContentDistribution_Type_DistributionProfile exten
 
 	/**
 	 * Asset Distribution Rules for assets that should be submitted if ready
-	 * 	 
 	 *
 	 * @var array of KalturaAssetDistributionRule
 	 */
@@ -257,7 +247,6 @@ abstract class Kaltura_Client_ContentDistribution_Type_DistributionProfile exten
 
 	/**
 	 * Assets Asset Distribution Rules for assets that are required to be ready before submission
-	 * 	 
 	 *
 	 * @var array of KalturaAssetDistributionRule
 	 */
@@ -265,7 +254,6 @@ abstract class Kaltura_Client_ContentDistribution_Type_DistributionProfile exten
 
 	/**
 	 * If entry distribution sunrise not specified that will be the default since entry creation time, in seconds
-	 * 	 
 	 *
 	 * @var int
 	 */
@@ -273,7 +261,6 @@ abstract class Kaltura_Client_ContentDistribution_Type_DistributionProfile exten
 
 	/**
 	 * If entry distribution sunset not specified that will be the default since entry creation time, in seconds
-	 * 	 
 	 *
 	 * @var int
 	 */
@@ -281,7 +268,6 @@ abstract class Kaltura_Client_ContentDistribution_Type_DistributionProfile exten
 
 	/**
 	 * The best external storage to be used to download the asset files from
-	 * 	 
 	 *
 	 * @var int
 	 */
@@ -289,7 +275,6 @@ abstract class Kaltura_Client_ContentDistribution_Type_DistributionProfile exten
 
 	/**
 	 * The best Kaltura data center to be used to download the asset files to
-	 * 	 
 	 *
 	 * @var int
 	 */
@@ -297,7 +282,6 @@ abstract class Kaltura_Client_ContentDistribution_Type_DistributionProfile exten
 
 	/**
 	 * The best Kaltura data center to be used to execute the distribution job
-	 * 	 
 	 *
 	 * @var int
 	 */

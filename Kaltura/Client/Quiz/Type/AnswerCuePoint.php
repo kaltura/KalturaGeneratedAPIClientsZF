@@ -96,7 +96,6 @@ class Kaltura_Client_Quiz_Type_AnswerCuePoint extends Kaltura_Client_CuePoint_Ty
 
 	/**
 	 * Array of string
-	 * 	 
 	 *
 	 * @var array of KalturaString
 	 * @readonly

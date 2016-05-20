@@ -55,7 +55,6 @@ class Kaltura_Client_Type_AssetsParamsResourceContainers extends Kaltura_Client_
 	}
 	/**
 	 * Array of resources associated with asset params ids
-	 * 	 
 	 *
 	 * @var array of KalturaAssetParamsResourceContainer
 	 */

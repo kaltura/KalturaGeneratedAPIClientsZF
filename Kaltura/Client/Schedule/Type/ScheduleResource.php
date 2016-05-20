@@ -68,7 +68,6 @@ abstract class Kaltura_Client_Schedule_Type_ScheduleResource extends Kaltura_Cli
 	}
 	/**
 	 * Auto-generated unique identifier
-	 * 	 
 	 *
 	 * @var int
 	 * @readonly
@@ -92,7 +91,6 @@ abstract class Kaltura_Client_Schedule_Type_ScheduleResource extends Kaltura_Cli
 
 	/**
 	 * Defines a short name
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -100,7 +98,6 @@ abstract class Kaltura_Client_Schedule_Type_ScheduleResource extends Kaltura_Cli
 
 	/**
 	 * Defines a unique system-name
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -130,7 +127,6 @@ abstract class Kaltura_Client_Schedule_Type_ScheduleResource extends Kaltura_Cli
 
 	/**
 	 * Creation date as Unix timestamp (In seconds)
-	 * 	 
 	 *
 	 * @var int
 	 * @readonly
@@ -139,7 +135,6 @@ abstract class Kaltura_Client_Schedule_Type_ScheduleResource extends Kaltura_Cli
 
 	/**
 	 * Last update as Unix timestamp (In seconds)
-	 * 	 
 	 *
 	 * @var int
 	 * @readonly

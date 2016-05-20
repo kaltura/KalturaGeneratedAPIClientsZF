@@ -114,7 +114,6 @@ class Kaltura_Client_ContentDistribution_Type_ContentDistributionSearchItem exte
 
 	/**
 	 * Comma seperated validation error types
-	 * 	 
 	 *
 	 * @var string
 	 */

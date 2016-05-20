@@ -119,8 +119,7 @@ class Kaltura_Client_Type_MailJobData extends Kaltura_Client_Type_JobData
 	public $recipientEmail = null;
 
 	/**
-	 * kuserId  
-	 * 	 
+	 * kuserId
 	 *
 	 * @var int
 	 */

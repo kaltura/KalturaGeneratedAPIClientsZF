@@ -69,7 +69,6 @@ class Kaltura_Client_ContentDistribution_Type_DistributionValidationErrorInvalid
 	/**
 	 * Parameter of the validation error
 	 * 	 For example, minimum value for KalturaDistributionValidationErrorType::STRING_TOO_SHORT validation error
-	 * 	 
 	 *
 	 * @var string
 	 */

@@ -54,7 +54,6 @@ class Kaltura_Client_Like_Type_Like extends Kaltura_Client_ObjectBase
 	}
 	/**
 	 * The id of the entry that the like belongs to
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -62,7 +61,6 @@ class Kaltura_Client_Like_Type_Like extends Kaltura_Client_ObjectBase
 
 	/**
 	 * The id of user that the like belongs to
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -70,7 +68,6 @@ class Kaltura_Client_Like_Type_Like extends Kaltura_Client_ObjectBase
 
 	/**
 	 * The date of the like's creation
-	 * 	 
 	 *
 	 * @var int
 	 */

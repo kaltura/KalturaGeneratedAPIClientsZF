@@ -50,7 +50,6 @@ class Kaltura_Client_Type_FieldCompareCondition extends Kaltura_Client_Type_Comp
 	}
 	/**
 	 * Field to evaluate
-	 * 	 
 	 *
 	 * @var Kaltura_Client_Type_IntegerField
 	 */

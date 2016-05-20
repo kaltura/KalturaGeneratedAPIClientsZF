@@ -52,7 +52,6 @@ class Kaltura_Client_Type_UserAgentRestriction extends Kaltura_Client_Type_BaseR
 	}
 	/**
 	 * User agent restriction type (Allow or deny)
-	 * 	 
 	 *
 	 * @var Kaltura_Client_Enum_UserAgentRestrictionType
 	 */
@@ -60,7 +59,6 @@ class Kaltura_Client_Type_UserAgentRestriction extends Kaltura_Client_Type_BaseR
 
 	/**
 	 * A comma seperated list of user agent regular expressions
-	 * 	 
 	 *
 	 * @var string
 	 */

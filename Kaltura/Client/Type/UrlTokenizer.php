@@ -52,7 +52,6 @@ class Kaltura_Client_Type_UrlTokenizer extends Kaltura_Client_ObjectBase
 	}
 	/**
 	 * Window
-	 * 	 
 	 *
 	 * @var int
 	 */
@@ -60,7 +59,6 @@ class Kaltura_Client_Type_UrlTokenizer extends Kaltura_Client_ObjectBase
 
 	/**
 	 * key
-	 * 	 
 	 *
 	 * @var string
 	 */

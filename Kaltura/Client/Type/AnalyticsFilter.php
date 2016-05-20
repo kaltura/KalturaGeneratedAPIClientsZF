@@ -65,7 +65,6 @@ class Kaltura_Client_Type_AnalyticsFilter extends Kaltura_Client_ObjectBase
 	}
 	/**
 	 * Query start time (in local time)
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -73,7 +72,6 @@ class Kaltura_Client_Type_AnalyticsFilter extends Kaltura_Client_ObjectBase
 
 	/**
 	 * Query end time (in local time)
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -81,7 +79,6 @@ class Kaltura_Client_Type_AnalyticsFilter extends Kaltura_Client_ObjectBase
 
 	/**
 	 * Comma separated metrics list
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -89,7 +86,6 @@ class Kaltura_Client_Type_AnalyticsFilter extends Kaltura_Client_ObjectBase
 
 	/**
 	 * Timezone offset from UTC (in minutes)
-	 * 	 
 	 *
 	 * @var float
 	 */
@@ -97,7 +93,6 @@ class Kaltura_Client_Type_AnalyticsFilter extends Kaltura_Client_ObjectBase
 
 	/**
 	 * Comma separated dimensions list
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -105,7 +100,6 @@ class Kaltura_Client_Type_AnalyticsFilter extends Kaltura_Client_ObjectBase
 
 	/**
 	 * Array of filters
-	 * 	 
 	 *
 	 * @var array of KalturaReportFilter
 	 */

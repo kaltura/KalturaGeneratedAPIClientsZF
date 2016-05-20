@@ -52,7 +52,6 @@ class Kaltura_Client_Document_Type_DocumentEntry extends Kaltura_Client_Type_Bas
 	}
 	/**
 	 * The type of the document
-	 * 	 
 	 *
 	 * @var Kaltura_Client_Document_Enum_DocumentType
 	 * @insertonly
@@ -61,7 +60,6 @@ class Kaltura_Client_Document_Type_DocumentEntry extends Kaltura_Client_Type_Bas
 
 	/**
 	 * Comma separated asset params ids that exists for this media entry
-	 * 	 
 	 *
 	 * @var string
 	 * @readonly
