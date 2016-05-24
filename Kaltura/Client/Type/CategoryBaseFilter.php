@@ -119,6 +119,10 @@ abstract class Kaltura_Client_Type_CategoryBaseFilter extends Kaltura_Client_Typ
 			$this->partnerSortValueGreaterThanOrEqual = (int)$xml->partnerSortValueGreaterThanOrEqual;
 		if(count($xml->partnerSortValueLessThanOrEqual))
 			$this->partnerSortValueLessThanOrEqual = (int)$xml->partnerSortValueLessThanOrEqual;
+		if(count($xml->aggregationCategoriesMultiLikeOr))
+			$this->aggregationCategoriesMultiLikeOr = (string)$xml->aggregationCategoriesMultiLikeOr;
+		if(count($xml->aggregationCategoriesMultiLikeAnd))
+			$this->aggregationCategoriesMultiLikeAnd = (string)$xml->aggregationCategoriesMultiLikeAnd;
 	}
 	/**
 	 * 
@@ -378,6 +382,20 @@ abstract class Kaltura_Client_Type_CategoryBaseFilter extends Kaltura_Client_Typ
 	 * @var int
 	 */
 	public $partnerSortValueLessThanOrEqual = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $aggregationCategoriesMultiLikeOr = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $aggregationCategoriesMultiLikeAnd = null;
 
 
 }
