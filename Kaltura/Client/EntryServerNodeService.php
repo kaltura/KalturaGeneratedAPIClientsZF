@@ -39,6 +39,22 @@ class Kaltura_Client_EntryServerNodeService extends Kaltura_Client_ServiceBase
 		parent::__construct($client);
 	}
 
+	function update($id, Kaltura_Client_Type_EntryServerNode $entryServerNode)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "id", $id);
+		$this->client->addParam($kparams, "entryServerNode", $entryServerNode->toParams());
+		$this->client->queueServiceActionCall("entryservernode", "update", "KalturaEntryServerNode", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultXml = $this->client->doQueue();
+		$resultXmlObject = new \SimpleXMLElement($resultXml);
+		$this->client->checkIfError($resultXmlObject->result);
+		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaEntryServerNode");
+		$this->client->validateObjectType($resultObject, "Kaltura_Client_Type_EntryServerNode");
+		return $resultObject;
+	}
+
 	function listAction(Kaltura_Client_Type_EntryServerNodeFilter $filter = null, Kaltura_Client_Type_FilterPager $pager = null)
 	{
 		$kparams = array();

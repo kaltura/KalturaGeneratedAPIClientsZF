@@ -59,6 +59,8 @@ class Kaltura_Client_Type_ConversionProfileAssetParams extends Kaltura_Client_Ob
 			$this->forceNoneComplied = (int)$xml->forceNoneComplied;
 		if(count($xml->deletePolicy))
 			$this->deletePolicy = (int)$xml->deletePolicy;
+		if(count($xml->isEncrypted))
+			$this->isEncrypted = (int)$xml->isEncrypted;
 	}
 	/**
 	 * The id of the conversion profile
@@ -110,6 +112,13 @@ class Kaltura_Client_Type_ConversionProfileAssetParams extends Kaltura_Client_Ob
 	 * @var Kaltura_Client_Enum_AssetParamsDeletePolicy
 	 */
 	public $deletePolicy = null;
+
+	/**
+	 * 
+	 *
+	 * @var Kaltura_Client_Enum_NullableBoolean
+	 */
+	public $isEncrypted = null;
 
 
 }

@@ -54,7 +54,6 @@ class Kaltura_Client_Type_RequestConfiguration extends Kaltura_Client_ObjectBase
 	}
 	/**
 	 * Impersonated partner id
-	 * 	 
 	 *
 	 * @var int
 	 */
@@ -62,7 +61,6 @@ class Kaltura_Client_Type_RequestConfiguration extends Kaltura_Client_ObjectBase
 
 	/**
 	 * Kaltura API session
-	 * 	 
 	 *
 	 * @var string
 	 */
@@ -70,7 +68,6 @@ class Kaltura_Client_Type_RequestConfiguration extends Kaltura_Client_ObjectBase
 
 	/**
 	 * Response profile - this attribute will be automatically unset after every API call.
-	 * 	 
 	 *
 	 * @var Kaltura_Client_Type_BaseResponseProfile
 	 */
