@@ -46,7 +46,7 @@ abstract class Kaltura_Client_ShortLink_Type_ShortLinkBaseFilter extends Kaltura
 			return;
 		
 		if(count($xml->idEqual))
-			$this->idEqual = (int)$xml->idEqual;
+			$this->idEqual = (string)$xml->idEqual;
 		if(count($xml->idIn))
 			$this->idIn = (string)$xml->idIn;
 		if(count($xml->createdAtGreaterThanOrEqual))
@@ -81,7 +81,7 @@ abstract class Kaltura_Client_ShortLink_Type_ShortLinkBaseFilter extends Kaltura
 	/**
 	 * 
 	 *
-	 * @var int
+	 * @var string
 	 */
 	public $idEqual = null;
 

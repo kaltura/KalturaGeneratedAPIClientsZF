@@ -111,6 +111,10 @@ class Kaltura_Client_Type_Category extends Kaltura_Client_ObjectBase
 			$this->moderation = (int)$xml->moderation;
 		if(count($xml->pendingEntriesCount))
 			$this->pendingEntriesCount = (int)$xml->pendingEntriesCount;
+		if(count($xml->isAggregationCategory))
+			$this->isAggregationCategory = (int)$xml->isAggregationCategory;
+		if(count($xml->aggregationCategories))
+			$this->aggregationCategories = (string)$xml->aggregationCategories;
 	}
 	/**
 	 * The id of the Category
@@ -360,6 +364,20 @@ class Kaltura_Client_Type_Category extends Kaltura_Client_ObjectBase
 	 * @readonly
 	 */
 	public $pendingEntriesCount = null;
+
+	/**
+	 * Flag indicating that the category is an aggregation category
+	 *
+	 * @var Kaltura_Client_Enum_NullableBoolean
+	 */
+	public $isAggregationCategory = null;
+
+	/**
+	 * List of aggregation channels the category belongs to
+	 *
+	 * @var string
+	 */
+	public $aggregationCategories = null;
 
 
 }

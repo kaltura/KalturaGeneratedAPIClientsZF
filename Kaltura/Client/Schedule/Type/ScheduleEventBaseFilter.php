@@ -31,7 +31,7 @@
  * @package Kaltura
  * @subpackage Client
  */
-abstract class Kaltura_Client_Schedule_Type_ScheduleEventBaseFilter extends Kaltura_Client_Type_Filter
+abstract class Kaltura_Client_Schedule_Type_ScheduleEventBaseFilter extends Kaltura_Client_Type_RelatedFilter
 {
 	public function getKalturaObjectType()
 	{
