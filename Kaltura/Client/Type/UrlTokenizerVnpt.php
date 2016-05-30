@@ -47,6 +47,13 @@ class Kaltura_Client_Type_UrlTokenizerVnpt extends Kaltura_Client_Type_UrlTokeni
 		
 		if(count($xml->tokenizationFormat))
 			$this->tokenizationFormat = (int)$xml->tokenizationFormat;
+		if(count($xml->shouldIncludeClientIp))
+		{
+			if(!empty($xml->shouldIncludeClientIp))
+				$this->shouldIncludeClientIp = true;
+			else
+				$this->shouldIncludeClientIp = false;
+		}
 	}
 	/**
 	 * 
@@ -54,6 +61,13 @@ class Kaltura_Client_Type_UrlTokenizerVnpt extends Kaltura_Client_Type_UrlTokeni
 	 * @var int
 	 */
 	public $tokenizationFormat = null;
+
+	/**
+	 * 
+	 *
+	 * @var bool
+	 */
+	public $shouldIncludeClientIp = null;
 
 
 }
