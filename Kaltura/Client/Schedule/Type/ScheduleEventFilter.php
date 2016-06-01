@@ -57,6 +57,18 @@ class Kaltura_Client_Schedule_Type_ScheduleEventFilter extends Kaltura_Client_Sc
 			$this->parentResourceIdsMultiLikeOr = (string)$xml->parentResourceIdsMultiLikeOr;
 		if(count($xml->parentResourceIdsMultiLikeAnd))
 			$this->parentResourceIdsMultiLikeAnd = (string)$xml->parentResourceIdsMultiLikeAnd;
+		if(count($xml->templateEntryCategoriesIdsMultiLikeAnd))
+			$this->templateEntryCategoriesIdsMultiLikeAnd = (string)$xml->templateEntryCategoriesIdsMultiLikeAnd;
+		if(count($xml->templateEntryCategoriesIdsMultiLikeOr))
+			$this->templateEntryCategoriesIdsMultiLikeOr = (string)$xml->templateEntryCategoriesIdsMultiLikeOr;
+		if(count($xml->templateEntryCategoriesIdsLike))
+			$this->templateEntryCategoriesIdsLike = (string)$xml->templateEntryCategoriesIdsLike;
+		if(count($xml->systemNamesMultiLikeOr))
+			$this->systemNamesMultiLikeOr = (string)$xml->systemNamesMultiLikeOr;
+		if(count($xml->systemNamesMultiLikeAnd))
+			$this->systemNamesMultiLikeAnd = (string)$xml->systemNamesMultiLikeAnd;
+		if(count($xml->systemNamesLike))
+			$this->systemNamesLike = (string)$xml->systemNamesLike;
 	}
 	/**
 	 * 
@@ -99,6 +111,48 @@ class Kaltura_Client_Schedule_Type_ScheduleEventFilter extends Kaltura_Client_Sc
 	 * @var string
 	 */
 	public $parentResourceIdsMultiLikeAnd = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $templateEntryCategoriesIdsMultiLikeAnd = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $templateEntryCategoriesIdsMultiLikeOr = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $templateEntryCategoriesIdsLike = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $systemNamesMultiLikeOr = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $systemNamesMultiLikeAnd = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $systemNamesLike = null;
 
 
 }

@@ -364,12 +364,6 @@ class Kaltura_Client_Client extends Kaltura_Client_ClientBase
 	public $widget = null;
 
 	/**
-	 * Internal Service is used for actions that are used internally in Kaltura applications and might be changed in the future without any notice.
-	 * @var Kaltura_Client_XInternalService
-	 */
-	public $xInternal = null;
-
-	/**
 	 * Kaltura client constructor
 	 *
 	 * @param Kaltura_Client_Configuration $config
@@ -378,7 +372,7 @@ class Kaltura_Client_Client extends Kaltura_Client_ClientBase
 	{
 		parent::__construct($config);
 		
-		$this->setClientTag('php5:16-05-31');
+		$this->setClientTag('php5:16-06-01');
 		$this->setApiVersion('3.3.0');
 		
 		$this->accessControlProfile = new Kaltura_Client_AccessControlProfileService($this);
@@ -435,7 +429,6 @@ class Kaltura_Client_Client extends Kaltura_Client_ClientBase
 		$this->userRole = new Kaltura_Client_UserRoleService($this);
 		$this->user = new Kaltura_Client_UserService($this);
 		$this->widget = new Kaltura_Client_WidgetService($this);
-		$this->xInternal = new Kaltura_Client_XInternalService($this);
 	}
 	
 	/**
