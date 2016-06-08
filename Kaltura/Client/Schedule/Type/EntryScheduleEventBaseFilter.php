@@ -45,6 +45,8 @@ abstract class Kaltura_Client_Schedule_Type_EntryScheduleEventBaseFilter extends
 		if(is_null($xml))
 			return;
 		
+		if(count($xml->templateEntryIdEqual))
+			$this->templateEntryIdEqual = (string)$xml->templateEntryIdEqual;
 		if(count($xml->entryIdsLike))
 			$this->entryIdsLike = (string)$xml->entryIdsLike;
 		if(count($xml->entryIdsMultiLikeOr))
@@ -58,6 +60,13 @@ abstract class Kaltura_Client_Schedule_Type_EntryScheduleEventBaseFilter extends
 		if(count($xml->categoryIdsMultiLikeAnd))
 			$this->categoryIdsMultiLikeAnd = (string)$xml->categoryIdsMultiLikeAnd;
 	}
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $templateEntryIdEqual = null;
+
 	/**
 	 * 
 	 *
