@@ -61,6 +61,10 @@ class Kaltura_Client_Type_ConversionProfileAssetParams extends Kaltura_Client_Ob
 			$this->deletePolicy = (int)$xml->deletePolicy;
 		if(count($xml->isEncrypted))
 			$this->isEncrypted = (int)$xml->isEncrypted;
+		if(count($xml->contentAwareness))
+			$this->contentAwareness = (float)$xml->contentAwareness;
+		if(count($xml->twoPass))
+			$this->twoPass = (int)$xml->twoPass;
 	}
 	/**
 	 * The id of the conversion profile
@@ -119,6 +123,20 @@ class Kaltura_Client_Type_ConversionProfileAssetParams extends Kaltura_Client_Ob
 	 * @var Kaltura_Client_Enum_NullableBoolean
 	 */
 	public $isEncrypted = null;
+
+	/**
+	 * 
+	 *
+	 * @var float
+	 */
+	public $contentAwareness = null;
+
+	/**
+	 * 
+	 *
+	 * @var Kaltura_Client_Enum_NullableBoolean
+	 */
+	public $twoPass = null;
 
 
 }

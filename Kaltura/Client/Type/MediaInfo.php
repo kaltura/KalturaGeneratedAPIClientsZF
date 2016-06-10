@@ -111,6 +111,8 @@ class Kaltura_Client_Type_MediaInfo extends Kaltura_Client_ObjectBase
 			$this->isFastStart = (int)$xml->isFastStart;
 		if(count($xml->contentStreams))
 			$this->contentStreams = (string)$xml->contentStreams;
+		if(count($xml->complexityValue))
+			$this->complexityValue = (int)$xml->complexityValue;
 	}
 	/**
 	 * The id of the media info
@@ -343,6 +345,13 @@ class Kaltura_Client_Type_MediaInfo extends Kaltura_Client_ObjectBase
 	 * @var string
 	 */
 	public $contentStreams = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $complexityValue = null;
 
 
 }
