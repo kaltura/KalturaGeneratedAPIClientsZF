@@ -49,6 +49,8 @@ class Kaltura_Client_Type_IndexJobData extends Kaltura_Client_Type_JobData
 			$this->filter = Kaltura_Client_ParseUtils::unmarshalObject($xml->filter, "KalturaFilter");
 		if(count($xml->lastIndexId))
 			$this->lastIndexId = (int)$xml->lastIndexId;
+		if(count($xml->lastIndexDepth))
+			$this->lastIndexDepth = (int)$xml->lastIndexDepth;
 		if(count($xml->shouldUpdate))
 		{
 			if(!empty($xml->shouldUpdate))
@@ -70,6 +72,13 @@ class Kaltura_Client_Type_IndexJobData extends Kaltura_Client_Type_JobData
 	 * @var int
 	 */
 	public $lastIndexId = null;
+
+	/**
+	 * Indicates the last depth that reindexed, used when the batch crached, to re-run from the last crash point.
+	 *
+	 * @var int
+	 */
+	public $lastIndexDepth = null;
 
 	/**
 	 * Indicates that the object columns and attributes values should be recalculated before reindexed.

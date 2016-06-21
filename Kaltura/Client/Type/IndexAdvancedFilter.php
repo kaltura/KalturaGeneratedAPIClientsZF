@@ -47,6 +47,8 @@ class Kaltura_Client_Type_IndexAdvancedFilter extends Kaltura_Client_Type_Search
 		
 		if(count($xml->indexIdGreaterThan))
 			$this->indexIdGreaterThan = (int)$xml->indexIdGreaterThan;
+		if(count($xml->depthGreaterThanEqual))
+			$this->depthGreaterThanEqual = (int)$xml->depthGreaterThanEqual;
 	}
 	/**
 	 * 
@@ -54,6 +56,13 @@ class Kaltura_Client_Type_IndexAdvancedFilter extends Kaltura_Client_Type_Search
 	 * @var int
 	 */
 	public $indexIdGreaterThan = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $depthGreaterThanEqual = null;
 
 
 }
