@@ -69,8 +69,6 @@ class Kaltura_Client_Schedule_Type_ScheduleEventFilter extends Kaltura_Client_Sc
 			$this->resourceSystemNamesMultiLikeAnd = (string)$xml->resourceSystemNamesMultiLikeAnd;
 		if(count($xml->resourceSystemNamesLike))
 			$this->resourceSystemNamesLike = (string)$xml->resourceSystemNamesLike;
-		if(count($xml->templateEntryIdEqual))
-			$this->templateEntryIdEqual = (string)$xml->templateEntryIdEqual;
 	}
 	/**
 	 * 
@@ -155,13 +153,6 @@ class Kaltura_Client_Schedule_Type_ScheduleEventFilter extends Kaltura_Client_Sc
 	 * @var string
 	 */
 	public $resourceSystemNamesLike = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $templateEntryIdEqual = null;
 
 
 }

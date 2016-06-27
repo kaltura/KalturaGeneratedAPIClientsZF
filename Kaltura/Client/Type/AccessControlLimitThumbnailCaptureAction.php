@@ -31,15 +31,21 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Enum_RuleActionType extends Kaltura_Client_EnumBase
+class Kaltura_Client_Type_AccessControlLimitThumbnailCaptureAction extends Kaltura_Client_Type_RuleAction
 {
-	const BLOCK = "1";
-	const PREVIEW = "2";
-	const LIMIT_FLAVORS = "3";
-	const ADD_TO_STORAGE = "4";
-	const LIMIT_DELIVERY_PROFILES = "5";
-	const SERVE_FROM_REMOTE_SERVER = "6";
-	const REQUEST_HOST_REGEX = "7";
-	const LIMIT_THUMBNAIL_CAPTURE = "8";
+	public function getKalturaObjectType()
+	{
+		return 'KalturaAccessControlLimitThumbnailCaptureAction';
+	}
+	
+	public function __construct(SimpleXMLElement $xml = null)
+	{
+		parent::__construct($xml);
+		
+		if(is_null($xml))
+			return;
+		
+	}
+
 }
 
