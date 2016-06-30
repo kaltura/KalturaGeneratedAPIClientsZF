@@ -31,48 +31,15 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Type_AccessControlModifyRequestHostRegexAction extends Kaltura_Client_Type_RuleAction
+class Kaltura_Client_FeedDropFolder_Enum_FeedDropFolderOrderBy extends Kaltura_Client_EnumBase
 {
-	public function getKalturaObjectType()
-	{
-		return 'KalturaAccessControlModifyRequestHostRegexAction';
-	}
-	
-	public function __construct(SimpleXMLElement $xml = null)
-	{
-		parent::__construct($xml);
-		
-		if(is_null($xml))
-			return;
-		
-		if(count($xml->pattern))
-			$this->pattern = (string)$xml->pattern;
-		if(count($xml->replacement))
-			$this->replacement = (string)$xml->replacement;
-		if(count($xml->replacmenServerNodeId))
-			$this->replacmenServerNodeId = (int)$xml->replacmenServerNodeId;
-	}
-	/**
-	 * Request host regex pattern
-	 *
-	 * @var string
-	 */
-	public $pattern = null;
-
-	/**
-	 * Request host regex replacment
-	 *
-	 * @var string
-	 */
-	public $replacement = null;
-
-	/**
-	 * serverNodeId to generate replacment host from
-	 *
-	 * @var int
-	 */
-	public $replacmenServerNodeId = null;
-
-
+	const CREATED_AT_ASC = "+createdAt";
+	const ID_ASC = "+id";
+	const NAME_ASC = "+name";
+	const UPDATED_AT_ASC = "+updatedAt";
+	const CREATED_AT_DESC = "-createdAt";
+	const ID_DESC = "-id";
+	const NAME_DESC = "-name";
+	const UPDATED_AT_DESC = "-updatedAt";
 }
 

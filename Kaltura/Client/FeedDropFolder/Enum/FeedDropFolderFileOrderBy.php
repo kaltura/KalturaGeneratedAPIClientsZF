@@ -31,48 +31,23 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Type_AccessControlModifyRequestHostRegexAction extends Kaltura_Client_Type_RuleAction
+class Kaltura_Client_FeedDropFolder_Enum_FeedDropFolderFileOrderBy extends Kaltura_Client_EnumBase
 {
-	public function getKalturaObjectType()
-	{
-		return 'KalturaAccessControlModifyRequestHostRegexAction';
-	}
-	
-	public function __construct(SimpleXMLElement $xml = null)
-	{
-		parent::__construct($xml);
-		
-		if(is_null($xml))
-			return;
-		
-		if(count($xml->pattern))
-			$this->pattern = (string)$xml->pattern;
-		if(count($xml->replacement))
-			$this->replacement = (string)$xml->replacement;
-		if(count($xml->replacmenServerNodeId))
-			$this->replacmenServerNodeId = (int)$xml->replacmenServerNodeId;
-	}
-	/**
-	 * Request host regex pattern
-	 *
-	 * @var string
-	 */
-	public $pattern = null;
-
-	/**
-	 * Request host regex replacment
-	 *
-	 * @var string
-	 */
-	public $replacement = null;
-
-	/**
-	 * serverNodeId to generate replacment host from
-	 *
-	 * @var int
-	 */
-	public $replacmenServerNodeId = null;
-
-
+	const CREATED_AT_ASC = "+createdAt";
+	const FILE_NAME_ASC = "+fileName";
+	const FILE_SIZE_ASC = "+fileSize";
+	const FILE_SIZE_LAST_SET_AT_ASC = "+fileSizeLastSetAt";
+	const ID_ASC = "+id";
+	const PARSED_FLAVOR_ASC = "+parsedFlavor";
+	const PARSED_SLUG_ASC = "+parsedSlug";
+	const UPDATED_AT_ASC = "+updatedAt";
+	const CREATED_AT_DESC = "-createdAt";
+	const FILE_NAME_DESC = "-fileName";
+	const FILE_SIZE_DESC = "-fileSize";
+	const FILE_SIZE_LAST_SET_AT_DESC = "-fileSizeLastSetAt";
+	const ID_DESC = "-id";
+	const PARSED_FLAVOR_DESC = "-parsedFlavor";
+	const PARSED_SLUG_DESC = "-parsedSlug";
+	const UPDATED_AT_DESC = "-updatedAt";
 }
 
