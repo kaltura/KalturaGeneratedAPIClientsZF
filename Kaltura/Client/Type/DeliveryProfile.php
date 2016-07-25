@@ -83,6 +83,8 @@ class Kaltura_Client_Type_DeliveryProfile extends Kaltura_Client_ObjectBase
 			$this->priority = (int)$xml->priority;
 		if(count($xml->extraParams))
 			$this->extraParams = (string)$xml->extraParams;
+		if(count($xml->supplementaryAssetsFilter) && !empty($xml->supplementaryAssetsFilter))
+			$this->supplementaryAssetsFilter = Kaltura_Client_ParseUtils::unmarshalObject($xml->supplementaryAssetsFilter, "KalturaAssetFilter");
 	}
 	/**
 	 * The id of the Delivery
@@ -223,6 +225,13 @@ class Kaltura_Client_Type_DeliveryProfile extends Kaltura_Client_ObjectBase
 	 * @var string
 	 */
 	public $extraParams = null;
+
+	/**
+	 * A filter that can be used to include additional assets in the URL (e.g. captions)
+	 *
+	 * @var Kaltura_Client_Type_AssetFilter
+	 */
+	public $supplementaryAssetsFilter;
 
 
 }
