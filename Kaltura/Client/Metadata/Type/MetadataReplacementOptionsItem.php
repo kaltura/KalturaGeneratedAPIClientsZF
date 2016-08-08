@@ -31,11 +31,11 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Type_ThumbAssetFilter extends Kaltura_Client_Type_ThumbAssetBaseFilter
+class Kaltura_Client_Metadata_Type_MetadataReplacementOptionsItem extends Kaltura_Client_Type_PluginReplacementOptionsItem
 {
 	public function getKalturaObjectType()
 	{
-		return 'KalturaThumbAssetFilter';
+		return 'KalturaMetadataReplacementOptionsItem';
 	}
 	
 	public function __construct(SimpleXMLElement $xml = null)
@@ -45,7 +45,21 @@ class Kaltura_Client_Type_ThumbAssetFilter extends Kaltura_Client_Type_ThumbAsse
 		if(is_null($xml))
 			return;
 		
+		if(count($xml->shouldCopyMetadata))
+		{
+			if(!empty($xml->shouldCopyMetadata))
+				$this->shouldCopyMetadata = true;
+			else
+				$this->shouldCopyMetadata = false;
+		}
 	}
+	/**
+	 * If true custom-metadata transferred to temp entry on entry replacement
+	 *
+	 * @var bool
+	 */
+	public $shouldCopyMetadata = null;
+
 
 }
 

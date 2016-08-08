@@ -47,6 +47,13 @@ class Kaltura_Client_Type_EntryReplacementOptions extends Kaltura_Client_ObjectB
 		
 		if(count($xml->keepManualThumbnails))
 			$this->keepManualThumbnails = (int)$xml->keepManualThumbnails;
+		if(count($xml->pluginOptionItems))
+		{
+			if(empty($xml->pluginOptionItems))
+				$this->pluginOptionItems = array();
+			else
+				$this->pluginOptionItems = Kaltura_Client_ParseUtils::unmarshalArray($xml->pluginOptionItems, "KalturaPluginReplacementOptionsItem");
+		}
 	}
 	/**
 	 * If true manually created thumbnails will not be deleted on entry replacement
@@ -54,6 +61,13 @@ class Kaltura_Client_Type_EntryReplacementOptions extends Kaltura_Client_ObjectB
 	 * @var int
 	 */
 	public $keepManualThumbnails = null;
+
+	/**
+	 * Array of plugin replacement options
+	 *
+	 * @var array of KalturaPluginReplacementOptionsItem
+	 */
+	public $pluginOptionItems;
 
 
 }

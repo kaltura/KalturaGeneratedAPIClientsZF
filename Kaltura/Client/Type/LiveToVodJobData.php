@@ -31,11 +31,11 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Type_ThumbAssetFilter extends Kaltura_Client_Type_ThumbAssetBaseFilter
+class Kaltura_Client_Type_LiveToVodJobData extends Kaltura_Client_Type_JobData
 {
 	public function getKalturaObjectType()
 	{
-		return 'KalturaThumbAssetFilter';
+		return 'KalturaLiveToVodJobData';
 	}
 	
 	public function __construct(SimpleXMLElement $xml = null)
@@ -45,7 +45,52 @@ class Kaltura_Client_Type_ThumbAssetFilter extends Kaltura_Client_Type_ThumbAsse
 		if(is_null($xml))
 			return;
 		
+		if(count($xml->vodEntryId))
+			$this->vodEntryId = (string)$xml->vodEntryId;
+		if(count($xml->liveEntryId))
+			$this->liveEntryId = (string)$xml->liveEntryId;
+		if(count($xml->totalVodDuration))
+			$this->totalVodDuration = (float)$xml->totalVodDuration;
+		if(count($xml->lastSegmentDuration))
+			$this->lastSegmentDuration = (float)$xml->lastSegmentDuration;
+		if(count($xml->amfArray))
+			$this->amfArray = (string)$xml->amfArray;
 	}
+	/**
+	 * $vod Entry Id
+	 *
+	 * @var string
+	 */
+	public $vodEntryId = null;
+
+	/**
+	 * live Entry Id
+	 *
+	 * @var string
+	 */
+	public $liveEntryId = null;
+
+	/**
+	 * total VOD Duration
+	 *
+	 * @var float
+	 */
+	public $totalVodDuration = null;
+
+	/**
+	 * last Segment Duration
+	 *
+	 * @var float
+	 */
+	public $lastSegmentDuration = null;
+
+	/**
+	 * amf Array File Path
+	 *
+	 * @var string
+	 */
+	public $amfArray = null;
+
 
 }
 

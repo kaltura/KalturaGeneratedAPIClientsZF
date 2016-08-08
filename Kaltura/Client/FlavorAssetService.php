@@ -296,4 +296,17 @@ class Kaltura_Client_FlavorAssetService extends Kaltura_Client_ServiceBase
 		$resultXmlObject = new \SimpleXMLElement($resultXml);
 		$this->client->checkIfError($resultXmlObject->result);
 	}
+
+	function serveAdStitchCmd($assetId, $mediaInfoJson)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "assetId", $assetId);
+		$this->client->addParam($kparams, "mediaInfoJson", $mediaInfoJson);
+		$this->client->queueServiceActionCall("flavorasset", "serveAdStitchCmd", null, $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultXml = $this->client->doQueue();
+		$resultXmlObject = new \SimpleXMLElement($resultXml);
+		$this->client->checkIfError($resultXmlObject->result);
+	}
 }

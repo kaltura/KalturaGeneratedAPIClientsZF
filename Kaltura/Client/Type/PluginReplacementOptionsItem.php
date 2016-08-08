@@ -31,11 +31,11 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Type_ThumbAssetFilter extends Kaltura_Client_Type_ThumbAssetBaseFilter
+abstract class Kaltura_Client_Type_PluginReplacementOptionsItem extends Kaltura_Client_ObjectBase
 {
 	public function getKalturaObjectType()
 	{
-		return 'KalturaThumbAssetFilter';
+		return 'KalturaPluginReplacementOptionsItem';
 	}
 	
 	public function __construct(SimpleXMLElement $xml = null)
