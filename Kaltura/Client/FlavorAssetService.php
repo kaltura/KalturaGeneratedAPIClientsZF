@@ -297,11 +297,12 @@ class Kaltura_Client_FlavorAssetService extends Kaltura_Client_ServiceBase
 		$this->client->checkIfError($resultXmlObject->result);
 	}
 
-	function serveAdStitchCmd($assetId, $mediaInfoJson)
+	function serveAdStitchCmd($assetId, $ffprobeJson = null, $duration = null)
 	{
 		$kparams = array();
 		$this->client->addParam($kparams, "assetId", $assetId);
-		$this->client->addParam($kparams, "mediaInfoJson", $mediaInfoJson);
+		$this->client->addParam($kparams, "ffprobeJson", $ffprobeJson);
+		$this->client->addParam($kparams, "duration", $duration);
 		$this->client->queueServiceActionCall("flavorasset", "serveAdStitchCmd", null, $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
