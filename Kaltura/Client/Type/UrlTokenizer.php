@@ -49,6 +49,13 @@ class Kaltura_Client_Type_UrlTokenizer extends Kaltura_Client_ObjectBase
 			$this->window = (int)$xml->window;
 		if(count($xml->key))
 			$this->key = (string)$xml->key;
+		if(count($xml->limitIpAddress))
+		{
+			if(!empty($xml->limitIpAddress))
+				$this->limitIpAddress = true;
+			else
+				$this->limitIpAddress = false;
+		}
 	}
 	/**
 	 * Window
@@ -63,6 +70,13 @@ class Kaltura_Client_Type_UrlTokenizer extends Kaltura_Client_ObjectBase
 	 * @var string
 	 */
 	public $key = null;
+
+	/**
+	 * 
+	 *
+	 * @var bool
+	 */
+	public $limitIpAddress = null;
 
 
 }
