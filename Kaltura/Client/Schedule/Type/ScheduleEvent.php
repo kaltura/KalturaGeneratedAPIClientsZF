@@ -223,7 +223,6 @@ abstract class Kaltura_Client_Schedule_Type_ScheduleEvent extends Kaltura_Client
 	 * 
 	 *
 	 * @var Kaltura_Client_Schedule_Enum_ScheduleEventRecurrenceType
-	 * @insertonly
 	 */
 	public $recurrenceType = null;
 

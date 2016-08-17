@@ -112,6 +112,8 @@ abstract class Kaltura_Client_Type_BaseSyndicationFeed extends Kaltura_Client_Ob
 			else
 				$this->useCategoryEntries = false;
 		}
+		if(count($xml->feedContentTypeHeader))
+			$this->feedContentTypeHeader = (string)$xml->feedContentTypeHeader;
 	}
 	/**
 	 * 
@@ -271,6 +273,13 @@ abstract class Kaltura_Client_Type_BaseSyndicationFeed extends Kaltura_Client_Ob
 	 * @var bool
 	 */
 	public $useCategoryEntries = null;
+
+	/**
+	 * Feed content-type header value
+	 *
+	 * @var string
+	 */
+	public $feedContentTypeHeader = null;
 
 
 }
