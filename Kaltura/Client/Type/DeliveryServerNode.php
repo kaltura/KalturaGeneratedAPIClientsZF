@@ -45,15 +45,20 @@ abstract class Kaltura_Client_Type_DeliveryServerNode extends Kaltura_Client_Typ
 		if(is_null($xml))
 			return;
 		
-		if(count($xml->playbackDomain))
-			$this->playbackDomain = (string)$xml->playbackDomain;
+		if(count($xml->deliveryProfileIds))
+		{
+			if(empty($xml->deliveryProfileIds))
+				$this->deliveryProfileIds = array();
+			else
+				$this->deliveryProfileIds = Kaltura_Client_ParseUtils::unmarshalArray($xml->deliveryProfileIds, "KalturaKeyValue");
+		}
 	}
 	/**
-	 * Delivery server playback Domain
+	 * Delivery profile ids
 	 *
-	 * @var string
+	 * @var array of KalturaKeyValue
 	 */
-	public $playbackDomain = null;
+	public $deliveryProfileIds;
 
 
 }

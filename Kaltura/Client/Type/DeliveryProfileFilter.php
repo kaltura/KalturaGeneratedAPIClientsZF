@@ -45,7 +45,16 @@ class Kaltura_Client_Type_DeliveryProfileFilter extends Kaltura_Client_Type_Deli
 		if(is_null($xml))
 			return;
 		
+		if(count($xml->isLive))
+			$this->isLive = (int)$xml->isLive;
 	}
+	/**
+	 * 
+	 *
+	 * @var Kaltura_Client_Enum_NullableBoolean
+	 */
+	public $isLive = null;
+
 
 }
 
