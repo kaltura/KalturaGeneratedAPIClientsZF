@@ -31,30 +31,11 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Schedule_Type_ScheduleEventResourceFilter extends Kaltura_Client_Schedule_Type_ScheduleEventResourceBaseFilter
+class Kaltura_Client_Enum_EntryDisplayInSearchType extends Kaltura_Client_EnumBase
 {
-	public function getKalturaObjectType()
-	{
-		return 'KalturaScheduleEventResourceFilter';
-	}
-	
-	public function __construct(SimpleXMLElement $xml = null)
-	{
-		parent::__construct($xml);
-		
-		if(is_null($xml))
-			return;
-		
-		if(count($xml->eventIdOrItsParentIdEqual))
-			$this->eventIdOrItsParentIdEqual = (int)$xml->eventIdOrItsParentIdEqual;
-	}
-	/**
-	 * Find event-resource objects that associated with the event, if none found, find by its parent event
-	 *
-	 * @var int
-	 */
-	public $eventIdOrItsParentIdEqual = null;
-
-
+	const SYSTEM = -1;
+	const NONE = 0;
+	const PARTNER_ONLY = 1;
+	const KALTURA_NETWORK = 2;
 }
 

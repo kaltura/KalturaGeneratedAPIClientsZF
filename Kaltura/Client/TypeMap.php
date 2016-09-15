@@ -609,6 +609,7 @@ class Kaltura_Client_TypeMap
 		'KalturaLiveStreamScheduleEvent' => 'Kaltura_Client_Schedule_Type_LiveStreamScheduleEvent',
 		'KalturaLiveStreamScheduleEventBaseFilter' => 'Kaltura_Client_Schedule_Type_LiveStreamScheduleEventBaseFilter',
 		'KalturaLiveStreamScheduleEventFilter' => 'Kaltura_Client_Schedule_Type_LiveStreamScheduleEventFilter',
+		'KalturaLiveToVodJobData' => 'Kaltura_Client_Type_LiveToVodJobData',
 		'KalturaLocationScheduleResource' => 'Kaltura_Client_Schedule_Type_LocationScheduleResource',
 		'KalturaLocationScheduleResourceBaseFilter' => 'Kaltura_Client_Schedule_Type_LocationScheduleResourceBaseFilter',
 		'KalturaLocationScheduleResourceFilter' => 'Kaltura_Client_Schedule_Type_LocationScheduleResourceFilter',

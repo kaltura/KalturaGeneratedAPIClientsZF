@@ -136,6 +136,8 @@ class Kaltura_Client_Type_BaseEntry extends Kaltura_Client_ObjectBase
 			$this->capabilities = (string)$xml->capabilities;
 		if(count($xml->templateEntryId))
 			$this->templateEntryId = (string)$xml->templateEntryId;
+		if(count($xml->displayInSearch))
+			$this->displayInSearch = (int)$xml->displayInSearch;
 	}
 	/**
 	 * Auto generated 10 characters alphanumeric string
@@ -458,6 +460,13 @@ class Kaltura_Client_Type_BaseEntry extends Kaltura_Client_ObjectBase
 	 * @insertonly
 	 */
 	public $templateEntryId = null;
+
+	/**
+	 * should we display this entry in search
+	 *
+	 * @var Kaltura_Client_Enum_EntryDisplayInSearchType
+	 */
+	public $displayInSearch = null;
 
 
 }

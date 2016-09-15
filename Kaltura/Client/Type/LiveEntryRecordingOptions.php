@@ -51,6 +51,8 @@ class Kaltura_Client_Type_LiveEntryRecordingOptions extends Kaltura_Client_Objec
 			$this->shouldCopyScheduling = (int)$xml->shouldCopyScheduling;
 		if(count($xml->shouldCopyThumbnail))
 			$this->shouldCopyThumbnail = (int)$xml->shouldCopyThumbnail;
+		if(count($xml->shouldMakeHidden))
+			$this->shouldMakeHidden = (int)$xml->shouldMakeHidden;
 	}
 	/**
 	 * 
@@ -72,6 +74,13 @@ class Kaltura_Client_Type_LiveEntryRecordingOptions extends Kaltura_Client_Objec
 	 * @var Kaltura_Client_Enum_NullableBoolean
 	 */
 	public $shouldCopyThumbnail = null;
+
+	/**
+	 * 
+	 *
+	 * @var Kaltura_Client_Enum_NullableBoolean
+	 */
+	public $shouldMakeHidden = null;
 
 
 }
