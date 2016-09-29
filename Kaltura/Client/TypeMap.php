@@ -289,6 +289,7 @@ class Kaltura_Client_TypeMap
 		'KalturaDeliveryProfileRtmp' => 'Kaltura_Client_Type_DeliveryProfileRtmp',
 		'KalturaDeliveryProfileRtmpBaseFilter' => 'Kaltura_Client_Type_DeliveryProfileRtmpBaseFilter',
 		'KalturaDeliveryProfileRtmpFilter' => 'Kaltura_Client_Type_DeliveryProfileRtmpFilter',
+		'KalturaDeliveryProfileVodPackagerHls' => 'Kaltura_Client_Type_DeliveryProfileVodPackagerHls',
 		'KalturaDeliveryServerNode' => 'Kaltura_Client_Type_DeliveryServerNode',
 		'KalturaDeliveryServerNodeBaseFilter' => 'Kaltura_Client_Type_DeliveryServerNodeBaseFilter',
 		'KalturaDeliveryServerNodeFilter' => 'Kaltura_Client_Type_DeliveryServerNodeFilter',
