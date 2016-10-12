@@ -219,6 +219,18 @@ class Kaltura_Client_LiveStreamService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	function regenrateSecureToken($entryId)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "entryId", $entryId);
+		$this->client->queueServiceActionCall("livestream", "regenrateSecureToken", null, $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultXml = $this->client->doQueue();
+		$resultXmlObject = new \SimpleXMLElement($resultXml);
+		$this->client->checkIfError($resultXmlObject->result);
+	}
+
 	function appendRecording($entryId, $assetId, $mediaServerIndex, Kaltura_Client_Type_DataCenterContentResource $resource, $duration, $isLastChunk = false)
 	{
 		$kparams = array();
