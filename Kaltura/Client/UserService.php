@@ -163,7 +163,7 @@ class Kaltura_Client_UserService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
-	function loginByLoginId($loginId, $password, $partnerId = null, $expiry = 86400, $privileges = "*")
+	function loginByLoginId($loginId, $password, $partnerId = null, $expiry = 86400, $privileges = "*", $otp = null)
 	{
 		$kparams = array();
 		$this->client->addParam($kparams, "loginId", $loginId);
@@ -171,6 +171,7 @@ class Kaltura_Client_UserService extends Kaltura_Client_ServiceBase
 		$this->client->addParam($kparams, "partnerId", $partnerId);
 		$this->client->addParam($kparams, "expiry", $expiry);
 		$this->client->addParam($kparams, "privileges", $privileges);
+		$this->client->addParam($kparams, "otp", $otp);
 		$this->client->queueServiceActionCall("user", "loginByLoginId", null, $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
