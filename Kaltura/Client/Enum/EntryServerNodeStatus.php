@@ -37,5 +37,6 @@ class Kaltura_Client_Enum_EntryServerNodeStatus extends Kaltura_Client_EnumBase
 	const PLAYABLE = 1;
 	const BROADCASTING = 2;
 	const AUTHENTICATED = 3;
+	const MARKED_FOR_DELETION = 4;
 }
 

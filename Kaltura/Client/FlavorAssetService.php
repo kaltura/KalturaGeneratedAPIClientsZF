@@ -309,5 +309,7 @@ class Kaltura_Client_FlavorAssetService extends Kaltura_Client_ServiceBase
 		$resultXml = $this->client->doQueue();
 		$resultXmlObject = new \SimpleXMLElement($resultXml);
 		$this->client->checkIfError($resultXmlObject->result);
+		$resultObject = (string)Kaltura_Client_ParseUtils::unmarshalSimpleType($resultXmlObject->result);
+		return $resultObject;
 	}
 }
