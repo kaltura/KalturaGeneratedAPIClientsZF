@@ -77,6 +77,8 @@ class Kaltura_Client_Type_FlavorAsset extends Kaltura_Client_Type_Asset
 			$this->status = (int)$xml->status;
 		if(count($xml->language))
 			$this->language = (string)$xml->language;
+		if(count($xml->label))
+			$this->label = (string)$xml->label;
 	}
 	/**
 	 * The Flavor Params used to create this Flavor Asset
@@ -164,6 +166,14 @@ class Kaltura_Client_Type_FlavorAsset extends Kaltura_Client_Type_Asset
 	 * @var Kaltura_Client_Enum_Language
 	 */
 	public $language = null;
+
+	/**
+	 * The label of the flavor asset
+	 *
+	 * @var string
+	 * @readonly
+	 */
+	public $label = null;
 
 
 }

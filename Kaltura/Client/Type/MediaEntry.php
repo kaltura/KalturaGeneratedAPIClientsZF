@@ -67,6 +67,13 @@ class Kaltura_Client_Type_MediaEntry extends Kaltura_Client_Type_PlayableEntry
 			$this->flavorParamsIds = (string)$xml->flavorParamsIds;
 		if(count($xml->isTrimDisabled))
 			$this->isTrimDisabled = (int)$xml->isTrimDisabled;
+		if(count($xml->streams))
+		{
+			if(empty($xml->streams))
+				$this->streams = array();
+			else
+				$this->streams = Kaltura_Client_ParseUtils::unmarshalArray($xml->streams, "KalturaStreamContainer");
+		}
 	}
 	/**
 	 * The media type of the entry
@@ -153,6 +160,13 @@ class Kaltura_Client_Type_MediaEntry extends Kaltura_Client_Type_PlayableEntry
 	 * @readonly
 	 */
 	public $isTrimDisabled = null;
+
+	/**
+	 * Array of streams that exists on the entry
+	 *
+	 * @var array of KalturaStreamContainer
+	 */
+	public $streams;
 
 
 }

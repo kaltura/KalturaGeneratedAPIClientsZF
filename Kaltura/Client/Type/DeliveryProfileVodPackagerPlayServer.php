@@ -31,11 +31,11 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Type_DeliveryProfileVodPackagerHls extends Kaltura_Client_Type_DeliveryProfileVodPackagerPlayServer
+class Kaltura_Client_Type_DeliveryProfileVodPackagerPlayServer extends Kaltura_Client_Type_DeliveryProfile
 {
 	public function getKalturaObjectType()
 	{
-		return 'KalturaDeliveryProfileVodPackagerHls';
+		return 'KalturaDeliveryProfileVodPackagerPlayServer';
 	}
 	
 	public function __construct(SimpleXMLElement $xml = null)
@@ -45,12 +45,12 @@ class Kaltura_Client_Type_DeliveryProfileVodPackagerHls extends Kaltura_Client_T
 		if(is_null($xml))
 			return;
 		
-		if(count($xml->allowFairplayOffline))
+		if(count($xml->adStitchingEnabled))
 		{
-			if(!empty($xml->allowFairplayOffline))
-				$this->allowFairplayOffline = true;
+			if(!empty($xml->adStitchingEnabled))
+				$this->adStitchingEnabled = true;
 			else
-				$this->allowFairplayOffline = false;
+				$this->adStitchingEnabled = false;
 		}
 	}
 	/**
@@ -58,7 +58,7 @@ class Kaltura_Client_Type_DeliveryProfileVodPackagerHls extends Kaltura_Client_T
 	 *
 	 * @var bool
 	 */
-	public $allowFairplayOffline = null;
+	public $adStitchingEnabled = null;
 
 
 }

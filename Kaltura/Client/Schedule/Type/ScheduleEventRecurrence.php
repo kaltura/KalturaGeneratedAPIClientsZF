@@ -51,6 +51,8 @@ class Kaltura_Client_Schedule_Type_ScheduleEventRecurrence extends Kaltura_Clien
 			$this->frequency = (string)$xml->frequency;
 		if(count($xml->until))
 			$this->until = (int)$xml->until;
+		if(count($xml->timeZone))
+			$this->timeZone = (string)$xml->timeZone;
 		if(count($xml->count))
 			$this->count = (int)$xml->count;
 		if(count($xml->interval))
@@ -96,6 +98,13 @@ class Kaltura_Client_Schedule_Type_ScheduleEventRecurrence extends Kaltura_Clien
 	 * @var int
 	 */
 	public $until = null;
+
+	/**
+	 * TimeZone String
+	 *
+	 * @var string
+	 */
+	public $timeZone = null;
 
 	/**
 	 * 
