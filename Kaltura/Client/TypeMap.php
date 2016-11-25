@@ -662,6 +662,7 @@ class Kaltura_Client_TypeMap
 		'KalturaModerationFlag' => 'Kaltura_Client_Type_ModerationFlag',
 		'KalturaModerationFlagListResponse' => 'Kaltura_Client_Type_ModerationFlagListResponse',
 		'KalturaModifyCategoriesObjectTask' => 'Kaltura_Client_ScheduledTask_Type_ModifyCategoriesObjectTask',
+		'KalturaModifyEntryObjectTask' => 'Kaltura_Client_ScheduledTask_Type_ModifyEntryObjectTask',
 		'KalturaMoveCategoryEntriesJobData' => 'Kaltura_Client_Type_MoveCategoryEntriesJobData',
 		'KalturaNotificationJobData' => 'Kaltura_Client_Type_NotificationJobData',
 		'KalturaObject' => 'Kaltura_Client_Type_Object',

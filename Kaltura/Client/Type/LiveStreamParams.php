@@ -55,6 +55,10 @@ class Kaltura_Client_Type_LiveStreamParams extends Kaltura_Client_ObjectBase
 			$this->height = (int)$xml->height;
 		if(count($xml->codec))
 			$this->codec = (string)$xml->codec;
+		if(count($xml->frameRate))
+			$this->frameRate = (int)$xml->frameRate;
+		if(count($xml->keyFrameInterval))
+			$this->keyFrameInterval = (float)$xml->keyFrameInterval;
 	}
 	/**
 	 * Bit rate of the stream. (i.e. 900)
@@ -90,6 +94,20 @@ class Kaltura_Client_Type_LiveStreamParams extends Kaltura_Client_ObjectBase
 	 * @var string
 	 */
 	public $codec = null;
+
+	/**
+	 * Live stream's farme rate
+	 *
+	 * @var int
+	 */
+	public $frameRate = null;
+
+	/**
+	 * Live stream's key frame interval
+	 *
+	 * @var float
+	 */
+	public $keyFrameInterval = null;
 
 
 }

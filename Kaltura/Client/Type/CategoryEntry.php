@@ -55,6 +55,8 @@ class Kaltura_Client_Type_CategoryEntry extends Kaltura_Client_ObjectBase
 			$this->categoryFullIds = (string)$xml->categoryFullIds;
 		if(count($xml->status))
 			$this->status = (int)$xml->status;
+		if(count($xml->creatorUserId))
+			$this->creatorUserId = (string)$xml->creatorUserId;
 	}
 	/**
 	 * 
@@ -93,6 +95,14 @@ class Kaltura_Client_Type_CategoryEntry extends Kaltura_Client_ObjectBase
 	 * @readonly
 	 */
 	public $status = null;
+
+	/**
+	 * CategroyEntry creator puser ID
+	 *
+	 * @var string
+	 * @readonly
+	 */
+	public $creatorUserId = null;
 
 
 }
