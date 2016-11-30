@@ -55,6 +55,10 @@ class Kaltura_Client_Type_LiveToVodJobData extends Kaltura_Client_Type_JobData
 			$this->lastSegmentDuration = (float)$xml->lastSegmentDuration;
 		if(count($xml->amfArray))
 			$this->amfArray = (string)$xml->amfArray;
+		if(count($xml->lastCuePointSyncTime))
+			$this->lastCuePointSyncTime = (int)$xml->lastCuePointSyncTime;
+		if(count($xml->lastSegmentDrift))
+			$this->lastSegmentDrift = (int)$xml->lastSegmentDrift;
 	}
 	/**
 	 * $vod Entry Id
@@ -90,6 +94,20 @@ class Kaltura_Client_Type_LiveToVodJobData extends Kaltura_Client_Type_JobData
 	 * @var string
 	 */
 	public $amfArray = null;
+
+	/**
+	 * last live to vod sync time
+	 *
+	 * @var int
+	 */
+	public $lastCuePointSyncTime = null;
+
+	/**
+	 * last segment drift
+	 *
+	 * @var int
+	 */
+	public $lastSegmentDrift = null;
 
 
 }

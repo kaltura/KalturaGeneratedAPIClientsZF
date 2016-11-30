@@ -47,6 +47,22 @@ class Kaltura_Client_Type_ExtractMediaJobData extends Kaltura_Client_Type_Convar
 		
 		if(count($xml->flavorAssetId))
 			$this->flavorAssetId = (string)$xml->flavorAssetId;
+		if(count($xml->calculateComplexity))
+		{
+			if(!empty($xml->calculateComplexity))
+				$this->calculateComplexity = true;
+			else
+				$this->calculateComplexity = false;
+		}
+		if(count($xml->extractId3Tags))
+		{
+			if(!empty($xml->extractId3Tags))
+				$this->extractId3Tags = true;
+			else
+				$this->extractId3Tags = false;
+		}
+		if(count($xml->destDataFilePath))
+			$this->destDataFilePath = (string)$xml->destDataFilePath;
 	}
 	/**
 	 * 
@@ -54,6 +70,27 @@ class Kaltura_Client_Type_ExtractMediaJobData extends Kaltura_Client_Type_Convar
 	 * @var string
 	 */
 	public $flavorAssetId = null;
+
+	/**
+	 * 
+	 *
+	 * @var bool
+	 */
+	public $calculateComplexity = null;
+
+	/**
+	 * 
+	 *
+	 * @var bool
+	 */
+	public $extractId3Tags = null;
+
+	/**
+	 * The data output file
+	 *
+	 * @var string
+	 */
+	public $destDataFilePath = null;
 
 
 }

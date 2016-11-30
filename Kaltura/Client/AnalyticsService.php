@@ -39,10 +39,12 @@ class Kaltura_Client_AnalyticsService extends Kaltura_Client_ServiceBase
 		parent::__construct($client);
 	}
 
-	function query(Kaltura_Client_Type_AnalyticsFilter $filter)
+	function query(Kaltura_Client_Type_AnalyticsFilter $filter, Kaltura_Client_Type_FilterPager $pager = null)
 	{
 		$kparams = array();
 		$this->client->addParam($kparams, "filter", $filter->toParams());
+		if ($pager !== null)
+			$this->client->addParam($kparams, "pager", $pager->toParams());
 		$this->client->queueServiceActionCall("analytics", "query", "KalturaReportResponse", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();

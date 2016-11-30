@@ -62,16 +62,18 @@ class Kaltura_Client_Type_AnalyticsFilter extends Kaltura_Client_ObjectBase
 			else
 				$this->filters = Kaltura_Client_ParseUtils::unmarshalArray($xml->filters, "KalturaReportFilter");
 		}
+		if(count($xml->orderBy))
+			$this->orderBy = (string)$xml->orderBy;
 	}
 	/**
-	 * Query start time (in local time)
+	 * Query start time (in local time) MM/dd/yyyy HH:mi
 	 *
 	 * @var string
 	 */
 	public $from_time = null;
 
 	/**
-	 * Query end time (in local time)
+	 * Query end time (in local time) MM/dd/yyyy HH:mi
 	 *
 	 * @var string
 	 */
@@ -104,6 +106,13 @@ class Kaltura_Client_Type_AnalyticsFilter extends Kaltura_Client_ObjectBase
 	 * @var array of KalturaReportFilter
 	 */
 	public $filters;
+
+	/**
+	 * Query order by metric/dimension
+	 *
+	 * @var string
+	 */
+	public $orderBy = null;
 
 
 }
