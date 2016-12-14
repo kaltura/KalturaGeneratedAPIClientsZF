@@ -31,21 +31,21 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Enum_PlaybackProtocol extends Kaltura_Client_EnumBase
+class Kaltura_Client_Type_PlaybackContextOptions extends Kaltura_Client_Type_EntryContextDataParams
 {
-	const APPLE_HTTP = "applehttp";
-	const APPLE_HTTP_TO_MC = "applehttp_to_mc";
-	const AUTO = "auto";
-	const AKAMAI_HD = "hdnetwork";
-	const AKAMAI_HDS = "hdnetworkmanifest";
-	const HDS = "hds";
-	const HLS = "hls";
-	const HTTP = "http";
-	const MPEG_DASH = "mpegdash";
-	const MULTICAST_SL = "multicast_silverlight";
-	const RTMP = "rtmp";
-	const RTSP = "rtsp";
-	const SILVER_LIGHT = "sl";
-	const URL = "url";
+	public function getKalturaObjectType()
+	{
+		return 'KalturaPlaybackContextOptions';
+	}
+	
+	public function __construct(SimpleXMLElement $xml = null)
+	{
+		parent::__construct($xml);
+		
+		if(is_null($xml))
+			return;
+		
+	}
+
 }
 
