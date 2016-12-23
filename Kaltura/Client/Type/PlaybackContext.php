@@ -31,11 +31,11 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Type_DrmPlaybackPluginData extends Kaltura_Client_Type_PluginData
+class Kaltura_Client_Type_PlaybackContext extends Kaltura_Client_ObjectBase
 {
 	public function getKalturaObjectType()
 	{
-		return 'KalturaDrmPlaybackPluginData';
+		return 'KalturaPlaybackContext';
 	}
 	
 	public function __construct(SimpleXMLElement $xml = null)
@@ -45,24 +45,62 @@ class Kaltura_Client_Type_DrmPlaybackPluginData extends Kaltura_Client_Type_Plug
 		if(is_null($xml))
 			return;
 		
-		if(count($xml->scheme))
-			$this->scheme = (string)$xml->scheme;
-		if(count($xml->licenseURL))
-			$this->licenseURL = (string)$xml->licenseURL;
+		if(count($xml->sources))
+		{
+			if(empty($xml->sources))
+				$this->sources = array();
+			else
+				$this->sources = Kaltura_Client_ParseUtils::unmarshalArray($xml->sources, "KalturaPlaybackSource");
+		}
+		if(count($xml->flavorAssets))
+		{
+			if(empty($xml->flavorAssets))
+				$this->flavorAssets = array();
+			else
+				$this->flavorAssets = Kaltura_Client_ParseUtils::unmarshalArray($xml->flavorAssets, "KalturaFlavorAsset");
+		}
+		if(count($xml->actions))
+		{
+			if(empty($xml->actions))
+				$this->actions = array();
+			else
+				$this->actions = Kaltura_Client_ParseUtils::unmarshalArray($xml->actions, "KalturaRuleAction");
+		}
+		if(count($xml->messages))
+		{
+			if(empty($xml->messages))
+				$this->messages = array();
+			else
+				$this->messages = Kaltura_Client_ParseUtils::unmarshalArray($xml->messages, "KalturaAccessControlMessage");
+		}
 	}
 	/**
 	 * 
 	 *
-	 * @var Kaltura_Client_Drm_Enum_DrmSchemeName
+	 * @var array of KalturaPlaybackSource
 	 */
-	public $scheme = null;
+	public $sources;
 
 	/**
 	 * 
 	 *
-	 * @var string
+	 * @var array of KalturaFlavorAsset
 	 */
-	public $licenseURL = null;
+	public $flavorAssets;
+
+	/**
+	 * Array of actions as received from the rules that invalidated
+	 *
+	 * @var array of KalturaRuleAction
+	 */
+	public $actions;
+
+	/**
+	 * Array of actions as received from the rules that invalidated
+	 *
+	 * @var array of KalturaAccessControlMessage
+	 */
+	public $messages;
 
 
 }

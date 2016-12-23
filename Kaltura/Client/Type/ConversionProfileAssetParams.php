@@ -65,6 +65,8 @@ class Kaltura_Client_Type_ConversionProfileAssetParams extends Kaltura_Client_Ob
 			$this->contentAwareness = (float)$xml->contentAwareness;
 		if(count($xml->twoPass))
 			$this->twoPass = (int)$xml->twoPass;
+		if(count($xml->tags))
+			$this->tags = (string)$xml->tags;
 	}
 	/**
 	 * The id of the conversion profile
@@ -137,6 +139,13 @@ class Kaltura_Client_Type_ConversionProfileAssetParams extends Kaltura_Client_Ob
 	 * @var Kaltura_Client_Enum_NullableBoolean
 	 */
 	public $twoPass = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $tags = null;
 
 
 }

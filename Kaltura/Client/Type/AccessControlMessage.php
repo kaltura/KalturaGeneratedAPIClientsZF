@@ -31,11 +31,11 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Type_DrmPlaybackPluginData extends Kaltura_Client_Type_PluginData
+class Kaltura_Client_Type_AccessControlMessage extends Kaltura_Client_ObjectBase
 {
 	public function getKalturaObjectType()
 	{
-		return 'KalturaDrmPlaybackPluginData';
+		return 'KalturaAccessControlMessage';
 	}
 	
 	public function __construct(SimpleXMLElement $xml = null)
@@ -45,24 +45,24 @@ class Kaltura_Client_Type_DrmPlaybackPluginData extends Kaltura_Client_Type_Plug
 		if(is_null($xml))
 			return;
 		
-		if(count($xml->scheme))
-			$this->scheme = (string)$xml->scheme;
-		if(count($xml->licenseURL))
-			$this->licenseURL = (string)$xml->licenseURL;
+		if(count($xml->message))
+			$this->message = (string)$xml->message;
+		if(count($xml->code))
+			$this->code = (string)$xml->code;
 	}
 	/**
 	 * 
 	 *
-	 * @var Kaltura_Client_Drm_Enum_DrmSchemeName
+	 * @var string
 	 */
-	public $scheme = null;
+	public $message = null;
 
 	/**
 	 * 
 	 *
 	 * @var string
 	 */
-	public $licenseURL = null;
+	public $code = null;
 
 
 }

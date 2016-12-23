@@ -49,22 +49,10 @@ class Kaltura_Client_Type_PlaybackSource extends Kaltura_Client_ObjectBase
 			$this->deliveryProfileId = (string)$xml->deliveryProfileId;
 		if(count($xml->format))
 			$this->format = (string)$xml->format;
-		if(count($xml->priority))
-			$this->priority = (string)$xml->priority;
 		if(count($xml->protocols))
-		{
-			if(empty($xml->protocols))
-				$this->protocols = array();
-			else
-				$this->protocols = Kaltura_Client_ParseUtils::unmarshalArray($xml->protocols, "KalturaString");
-		}
-		if(count($xml->flavors))
-		{
-			if(empty($xml->flavors))
-				$this->flavors = array();
-			else
-				$this->flavors = Kaltura_Client_ParseUtils::unmarshalArray($xml->flavors, "KalturaString");
-		}
+			$this->protocols = (string)$xml->protocols;
+		if(count($xml->flavorIds))
+			$this->flavorIds = (string)$xml->flavorIds;
 		if(count($xml->url))
 			$this->url = (string)$xml->url;
 		if(count($xml->drm))
@@ -72,7 +60,7 @@ class Kaltura_Client_Type_PlaybackSource extends Kaltura_Client_ObjectBase
 			if(empty($xml->drm))
 				$this->drm = array();
 			else
-				$this->drm = Kaltura_Client_ParseUtils::unmarshalArray($xml->drm, "KalturaDrmEntryPlayingPluginData");
+				$this->drm = Kaltura_Client_ParseUtils::unmarshalArray($xml->drm, "KalturaDrmPlaybackPluginData");
 		}
 	}
 	/**
@@ -83,32 +71,25 @@ class Kaltura_Client_Type_PlaybackSource extends Kaltura_Client_ObjectBase
 	public $deliveryProfileId = null;
 
 	/**
-	 * 
+	 * source format according to delivery profile streamer type (applehttp, mpegdash etc.)
 	 *
 	 * @var string
 	 */
 	public $format = null;
 
 	/**
-	 * 
+	 * comma separated string according to deliveryProfile media protocols ('http,https' etc.)
 	 *
 	 * @var string
 	 */
-	public $priority = null;
+	public $protocols = null;
 
 	/**
-	 * 
+	 * comma separated string of flavor ids
 	 *
-	 * @var array of KalturaString
+	 * @var string
 	 */
-	public $protocols;
-
-	/**
-	 * 
-	 *
-	 * @var array of KalturaString
-	 */
-	public $flavors;
+	public $flavorIds = null;
 
 	/**
 	 * 
@@ -118,9 +99,9 @@ class Kaltura_Client_Type_PlaybackSource extends Kaltura_Client_ObjectBase
 	public $url = null;
 
 	/**
-	 * 
+	 * drm data object containing relevant license url ,scheme name and certificate
 	 *
-	 * @var array of KalturaDrmEntryPlayingPluginData
+	 * @var array of KalturaDrmPlaybackPluginData
 	 */
 	public $drm;
 
