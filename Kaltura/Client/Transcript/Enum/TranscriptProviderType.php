@@ -31,11 +31,9 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Attachment_Enum_AttachmentType extends Kaltura_Client_EnumBase
+class Kaltura_Client_Transcript_Enum_TranscriptProviderType extends Kaltura_Client_EnumBase
 {
-	const TEXT = "1";
-	const MEDIA = "2";
-	const DOCUMENT = "3";
-	const JSON = "4";
+	const CIELO24 = "cielo24.Cielo24";
+	const VOICEBASE = "voicebase.Voicebase";
 }
 

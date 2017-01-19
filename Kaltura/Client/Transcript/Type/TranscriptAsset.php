@@ -51,6 +51,8 @@ class Kaltura_Client_Transcript_Type_TranscriptAsset extends Kaltura_Client_Atta
 			$this->humanVerified = (int)$xml->humanVerified;
 		if(count($xml->language))
 			$this->language = (string)$xml->language;
+		if(count($xml->providerType))
+			$this->providerType = (string)$xml->providerType;
 	}
 	/**
 	 * The accuracy of the transcript - values between 0 and 1
@@ -72,6 +74,13 @@ class Kaltura_Client_Transcript_Type_TranscriptAsset extends Kaltura_Client_Atta
 	 * @var Kaltura_Client_Enum_Language
 	 */
 	public $language = null;
+
+	/**
+	 * The provider of the transcript
+	 *
+	 * @var Kaltura_Client_Transcript_Enum_TranscriptProviderType
+	 */
+	public $providerType = null;
 
 
 }
