@@ -31,11 +31,11 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Type_ThumbnailServeOptions extends Kaltura_Client_Type_AssetServeOptions
+class Kaltura_Client_Attachment_Type_AttachmentServeOptions extends Kaltura_Client_Type_AssetServeOptions
 {
 	public function getKalturaObjectType()
 	{
-		return 'KalturaThumbnailServeOptions';
+		return 'KalturaAttachmentServeOptions';
 	}
 	
 	public function __construct(SimpleXMLElement $xml = null)

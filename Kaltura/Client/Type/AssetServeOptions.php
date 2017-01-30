@@ -31,11 +31,11 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Type_ThumbnailServeOptions extends Kaltura_Client_Type_AssetServeOptions
+class Kaltura_Client_Type_AssetServeOptions extends Kaltura_Client_ObjectBase
 {
 	public function getKalturaObjectType()
 	{
-		return 'KalturaThumbnailServeOptions';
+		return 'KalturaAssetServeOptions';
 	}
 	
 	public function __construct(SimpleXMLElement $xml = null)
@@ -45,7 +45,30 @@ class Kaltura_Client_Type_ThumbnailServeOptions extends Kaltura_Client_Type_Asse
 		if(is_null($xml))
 			return;
 		
+		if(count($xml->download))
+		{
+			if(!empty($xml->download))
+				$this->download = true;
+			else
+				$this->download = false;
+		}
+		if(count($xml->referrer))
+			$this->referrer = (string)$xml->referrer;
 	}
+	/**
+	 * 
+	 *
+	 * @var bool
+	 */
+	public $download = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $referrer = null;
+
 
 }
 
