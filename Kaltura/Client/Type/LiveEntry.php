@@ -83,6 +83,8 @@ abstract class Kaltura_Client_Type_LiveEntry extends Kaltura_Client_Type_MediaEn
 			$this->recordingOptions = Kaltura_Client_ParseUtils::unmarshalObject($xml->recordingOptions, "KalturaLiveEntryRecordingOptions");
 		if(count($xml->liveStatus))
 			$this->liveStatus = (int)$xml->liveStatus;
+		if(count($xml->segmentDuration))
+			$this->segmentDuration = (int)$xml->segmentDuration;
 	}
 	/**
 	 * The message to be presented when the stream is offline
@@ -184,6 +186,13 @@ abstract class Kaltura_Client_Type_LiveEntry extends Kaltura_Client_Type_MediaEn
 	 * @readonly
 	 */
 	public $liveStatus = null;
+
+	/**
+	 * The chunk duration value in milliseconds
+	 *
+	 * @var int
+	 */
+	public $segmentDuration = null;
 
 
 }

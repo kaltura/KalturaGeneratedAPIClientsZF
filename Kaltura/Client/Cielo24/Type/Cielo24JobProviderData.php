@@ -70,6 +70,8 @@ class Kaltura_Client_Cielo24_Type_Cielo24JobProviderData extends Kaltura_Client_
 			else
 				$this->replaceMediaContent = false;
 		}
+		if(count($xml->additionalParameters))
+			$this->additionalParameters = (string)$xml->additionalParameters;
 	}
 	/**
 	 * Entry ID
@@ -143,6 +145,13 @@ class Kaltura_Client_Cielo24_Type_Cielo24JobProviderData extends Kaltura_Client_
 	 * @var bool
 	 */
 	public $replaceMediaContent = null;
+
+	/**
+	 * additional parameters to send to Cielo24
+	 *
+	 * @var string
+	 */
+	public $additionalParameters = null;
 
 
 }
