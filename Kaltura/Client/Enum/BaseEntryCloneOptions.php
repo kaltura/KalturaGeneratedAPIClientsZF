@@ -40,5 +40,6 @@ class Kaltura_Client_Enum_BaseEntryCloneOptions extends Kaltura_Client_EnumBase
 	const USERS = "1";
 	const CATEGORIES = "2";
 	const CHILD_ENTRIES = "3";
+	const ACCESS_CONTROL = "4";
 }
 
