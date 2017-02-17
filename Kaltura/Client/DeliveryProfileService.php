@@ -54,12 +54,11 @@ class Kaltura_Client_DeliveryProfileService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
-	function update($id, Kaltura_Client_Type_DeliveryProfile $delivery)
+	function cloneAction($deliveryId)
 	{
 		$kparams = array();
-		$this->client->addParam($kparams, "id", $id);
-		$this->client->addParam($kparams, "delivery", $delivery->toParams());
-		$this->client->queueServiceActionCall("deliveryprofile", "update", "KalturaDeliveryProfile", $kparams);
+		$this->client->addParam($kparams, "deliveryId", $deliveryId);
+		$this->client->queueServiceActionCall("deliveryprofile", "clone", "KalturaDeliveryProfile", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
 		$resultXml = $this->client->doQueue();
@@ -85,21 +84,6 @@ class Kaltura_Client_DeliveryProfileService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
-	function cloneAction($deliveryId)
-	{
-		$kparams = array();
-		$this->client->addParam($kparams, "deliveryId", $deliveryId);
-		$this->client->queueServiceActionCall("deliveryprofile", "clone", "KalturaDeliveryProfile", $kparams);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaDeliveryProfile");
-		$this->client->validateObjectType($resultObject, "Kaltura_Client_Type_DeliveryProfile");
-		return $resultObject;
-	}
-
 	function listAction(Kaltura_Client_Type_DeliveryProfileFilter $filter = null, Kaltura_Client_Type_FilterPager $pager = null)
 	{
 		$kparams = array();
@@ -115,6 +99,22 @@ class Kaltura_Client_DeliveryProfileService extends Kaltura_Client_ServiceBase
 		$this->client->checkIfError($resultXmlObject->result);
 		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaDeliveryProfileListResponse");
 		$this->client->validateObjectType($resultObject, "Kaltura_Client_Type_DeliveryProfileListResponse");
+		return $resultObject;
+	}
+
+	function update($id, Kaltura_Client_Type_DeliveryProfile $delivery)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "id", $id);
+		$this->client->addParam($kparams, "delivery", $delivery->toParams());
+		$this->client->queueServiceActionCall("deliveryprofile", "update", "KalturaDeliveryProfile", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultXml = $this->client->doQueue();
+		$resultXmlObject = new \SimpleXMLElement($resultXml);
+		$this->client->checkIfError($resultXmlObject->result);
+		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaDeliveryProfile");
+		$this->client->validateObjectType($resultObject, "Kaltura_Client_Type_DeliveryProfile");
 		return $resultObject;
 	}
 }

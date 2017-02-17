@@ -54,43 +54,12 @@ class Kaltura_Client_ResponseProfileService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
-	function get($id)
+	function cloneAction($id, Kaltura_Client_Type_ResponseProfile $profile)
 	{
 		$kparams = array();
 		$this->client->addParam($kparams, "id", $id);
-		$this->client->queueServiceActionCall("responseprofile", "get", "KalturaResponseProfile", $kparams);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaResponseProfile");
-		$this->client->validateObjectType($resultObject, "Kaltura_Client_Type_ResponseProfile");
-		return $resultObject;
-	}
-
-	function update($id, Kaltura_Client_Type_ResponseProfile $updateResponseProfile)
-	{
-		$kparams = array();
-		$this->client->addParam($kparams, "id", $id);
-		$this->client->addParam($kparams, "updateResponseProfile", $updateResponseProfile->toParams());
-		$this->client->queueServiceActionCall("responseprofile", "update", "KalturaResponseProfile", $kparams);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaResponseProfile");
-		$this->client->validateObjectType($resultObject, "Kaltura_Client_Type_ResponseProfile");
-		return $resultObject;
-	}
-
-	function updateStatus($id, $status)
-	{
-		$kparams = array();
-		$this->client->addParam($kparams, "id", $id);
-		$this->client->addParam($kparams, "status", $status);
-		$this->client->queueServiceActionCall("responseprofile", "updateStatus", "KalturaResponseProfile", $kparams);
+		$this->client->addParam($kparams, "profile", $profile->toParams());
+		$this->client->queueServiceActionCall("responseprofile", "clone", "KalturaResponseProfile", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
 		$resultXml = $this->client->doQueue();
@@ -111,6 +80,21 @@ class Kaltura_Client_ResponseProfileService extends Kaltura_Client_ServiceBase
 		$resultXml = $this->client->doQueue();
 		$resultXmlObject = new \SimpleXMLElement($resultXml);
 		$this->client->checkIfError($resultXmlObject->result);
+	}
+
+	function get($id)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "id", $id);
+		$this->client->queueServiceActionCall("responseprofile", "get", "KalturaResponseProfile", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultXml = $this->client->doQueue();
+		$resultXmlObject = new \SimpleXMLElement($resultXml);
+		$this->client->checkIfError($resultXmlObject->result);
+		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaResponseProfile");
+		$this->client->validateObjectType($resultObject, "Kaltura_Client_Type_ResponseProfile");
+		return $resultObject;
 	}
 
 	function listAction(Kaltura_Client_Type_ResponseProfileFilter $filter = null, Kaltura_Client_Type_FilterPager $pager = null)
@@ -146,12 +130,28 @@ class Kaltura_Client_ResponseProfileService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
-	function cloneAction($id, Kaltura_Client_Type_ResponseProfile $profile)
+	function update($id, Kaltura_Client_Type_ResponseProfile $updateResponseProfile)
 	{
 		$kparams = array();
 		$this->client->addParam($kparams, "id", $id);
-		$this->client->addParam($kparams, "profile", $profile->toParams());
-		$this->client->queueServiceActionCall("responseprofile", "clone", "KalturaResponseProfile", $kparams);
+		$this->client->addParam($kparams, "updateResponseProfile", $updateResponseProfile->toParams());
+		$this->client->queueServiceActionCall("responseprofile", "update", "KalturaResponseProfile", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultXml = $this->client->doQueue();
+		$resultXmlObject = new \SimpleXMLElement($resultXml);
+		$this->client->checkIfError($resultXmlObject->result);
+		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaResponseProfile");
+		$this->client->validateObjectType($resultObject, "Kaltura_Client_Type_ResponseProfile");
+		return $resultObject;
+	}
+
+	function updateStatus($id, $status)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "id", $id);
+		$this->client->addParam($kparams, "status", $status);
+		$this->client->queueServiceActionCall("responseprofile", "updateStatus", "KalturaResponseProfile", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
 		$resultXml = $this->client->doQueue();

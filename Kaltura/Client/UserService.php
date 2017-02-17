@@ -54,12 +54,78 @@ class Kaltura_Client_UserService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
-	function update($userId, Kaltura_Client_Type_User $user)
+	function addFromBulkUpload($fileData, Kaltura_Client_Type_BulkUploadJobData $bulkUploadData = null, Kaltura_Client_Type_BulkUploadUserData $bulkUploadUserData = null)
+	{
+		$kparams = array();
+		$kfiles = array();
+		$this->client->addParam($kfiles, "fileData", $fileData);
+		if ($bulkUploadData !== null)
+			$this->client->addParam($kparams, "bulkUploadData", $bulkUploadData->toParams());
+		if ($bulkUploadUserData !== null)
+			$this->client->addParam($kparams, "bulkUploadUserData", $bulkUploadUserData->toParams());
+		$this->client->queueServiceActionCall("user", "addFromBulkUpload",  "KalturaBulkUpload", $kparams, $kfiles);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultXml = $this->client->doQueue();
+		$resultXmlObject = new \SimpleXMLElement($resultXml);
+		$this->client->checkIfError($resultXmlObject->result);
+		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaBulkUpload");
+		$this->client->validateObjectType($resultObject, "Kaltura_Client_Type_BulkUpload");
+		return $resultObject;
+	}
+
+	function checkLoginDataExists(Kaltura_Client_Type_UserLoginDataFilter $filter)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "filter", $filter->toParams());
+		$this->client->queueServiceActionCall("user", "checkLoginDataExists", null, $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultXml = $this->client->doQueue();
+		$resultXmlObject = new \SimpleXMLElement($resultXml);
+		$this->client->checkIfError($resultXmlObject->result);
+		$resultObject = (bool)Kaltura_Client_ParseUtils::unmarshalSimpleType($resultXmlObject->result);
+		return $resultObject;
+	}
+
+	function delete($userId)
 	{
 		$kparams = array();
 		$this->client->addParam($kparams, "userId", $userId);
-		$this->client->addParam($kparams, "user", $user->toParams());
-		$this->client->queueServiceActionCall("user", "update", "KalturaUser", $kparams);
+		$this->client->queueServiceActionCall("user", "delete", "KalturaUser", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultXml = $this->client->doQueue();
+		$resultXmlObject = new \SimpleXMLElement($resultXml);
+		$this->client->checkIfError($resultXmlObject->result);
+		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaUser");
+		$this->client->validateObjectType($resultObject, "Kaltura_Client_Type_User");
+		return $resultObject;
+	}
+
+	function disableLogin($userId = null, $loginId = null)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "userId", $userId);
+		$this->client->addParam($kparams, "loginId", $loginId);
+		$this->client->queueServiceActionCall("user", "disableLogin", "KalturaUser", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultXml = $this->client->doQueue();
+		$resultXmlObject = new \SimpleXMLElement($resultXml);
+		$this->client->checkIfError($resultXmlObject->result);
+		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaUser");
+		$this->client->validateObjectType($resultObject, "Kaltura_Client_Type_User");
+		return $resultObject;
+	}
+
+	function enableLogin($userId, $loginId, $password = null)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "userId", $userId);
+		$this->client->addParam($kparams, "loginId", $loginId);
+		$this->client->addParam($kparams, "password", $password);
+		$this->client->queueServiceActionCall("user", "enableLogin", "KalturaUser", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
 		$resultXml = $this->client->doQueue();
@@ -100,18 +166,18 @@ class Kaltura_Client_UserService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
-	function delete($userId)
+	function index($id, $shouldUpdate = true)
 	{
 		$kparams = array();
-		$this->client->addParam($kparams, "userId", $userId);
-		$this->client->queueServiceActionCall("user", "delete", "KalturaUser", $kparams);
+		$this->client->addParam($kparams, "id", $id);
+		$this->client->addParam($kparams, "shouldUpdate", $shouldUpdate);
+		$this->client->queueServiceActionCall("user", "index", null, $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
 		$resultXml = $this->client->doQueue();
 		$resultXmlObject = new \SimpleXMLElement($resultXml);
 		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaUser");
-		$this->client->validateObjectType($resultObject, "Kaltura_Client_Type_User");
+		$resultObject = (string)Kaltura_Client_ParseUtils::unmarshalSimpleType($resultXmlObject->result);
 		return $resultObject;
 	}
 
@@ -131,18 +197,6 @@ class Kaltura_Client_UserService extends Kaltura_Client_ServiceBase
 		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaUserListResponse");
 		$this->client->validateObjectType($resultObject, "Kaltura_Client_Type_UserListResponse");
 		return $resultObject;
-	}
-
-	function notifyBan($userId)
-	{
-		$kparams = array();
-		$this->client->addParam($kparams, "userId", $userId);
-		$this->client->queueServiceActionCall("user", "notifyBan", null, $kparams);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
 	}
 
 	function login($partnerId, $userId, $password, $expiry = 86400, $privileges = "*")
@@ -182,16 +236,11 @@ class Kaltura_Client_UserService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
-	function updateLoginData($oldLoginId, $password, $newLoginId = "", $newPassword = "", $newFirstName = null, $newLastName = null)
+	function notifyBan($userId)
 	{
 		$kparams = array();
-		$this->client->addParam($kparams, "oldLoginId", $oldLoginId);
-		$this->client->addParam($kparams, "password", $password);
-		$this->client->addParam($kparams, "newLoginId", $newLoginId);
-		$this->client->addParam($kparams, "newPassword", $newPassword);
-		$this->client->addParam($kparams, "newFirstName", $newFirstName);
-		$this->client->addParam($kparams, "newLastName", $newLastName);
-		$this->client->queueServiceActionCall("user", "updateLoginData", null, $kparams);
+		$this->client->addParam($kparams, "userId", $userId);
+		$this->client->queueServiceActionCall("user", "notifyBan", null, $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
 		$resultXml = $this->client->doQueue();
@@ -224,85 +273,36 @@ class Kaltura_Client_UserService extends Kaltura_Client_ServiceBase
 		$this->client->checkIfError($resultXmlObject->result);
 	}
 
-	function enableLogin($userId, $loginId, $password = null)
+	function update($userId, Kaltura_Client_Type_User $user)
 	{
 		$kparams = array();
 		$this->client->addParam($kparams, "userId", $userId);
-		$this->client->addParam($kparams, "loginId", $loginId);
+		$this->client->addParam($kparams, "user", $user->toParams());
+		$this->client->queueServiceActionCall("user", "update", "KalturaUser", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultXml = $this->client->doQueue();
+		$resultXmlObject = new \SimpleXMLElement($resultXml);
+		$this->client->checkIfError($resultXmlObject->result);
+		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaUser");
+		$this->client->validateObjectType($resultObject, "Kaltura_Client_Type_User");
+		return $resultObject;
+	}
+
+	function updateLoginData($oldLoginId, $password, $newLoginId = "", $newPassword = "", $newFirstName = null, $newLastName = null)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "oldLoginId", $oldLoginId);
 		$this->client->addParam($kparams, "password", $password);
-		$this->client->queueServiceActionCall("user", "enableLogin", "KalturaUser", $kparams);
+		$this->client->addParam($kparams, "newLoginId", $newLoginId);
+		$this->client->addParam($kparams, "newPassword", $newPassword);
+		$this->client->addParam($kparams, "newFirstName", $newFirstName);
+		$this->client->addParam($kparams, "newLastName", $newLastName);
+		$this->client->queueServiceActionCall("user", "updateLoginData", null, $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
 		$resultXml = $this->client->doQueue();
 		$resultXmlObject = new \SimpleXMLElement($resultXml);
 		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaUser");
-		$this->client->validateObjectType($resultObject, "Kaltura_Client_Type_User");
-		return $resultObject;
-	}
-
-	function disableLogin($userId = null, $loginId = null)
-	{
-		$kparams = array();
-		$this->client->addParam($kparams, "userId", $userId);
-		$this->client->addParam($kparams, "loginId", $loginId);
-		$this->client->queueServiceActionCall("user", "disableLogin", "KalturaUser", $kparams);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaUser");
-		$this->client->validateObjectType($resultObject, "Kaltura_Client_Type_User");
-		return $resultObject;
-	}
-
-	function index($id, $shouldUpdate = true)
-	{
-		$kparams = array();
-		$this->client->addParam($kparams, "id", $id);
-		$this->client->addParam($kparams, "shouldUpdate", $shouldUpdate);
-		$this->client->queueServiceActionCall("user", "index", null, $kparams);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = (string)Kaltura_Client_ParseUtils::unmarshalSimpleType($resultXmlObject->result);
-		return $resultObject;
-	}
-
-	function addFromBulkUpload($fileData, Kaltura_Client_Type_BulkUploadJobData $bulkUploadData = null, Kaltura_Client_Type_BulkUploadUserData $bulkUploadUserData = null)
-	{
-		$kparams = array();
-		$kfiles = array();
-		$this->client->addParam($kfiles, "fileData", $fileData);
-		if ($bulkUploadData !== null)
-			$this->client->addParam($kparams, "bulkUploadData", $bulkUploadData->toParams());
-		if ($bulkUploadUserData !== null)
-			$this->client->addParam($kparams, "bulkUploadUserData", $bulkUploadUserData->toParams());
-		$this->client->queueServiceActionCall("user", "addFromBulkUpload",  "KalturaBulkUpload", $kparams, $kfiles);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaBulkUpload");
-		$this->client->validateObjectType($resultObject, "Kaltura_Client_Type_BulkUpload");
-		return $resultObject;
-	}
-
-	function checkLoginDataExists(Kaltura_Client_Type_UserLoginDataFilter $filter)
-	{
-		$kparams = array();
-		$this->client->addParam($kparams, "filter", $filter->toParams());
-		$this->client->queueServiceActionCall("user", "checkLoginDataExists", null, $kparams);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = (bool)Kaltura_Client_ParseUtils::unmarshalSimpleType($resultXmlObject->result);
-		return $resultObject;
 	}
 }

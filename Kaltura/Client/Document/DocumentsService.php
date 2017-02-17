@@ -39,22 +39,6 @@ class Kaltura_Client_Document_DocumentsService extends Kaltura_Client_ServiceBas
 		parent::__construct($client);
 	}
 
-	function addFromUploadedFile(Kaltura_Client_Document_Type_DocumentEntry $documentEntry, $uploadTokenId)
-	{
-		$kparams = array();
-		$this->client->addParam($kparams, "documentEntry", $documentEntry->toParams());
-		$this->client->addParam($kparams, "uploadTokenId", $uploadTokenId);
-		$this->client->queueServiceActionCall("document_documents", "addFromUploadedFile", "KalturaDocumentEntry", $kparams);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaDocumentEntry");
-		$this->client->validateObjectType($resultObject, "Kaltura_Client_Document_Type_DocumentEntry");
-		return $resultObject;
-	}
-
 	function addFromEntry($sourceEntryId, Kaltura_Client_Document_Type_DocumentEntry $documentEntry = null, $sourceFlavorParamsId = null)
 	{
 		$kparams = array();
@@ -90,152 +74,12 @@ class Kaltura_Client_Document_DocumentsService extends Kaltura_Client_ServiceBas
 		return $resultObject;
 	}
 
-	function convert($entryId, $conversionProfileId = null, array $dynamicConversionAttributes = null)
+	function addFromUploadedFile(Kaltura_Client_Document_Type_DocumentEntry $documentEntry, $uploadTokenId)
 	{
 		$kparams = array();
-		$this->client->addParam($kparams, "entryId", $entryId);
-		$this->client->addParam($kparams, "conversionProfileId", $conversionProfileId);
-		if ($dynamicConversionAttributes !== null)
-			foreach($dynamicConversionAttributes as $index => $obj)
-			{
-				$this->client->addParam($kparams, "dynamicConversionAttributes:$index", $obj->toParams());
-			}
-		$this->client->queueServiceActionCall("document_documents", "convert", null, $kparams);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = (string)Kaltura_Client_ParseUtils::unmarshalSimpleType($resultXmlObject->result);
-		return $resultObject;
-	}
-
-	function get($entryId, $version = -1)
-	{
-		$kparams = array();
-		$this->client->addParam($kparams, "entryId", $entryId);
-		$this->client->addParam($kparams, "version", $version);
-		$this->client->queueServiceActionCall("document_documents", "get", "KalturaDocumentEntry", $kparams);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaDocumentEntry");
-		$this->client->validateObjectType($resultObject, "Kaltura_Client_Document_Type_DocumentEntry");
-		return $resultObject;
-	}
-
-	function update($entryId, Kaltura_Client_Document_Type_DocumentEntry $documentEntry)
-	{
-		$kparams = array();
-		$this->client->addParam($kparams, "entryId", $entryId);
 		$this->client->addParam($kparams, "documentEntry", $documentEntry->toParams());
-		$this->client->queueServiceActionCall("document_documents", "update", "KalturaDocumentEntry", $kparams);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaDocumentEntry");
-		$this->client->validateObjectType($resultObject, "Kaltura_Client_Document_Type_DocumentEntry");
-		return $resultObject;
-	}
-
-	function delete($entryId)
-	{
-		$kparams = array();
-		$this->client->addParam($kparams, "entryId", $entryId);
-		$this->client->queueServiceActionCall("document_documents", "delete", null, $kparams);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-	}
-
-	function listAction(Kaltura_Client_Document_Type_DocumentEntryFilter $filter = null, Kaltura_Client_Type_FilterPager $pager = null)
-	{
-		$kparams = array();
-		if ($filter !== null)
-			$this->client->addParam($kparams, "filter", $filter->toParams());
-		if ($pager !== null)
-			$this->client->addParam($kparams, "pager", $pager->toParams());
-		$this->client->queueServiceActionCall("document_documents", "list", "KalturaDocumentListResponse", $kparams);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaDocumentListResponse");
-		$this->client->validateObjectType($resultObject, "Kaltura_Client_Document_Type_DocumentListResponse");
-		return $resultObject;
-	}
-
-	function upload($fileData)
-	{
-		$kparams = array();
-		$kfiles = array();
-		$this->client->addParam($kfiles, "fileData", $fileData);
-		$this->client->queueServiceActionCall("document_documents", "upload",  null, $kparams, $kfiles);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = (string)Kaltura_Client_ParseUtils::unmarshalSimpleType($resultXmlObject->result);
-		return $resultObject;
-	}
-
-	function convertPptToSwf($entryId)
-	{
-		$kparams = array();
-		$this->client->addParam($kparams, "entryId", $entryId);
-		$this->client->queueServiceActionCall("document_documents", "convertPptToSwf", null, $kparams);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = (string)Kaltura_Client_ParseUtils::unmarshalSimpleType($resultXmlObject->result);
-		return $resultObject;
-	}
-
-	function serve($entryId, $flavorAssetId = null, $forceProxy = false)
-	{
-		if ($this->client->isMultiRequest())
-			throw $this->client->getKalturaClientException("Action is not supported as part of multi-request.", Kaltura_Client_ClientException::ERROR_ACTION_IN_MULTIREQUEST);
-		
-		$kparams = array();
-		$this->client->addParam($kparams, "entryId", $entryId);
-		$this->client->addParam($kparams, "flavorAssetId", $flavorAssetId);
-		$this->client->addParam($kparams, "forceProxy", $forceProxy);
-		$this->client->queueServiceActionCall('document_documents', 'serve', null, $kparams);
-		$resultObject = $this->client->getServeUrl();
-		return $resultObject;
-	}
-
-	function serveByFlavorParamsId($entryId, $flavorParamsId = null, $forceProxy = false)
-	{
-		if ($this->client->isMultiRequest())
-			throw $this->client->getKalturaClientException("Action is not supported as part of multi-request.", Kaltura_Client_ClientException::ERROR_ACTION_IN_MULTIREQUEST);
-		
-		$kparams = array();
-		$this->client->addParam($kparams, "entryId", $entryId);
-		$this->client->addParam($kparams, "flavorParamsId", $flavorParamsId);
-		$this->client->addParam($kparams, "forceProxy", $forceProxy);
-		$this->client->queueServiceActionCall('document_documents', 'serveByFlavorParamsId', null, $kparams);
-		$resultObject = $this->client->getServeUrl();
-		return $resultObject;
-	}
-
-	function updateContent($entryId, Kaltura_Client_Type_Resource $resource, $conversionProfileId = null)
-	{
-		$kparams = array();
-		$this->client->addParam($kparams, "entryId", $entryId);
-		$this->client->addParam($kparams, "resource", $resource->toParams());
-		$this->client->addParam($kparams, "conversionProfileId", $conversionProfileId);
-		$this->client->queueServiceActionCall("document_documents", "updateContent", "KalturaDocumentEntry", $kparams);
+		$this->client->addParam($kparams, "uploadTokenId", $uploadTokenId);
+		$this->client->queueServiceActionCall("document_documents", "addFromUploadedFile", "KalturaDocumentEntry", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
 		$resultXml = $this->client->doQueue();
@@ -273,6 +117,162 @@ class Kaltura_Client_Document_DocumentsService extends Kaltura_Client_ServiceBas
 		$this->client->checkIfError($resultXmlObject->result);
 		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaDocumentEntry");
 		$this->client->validateObjectType($resultObject, "Kaltura_Client_Document_Type_DocumentEntry");
+		return $resultObject;
+	}
+
+	function convert($entryId, $conversionProfileId = null, array $dynamicConversionAttributes = null)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "entryId", $entryId);
+		$this->client->addParam($kparams, "conversionProfileId", $conversionProfileId);
+		if ($dynamicConversionAttributes !== null)
+			foreach($dynamicConversionAttributes as $index => $obj)
+			{
+				$this->client->addParam($kparams, "dynamicConversionAttributes:$index", $obj->toParams());
+			}
+		$this->client->queueServiceActionCall("document_documents", "convert", null, $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultXml = $this->client->doQueue();
+		$resultXmlObject = new \SimpleXMLElement($resultXml);
+		$this->client->checkIfError($resultXmlObject->result);
+		$resultObject = (string)Kaltura_Client_ParseUtils::unmarshalSimpleType($resultXmlObject->result);
+		return $resultObject;
+	}
+
+	function convertPptToSwf($entryId)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "entryId", $entryId);
+		$this->client->queueServiceActionCall("document_documents", "convertPptToSwf", null, $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultXml = $this->client->doQueue();
+		$resultXmlObject = new \SimpleXMLElement($resultXml);
+		$this->client->checkIfError($resultXmlObject->result);
+		$resultObject = (string)Kaltura_Client_ParseUtils::unmarshalSimpleType($resultXmlObject->result);
+		return $resultObject;
+	}
+
+	function delete($entryId)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "entryId", $entryId);
+		$this->client->queueServiceActionCall("document_documents", "delete", null, $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultXml = $this->client->doQueue();
+		$resultXmlObject = new \SimpleXMLElement($resultXml);
+		$this->client->checkIfError($resultXmlObject->result);
+	}
+
+	function get($entryId, $version = -1)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "entryId", $entryId);
+		$this->client->addParam($kparams, "version", $version);
+		$this->client->queueServiceActionCall("document_documents", "get", "KalturaDocumentEntry", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultXml = $this->client->doQueue();
+		$resultXmlObject = new \SimpleXMLElement($resultXml);
+		$this->client->checkIfError($resultXmlObject->result);
+		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaDocumentEntry");
+		$this->client->validateObjectType($resultObject, "Kaltura_Client_Document_Type_DocumentEntry");
+		return $resultObject;
+	}
+
+	function listAction(Kaltura_Client_Document_Type_DocumentEntryFilter $filter = null, Kaltura_Client_Type_FilterPager $pager = null)
+	{
+		$kparams = array();
+		if ($filter !== null)
+			$this->client->addParam($kparams, "filter", $filter->toParams());
+		if ($pager !== null)
+			$this->client->addParam($kparams, "pager", $pager->toParams());
+		$this->client->queueServiceActionCall("document_documents", "list", "KalturaDocumentListResponse", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultXml = $this->client->doQueue();
+		$resultXmlObject = new \SimpleXMLElement($resultXml);
+		$this->client->checkIfError($resultXmlObject->result);
+		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaDocumentListResponse");
+		$this->client->validateObjectType($resultObject, "Kaltura_Client_Document_Type_DocumentListResponse");
+		return $resultObject;
+	}
+
+	function serve($entryId, $flavorAssetId = null, $forceProxy = false)
+	{
+		if ($this->client->isMultiRequest())
+			throw $this->client->getKalturaClientException("Action is not supported as part of multi-request.", Kaltura_Client_ClientException::ERROR_ACTION_IN_MULTIREQUEST);
+		
+		$kparams = array();
+		$this->client->addParam($kparams, "entryId", $entryId);
+		$this->client->addParam($kparams, "flavorAssetId", $flavorAssetId);
+		$this->client->addParam($kparams, "forceProxy", $forceProxy);
+		$this->client->queueServiceActionCall('document_documents', 'serve', null, $kparams);
+		$resultObject = $this->client->getServeUrl();
+		return $resultObject;
+	}
+
+	function serveByFlavorParamsId($entryId, $flavorParamsId = null, $forceProxy = false)
+	{
+		if ($this->client->isMultiRequest())
+			throw $this->client->getKalturaClientException("Action is not supported as part of multi-request.", Kaltura_Client_ClientException::ERROR_ACTION_IN_MULTIREQUEST);
+		
+		$kparams = array();
+		$this->client->addParam($kparams, "entryId", $entryId);
+		$this->client->addParam($kparams, "flavorParamsId", $flavorParamsId);
+		$this->client->addParam($kparams, "forceProxy", $forceProxy);
+		$this->client->queueServiceActionCall('document_documents', 'serveByFlavorParamsId', null, $kparams);
+		$resultObject = $this->client->getServeUrl();
+		return $resultObject;
+	}
+
+	function update($entryId, Kaltura_Client_Document_Type_DocumentEntry $documentEntry)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "entryId", $entryId);
+		$this->client->addParam($kparams, "documentEntry", $documentEntry->toParams());
+		$this->client->queueServiceActionCall("document_documents", "update", "KalturaDocumentEntry", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultXml = $this->client->doQueue();
+		$resultXmlObject = new \SimpleXMLElement($resultXml);
+		$this->client->checkIfError($resultXmlObject->result);
+		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaDocumentEntry");
+		$this->client->validateObjectType($resultObject, "Kaltura_Client_Document_Type_DocumentEntry");
+		return $resultObject;
+	}
+
+	function updateContent($entryId, Kaltura_Client_Type_Resource $resource, $conversionProfileId = null)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "entryId", $entryId);
+		$this->client->addParam($kparams, "resource", $resource->toParams());
+		$this->client->addParam($kparams, "conversionProfileId", $conversionProfileId);
+		$this->client->queueServiceActionCall("document_documents", "updateContent", "KalturaDocumentEntry", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultXml = $this->client->doQueue();
+		$resultXmlObject = new \SimpleXMLElement($resultXml);
+		$this->client->checkIfError($resultXmlObject->result);
+		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaDocumentEntry");
+		$this->client->validateObjectType($resultObject, "Kaltura_Client_Document_Type_DocumentEntry");
+		return $resultObject;
+	}
+
+	function upload($fileData)
+	{
+		$kparams = array();
+		$kfiles = array();
+		$this->client->addParam($kfiles, "fileData", $fileData);
+		$this->client->queueServiceActionCall("document_documents", "upload",  null, $kparams, $kfiles);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultXml = $this->client->doQueue();
+		$resultXmlObject = new \SimpleXMLElement($resultXml);
+		$this->client->checkIfError($resultXmlObject->result);
+		$resultObject = (string)Kaltura_Client_ParseUtils::unmarshalSimpleType($resultXmlObject->result);
 		return $resultObject;
 	}
 }

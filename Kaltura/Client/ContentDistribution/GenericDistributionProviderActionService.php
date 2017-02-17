@@ -153,6 +153,31 @@ class Kaltura_Client_ContentDistribution_GenericDistributionProviderActionServic
 		return $resultObject;
 	}
 
+	function delete($id)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "id", $id);
+		$this->client->queueServiceActionCall("contentdistribution_genericdistributionprovideraction", "delete", null, $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultXml = $this->client->doQueue();
+		$resultXmlObject = new \SimpleXMLElement($resultXml);
+		$this->client->checkIfError($resultXmlObject->result);
+	}
+
+	function deleteByProviderId($genericDistributionProviderId, $actionType)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "genericDistributionProviderId", $genericDistributionProviderId);
+		$this->client->addParam($kparams, "actionType", $actionType);
+		$this->client->queueServiceActionCall("contentdistribution_genericdistributionprovideraction", "deleteByProviderId", null, $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultXml = $this->client->doQueue();
+		$resultXmlObject = new \SimpleXMLElement($resultXml);
+		$this->client->checkIfError($resultXmlObject->result);
+	}
+
 	function get($id)
 	{
 		$kparams = array();
@@ -184,20 +209,21 @@ class Kaltura_Client_ContentDistribution_GenericDistributionProviderActionServic
 		return $resultObject;
 	}
 
-	function updateByProviderId($genericDistributionProviderId, $actionType, Kaltura_Client_ContentDistribution_Type_GenericDistributionProviderAction $genericDistributionProviderAction)
+	function listAction(Kaltura_Client_ContentDistribution_Type_GenericDistributionProviderActionFilter $filter = null, Kaltura_Client_Type_FilterPager $pager = null)
 	{
 		$kparams = array();
-		$this->client->addParam($kparams, "genericDistributionProviderId", $genericDistributionProviderId);
-		$this->client->addParam($kparams, "actionType", $actionType);
-		$this->client->addParam($kparams, "genericDistributionProviderAction", $genericDistributionProviderAction->toParams());
-		$this->client->queueServiceActionCall("contentdistribution_genericdistributionprovideraction", "updateByProviderId", "KalturaGenericDistributionProviderAction", $kparams);
+		if ($filter !== null)
+			$this->client->addParam($kparams, "filter", $filter->toParams());
+		if ($pager !== null)
+			$this->client->addParam($kparams, "pager", $pager->toParams());
+		$this->client->queueServiceActionCall("contentdistribution_genericdistributionprovideraction", "list", "KalturaGenericDistributionProviderActionListResponse", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
 		$resultXml = $this->client->doQueue();
 		$resultXmlObject = new \SimpleXMLElement($resultXml);
 		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaGenericDistributionProviderAction");
-		$this->client->validateObjectType($resultObject, "Kaltura_Client_ContentDistribution_Type_GenericDistributionProviderAction");
+		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaGenericDistributionProviderActionListResponse");
+		$this->client->validateObjectType($resultObject, "Kaltura_Client_ContentDistribution_Type_GenericDistributionProviderActionListResponse");
 		return $resultObject;
 	}
 
@@ -217,46 +243,20 @@ class Kaltura_Client_ContentDistribution_GenericDistributionProviderActionServic
 		return $resultObject;
 	}
 
-	function delete($id)
-	{
-		$kparams = array();
-		$this->client->addParam($kparams, "id", $id);
-		$this->client->queueServiceActionCall("contentdistribution_genericdistributionprovideraction", "delete", null, $kparams);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-	}
-
-	function deleteByProviderId($genericDistributionProviderId, $actionType)
+	function updateByProviderId($genericDistributionProviderId, $actionType, Kaltura_Client_ContentDistribution_Type_GenericDistributionProviderAction $genericDistributionProviderAction)
 	{
 		$kparams = array();
 		$this->client->addParam($kparams, "genericDistributionProviderId", $genericDistributionProviderId);
 		$this->client->addParam($kparams, "actionType", $actionType);
-		$this->client->queueServiceActionCall("contentdistribution_genericdistributionprovideraction", "deleteByProviderId", null, $kparams);
+		$this->client->addParam($kparams, "genericDistributionProviderAction", $genericDistributionProviderAction->toParams());
+		$this->client->queueServiceActionCall("contentdistribution_genericdistributionprovideraction", "updateByProviderId", "KalturaGenericDistributionProviderAction", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
 		$resultXml = $this->client->doQueue();
 		$resultXmlObject = new \SimpleXMLElement($resultXml);
 		$this->client->checkIfError($resultXmlObject->result);
-	}
-
-	function listAction(Kaltura_Client_ContentDistribution_Type_GenericDistributionProviderActionFilter $filter = null, Kaltura_Client_Type_FilterPager $pager = null)
-	{
-		$kparams = array();
-		if ($filter !== null)
-			$this->client->addParam($kparams, "filter", $filter->toParams());
-		if ($pager !== null)
-			$this->client->addParam($kparams, "pager", $pager->toParams());
-		$this->client->queueServiceActionCall("contentdistribution_genericdistributionprovideraction", "list", "KalturaGenericDistributionProviderActionListResponse", $kparams);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaGenericDistributionProviderActionListResponse");
-		$this->client->validateObjectType($resultObject, "Kaltura_Client_ContentDistribution_Type_GenericDistributionProviderActionListResponse");
+		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaGenericDistributionProviderAction");
+		$this->client->validateObjectType($resultObject, "Kaltura_Client_ContentDistribution_Type_GenericDistributionProviderAction");
 		return $resultObject;
 	}
 }

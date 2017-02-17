@@ -54,34 +54,18 @@ class Kaltura_Client_ExternalMedia_ExternalMediaService extends Kaltura_Client_S
 		return $resultObject;
 	}
 
-	function get($id)
+	function count(Kaltura_Client_ExternalMedia_Type_ExternalMediaEntryFilter $filter = null)
 	{
 		$kparams = array();
-		$this->client->addParam($kparams, "id", $id);
-		$this->client->queueServiceActionCall("externalmedia_externalmedia", "get", "KalturaExternalMediaEntry", $kparams);
+		if ($filter !== null)
+			$this->client->addParam($kparams, "filter", $filter->toParams());
+		$this->client->queueServiceActionCall("externalmedia_externalmedia", "count", null, $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
 		$resultXml = $this->client->doQueue();
 		$resultXmlObject = new \SimpleXMLElement($resultXml);
 		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaExternalMediaEntry");
-		$this->client->validateObjectType($resultObject, "Kaltura_Client_ExternalMedia_Type_ExternalMediaEntry");
-		return $resultObject;
-	}
-
-	function update($id, Kaltura_Client_ExternalMedia_Type_ExternalMediaEntry $entry)
-	{
-		$kparams = array();
-		$this->client->addParam($kparams, "id", $id);
-		$this->client->addParam($kparams, "entry", $entry->toParams());
-		$this->client->queueServiceActionCall("externalmedia_externalmedia", "update", "KalturaExternalMediaEntry", $kparams);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaExternalMediaEntry");
-		$this->client->validateObjectType($resultObject, "Kaltura_Client_ExternalMedia_Type_ExternalMediaEntry");
+		$resultObject = (int)Kaltura_Client_ParseUtils::unmarshalSimpleType($resultXmlObject->result);
 		return $resultObject;
 	}
 
@@ -95,6 +79,21 @@ class Kaltura_Client_ExternalMedia_ExternalMediaService extends Kaltura_Client_S
 		$resultXml = $this->client->doQueue();
 		$resultXmlObject = new \SimpleXMLElement($resultXml);
 		$this->client->checkIfError($resultXmlObject->result);
+	}
+
+	function get($id)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "id", $id);
+		$this->client->queueServiceActionCall("externalmedia_externalmedia", "get", "KalturaExternalMediaEntry", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultXml = $this->client->doQueue();
+		$resultXmlObject = new \SimpleXMLElement($resultXml);
+		$this->client->checkIfError($resultXmlObject->result);
+		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaExternalMediaEntry");
+		$this->client->validateObjectType($resultObject, "Kaltura_Client_ExternalMedia_Type_ExternalMediaEntry");
+		return $resultObject;
 	}
 
 	function listAction(Kaltura_Client_ExternalMedia_Type_ExternalMediaEntryFilter $filter = null, Kaltura_Client_Type_FilterPager $pager = null)
@@ -115,18 +114,19 @@ class Kaltura_Client_ExternalMedia_ExternalMediaService extends Kaltura_Client_S
 		return $resultObject;
 	}
 
-	function count(Kaltura_Client_ExternalMedia_Type_ExternalMediaEntryFilter $filter = null)
+	function update($id, Kaltura_Client_ExternalMedia_Type_ExternalMediaEntry $entry)
 	{
 		$kparams = array();
-		if ($filter !== null)
-			$this->client->addParam($kparams, "filter", $filter->toParams());
-		$this->client->queueServiceActionCall("externalmedia_externalmedia", "count", null, $kparams);
+		$this->client->addParam($kparams, "id", $id);
+		$this->client->addParam($kparams, "entry", $entry->toParams());
+		$this->client->queueServiceActionCall("externalmedia_externalmedia", "update", "KalturaExternalMediaEntry", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
 		$resultXml = $this->client->doQueue();
 		$resultXmlObject = new \SimpleXMLElement($resultXml);
 		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = (int)Kaltura_Client_ParseUtils::unmarshalSimpleType($resultXmlObject->result);
+		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaExternalMediaEntry");
+		$this->client->validateObjectType($resultObject, "Kaltura_Client_ExternalMedia_Type_ExternalMediaEntry");
 		return $resultObject;
 	}
 }

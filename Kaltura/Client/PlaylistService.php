@@ -55,29 +55,13 @@ class Kaltura_Client_PlaylistService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
-	function get($id, $version = -1)
+	function cloneAction($id, Kaltura_Client_Type_Playlist $newPlaylist = null)
 	{
 		$kparams = array();
 		$this->client->addParam($kparams, "id", $id);
-		$this->client->addParam($kparams, "version", $version);
-		$this->client->queueServiceActionCall("playlist", "get", "KalturaPlaylist", $kparams);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaPlaylist");
-		$this->client->validateObjectType($resultObject, "Kaltura_Client_Type_Playlist");
-		return $resultObject;
-	}
-
-	function update($id, Kaltura_Client_Type_Playlist $playlist, $updateStats = false)
-	{
-		$kparams = array();
-		$this->client->addParam($kparams, "id", $id);
-		$this->client->addParam($kparams, "playlist", $playlist->toParams());
-		$this->client->addParam($kparams, "updateStats", $updateStats);
-		$this->client->queueServiceActionCall("playlist", "update", "KalturaPlaylist", $kparams);
+		if ($newPlaylist !== null)
+			$this->client->addParam($kparams, "newPlaylist", $newPlaylist->toParams());
+		$this->client->queueServiceActionCall("playlist", "clone", "KalturaPlaylist", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
 		$resultXml = $this->client->doQueue();
@@ -98,41 +82,6 @@ class Kaltura_Client_PlaylistService extends Kaltura_Client_ServiceBase
 		$resultXml = $this->client->doQueue();
 		$resultXmlObject = new \SimpleXMLElement($resultXml);
 		$this->client->checkIfError($resultXmlObject->result);
-	}
-
-	function cloneAction($id, Kaltura_Client_Type_Playlist $newPlaylist = null)
-	{
-		$kparams = array();
-		$this->client->addParam($kparams, "id", $id);
-		if ($newPlaylist !== null)
-			$this->client->addParam($kparams, "newPlaylist", $newPlaylist->toParams());
-		$this->client->queueServiceActionCall("playlist", "clone", "KalturaPlaylist", $kparams);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaPlaylist");
-		$this->client->validateObjectType($resultObject, "Kaltura_Client_Type_Playlist");
-		return $resultObject;
-	}
-
-	function listAction(Kaltura_Client_Type_PlaylistFilter $filter = null, Kaltura_Client_Type_FilterPager $pager = null)
-	{
-		$kparams = array();
-		if ($filter !== null)
-			$this->client->addParam($kparams, "filter", $filter->toParams());
-		if ($pager !== null)
-			$this->client->addParam($kparams, "pager", $pager->toParams());
-		$this->client->queueServiceActionCall("playlist", "list", "KalturaPlaylistListResponse", $kparams);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaPlaylistListResponse");
-		$this->client->validateObjectType($resultObject, "Kaltura_Client_Type_PlaylistListResponse");
-		return $resultObject;
 	}
 
 	function execute($id, $detailed = "", Kaltura_Client_Type_Context $playlistContext = null, Kaltura_Client_Type_MediaEntryFilterForPlaylist $filter = null, Kaltura_Client_Type_FilterPager $pager = null)
@@ -204,12 +153,63 @@ class Kaltura_Client_PlaylistService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	function get($id, $version = -1)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "id", $id);
+		$this->client->addParam($kparams, "version", $version);
+		$this->client->queueServiceActionCall("playlist", "get", "KalturaPlaylist", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultXml = $this->client->doQueue();
+		$resultXmlObject = new \SimpleXMLElement($resultXml);
+		$this->client->checkIfError($resultXmlObject->result);
+		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaPlaylist");
+		$this->client->validateObjectType($resultObject, "Kaltura_Client_Type_Playlist");
+		return $resultObject;
+	}
+
 	function getStatsFromContent($playlistType, $playlistContent)
 	{
 		$kparams = array();
 		$this->client->addParam($kparams, "playlistType", $playlistType);
 		$this->client->addParam($kparams, "playlistContent", $playlistContent);
 		$this->client->queueServiceActionCall("playlist", "getStatsFromContent", "KalturaPlaylist", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultXml = $this->client->doQueue();
+		$resultXmlObject = new \SimpleXMLElement($resultXml);
+		$this->client->checkIfError($resultXmlObject->result);
+		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaPlaylist");
+		$this->client->validateObjectType($resultObject, "Kaltura_Client_Type_Playlist");
+		return $resultObject;
+	}
+
+	function listAction(Kaltura_Client_Type_PlaylistFilter $filter = null, Kaltura_Client_Type_FilterPager $pager = null)
+	{
+		$kparams = array();
+		if ($filter !== null)
+			$this->client->addParam($kparams, "filter", $filter->toParams());
+		if ($pager !== null)
+			$this->client->addParam($kparams, "pager", $pager->toParams());
+		$this->client->queueServiceActionCall("playlist", "list", "KalturaPlaylistListResponse", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultXml = $this->client->doQueue();
+		$resultXmlObject = new \SimpleXMLElement($resultXml);
+		$this->client->checkIfError($resultXmlObject->result);
+		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaPlaylistListResponse");
+		$this->client->validateObjectType($resultObject, "Kaltura_Client_Type_PlaylistListResponse");
+		return $resultObject;
+	}
+
+	function update($id, Kaltura_Client_Type_Playlist $playlist, $updateStats = false)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "id", $id);
+		$this->client->addParam($kparams, "playlist", $playlist->toParams());
+		$this->client->addParam($kparams, "updateStats", $updateStats);
+		$this->client->queueServiceActionCall("playlist", "update", "KalturaPlaylist", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
 		$resultXml = $this->client->doQueue();

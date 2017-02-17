@@ -54,6 +54,18 @@ class Kaltura_Client_ThumbParamsService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	function delete($id)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "id", $id);
+		$this->client->queueServiceActionCall("thumbparams", "delete", null, $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultXml = $this->client->doQueue();
+		$resultXmlObject = new \SimpleXMLElement($resultXml);
+		$this->client->checkIfError($resultXmlObject->result);
+	}
+
 	function get($id)
 	{
 		$kparams = array();
@@ -69,32 +81,21 @@ class Kaltura_Client_ThumbParamsService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
-	function update($id, Kaltura_Client_Type_ThumbParams $thumbParams)
+	function getByConversionProfileId($conversionProfileId)
 	{
 		$kparams = array();
-		$this->client->addParam($kparams, "id", $id);
-		$this->client->addParam($kparams, "thumbParams", $thumbParams->toParams());
-		$this->client->queueServiceActionCall("thumbparams", "update", "KalturaThumbParams", $kparams);
+		$this->client->addParam($kparams, "conversionProfileId", $conversionProfileId);
+		$this->client->queueServiceActionCall("thumbparams", "getByConversionProfileId", "KalturaThumbParams", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
 		$resultXml = $this->client->doQueue();
 		$resultXmlObject = new \SimpleXMLElement($resultXml);
 		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaThumbParams");
-		$this->client->validateObjectType($resultObject, "Kaltura_Client_Type_ThumbParams");
+		$resultObject = Kaltura_Client_ParseUtils::unmarshalArray($resultXmlObject->result, "KalturaThumbParams");
+		foreach($resultObject as $resultObjectItem){
+			$this->client->validateObjectType($resultObjectItem, "Kaltura_Client_Type_ThumbParams");
+		}
 		return $resultObject;
-	}
-
-	function delete($id)
-	{
-		$kparams = array();
-		$this->client->addParam($kparams, "id", $id);
-		$this->client->queueServiceActionCall("thumbparams", "delete", null, $kparams);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
 	}
 
 	function listAction(Kaltura_Client_Type_ThumbParamsFilter $filter = null, Kaltura_Client_Type_FilterPager $pager = null)
@@ -115,20 +116,19 @@ class Kaltura_Client_ThumbParamsService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
-	function getByConversionProfileId($conversionProfileId)
+	function update($id, Kaltura_Client_Type_ThumbParams $thumbParams)
 	{
 		$kparams = array();
-		$this->client->addParam($kparams, "conversionProfileId", $conversionProfileId);
-		$this->client->queueServiceActionCall("thumbparams", "getByConversionProfileId", "KalturaThumbParams", $kparams);
+		$this->client->addParam($kparams, "id", $id);
+		$this->client->addParam($kparams, "thumbParams", $thumbParams->toParams());
+		$this->client->queueServiceActionCall("thumbparams", "update", "KalturaThumbParams", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
 		$resultXml = $this->client->doQueue();
 		$resultXmlObject = new \SimpleXMLElement($resultXml);
 		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = Kaltura_Client_ParseUtils::unmarshalArray($resultXmlObject->result, "KalturaThumbParams");
-		foreach($resultObject as $resultObjectItem){
-			$this->client->validateObjectType($resultObjectItem, "Kaltura_Client_Type_ThumbParams");
-		}
+		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaThumbParams");
+		$this->client->validateObjectType($resultObject, "Kaltura_Client_Type_ThumbParams");
 		return $resultObject;
 	}
 }

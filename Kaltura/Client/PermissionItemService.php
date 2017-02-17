@@ -54,42 +54,26 @@ class Kaltura_Client_PermissionItemService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
-	function get($permissionItemId)
-	{
-		$kparams = array();
-		$this->client->addParam($kparams, "permissionItemId", $permissionItemId);
-		$this->client->queueServiceActionCall("permissionitem", "get", "KalturaPermissionItem", $kparams);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaPermissionItem");
-		$this->client->validateObjectType($resultObject, "Kaltura_Client_Type_PermissionItem");
-		return $resultObject;
-	}
-
-	function update($permissionItemId, Kaltura_Client_Type_PermissionItem $permissionItem)
-	{
-		$kparams = array();
-		$this->client->addParam($kparams, "permissionItemId", $permissionItemId);
-		$this->client->addParam($kparams, "permissionItem", $permissionItem->toParams());
-		$this->client->queueServiceActionCall("permissionitem", "update", "KalturaPermissionItem", $kparams);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaPermissionItem");
-		$this->client->validateObjectType($resultObject, "Kaltura_Client_Type_PermissionItem");
-		return $resultObject;
-	}
-
 	function delete($permissionItemId)
 	{
 		$kparams = array();
 		$this->client->addParam($kparams, "permissionItemId", $permissionItemId);
 		$this->client->queueServiceActionCall("permissionitem", "delete", "KalturaPermissionItem", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultXml = $this->client->doQueue();
+		$resultXmlObject = new \SimpleXMLElement($resultXml);
+		$this->client->checkIfError($resultXmlObject->result);
+		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaPermissionItem");
+		$this->client->validateObjectType($resultObject, "Kaltura_Client_Type_PermissionItem");
+		return $resultObject;
+	}
+
+	function get($permissionItemId)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "permissionItemId", $permissionItemId);
+		$this->client->queueServiceActionCall("permissionitem", "get", "KalturaPermissionItem", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
 		$resultXml = $this->client->doQueue();
@@ -115,6 +99,22 @@ class Kaltura_Client_PermissionItemService extends Kaltura_Client_ServiceBase
 		$this->client->checkIfError($resultXmlObject->result);
 		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaPermissionItemListResponse");
 		$this->client->validateObjectType($resultObject, "Kaltura_Client_Type_PermissionItemListResponse");
+		return $resultObject;
+	}
+
+	function update($permissionItemId, Kaltura_Client_Type_PermissionItem $permissionItem)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "permissionItemId", $permissionItemId);
+		$this->client->addParam($kparams, "permissionItem", $permissionItem->toParams());
+		$this->client->queueServiceActionCall("permissionitem", "update", "KalturaPermissionItem", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultXml = $this->client->doQueue();
+		$resultXmlObject = new \SimpleXMLElement($resultXml);
+		$this->client->checkIfError($resultXmlObject->result);
+		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaPermissionItem");
+		$this->client->validateObjectType($resultObject, "Kaltura_Client_Type_PermissionItem");
 		return $resultObject;
 	}
 }

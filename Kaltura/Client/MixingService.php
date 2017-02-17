@@ -54,12 +54,25 @@ class Kaltura_Client_MixingService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
-	function get($entryId, $version = -1)
+	function anonymousRank($entryId, $rank)
 	{
 		$kparams = array();
 		$this->client->addParam($kparams, "entryId", $entryId);
-		$this->client->addParam($kparams, "version", $version);
-		$this->client->queueServiceActionCall("mixing", "get", "KalturaMixEntry", $kparams);
+		$this->client->addParam($kparams, "rank", $rank);
+		$this->client->queueServiceActionCall("mixing", "anonymousRank", null, $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultXml = $this->client->doQueue();
+		$resultXmlObject = new \SimpleXMLElement($resultXml);
+		$this->client->checkIfError($resultXmlObject->result);
+	}
+
+	function appendMediaEntry($mixEntryId, $mediaEntryId)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "mixEntryId", $mixEntryId);
+		$this->client->addParam($kparams, "mediaEntryId", $mediaEntryId);
+		$this->client->queueServiceActionCall("mixing", "appendMediaEntry", "KalturaMixEntry", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
 		$resultXml = $this->client->doQueue();
@@ -67,67 +80,6 @@ class Kaltura_Client_MixingService extends Kaltura_Client_ServiceBase
 		$this->client->checkIfError($resultXmlObject->result);
 		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaMixEntry");
 		$this->client->validateObjectType($resultObject, "Kaltura_Client_Type_MixEntry");
-		return $resultObject;
-	}
-
-	function update($entryId, Kaltura_Client_Type_MixEntry $mixEntry)
-	{
-		$kparams = array();
-		$this->client->addParam($kparams, "entryId", $entryId);
-		$this->client->addParam($kparams, "mixEntry", $mixEntry->toParams());
-		$this->client->queueServiceActionCall("mixing", "update", "KalturaMixEntry", $kparams);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaMixEntry");
-		$this->client->validateObjectType($resultObject, "Kaltura_Client_Type_MixEntry");
-		return $resultObject;
-	}
-
-	function delete($entryId)
-	{
-		$kparams = array();
-		$this->client->addParam($kparams, "entryId", $entryId);
-		$this->client->queueServiceActionCall("mixing", "delete", null, $kparams);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-	}
-
-	function listAction(Kaltura_Client_Type_MixEntryFilter $filter = null, Kaltura_Client_Type_FilterPager $pager = null)
-	{
-		$kparams = array();
-		if ($filter !== null)
-			$this->client->addParam($kparams, "filter", $filter->toParams());
-		if ($pager !== null)
-			$this->client->addParam($kparams, "pager", $pager->toParams());
-		$this->client->queueServiceActionCall("mixing", "list", "KalturaMixListResponse", $kparams);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaMixListResponse");
-		$this->client->validateObjectType($resultObject, "Kaltura_Client_Type_MixListResponse");
-		return $resultObject;
-	}
-
-	function count(Kaltura_Client_Type_MediaEntryFilter $filter = null)
-	{
-		$kparams = array();
-		if ($filter !== null)
-			$this->client->addParam($kparams, "filter", $filter->toParams());
-		$this->client->queueServiceActionCall("mixing", "count", null, $kparams);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = (int)Kaltura_Client_ParseUtils::unmarshalSimpleType($resultXmlObject->result);
 		return $resultObject;
 	}
 
@@ -146,12 +98,39 @@ class Kaltura_Client_MixingService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
-	function appendMediaEntry($mixEntryId, $mediaEntryId)
+	function count(Kaltura_Client_Type_MediaEntryFilter $filter = null)
 	{
 		$kparams = array();
-		$this->client->addParam($kparams, "mixEntryId", $mixEntryId);
-		$this->client->addParam($kparams, "mediaEntryId", $mediaEntryId);
-		$this->client->queueServiceActionCall("mixing", "appendMediaEntry", "KalturaMixEntry", $kparams);
+		if ($filter !== null)
+			$this->client->addParam($kparams, "filter", $filter->toParams());
+		$this->client->queueServiceActionCall("mixing", "count", null, $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultXml = $this->client->doQueue();
+		$resultXmlObject = new \SimpleXMLElement($resultXml);
+		$this->client->checkIfError($resultXmlObject->result);
+		$resultObject = (int)Kaltura_Client_ParseUtils::unmarshalSimpleType($resultXmlObject->result);
+		return $resultObject;
+	}
+
+	function delete($entryId)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "entryId", $entryId);
+		$this->client->queueServiceActionCall("mixing", "delete", null, $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultXml = $this->client->doQueue();
+		$resultXmlObject = new \SimpleXMLElement($resultXml);
+		$this->client->checkIfError($resultXmlObject->result);
+	}
+
+	function get($entryId, $version = -1)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "entryId", $entryId);
+		$this->client->addParam($kparams, "version", $version);
+		$this->client->queueServiceActionCall("mixing", "get", "KalturaMixEntry", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
 		$resultXml = $this->client->doQueue();
@@ -197,16 +176,37 @@ class Kaltura_Client_MixingService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
-	function anonymousRank($entryId, $rank)
+	function listAction(Kaltura_Client_Type_MixEntryFilter $filter = null, Kaltura_Client_Type_FilterPager $pager = null)
 	{
 		$kparams = array();
-		$this->client->addParam($kparams, "entryId", $entryId);
-		$this->client->addParam($kparams, "rank", $rank);
-		$this->client->queueServiceActionCall("mixing", "anonymousRank", null, $kparams);
+		if ($filter !== null)
+			$this->client->addParam($kparams, "filter", $filter->toParams());
+		if ($pager !== null)
+			$this->client->addParam($kparams, "pager", $pager->toParams());
+		$this->client->queueServiceActionCall("mixing", "list", "KalturaMixListResponse", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
 		$resultXml = $this->client->doQueue();
 		$resultXmlObject = new \SimpleXMLElement($resultXml);
 		$this->client->checkIfError($resultXmlObject->result);
+		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaMixListResponse");
+		$this->client->validateObjectType($resultObject, "Kaltura_Client_Type_MixListResponse");
+		return $resultObject;
+	}
+
+	function update($entryId, Kaltura_Client_Type_MixEntry $mixEntry)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "entryId", $entryId);
+		$this->client->addParam($kparams, "mixEntry", $mixEntry->toParams());
+		$this->client->queueServiceActionCall("mixing", "update", "KalturaMixEntry", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultXml = $this->client->doQueue();
+		$resultXmlObject = new \SimpleXMLElement($resultXml);
+		$this->client->checkIfError($resultXmlObject->result);
+		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaMixEntry");
+		$this->client->validateObjectType($resultObject, "Kaltura_Client_Type_MixEntry");
+		return $resultObject;
 	}
 }

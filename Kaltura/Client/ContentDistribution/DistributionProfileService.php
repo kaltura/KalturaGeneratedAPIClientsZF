@@ -54,6 +54,18 @@ class Kaltura_Client_ContentDistribution_DistributionProfileService extends Kalt
 		return $resultObject;
 	}
 
+	function delete($id)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "id", $id);
+		$this->client->queueServiceActionCall("contentdistribution_distributionprofile", "delete", null, $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultXml = $this->client->doQueue();
+		$resultXmlObject = new \SimpleXMLElement($resultXml);
+		$this->client->checkIfError($resultXmlObject->result);
+	}
+
 	function get($id)
 	{
 		$kparams = array();
@@ -67,50 +79,6 @@ class Kaltura_Client_ContentDistribution_DistributionProfileService extends Kalt
 		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaDistributionProfile");
 		$this->client->validateObjectType($resultObject, "Kaltura_Client_ContentDistribution_Type_DistributionProfile");
 		return $resultObject;
-	}
-
-	function update($id, Kaltura_Client_ContentDistribution_Type_DistributionProfile $distributionProfile)
-	{
-		$kparams = array();
-		$this->client->addParam($kparams, "id", $id);
-		$this->client->addParam($kparams, "distributionProfile", $distributionProfile->toParams());
-		$this->client->queueServiceActionCall("contentdistribution_distributionprofile", "update", "KalturaDistributionProfile", $kparams);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaDistributionProfile");
-		$this->client->validateObjectType($resultObject, "Kaltura_Client_ContentDistribution_Type_DistributionProfile");
-		return $resultObject;
-	}
-
-	function updateStatus($id, $status)
-	{
-		$kparams = array();
-		$this->client->addParam($kparams, "id", $id);
-		$this->client->addParam($kparams, "status", $status);
-		$this->client->queueServiceActionCall("contentdistribution_distributionprofile", "updateStatus", "KalturaDistributionProfile", $kparams);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaDistributionProfile");
-		$this->client->validateObjectType($resultObject, "Kaltura_Client_ContentDistribution_Type_DistributionProfile");
-		return $resultObject;
-	}
-
-	function delete($id)
-	{
-		$kparams = array();
-		$this->client->addParam($kparams, "id", $id);
-		$this->client->queueServiceActionCall("contentdistribution_distributionprofile", "delete", null, $kparams);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
 	}
 
 	function listAction(Kaltura_Client_ContentDistribution_Type_DistributionProfileFilter $filter = null, Kaltura_Client_Type_FilterPager $pager = null)
@@ -146,6 +114,38 @@ class Kaltura_Client_ContentDistribution_DistributionProfileService extends Kalt
 		$this->client->checkIfError($resultXmlObject->result);
 		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaDistributionProfileListResponse");
 		$this->client->validateObjectType($resultObject, "Kaltura_Client_ContentDistribution_Type_DistributionProfileListResponse");
+		return $resultObject;
+	}
+
+	function update($id, Kaltura_Client_ContentDistribution_Type_DistributionProfile $distributionProfile)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "id", $id);
+		$this->client->addParam($kparams, "distributionProfile", $distributionProfile->toParams());
+		$this->client->queueServiceActionCall("contentdistribution_distributionprofile", "update", "KalturaDistributionProfile", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultXml = $this->client->doQueue();
+		$resultXmlObject = new \SimpleXMLElement($resultXml);
+		$this->client->checkIfError($resultXmlObject->result);
+		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaDistributionProfile");
+		$this->client->validateObjectType($resultObject, "Kaltura_Client_ContentDistribution_Type_DistributionProfile");
+		return $resultObject;
+	}
+
+	function updateStatus($id, $status)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "id", $id);
+		$this->client->addParam($kparams, "status", $status);
+		$this->client->queueServiceActionCall("contentdistribution_distributionprofile", "updateStatus", "KalturaDistributionProfile", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultXml = $this->client->doQueue();
+		$resultXmlObject = new \SimpleXMLElement($resultXml);
+		$this->client->checkIfError($resultXmlObject->result);
+		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaDistributionProfile");
+		$this->client->validateObjectType($resultObject, "Kaltura_Client_ContentDistribution_Type_DistributionProfile");
 		return $resultObject;
 	}
 }

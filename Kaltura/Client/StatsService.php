@@ -65,6 +65,19 @@ class Kaltura_Client_StatsService extends Kaltura_Client_ServiceBase
 		$this->client->checkIfError($resultXmlObject->result);
 	}
 
+	function reportError($errorCode, $errorMessage)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "errorCode", $errorCode);
+		$this->client->addParam($kparams, "errorMessage", $errorMessage);
+		$this->client->queueServiceActionCall("stats", "reportError", null, $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultXml = $this->client->doQueue();
+		$resultXmlObject = new \SimpleXMLElement($resultXml);
+		$this->client->checkIfError($resultXmlObject->result);
+	}
+
 	function reportKceError(Kaltura_Client_Type_CEError $kalturaCEError)
 	{
 		$kparams = array();
@@ -78,18 +91,5 @@ class Kaltura_Client_StatsService extends Kaltura_Client_ServiceBase
 		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaCEError");
 		$this->client->validateObjectType($resultObject, "Kaltura_Client_Type_CEError");
 		return $resultObject;
-	}
-
-	function reportError($errorCode, $errorMessage)
-	{
-		$kparams = array();
-		$this->client->addParam($kparams, "errorCode", $errorCode);
-		$this->client->addParam($kparams, "errorMessage", $errorMessage);
-		$this->client->queueServiceActionCall("stats", "reportError", null, $kparams);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
 	}
 }

@@ -88,12 +88,47 @@ class Kaltura_Client_MediaService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
-	function addFromUrl(Kaltura_Client_Type_MediaEntry $mediaEntry, $url)
+	function addFromEntry($sourceEntryId, Kaltura_Client_Type_MediaEntry $mediaEntry = null, $sourceFlavorParamsId = null)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "sourceEntryId", $sourceEntryId);
+		if ($mediaEntry !== null)
+			$this->client->addParam($kparams, "mediaEntry", $mediaEntry->toParams());
+		$this->client->addParam($kparams, "sourceFlavorParamsId", $sourceFlavorParamsId);
+		$this->client->queueServiceActionCall("media", "addFromEntry", "KalturaMediaEntry", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultXml = $this->client->doQueue();
+		$resultXmlObject = new \SimpleXMLElement($resultXml);
+		$this->client->checkIfError($resultXmlObject->result);
+		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaMediaEntry");
+		$this->client->validateObjectType($resultObject, "Kaltura_Client_Type_MediaEntry");
+		return $resultObject;
+	}
+
+	function addFromFlavorAsset($sourceFlavorAssetId, Kaltura_Client_Type_MediaEntry $mediaEntry = null)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "sourceFlavorAssetId", $sourceFlavorAssetId);
+		if ($mediaEntry !== null)
+			$this->client->addParam($kparams, "mediaEntry", $mediaEntry->toParams());
+		$this->client->queueServiceActionCall("media", "addFromFlavorAsset", "KalturaMediaEntry", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultXml = $this->client->doQueue();
+		$resultXmlObject = new \SimpleXMLElement($resultXml);
+		$this->client->checkIfError($resultXmlObject->result);
+		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaMediaEntry");
+		$this->client->validateObjectType($resultObject, "Kaltura_Client_Type_MediaEntry");
+		return $resultObject;
+	}
+
+	function addFromRecordedWebcam(Kaltura_Client_Type_MediaEntry $mediaEntry, $webcamTokenId)
 	{
 		$kparams = array();
 		$this->client->addParam($kparams, "mediaEntry", $mediaEntry->toParams());
-		$this->client->addParam($kparams, "url", $url);
-		$this->client->queueServiceActionCall("media", "addFromUrl", "KalturaMediaEntry", $kparams);
+		$this->client->addParam($kparams, "webcamTokenId", $webcamTokenId);
+		$this->client->queueServiceActionCall("media", "addFromRecordedWebcam", "KalturaMediaEntry", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
 		$resultXml = $this->client->doQueue();
@@ -138,12 +173,12 @@ class Kaltura_Client_MediaService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
-	function addFromRecordedWebcam(Kaltura_Client_Type_MediaEntry $mediaEntry, $webcamTokenId)
+	function addFromUrl(Kaltura_Client_Type_MediaEntry $mediaEntry, $url)
 	{
 		$kparams = array();
 		$this->client->addParam($kparams, "mediaEntry", $mediaEntry->toParams());
-		$this->client->addParam($kparams, "webcamTokenId", $webcamTokenId);
-		$this->client->queueServiceActionCall("media", "addFromRecordedWebcam", "KalturaMediaEntry", $kparams);
+		$this->client->addParam($kparams, "url", $url);
+		$this->client->queueServiceActionCall("media", "addFromUrl", "KalturaMediaEntry", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
 		$resultXml = $this->client->doQueue();
@@ -154,14 +189,36 @@ class Kaltura_Client_MediaService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
-	function addFromEntry($sourceEntryId, Kaltura_Client_Type_MediaEntry $mediaEntry = null, $sourceFlavorParamsId = null)
+	function anonymousRank($entryId, $rank)
 	{
 		$kparams = array();
-		$this->client->addParam($kparams, "sourceEntryId", $sourceEntryId);
-		if ($mediaEntry !== null)
-			$this->client->addParam($kparams, "mediaEntry", $mediaEntry->toParams());
-		$this->client->addParam($kparams, "sourceFlavorParamsId", $sourceFlavorParamsId);
-		$this->client->queueServiceActionCall("media", "addFromEntry", "KalturaMediaEntry", $kparams);
+		$this->client->addParam($kparams, "entryId", $entryId);
+		$this->client->addParam($kparams, "rank", $rank);
+		$this->client->queueServiceActionCall("media", "anonymousRank", null, $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultXml = $this->client->doQueue();
+		$resultXmlObject = new \SimpleXMLElement($resultXml);
+		$this->client->checkIfError($resultXmlObject->result);
+	}
+
+	function approve($entryId)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "entryId", $entryId);
+		$this->client->queueServiceActionCall("media", "approve", null, $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultXml = $this->client->doQueue();
+		$resultXmlObject = new \SimpleXMLElement($resultXml);
+		$this->client->checkIfError($resultXmlObject->result);
+	}
+
+	function approveReplace($entryId)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "entryId", $entryId);
+		$this->client->queueServiceActionCall("media", "approveReplace", "KalturaMediaEntry", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
 		$resultXml = $this->client->doQueue();
@@ -172,13 +229,31 @@ class Kaltura_Client_MediaService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
-	function addFromFlavorAsset($sourceFlavorAssetId, Kaltura_Client_Type_MediaEntry $mediaEntry = null)
+	function bulkUploadAdd($fileData, Kaltura_Client_Type_BulkUploadJobData $bulkUploadData = null, Kaltura_Client_Type_BulkUploadEntryData $bulkUploadEntryData = null)
 	{
 		$kparams = array();
-		$this->client->addParam($kparams, "sourceFlavorAssetId", $sourceFlavorAssetId);
-		if ($mediaEntry !== null)
-			$this->client->addParam($kparams, "mediaEntry", $mediaEntry->toParams());
-		$this->client->queueServiceActionCall("media", "addFromFlavorAsset", "KalturaMediaEntry", $kparams);
+		$kfiles = array();
+		$this->client->addParam($kfiles, "fileData", $fileData);
+		if ($bulkUploadData !== null)
+			$this->client->addParam($kparams, "bulkUploadData", $bulkUploadData->toParams());
+		if ($bulkUploadEntryData !== null)
+			$this->client->addParam($kparams, "bulkUploadEntryData", $bulkUploadEntryData->toParams());
+		$this->client->queueServiceActionCall("media", "bulkUploadAdd",  "KalturaBulkUpload", $kparams, $kfiles);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultXml = $this->client->doQueue();
+		$resultXmlObject = new \SimpleXMLElement($resultXml);
+		$this->client->checkIfError($resultXmlObject->result);
+		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaBulkUpload");
+		$this->client->validateObjectType($resultObject, "Kaltura_Client_Type_BulkUpload");
+		return $resultObject;
+	}
+
+	function cancelReplace($entryId)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "entryId", $entryId);
+		$this->client->queueServiceActionCall("media", "cancelReplace", "KalturaMediaEntry", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
 		$resultXml = $this->client->doQueue();
@@ -207,6 +282,45 @@ class Kaltura_Client_MediaService extends Kaltura_Client_ServiceBase
 		$this->client->checkIfError($resultXmlObject->result);
 		$resultObject = (string)Kaltura_Client_ParseUtils::unmarshalSimpleType($resultXmlObject->result);
 		return $resultObject;
+	}
+
+	function count(Kaltura_Client_Type_MediaEntryFilter $filter = null)
+	{
+		$kparams = array();
+		if ($filter !== null)
+			$this->client->addParam($kparams, "filter", $filter->toParams());
+		$this->client->queueServiceActionCall("media", "count", null, $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultXml = $this->client->doQueue();
+		$resultXmlObject = new \SimpleXMLElement($resultXml);
+		$this->client->checkIfError($resultXmlObject->result);
+		$resultObject = (int)Kaltura_Client_ParseUtils::unmarshalSimpleType($resultXmlObject->result);
+		return $resultObject;
+	}
+
+	function delete($entryId)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "entryId", $entryId);
+		$this->client->queueServiceActionCall("media", "delete", null, $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultXml = $this->client->doQueue();
+		$resultXmlObject = new \SimpleXMLElement($resultXml);
+		$this->client->checkIfError($resultXmlObject->result);
+	}
+
+	function flag(Kaltura_Client_Type_ModerationFlag $moderationFlag)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "moderationFlag", $moderationFlag->toParams());
+		$this->client->queueServiceActionCall("media", "flag", null, $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultXml = $this->client->doQueue();
+		$resultXmlObject = new \SimpleXMLElement($resultXml);
+		$this->client->checkIfError($resultXmlObject->result);
 	}
 
 	function get($entryId, $version = -1)
@@ -245,6 +359,68 @@ class Kaltura_Client_MediaService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	function listAction(Kaltura_Client_Type_MediaEntryFilter $filter = null, Kaltura_Client_Type_FilterPager $pager = null)
+	{
+		$kparams = array();
+		if ($filter !== null)
+			$this->client->addParam($kparams, "filter", $filter->toParams());
+		if ($pager !== null)
+			$this->client->addParam($kparams, "pager", $pager->toParams());
+		$this->client->queueServiceActionCall("media", "list", "KalturaMediaListResponse", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultXml = $this->client->doQueue();
+		$resultXmlObject = new \SimpleXMLElement($resultXml);
+		$this->client->checkIfError($resultXmlObject->result);
+		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaMediaListResponse");
+		$this->client->validateObjectType($resultObject, "Kaltura_Client_Type_MediaListResponse");
+		return $resultObject;
+	}
+
+	function listFlags($entryId, Kaltura_Client_Type_FilterPager $pager = null)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "entryId", $entryId);
+		if ($pager !== null)
+			$this->client->addParam($kparams, "pager", $pager->toParams());
+		$this->client->queueServiceActionCall("media", "listFlags", "KalturaModerationFlagListResponse", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultXml = $this->client->doQueue();
+		$resultXmlObject = new \SimpleXMLElement($resultXml);
+		$this->client->checkIfError($resultXmlObject->result);
+		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaModerationFlagListResponse");
+		$this->client->validateObjectType($resultObject, "Kaltura_Client_Type_ModerationFlagListResponse");
+		return $resultObject;
+	}
+
+	function reject($entryId)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "entryId", $entryId);
+		$this->client->queueServiceActionCall("media", "reject", null, $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultXml = $this->client->doQueue();
+		$resultXmlObject = new \SimpleXMLElement($resultXml);
+		$this->client->checkIfError($resultXmlObject->result);
+	}
+
+	function requestConversion($entryId, $fileFormat)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "entryId", $entryId);
+		$this->client->addParam($kparams, "fileFormat", $fileFormat);
+		$this->client->queueServiceActionCall("media", "requestConversion", null, $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultXml = $this->client->doQueue();
+		$resultXmlObject = new \SimpleXMLElement($resultXml);
+		$this->client->checkIfError($resultXmlObject->result);
+		$resultObject = (int)Kaltura_Client_ParseUtils::unmarshalSimpleType($resultXmlObject->result);
+		return $resultObject;
+	}
+
 	function update($entryId, Kaltura_Client_Type_MediaEntry $mediaEntry)
 	{
 		$kparams = array();
@@ -277,96 +453,6 @@ class Kaltura_Client_MediaService extends Kaltura_Client_ServiceBase
 		$this->client->checkIfError($resultXmlObject->result);
 		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaMediaEntry");
 		$this->client->validateObjectType($resultObject, "Kaltura_Client_Type_MediaEntry");
-		return $resultObject;
-	}
-
-	function delete($entryId)
-	{
-		$kparams = array();
-		$this->client->addParam($kparams, "entryId", $entryId);
-		$this->client->queueServiceActionCall("media", "delete", null, $kparams);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-	}
-
-	function approveReplace($entryId)
-	{
-		$kparams = array();
-		$this->client->addParam($kparams, "entryId", $entryId);
-		$this->client->queueServiceActionCall("media", "approveReplace", "KalturaMediaEntry", $kparams);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaMediaEntry");
-		$this->client->validateObjectType($resultObject, "Kaltura_Client_Type_MediaEntry");
-		return $resultObject;
-	}
-
-	function cancelReplace($entryId)
-	{
-		$kparams = array();
-		$this->client->addParam($kparams, "entryId", $entryId);
-		$this->client->queueServiceActionCall("media", "cancelReplace", "KalturaMediaEntry", $kparams);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaMediaEntry");
-		$this->client->validateObjectType($resultObject, "Kaltura_Client_Type_MediaEntry");
-		return $resultObject;
-	}
-
-	function listAction(Kaltura_Client_Type_MediaEntryFilter $filter = null, Kaltura_Client_Type_FilterPager $pager = null)
-	{
-		$kparams = array();
-		if ($filter !== null)
-			$this->client->addParam($kparams, "filter", $filter->toParams());
-		if ($pager !== null)
-			$this->client->addParam($kparams, "pager", $pager->toParams());
-		$this->client->queueServiceActionCall("media", "list", "KalturaMediaListResponse", $kparams);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaMediaListResponse");
-		$this->client->validateObjectType($resultObject, "Kaltura_Client_Type_MediaListResponse");
-		return $resultObject;
-	}
-
-	function count(Kaltura_Client_Type_MediaEntryFilter $filter = null)
-	{
-		$kparams = array();
-		if ($filter !== null)
-			$this->client->addParam($kparams, "filter", $filter->toParams());
-		$this->client->queueServiceActionCall("media", "count", null, $kparams);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = (int)Kaltura_Client_ParseUtils::unmarshalSimpleType($resultXmlObject->result);
-		return $resultObject;
-	}
-
-	function upload($fileData)
-	{
-		$kparams = array();
-		$kfiles = array();
-		$this->client->addParam($kfiles, "fileData", $fileData);
-		$this->client->queueServiceActionCall("media", "upload",  null, $kparams, $kfiles);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = (string)Kaltura_Client_ParseUtils::unmarshalSimpleType($resultXmlObject->result);
 		return $resultObject;
 	}
 
@@ -405,6 +491,22 @@ class Kaltura_Client_MediaService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	function updateThumbnailFromUrl($entryId, $url)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "entryId", $entryId);
+		$this->client->addParam($kparams, "url", $url);
+		$this->client->queueServiceActionCall("media", "updateThumbnailFromUrl", "KalturaBaseEntry", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultXml = $this->client->doQueue();
+		$resultXmlObject = new \SimpleXMLElement($resultXml);
+		$this->client->checkIfError($resultXmlObject->result);
+		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaBaseEntry");
+		$this->client->validateObjectType($resultObject, "Kaltura_Client_Type_BaseEntry");
+		return $resultObject;
+	}
+
 	function updateThumbnailJpeg($entryId, $fileData)
 	{
 		$kparams = array();
@@ -422,120 +524,18 @@ class Kaltura_Client_MediaService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
-	function updateThumbnailFromUrl($entryId, $url)
-	{
-		$kparams = array();
-		$this->client->addParam($kparams, "entryId", $entryId);
-		$this->client->addParam($kparams, "url", $url);
-		$this->client->queueServiceActionCall("media", "updateThumbnailFromUrl", "KalturaBaseEntry", $kparams);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaBaseEntry");
-		$this->client->validateObjectType($resultObject, "Kaltura_Client_Type_BaseEntry");
-		return $resultObject;
-	}
-
-	function requestConversion($entryId, $fileFormat)
-	{
-		$kparams = array();
-		$this->client->addParam($kparams, "entryId", $entryId);
-		$this->client->addParam($kparams, "fileFormat", $fileFormat);
-		$this->client->queueServiceActionCall("media", "requestConversion", null, $kparams);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = (int)Kaltura_Client_ParseUtils::unmarshalSimpleType($resultXmlObject->result);
-		return $resultObject;
-	}
-
-	function flag(Kaltura_Client_Type_ModerationFlag $moderationFlag)
-	{
-		$kparams = array();
-		$this->client->addParam($kparams, "moderationFlag", $moderationFlag->toParams());
-		$this->client->queueServiceActionCall("media", "flag", null, $kparams);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-	}
-
-	function reject($entryId)
-	{
-		$kparams = array();
-		$this->client->addParam($kparams, "entryId", $entryId);
-		$this->client->queueServiceActionCall("media", "reject", null, $kparams);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-	}
-
-	function approve($entryId)
-	{
-		$kparams = array();
-		$this->client->addParam($kparams, "entryId", $entryId);
-		$this->client->queueServiceActionCall("media", "approve", null, $kparams);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-	}
-
-	function listFlags($entryId, Kaltura_Client_Type_FilterPager $pager = null)
-	{
-		$kparams = array();
-		$this->client->addParam($kparams, "entryId", $entryId);
-		if ($pager !== null)
-			$this->client->addParam($kparams, "pager", $pager->toParams());
-		$this->client->queueServiceActionCall("media", "listFlags", "KalturaModerationFlagListResponse", $kparams);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaModerationFlagListResponse");
-		$this->client->validateObjectType($resultObject, "Kaltura_Client_Type_ModerationFlagListResponse");
-		return $resultObject;
-	}
-
-	function anonymousRank($entryId, $rank)
-	{
-		$kparams = array();
-		$this->client->addParam($kparams, "entryId", $entryId);
-		$this->client->addParam($kparams, "rank", $rank);
-		$this->client->queueServiceActionCall("media", "anonymousRank", null, $kparams);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-	}
-
-	function bulkUploadAdd($fileData, Kaltura_Client_Type_BulkUploadJobData $bulkUploadData = null, Kaltura_Client_Type_BulkUploadEntryData $bulkUploadEntryData = null)
+	function upload($fileData)
 	{
 		$kparams = array();
 		$kfiles = array();
 		$this->client->addParam($kfiles, "fileData", $fileData);
-		if ($bulkUploadData !== null)
-			$this->client->addParam($kparams, "bulkUploadData", $bulkUploadData->toParams());
-		if ($bulkUploadEntryData !== null)
-			$this->client->addParam($kparams, "bulkUploadEntryData", $bulkUploadEntryData->toParams());
-		$this->client->queueServiceActionCall("media", "bulkUploadAdd",  "KalturaBulkUpload", $kparams, $kfiles);
+		$this->client->queueServiceActionCall("media", "upload",  null, $kparams, $kfiles);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
 		$resultXml = $this->client->doQueue();
 		$resultXmlObject = new \SimpleXMLElement($resultXml);
 		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaBulkUpload");
-		$this->client->validateObjectType($resultObject, "Kaltura_Client_Type_BulkUpload");
+		$resultObject = (string)Kaltura_Client_ParseUtils::unmarshalSimpleType($resultXmlObject->result);
 		return $resultObject;
 	}
 }

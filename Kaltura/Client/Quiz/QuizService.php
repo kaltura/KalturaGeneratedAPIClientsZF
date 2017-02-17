@@ -55,22 +55,6 @@ class Kaltura_Client_Quiz_QuizService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
-	function update($entryId, Kaltura_Client_Quiz_Type_Quiz $quiz)
-	{
-		$kparams = array();
-		$this->client->addParam($kparams, "entryId", $entryId);
-		$this->client->addParam($kparams, "quiz", $quiz->toParams());
-		$this->client->queueServiceActionCall("quiz_quiz", "update", "KalturaQuiz", $kparams);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaQuiz");
-		$this->client->validateObjectType($resultObject, "Kaltura_Client_Quiz_Type_Quiz");
-		return $resultObject;
-	}
-
 	function get($entryId)
 	{
 		$kparams = array();
@@ -83,6 +67,21 @@ class Kaltura_Client_Quiz_QuizService extends Kaltura_Client_ServiceBase
 		$this->client->checkIfError($resultXmlObject->result);
 		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaQuiz");
 		$this->client->validateObjectType($resultObject, "Kaltura_Client_Quiz_Type_Quiz");
+		return $resultObject;
+	}
+
+	function getUrl($entryId, $quizOutputType)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "entryId", $entryId);
+		$this->client->addParam($kparams, "quizOutputType", $quizOutputType);
+		$this->client->queueServiceActionCall("quiz_quiz", "getUrl", null, $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultXml = $this->client->doQueue();
+		$resultXmlObject = new \SimpleXMLElement($resultXml);
+		$this->client->checkIfError($resultXmlObject->result);
+		$resultObject = (string)Kaltura_Client_ParseUtils::unmarshalSimpleType($resultXmlObject->result);
 		return $resultObject;
 	}
 
@@ -117,18 +116,19 @@ class Kaltura_Client_Quiz_QuizService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
-	function getUrl($entryId, $quizOutputType)
+	function update($entryId, Kaltura_Client_Quiz_Type_Quiz $quiz)
 	{
 		$kparams = array();
 		$this->client->addParam($kparams, "entryId", $entryId);
-		$this->client->addParam($kparams, "quizOutputType", $quizOutputType);
-		$this->client->queueServiceActionCall("quiz_quiz", "getUrl", null, $kparams);
+		$this->client->addParam($kparams, "quiz", $quiz->toParams());
+		$this->client->queueServiceActionCall("quiz_quiz", "update", "KalturaQuiz", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
 		$resultXml = $this->client->doQueue();
 		$resultXmlObject = new \SimpleXMLElement($resultXml);
 		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = (string)Kaltura_Client_ParseUtils::unmarshalSimpleType($resultXmlObject->result);
+		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaQuiz");
+		$this->client->validateObjectType($resultObject, "Kaltura_Client_Quiz_Type_Quiz");
 		return $resultObject;
 	}
 }

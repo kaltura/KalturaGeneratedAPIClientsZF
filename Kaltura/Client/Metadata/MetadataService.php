@@ -57,6 +57,24 @@ class Kaltura_Client_Metadata_MetadataService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	function addFromBulk($metadataProfileId, $objectType, $objectId, $url)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "metadataProfileId", $metadataProfileId);
+		$this->client->addParam($kparams, "objectType", $objectType);
+		$this->client->addParam($kparams, "objectId", $objectId);
+		$this->client->addParam($kparams, "url", $url);
+		$this->client->queueServiceActionCall("metadata_metadata", "addFromBulk", "KalturaMetadata", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultXml = $this->client->doQueue();
+		$resultXmlObject = new \SimpleXMLElement($resultXml);
+		$this->client->checkIfError($resultXmlObject->result);
+		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaMetadata");
+		$this->client->validateObjectType($resultObject, "Kaltura_Client_Metadata_Type_Metadata");
+		return $resultObject;
+	}
+
 	function addFromFile($metadataProfileId, $objectType, $objectId, $xmlFile)
 	{
 		$kparams = array();
@@ -94,22 +112,16 @@ class Kaltura_Client_Metadata_MetadataService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
-	function addFromBulk($metadataProfileId, $objectType, $objectId, $url)
+	function delete($id)
 	{
 		$kparams = array();
-		$this->client->addParam($kparams, "metadataProfileId", $metadataProfileId);
-		$this->client->addParam($kparams, "objectType", $objectType);
-		$this->client->addParam($kparams, "objectId", $objectId);
-		$this->client->addParam($kparams, "url", $url);
-		$this->client->queueServiceActionCall("metadata_metadata", "addFromBulk", "KalturaMetadata", $kparams);
+		$this->client->addParam($kparams, "id", $id);
+		$this->client->queueServiceActionCall("metadata_metadata", "delete", null, $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
 		$resultXml = $this->client->doQueue();
 		$resultXmlObject = new \SimpleXMLElement($resultXml);
 		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaMetadata");
-		$this->client->validateObjectType($resultObject, "Kaltura_Client_Metadata_Type_Metadata");
-		return $resultObject;
 	}
 
 	function get($id)
@@ -124,6 +136,64 @@ class Kaltura_Client_Metadata_MetadataService extends Kaltura_Client_ServiceBase
 		$this->client->checkIfError($resultXmlObject->result);
 		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaMetadata");
 		$this->client->validateObjectType($resultObject, "Kaltura_Client_Metadata_Type_Metadata");
+		return $resultObject;
+	}
+
+	function index($id, $shouldUpdate)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "id", $id);
+		$this->client->addParam($kparams, "shouldUpdate", $shouldUpdate);
+		$this->client->queueServiceActionCall("metadata_metadata", "index", null, $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultXml = $this->client->doQueue();
+		$resultXmlObject = new \SimpleXMLElement($resultXml);
+		$this->client->checkIfError($resultXmlObject->result);
+		$resultObject = (int)Kaltura_Client_ParseUtils::unmarshalSimpleType($resultXmlObject->result);
+		return $resultObject;
+	}
+
+	function invalidate($id, $version = null)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "id", $id);
+		$this->client->addParam($kparams, "version", $version);
+		$this->client->queueServiceActionCall("metadata_metadata", "invalidate", null, $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultXml = $this->client->doQueue();
+		$resultXmlObject = new \SimpleXMLElement($resultXml);
+		$this->client->checkIfError($resultXmlObject->result);
+	}
+
+	function listAction(Kaltura_Client_Metadata_Type_MetadataFilter $filter = null, Kaltura_Client_Type_FilterPager $pager = null)
+	{
+		$kparams = array();
+		if ($filter !== null)
+			$this->client->addParam($kparams, "filter", $filter->toParams());
+		if ($pager !== null)
+			$this->client->addParam($kparams, "pager", $pager->toParams());
+		$this->client->queueServiceActionCall("metadata_metadata", "list", "KalturaMetadataListResponse", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultXml = $this->client->doQueue();
+		$resultXmlObject = new \SimpleXMLElement($resultXml);
+		$this->client->checkIfError($resultXmlObject->result);
+		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaMetadataListResponse");
+		$this->client->validateObjectType($resultObject, "Kaltura_Client_Metadata_Type_MetadataListResponse");
+		return $resultObject;
+	}
+
+	function serve($id)
+	{
+		if ($this->client->isMultiRequest())
+			throw $this->client->getKalturaClientException("Action is not supported as part of multi-request.", Kaltura_Client_ClientException::ERROR_ACTION_IN_MULTIREQUEST);
+		
+		$kparams = array();
+		$this->client->addParam($kparams, "id", $id);
+		$this->client->queueServiceActionCall('metadata_metadata', 'serve', null, $kparams);
+		$resultObject = $this->client->getServeUrl();
 		return $resultObject;
 	}
 
@@ -158,76 +228,6 @@ class Kaltura_Client_Metadata_MetadataService extends Kaltura_Client_ServiceBase
 		$this->client->checkIfError($resultXmlObject->result);
 		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaMetadata");
 		$this->client->validateObjectType($resultObject, "Kaltura_Client_Metadata_Type_Metadata");
-		return $resultObject;
-	}
-
-	function listAction(Kaltura_Client_Metadata_Type_MetadataFilter $filter = null, Kaltura_Client_Type_FilterPager $pager = null)
-	{
-		$kparams = array();
-		if ($filter !== null)
-			$this->client->addParam($kparams, "filter", $filter->toParams());
-		if ($pager !== null)
-			$this->client->addParam($kparams, "pager", $pager->toParams());
-		$this->client->queueServiceActionCall("metadata_metadata", "list", "KalturaMetadataListResponse", $kparams);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaMetadataListResponse");
-		$this->client->validateObjectType($resultObject, "Kaltura_Client_Metadata_Type_MetadataListResponse");
-		return $resultObject;
-	}
-
-	function delete($id)
-	{
-		$kparams = array();
-		$this->client->addParam($kparams, "id", $id);
-		$this->client->queueServiceActionCall("metadata_metadata", "delete", null, $kparams);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-	}
-
-	function invalidate($id, $version = null)
-	{
-		$kparams = array();
-		$this->client->addParam($kparams, "id", $id);
-		$this->client->addParam($kparams, "version", $version);
-		$this->client->queueServiceActionCall("metadata_metadata", "invalidate", null, $kparams);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-	}
-
-	function index($id, $shouldUpdate)
-	{
-		$kparams = array();
-		$this->client->addParam($kparams, "id", $id);
-		$this->client->addParam($kparams, "shouldUpdate", $shouldUpdate);
-		$this->client->queueServiceActionCall("metadata_metadata", "index", null, $kparams);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = (int)Kaltura_Client_ParseUtils::unmarshalSimpleType($resultXmlObject->result);
-		return $resultObject;
-	}
-
-	function serve($id)
-	{
-		if ($this->client->isMultiRequest())
-			throw $this->client->getKalturaClientException("Action is not supported as part of multi-request.", Kaltura_Client_ClientException::ERROR_ACTION_IN_MULTIREQUEST);
-		
-		$kparams = array();
-		$this->client->addParam($kparams, "id", $id);
-		$this->client->queueServiceActionCall('metadata_metadata', 'serve', null, $kparams);
-		$resultObject = $this->client->getServeUrl();
 		return $resultObject;
 	}
 

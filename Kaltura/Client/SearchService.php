@@ -39,20 +39,20 @@ class Kaltura_Client_SearchService extends Kaltura_Client_ServiceBase
 		parent::__construct($client);
 	}
 
-	function search(Kaltura_Client_Type_Search $search, Kaltura_Client_Type_FilterPager $pager = null)
+	function externalLogin($searchSource, $userName, $password)
 	{
 		$kparams = array();
-		$this->client->addParam($kparams, "search", $search->toParams());
-		if ($pager !== null)
-			$this->client->addParam($kparams, "pager", $pager->toParams());
-		$this->client->queueServiceActionCall("search", "search", "KalturaSearchResultResponse", $kparams);
+		$this->client->addParam($kparams, "searchSource", $searchSource);
+		$this->client->addParam($kparams, "userName", $userName);
+		$this->client->addParam($kparams, "password", $password);
+		$this->client->queueServiceActionCall("search", "externalLogin", "KalturaSearchAuthData", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
 		$resultXml = $this->client->doQueue();
 		$resultXmlObject = new \SimpleXMLElement($resultXml);
 		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaSearchResultResponse");
-		$this->client->validateObjectType($resultObject, "Kaltura_Client_Type_SearchResultResponse");
+		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaSearchAuthData");
+		$this->client->validateObjectType($resultObject, "Kaltura_Client_Type_SearchAuthData");
 		return $resultObject;
 	}
 
@@ -71,6 +71,23 @@ class Kaltura_Client_SearchService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	function search(Kaltura_Client_Type_Search $search, Kaltura_Client_Type_FilterPager $pager = null)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "search", $search->toParams());
+		if ($pager !== null)
+			$this->client->addParam($kparams, "pager", $pager->toParams());
+		$this->client->queueServiceActionCall("search", "search", "KalturaSearchResultResponse", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultXml = $this->client->doQueue();
+		$resultXmlObject = new \SimpleXMLElement($resultXml);
+		$this->client->checkIfError($resultXmlObject->result);
+		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaSearchResultResponse");
+		$this->client->validateObjectType($resultObject, "Kaltura_Client_Type_SearchResultResponse");
+		return $resultObject;
+	}
+
 	function searchUrl($mediaType, $url)
 	{
 		$kparams = array();
@@ -84,23 +101,6 @@ class Kaltura_Client_SearchService extends Kaltura_Client_ServiceBase
 		$this->client->checkIfError($resultXmlObject->result);
 		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaSearchResult");
 		$this->client->validateObjectType($resultObject, "Kaltura_Client_Type_SearchResult");
-		return $resultObject;
-	}
-
-	function externalLogin($searchSource, $userName, $password)
-	{
-		$kparams = array();
-		$this->client->addParam($kparams, "searchSource", $searchSource);
-		$this->client->addParam($kparams, "userName", $userName);
-		$this->client->addParam($kparams, "password", $password);
-		$this->client->queueServiceActionCall("search", "externalLogin", "KalturaSearchAuthData", $kparams);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaSearchAuthData");
-		$this->client->validateObjectType($resultObject, "Kaltura_Client_Type_SearchAuthData");
 		return $resultObject;
 	}
 }

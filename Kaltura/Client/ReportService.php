@@ -39,40 +39,23 @@ class Kaltura_Client_ReportService extends Kaltura_Client_ServiceBase
 		parent::__construct($client);
 	}
 
-	function getGraphs($reportType, Kaltura_Client_Type_ReportInputFilter $reportInputFilter, $dimension = null, $objectIds = null)
+	function execute($id, array $params = null)
 	{
 		$kparams = array();
-		$this->client->addParam($kparams, "reportType", $reportType);
-		$this->client->addParam($kparams, "reportInputFilter", $reportInputFilter->toParams());
-		$this->client->addParam($kparams, "dimension", $dimension);
-		$this->client->addParam($kparams, "objectIds", $objectIds);
-		$this->client->queueServiceActionCall("report", "getGraphs", "KalturaReportGraph", $kparams);
+		$this->client->addParam($kparams, "id", $id);
+		if ($params !== null)
+			foreach($params as $index => $obj)
+			{
+				$this->client->addParam($kparams, "params:$index", $obj->toParams());
+			}
+		$this->client->queueServiceActionCall("report", "execute", "KalturaReportResponse", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
 		$resultXml = $this->client->doQueue();
 		$resultXmlObject = new \SimpleXMLElement($resultXml);
 		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = Kaltura_Client_ParseUtils::unmarshalArray($resultXmlObject->result, "KalturaReportGraph");
-		foreach($resultObject as $resultObjectItem){
-			$this->client->validateObjectType($resultObjectItem, "Kaltura_Client_Type_ReportGraph");
-		}
-		return $resultObject;
-	}
-
-	function getTotal($reportType, Kaltura_Client_Type_ReportInputFilter $reportInputFilter, $objectIds = null)
-	{
-		$kparams = array();
-		$this->client->addParam($kparams, "reportType", $reportType);
-		$this->client->addParam($kparams, "reportInputFilter", $reportInputFilter->toParams());
-		$this->client->addParam($kparams, "objectIds", $objectIds);
-		$this->client->queueServiceActionCall("report", "getTotal", "KalturaReportTotal", $kparams);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaReportTotal");
-		$this->client->validateObjectType($resultObject, "Kaltura_Client_Type_ReportTotal");
+		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaReportResponse");
+		$this->client->validateObjectType($resultObject, "Kaltura_Client_Type_ReportResponse");
 		return $resultObject;
 	}
 
@@ -95,6 +78,56 @@ class Kaltura_Client_ReportService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	function getCsv($id, array $params = null)
+	{
+		if ($this->client->isMultiRequest())
+			throw $this->client->getKalturaClientException("Action is not supported as part of multi-request.", Kaltura_Client_ClientException::ERROR_ACTION_IN_MULTIREQUEST);
+		
+		$kparams = array();
+		$this->client->addParam($kparams, "id", $id);
+		if ($params !== null)
+			foreach($params as $index => $obj)
+			{
+				$this->client->addParam($kparams, "params:$index", $obj->toParams());
+			}
+		$this->client->queueServiceActionCall('report', 'getCsv', null, $kparams);
+		$resultObject = $this->client->getServeUrl();
+		return $resultObject;
+	}
+
+	function getCsvFromStringParams($id, $params = null)
+	{
+		if ($this->client->isMultiRequest())
+			throw $this->client->getKalturaClientException("Action is not supported as part of multi-request.", Kaltura_Client_ClientException::ERROR_ACTION_IN_MULTIREQUEST);
+		
+		$kparams = array();
+		$this->client->addParam($kparams, "id", $id);
+		$this->client->addParam($kparams, "params", $params);
+		$this->client->queueServiceActionCall('report', 'getCsvFromStringParams', null, $kparams);
+		$resultObject = $this->client->getServeUrl();
+		return $resultObject;
+	}
+
+	function getGraphs($reportType, Kaltura_Client_Type_ReportInputFilter $reportInputFilter, $dimension = null, $objectIds = null)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "reportType", $reportType);
+		$this->client->addParam($kparams, "reportInputFilter", $reportInputFilter->toParams());
+		$this->client->addParam($kparams, "dimension", $dimension);
+		$this->client->addParam($kparams, "objectIds", $objectIds);
+		$this->client->queueServiceActionCall("report", "getGraphs", "KalturaReportGraph", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultXml = $this->client->doQueue();
+		$resultXmlObject = new \SimpleXMLElement($resultXml);
+		$this->client->checkIfError($resultXmlObject->result);
+		$resultObject = Kaltura_Client_ParseUtils::unmarshalArray($resultXmlObject->result, "KalturaReportGraph");
+		foreach($resultObject as $resultObjectItem){
+			$this->client->validateObjectType($resultObjectItem, "Kaltura_Client_Type_ReportGraph");
+		}
+		return $resultObject;
+	}
+
 	function getTable($reportType, Kaltura_Client_Type_ReportInputFilter $reportInputFilter, Kaltura_Client_Type_FilterPager $pager, $order = null, $objectIds = null)
 	{
 		$kparams = array();
@@ -111,6 +144,23 @@ class Kaltura_Client_ReportService extends Kaltura_Client_ServiceBase
 		$this->client->checkIfError($resultXmlObject->result);
 		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaReportTable");
 		$this->client->validateObjectType($resultObject, "Kaltura_Client_Type_ReportTable");
+		return $resultObject;
+	}
+
+	function getTotal($reportType, Kaltura_Client_Type_ReportInputFilter $reportInputFilter, $objectIds = null)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "reportType", $reportType);
+		$this->client->addParam($kparams, "reportInputFilter", $reportInputFilter->toParams());
+		$this->client->addParam($kparams, "objectIds", $objectIds);
+		$this->client->queueServiceActionCall("report", "getTotal", "KalturaReportTotal", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultXml = $this->client->doQueue();
+		$resultXmlObject = new \SimpleXMLElement($resultXml);
+		$this->client->checkIfError($resultXmlObject->result);
+		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaReportTotal");
+		$this->client->validateObjectType($resultObject, "Kaltura_Client_Type_ReportTotal");
 		return $resultObject;
 	}
 
@@ -148,56 +198,6 @@ class Kaltura_Client_ReportService extends Kaltura_Client_ServiceBase
 		$resultXmlObject = new \SimpleXMLElement($resultXml);
 		$this->client->checkIfError($resultXmlObject->result);
 		$resultObject = (string)Kaltura_Client_ParseUtils::unmarshalSimpleType($resultXmlObject->result);
-		return $resultObject;
-	}
-
-	function execute($id, array $params = null)
-	{
-		$kparams = array();
-		$this->client->addParam($kparams, "id", $id);
-		if ($params !== null)
-			foreach($params as $index => $obj)
-			{
-				$this->client->addParam($kparams, "params:$index", $obj->toParams());
-			}
-		$this->client->queueServiceActionCall("report", "execute", "KalturaReportResponse", $kparams);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaReportResponse");
-		$this->client->validateObjectType($resultObject, "Kaltura_Client_Type_ReportResponse");
-		return $resultObject;
-	}
-
-	function getCsv($id, array $params = null)
-	{
-		if ($this->client->isMultiRequest())
-			throw $this->client->getKalturaClientException("Action is not supported as part of multi-request.", Kaltura_Client_ClientException::ERROR_ACTION_IN_MULTIREQUEST);
-		
-		$kparams = array();
-		$this->client->addParam($kparams, "id", $id);
-		if ($params !== null)
-			foreach($params as $index => $obj)
-			{
-				$this->client->addParam($kparams, "params:$index", $obj->toParams());
-			}
-		$this->client->queueServiceActionCall('report', 'getCsv', null, $kparams);
-		$resultObject = $this->client->getServeUrl();
-		return $resultObject;
-	}
-
-	function getCsvFromStringParams($id, $params = null)
-	{
-		if ($this->client->isMultiRequest())
-			throw $this->client->getKalturaClientException("Action is not supported as part of multi-request.", Kaltura_Client_ClientException::ERROR_ACTION_IN_MULTIREQUEST);
-		
-		$kparams = array();
-		$this->client->addParam($kparams, "id", $id);
-		$this->client->addParam($kparams, "params", $params);
-		$this->client->queueServiceActionCall('report', 'getCsvFromStringParams', null, $kparams);
-		$resultObject = $this->client->getServeUrl();
 		return $resultObject;
 	}
 }

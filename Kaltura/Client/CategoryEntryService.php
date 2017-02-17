@@ -39,6 +39,19 @@ class Kaltura_Client_CategoryEntryService extends Kaltura_Client_ServiceBase
 		parent::__construct($client);
 	}
 
+	function activate($entryId, $categoryId)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "entryId", $entryId);
+		$this->client->addParam($kparams, "categoryId", $categoryId);
+		$this->client->queueServiceActionCall("categoryentry", "activate", null, $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultXml = $this->client->doQueue();
+		$resultXmlObject = new \SimpleXMLElement($resultXml);
+		$this->client->checkIfError($resultXmlObject->result);
+	}
+
 	function add(Kaltura_Client_Type_CategoryEntry $categoryEntry)
 	{
 		$kparams = array();
@@ -54,6 +67,23 @@ class Kaltura_Client_CategoryEntryService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	function addFromBulkUpload(Kaltura_Client_BulkUpload_Type_BulkServiceData $bulkUploadData, Kaltura_Client_Type_BulkUploadCategoryEntryData $bulkUploadCategoryEntryData = null)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "bulkUploadData", $bulkUploadData->toParams());
+		if ($bulkUploadCategoryEntryData !== null)
+			$this->client->addParam($kparams, "bulkUploadCategoryEntryData", $bulkUploadCategoryEntryData->toParams());
+		$this->client->queueServiceActionCall("categoryentry", "addFromBulkUpload", "KalturaBulkUpload", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultXml = $this->client->doQueue();
+		$resultXmlObject = new \SimpleXMLElement($resultXml);
+		$this->client->checkIfError($resultXmlObject->result);
+		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaBulkUpload");
+		$this->client->validateObjectType($resultObject, "Kaltura_Client_Type_BulkUpload");
+		return $resultObject;
+	}
+
 	function delete($entryId, $categoryId)
 	{
 		$kparams = array();
@@ -65,24 +95,6 @@ class Kaltura_Client_CategoryEntryService extends Kaltura_Client_ServiceBase
 		$resultXml = $this->client->doQueue();
 		$resultXmlObject = new \SimpleXMLElement($resultXml);
 		$this->client->checkIfError($resultXmlObject->result);
-	}
-
-	function listAction(Kaltura_Client_Type_CategoryEntryFilter $filter = null, Kaltura_Client_Type_FilterPager $pager = null)
-	{
-		$kparams = array();
-		if ($filter !== null)
-			$this->client->addParam($kparams, "filter", $filter->toParams());
-		if ($pager !== null)
-			$this->client->addParam($kparams, "pager", $pager->toParams());
-		$this->client->queueServiceActionCall("categoryentry", "list", "KalturaCategoryEntryListResponse", $kparams);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaCategoryEntryListResponse");
-		$this->client->validateObjectType($resultObject, "Kaltura_Client_Type_CategoryEntryListResponse");
-		return $resultObject;
 	}
 
 	function index($entryId, $categoryId, $shouldUpdate = true)
@@ -101,17 +113,22 @@ class Kaltura_Client_CategoryEntryService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
-	function activate($entryId, $categoryId)
+	function listAction(Kaltura_Client_Type_CategoryEntryFilter $filter = null, Kaltura_Client_Type_FilterPager $pager = null)
 	{
 		$kparams = array();
-		$this->client->addParam($kparams, "entryId", $entryId);
-		$this->client->addParam($kparams, "categoryId", $categoryId);
-		$this->client->queueServiceActionCall("categoryentry", "activate", null, $kparams);
+		if ($filter !== null)
+			$this->client->addParam($kparams, "filter", $filter->toParams());
+		if ($pager !== null)
+			$this->client->addParam($kparams, "pager", $pager->toParams());
+		$this->client->queueServiceActionCall("categoryentry", "list", "KalturaCategoryEntryListResponse", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
 		$resultXml = $this->client->doQueue();
 		$resultXmlObject = new \SimpleXMLElement($resultXml);
 		$this->client->checkIfError($resultXmlObject->result);
+		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaCategoryEntryListResponse");
+		$this->client->validateObjectType($resultObject, "Kaltura_Client_Type_CategoryEntryListResponse");
+		return $resultObject;
 	}
 
 	function reject($entryId, $categoryId)
@@ -138,22 +155,5 @@ class Kaltura_Client_CategoryEntryService extends Kaltura_Client_ServiceBase
 		$resultXml = $this->client->doQueue();
 		$resultXmlObject = new \SimpleXMLElement($resultXml);
 		$this->client->checkIfError($resultXmlObject->result);
-	}
-
-	function addFromBulkUpload(Kaltura_Client_BulkUpload_Type_BulkServiceData $bulkUploadData, Kaltura_Client_Type_BulkUploadCategoryEntryData $bulkUploadCategoryEntryData = null)
-	{
-		$kparams = array();
-		$this->client->addParam($kparams, "bulkUploadData", $bulkUploadData->toParams());
-		if ($bulkUploadCategoryEntryData !== null)
-			$this->client->addParam($kparams, "bulkUploadCategoryEntryData", $bulkUploadCategoryEntryData->toParams());
-		$this->client->queueServiceActionCall("categoryentry", "addFromBulkUpload", "KalturaBulkUpload", $kparams);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaBulkUpload");
-		$this->client->validateObjectType($resultObject, "Kaltura_Client_Type_BulkUpload");
-		return $resultObject;
 	}
 }

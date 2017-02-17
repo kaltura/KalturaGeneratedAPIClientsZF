@@ -54,11 +54,42 @@ class Kaltura_Client_EmailIngestionProfileService extends Kaltura_Client_Service
 		return $resultObject;
 	}
 
-	function getByEmailAddress($emailAddress)
+	function addMediaEntry(Kaltura_Client_Type_MediaEntry $mediaEntry, $uploadTokenId, $emailProfId, $fromAddress, $emailMsgId)
 	{
 		$kparams = array();
-		$this->client->addParam($kparams, "emailAddress", $emailAddress);
-		$this->client->queueServiceActionCall("emailingestionprofile", "getByEmailAddress", "KalturaEmailIngestionProfile", $kparams);
+		$this->client->addParam($kparams, "mediaEntry", $mediaEntry->toParams());
+		$this->client->addParam($kparams, "uploadTokenId", $uploadTokenId);
+		$this->client->addParam($kparams, "emailProfId", $emailProfId);
+		$this->client->addParam($kparams, "fromAddress", $fromAddress);
+		$this->client->addParam($kparams, "emailMsgId", $emailMsgId);
+		$this->client->queueServiceActionCall("emailingestionprofile", "addMediaEntry", "KalturaMediaEntry", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultXml = $this->client->doQueue();
+		$resultXmlObject = new \SimpleXMLElement($resultXml);
+		$this->client->checkIfError($resultXmlObject->result);
+		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaMediaEntry");
+		$this->client->validateObjectType($resultObject, "Kaltura_Client_Type_MediaEntry");
+		return $resultObject;
+	}
+
+	function delete($id)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "id", $id);
+		$this->client->queueServiceActionCall("emailingestionprofile", "delete", null, $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultXml = $this->client->doQueue();
+		$resultXmlObject = new \SimpleXMLElement($resultXml);
+		$this->client->checkIfError($resultXmlObject->result);
+	}
+
+	function get($id)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "id", $id);
+		$this->client->queueServiceActionCall("emailingestionprofile", "get", "KalturaEmailIngestionProfile", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
 		$resultXml = $this->client->doQueue();
@@ -69,11 +100,11 @@ class Kaltura_Client_EmailIngestionProfileService extends Kaltura_Client_Service
 		return $resultObject;
 	}
 
-	function get($id)
+	function getByEmailAddress($emailAddress)
 	{
 		$kparams = array();
-		$this->client->addParam($kparams, "id", $id);
-		$this->client->queueServiceActionCall("emailingestionprofile", "get", "KalturaEmailIngestionProfile", $kparams);
+		$this->client->addParam($kparams, "emailAddress", $emailAddress);
+		$this->client->queueServiceActionCall("emailingestionprofile", "getByEmailAddress", "KalturaEmailIngestionProfile", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
 		$resultXml = $this->client->doQueue();
@@ -97,37 +128,6 @@ class Kaltura_Client_EmailIngestionProfileService extends Kaltura_Client_Service
 		$this->client->checkIfError($resultXmlObject->result);
 		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaEmailIngestionProfile");
 		$this->client->validateObjectType($resultObject, "Kaltura_Client_Type_EmailIngestionProfile");
-		return $resultObject;
-	}
-
-	function delete($id)
-	{
-		$kparams = array();
-		$this->client->addParam($kparams, "id", $id);
-		$this->client->queueServiceActionCall("emailingestionprofile", "delete", null, $kparams);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-	}
-
-	function addMediaEntry(Kaltura_Client_Type_MediaEntry $mediaEntry, $uploadTokenId, $emailProfId, $fromAddress, $emailMsgId)
-	{
-		$kparams = array();
-		$this->client->addParam($kparams, "mediaEntry", $mediaEntry->toParams());
-		$this->client->addParam($kparams, "uploadTokenId", $uploadTokenId);
-		$this->client->addParam($kparams, "emailProfId", $emailProfId);
-		$this->client->addParam($kparams, "fromAddress", $fromAddress);
-		$this->client->addParam($kparams, "emailMsgId", $emailMsgId);
-		$this->client->queueServiceActionCall("emailingestionprofile", "addMediaEntry", "KalturaMediaEntry", $kparams);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaMediaEntry");
-		$this->client->validateObjectType($resultObject, "Kaltura_Client_Type_MediaEntry");
 		return $resultObject;
 	}
 }

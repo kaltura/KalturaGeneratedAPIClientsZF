@@ -39,6 +39,21 @@ class Kaltura_Client_BulkUpload_BulkService extends Kaltura_Client_ServiceBase
 		parent::__construct($client);
 	}
 
+	function abort($id)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "id", $id);
+		$this->client->queueServiceActionCall("bulkupload_bulk", "abort", "KalturaBulkUpload", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultXml = $this->client->doQueue();
+		$resultXmlObject = new \SimpleXMLElement($resultXml);
+		$this->client->checkIfError($resultXmlObject->result);
+		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaBulkUpload");
+		$this->client->validateObjectType($resultObject, "Kaltura_Client_Type_BulkUpload");
+		return $resultObject;
+	}
+
 	function get($id)
 	{
 		$kparams = array();
@@ -93,21 +108,6 @@ class Kaltura_Client_BulkUpload_BulkService extends Kaltura_Client_ServiceBase
 		$this->client->addParam($kparams, "id", $id);
 		$this->client->queueServiceActionCall('bulkupload_bulk', 'serveLog', null, $kparams);
 		$resultObject = $this->client->getServeUrl();
-		return $resultObject;
-	}
-
-	function abort($id)
-	{
-		$kparams = array();
-		$this->client->addParam($kparams, "id", $id);
-		$this->client->queueServiceActionCall("bulkupload_bulk", "abort", "KalturaBulkUpload", $kparams);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaBulkUpload");
-		$this->client->validateObjectType($resultObject, "Kaltura_Client_Type_BulkUpload");
 		return $resultObject;
 	}
 }

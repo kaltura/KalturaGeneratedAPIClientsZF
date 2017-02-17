@@ -39,36 +39,6 @@ class Kaltura_Client_AdminUserService extends Kaltura_Client_ServiceBase
 		parent::__construct($client);
 	}
 
-	function updatePassword($email, $password, $newEmail = "", $newPassword = "")
-	{
-		$kparams = array();
-		$this->client->addParam($kparams, "email", $email);
-		$this->client->addParam($kparams, "password", $password);
-		$this->client->addParam($kparams, "newEmail", $newEmail);
-		$this->client->addParam($kparams, "newPassword", $newPassword);
-		$this->client->queueServiceActionCall("adminuser", "updatePassword", "KalturaAdminUser", $kparams);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaAdminUser");
-		$this->client->validateObjectType($resultObject, "Kaltura_Client_Type_AdminUser");
-		return $resultObject;
-	}
-
-	function resetPassword($email)
-	{
-		$kparams = array();
-		$this->client->addParam($kparams, "email", $email);
-		$this->client->queueServiceActionCall("adminuser", "resetPassword", null, $kparams);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-	}
-
 	function login($email, $password, $partnerId = null)
 	{
 		$kparams = array();
@@ -85,6 +55,18 @@ class Kaltura_Client_AdminUserService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	function resetPassword($email)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "email", $email);
+		$this->client->queueServiceActionCall("adminuser", "resetPassword", null, $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultXml = $this->client->doQueue();
+		$resultXmlObject = new \SimpleXMLElement($resultXml);
+		$this->client->checkIfError($resultXmlObject->result);
+	}
+
 	function setInitialPassword($hashKey, $newPassword)
 	{
 		$kparams = array();
@@ -96,5 +78,23 @@ class Kaltura_Client_AdminUserService extends Kaltura_Client_ServiceBase
 		$resultXml = $this->client->doQueue();
 		$resultXmlObject = new \SimpleXMLElement($resultXml);
 		$this->client->checkIfError($resultXmlObject->result);
+	}
+
+	function updatePassword($email, $password, $newEmail = "", $newPassword = "")
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "email", $email);
+		$this->client->addParam($kparams, "password", $password);
+		$this->client->addParam($kparams, "newEmail", $newEmail);
+		$this->client->addParam($kparams, "newPassword", $newPassword);
+		$this->client->queueServiceActionCall("adminuser", "updatePassword", "KalturaAdminUser", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultXml = $this->client->doQueue();
+		$resultXmlObject = new \SimpleXMLElement($resultXml);
+		$this->client->checkIfError($resultXmlObject->result);
+		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaAdminUser");
+		$this->client->validateObjectType($resultObject, "Kaltura_Client_Type_AdminUser");
+		return $resultObject;
 	}
 }

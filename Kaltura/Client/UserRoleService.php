@@ -54,27 +54,11 @@ class Kaltura_Client_UserRoleService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
-	function get($userRoleId)
+	function cloneAction($userRoleId)
 	{
 		$kparams = array();
 		$this->client->addParam($kparams, "userRoleId", $userRoleId);
-		$this->client->queueServiceActionCall("userrole", "get", "KalturaUserRole", $kparams);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaUserRole");
-		$this->client->validateObjectType($resultObject, "Kaltura_Client_Type_UserRole");
-		return $resultObject;
-	}
-
-	function update($userRoleId, Kaltura_Client_Type_UserRole $userRole)
-	{
-		$kparams = array();
-		$this->client->addParam($kparams, "userRoleId", $userRoleId);
-		$this->client->addParam($kparams, "userRole", $userRole->toParams());
-		$this->client->queueServiceActionCall("userrole", "update", "KalturaUserRole", $kparams);
+		$this->client->queueServiceActionCall("userrole", "clone", "KalturaUserRole", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
 		$resultXml = $this->client->doQueue();
@@ -90,6 +74,21 @@ class Kaltura_Client_UserRoleService extends Kaltura_Client_ServiceBase
 		$kparams = array();
 		$this->client->addParam($kparams, "userRoleId", $userRoleId);
 		$this->client->queueServiceActionCall("userrole", "delete", "KalturaUserRole", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultXml = $this->client->doQueue();
+		$resultXmlObject = new \SimpleXMLElement($resultXml);
+		$this->client->checkIfError($resultXmlObject->result);
+		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaUserRole");
+		$this->client->validateObjectType($resultObject, "Kaltura_Client_Type_UserRole");
+		return $resultObject;
+	}
+
+	function get($userRoleId)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "userRoleId", $userRoleId);
+		$this->client->queueServiceActionCall("userrole", "get", "KalturaUserRole", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
 		$resultXml = $this->client->doQueue();
@@ -118,11 +117,12 @@ class Kaltura_Client_UserRoleService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
-	function cloneAction($userRoleId)
+	function update($userRoleId, Kaltura_Client_Type_UserRole $userRole)
 	{
 		$kparams = array();
 		$this->client->addParam($kparams, "userRoleId", $userRoleId);
-		$this->client->queueServiceActionCall("userrole", "clone", "KalturaUserRole", $kparams);
+		$this->client->addParam($kparams, "userRole", $userRole->toParams());
+		$this->client->queueServiceActionCall("userrole", "update", "KalturaUserRole", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
 		$resultXml = $this->client->doQueue();

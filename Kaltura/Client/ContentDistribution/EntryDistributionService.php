@@ -54,6 +54,18 @@ class Kaltura_Client_ContentDistribution_EntryDistributionService extends Kaltur
 		return $resultObject;
 	}
 
+	function delete($id)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "id", $id);
+		$this->client->queueServiceActionCall("contentdistribution_entrydistribution", "delete", null, $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultXml = $this->client->doQueue();
+		$resultXmlObject = new \SimpleXMLElement($resultXml);
+		$this->client->checkIfError($resultXmlObject->result);
+	}
+
 	function get($id)
 	{
 		$kparams = array();
@@ -69,11 +81,116 @@ class Kaltura_Client_ContentDistribution_EntryDistributionService extends Kaltur
 		return $resultObject;
 	}
 
-	function validate($id)
+	function listAction(Kaltura_Client_ContentDistribution_Type_EntryDistributionFilter $filter = null, Kaltura_Client_Type_FilterPager $pager = null)
+	{
+		$kparams = array();
+		if ($filter !== null)
+			$this->client->addParam($kparams, "filter", $filter->toParams());
+		if ($pager !== null)
+			$this->client->addParam($kparams, "pager", $pager->toParams());
+		$this->client->queueServiceActionCall("contentdistribution_entrydistribution", "list", "KalturaEntryDistributionListResponse", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultXml = $this->client->doQueue();
+		$resultXmlObject = new \SimpleXMLElement($resultXml);
+		$this->client->checkIfError($resultXmlObject->result);
+		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaEntryDistributionListResponse");
+		$this->client->validateObjectType($resultObject, "Kaltura_Client_ContentDistribution_Type_EntryDistributionListResponse");
+		return $resultObject;
+	}
+
+	function retrySubmit($id)
 	{
 		$kparams = array();
 		$this->client->addParam($kparams, "id", $id);
-		$this->client->queueServiceActionCall("contentdistribution_entrydistribution", "validate", "KalturaEntryDistribution", $kparams);
+		$this->client->queueServiceActionCall("contentdistribution_entrydistribution", "retrySubmit", "KalturaEntryDistribution", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultXml = $this->client->doQueue();
+		$resultXmlObject = new \SimpleXMLElement($resultXml);
+		$this->client->checkIfError($resultXmlObject->result);
+		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaEntryDistribution");
+		$this->client->validateObjectType($resultObject, "Kaltura_Client_ContentDistribution_Type_EntryDistribution");
+		return $resultObject;
+	}
+
+	function serveReturnedData($id, $actionType)
+	{
+		if ($this->client->isMultiRequest())
+			throw $this->client->getKalturaClientException("Action is not supported as part of multi-request.", Kaltura_Client_ClientException::ERROR_ACTION_IN_MULTIREQUEST);
+		
+		$kparams = array();
+		$this->client->addParam($kparams, "id", $id);
+		$this->client->addParam($kparams, "actionType", $actionType);
+		$this->client->queueServiceActionCall('contentdistribution_entrydistribution', 'serveReturnedData', null, $kparams);
+		$resultObject = $this->client->getServeUrl();
+		return $resultObject;
+	}
+
+	function serveSentData($id, $actionType)
+	{
+		if ($this->client->isMultiRequest())
+			throw $this->client->getKalturaClientException("Action is not supported as part of multi-request.", Kaltura_Client_ClientException::ERROR_ACTION_IN_MULTIREQUEST);
+		
+		$kparams = array();
+		$this->client->addParam($kparams, "id", $id);
+		$this->client->addParam($kparams, "actionType", $actionType);
+		$this->client->queueServiceActionCall('contentdistribution_entrydistribution', 'serveSentData', null, $kparams);
+		$resultObject = $this->client->getServeUrl();
+		return $resultObject;
+	}
+
+	function submitAdd($id, $submitWhenReady = false)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "id", $id);
+		$this->client->addParam($kparams, "submitWhenReady", $submitWhenReady);
+		$this->client->queueServiceActionCall("contentdistribution_entrydistribution", "submitAdd", "KalturaEntryDistribution", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultXml = $this->client->doQueue();
+		$resultXmlObject = new \SimpleXMLElement($resultXml);
+		$this->client->checkIfError($resultXmlObject->result);
+		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaEntryDistribution");
+		$this->client->validateObjectType($resultObject, "Kaltura_Client_ContentDistribution_Type_EntryDistribution");
+		return $resultObject;
+	}
+
+	function submitDelete($id)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "id", $id);
+		$this->client->queueServiceActionCall("contentdistribution_entrydistribution", "submitDelete", "KalturaEntryDistribution", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultXml = $this->client->doQueue();
+		$resultXmlObject = new \SimpleXMLElement($resultXml);
+		$this->client->checkIfError($resultXmlObject->result);
+		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaEntryDistribution");
+		$this->client->validateObjectType($resultObject, "Kaltura_Client_ContentDistribution_Type_EntryDistribution");
+		return $resultObject;
+	}
+
+	function submitFetchReport($id)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "id", $id);
+		$this->client->queueServiceActionCall("contentdistribution_entrydistribution", "submitFetchReport", "KalturaEntryDistribution", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultXml = $this->client->doQueue();
+		$resultXmlObject = new \SimpleXMLElement($resultXml);
+		$this->client->checkIfError($resultXmlObject->result);
+		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaEntryDistribution");
+		$this->client->validateObjectType($resultObject, "Kaltura_Client_ContentDistribution_Type_EntryDistribution");
+		return $resultObject;
+	}
+
+	function submitUpdate($id)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "id", $id);
+		$this->client->queueServiceActionCall("contentdistribution_entrydistribution", "submitUpdate", "KalturaEntryDistribution", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
 		$resultXml = $this->client->doQueue();
@@ -100,42 +217,11 @@ class Kaltura_Client_ContentDistribution_EntryDistributionService extends Kaltur
 		return $resultObject;
 	}
 
-	function delete($id)
+	function validate($id)
 	{
 		$kparams = array();
 		$this->client->addParam($kparams, "id", $id);
-		$this->client->queueServiceActionCall("contentdistribution_entrydistribution", "delete", null, $kparams);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-	}
-
-	function listAction(Kaltura_Client_ContentDistribution_Type_EntryDistributionFilter $filter = null, Kaltura_Client_Type_FilterPager $pager = null)
-	{
-		$kparams = array();
-		if ($filter !== null)
-			$this->client->addParam($kparams, "filter", $filter->toParams());
-		if ($pager !== null)
-			$this->client->addParam($kparams, "pager", $pager->toParams());
-		$this->client->queueServiceActionCall("contentdistribution_entrydistribution", "list", "KalturaEntryDistributionListResponse", $kparams);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaEntryDistributionListResponse");
-		$this->client->validateObjectType($resultObject, "Kaltura_Client_ContentDistribution_Type_EntryDistributionListResponse");
-		return $resultObject;
-	}
-
-	function submitAdd($id, $submitWhenReady = false)
-	{
-		$kparams = array();
-		$this->client->addParam($kparams, "id", $id);
-		$this->client->addParam($kparams, "submitWhenReady", $submitWhenReady);
-		$this->client->queueServiceActionCall("contentdistribution_entrydistribution", "submitAdd", "KalturaEntryDistribution", $kparams);
+		$this->client->queueServiceActionCall("contentdistribution_entrydistribution", "validate", "KalturaEntryDistribution", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
 		$resultXml = $this->client->doQueue();
@@ -143,92 +229,6 @@ class Kaltura_Client_ContentDistribution_EntryDistributionService extends Kaltur
 		$this->client->checkIfError($resultXmlObject->result);
 		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaEntryDistribution");
 		$this->client->validateObjectType($resultObject, "Kaltura_Client_ContentDistribution_Type_EntryDistribution");
-		return $resultObject;
-	}
-
-	function submitUpdate($id)
-	{
-		$kparams = array();
-		$this->client->addParam($kparams, "id", $id);
-		$this->client->queueServiceActionCall("contentdistribution_entrydistribution", "submitUpdate", "KalturaEntryDistribution", $kparams);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaEntryDistribution");
-		$this->client->validateObjectType($resultObject, "Kaltura_Client_ContentDistribution_Type_EntryDistribution");
-		return $resultObject;
-	}
-
-	function submitFetchReport($id)
-	{
-		$kparams = array();
-		$this->client->addParam($kparams, "id", $id);
-		$this->client->queueServiceActionCall("contentdistribution_entrydistribution", "submitFetchReport", "KalturaEntryDistribution", $kparams);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaEntryDistribution");
-		$this->client->validateObjectType($resultObject, "Kaltura_Client_ContentDistribution_Type_EntryDistribution");
-		return $resultObject;
-	}
-
-	function submitDelete($id)
-	{
-		$kparams = array();
-		$this->client->addParam($kparams, "id", $id);
-		$this->client->queueServiceActionCall("contentdistribution_entrydistribution", "submitDelete", "KalturaEntryDistribution", $kparams);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaEntryDistribution");
-		$this->client->validateObjectType($resultObject, "Kaltura_Client_ContentDistribution_Type_EntryDistribution");
-		return $resultObject;
-	}
-
-	function retrySubmit($id)
-	{
-		$kparams = array();
-		$this->client->addParam($kparams, "id", $id);
-		$this->client->queueServiceActionCall("contentdistribution_entrydistribution", "retrySubmit", "KalturaEntryDistribution", $kparams);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaEntryDistribution");
-		$this->client->validateObjectType($resultObject, "Kaltura_Client_ContentDistribution_Type_EntryDistribution");
-		return $resultObject;
-	}
-
-	function serveSentData($id, $actionType)
-	{
-		if ($this->client->isMultiRequest())
-			throw $this->client->getKalturaClientException("Action is not supported as part of multi-request.", Kaltura_Client_ClientException::ERROR_ACTION_IN_MULTIREQUEST);
-		
-		$kparams = array();
-		$this->client->addParam($kparams, "id", $id);
-		$this->client->addParam($kparams, "actionType", $actionType);
-		$this->client->queueServiceActionCall('contentdistribution_entrydistribution', 'serveSentData', null, $kparams);
-		$resultObject = $this->client->getServeUrl();
-		return $resultObject;
-	}
-
-	function serveReturnedData($id, $actionType)
-	{
-		if ($this->client->isMultiRequest())
-			throw $this->client->getKalturaClientException("Action is not supported as part of multi-request.", Kaltura_Client_ClientException::ERROR_ACTION_IN_MULTIREQUEST);
-		
-		$kparams = array();
-		$this->client->addParam($kparams, "id", $id);
-		$this->client->addParam($kparams, "actionType", $actionType);
-		$this->client->queueServiceActionCall('contentdistribution_entrydistribution', 'serveReturnedData', null, $kparams);
-		$resultObject = $this->client->getServeUrl();
 		return $resultObject;
 	}
 }

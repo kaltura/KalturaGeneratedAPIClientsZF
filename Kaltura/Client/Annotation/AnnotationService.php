@@ -54,40 +54,6 @@ class Kaltura_Client_Annotation_AnnotationService extends Kaltura_Client_Service
 		return $resultObject;
 	}
 
-	function update($id, Kaltura_Client_CuePoint_Type_CuePoint $annotation)
-	{
-		$kparams = array();
-		$this->client->addParam($kparams, "id", $id);
-		$this->client->addParam($kparams, "annotation", $annotation->toParams());
-		$this->client->queueServiceActionCall("annotation_annotation", "update", "KalturaAnnotation", $kparams);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaAnnotation");
-		$this->client->validateObjectType($resultObject, "Kaltura_Client_Annotation_Type_Annotation");
-		return $resultObject;
-	}
-
-	function listAction(Kaltura_Client_CuePoint_Type_CuePointFilter $filter = null, Kaltura_Client_Type_FilterPager $pager = null)
-	{
-		$kparams = array();
-		if ($filter !== null)
-			$this->client->addParam($kparams, "filter", $filter->toParams());
-		if ($pager !== null)
-			$this->client->addParam($kparams, "pager", $pager->toParams());
-		$this->client->queueServiceActionCall("annotation_annotation", "list", "KalturaAnnotationListResponse", $kparams);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaAnnotationListResponse");
-		$this->client->validateObjectType($resultObject, "Kaltura_Client_Annotation_Type_AnnotationListResponse");
-		return $resultObject;
-	}
-
 	function addFromBulk($fileData)
 	{
 		$kparams = array();
@@ -104,26 +70,12 @@ class Kaltura_Client_Annotation_AnnotationService extends Kaltura_Client_Service
 		return $resultObject;
 	}
 
-	function serveBulk(Kaltura_Client_CuePoint_Type_CuePointFilter $filter = null, Kaltura_Client_Type_FilterPager $pager = null)
-	{
-		if ($this->client->isMultiRequest())
-			throw $this->client->getKalturaClientException("Action is not supported as part of multi-request.", Kaltura_Client_ClientException::ERROR_ACTION_IN_MULTIREQUEST);
-		
-		$kparams = array();
-		if ($filter !== null)
-			$this->client->addParam($kparams, "filter", $filter->toParams());
-		if ($pager !== null)
-			$this->client->addParam($kparams, "pager", $pager->toParams());
-		$this->client->queueServiceActionCall('annotation_annotation', 'serveBulk', null, $kparams);
-		$resultObject = $this->client->getServeUrl();
-		return $resultObject;
-	}
-
-	function get($id)
+	function cloneAction($id, $entryId)
 	{
 		$kparams = array();
 		$this->client->addParam($kparams, "id", $id);
-		$this->client->queueServiceActionCall("annotation_annotation", "get", "KalturaCuePoint", $kparams);
+		$this->client->addParam($kparams, "entryId", $entryId);
+		$this->client->queueServiceActionCall("annotation_annotation", "clone", "KalturaCuePoint", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
 		$resultXml = $this->client->doQueue();
@@ -161,6 +113,70 @@ class Kaltura_Client_Annotation_AnnotationService extends Kaltura_Client_Service
 		$this->client->checkIfError($resultXmlObject->result);
 	}
 
+	function get($id)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "id", $id);
+		$this->client->queueServiceActionCall("annotation_annotation", "get", "KalturaCuePoint", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultXml = $this->client->doQueue();
+		$resultXmlObject = new \SimpleXMLElement($resultXml);
+		$this->client->checkIfError($resultXmlObject->result);
+		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaCuePoint");
+		$this->client->validateObjectType($resultObject, "Kaltura_Client_CuePoint_Type_CuePoint");
+		return $resultObject;
+	}
+
+	function listAction(Kaltura_Client_CuePoint_Type_CuePointFilter $filter = null, Kaltura_Client_Type_FilterPager $pager = null)
+	{
+		$kparams = array();
+		if ($filter !== null)
+			$this->client->addParam($kparams, "filter", $filter->toParams());
+		if ($pager !== null)
+			$this->client->addParam($kparams, "pager", $pager->toParams());
+		$this->client->queueServiceActionCall("annotation_annotation", "list", "KalturaAnnotationListResponse", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultXml = $this->client->doQueue();
+		$resultXmlObject = new \SimpleXMLElement($resultXml);
+		$this->client->checkIfError($resultXmlObject->result);
+		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaAnnotationListResponse");
+		$this->client->validateObjectType($resultObject, "Kaltura_Client_Annotation_Type_AnnotationListResponse");
+		return $resultObject;
+	}
+
+	function serveBulk(Kaltura_Client_CuePoint_Type_CuePointFilter $filter = null, Kaltura_Client_Type_FilterPager $pager = null)
+	{
+		if ($this->client->isMultiRequest())
+			throw $this->client->getKalturaClientException("Action is not supported as part of multi-request.", Kaltura_Client_ClientException::ERROR_ACTION_IN_MULTIREQUEST);
+		
+		$kparams = array();
+		if ($filter !== null)
+			$this->client->addParam($kparams, "filter", $filter->toParams());
+		if ($pager !== null)
+			$this->client->addParam($kparams, "pager", $pager->toParams());
+		$this->client->queueServiceActionCall('annotation_annotation', 'serveBulk', null, $kparams);
+		$resultObject = $this->client->getServeUrl();
+		return $resultObject;
+	}
+
+	function update($id, Kaltura_Client_CuePoint_Type_CuePoint $annotation)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "id", $id);
+		$this->client->addParam($kparams, "annotation", $annotation->toParams());
+		$this->client->queueServiceActionCall("annotation_annotation", "update", "KalturaAnnotation", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultXml = $this->client->doQueue();
+		$resultXmlObject = new \SimpleXMLElement($resultXml);
+		$this->client->checkIfError($resultXmlObject->result);
+		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaAnnotation");
+		$this->client->validateObjectType($resultObject, "Kaltura_Client_Annotation_Type_Annotation");
+		return $resultObject;
+	}
+
 	function updateStatus($id, $status)
 	{
 		$kparams = array();
@@ -172,21 +188,5 @@ class Kaltura_Client_Annotation_AnnotationService extends Kaltura_Client_Service
 		$resultXml = $this->client->doQueue();
 		$resultXmlObject = new \SimpleXMLElement($resultXml);
 		$this->client->checkIfError($resultXmlObject->result);
-	}
-
-	function cloneAction($id, $entryId)
-	{
-		$kparams = array();
-		$this->client->addParam($kparams, "id", $id);
-		$this->client->addParam($kparams, "entryId", $entryId);
-		$this->client->queueServiceActionCall("annotation_annotation", "clone", "KalturaCuePoint", $kparams);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaCuePoint");
-		$this->client->validateObjectType($resultObject, "Kaltura_Client_CuePoint_Type_CuePoint");
-		return $resultObject;
 	}
 }

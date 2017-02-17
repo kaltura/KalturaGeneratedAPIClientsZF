@@ -39,23 +39,6 @@ class Kaltura_Client_TagSearch_TagService extends Kaltura_Client_ServiceBase
 		parent::__construct($client);
 	}
 
-	function search(Kaltura_Client_TagSearch_Type_TagFilter $tagFilter, Kaltura_Client_Type_FilterPager $pager = null)
-	{
-		$kparams = array();
-		$this->client->addParam($kparams, "tagFilter", $tagFilter->toParams());
-		if ($pager !== null)
-			$this->client->addParam($kparams, "pager", $pager->toParams());
-		$this->client->queueServiceActionCall("tagsearch_tag", "search", "KalturaTagListResponse", $kparams);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaTagListResponse");
-		$this->client->validateObjectType($resultObject, "Kaltura_Client_TagSearch_Type_TagListResponse");
-		return $resultObject;
-	}
-
 	function deletePending()
 	{
 		$kparams = array();
@@ -81,5 +64,22 @@ class Kaltura_Client_TagSearch_TagService extends Kaltura_Client_ServiceBase
 		$resultXml = $this->client->doQueue();
 		$resultXmlObject = new \SimpleXMLElement($resultXml);
 		$this->client->checkIfError($resultXmlObject->result);
+	}
+
+	function search(Kaltura_Client_TagSearch_Type_TagFilter $tagFilter, Kaltura_Client_Type_FilterPager $pager = null)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "tagFilter", $tagFilter->toParams());
+		if ($pager !== null)
+			$this->client->addParam($kparams, "pager", $pager->toParams());
+		$this->client->queueServiceActionCall("tagsearch_tag", "search", "KalturaTagListResponse", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultXml = $this->client->doQueue();
+		$resultXmlObject = new \SimpleXMLElement($resultXml);
+		$this->client->checkIfError($resultXmlObject->result);
+		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaTagListResponse");
+		$this->client->validateObjectType($resultObject, "Kaltura_Client_TagSearch_Type_TagListResponse");
+		return $resultObject;
 	}
 }

@@ -54,6 +54,18 @@ class Kaltura_Client_ContentDistribution_GenericDistributionProviderService exte
 		return $resultObject;
 	}
 
+	function delete($id)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "id", $id);
+		$this->client->queueServiceActionCall("contentdistribution_genericdistributionprovider", "delete", null, $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultXml = $this->client->doQueue();
+		$resultXmlObject = new \SimpleXMLElement($resultXml);
+		$this->client->checkIfError($resultXmlObject->result);
+	}
+
 	function get($id)
 	{
 		$kparams = array();
@@ -67,34 +79,6 @@ class Kaltura_Client_ContentDistribution_GenericDistributionProviderService exte
 		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaGenericDistributionProvider");
 		$this->client->validateObjectType($resultObject, "Kaltura_Client_ContentDistribution_Type_GenericDistributionProvider");
 		return $resultObject;
-	}
-
-	function update($id, Kaltura_Client_ContentDistribution_Type_GenericDistributionProvider $genericDistributionProvider)
-	{
-		$kparams = array();
-		$this->client->addParam($kparams, "id", $id);
-		$this->client->addParam($kparams, "genericDistributionProvider", $genericDistributionProvider->toParams());
-		$this->client->queueServiceActionCall("contentdistribution_genericdistributionprovider", "update", "KalturaGenericDistributionProvider", $kparams);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaGenericDistributionProvider");
-		$this->client->validateObjectType($resultObject, "Kaltura_Client_ContentDistribution_Type_GenericDistributionProvider");
-		return $resultObject;
-	}
-
-	function delete($id)
-	{
-		$kparams = array();
-		$this->client->addParam($kparams, "id", $id);
-		$this->client->queueServiceActionCall("contentdistribution_genericdistributionprovider", "delete", null, $kparams);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
 	}
 
 	function listAction(Kaltura_Client_ContentDistribution_Type_GenericDistributionProviderFilter $filter = null, Kaltura_Client_Type_FilterPager $pager = null)
@@ -112,6 +96,22 @@ class Kaltura_Client_ContentDistribution_GenericDistributionProviderService exte
 		$this->client->checkIfError($resultXmlObject->result);
 		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaGenericDistributionProviderListResponse");
 		$this->client->validateObjectType($resultObject, "Kaltura_Client_ContentDistribution_Type_GenericDistributionProviderListResponse");
+		return $resultObject;
+	}
+
+	function update($id, Kaltura_Client_ContentDistribution_Type_GenericDistributionProvider $genericDistributionProvider)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "id", $id);
+		$this->client->addParam($kparams, "genericDistributionProvider", $genericDistributionProvider->toParams());
+		$this->client->queueServiceActionCall("contentdistribution_genericdistributionprovider", "update", "KalturaGenericDistributionProvider", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultXml = $this->client->doQueue();
+		$resultXmlObject = new \SimpleXMLElement($resultXml);
+		$this->client->checkIfError($resultXmlObject->result);
+		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaGenericDistributionProvider");
+		$this->client->validateObjectType($resultObject, "Kaltura_Client_ContentDistribution_Type_GenericDistributionProvider");
 		return $resultObject;
 	}
 }

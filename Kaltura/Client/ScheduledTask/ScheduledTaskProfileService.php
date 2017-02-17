@@ -54,6 +54,18 @@ class Kaltura_Client_ScheduledTask_ScheduledTaskProfileService extends Kaltura_C
 		return $resultObject;
 	}
 
+	function delete($id)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "id", $id);
+		$this->client->queueServiceActionCall("scheduledtask_scheduledtaskprofile", "delete", null, $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultXml = $this->client->doQueue();
+		$resultXmlObject = new \SimpleXMLElement($resultXml);
+		$this->client->checkIfError($resultXmlObject->result);
+	}
+
 	function get($id)
 	{
 		$kparams = array();
@@ -69,32 +81,19 @@ class Kaltura_Client_ScheduledTask_ScheduledTaskProfileService extends Kaltura_C
 		return $resultObject;
 	}
 
-	function update($id, Kaltura_Client_ScheduledTask_Type_ScheduledTaskProfile $scheduledTaskProfile)
+	function getDryRunResults($requestId)
 	{
 		$kparams = array();
-		$this->client->addParam($kparams, "id", $id);
-		$this->client->addParam($kparams, "scheduledTaskProfile", $scheduledTaskProfile->toParams());
-		$this->client->queueServiceActionCall("scheduledtask_scheduledtaskprofile", "update", "KalturaScheduledTaskProfile", $kparams);
+		$this->client->addParam($kparams, "requestId", $requestId);
+		$this->client->queueServiceActionCall("scheduledtask_scheduledtaskprofile", "getDryRunResults", "KalturaObjectListResponse", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
 		$resultXml = $this->client->doQueue();
 		$resultXmlObject = new \SimpleXMLElement($resultXml);
 		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaScheduledTaskProfile");
-		$this->client->validateObjectType($resultObject, "Kaltura_Client_ScheduledTask_Type_ScheduledTaskProfile");
+		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaObjectListResponse");
+		$this->client->validateObjectType($resultObject, "Kaltura_Client_Type_ObjectListResponse");
 		return $resultObject;
-	}
-
-	function delete($id)
-	{
-		$kparams = array();
-		$this->client->addParam($kparams, "id", $id);
-		$this->client->queueServiceActionCall("scheduledtask_scheduledtaskprofile", "delete", null, $kparams);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
 	}
 
 	function listAction(Kaltura_Client_ScheduledTask_Type_ScheduledTaskProfileFilter $filter = null, Kaltura_Client_Type_FilterPager $pager = null)
@@ -130,18 +129,19 @@ class Kaltura_Client_ScheduledTask_ScheduledTaskProfileService extends Kaltura_C
 		return $resultObject;
 	}
 
-	function getDryRunResults($requestId)
+	function update($id, Kaltura_Client_ScheduledTask_Type_ScheduledTaskProfile $scheduledTaskProfile)
 	{
 		$kparams = array();
-		$this->client->addParam($kparams, "requestId", $requestId);
-		$this->client->queueServiceActionCall("scheduledtask_scheduledtaskprofile", "getDryRunResults", "KalturaObjectListResponse", $kparams);
+		$this->client->addParam($kparams, "id", $id);
+		$this->client->addParam($kparams, "scheduledTaskProfile", $scheduledTaskProfile->toParams());
+		$this->client->queueServiceActionCall("scheduledtask_scheduledtaskprofile", "update", "KalturaScheduledTaskProfile", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
 		$resultXml = $this->client->doQueue();
 		$resultXmlObject = new \SimpleXMLElement($resultXml);
 		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaObjectListResponse");
-		$this->client->validateObjectType($resultObject, "Kaltura_Client_Type_ObjectListResponse");
+		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaScheduledTaskProfile");
+		$this->client->validateObjectType($resultObject, "Kaltura_Client_ScheduledTask_Type_ScheduledTaskProfile");
 		return $resultObject;
 	}
 }

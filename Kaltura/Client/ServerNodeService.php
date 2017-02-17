@@ -54,37 +54,6 @@ class Kaltura_Client_ServerNodeService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
-	function get($serverNodeId)
-	{
-		$kparams = array();
-		$this->client->addParam($kparams, "serverNodeId", $serverNodeId);
-		$this->client->queueServiceActionCall("servernode", "get", "KalturaServerNode", $kparams);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaServerNode");
-		$this->client->validateObjectType($resultObject, "Kaltura_Client_Type_ServerNode");
-		return $resultObject;
-	}
-
-	function update($serverNodeId, Kaltura_Client_Type_ServerNode $serverNode)
-	{
-		$kparams = array();
-		$this->client->addParam($kparams, "serverNodeId", $serverNodeId);
-		$this->client->addParam($kparams, "serverNode", $serverNode->toParams());
-		$this->client->queueServiceActionCall("servernode", "update", "KalturaServerNode", $kparams);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaServerNode");
-		$this->client->validateObjectType($resultObject, "Kaltura_Client_Type_ServerNode");
-		return $resultObject;
-	}
-
 	function delete($serverNodeId)
 	{
 		$kparams = array();
@@ -127,6 +96,21 @@ class Kaltura_Client_ServerNodeService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	function get($serverNodeId)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "serverNodeId", $serverNodeId);
+		$this->client->queueServiceActionCall("servernode", "get", "KalturaServerNode", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultXml = $this->client->doQueue();
+		$resultXmlObject = new \SimpleXMLElement($resultXml);
+		$this->client->checkIfError($resultXmlObject->result);
+		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaServerNode");
+		$this->client->validateObjectType($resultObject, "Kaltura_Client_Type_ServerNode");
+		return $resultObject;
+	}
+
 	function listAction(Kaltura_Client_Type_ServerNodeFilter $filter = null, Kaltura_Client_Type_FilterPager $pager = null)
 	{
 		$kparams = array();
@@ -152,6 +136,22 @@ class Kaltura_Client_ServerNodeService extends Kaltura_Client_ServiceBase
 		if ($serverNode !== null)
 			$this->client->addParam($kparams, "serverNode", $serverNode->toParams());
 		$this->client->queueServiceActionCall("servernode", "reportStatus", "KalturaServerNode", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultXml = $this->client->doQueue();
+		$resultXmlObject = new \SimpleXMLElement($resultXml);
+		$this->client->checkIfError($resultXmlObject->result);
+		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaServerNode");
+		$this->client->validateObjectType($resultObject, "Kaltura_Client_Type_ServerNode");
+		return $resultObject;
+	}
+
+	function update($serverNodeId, Kaltura_Client_Type_ServerNode $serverNode)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "serverNodeId", $serverNodeId);
+		$this->client->addParam($kparams, "serverNode", $serverNode->toParams());
+		$this->client->queueServiceActionCall("servernode", "update", "KalturaServerNode", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
 		$resultXml = $this->client->doQueue();

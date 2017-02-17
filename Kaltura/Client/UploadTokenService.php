@@ -55,6 +55,18 @@ class Kaltura_Client_UploadTokenService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	function delete($uploadTokenId)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "uploadTokenId", $uploadTokenId);
+		$this->client->queueServiceActionCall("uploadtoken", "delete", null, $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultXml = $this->client->doQueue();
+		$resultXmlObject = new \SimpleXMLElement($resultXml);
+		$this->client->checkIfError($resultXmlObject->result);
+	}
+
 	function get($uploadTokenId)
 	{
 		$kparams = array();
@@ -67,6 +79,24 @@ class Kaltura_Client_UploadTokenService extends Kaltura_Client_ServiceBase
 		$this->client->checkIfError($resultXmlObject->result);
 		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaUploadToken");
 		$this->client->validateObjectType($resultObject, "Kaltura_Client_Type_UploadToken");
+		return $resultObject;
+	}
+
+	function listAction(Kaltura_Client_Type_UploadTokenFilter $filter = null, Kaltura_Client_Type_FilterPager $pager = null)
+	{
+		$kparams = array();
+		if ($filter !== null)
+			$this->client->addParam($kparams, "filter", $filter->toParams());
+		if ($pager !== null)
+			$this->client->addParam($kparams, "pager", $pager->toParams());
+		$this->client->queueServiceActionCall("uploadtoken", "list", "KalturaUploadTokenListResponse", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultXml = $this->client->doQueue();
+		$resultXmlObject = new \SimpleXMLElement($resultXml);
+		$this->client->checkIfError($resultXmlObject->result);
+		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaUploadTokenListResponse");
+		$this->client->validateObjectType($resultObject, "Kaltura_Client_Type_UploadTokenListResponse");
 		return $resultObject;
 	}
 
@@ -87,36 +117,6 @@ class Kaltura_Client_UploadTokenService extends Kaltura_Client_ServiceBase
 		$this->client->checkIfError($resultXmlObject->result);
 		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaUploadToken");
 		$this->client->validateObjectType($resultObject, "Kaltura_Client_Type_UploadToken");
-		return $resultObject;
-	}
-
-	function delete($uploadTokenId)
-	{
-		$kparams = array();
-		$this->client->addParam($kparams, "uploadTokenId", $uploadTokenId);
-		$this->client->queueServiceActionCall("uploadtoken", "delete", null, $kparams);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-	}
-
-	function listAction(Kaltura_Client_Type_UploadTokenFilter $filter = null, Kaltura_Client_Type_FilterPager $pager = null)
-	{
-		$kparams = array();
-		if ($filter !== null)
-			$this->client->addParam($kparams, "filter", $filter->toParams());
-		if ($pager !== null)
-			$this->client->addParam($kparams, "pager", $pager->toParams());
-		$this->client->queueServiceActionCall("uploadtoken", "list", "KalturaUploadTokenListResponse", $kparams);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaUploadTokenListResponse");
-		$this->client->validateObjectType($resultObject, "Kaltura_Client_Type_UploadTokenListResponse");
 		return $resultObject;
 	}
 }

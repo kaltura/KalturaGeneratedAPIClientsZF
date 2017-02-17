@@ -54,12 +54,11 @@ class Kaltura_Client_WidgetService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
-	function update($id, Kaltura_Client_Type_Widget $widget)
+	function cloneAction(Kaltura_Client_Type_Widget $widget)
 	{
 		$kparams = array();
-		$this->client->addParam($kparams, "id", $id);
 		$this->client->addParam($kparams, "widget", $widget->toParams());
-		$this->client->queueServiceActionCall("widget", "update", "KalturaWidget", $kparams);
+		$this->client->queueServiceActionCall("widget", "clone", "KalturaWidget", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
 		$resultXml = $this->client->doQueue();
@@ -85,21 +84,6 @@ class Kaltura_Client_WidgetService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
-	function cloneAction(Kaltura_Client_Type_Widget $widget)
-	{
-		$kparams = array();
-		$this->client->addParam($kparams, "widget", $widget->toParams());
-		$this->client->queueServiceActionCall("widget", "clone", "KalturaWidget", $kparams);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaWidget");
-		$this->client->validateObjectType($resultObject, "Kaltura_Client_Type_Widget");
-		return $resultObject;
-	}
-
 	function listAction(Kaltura_Client_Type_WidgetFilter $filter = null, Kaltura_Client_Type_FilterPager $pager = null)
 	{
 		$kparams = array();
@@ -115,6 +99,22 @@ class Kaltura_Client_WidgetService extends Kaltura_Client_ServiceBase
 		$this->client->checkIfError($resultXmlObject->result);
 		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaWidgetListResponse");
 		$this->client->validateObjectType($resultObject, "Kaltura_Client_Type_WidgetListResponse");
+		return $resultObject;
+	}
+
+	function update($id, Kaltura_Client_Type_Widget $widget)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "id", $id);
+		$this->client->addParam($kparams, "widget", $widget->toParams());
+		$this->client->queueServiceActionCall("widget", "update", "KalturaWidget", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultXml = $this->client->doQueue();
+		$resultXmlObject = new \SimpleXMLElement($resultXml);
+		$this->client->checkIfError($resultXmlObject->result);
+		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaWidget");
+		$this->client->validateObjectType($resultObject, "Kaltura_Client_Type_Widget");
 		return $resultObject;
 	}
 }
