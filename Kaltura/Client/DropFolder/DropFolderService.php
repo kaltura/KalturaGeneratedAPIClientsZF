@@ -69,11 +69,45 @@ class Kaltura_Client_DropFolder_DropFolderService extends Kaltura_Client_Service
 		return $resultObject;
 	}
 
+	function freeExclusiveDropFolder($dropFolderId, $status, $errorCode = null, $errorDescription = null)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "dropFolderId", $dropFolderId);
+		$this->client->addParam($kparams, "status", $status);
+		$this->client->addParam($kparams, "errorCode", $errorCode);
+		$this->client->addParam($kparams, "errorDescription", $errorDescription);
+		$this->client->queueServiceActionCall("dropfolder_dropfolder", "freeExclusiveDropFolder", "KalturaDropFolder", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultXml = $this->client->doQueue();
+		$resultXmlObject = new \SimpleXMLElement($resultXml);
+		$this->client->checkIfError($resultXmlObject->result);
+		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaDropFolder");
+		$this->client->validateObjectType($resultObject, "Kaltura_Client_DropFolder_Type_DropFolder");
+		return $resultObject;
+	}
+
 	function get($dropFolderId)
 	{
 		$kparams = array();
 		$this->client->addParam($kparams, "dropFolderId", $dropFolderId);
 		$this->client->queueServiceActionCall("dropfolder_dropfolder", "get", "KalturaDropFolder", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultXml = $this->client->doQueue();
+		$resultXmlObject = new \SimpleXMLElement($resultXml);
+		$this->client->checkIfError($resultXmlObject->result);
+		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaDropFolder");
+		$this->client->validateObjectType($resultObject, "Kaltura_Client_DropFolder_Type_DropFolder");
+		return $resultObject;
+	}
+
+	function getExclusiveDropFolder($tag, $maxTime)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "tag", $tag);
+		$this->client->addParam($kparams, "maxTime", $maxTime);
+		$this->client->queueServiceActionCall("dropfolder_dropfolder", "getExclusiveDropFolder", "KalturaDropFolder", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
 		$resultXml = $this->client->doQueue();
