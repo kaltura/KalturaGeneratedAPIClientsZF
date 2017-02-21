@@ -92,6 +92,10 @@ class Kaltura_Client_Type_ConversionProfile extends Kaltura_Client_ObjectBase
 			$this->calculateComplexity = (int)$xml->calculateComplexity;
 		if(count($xml->collectionTags))
 			$this->collectionTags = (string)$xml->collectionTags;
+		if(count($xml->conditionalProfiles))
+			$this->conditionalProfiles = (string)$xml->conditionalProfiles;
+		if(count($xml->detectGOP))
+			$this->detectGOP = (int)$xml->detectGOP;
 	}
 	/**
 	 * The id of the Conversion Profile
@@ -245,6 +249,20 @@ class Kaltura_Client_Type_ConversionProfile extends Kaltura_Client_ObjectBase
 	 * @var string
 	 */
 	public $collectionTags = null;
+
+	/**
+	 * JSON string with array of "condition,profile-id" pairs.
+	 *
+	 * @var string
+	 */
+	public $conditionalProfiles = null;
+
+	/**
+	 * When set, the ExtractMedia job should detect the source file GOP using this value as the max calculated period
+	 *
+	 * @var int
+	 */
+	public $detectGOP = null;
 
 
 }

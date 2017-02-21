@@ -720,6 +720,7 @@ class Kaltura_Client_TypeMap
 		'KalturaPostConvertJobData' => 'Kaltura_Client_Type_PostConvertJobData',
 		'KalturaPreviewRestriction' => 'Kaltura_Client_Type_PreviewRestriction',
 		'KalturaProvisionJobData' => 'Kaltura_Client_Type_ProvisionJobData',
+		'KalturaPushEventNotificationParameter' => 'Kaltura_Client_PushNotification_Type_PushEventNotificationParameter',
 		'KalturaQuestionCuePoint' => 'Kaltura_Client_Quiz_Type_QuestionCuePoint',
 		'KalturaQuestionCuePointBaseFilter' => 'Kaltura_Client_Quiz_Type_QuestionCuePointBaseFilter',
 		'KalturaQuestionCuePointFilter' => 'Kaltura_Client_Quiz_Type_QuestionCuePointFilter',

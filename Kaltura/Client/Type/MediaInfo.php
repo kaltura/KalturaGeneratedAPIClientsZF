@@ -113,6 +113,8 @@ class Kaltura_Client_Type_MediaInfo extends Kaltura_Client_ObjectBase
 			$this->contentStreams = (string)$xml->contentStreams;
 		if(count($xml->complexityValue))
 			$this->complexityValue = (int)$xml->complexityValue;
+		if(count($xml->maxGOP))
+			$this->maxGOP = (float)$xml->maxGOP;
 	}
 	/**
 	 * The id of the media info
@@ -352,6 +354,13 @@ class Kaltura_Client_Type_MediaInfo extends Kaltura_Client_ObjectBase
 	 * @var int
 	 */
 	public $complexityValue = null;
+
+	/**
+	 * 
+	 *
+	 * @var float
+	 */
+	public $maxGOP = null;
 
 
 }
