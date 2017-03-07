@@ -52,6 +52,8 @@ class Kaltura_Client_Type_UrlTokenizerKs extends Kaltura_Client_Type_UrlTokenize
 			else
 				$this->usePath = false;
 		}
+		if(count($xml->additionalUris))
+			$this->additionalUris = (string)$xml->additionalUris;
 	}
 	/**
 	 * 
@@ -59,6 +61,13 @@ class Kaltura_Client_Type_UrlTokenizerKs extends Kaltura_Client_Type_UrlTokenize
 	 * @var bool
 	 */
 	public $usePath = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $additionalUris = null;
 
 
 }
