@@ -561,7 +561,7 @@ class Kaltura_Client_Type_Partner extends Kaltura_Client_ObjectBase
 	 * 
 	 *
 	 * @var int
-	 * @readonly
+	 * @insertonly
 	 */
 	public $partnerParentId = null;
 

@@ -49,6 +49,10 @@ class Kaltura_Client_Type_GenericSyndicationFeed extends Kaltura_Client_Type_Bas
 			$this->feedDescription = (string)$xml->feedDescription;
 		if(count($xml->feedLandingPage))
 			$this->feedLandingPage = (string)$xml->feedLandingPage;
+		if(count($xml->entryFilter) && !empty($xml->entryFilter))
+			$this->entryFilter = Kaltura_Client_ParseUtils::unmarshalObject($xml->entryFilter, "KalturaBaseEntryFilter");
+		if(count($xml->pageSize))
+			$this->pageSize = (int)$xml->pageSize;
 	}
 	/**
 	 * feed description
@@ -63,6 +67,20 @@ class Kaltura_Client_Type_GenericSyndicationFeed extends Kaltura_Client_Type_Bas
 	 * @var string
 	 */
 	public $feedLandingPage = null;
+
+	/**
+	 * entry filter
+	 *
+	 * @var Kaltura_Client_Type_BaseEntryFilter
+	 */
+	public $entryFilter;
+
+	/**
+	 * page size
+	 *
+	 * @var int
+	 */
+	public $pageSize = null;
 
 
 }
