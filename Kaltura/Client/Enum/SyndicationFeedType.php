@@ -39,5 +39,7 @@ class Kaltura_Client_Enum_SyndicationFeedType extends Kaltura_Client_EnumBase
 	const TUBE_MOGUL = 4;
 	const KALTURA = 5;
 	const KALTURA_XSLT = 6;
+	const ROKU_DIRECT_PUBLISHER = 7;
+	const OPERA_TV_SNAP = 8;
 }
 
