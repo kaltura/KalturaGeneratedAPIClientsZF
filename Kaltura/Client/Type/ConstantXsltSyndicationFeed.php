@@ -31,11 +31,11 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Type_ServerFileResource extends Kaltura_Client_Type_DataCenterContentResource
+abstract class Kaltura_Client_Type_ConstantXsltSyndicationFeed extends Kaltura_Client_Type_GenericXsltSyndicationFeed
 {
 	public function getKalturaObjectType()
 	{
-		return 'KalturaServerFileResource';
+		return 'KalturaConstantXsltSyndicationFeed';
 	}
 	
 	public function __construct(SimpleXMLElement $xml = null)
@@ -45,30 +45,7 @@ class Kaltura_Client_Type_ServerFileResource extends Kaltura_Client_Type_DataCen
 		if(is_null($xml))
 			return;
 		
-		if(count($xml->localFilePath))
-			$this->localFilePath = (string)$xml->localFilePath;
-		if(count($xml->keepOriginalFile))
-		{
-			if(!empty($xml->keepOriginalFile))
-				$this->keepOriginalFile = true;
-			else
-				$this->keepOriginalFile = false;
-		}
 	}
-	/**
-	 * Full path to the local file
-	 *
-	 * @var string
-	 */
-	public $localFilePath = null;
-
-	/**
-	 * Should keep original file (false = mv, true = cp)
-	 *
-	 * @var bool
-	 */
-	public $keepOriginalFile = null;
-
 
 }
 
