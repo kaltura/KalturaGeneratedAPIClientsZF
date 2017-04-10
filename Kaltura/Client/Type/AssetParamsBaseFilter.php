@@ -45,6 +45,10 @@ abstract class Kaltura_Client_Type_AssetParamsBaseFilter extends Kaltura_Client_
 		if(is_null($xml))
 			return;
 		
+		if(count($xml->idEqual))
+			$this->idEqual = (int)$xml->idEqual;
+		if(count($xml->idIn))
+			$this->idIn = (string)$xml->idIn;
 		if(count($xml->systemNameEqual))
 			$this->systemNameEqual = (string)$xml->systemNameEqual;
 		if(count($xml->systemNameIn))
@@ -54,6 +58,20 @@ abstract class Kaltura_Client_Type_AssetParamsBaseFilter extends Kaltura_Client_
 		if(count($xml->tagsEqual))
 			$this->tagsEqual = (string)$xml->tagsEqual;
 	}
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $idEqual = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $idIn = null;
+
 	/**
 	 * 
 	 *
