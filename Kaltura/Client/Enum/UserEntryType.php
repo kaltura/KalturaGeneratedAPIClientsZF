@@ -34,5 +34,6 @@
 class Kaltura_Client_Enum_UserEntryType extends Kaltura_Client_EnumBase
 {
 	const QUIZ = "quiz.QUIZ";
+	const VIEW_HISTORY = "viewHistory.VIEW_HISTORY";
 }
 

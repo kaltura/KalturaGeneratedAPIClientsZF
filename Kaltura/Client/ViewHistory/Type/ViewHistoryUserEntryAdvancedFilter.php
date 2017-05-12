@@ -31,11 +31,11 @@
  * @package Kaltura
  * @subpackage Client
  */
-abstract class Kaltura_Client_Type_UserEntryBaseFilter extends Kaltura_Client_Type_RelatedFilter
+class Kaltura_Client_ViewHistory_Type_ViewHistoryUserEntryAdvancedFilter extends Kaltura_Client_Type_SearchItem
 {
 	public function getKalturaObjectType()
 	{
-		return 'KalturaUserEntryBaseFilter';
+		return 'KalturaViewHistoryUserEntryAdvancedFilter';
 	}
 	
 	public function __construct(SimpleXMLElement $xml = null)
@@ -46,46 +46,26 @@ abstract class Kaltura_Client_Type_UserEntryBaseFilter extends Kaltura_Client_Ty
 			return;
 		
 		if(count($xml->idEqual))
-			$this->idEqual = (int)$xml->idEqual;
+			$this->idEqual = (string)$xml->idEqual;
 		if(count($xml->idIn))
 			$this->idIn = (string)$xml->idIn;
-		if(count($xml->idNotIn))
-			$this->idNotIn = (string)$xml->idNotIn;
-		if(count($xml->entryIdEqual))
-			$this->entryIdEqual = (string)$xml->entryIdEqual;
-		if(count($xml->entryIdIn))
-			$this->entryIdIn = (string)$xml->entryIdIn;
-		if(count($xml->entryIdNotIn))
-			$this->entryIdNotIn = (string)$xml->entryIdNotIn;
 		if(count($xml->userIdEqual))
 			$this->userIdEqual = (string)$xml->userIdEqual;
 		if(count($xml->userIdIn))
 			$this->userIdIn = (string)$xml->userIdIn;
-		if(count($xml->userIdNotIn))
-			$this->userIdNotIn = (string)$xml->userIdNotIn;
-		if(count($xml->statusEqual))
-			$this->statusEqual = (string)$xml->statusEqual;
-		if(count($xml->createdAtLessThanOrEqual))
-			$this->createdAtLessThanOrEqual = (int)$xml->createdAtLessThanOrEqual;
-		if(count($xml->createdAtGreaterThanOrEqual))
-			$this->createdAtGreaterThanOrEqual = (int)$xml->createdAtGreaterThanOrEqual;
-		if(count($xml->updatedAtLessThanOrEqual))
-			$this->updatedAtLessThanOrEqual = (int)$xml->updatedAtLessThanOrEqual;
 		if(count($xml->updatedAtGreaterThanOrEqual))
-			$this->updatedAtGreaterThanOrEqual = (int)$xml->updatedAtGreaterThanOrEqual;
-		if(count($xml->typeEqual))
-			$this->typeEqual = (string)$xml->typeEqual;
+			$this->updatedAtGreaterThanOrEqual = (string)$xml->updatedAtGreaterThanOrEqual;
+		if(count($xml->updatedAtLessThanOrEqual))
+			$this->updatedAtLessThanOrEqual = (string)$xml->updatedAtLessThanOrEqual;
 		if(count($xml->extendedStatusEqual))
 			$this->extendedStatusEqual = (string)$xml->extendedStatusEqual;
 		if(count($xml->extendedStatusIn))
 			$this->extendedStatusIn = (string)$xml->extendedStatusIn;
-		if(count($xml->extendedStatusNotIn))
-			$this->extendedStatusNotIn = (string)$xml->extendedStatusNotIn;
 	}
 	/**
 	 * 
 	 *
-	 * @var int
+	 * @var string
 	 */
 	public $idEqual = null;
 
@@ -95,34 +75,6 @@ abstract class Kaltura_Client_Type_UserEntryBaseFilter extends Kaltura_Client_Ty
 	 * @var string
 	 */
 	public $idIn = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $idNotIn = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $entryIdEqual = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $entryIdIn = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $entryIdNotIn = null;
 
 	/**
 	 * 
@@ -143,49 +95,14 @@ abstract class Kaltura_Client_Type_UserEntryBaseFilter extends Kaltura_Client_Ty
 	 *
 	 * @var string
 	 */
-	public $userIdNotIn = null;
-
-	/**
-	 * 
-	 *
-	 * @var Kaltura_Client_Enum_UserEntryStatus
-	 */
-	public $statusEqual = null;
-
-	/**
-	 * 
-	 *
-	 * @var int
-	 */
-	public $createdAtLessThanOrEqual = null;
-
-	/**
-	 * 
-	 *
-	 * @var int
-	 */
-	public $createdAtGreaterThanOrEqual = null;
-
-	/**
-	 * 
-	 *
-	 * @var int
-	 */
-	public $updatedAtLessThanOrEqual = null;
-
-	/**
-	 * 
-	 *
-	 * @var int
-	 */
 	public $updatedAtGreaterThanOrEqual = null;
 
 	/**
 	 * 
 	 *
-	 * @var Kaltura_Client_Enum_UserEntryType
+	 * @var string
 	 */
-	public $typeEqual = null;
+	public $updatedAtLessThanOrEqual = null;
 
 	/**
 	 * 
@@ -200,13 +117,6 @@ abstract class Kaltura_Client_Type_UserEntryBaseFilter extends Kaltura_Client_Ty
 	 * @var string
 	 */
 	public $extendedStatusIn = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $extendedStatusNotIn = null;
 
 
 }

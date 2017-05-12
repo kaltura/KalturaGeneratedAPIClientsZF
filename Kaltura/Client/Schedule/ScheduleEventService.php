@@ -122,16 +122,14 @@ class Kaltura_Client_Schedule_ScheduleEventService extends Kaltura_Client_Servic
 		$kparams = array();
 		$this->client->addParam($kparams, "resourceIds", $resourceIds);
 		$this->client->addParam($kparams, "scheduleEvent", $scheduleEvent->toParams());
-		$this->client->queueServiceActionCall("schedule_scheduleevent", "getConflicts", "KalturaScheduleEvent", $kparams);
+		$this->client->queueServiceActionCall("schedule_scheduleevent", "getConflicts", "KalturaScheduleEventListResponse", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
 		$resultXml = $this->client->doQueue();
 		$resultXmlObject = new \SimpleXMLElement($resultXml);
 		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = Kaltura_Client_ParseUtils::unmarshalArray($resultXmlObject->result, "KalturaScheduleEvent");
-		foreach($resultObject as $resultObjectItem){
-			$this->client->validateObjectType($resultObjectItem, "Kaltura_Client_Schedule_Type_ScheduleEvent");
-		}
+		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaScheduleEventListResponse");
+		$this->client->validateObjectType($resultObject, "Kaltura_Client_Schedule_Type_ScheduleEventListResponse");
 		return $resultObject;
 	}
 

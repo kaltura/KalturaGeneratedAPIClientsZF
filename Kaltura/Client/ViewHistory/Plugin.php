@@ -31,27 +31,37 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Enum_ConditionType extends Kaltura_Client_EnumBase
+class Kaltura_Client_ViewHistory_Plugin extends Kaltura_Client_Plugin
 {
-	const EVENT_NOTIFICATION_FIELD = "eventNotification.BooleanField";
-	const EVENT_NOTIFICATION_OBJECT_CHANGED = "eventNotification.ObjectChanged";
-	const METADATA_FIELD_CHANGED = "metadata.FieldChanged";
-	const METADATA_FIELD_COMPARE = "metadata.FieldCompare";
-	const METADATA_FIELD_MATCH = "metadata.FieldMatch";
-	const AUTHENTICATED = "1";
-	const COUNTRY = "2";
-	const IP_ADDRESS = "3";
-	const SITE = "4";
-	const USER_AGENT = "5";
-	const FIELD_MATCH = "6";
-	const FIELD_COMPARE = "7";
-	const ASSET_PROPERTIES_COMPARE = "8";
-	const USER_ROLE = "9";
-	const GEO_DISTANCE = "10";
-	const OR_OPERATOR = "11";
-	const HASH = "12";
-	const DELIVERY_PROFILE = "13";
-	const ACTIVE_EDGE_VALIDATE = "14";
-	const ANONYMOUS_IP = "15";
+	protected function __construct(Kaltura_Client_Client $client)
+	{
+		parent::__construct($client);
+	}
+
+	/**
+	 * @return Kaltura_Client_ViewHistory_Plugin
+	 */
+	public static function get(Kaltura_Client_Client $client)
+	{
+		return new Kaltura_Client_ViewHistory_Plugin($client);
+	}
+
+	/**
+	 * @return array<Kaltura_Client_ServiceBase>
+	 */
+	public function getServices()
+	{
+		$services = array(
+		);
+		return $services;
+	}
+
+	/**
+	 * @return string
+	 */
+	public function getName()
+	{
+		return 'viewHistory';
+	}
 }
 

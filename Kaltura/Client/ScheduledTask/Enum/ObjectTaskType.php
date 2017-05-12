@@ -43,5 +43,6 @@ class Kaltura_Client_ScheduledTask_Enum_ObjectTaskType extends Kaltura_Client_En
 	const DELETE_LOCAL_CONTENT = "5";
 	const STORAGE_EXPORT = "6";
 	const MODIFY_ENTRY = "7";
+	const MAIL_NOTIFICATION = "8";
 }
 

@@ -49,6 +49,10 @@ class Kaltura_Client_Type_UserEntryFilter extends Kaltura_Client_Type_UserEntryB
 			$this->userIdEqualCurrent = (int)$xml->userIdEqualCurrent;
 		if(count($xml->isAnonymous))
 			$this->isAnonymous = (int)$xml->isAnonymous;
+		if(count($xml->privacyContextEqual))
+			$this->privacyContextEqual = (string)$xml->privacyContextEqual;
+		if(count($xml->privacyContextIn))
+			$this->privacyContextIn = (string)$xml->privacyContextIn;
 	}
 	/**
 	 * 
@@ -63,6 +67,20 @@ class Kaltura_Client_Type_UserEntryFilter extends Kaltura_Client_Type_UserEntryB
 	 * @var Kaltura_Client_Enum_NullableBoolean
 	 */
 	public $isAnonymous = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $privacyContextEqual = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $privacyContextIn = null;
 
 
 }

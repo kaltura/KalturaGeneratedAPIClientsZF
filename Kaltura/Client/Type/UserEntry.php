@@ -61,6 +61,8 @@ abstract class Kaltura_Client_Type_UserEntry extends Kaltura_Client_ObjectBase
 			$this->updatedAt = (int)$xml->updatedAt;
 		if(count($xml->type))
 			$this->type = (string)$xml->type;
+		if(count($xml->extendedStatus))
+			$this->extendedStatus = (string)$xml->extendedStatus;
 	}
 	/**
 	 * unique auto-generated identifier
@@ -125,6 +127,13 @@ abstract class Kaltura_Client_Type_UserEntry extends Kaltura_Client_ObjectBase
 	 * @readonly
 	 */
 	public $type = null;
+
+	/**
+	 * 
+	 *
+	 * @var Kaltura_Client_Enum_UserEntryExtendedStatus
+	 */
+	public $extendedStatus = null;
 
 
 }

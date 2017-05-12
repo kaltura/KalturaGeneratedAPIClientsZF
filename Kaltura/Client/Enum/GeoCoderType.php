@@ -34,5 +34,6 @@
 class Kaltura_Client_Enum_GeoCoderType extends Kaltura_Client_EnumBase
 {
 	const KALTURA = "1";
+	const MAX_MIND = "2";
 }
 

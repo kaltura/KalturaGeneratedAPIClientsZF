@@ -235,7 +235,7 @@ class Kaltura_Client_LiveStreamService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
-	function setRecordedContent($entryId, $mediaServerIndex, Kaltura_Client_Type_DataCenterContentResource $resource, $duration, $recordedEntryId = null)
+	function setRecordedContent($entryId, $mediaServerIndex, Kaltura_Client_Type_DataCenterContentResource $resource, $duration, $recordedEntryId = null, $flavorParamsId = null)
 	{
 		$kparams = array();
 		$this->client->addParam($kparams, "entryId", $entryId);
@@ -243,6 +243,7 @@ class Kaltura_Client_LiveStreamService extends Kaltura_Client_ServiceBase
 		$this->client->addParam($kparams, "resource", $resource->toParams());
 		$this->client->addParam($kparams, "duration", $duration);
 		$this->client->addParam($kparams, "recordedEntryId", $recordedEntryId);
+		$this->client->addParam($kparams, "flavorParamsId", $flavorParamsId);
 		$this->client->queueServiceActionCall("livestream", "setRecordedContent", "KalturaLiveEntry", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
