@@ -41,6 +41,7 @@ class Kaltura_Client_Enum_AssetType extends Kaltura_Client_EnumBase
 	const SWF = "document.SWF";
 	const TIMED_THUMB_ASSET = "thumbCuePoint.timedThumb";
 	const TRANSCRIPT = "transcript.Transcript";
+	const WIDEVINE_FLAVOR = "widevine.WidevineFlavor";
 	const FLAVOR = "1";
 	const THUMBNAIL = "2";
 	const LIVE = "3";
