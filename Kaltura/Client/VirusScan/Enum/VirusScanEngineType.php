@@ -34,8 +34,5 @@
 class Kaltura_Client_VirusScan_Enum_VirusScanEngineType extends Kaltura_Client_EnumBase
 {
 	const CLAMAV_SCAN_ENGINE = "clamAVScanEngine.ClamAV";
-	const SYMANTEC_SCAN_DIRECT_ENGINE = "symantecScanEngine.SymantecScanDirectEngine";
-	const SYMANTEC_SCAN_ENGINE = "symantecScanEngine.SymantecScanEngine";
-	const SYMANTEC_SCAN_JAVA_ENGINE = "symantecScanEngine.SymantecScanJavaEngine";
 }
 

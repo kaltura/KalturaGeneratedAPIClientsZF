@@ -55,6 +55,8 @@ abstract class Kaltura_Client_Schedule_Type_ScheduleResourceBaseFilter extends K
 			$this->parentIdEqual = (int)$xml->parentIdEqual;
 		if(count($xml->parentIdIn))
 			$this->parentIdIn = (string)$xml->parentIdIn;
+		if(count($xml->nameEqual))
+			$this->nameEqual = (string)$xml->nameEqual;
 		if(count($xml->systemNameEqual))
 			$this->systemNameEqual = (string)$xml->systemNameEqual;
 		if(count($xml->systemNameIn))
@@ -112,6 +114,13 @@ abstract class Kaltura_Client_Schedule_Type_ScheduleResourceBaseFilter extends K
 	 * @var string
 	 */
 	public $parentIdIn = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $nameEqual = null;
 
 	/**
 	 * 
