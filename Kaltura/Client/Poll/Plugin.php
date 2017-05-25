@@ -33,9 +33,15 @@
  */
 class Kaltura_Client_Poll_Plugin extends Kaltura_Client_Plugin
 {
+	/**
+	 * @var Kaltura_Client_Poll_PollService
+	 */
+	public $poll = null;
+
 	protected function __construct(Kaltura_Client_Client $client)
 	{
 		parent::__construct($client);
+		$this->poll = new Kaltura_Client_Poll_PollService($client);
 	}
 
 	/**
@@ -52,6 +58,7 @@ class Kaltura_Client_Poll_Plugin extends Kaltura_Client_Plugin
 	public function getServices()
 	{
 		$services = array(
+			'poll' => $this->poll,
 		);
 		return $services;
 	}
