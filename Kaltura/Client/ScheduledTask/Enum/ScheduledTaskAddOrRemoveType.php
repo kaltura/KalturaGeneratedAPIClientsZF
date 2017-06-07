@@ -35,5 +35,6 @@ class Kaltura_Client_ScheduledTask_Enum_ScheduledTaskAddOrRemoveType extends Kal
 {
 	const ADD = 1;
 	const REMOVE = 2;
+	const MOVE = 3;
 }
 
