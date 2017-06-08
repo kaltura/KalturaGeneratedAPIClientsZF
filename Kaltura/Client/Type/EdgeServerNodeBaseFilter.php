@@ -45,7 +45,34 @@ abstract class Kaltura_Client_Type_EdgeServerNodeBaseFilter extends Kaltura_Clie
 		if(is_null($xml))
 			return;
 		
+		if(count($xml->playbackDomainLike))
+			$this->playbackDomainLike = (string)$xml->playbackDomainLike;
+		if(count($xml->playbackDomainMultiLikeOr))
+			$this->playbackDomainMultiLikeOr = (string)$xml->playbackDomainMultiLikeOr;
+		if(count($xml->playbackDomainMultiLikeAnd))
+			$this->playbackDomainMultiLikeAnd = (string)$xml->playbackDomainMultiLikeAnd;
 	}
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $playbackDomainLike = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $playbackDomainMultiLikeOr = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $playbackDomainMultiLikeAnd = null;
+
 
 }
 
