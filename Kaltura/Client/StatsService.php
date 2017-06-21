@@ -65,6 +65,18 @@ class Kaltura_Client_StatsService extends Kaltura_Client_ServiceBase
 		$this->client->checkIfError($resultXmlObject->result);
 	}
 
+	function reportDeviceCapabilities($data)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "data", $data);
+		$this->client->queueServiceActionCall("stats", "reportDeviceCapabilities", null, $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultXml = $this->client->doQueue();
+		$resultXmlObject = new \SimpleXMLElement($resultXml);
+		$this->client->checkIfError($resultXmlObject->result);
+	}
+
 	function reportError($errorCode, $errorMessage)
 	{
 		$kparams = array();
