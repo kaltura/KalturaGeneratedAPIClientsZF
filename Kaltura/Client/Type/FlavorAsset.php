@@ -171,7 +171,6 @@ class Kaltura_Client_Type_FlavorAsset extends Kaltura_Client_Type_Asset
 	 * The label of the flavor asset
 	 *
 	 * @var string
-	 * @readonly
 	 */
 	public $label = null;
 
