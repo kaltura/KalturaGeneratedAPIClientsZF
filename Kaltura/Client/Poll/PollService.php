@@ -84,6 +84,19 @@ class Kaltura_Client_Poll_PollService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	function resetVotes($pollId, $answerIds)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "pollId", $pollId);
+		$this->client->addParam($kparams, "answerIds", $answerIds);
+		$this->client->queueServiceActionCall("poll_poll", "resetVotes", null, $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultXml = $this->client->doQueue();
+		$resultXmlObject = new \SimpleXMLElement($resultXml);
+		$this->client->checkIfError($resultXmlObject->result);
+	}
+
 	function vote($pollId, $userId, $answerIds)
 	{
 		$kparams = array();
