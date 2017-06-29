@@ -68,12 +68,11 @@ class Kaltura_Client_Poll_PollService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
-	function getVotes($pollId, $answerIds, $otherDCVotes = null)
+	function getVotes($pollId, $answerIds)
 	{
 		$kparams = array();
 		$this->client->addParam($kparams, "pollId", $pollId);
 		$this->client->addParam($kparams, "answerIds", $answerIds);
-		$this->client->addParam($kparams, "otherDCVotes", $otherDCVotes);
 		$this->client->queueServiceActionCall("poll_poll", "getVotes", null, $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
@@ -84,11 +83,10 @@ class Kaltura_Client_Poll_PollService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
-	function resetVotes($pollId, $answerIds)
+	function resetVotes($pollId)
 	{
 		$kparams = array();
 		$this->client->addParam($kparams, "pollId", $pollId);
-		$this->client->addParam($kparams, "answerIds", $answerIds);
 		$this->client->queueServiceActionCall("poll_poll", "resetVotes", null, $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
