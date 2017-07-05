@@ -53,21 +53,21 @@ class Kaltura_Client_Type_ApiParameterPermissionItem extends Kaltura_Client_Type
 			$this->action = (string)$xml->action;
 	}
 	/**
-	 * 
+	 * API object name
 	 *
 	 * @var string
 	 */
 	public $object = null;
 
 	/**
-	 * 
+	 * API parameter name
 	 *
 	 * @var string
 	 */
 	public $parameter = null;
 
 	/**
-	 * 
+	 * API action type
 	 *
 	 * @var Kaltura_Client_Enum_ApiParameterPermissionItemAction
 	 */
