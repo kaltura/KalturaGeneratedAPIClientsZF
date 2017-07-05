@@ -41,12 +41,11 @@ class Kaltura_Client_AppTokenService extends Kaltura_Client_ServiceBase
 
 	function add(Kaltura_Client_Type_AppToken $appToken)
 	{
-		if ($this->client->isMultiRequest())
-			throw $this->client->getKalturaClientException("Action is not supported as part of multi-request.", Kaltura_Client_ClientException::ERROR_ACTION_IN_MULTIREQUEST);
-		
 		$kparams = array();
 		$this->client->addParam($kparams, "appToken", $appToken->toParams());
 		$this->client->queueServiceActionCall("apptoken", "add", "KalturaAppToken", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
 		$resultXml = $this->client->doQueue();
 		$resultXmlObject = new \SimpleXMLElement($resultXml);
 		$this->client->checkIfError($resultXmlObject->result);
@@ -57,27 +56,23 @@ class Kaltura_Client_AppTokenService extends Kaltura_Client_ServiceBase
 
 	function delete($id)
 	{
-		if ($this->client->isMultiRequest())
-			throw $this->client->getKalturaClientException("Action is not supported as part of multi-request.", Kaltura_Client_ClientException::ERROR_ACTION_IN_MULTIREQUEST);
-		
 		$kparams = array();
 		$this->client->addParam($kparams, "id", $id);
 		$this->client->queueServiceActionCall("apptoken", "delete", null, $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
 		$resultXml = $this->client->doQueue();
 		$resultXmlObject = new \SimpleXMLElement($resultXml);
 		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = (bool)Kaltura_Client_ParseUtils::unmarshalSimpleType($resultXmlObject->result);
-		return $resultObject;
 	}
 
 	function get($id)
 	{
-		if ($this->client->isMultiRequest())
-			throw $this->client->getKalturaClientException("Action is not supported as part of multi-request.", Kaltura_Client_ClientException::ERROR_ACTION_IN_MULTIREQUEST);
-		
 		$kparams = array();
 		$this->client->addParam($kparams, "id", $id);
 		$this->client->queueServiceActionCall("apptoken", "get", "KalturaAppToken", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
 		$resultXml = $this->client->doQueue();
 		$resultXmlObject = new \SimpleXMLElement($resultXml);
 		$this->client->checkIfError($resultXmlObject->result);
@@ -86,24 +81,56 @@ class Kaltura_Client_AppTokenService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
-	function startSession($id, $tokenHash, $userId = null, $type = null, $expiry = null, $udid = null)
+	function listAction(Kaltura_Client_Type_AppTokenFilter $filter = null, Kaltura_Client_Type_FilterPager $pager = null)
 	{
+		$kparams = array();
+		if ($filter !== null)
+			$this->client->addParam($kparams, "filter", $filter->toParams());
+		if ($pager !== null)
+			$this->client->addParam($kparams, "pager", $pager->toParams());
+		$this->client->queueServiceActionCall("apptoken", "list", "KalturaAppTokenListResponse", $kparams);
 		if ($this->client->isMultiRequest())
-			throw $this->client->getKalturaClientException("Action is not supported as part of multi-request.", Kaltura_Client_ClientException::ERROR_ACTION_IN_MULTIREQUEST);
-		
+			return $this->client->getMultiRequestResult();
+		$resultXml = $this->client->doQueue();
+		$resultXmlObject = new \SimpleXMLElement($resultXml);
+		$this->client->checkIfError($resultXmlObject->result);
+		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaAppTokenListResponse");
+		$this->client->validateObjectType($resultObject, "Kaltura_Client_Type_AppTokenListResponse");
+		return $resultObject;
+	}
+
+	function startSession($id, $tokenHash, $userId = null, $type = null, $expiry = null)
+	{
 		$kparams = array();
 		$this->client->addParam($kparams, "id", $id);
 		$this->client->addParam($kparams, "tokenHash", $tokenHash);
 		$this->client->addParam($kparams, "userId", $userId);
 		$this->client->addParam($kparams, "type", $type);
 		$this->client->addParam($kparams, "expiry", $expiry);
-		$this->client->addParam($kparams, "udid", $udid);
 		$this->client->queueServiceActionCall("apptoken", "startSession", "KalturaSessionInfo", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
 		$resultXml = $this->client->doQueue();
 		$resultXmlObject = new \SimpleXMLElement($resultXml);
 		$this->client->checkIfError($resultXmlObject->result);
 		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaSessionInfo");
 		$this->client->validateObjectType($resultObject, "Kaltura_Client_Type_SessionInfo");
+		return $resultObject;
+	}
+
+	function update($id, Kaltura_Client_Type_AppToken $appToken)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "id", $id);
+		$this->client->addParam($kparams, "appToken", $appToken->toParams());
+		$this->client->queueServiceActionCall("apptoken", "update", "KalturaAppToken", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultXml = $this->client->doQueue();
+		$resultXmlObject = new \SimpleXMLElement($resultXml);
+		$this->client->checkIfError($resultXmlObject->result);
+		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaAppToken");
+		$this->client->validateObjectType($resultObject, "Kaltura_Client_Type_AppToken");
 		return $resultObject;
 	}
 }

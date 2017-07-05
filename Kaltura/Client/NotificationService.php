@@ -39,49 +39,19 @@ class Kaltura_Client_NotificationService extends Kaltura_Client_ServiceBase
 		parent::__construct($client);
 	}
 
-	function initiateCleanup()
+	function getClientNotification($entryId, $type)
 	{
-		if ($this->client->isMultiRequest())
-			throw $this->client->getKalturaClientException("Action is not supported as part of multi-request.", Kaltura_Client_ClientException::ERROR_ACTION_IN_MULTIREQUEST);
-		
 		$kparams = array();
-		$this->client->queueServiceActionCall("notification", "initiateCleanup", null, $kparams);
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = (bool)Kaltura_Client_ParseUtils::unmarshalSimpleType($resultXmlObject->result);
-		return $resultObject;
-	}
-
-	function register($identifier, $type)
-	{
-		if ($this->client->isMultiRequest())
-			throw $this->client->getKalturaClientException("Action is not supported as part of multi-request.", Kaltura_Client_ClientException::ERROR_ACTION_IN_MULTIREQUEST);
-		
-		$kparams = array();
-		$this->client->addParam($kparams, "identifier", $identifier);
+		$this->client->addParam($kparams, "entryId", $entryId);
 		$this->client->addParam($kparams, "type", $type);
-		$this->client->queueServiceActionCall("notification", "register", "KalturaRegistryResponse", $kparams);
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaRegistryResponse");
-		$this->client->validateObjectType($resultObject, "Kaltura_Client_Type_RegistryResponse");
-		return $resultObject;
-	}
-
-	function setDevicePushToken($pushToken)
-	{
+		$this->client->queueServiceActionCall("notification", "getClientNotification", "KalturaClientNotification", $kparams);
 		if ($this->client->isMultiRequest())
-			throw $this->client->getKalturaClientException("Action is not supported as part of multi-request.", Kaltura_Client_ClientException::ERROR_ACTION_IN_MULTIREQUEST);
-		
-		$kparams = array();
-		$this->client->addParam($kparams, "pushToken", $pushToken);
-		$this->client->queueServiceActionCall("notification", "setDevicePushToken", null, $kparams);
+			return $this->client->getMultiRequestResult();
 		$resultXml = $this->client->doQueue();
 		$resultXmlObject = new \SimpleXMLElement($resultXml);
 		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = (bool)Kaltura_Client_ParseUtils::unmarshalSimpleType($resultXmlObject->result);
+		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaClientNotification");
+		$this->client->validateObjectType($resultObject, "Kaltura_Client_Type_ClientNotification");
 		return $resultObject;
 	}
 }

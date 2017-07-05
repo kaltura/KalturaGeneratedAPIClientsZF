@@ -33,9 +33,9 @@
  */
 class Kaltura_Client_Enum_ApiParameterPermissionItemAction extends Kaltura_Client_EnumBase
 {
-	const READ = "READ";
-	const INSERT = "INSERT";
-	const UPDATE = "UPDATE";
-	const USAGE = "USAGE";
+	const USAGE = "all";
+	const INSERT = "insert";
+	const READ = "read";
+	const UPDATE = "update";
 }
 

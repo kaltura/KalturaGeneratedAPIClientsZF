@@ -49,9 +49,10 @@ class Kaltura_Client_Type_ListResponse extends Kaltura_Client_ObjectBase
 			$this->totalCount = (int)$xml->totalCount;
 	}
 	/**
-	 * Total items
+	 * 
 	 *
 	 * @var int
+	 * @readonly
 	 */
 	public $totalCount = null;
 
