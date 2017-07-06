@@ -33,16 +33,8 @@
  */
 class Kaltura_Client_Enum_AssetType extends Kaltura_Client_EnumBase
 {
-	const ATTACHMENT = "attachment.Attachment";
-	const CAPTION = "caption.Caption";
-	const DOCUMENT = "document.Document";
-	const IMAGE = "document.Image";
-	const PDF = "document.PDF";
-	const SWF = "document.SWF";
-	const TIMED_THUMB_ASSET = "thumbCuePoint.timedThumb";
-	const TRANSCRIPT = "transcript.Transcript";
-	const FLAVOR = "1";
-	const THUMBNAIL = "2";
-	const LIVE = "3";
+	const MEDIA = "media";
+	const RECORDING = "recording";
+	const EPG = "epg";
 }
 

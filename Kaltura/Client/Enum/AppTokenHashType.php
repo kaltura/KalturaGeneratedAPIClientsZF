@@ -33,9 +33,9 @@
  */
 class Kaltura_Client_Enum_AppTokenHashType extends Kaltura_Client_EnumBase
 {
-	const MD5 = "MD5";
 	const SHA1 = "SHA1";
 	const SHA256 = "SHA256";
 	const SHA512 = "SHA512";
+	const MD5 = "MD5";
 }
 

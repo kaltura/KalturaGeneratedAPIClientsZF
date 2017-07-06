@@ -31,7 +31,7 @@
  * @package Kaltura
  * @subpackage Client
  */
-abstract class Kaltura_Client_Type_PermissionItem extends Kaltura_Client_ObjectBase
+class Kaltura_Client_Type_PermissionItem extends Kaltura_Client_ObjectBase
 {
 	public function getKalturaObjectType()
 	{
@@ -46,64 +46,24 @@ abstract class Kaltura_Client_Type_PermissionItem extends Kaltura_Client_ObjectB
 			return;
 		
 		if(count($xml->id))
-			$this->id = (int)$xml->id;
-		if(count($xml->type))
-			$this->type = (string)$xml->type;
-		if(count($xml->partnerId))
-			$this->partnerId = (int)$xml->partnerId;
-		if(count($xml->tags))
-			$this->tags = (string)$xml->tags;
-		if(count($xml->createdAt))
-			$this->createdAt = (int)$xml->createdAt;
-		if(count($xml->updatedAt))
-			$this->updatedAt = (int)$xml->updatedAt;
+			$this->id = (string)$xml->id;
+		if(count($xml->name))
+			$this->name = (string)$xml->name;
 	}
 	/**
-	 * 
+	 * Permission item identifier
 	 *
-	 * @var int
+	 * @var bigint
 	 * @readonly
 	 */
 	public $id = null;
 
 	/**
-	 * 
-	 *
-	 * @var Kaltura_Client_Enum_PermissionItemType
-	 * @readonly
-	 */
-	public $type = null;
-
-	/**
-	 * 
-	 *
-	 * @var int
-	 * @readonly
-	 */
-	public $partnerId = null;
-
-	/**
-	 * 
+	 * Permission item name
 	 *
 	 * @var string
 	 */
-	public $tags = null;
-
-	/**
-	 * 
-	 *
-	 * @var int
-	 * @readonly
-	 */
-	public $createdAt = null;
-
-	/**
-	 * 
-	 *
-	 * @var int
-	 * @readonly
-	 */
-	public $updatedAt = null;
+	public $name = null;
 
 
 }

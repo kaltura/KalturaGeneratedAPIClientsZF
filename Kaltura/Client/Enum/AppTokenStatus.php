@@ -33,8 +33,8 @@
  */
 class Kaltura_Client_Enum_AppTokenStatus extends Kaltura_Client_EnumBase
 {
+	const DELETED = 0;
 	const DISABLED = 1;
 	const ACTIVE = 2;
-	const DELETED = 3;
 }
 
