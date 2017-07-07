@@ -31,7 +31,7 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Type_UserRoleFilter extends Kaltura_Client_Type_Filter
+class Kaltura_Client_Type_UserRoleFilter extends Kaltura_Client_Type_UserRoleBaseFilter
 {
 	public function getKalturaObjectType()
 	{
@@ -45,16 +45,7 @@ class Kaltura_Client_Type_UserRoleFilter extends Kaltura_Client_Type_Filter
 		if(is_null($xml))
 			return;
 		
-		if(count($xml->idIn))
-			$this->idIn = (string)$xml->idIn;
 	}
-	/**
-	 * Comma separated roles identifiers
-	 *
-	 * @var string
-	 */
-	public $idIn = null;
-
 
 }
 

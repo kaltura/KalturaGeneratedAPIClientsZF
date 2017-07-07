@@ -51,14 +51,14 @@ class Kaltura_Client_Type_ApiActionPermissionItem extends Kaltura_Client_Type_Pe
 			$this->action = (string)$xml->action;
 	}
 	/**
-	 * API service name
+	 * 
 	 *
 	 * @var string
 	 */
 	public $service = null;
 
 	/**
-	 * API action name
+	 * 
 	 *
 	 * @var string
 	 */

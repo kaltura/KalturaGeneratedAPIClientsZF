@@ -51,14 +51,14 @@ class Kaltura_Client_Type_FilterPager extends Kaltura_Client_ObjectBase
 			$this->pageIndex = (int)$xml->pageIndex;
 	}
 	/**
-	 * The number of objects to retrieve. Possible range 1 ≤ value ≤ 50. If omitted or value &lt; 1 - will be set to 25. If a value &gt; 50 provided – will be set to 50
+	 * The number of objects to retrieve. (Default is 30, maximum page size is 500).
 	 *
 	 * @var int
 	 */
 	public $pageSize = null;
 
 	/**
-	 * The page number for which {pageSize} of objects should be retrieved
+	 * The page number for which {pageSize} of objects should be retrieved (Default is 1).
 	 *
 	 * @var int
 	 */
