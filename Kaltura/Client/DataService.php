@@ -54,6 +54,21 @@ class Kaltura_Client_DataService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	function addContent($entryId, Kaltura_Client_Type_GenericDataCenterContentResource $resource)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "entryId", $entryId);
+		$this->client->addParam($kparams, "resource", $resource->toParams());
+		$this->client->queueServiceActionCall("data", "addContent", null, $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultXml = $this->client->doQueue();
+		$resultXmlObject = new \SimpleXMLElement($resultXml);
+		$this->client->checkIfError($resultXmlObject->result);
+		$resultObject = (string)Kaltura_Client_ParseUtils::unmarshalSimpleType($resultXmlObject->result);
+		return $resultObject;
+	}
+
 	function delete($entryId)
 	{
 		$kparams = array();

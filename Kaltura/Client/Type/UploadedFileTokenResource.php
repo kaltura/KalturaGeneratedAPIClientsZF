@@ -31,7 +31,7 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Type_UploadedFileTokenResource extends Kaltura_Client_Type_DataCenterContentResource
+class Kaltura_Client_Type_UploadedFileTokenResource extends Kaltura_Client_Type_GenericDataCenterContentResource
 {
 	public function getKalturaObjectType()
 	{

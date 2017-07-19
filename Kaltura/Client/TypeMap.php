@@ -478,6 +478,7 @@ class Kaltura_Client_TypeMap
 		'KalturaFtpDropFolderBaseFilter' => 'Kaltura_Client_DropFolder_Type_FtpDropFolderBaseFilter',
 		'KalturaFtpDropFolderFilter' => 'Kaltura_Client_DropFolder_Type_FtpDropFolderFilter',
 		'KalturaFullStatusResponse' => 'Kaltura_Client_Type_FullStatusResponse',
+		'KalturaGenericDataCenterContentResource' => 'Kaltura_Client_Type_GenericDataCenterContentResource',
 		'KalturaGenericDistributionJobProviderData' => 'Kaltura_Client_ContentDistribution_Type_GenericDistributionJobProviderData',
 		'KalturaGenericDistributionProfile' => 'Kaltura_Client_ContentDistribution_Type_GenericDistributionProfile',
 		'KalturaGenericDistributionProfileAction' => 'Kaltura_Client_ContentDistribution_Type_GenericDistributionProfileAction',
