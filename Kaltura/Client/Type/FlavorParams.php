@@ -124,6 +124,8 @@ class Kaltura_Client_Type_FlavorParams extends Kaltura_Client_Type_AssetParams
 			$this->isEncrypted = (int)$xml->isEncrypted;
 		if(count($xml->contentAwareness))
 			$this->contentAwareness = (float)$xml->contentAwareness;
+		if(count($xml->chunkedEncodeMode))
+			$this->chunkedEncodeMode = (int)$xml->chunkedEncodeMode;
 		if(count($xml->clipOffset))
 			$this->clipOffset = (int)$xml->clipOffset;
 		if(count($xml->clipDuration))
@@ -387,6 +389,13 @@ class Kaltura_Client_Type_FlavorParams extends Kaltura_Client_Type_AssetParams
 	 * @var float
 	 */
 	public $contentAwareness = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $chunkedEncodeMode = null;
 
 	/**
 	 * 
