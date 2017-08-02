@@ -98,10 +98,11 @@ class Kaltura_Client_UserEntryService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
-	function listAction(Kaltura_Client_Type_UserEntryFilter $filter, Kaltura_Client_Type_FilterPager $pager = null)
+	function listAction(Kaltura_Client_Type_UserEntryFilter $filter = null, Kaltura_Client_Type_FilterPager $pager = null)
 	{
 		$kparams = array();
-		$this->client->addParam($kparams, "filter", $filter->toParams());
+		if ($filter !== null)
+			$this->client->addParam($kparams, "filter", $filter->toParams());
 		if ($pager !== null)
 			$this->client->addParam($kparams, "pager", $pager->toParams());
 		$this->client->queueServiceActionCall("userentry", "list", "KalturaUserEntryListResponse", $kparams);
