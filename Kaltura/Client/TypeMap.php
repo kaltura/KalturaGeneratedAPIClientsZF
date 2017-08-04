@@ -682,6 +682,7 @@ class Kaltura_Client_TypeMap
 		'KalturaOperationResource' => 'Kaltura_Client_Type_OperationResource',
 		'KalturaOptionalAnswer' => 'Kaltura_Client_Quiz_Type_OptionalAnswer',
 		'KalturaOrCondition' => 'Kaltura_Client_Type_OrCondition',
+		'KalturaPager' => 'Kaltura_Client_Type_Pager',
 		'KalturaParseCaptionAssetJobData' => 'Kaltura_Client_VirusScan_Type_ParseCaptionAssetJobData',
 		'KalturaParseMultiLanguageCaptionAssetJobData' => 'Kaltura_Client_Caption_Type_ParseMultiLanguageCaptionAssetJobData',
 		'KalturaPartner' => 'Kaltura_Client_Type_Partner',
