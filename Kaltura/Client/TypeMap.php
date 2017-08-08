@@ -391,6 +391,7 @@ class Kaltura_Client_TypeMap
 		'KalturaEntryDistributionFilter' => 'Kaltura_Client_ContentDistribution_Type_EntryDistributionFilter',
 		'KalturaEntryDistributionListResponse' => 'Kaltura_Client_ContentDistribution_Type_EntryDistributionListResponse',
 		'KalturaEntryIdentifier' => 'Kaltura_Client_Type_EntryIdentifier',
+		'KalturaEntryIndexAdvancedFilter' => 'Kaltura_Client_Type_EntryIndexAdvancedFilter',
 		'KalturaEntryLiveStats' => 'Kaltura_Client_Type_EntryLiveStats',
 		'KalturaEntryReferrerLiveStats' => 'Kaltura_Client_Type_EntryReferrerLiveStats',
 		'KalturaEntryReplacementOptions' => 'Kaltura_Client_Type_EntryReplacementOptions',
