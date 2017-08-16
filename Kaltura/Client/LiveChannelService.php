@@ -74,6 +74,23 @@ class Kaltura_Client_LiveChannelService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	function createRecordedEntry($entryId, $mediaServerIndex, $liveEntryStatus)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "entryId", $entryId);
+		$this->client->addParam($kparams, "mediaServerIndex", $mediaServerIndex);
+		$this->client->addParam($kparams, "liveEntryStatus", $liveEntryStatus);
+		$this->client->queueServiceActionCall("livechannel", "createRecordedEntry", "KalturaLiveEntry", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultXml = $this->client->doQueue();
+		$resultXmlObject = new \SimpleXMLElement($resultXml);
+		$this->client->checkIfError($resultXmlObject->result);
+		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaLiveEntry");
+		$this->client->validateObjectType($resultObject, "Kaltura_Client_Type_LiveEntry");
+		return $resultObject;
+	}
+
 	function delete($id)
 	{
 		$kparams = array();
@@ -133,7 +150,7 @@ class Kaltura_Client_LiveChannelService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
-	function registerMediaServer($entryId, $hostname, $mediaServerIndex, $applicationName = null, $liveEntryStatus = 1)
+	function registerMediaServer($entryId, $hostname, $mediaServerIndex, $applicationName = null, $liveEntryStatus = 1, $shouldCreateRecordedEntry = true)
 	{
 		$kparams = array();
 		$this->client->addParam($kparams, "entryId", $entryId);
@@ -141,6 +158,7 @@ class Kaltura_Client_LiveChannelService extends Kaltura_Client_ServiceBase
 		$this->client->addParam($kparams, "mediaServerIndex", $mediaServerIndex);
 		$this->client->addParam($kparams, "applicationName", $applicationName);
 		$this->client->addParam($kparams, "liveEntryStatus", $liveEntryStatus);
+		$this->client->addParam($kparams, "shouldCreateRecordedEntry", $shouldCreateRecordedEntry);
 		$this->client->queueServiceActionCall("livechannel", "registerMediaServer", "KalturaLiveEntry", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
