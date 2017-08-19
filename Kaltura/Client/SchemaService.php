@@ -39,6 +39,9 @@ class Kaltura_Client_SchemaService extends Kaltura_Client_ServiceBase
 		parent::__construct($client);
 	}
 
+	/**
+	 * @return file
+	 */
 	function serve($type)
 	{
 		if ($this->client->isMultiRequest())

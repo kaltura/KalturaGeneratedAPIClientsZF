@@ -39,6 +39,9 @@ class Kaltura_Client_StorageProfileService extends Kaltura_Client_ServiceBase
 		parent::__construct($client);
 	}
 
+	/**
+	 * @return Kaltura_Client_Type_StorageProfile
+	 */
 	function add(Kaltura_Client_Type_StorageProfile $storageProfile)
 	{
 		$kparams = array();
@@ -54,6 +57,9 @@ class Kaltura_Client_StorageProfileService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	/**
+	 * @return Kaltura_Client_Type_StorageProfile
+	 */
 	function get($storageProfileId)
 	{
 		$kparams = array();
@@ -69,6 +75,9 @@ class Kaltura_Client_StorageProfileService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	/**
+	 * @return Kaltura_Client_Type_StorageProfileListResponse
+	 */
 	function listAction(Kaltura_Client_Type_StorageProfileFilter $filter = null, Kaltura_Client_Type_FilterPager $pager = null)
 	{
 		$kparams = array();
@@ -87,6 +96,9 @@ class Kaltura_Client_StorageProfileService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	/**
+	 * @return Kaltura_Client_Type_StorageProfile
+	 */
 	function update($storageProfileId, Kaltura_Client_Type_StorageProfile $storageProfile)
 	{
 		$kparams = array();
@@ -103,6 +115,9 @@ class Kaltura_Client_StorageProfileService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	/**
+	 * @return 
+	 */
 	function updateStatus($storageId, $status)
 	{
 		$kparams = array();

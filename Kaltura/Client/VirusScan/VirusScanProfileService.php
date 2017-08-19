@@ -39,6 +39,9 @@ class Kaltura_Client_VirusScan_VirusScanProfileService extends Kaltura_Client_Se
 		parent::__construct($client);
 	}
 
+	/**
+	 * @return Kaltura_Client_VirusScan_Type_VirusScanProfile
+	 */
 	function add(Kaltura_Client_VirusScan_Type_VirusScanProfile $virusScanProfile)
 	{
 		$kparams = array();
@@ -54,6 +57,9 @@ class Kaltura_Client_VirusScan_VirusScanProfileService extends Kaltura_Client_Se
 		return $resultObject;
 	}
 
+	/**
+	 * @return Kaltura_Client_VirusScan_Type_VirusScanProfile
+	 */
 	function delete($virusScanProfileId)
 	{
 		$kparams = array();
@@ -69,6 +75,9 @@ class Kaltura_Client_VirusScan_VirusScanProfileService extends Kaltura_Client_Se
 		return $resultObject;
 	}
 
+	/**
+	 * @return Kaltura_Client_VirusScan_Type_VirusScanProfile
+	 */
 	function get($virusScanProfileId)
 	{
 		$kparams = array();
@@ -84,6 +93,9 @@ class Kaltura_Client_VirusScan_VirusScanProfileService extends Kaltura_Client_Se
 		return $resultObject;
 	}
 
+	/**
+	 * @return Kaltura_Client_VirusScan_Type_VirusScanProfileListResponse
+	 */
 	function listAction(Kaltura_Client_VirusScan_Type_VirusScanProfileFilter $filter = null, Kaltura_Client_Type_FilterPager $pager = null)
 	{
 		$kparams = array();
@@ -102,6 +114,9 @@ class Kaltura_Client_VirusScan_VirusScanProfileService extends Kaltura_Client_Se
 		return $resultObject;
 	}
 
+	/**
+	 * @return int
+	 */
 	function scan($flavorAssetId, $virusScanProfileId = null)
 	{
 		$kparams = array();
@@ -117,6 +132,9 @@ class Kaltura_Client_VirusScan_VirusScanProfileService extends Kaltura_Client_Se
 		return $resultObject;
 	}
 
+	/**
+	 * @return Kaltura_Client_VirusScan_Type_VirusScanProfile
+	 */
 	function update($virusScanProfileId, Kaltura_Client_VirusScan_Type_VirusScanProfile $virusScanProfile)
 	{
 		$kparams = array();

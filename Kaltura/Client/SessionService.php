@@ -39,6 +39,9 @@ class Kaltura_Client_SessionService extends Kaltura_Client_ServiceBase
 		parent::__construct($client);
 	}
 
+	/**
+	 * @return 
+	 */
 	function end()
 	{
 		$kparams = array();
@@ -50,6 +53,9 @@ class Kaltura_Client_SessionService extends Kaltura_Client_ServiceBase
 		$this->client->checkIfError($resultXmlObject->result);
 	}
 
+	/**
+	 * @return Kaltura_Client_Type_SessionInfo
+	 */
 	function get($session = null)
 	{
 		$kparams = array();
@@ -65,6 +71,9 @@ class Kaltura_Client_SessionService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	/**
+	 * @return string
+	 */
 	function impersonate($secret, $impersonatedPartnerId, $userId = "", $type = 0, $partnerId = null, $expiry = 86400, $privileges = null)
 	{
 		$kparams = array();
@@ -85,6 +94,9 @@ class Kaltura_Client_SessionService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	/**
+	 * @return Kaltura_Client_Type_SessionInfo
+	 */
 	function impersonateByKs($session, $type = null, $expiry = null, $privileges = null)
 	{
 		$kparams = array();
@@ -103,6 +115,9 @@ class Kaltura_Client_SessionService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	/**
+	 * @return string
+	 */
 	function start($secret, $userId = "", $type = 0, $partnerId = null, $expiry = 86400, $privileges = null)
 	{
 		$kparams = array();
@@ -122,6 +137,9 @@ class Kaltura_Client_SessionService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	/**
+	 * @return Kaltura_Client_Type_StartWidgetSessionResponse
+	 */
 	function startWidgetSession($widgetId, $expiry = 86400)
 	{
 		$kparams = array();

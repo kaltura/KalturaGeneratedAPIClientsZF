@@ -39,6 +39,9 @@ class Kaltura_Client_WidgetService extends Kaltura_Client_ServiceBase
 		parent::__construct($client);
 	}
 
+	/**
+	 * @return Kaltura_Client_Type_Widget
+	 */
 	function add(Kaltura_Client_Type_Widget $widget)
 	{
 		$kparams = array();
@@ -54,6 +57,9 @@ class Kaltura_Client_WidgetService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	/**
+	 * @return Kaltura_Client_Type_Widget
+	 */
 	function cloneAction(Kaltura_Client_Type_Widget $widget)
 	{
 		$kparams = array();
@@ -69,6 +75,9 @@ class Kaltura_Client_WidgetService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	/**
+	 * @return Kaltura_Client_Type_Widget
+	 */
 	function get($id)
 	{
 		$kparams = array();
@@ -84,6 +93,9 @@ class Kaltura_Client_WidgetService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	/**
+	 * @return Kaltura_Client_Type_WidgetListResponse
+	 */
 	function listAction(Kaltura_Client_Type_WidgetFilter $filter = null, Kaltura_Client_Type_FilterPager $pager = null)
 	{
 		$kparams = array();
@@ -102,6 +114,9 @@ class Kaltura_Client_WidgetService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	/**
+	 * @return Kaltura_Client_Type_Widget
+	 */
 	function update($id, Kaltura_Client_Type_Widget $widget)
 	{
 		$kparams = array();

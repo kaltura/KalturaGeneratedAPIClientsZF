@@ -39,6 +39,9 @@ class Kaltura_Client_Caption_CaptionParamsService extends Kaltura_Client_Service
 		parent::__construct($client);
 	}
 
+	/**
+	 * @return Kaltura_Client_Caption_Type_CaptionParams
+	 */
 	function add(Kaltura_Client_Caption_Type_CaptionParams $captionParams)
 	{
 		$kparams = array();
@@ -54,6 +57,9 @@ class Kaltura_Client_Caption_CaptionParamsService extends Kaltura_Client_Service
 		return $resultObject;
 	}
 
+	/**
+	 * @return 
+	 */
 	function delete($id)
 	{
 		$kparams = array();
@@ -66,6 +72,9 @@ class Kaltura_Client_Caption_CaptionParamsService extends Kaltura_Client_Service
 		$this->client->checkIfError($resultXmlObject->result);
 	}
 
+	/**
+	 * @return Kaltura_Client_Caption_Type_CaptionParams
+	 */
 	function get($id)
 	{
 		$kparams = array();
@@ -81,6 +90,9 @@ class Kaltura_Client_Caption_CaptionParamsService extends Kaltura_Client_Service
 		return $resultObject;
 	}
 
+	/**
+	 * @return Kaltura_Client_Caption_Type_CaptionParamsListResponse
+	 */
 	function listAction(Kaltura_Client_Caption_Type_CaptionParamsFilter $filter = null, Kaltura_Client_Type_FilterPager $pager = null)
 	{
 		$kparams = array();
@@ -99,6 +111,9 @@ class Kaltura_Client_Caption_CaptionParamsService extends Kaltura_Client_Service
 		return $resultObject;
 	}
 
+	/**
+	 * @return Kaltura_Client_Caption_Type_CaptionParams
+	 */
 	function update($id, Kaltura_Client_Caption_Type_CaptionParams $captionParams)
 	{
 		$kparams = array();

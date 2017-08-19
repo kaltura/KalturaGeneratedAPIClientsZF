@@ -39,6 +39,9 @@ class Kaltura_Client_PermissionItemService extends Kaltura_Client_ServiceBase
 		parent::__construct($client);
 	}
 
+	/**
+	 * @return Kaltura_Client_Type_PermissionItem
+	 */
 	function add(Kaltura_Client_Type_PermissionItem $permissionItem)
 	{
 		$kparams = array();
@@ -54,6 +57,9 @@ class Kaltura_Client_PermissionItemService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	/**
+	 * @return Kaltura_Client_Type_PermissionItem
+	 */
 	function delete($permissionItemId)
 	{
 		$kparams = array();
@@ -69,6 +75,9 @@ class Kaltura_Client_PermissionItemService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	/**
+	 * @return Kaltura_Client_Type_PermissionItem
+	 */
 	function get($permissionItemId)
 	{
 		$kparams = array();
@@ -84,6 +93,9 @@ class Kaltura_Client_PermissionItemService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	/**
+	 * @return Kaltura_Client_Type_PermissionItemListResponse
+	 */
 	function listAction(Kaltura_Client_Type_PermissionItemFilter $filter = null, Kaltura_Client_Type_FilterPager $pager = null)
 	{
 		$kparams = array();
@@ -102,6 +114,9 @@ class Kaltura_Client_PermissionItemService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	/**
+	 * @return Kaltura_Client_Type_PermissionItem
+	 */
 	function update($permissionItemId, Kaltura_Client_Type_PermissionItem $permissionItem)
 	{
 		$kparams = array();

@@ -39,6 +39,9 @@ class Kaltura_Client_ContentDistribution_DistributionProviderService extends Kal
 		parent::__construct($client);
 	}
 
+	/**
+	 * @return Kaltura_Client_ContentDistribution_Type_DistributionProviderListResponse
+	 */
 	function listAction(Kaltura_Client_ContentDistribution_Type_DistributionProviderFilter $filter = null, Kaltura_Client_Type_FilterPager $pager = null)
 	{
 		$kparams = array();

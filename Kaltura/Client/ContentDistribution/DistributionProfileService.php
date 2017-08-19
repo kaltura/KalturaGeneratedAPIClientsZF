@@ -39,6 +39,9 @@ class Kaltura_Client_ContentDistribution_DistributionProfileService extends Kalt
 		parent::__construct($client);
 	}
 
+	/**
+	 * @return Kaltura_Client_ContentDistribution_Type_DistributionProfile
+	 */
 	function add(Kaltura_Client_ContentDistribution_Type_DistributionProfile $distributionProfile)
 	{
 		$kparams = array();
@@ -54,6 +57,9 @@ class Kaltura_Client_ContentDistribution_DistributionProfileService extends Kalt
 		return $resultObject;
 	}
 
+	/**
+	 * @return 
+	 */
 	function delete($id)
 	{
 		$kparams = array();
@@ -66,6 +72,9 @@ class Kaltura_Client_ContentDistribution_DistributionProfileService extends Kalt
 		$this->client->checkIfError($resultXmlObject->result);
 	}
 
+	/**
+	 * @return Kaltura_Client_ContentDistribution_Type_DistributionProfile
+	 */
 	function get($id)
 	{
 		$kparams = array();
@@ -81,6 +90,9 @@ class Kaltura_Client_ContentDistribution_DistributionProfileService extends Kalt
 		return $resultObject;
 	}
 
+	/**
+	 * @return Kaltura_Client_ContentDistribution_Type_DistributionProfileListResponse
+	 */
 	function listAction(Kaltura_Client_ContentDistribution_Type_DistributionProfileFilter $filter = null, Kaltura_Client_Type_FilterPager $pager = null)
 	{
 		$kparams = array();
@@ -99,6 +111,9 @@ class Kaltura_Client_ContentDistribution_DistributionProfileService extends Kalt
 		return $resultObject;
 	}
 
+	/**
+	 * @return Kaltura_Client_ContentDistribution_Type_DistributionProfileListResponse
+	 */
 	function listByPartner(Kaltura_Client_Type_PartnerFilter $filter = null, Kaltura_Client_Type_FilterPager $pager = null)
 	{
 		$kparams = array();
@@ -117,6 +132,9 @@ class Kaltura_Client_ContentDistribution_DistributionProfileService extends Kalt
 		return $resultObject;
 	}
 
+	/**
+	 * @return Kaltura_Client_ContentDistribution_Type_DistributionProfile
+	 */
 	function update($id, Kaltura_Client_ContentDistribution_Type_DistributionProfile $distributionProfile)
 	{
 		$kparams = array();
@@ -133,6 +151,9 @@ class Kaltura_Client_ContentDistribution_DistributionProfileService extends Kalt
 		return $resultObject;
 	}
 
+	/**
+	 * @return Kaltura_Client_ContentDistribution_Type_DistributionProfile
+	 */
 	function updateStatus($id, $status)
 	{
 		$kparams = array();

@@ -39,6 +39,9 @@ class Kaltura_Client_UserService extends Kaltura_Client_ServiceBase
 		parent::__construct($client);
 	}
 
+	/**
+	 * @return Kaltura_Client_Type_User
+	 */
 	function add(Kaltura_Client_Type_User $user)
 	{
 		$kparams = array();
@@ -54,6 +57,9 @@ class Kaltura_Client_UserService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	/**
+	 * @return Kaltura_Client_Type_BulkUpload
+	 */
 	function addFromBulkUpload($fileData, Kaltura_Client_Type_BulkUploadJobData $bulkUploadData = null, Kaltura_Client_Type_BulkUploadUserData $bulkUploadUserData = null)
 	{
 		$kparams = array();
@@ -74,6 +80,9 @@ class Kaltura_Client_UserService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	/**
+	 * @return bool
+	 */
 	function checkLoginDataExists(Kaltura_Client_Type_UserLoginDataFilter $filter)
 	{
 		$kparams = array();
@@ -88,6 +97,9 @@ class Kaltura_Client_UserService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	/**
+	 * @return Kaltura_Client_Type_User
+	 */
 	function delete($userId)
 	{
 		$kparams = array();
@@ -103,6 +115,9 @@ class Kaltura_Client_UserService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	/**
+	 * @return Kaltura_Client_Type_User
+	 */
 	function disableLogin($userId = null, $loginId = null)
 	{
 		$kparams = array();
@@ -119,6 +134,9 @@ class Kaltura_Client_UserService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	/**
+	 * @return Kaltura_Client_Type_User
+	 */
 	function enableLogin($userId, $loginId, $password = null)
 	{
 		$kparams = array();
@@ -136,6 +154,9 @@ class Kaltura_Client_UserService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	/**
+	 * @return Kaltura_Client_Type_User
+	 */
 	function get($userId = null)
 	{
 		$kparams = array();
@@ -151,6 +172,9 @@ class Kaltura_Client_UserService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	/**
+	 * @return Kaltura_Client_Type_User
+	 */
 	function getByLoginId($loginId)
 	{
 		$kparams = array();
@@ -166,6 +190,9 @@ class Kaltura_Client_UserService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	/**
+	 * @return string
+	 */
 	function index($id, $shouldUpdate = true)
 	{
 		$kparams = array();
@@ -181,6 +208,9 @@ class Kaltura_Client_UserService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	/**
+	 * @return Kaltura_Client_Type_UserListResponse
+	 */
 	function listAction(Kaltura_Client_Type_UserFilter $filter = null, Kaltura_Client_Type_FilterPager $pager = null)
 	{
 		$kparams = array();
@@ -199,6 +229,9 @@ class Kaltura_Client_UserService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	/**
+	 * @return string
+	 */
 	function login($partnerId, $userId, $password, $expiry = 86400, $privileges = "*")
 	{
 		$kparams = array();
@@ -217,6 +250,9 @@ class Kaltura_Client_UserService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	/**
+	 * @return string
+	 */
 	function loginByLoginId($loginId, $password, $partnerId = null, $expiry = 86400, $privileges = "*", $otp = null)
 	{
 		$kparams = array();
@@ -236,6 +272,9 @@ class Kaltura_Client_UserService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	/**
+	 * @return 
+	 */
 	function notifyBan($userId)
 	{
 		$kparams = array();
@@ -248,6 +287,9 @@ class Kaltura_Client_UserService extends Kaltura_Client_ServiceBase
 		$this->client->checkIfError($resultXmlObject->result);
 	}
 
+	/**
+	 * @return 
+	 */
 	function resetPassword($email)
 	{
 		$kparams = array();
@@ -260,6 +302,9 @@ class Kaltura_Client_UserService extends Kaltura_Client_ServiceBase
 		$this->client->checkIfError($resultXmlObject->result);
 	}
 
+	/**
+	 * @return 
+	 */
 	function setInitialPassword($hashKey, $newPassword)
 	{
 		$kparams = array();
@@ -273,6 +318,9 @@ class Kaltura_Client_UserService extends Kaltura_Client_ServiceBase
 		$this->client->checkIfError($resultXmlObject->result);
 	}
 
+	/**
+	 * @return Kaltura_Client_Type_User
+	 */
 	function update($userId, Kaltura_Client_Type_User $user)
 	{
 		$kparams = array();
@@ -289,6 +337,9 @@ class Kaltura_Client_UserService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	/**
+	 * @return 
+	 */
 	function updateLoginData($oldLoginId, $password, $newLoginId = "", $newPassword = "", $newFirstName = null, $newLastName = null)
 	{
 		$kparams = array();

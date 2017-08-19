@@ -39,6 +39,9 @@ class Kaltura_Client_ThumbAssetService extends Kaltura_Client_ServiceBase
 		parent::__construct($client);
 	}
 
+	/**
+	 * @return Kaltura_Client_Type_ThumbAsset
+	 */
 	function add($entryId, Kaltura_Client_Type_ThumbAsset $thumbAsset)
 	{
 		$kparams = array();
@@ -55,6 +58,9 @@ class Kaltura_Client_ThumbAssetService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	/**
+	 * @return Kaltura_Client_Type_ThumbAsset
+	 */
 	function addFromImage($entryId, $fileData)
 	{
 		$kparams = array();
@@ -72,6 +78,9 @@ class Kaltura_Client_ThumbAssetService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	/**
+	 * @return Kaltura_Client_Type_ThumbAsset
+	 */
 	function addFromUrl($entryId, $url)
 	{
 		$kparams = array();
@@ -88,6 +97,9 @@ class Kaltura_Client_ThumbAssetService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	/**
+	 * @return 
+	 */
 	function delete($thumbAssetId)
 	{
 		$kparams = array();
@@ -100,6 +112,9 @@ class Kaltura_Client_ThumbAssetService extends Kaltura_Client_ServiceBase
 		$this->client->checkIfError($resultXmlObject->result);
 	}
 
+	/**
+	 * @return Kaltura_Client_Type_FlavorAsset
+	 */
 	function export($assetId, $storageProfileId)
 	{
 		$kparams = array();
@@ -116,6 +131,9 @@ class Kaltura_Client_ThumbAssetService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	/**
+	 * @return Kaltura_Client_Type_ThumbAsset
+	 */
 	function generate($entryId, Kaltura_Client_Type_ThumbParams $thumbParams, $sourceAssetId = null)
 	{
 		$kparams = array();
@@ -133,6 +151,9 @@ class Kaltura_Client_ThumbAssetService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	/**
+	 * @return Kaltura_Client_Type_ThumbAsset
+	 */
 	function generateByEntryId($entryId, $destThumbParamsId)
 	{
 		$kparams = array();
@@ -149,6 +170,9 @@ class Kaltura_Client_ThumbAssetService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	/**
+	 * @return Kaltura_Client_Type_ThumbAsset
+	 */
 	function get($thumbAssetId)
 	{
 		$kparams = array();
@@ -164,6 +188,9 @@ class Kaltura_Client_ThumbAssetService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	/**
+	 * @return array
+	 */
 	function getByEntryId($entryId)
 	{
 		$kparams = array();
@@ -181,6 +208,9 @@ class Kaltura_Client_ThumbAssetService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	/**
+	 * @return Kaltura_Client_Type_RemotePathListResponse
+	 */
 	function getRemotePaths($id)
 	{
 		$kparams = array();
@@ -196,6 +226,9 @@ class Kaltura_Client_ThumbAssetService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	/**
+	 * @return string
+	 */
 	function getUrl($id, $storageId = null, Kaltura_Client_Type_ThumbParams $thumbParams = null)
 	{
 		$kparams = array();
@@ -213,6 +246,9 @@ class Kaltura_Client_ThumbAssetService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	/**
+	 * @return Kaltura_Client_Type_ThumbAssetListResponse
+	 */
 	function listAction(Kaltura_Client_Type_AssetFilter $filter = null, Kaltura_Client_Type_FilterPager $pager = null)
 	{
 		$kparams = array();
@@ -231,6 +267,9 @@ class Kaltura_Client_ThumbAssetService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	/**
+	 * @return Kaltura_Client_Type_ThumbAsset
+	 */
 	function regenerate($thumbAssetId)
 	{
 		$kparams = array();
@@ -246,6 +285,9 @@ class Kaltura_Client_ThumbAssetService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	/**
+	 * @return file
+	 */
 	function serve($thumbAssetId, $version = null, Kaltura_Client_Type_ThumbParams $thumbParams = null, Kaltura_Client_Type_ThumbnailServeOptions $options = null)
 	{
 		if ($this->client->isMultiRequest())
@@ -263,6 +305,9 @@ class Kaltura_Client_ThumbAssetService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	/**
+	 * @return file
+	 */
 	function serveByEntryId($entryId, $thumbParamId = null)
 	{
 		if ($this->client->isMultiRequest())
@@ -276,6 +321,9 @@ class Kaltura_Client_ThumbAssetService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	/**
+	 * @return 
+	 */
 	function setAsDefault($thumbAssetId)
 	{
 		$kparams = array();
@@ -288,6 +336,9 @@ class Kaltura_Client_ThumbAssetService extends Kaltura_Client_ServiceBase
 		$this->client->checkIfError($resultXmlObject->result);
 	}
 
+	/**
+	 * @return Kaltura_Client_Type_ThumbAsset
+	 */
 	function setContent($id, Kaltura_Client_Type_ContentResource $contentResource)
 	{
 		$kparams = array();
@@ -304,6 +355,9 @@ class Kaltura_Client_ThumbAssetService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	/**
+	 * @return Kaltura_Client_Type_ThumbAsset
+	 */
 	function update($id, Kaltura_Client_Type_ThumbAsset $thumbAsset)
 	{
 		$kparams = array();

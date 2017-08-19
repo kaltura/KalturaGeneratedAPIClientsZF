@@ -39,6 +39,9 @@ class Kaltura_Client_Document_DocumentsService extends Kaltura_Client_ServiceBas
 		parent::__construct($client);
 	}
 
+	/**
+	 * @return Kaltura_Client_Document_Type_DocumentEntry
+	 */
 	function addFromEntry($sourceEntryId, Kaltura_Client_Document_Type_DocumentEntry $documentEntry = null, $sourceFlavorParamsId = null)
 	{
 		$kparams = array();
@@ -57,6 +60,9 @@ class Kaltura_Client_Document_DocumentsService extends Kaltura_Client_ServiceBas
 		return $resultObject;
 	}
 
+	/**
+	 * @return Kaltura_Client_Document_Type_DocumentEntry
+	 */
 	function addFromFlavorAsset($sourceFlavorAssetId, Kaltura_Client_Document_Type_DocumentEntry $documentEntry = null)
 	{
 		$kparams = array();
@@ -74,6 +80,9 @@ class Kaltura_Client_Document_DocumentsService extends Kaltura_Client_ServiceBas
 		return $resultObject;
 	}
 
+	/**
+	 * @return Kaltura_Client_Document_Type_DocumentEntry
+	 */
 	function addFromUploadedFile(Kaltura_Client_Document_Type_DocumentEntry $documentEntry, $uploadTokenId)
 	{
 		$kparams = array();
@@ -90,6 +99,9 @@ class Kaltura_Client_Document_DocumentsService extends Kaltura_Client_ServiceBas
 		return $resultObject;
 	}
 
+	/**
+	 * @return Kaltura_Client_Document_Type_DocumentEntry
+	 */
 	function approveReplace($entryId)
 	{
 		$kparams = array();
@@ -105,6 +117,9 @@ class Kaltura_Client_Document_DocumentsService extends Kaltura_Client_ServiceBas
 		return $resultObject;
 	}
 
+	/**
+	 * @return Kaltura_Client_Document_Type_DocumentEntry
+	 */
 	function cancelReplace($entryId)
 	{
 		$kparams = array();
@@ -120,6 +135,9 @@ class Kaltura_Client_Document_DocumentsService extends Kaltura_Client_ServiceBas
 		return $resultObject;
 	}
 
+	/**
+	 * @return bigint
+	 */
 	function convert($entryId, $conversionProfileId = null, array $dynamicConversionAttributes = null)
 	{
 		$kparams = array();
@@ -140,6 +158,9 @@ class Kaltura_Client_Document_DocumentsService extends Kaltura_Client_ServiceBas
 		return $resultObject;
 	}
 
+	/**
+	 * @return string
+	 */
 	function convertPptToSwf($entryId)
 	{
 		$kparams = array();
@@ -154,6 +175,9 @@ class Kaltura_Client_Document_DocumentsService extends Kaltura_Client_ServiceBas
 		return $resultObject;
 	}
 
+	/**
+	 * @return 
+	 */
 	function delete($entryId)
 	{
 		$kparams = array();
@@ -166,6 +190,9 @@ class Kaltura_Client_Document_DocumentsService extends Kaltura_Client_ServiceBas
 		$this->client->checkIfError($resultXmlObject->result);
 	}
 
+	/**
+	 * @return Kaltura_Client_Document_Type_DocumentEntry
+	 */
 	function get($entryId, $version = -1)
 	{
 		$kparams = array();
@@ -182,6 +209,9 @@ class Kaltura_Client_Document_DocumentsService extends Kaltura_Client_ServiceBas
 		return $resultObject;
 	}
 
+	/**
+	 * @return Kaltura_Client_Document_Type_DocumentListResponse
+	 */
 	function listAction(Kaltura_Client_Document_Type_DocumentEntryFilter $filter = null, Kaltura_Client_Type_FilterPager $pager = null)
 	{
 		$kparams = array();
@@ -200,6 +230,9 @@ class Kaltura_Client_Document_DocumentsService extends Kaltura_Client_ServiceBas
 		return $resultObject;
 	}
 
+	/**
+	 * @return file
+	 */
 	function serve($entryId, $flavorAssetId = null, $forceProxy = false)
 	{
 		if ($this->client->isMultiRequest())
@@ -214,6 +247,9 @@ class Kaltura_Client_Document_DocumentsService extends Kaltura_Client_ServiceBas
 		return $resultObject;
 	}
 
+	/**
+	 * @return file
+	 */
 	function serveByFlavorParamsId($entryId, $flavorParamsId = null, $forceProxy = false)
 	{
 		if ($this->client->isMultiRequest())
@@ -228,6 +264,9 @@ class Kaltura_Client_Document_DocumentsService extends Kaltura_Client_ServiceBas
 		return $resultObject;
 	}
 
+	/**
+	 * @return Kaltura_Client_Document_Type_DocumentEntry
+	 */
 	function update($entryId, Kaltura_Client_Document_Type_DocumentEntry $documentEntry)
 	{
 		$kparams = array();
@@ -244,6 +283,9 @@ class Kaltura_Client_Document_DocumentsService extends Kaltura_Client_ServiceBas
 		return $resultObject;
 	}
 
+	/**
+	 * @return Kaltura_Client_Document_Type_DocumentEntry
+	 */
 	function updateContent($entryId, Kaltura_Client_Type_Resource $resource, $conversionProfileId = null)
 	{
 		$kparams = array();
@@ -261,6 +303,9 @@ class Kaltura_Client_Document_DocumentsService extends Kaltura_Client_ServiceBas
 		return $resultObject;
 	}
 
+	/**
+	 * @return string
+	 */
 	function upload($fileData)
 	{
 		$kparams = array();

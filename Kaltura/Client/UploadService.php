@@ -39,6 +39,9 @@ class Kaltura_Client_UploadService extends Kaltura_Client_ServiceBase
 		parent::__construct($client);
 	}
 
+	/**
+	 * @return Kaltura_Client_Type_UploadResponse
+	 */
 	function getUploadedFileTokenByFileName($fileName)
 	{
 		$kparams = array();
@@ -54,6 +57,9 @@ class Kaltura_Client_UploadService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	/**
+	 * @return string
+	 */
 	function upload($fileData)
 	{
 		$kparams = array();

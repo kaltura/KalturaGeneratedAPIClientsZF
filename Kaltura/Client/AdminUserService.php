@@ -39,6 +39,9 @@ class Kaltura_Client_AdminUserService extends Kaltura_Client_ServiceBase
 		parent::__construct($client);
 	}
 
+	/**
+	 * @return string
+	 */
 	function login($email, $password, $partnerId = null)
 	{
 		$kparams = array();
@@ -55,6 +58,9 @@ class Kaltura_Client_AdminUserService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	/**
+	 * @return 
+	 */
 	function resetPassword($email)
 	{
 		$kparams = array();
@@ -67,6 +73,9 @@ class Kaltura_Client_AdminUserService extends Kaltura_Client_ServiceBase
 		$this->client->checkIfError($resultXmlObject->result);
 	}
 
+	/**
+	 * @return 
+	 */
 	function setInitialPassword($hashKey, $newPassword)
 	{
 		$kparams = array();
@@ -80,6 +89,9 @@ class Kaltura_Client_AdminUserService extends Kaltura_Client_ServiceBase
 		$this->client->checkIfError($resultXmlObject->result);
 	}
 
+	/**
+	 * @return Kaltura_Client_Type_AdminUser
+	 */
 	function updatePassword($email, $password, $newEmail = "", $newPassword = "")
 	{
 		$kparams = array();

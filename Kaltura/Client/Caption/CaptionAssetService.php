@@ -39,6 +39,9 @@ class Kaltura_Client_Caption_CaptionAssetService extends Kaltura_Client_ServiceB
 		parent::__construct($client);
 	}
 
+	/**
+	 * @return Kaltura_Client_Caption_Type_CaptionAsset
+	 */
 	function add($entryId, Kaltura_Client_Caption_Type_CaptionAsset $captionAsset)
 	{
 		$kparams = array();
@@ -55,6 +58,9 @@ class Kaltura_Client_Caption_CaptionAssetService extends Kaltura_Client_ServiceB
 		return $resultObject;
 	}
 
+	/**
+	 * @return 
+	 */
 	function delete($captionAssetId)
 	{
 		$kparams = array();
@@ -67,6 +73,9 @@ class Kaltura_Client_Caption_CaptionAssetService extends Kaltura_Client_ServiceB
 		$this->client->checkIfError($resultXmlObject->result);
 	}
 
+	/**
+	 * @return Kaltura_Client_Caption_Type_CaptionAsset
+	 */
 	function get($captionAssetId)
 	{
 		$kparams = array();
@@ -82,6 +91,9 @@ class Kaltura_Client_Caption_CaptionAssetService extends Kaltura_Client_ServiceB
 		return $resultObject;
 	}
 
+	/**
+	 * @return Kaltura_Client_Type_RemotePathListResponse
+	 */
 	function getRemotePaths($id)
 	{
 		$kparams = array();
@@ -97,6 +109,9 @@ class Kaltura_Client_Caption_CaptionAssetService extends Kaltura_Client_ServiceB
 		return $resultObject;
 	}
 
+	/**
+	 * @return string
+	 */
 	function getUrl($id, $storageId = null)
 	{
 		$kparams = array();
@@ -112,6 +127,9 @@ class Kaltura_Client_Caption_CaptionAssetService extends Kaltura_Client_ServiceB
 		return $resultObject;
 	}
 
+	/**
+	 * @return Kaltura_Client_Caption_Type_CaptionAssetListResponse
+	 */
 	function listAction(Kaltura_Client_Type_AssetFilter $filter = null, Kaltura_Client_Type_FilterPager $pager = null)
 	{
 		$kparams = array();
@@ -130,6 +148,9 @@ class Kaltura_Client_Caption_CaptionAssetService extends Kaltura_Client_ServiceB
 		return $resultObject;
 	}
 
+	/**
+	 * @return file
+	 */
 	function serve($captionAssetId)
 	{
 		if ($this->client->isMultiRequest())
@@ -142,6 +163,9 @@ class Kaltura_Client_Caption_CaptionAssetService extends Kaltura_Client_ServiceB
 		return $resultObject;
 	}
 
+	/**
+	 * @return file
+	 */
 	function serveByEntryId($entryId, $captionParamId = null)
 	{
 		if ($this->client->isMultiRequest())
@@ -155,6 +179,9 @@ class Kaltura_Client_Caption_CaptionAssetService extends Kaltura_Client_ServiceB
 		return $resultObject;
 	}
 
+	/**
+	 * @return file
+	 */
 	function serveWebVTT($captionAssetId, $segmentDuration = 30, $segmentIndex = null, $localTimestamp = 10000)
 	{
 		if ($this->client->isMultiRequest())
@@ -170,6 +197,9 @@ class Kaltura_Client_Caption_CaptionAssetService extends Kaltura_Client_ServiceB
 		return $resultObject;
 	}
 
+	/**
+	 * @return 
+	 */
 	function setAsDefault($captionAssetId)
 	{
 		$kparams = array();
@@ -182,6 +212,9 @@ class Kaltura_Client_Caption_CaptionAssetService extends Kaltura_Client_ServiceB
 		$this->client->checkIfError($resultXmlObject->result);
 	}
 
+	/**
+	 * @return Kaltura_Client_Caption_Type_CaptionAsset
+	 */
 	function setContent($id, Kaltura_Client_Type_ContentResource $contentResource)
 	{
 		$kparams = array();
@@ -198,6 +231,9 @@ class Kaltura_Client_Caption_CaptionAssetService extends Kaltura_Client_ServiceB
 		return $resultObject;
 	}
 
+	/**
+	 * @return Kaltura_Client_Caption_Type_CaptionAsset
+	 */
 	function update($id, Kaltura_Client_Caption_Type_CaptionAsset $captionAsset)
 	{
 		$kparams = array();

@@ -39,6 +39,9 @@ class Kaltura_Client_SearchService extends Kaltura_Client_ServiceBase
 		parent::__construct($client);
 	}
 
+	/**
+	 * @return Kaltura_Client_Type_SearchAuthData
+	 */
 	function externalLogin($searchSource, $userName, $password)
 	{
 		$kparams = array();
@@ -56,6 +59,9 @@ class Kaltura_Client_SearchService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	/**
+	 * @return Kaltura_Client_Type_SearchResult
+	 */
 	function getMediaInfo(Kaltura_Client_Type_SearchResult $searchResult)
 	{
 		$kparams = array();
@@ -71,6 +77,9 @@ class Kaltura_Client_SearchService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	/**
+	 * @return Kaltura_Client_Type_SearchResultResponse
+	 */
 	function search(Kaltura_Client_Type_Search $search, Kaltura_Client_Type_FilterPager $pager = null)
 	{
 		$kparams = array();
@@ -88,6 +97,9 @@ class Kaltura_Client_SearchService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	/**
+	 * @return Kaltura_Client_Type_SearchResult
+	 */
 	function searchUrl($mediaType, $url)
 	{
 		$kparams = array();

@@ -39,6 +39,9 @@ class Kaltura_Client_CategoryUserService extends Kaltura_Client_ServiceBase
 		parent::__construct($client);
 	}
 
+	/**
+	 * @return Kaltura_Client_Type_CategoryUser
+	 */
 	function activate($categoryId, $userId)
 	{
 		$kparams = array();
@@ -55,6 +58,9 @@ class Kaltura_Client_CategoryUserService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	/**
+	 * @return Kaltura_Client_Type_CategoryUser
+	 */
 	function add(Kaltura_Client_Type_CategoryUser $categoryUser)
 	{
 		$kparams = array();
@@ -70,6 +76,9 @@ class Kaltura_Client_CategoryUserService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	/**
+	 * @return Kaltura_Client_Type_BulkUpload
+	 */
 	function addFromBulkUpload($fileData, Kaltura_Client_Type_BulkUploadJobData $bulkUploadData = null, Kaltura_Client_Type_BulkUploadCategoryUserData $bulkUploadCategoryUserData = null)
 	{
 		$kparams = array();
@@ -90,6 +99,9 @@ class Kaltura_Client_CategoryUserService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	/**
+	 * @return 
+	 */
 	function copyFromCategory($categoryId)
 	{
 		$kparams = array();
@@ -102,6 +114,9 @@ class Kaltura_Client_CategoryUserService extends Kaltura_Client_ServiceBase
 		$this->client->checkIfError($resultXmlObject->result);
 	}
 
+	/**
+	 * @return Kaltura_Client_Type_CategoryUser
+	 */
 	function deactivate($categoryId, $userId)
 	{
 		$kparams = array();
@@ -118,6 +133,9 @@ class Kaltura_Client_CategoryUserService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	/**
+	 * @return 
+	 */
 	function delete($categoryId, $userId)
 	{
 		$kparams = array();
@@ -131,6 +149,9 @@ class Kaltura_Client_CategoryUserService extends Kaltura_Client_ServiceBase
 		$this->client->checkIfError($resultXmlObject->result);
 	}
 
+	/**
+	 * @return Kaltura_Client_Type_CategoryUser
+	 */
 	function get($categoryId, $userId)
 	{
 		$kparams = array();
@@ -147,6 +168,9 @@ class Kaltura_Client_CategoryUserService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	/**
+	 * @return int
+	 */
 	function index($userId, $categoryId, $shouldUpdate = true)
 	{
 		$kparams = array();
@@ -163,6 +187,9 @@ class Kaltura_Client_CategoryUserService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	/**
+	 * @return Kaltura_Client_Type_CategoryUserListResponse
+	 */
 	function listAction(Kaltura_Client_Type_CategoryUserFilter $filter = null, Kaltura_Client_Type_FilterPager $pager = null)
 	{
 		$kparams = array();
@@ -181,6 +208,9 @@ class Kaltura_Client_CategoryUserService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	/**
+	 * @return Kaltura_Client_Type_CategoryUser
+	 */
 	function update($categoryId, $userId, Kaltura_Client_Type_CategoryUser $categoryUser, $override = false)
 	{
 		$kparams = array();

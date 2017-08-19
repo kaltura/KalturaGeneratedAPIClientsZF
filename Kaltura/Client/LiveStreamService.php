@@ -39,6 +39,9 @@ class Kaltura_Client_LiveStreamService extends Kaltura_Client_ServiceBase
 		parent::__construct($client);
 	}
 
+	/**
+	 * @return Kaltura_Client_Type_LiveStreamEntry
+	 */
 	function add(Kaltura_Client_Type_LiveStreamEntry $liveStreamEntry, $sourceType = null)
 	{
 		$kparams = array();
@@ -55,6 +58,9 @@ class Kaltura_Client_LiveStreamService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	/**
+	 * @return Kaltura_Client_Type_LiveStreamEntry
+	 */
 	function addLiveStreamPushPublishConfiguration($entryId, $protocol, $url = null, Kaltura_Client_Type_LiveStreamConfiguration $liveStreamConfiguration = null)
 	{
 		$kparams = array();
@@ -74,6 +80,9 @@ class Kaltura_Client_LiveStreamService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	/**
+	 * @return Kaltura_Client_Type_LiveEntry
+	 */
 	function appendRecording($entryId, $assetId, $mediaServerIndex, Kaltura_Client_Type_DataCenterContentResource $resource, $duration, $isLastChunk = false)
 	{
 		$kparams = array();
@@ -94,6 +103,9 @@ class Kaltura_Client_LiveStreamService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	/**
+	 * @return Kaltura_Client_Type_LiveStreamEntry
+	 */
 	function authenticate($entryId, $token, $hostname = null, $mediaServerIndex = null, $applicationName = null)
 	{
 		$kparams = array();
@@ -113,6 +125,9 @@ class Kaltura_Client_LiveStreamService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	/**
+	 * @return 
+	 */
 	function createPeriodicSyncPoints($entryId, $interval, $duration)
 	{
 		$kparams = array();
@@ -127,6 +142,9 @@ class Kaltura_Client_LiveStreamService extends Kaltura_Client_ServiceBase
 		$this->client->checkIfError($resultXmlObject->result);
 	}
 
+	/**
+	 * @return Kaltura_Client_Type_LiveEntry
+	 */
 	function createRecordedEntry($entryId, $mediaServerIndex, $liveEntryStatus)
 	{
 		$kparams = array();
@@ -144,6 +162,9 @@ class Kaltura_Client_LiveStreamService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	/**
+	 * @return 
+	 */
 	function delete($entryId)
 	{
 		$kparams = array();
@@ -156,6 +177,9 @@ class Kaltura_Client_LiveStreamService extends Kaltura_Client_ServiceBase
 		$this->client->checkIfError($resultXmlObject->result);
 	}
 
+	/**
+	 * @return Kaltura_Client_Type_LiveStreamEntry
+	 */
 	function get($entryId, $version = -1)
 	{
 		$kparams = array();
@@ -172,6 +196,9 @@ class Kaltura_Client_LiveStreamService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	/**
+	 * @return bool
+	 */
 	function isLive($id, $protocol)
 	{
 		$kparams = array();
@@ -187,6 +214,9 @@ class Kaltura_Client_LiveStreamService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	/**
+	 * @return Kaltura_Client_Type_LiveStreamListResponse
+	 */
 	function listAction(Kaltura_Client_Type_LiveStreamEntryFilter $filter = null, Kaltura_Client_Type_FilterPager $pager = null)
 	{
 		$kparams = array();
@@ -205,6 +235,9 @@ class Kaltura_Client_LiveStreamService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	/**
+	 * @return 
+	 */
 	function regenerateStreamToken($entryId)
 	{
 		$kparams = array();
@@ -217,6 +250,9 @@ class Kaltura_Client_LiveStreamService extends Kaltura_Client_ServiceBase
 		$this->client->checkIfError($resultXmlObject->result);
 	}
 
+	/**
+	 * @return Kaltura_Client_Type_LiveEntry
+	 */
 	function registerMediaServer($entryId, $hostname, $mediaServerIndex, $applicationName = null, $liveEntryStatus = 1, $shouldCreateRecordedEntry = true)
 	{
 		$kparams = array();
@@ -237,6 +273,9 @@ class Kaltura_Client_LiveStreamService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	/**
+	 * @return Kaltura_Client_Type_LiveStreamEntry
+	 */
 	function removeLiveStreamPushPublishConfiguration($entryId, $protocol)
 	{
 		$kparams = array();
@@ -253,6 +292,9 @@ class Kaltura_Client_LiveStreamService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	/**
+	 * @return Kaltura_Client_Type_LiveEntry
+	 */
 	function setRecordedContent($entryId, $mediaServerIndex, Kaltura_Client_Type_DataCenterContentResource $resource, $duration, $recordedEntryId = null, $flavorParamsId = null)
 	{
 		$kparams = array();
@@ -273,6 +315,9 @@ class Kaltura_Client_LiveStreamService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	/**
+	 * @return Kaltura_Client_Type_LiveEntry
+	 */
 	function unregisterMediaServer($entryId, $hostname, $mediaServerIndex)
 	{
 		$kparams = array();
@@ -290,6 +335,9 @@ class Kaltura_Client_LiveStreamService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	/**
+	 * @return Kaltura_Client_Type_LiveStreamEntry
+	 */
 	function update($entryId, Kaltura_Client_Type_LiveStreamEntry $liveStreamEntry)
 	{
 		$kparams = array();
@@ -306,6 +354,9 @@ class Kaltura_Client_LiveStreamService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	/**
+	 * @return Kaltura_Client_Type_LiveStreamEntry
+	 */
 	function updateOfflineThumbnailFromUrl($entryId, $url)
 	{
 		$kparams = array();
@@ -322,6 +373,9 @@ class Kaltura_Client_LiveStreamService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	/**
+	 * @return Kaltura_Client_Type_LiveStreamEntry
+	 */
 	function updateOfflineThumbnailJpeg($entryId, $fileData)
 	{
 		$kparams = array();
@@ -339,6 +393,9 @@ class Kaltura_Client_LiveStreamService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	/**
+	 * @return 
+	 */
 	function validateRegisteredMediaServers($entryId)
 	{
 		$kparams = array();

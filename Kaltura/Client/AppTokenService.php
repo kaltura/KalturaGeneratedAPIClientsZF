@@ -39,6 +39,9 @@ class Kaltura_Client_AppTokenService extends Kaltura_Client_ServiceBase
 		parent::__construct($client);
 	}
 
+	/**
+	 * @return Kaltura_Client_Type_AppToken
+	 */
 	function add(Kaltura_Client_Type_AppToken $appToken)
 	{
 		$kparams = array();
@@ -54,6 +57,9 @@ class Kaltura_Client_AppTokenService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	/**
+	 * @return 
+	 */
 	function delete($id)
 	{
 		$kparams = array();
@@ -66,6 +72,9 @@ class Kaltura_Client_AppTokenService extends Kaltura_Client_ServiceBase
 		$this->client->checkIfError($resultXmlObject->result);
 	}
 
+	/**
+	 * @return Kaltura_Client_Type_AppToken
+	 */
 	function get($id)
 	{
 		$kparams = array();
@@ -81,6 +90,9 @@ class Kaltura_Client_AppTokenService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	/**
+	 * @return Kaltura_Client_Type_AppTokenListResponse
+	 */
 	function listAction(Kaltura_Client_Type_AppTokenFilter $filter = null, Kaltura_Client_Type_FilterPager $pager = null)
 	{
 		$kparams = array();
@@ -99,6 +111,9 @@ class Kaltura_Client_AppTokenService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	/**
+	 * @return Kaltura_Client_Type_SessionInfo
+	 */
 	function startSession($id, $tokenHash, $userId = null, $type = null, $expiry = null)
 	{
 		$kparams = array();
@@ -118,6 +133,9 @@ class Kaltura_Client_AppTokenService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	/**
+	 * @return Kaltura_Client_Type_AppToken
+	 */
 	function update($id, Kaltura_Client_Type_AppToken $appToken)
 	{
 		$kparams = array();

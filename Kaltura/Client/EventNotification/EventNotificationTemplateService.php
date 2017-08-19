@@ -39,6 +39,9 @@ class Kaltura_Client_EventNotification_EventNotificationTemplateService extends 
 		parent::__construct($client);
 	}
 
+	/**
+	 * @return Kaltura_Client_EventNotification_Type_EventNotificationTemplate
+	 */
 	function add(Kaltura_Client_EventNotification_Type_EventNotificationTemplate $eventNotificationTemplate)
 	{
 		$kparams = array();
@@ -54,6 +57,9 @@ class Kaltura_Client_EventNotification_EventNotificationTemplateService extends 
 		return $resultObject;
 	}
 
+	/**
+	 * @return Kaltura_Client_EventNotification_Type_EventNotificationTemplate
+	 */
 	function cloneAction($id, Kaltura_Client_EventNotification_Type_EventNotificationTemplate $eventNotificationTemplate = null)
 	{
 		$kparams = array();
@@ -71,6 +77,9 @@ class Kaltura_Client_EventNotification_EventNotificationTemplateService extends 
 		return $resultObject;
 	}
 
+	/**
+	 * @return 
+	 */
 	function delete($id)
 	{
 		$kparams = array();
@@ -83,6 +92,9 @@ class Kaltura_Client_EventNotification_EventNotificationTemplateService extends 
 		$this->client->checkIfError($resultXmlObject->result);
 	}
 
+	/**
+	 * @return int
+	 */
 	function dispatch($id, Kaltura_Client_EventNotification_Type_EventNotificationScope $scope)
 	{
 		$kparams = array();
@@ -98,6 +110,9 @@ class Kaltura_Client_EventNotification_EventNotificationTemplateService extends 
 		return $resultObject;
 	}
 
+	/**
+	 * @return Kaltura_Client_EventNotification_Type_EventNotificationTemplate
+	 */
 	function get($id)
 	{
 		$kparams = array();
@@ -113,6 +128,9 @@ class Kaltura_Client_EventNotification_EventNotificationTemplateService extends 
 		return $resultObject;
 	}
 
+	/**
+	 * @return Kaltura_Client_EventNotification_Type_EventNotificationTemplateListResponse
+	 */
 	function listAction(Kaltura_Client_EventNotification_Type_EventNotificationTemplateFilter $filter = null, Kaltura_Client_Type_FilterPager $pager = null)
 	{
 		$kparams = array();
@@ -131,6 +149,9 @@ class Kaltura_Client_EventNotification_EventNotificationTemplateService extends 
 		return $resultObject;
 	}
 
+	/**
+	 * @return Kaltura_Client_EventNotification_Type_EventNotificationTemplateListResponse
+	 */
 	function listByPartner(Kaltura_Client_Type_PartnerFilter $filter = null, Kaltura_Client_Type_FilterPager $pager = null)
 	{
 		$kparams = array();
@@ -149,6 +170,9 @@ class Kaltura_Client_EventNotification_EventNotificationTemplateService extends 
 		return $resultObject;
 	}
 
+	/**
+	 * @return Kaltura_Client_EventNotification_Type_EventNotificationTemplateListResponse
+	 */
 	function listTemplates(Kaltura_Client_EventNotification_Type_EventNotificationTemplateFilter $filter = null, Kaltura_Client_Type_FilterPager $pager = null)
 	{
 		$kparams = array();
@@ -167,6 +191,9 @@ class Kaltura_Client_EventNotification_EventNotificationTemplateService extends 
 		return $resultObject;
 	}
 
+	/**
+	 * @return Kaltura_Client_EventNotification_Type_EventNotificationTemplate
+	 */
 	function update($id, Kaltura_Client_EventNotification_Type_EventNotificationTemplate $eventNotificationTemplate)
 	{
 		$kparams = array();
@@ -183,6 +210,9 @@ class Kaltura_Client_EventNotification_EventNotificationTemplateService extends 
 		return $resultObject;
 	}
 
+	/**
+	 * @return Kaltura_Client_EventNotification_Type_EventNotificationTemplate
+	 */
 	function updateStatus($id, $status)
 	{
 		$kparams = array();

@@ -39,6 +39,9 @@ class Kaltura_Client_AccessControlService extends Kaltura_Client_ServiceBase
 		parent::__construct($client);
 	}
 
+	/**
+	 * @return Kaltura_Client_Type_AccessControl
+	 */
 	function add(Kaltura_Client_Type_AccessControl $accessControl)
 	{
 		$kparams = array();
@@ -54,6 +57,9 @@ class Kaltura_Client_AccessControlService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	/**
+	 * @return 
+	 */
 	function delete($id)
 	{
 		$kparams = array();
@@ -66,6 +72,9 @@ class Kaltura_Client_AccessControlService extends Kaltura_Client_ServiceBase
 		$this->client->checkIfError($resultXmlObject->result);
 	}
 
+	/**
+	 * @return Kaltura_Client_Type_AccessControl
+	 */
 	function get($id)
 	{
 		$kparams = array();
@@ -81,6 +90,9 @@ class Kaltura_Client_AccessControlService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	/**
+	 * @return Kaltura_Client_Type_AccessControlListResponse
+	 */
 	function listAction(Kaltura_Client_Type_AccessControlFilter $filter = null, Kaltura_Client_Type_FilterPager $pager = null)
 	{
 		$kparams = array();
@@ -99,6 +111,9 @@ class Kaltura_Client_AccessControlService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	/**
+	 * @return Kaltura_Client_Type_AccessControl
+	 */
 	function update($id, Kaltura_Client_Type_AccessControl $accessControl)
 	{
 		$kparams = array();

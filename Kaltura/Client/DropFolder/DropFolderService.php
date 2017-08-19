@@ -39,6 +39,9 @@ class Kaltura_Client_DropFolder_DropFolderService extends Kaltura_Client_Service
 		parent::__construct($client);
 	}
 
+	/**
+	 * @return Kaltura_Client_DropFolder_Type_DropFolder
+	 */
 	function add(Kaltura_Client_DropFolder_Type_DropFolder $dropFolder)
 	{
 		$kparams = array();
@@ -54,6 +57,9 @@ class Kaltura_Client_DropFolder_DropFolderService extends Kaltura_Client_Service
 		return $resultObject;
 	}
 
+	/**
+	 * @return Kaltura_Client_DropFolder_Type_DropFolder
+	 */
 	function delete($dropFolderId)
 	{
 		$kparams = array();
@@ -69,6 +75,9 @@ class Kaltura_Client_DropFolder_DropFolderService extends Kaltura_Client_Service
 		return $resultObject;
 	}
 
+	/**
+	 * @return Kaltura_Client_DropFolder_Type_DropFolder
+	 */
 	function freeExclusiveDropFolder($dropFolderId, $status, $errorCode = null, $errorDescription = null)
 	{
 		$kparams = array();
@@ -87,6 +96,9 @@ class Kaltura_Client_DropFolder_DropFolderService extends Kaltura_Client_Service
 		return $resultObject;
 	}
 
+	/**
+	 * @return Kaltura_Client_DropFolder_Type_DropFolder
+	 */
 	function get($dropFolderId)
 	{
 		$kparams = array();
@@ -102,6 +114,9 @@ class Kaltura_Client_DropFolder_DropFolderService extends Kaltura_Client_Service
 		return $resultObject;
 	}
 
+	/**
+	 * @return Kaltura_Client_DropFolder_Type_DropFolder
+	 */
 	function getExclusiveDropFolder($tag, $maxTime)
 	{
 		$kparams = array();
@@ -118,6 +133,9 @@ class Kaltura_Client_DropFolder_DropFolderService extends Kaltura_Client_Service
 		return $resultObject;
 	}
 
+	/**
+	 * @return Kaltura_Client_DropFolder_Type_DropFolderListResponse
+	 */
 	function listAction(Kaltura_Client_DropFolder_Type_DropFolderFilter $filter = null, Kaltura_Client_Type_FilterPager $pager = null)
 	{
 		$kparams = array();
@@ -136,6 +154,9 @@ class Kaltura_Client_DropFolder_DropFolderService extends Kaltura_Client_Service
 		return $resultObject;
 	}
 
+	/**
+	 * @return Kaltura_Client_DropFolder_Type_DropFolder
+	 */
 	function update($dropFolderId, Kaltura_Client_DropFolder_Type_DropFolder $dropFolder)
 	{
 		$kparams = array();

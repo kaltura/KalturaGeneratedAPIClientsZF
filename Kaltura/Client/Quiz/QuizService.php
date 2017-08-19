@@ -39,6 +39,9 @@ class Kaltura_Client_Quiz_QuizService extends Kaltura_Client_ServiceBase
 		parent::__construct($client);
 	}
 
+	/**
+	 * @return Kaltura_Client_Quiz_Type_Quiz
+	 */
 	function add($entryId, Kaltura_Client_Quiz_Type_Quiz $quiz)
 	{
 		$kparams = array();
@@ -55,6 +58,9 @@ class Kaltura_Client_Quiz_QuizService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	/**
+	 * @return Kaltura_Client_Quiz_Type_Quiz
+	 */
 	function get($entryId)
 	{
 		$kparams = array();
@@ -70,6 +76,9 @@ class Kaltura_Client_Quiz_QuizService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	/**
+	 * @return string
+	 */
 	function getUrl($entryId, $quizOutputType)
 	{
 		$kparams = array();
@@ -85,6 +94,9 @@ class Kaltura_Client_Quiz_QuizService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	/**
+	 * @return Kaltura_Client_Quiz_Type_QuizListResponse
+	 */
 	function listAction(Kaltura_Client_Quiz_Type_QuizFilter $filter = null, Kaltura_Client_Type_FilterPager $pager = null)
 	{
 		$kparams = array();
@@ -103,6 +115,9 @@ class Kaltura_Client_Quiz_QuizService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	/**
+	 * @return file
+	 */
 	function serve($entryId, $quizOutputType)
 	{
 		if ($this->client->isMultiRequest())
@@ -116,6 +131,9 @@ class Kaltura_Client_Quiz_QuizService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	/**
+	 * @return Kaltura_Client_Quiz_Type_Quiz
+	 */
 	function update($entryId, Kaltura_Client_Quiz_Type_Quiz $quiz)
 	{
 		$kparams = array();

@@ -39,6 +39,9 @@ class Kaltura_Client_Schedule_ScheduleResourceService extends Kaltura_Client_Ser
 		parent::__construct($client);
 	}
 
+	/**
+	 * @return Kaltura_Client_Schedule_Type_ScheduleResource
+	 */
 	function add(Kaltura_Client_Schedule_Type_ScheduleResource $scheduleResource)
 	{
 		$kparams = array();
@@ -54,6 +57,9 @@ class Kaltura_Client_Schedule_ScheduleResourceService extends Kaltura_Client_Ser
 		return $resultObject;
 	}
 
+	/**
+	 * @return Kaltura_Client_Type_BulkUpload
+	 */
 	function addFromBulkUpload($fileData, Kaltura_Client_BulkUploadCsv_Type_BulkUploadCsvJobData $bulkUploadData = null)
 	{
 		$kparams = array();
@@ -72,6 +78,9 @@ class Kaltura_Client_Schedule_ScheduleResourceService extends Kaltura_Client_Ser
 		return $resultObject;
 	}
 
+	/**
+	 * @return Kaltura_Client_Schedule_Type_ScheduleResource
+	 */
 	function delete($scheduleResourceId)
 	{
 		$kparams = array();
@@ -87,6 +96,9 @@ class Kaltura_Client_Schedule_ScheduleResourceService extends Kaltura_Client_Ser
 		return $resultObject;
 	}
 
+	/**
+	 * @return Kaltura_Client_Schedule_Type_ScheduleResource
+	 */
 	function get($scheduleResourceId)
 	{
 		$kparams = array();
@@ -102,6 +114,9 @@ class Kaltura_Client_Schedule_ScheduleResourceService extends Kaltura_Client_Ser
 		return $resultObject;
 	}
 
+	/**
+	 * @return Kaltura_Client_Schedule_Type_ScheduleResourceListResponse
+	 */
 	function listAction(Kaltura_Client_Schedule_Type_ScheduleResourceFilter $filter = null, Kaltura_Client_Type_FilterPager $pager = null)
 	{
 		$kparams = array();
@@ -120,6 +135,9 @@ class Kaltura_Client_Schedule_ScheduleResourceService extends Kaltura_Client_Ser
 		return $resultObject;
 	}
 
+	/**
+	 * @return Kaltura_Client_Schedule_Type_ScheduleResource
+	 */
 	function update($scheduleResourceId, Kaltura_Client_Schedule_Type_ScheduleResource $scheduleResource)
 	{
 		$kparams = array();

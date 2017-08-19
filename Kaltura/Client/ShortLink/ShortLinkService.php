@@ -39,6 +39,9 @@ class Kaltura_Client_ShortLink_ShortLinkService extends Kaltura_Client_ServiceBa
 		parent::__construct($client);
 	}
 
+	/**
+	 * @return Kaltura_Client_ShortLink_Type_ShortLink
+	 */
 	function add(Kaltura_Client_ShortLink_Type_ShortLink $shortLink)
 	{
 		$kparams = array();
@@ -54,6 +57,9 @@ class Kaltura_Client_ShortLink_ShortLinkService extends Kaltura_Client_ServiceBa
 		return $resultObject;
 	}
 
+	/**
+	 * @return Kaltura_Client_ShortLink_Type_ShortLink
+	 */
 	function delete($id)
 	{
 		$kparams = array();
@@ -69,6 +75,9 @@ class Kaltura_Client_ShortLink_ShortLinkService extends Kaltura_Client_ServiceBa
 		return $resultObject;
 	}
 
+	/**
+	 * @return Kaltura_Client_ShortLink_Type_ShortLink
+	 */
 	function get($id)
 	{
 		$kparams = array();
@@ -84,6 +93,9 @@ class Kaltura_Client_ShortLink_ShortLinkService extends Kaltura_Client_ServiceBa
 		return $resultObject;
 	}
 
+	/**
+	 * @return file
+	 */
 	function gotoAction($id, $proxy = false)
 	{
 		if ($this->client->isMultiRequest())
@@ -97,6 +109,9 @@ class Kaltura_Client_ShortLink_ShortLinkService extends Kaltura_Client_ServiceBa
 		return $resultObject;
 	}
 
+	/**
+	 * @return Kaltura_Client_ShortLink_Type_ShortLinkListResponse
+	 */
 	function listAction(Kaltura_Client_ShortLink_Type_ShortLinkFilter $filter = null, Kaltura_Client_Type_FilterPager $pager = null)
 	{
 		$kparams = array();
@@ -115,6 +130,9 @@ class Kaltura_Client_ShortLink_ShortLinkService extends Kaltura_Client_ServiceBa
 		return $resultObject;
 	}
 
+	/**
+	 * @return Kaltura_Client_ShortLink_Type_ShortLink
+	 */
 	function update($id, Kaltura_Client_ShortLink_Type_ShortLink $shortLink)
 	{
 		$kparams = array();

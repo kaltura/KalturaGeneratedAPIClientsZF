@@ -39,6 +39,9 @@ class Kaltura_Client_ExternalMedia_ExternalMediaService extends Kaltura_Client_S
 		parent::__construct($client);
 	}
 
+	/**
+	 * @return Kaltura_Client_ExternalMedia_Type_ExternalMediaEntry
+	 */
 	function add(Kaltura_Client_ExternalMedia_Type_ExternalMediaEntry $entry)
 	{
 		$kparams = array();
@@ -54,6 +57,9 @@ class Kaltura_Client_ExternalMedia_ExternalMediaService extends Kaltura_Client_S
 		return $resultObject;
 	}
 
+	/**
+	 * @return int
+	 */
 	function count(Kaltura_Client_ExternalMedia_Type_ExternalMediaEntryFilter $filter = null)
 	{
 		$kparams = array();
@@ -69,6 +75,9 @@ class Kaltura_Client_ExternalMedia_ExternalMediaService extends Kaltura_Client_S
 		return $resultObject;
 	}
 
+	/**
+	 * @return 
+	 */
 	function delete($id)
 	{
 		$kparams = array();
@@ -81,6 +90,9 @@ class Kaltura_Client_ExternalMedia_ExternalMediaService extends Kaltura_Client_S
 		$this->client->checkIfError($resultXmlObject->result);
 	}
 
+	/**
+	 * @return Kaltura_Client_ExternalMedia_Type_ExternalMediaEntry
+	 */
 	function get($id)
 	{
 		$kparams = array();
@@ -96,6 +108,9 @@ class Kaltura_Client_ExternalMedia_ExternalMediaService extends Kaltura_Client_S
 		return $resultObject;
 	}
 
+	/**
+	 * @return Kaltura_Client_ExternalMedia_Type_ExternalMediaEntryListResponse
+	 */
 	function listAction(Kaltura_Client_ExternalMedia_Type_ExternalMediaEntryFilter $filter = null, Kaltura_Client_Type_FilterPager $pager = null)
 	{
 		$kparams = array();
@@ -114,6 +129,9 @@ class Kaltura_Client_ExternalMedia_ExternalMediaService extends Kaltura_Client_S
 		return $resultObject;
 	}
 
+	/**
+	 * @return Kaltura_Client_ExternalMedia_Type_ExternalMediaEntry
+	 */
 	function update($id, Kaltura_Client_ExternalMedia_Type_ExternalMediaEntry $entry)
 	{
 		$kparams = array();

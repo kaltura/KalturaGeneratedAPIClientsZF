@@ -39,6 +39,9 @@ class Kaltura_Client_AnalyticsService extends Kaltura_Client_ServiceBase
 		parent::__construct($client);
 	}
 
+	/**
+	 * @return Kaltura_Client_Type_ReportResponse
+	 */
 	function query(Kaltura_Client_Type_AnalyticsFilter $filter, Kaltura_Client_Type_FilterPager $pager = null)
 	{
 		$kparams = array();

@@ -39,6 +39,9 @@ class Kaltura_Client_ConversionProfileService extends Kaltura_Client_ServiceBase
 		parent::__construct($client);
 	}
 
+	/**
+	 * @return Kaltura_Client_Type_ConversionProfile
+	 */
 	function add(Kaltura_Client_Type_ConversionProfile $conversionProfile)
 	{
 		$kparams = array();
@@ -54,6 +57,9 @@ class Kaltura_Client_ConversionProfileService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	/**
+	 * @return 
+	 */
 	function delete($id)
 	{
 		$kparams = array();
@@ -66,6 +72,9 @@ class Kaltura_Client_ConversionProfileService extends Kaltura_Client_ServiceBase
 		$this->client->checkIfError($resultXmlObject->result);
 	}
 
+	/**
+	 * @return Kaltura_Client_Type_ConversionProfile
+	 */
 	function get($id)
 	{
 		$kparams = array();
@@ -81,6 +90,9 @@ class Kaltura_Client_ConversionProfileService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	/**
+	 * @return Kaltura_Client_Type_ConversionProfile
+	 */
 	function getDefault($type = null)
 	{
 		$kparams = array();
@@ -96,6 +108,9 @@ class Kaltura_Client_ConversionProfileService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	/**
+	 * @return Kaltura_Client_Type_ConversionProfileListResponse
+	 */
 	function listAction(Kaltura_Client_Type_ConversionProfileFilter $filter = null, Kaltura_Client_Type_FilterPager $pager = null)
 	{
 		$kparams = array();
@@ -114,6 +129,9 @@ class Kaltura_Client_ConversionProfileService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	/**
+	 * @return Kaltura_Client_Type_ConversionProfile
+	 */
 	function setAsDefault($id)
 	{
 		$kparams = array();
@@ -129,6 +147,9 @@ class Kaltura_Client_ConversionProfileService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	/**
+	 * @return Kaltura_Client_Type_ConversionProfile
+	 */
 	function update($id, Kaltura_Client_Type_ConversionProfile $conversionProfile)
 	{
 		$kparams = array();

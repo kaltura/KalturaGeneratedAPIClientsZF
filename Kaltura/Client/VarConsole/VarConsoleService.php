@@ -39,6 +39,9 @@ class Kaltura_Client_VarConsole_VarConsoleService extends Kaltura_Client_Service
 		parent::__construct($client);
 	}
 
+	/**
+	 * @return Kaltura_Client_VarConsole_Type_PartnerUsageListResponse
+	 */
 	function getPartnerUsage(Kaltura_Client_Type_PartnerFilter $partnerFilter = null, Kaltura_Client_Type_ReportInputFilter $usageFilter = null, Kaltura_Client_Type_FilterPager $pager = null)
 	{
 		$kparams = array();
@@ -59,6 +62,9 @@ class Kaltura_Client_VarConsole_VarConsoleService extends Kaltura_Client_Service
 		return $resultObject;
 	}
 
+	/**
+	 * @return 
+	 */
 	function updateStatus($id, $status)
 	{
 		$kparams = array();

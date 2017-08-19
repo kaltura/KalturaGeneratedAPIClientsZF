@@ -39,6 +39,9 @@ class Kaltura_Client_DataService extends Kaltura_Client_ServiceBase
 		parent::__construct($client);
 	}
 
+	/**
+	 * @return Kaltura_Client_Type_DataEntry
+	 */
 	function add(Kaltura_Client_Type_DataEntry $dataEntry)
 	{
 		$kparams = array();
@@ -54,6 +57,9 @@ class Kaltura_Client_DataService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	/**
+	 * @return string
+	 */
 	function addContent($entryId, Kaltura_Client_Type_GenericDataCenterContentResource $resource)
 	{
 		$kparams = array();
@@ -69,6 +75,9 @@ class Kaltura_Client_DataService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	/**
+	 * @return 
+	 */
 	function delete($entryId)
 	{
 		$kparams = array();
@@ -81,6 +90,9 @@ class Kaltura_Client_DataService extends Kaltura_Client_ServiceBase
 		$this->client->checkIfError($resultXmlObject->result);
 	}
 
+	/**
+	 * @return Kaltura_Client_Type_DataEntry
+	 */
 	function get($entryId, $version = -1)
 	{
 		$kparams = array();
@@ -97,6 +109,9 @@ class Kaltura_Client_DataService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	/**
+	 * @return Kaltura_Client_Type_DataListResponse
+	 */
 	function listAction(Kaltura_Client_Type_DataEntryFilter $filter = null, Kaltura_Client_Type_FilterPager $pager = null)
 	{
 		$kparams = array();
@@ -115,6 +130,9 @@ class Kaltura_Client_DataService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	/**
+	 * @return file
+	 */
 	function serve($entryId, $version = -1, $forceProxy = false)
 	{
 		if ($this->client->isMultiRequest())
@@ -129,6 +147,9 @@ class Kaltura_Client_DataService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	/**
+	 * @return Kaltura_Client_Type_DataEntry
+	 */
 	function update($entryId, Kaltura_Client_Type_DataEntry $documentEntry)
 	{
 		$kparams = array();

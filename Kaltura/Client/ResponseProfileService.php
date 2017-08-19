@@ -39,6 +39,9 @@ class Kaltura_Client_ResponseProfileService extends Kaltura_Client_ServiceBase
 		parent::__construct($client);
 	}
 
+	/**
+	 * @return Kaltura_Client_Type_ResponseProfile
+	 */
 	function add(Kaltura_Client_Type_ResponseProfile $addResponseProfile)
 	{
 		$kparams = array();
@@ -54,6 +57,9 @@ class Kaltura_Client_ResponseProfileService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	/**
+	 * @return Kaltura_Client_Type_ResponseProfile
+	 */
 	function cloneAction($id, Kaltura_Client_Type_ResponseProfile $profile)
 	{
 		$kparams = array();
@@ -70,6 +76,9 @@ class Kaltura_Client_ResponseProfileService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	/**
+	 * @return 
+	 */
 	function delete($id)
 	{
 		$kparams = array();
@@ -82,6 +91,9 @@ class Kaltura_Client_ResponseProfileService extends Kaltura_Client_ServiceBase
 		$this->client->checkIfError($resultXmlObject->result);
 	}
 
+	/**
+	 * @return Kaltura_Client_Type_ResponseProfile
+	 */
 	function get($id)
 	{
 		$kparams = array();
@@ -97,6 +109,9 @@ class Kaltura_Client_ResponseProfileService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	/**
+	 * @return Kaltura_Client_Type_ResponseProfileListResponse
+	 */
 	function listAction(Kaltura_Client_Type_ResponseProfileFilter $filter = null, Kaltura_Client_Type_FilterPager $pager = null)
 	{
 		$kparams = array();
@@ -115,6 +130,9 @@ class Kaltura_Client_ResponseProfileService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	/**
+	 * @return Kaltura_Client_Type_ResponseProfileCacheRecalculateResults
+	 */
 	function recalculate(Kaltura_Client_Type_ResponseProfileCacheRecalculateOptions $options)
 	{
 		$kparams = array();
@@ -130,6 +148,9 @@ class Kaltura_Client_ResponseProfileService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	/**
+	 * @return Kaltura_Client_Type_ResponseProfile
+	 */
 	function update($id, Kaltura_Client_Type_ResponseProfile $updateResponseProfile)
 	{
 		$kparams = array();
@@ -146,6 +167,9 @@ class Kaltura_Client_ResponseProfileService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	/**
+	 * @return Kaltura_Client_Type_ResponseProfile
+	 */
 	function updateStatus($id, $status)
 	{
 		$kparams = array();

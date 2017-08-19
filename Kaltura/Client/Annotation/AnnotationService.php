@@ -39,6 +39,9 @@ class Kaltura_Client_Annotation_AnnotationService extends Kaltura_Client_Service
 		parent::__construct($client);
 	}
 
+	/**
+	 * @return Kaltura_Client_Annotation_Type_Annotation
+	 */
 	function add(Kaltura_Client_CuePoint_Type_CuePoint $annotation)
 	{
 		$kparams = array();
@@ -54,6 +57,9 @@ class Kaltura_Client_Annotation_AnnotationService extends Kaltura_Client_Service
 		return $resultObject;
 	}
 
+	/**
+	 * @return Kaltura_Client_CuePoint_Type_CuePointListResponse
+	 */
 	function addFromBulk($fileData)
 	{
 		$kparams = array();
@@ -70,6 +76,9 @@ class Kaltura_Client_Annotation_AnnotationService extends Kaltura_Client_Service
 		return $resultObject;
 	}
 
+	/**
+	 * @return Kaltura_Client_CuePoint_Type_CuePoint
+	 */
 	function cloneAction($id, $entryId)
 	{
 		$kparams = array();
@@ -86,6 +95,9 @@ class Kaltura_Client_Annotation_AnnotationService extends Kaltura_Client_Service
 		return $resultObject;
 	}
 
+	/**
+	 * @return int
+	 */
 	function count(Kaltura_Client_CuePoint_Type_CuePointFilter $filter = null)
 	{
 		$kparams = array();
@@ -101,6 +113,9 @@ class Kaltura_Client_Annotation_AnnotationService extends Kaltura_Client_Service
 		return $resultObject;
 	}
 
+	/**
+	 * @return 
+	 */
 	function delete($id)
 	{
 		$kparams = array();
@@ -113,6 +128,9 @@ class Kaltura_Client_Annotation_AnnotationService extends Kaltura_Client_Service
 		$this->client->checkIfError($resultXmlObject->result);
 	}
 
+	/**
+	 * @return Kaltura_Client_CuePoint_Type_CuePoint
+	 */
 	function get($id)
 	{
 		$kparams = array();
@@ -128,6 +146,9 @@ class Kaltura_Client_Annotation_AnnotationService extends Kaltura_Client_Service
 		return $resultObject;
 	}
 
+	/**
+	 * @return Kaltura_Client_Annotation_Type_AnnotationListResponse
+	 */
 	function listAction(Kaltura_Client_CuePoint_Type_CuePointFilter $filter = null, Kaltura_Client_Type_FilterPager $pager = null)
 	{
 		$kparams = array();
@@ -146,6 +167,9 @@ class Kaltura_Client_Annotation_AnnotationService extends Kaltura_Client_Service
 		return $resultObject;
 	}
 
+	/**
+	 * @return file
+	 */
 	function serveBulk(Kaltura_Client_CuePoint_Type_CuePointFilter $filter = null, Kaltura_Client_Type_FilterPager $pager = null)
 	{
 		if ($this->client->isMultiRequest())
@@ -161,6 +185,9 @@ class Kaltura_Client_Annotation_AnnotationService extends Kaltura_Client_Service
 		return $resultObject;
 	}
 
+	/**
+	 * @return Kaltura_Client_Annotation_Type_Annotation
+	 */
 	function update($id, Kaltura_Client_CuePoint_Type_CuePoint $annotation)
 	{
 		$kparams = array();
@@ -177,6 +204,9 @@ class Kaltura_Client_Annotation_AnnotationService extends Kaltura_Client_Service
 		return $resultObject;
 	}
 
+	/**
+	 * @return 
+	 */
 	function updateStatus($id, $status)
 	{
 		$kparams = array();

@@ -39,6 +39,9 @@ class Kaltura_Client_SystemService extends Kaltura_Client_ServiceBase
 		parent::__construct($client);
 	}
 
+	/**
+	 * @return int
+	 */
 	function getTime()
 	{
 		$kparams = array();
@@ -52,6 +55,9 @@ class Kaltura_Client_SystemService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	/**
+	 * @return string
+	 */
 	function getVersion()
 	{
 		$kparams = array();
@@ -65,6 +71,9 @@ class Kaltura_Client_SystemService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	/**
+	 * @return bool
+	 */
 	function ping()
 	{
 		$kparams = array();
@@ -78,6 +87,9 @@ class Kaltura_Client_SystemService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	/**
+	 * @return bool
+	 */
 	function pingDatabase()
 	{
 		$kparams = array();

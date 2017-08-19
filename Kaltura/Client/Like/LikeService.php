@@ -39,6 +39,9 @@ class Kaltura_Client_Like_LikeService extends Kaltura_Client_ServiceBase
 		parent::__construct($client);
 	}
 
+	/**
+	 * @return bool
+	 */
 	function checkLikeExists($entryId, $userId = null)
 	{
 		$kparams = array();
@@ -54,6 +57,9 @@ class Kaltura_Client_Like_LikeService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	/**
+	 * @return bool
+	 */
 	function like($entryId)
 	{
 		$kparams = array();
@@ -68,6 +74,9 @@ class Kaltura_Client_Like_LikeService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	/**
+	 * @return Kaltura_Client_Like_Type_LikeListResponse
+	 */
 	function listAction(Kaltura_Client_Like_Type_LikeFilter $filter = null, Kaltura_Client_Type_FilterPager $pager = null)
 	{
 		$kparams = array();
@@ -86,6 +95,9 @@ class Kaltura_Client_Like_LikeService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	/**
+	 * @return bool
+	 */
 	function unlike($entryId)
 	{
 		$kparams = array();

@@ -39,6 +39,9 @@ class Kaltura_Client_ServerNodeService extends Kaltura_Client_ServiceBase
 		parent::__construct($client);
 	}
 
+	/**
+	 * @return Kaltura_Client_Type_ServerNode
+	 */
 	function add(Kaltura_Client_Type_ServerNode $serverNode)
 	{
 		$kparams = array();
@@ -54,6 +57,9 @@ class Kaltura_Client_ServerNodeService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	/**
+	 * @return 
+	 */
 	function delete($serverNodeId)
 	{
 		$kparams = array();
@@ -66,6 +72,9 @@ class Kaltura_Client_ServerNodeService extends Kaltura_Client_ServiceBase
 		$this->client->checkIfError($resultXmlObject->result);
 	}
 
+	/**
+	 * @return Kaltura_Client_Type_ServerNode
+	 */
 	function disable($serverNodeId)
 	{
 		$kparams = array();
@@ -81,6 +90,9 @@ class Kaltura_Client_ServerNodeService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	/**
+	 * @return Kaltura_Client_Type_ServerNode
+	 */
 	function enable($serverNodeId)
 	{
 		$kparams = array();
@@ -96,6 +108,9 @@ class Kaltura_Client_ServerNodeService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	/**
+	 * @return Kaltura_Client_Type_ServerNode
+	 */
 	function get($serverNodeId)
 	{
 		$kparams = array();
@@ -111,6 +126,9 @@ class Kaltura_Client_ServerNodeService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	/**
+	 * @return Kaltura_Client_Type_ServerNodeListResponse
+	 */
 	function listAction(Kaltura_Client_Type_ServerNodeFilter $filter = null, Kaltura_Client_Type_FilterPager $pager = null)
 	{
 		$kparams = array();
@@ -129,6 +147,9 @@ class Kaltura_Client_ServerNodeService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	/**
+	 * @return Kaltura_Client_Type_ServerNode
+	 */
 	function reportStatus($hostName, Kaltura_Client_Type_ServerNode $serverNode = null)
 	{
 		$kparams = array();
@@ -146,6 +167,9 @@ class Kaltura_Client_ServerNodeService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	/**
+	 * @return Kaltura_Client_Type_ServerNode
+	 */
 	function update($serverNodeId, Kaltura_Client_Type_ServerNode $serverNode)
 	{
 		$kparams = array();

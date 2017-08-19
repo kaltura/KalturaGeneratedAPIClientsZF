@@ -39,6 +39,9 @@ class Kaltura_Client_ContentDistribution_GenericDistributionProviderActionServic
 		parent::__construct($client);
 	}
 
+	/**
+	 * @return Kaltura_Client_ContentDistribution_Type_GenericDistributionProviderAction
+	 */
 	function add(Kaltura_Client_ContentDistribution_Type_GenericDistributionProviderAction $genericDistributionProviderAction)
 	{
 		$kparams = array();
@@ -54,6 +57,9 @@ class Kaltura_Client_ContentDistribution_GenericDistributionProviderActionServic
 		return $resultObject;
 	}
 
+	/**
+	 * @return Kaltura_Client_ContentDistribution_Type_GenericDistributionProviderAction
+	 */
 	function addMrssTransform($id, $xslData)
 	{
 		$kparams = array();
@@ -70,6 +76,9 @@ class Kaltura_Client_ContentDistribution_GenericDistributionProviderActionServic
 		return $resultObject;
 	}
 
+	/**
+	 * @return Kaltura_Client_ContentDistribution_Type_GenericDistributionProviderAction
+	 */
 	function addMrssTransformFromFile($id, $xslFile)
 	{
 		$kparams = array();
@@ -87,6 +96,9 @@ class Kaltura_Client_ContentDistribution_GenericDistributionProviderActionServic
 		return $resultObject;
 	}
 
+	/**
+	 * @return Kaltura_Client_ContentDistribution_Type_GenericDistributionProviderAction
+	 */
 	function addMrssValidate($id, $xsdData)
 	{
 		$kparams = array();
@@ -103,6 +115,9 @@ class Kaltura_Client_ContentDistribution_GenericDistributionProviderActionServic
 		return $resultObject;
 	}
 
+	/**
+	 * @return Kaltura_Client_ContentDistribution_Type_GenericDistributionProviderAction
+	 */
 	function addMrssValidateFromFile($id, $xsdFile)
 	{
 		$kparams = array();
@@ -120,6 +135,9 @@ class Kaltura_Client_ContentDistribution_GenericDistributionProviderActionServic
 		return $resultObject;
 	}
 
+	/**
+	 * @return Kaltura_Client_ContentDistribution_Type_GenericDistributionProviderAction
+	 */
 	function addResultsTransform($id, $transformData)
 	{
 		$kparams = array();
@@ -136,6 +154,9 @@ class Kaltura_Client_ContentDistribution_GenericDistributionProviderActionServic
 		return $resultObject;
 	}
 
+	/**
+	 * @return Kaltura_Client_ContentDistribution_Type_GenericDistributionProviderAction
+	 */
 	function addResultsTransformFromFile($id, $transformFile)
 	{
 		$kparams = array();
@@ -153,6 +174,9 @@ class Kaltura_Client_ContentDistribution_GenericDistributionProviderActionServic
 		return $resultObject;
 	}
 
+	/**
+	 * @return 
+	 */
 	function delete($id)
 	{
 		$kparams = array();
@@ -165,6 +189,9 @@ class Kaltura_Client_ContentDistribution_GenericDistributionProviderActionServic
 		$this->client->checkIfError($resultXmlObject->result);
 	}
 
+	/**
+	 * @return 
+	 */
 	function deleteByProviderId($genericDistributionProviderId, $actionType)
 	{
 		$kparams = array();
@@ -178,6 +205,9 @@ class Kaltura_Client_ContentDistribution_GenericDistributionProviderActionServic
 		$this->client->checkIfError($resultXmlObject->result);
 	}
 
+	/**
+	 * @return Kaltura_Client_ContentDistribution_Type_GenericDistributionProviderAction
+	 */
 	function get($id)
 	{
 		$kparams = array();
@@ -193,6 +223,9 @@ class Kaltura_Client_ContentDistribution_GenericDistributionProviderActionServic
 		return $resultObject;
 	}
 
+	/**
+	 * @return Kaltura_Client_ContentDistribution_Type_GenericDistributionProviderAction
+	 */
 	function getByProviderId($genericDistributionProviderId, $actionType)
 	{
 		$kparams = array();
@@ -209,6 +242,9 @@ class Kaltura_Client_ContentDistribution_GenericDistributionProviderActionServic
 		return $resultObject;
 	}
 
+	/**
+	 * @return Kaltura_Client_ContentDistribution_Type_GenericDistributionProviderActionListResponse
+	 */
 	function listAction(Kaltura_Client_ContentDistribution_Type_GenericDistributionProviderActionFilter $filter = null, Kaltura_Client_Type_FilterPager $pager = null)
 	{
 		$kparams = array();
@@ -227,6 +263,9 @@ class Kaltura_Client_ContentDistribution_GenericDistributionProviderActionServic
 		return $resultObject;
 	}
 
+	/**
+	 * @return Kaltura_Client_ContentDistribution_Type_GenericDistributionProviderAction
+	 */
 	function update($id, Kaltura_Client_ContentDistribution_Type_GenericDistributionProviderAction $genericDistributionProviderAction)
 	{
 		$kparams = array();
@@ -243,6 +282,9 @@ class Kaltura_Client_ContentDistribution_GenericDistributionProviderActionServic
 		return $resultObject;
 	}
 
+	/**
+	 * @return Kaltura_Client_ContentDistribution_Type_GenericDistributionProviderAction
+	 */
 	function updateByProviderId($genericDistributionProviderId, $actionType, Kaltura_Client_ContentDistribution_Type_GenericDistributionProviderAction $genericDistributionProviderAction)
 	{
 		$kparams = array();

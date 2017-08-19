@@ -39,6 +39,9 @@ class Kaltura_Client_StatsService extends Kaltura_Client_ServiceBase
 		parent::__construct($client);
 	}
 
+	/**
+	 * @return bool
+	 */
 	function collect(Kaltura_Client_Type_StatsEvent $event)
 	{
 		$kparams = array();
@@ -53,6 +56,9 @@ class Kaltura_Client_StatsService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	/**
+	 * @return 
+	 */
 	function kmcCollect(Kaltura_Client_Type_StatsKmcEvent $kmcEvent)
 	{
 		$kparams = array();
@@ -65,6 +71,9 @@ class Kaltura_Client_StatsService extends Kaltura_Client_ServiceBase
 		$this->client->checkIfError($resultXmlObject->result);
 	}
 
+	/**
+	 * @return 
+	 */
 	function reportDeviceCapabilities($data)
 	{
 		$kparams = array();
@@ -77,6 +86,9 @@ class Kaltura_Client_StatsService extends Kaltura_Client_ServiceBase
 		$this->client->checkIfError($resultXmlObject->result);
 	}
 
+	/**
+	 * @return 
+	 */
 	function reportError($errorCode, $errorMessage)
 	{
 		$kparams = array();
@@ -90,6 +102,9 @@ class Kaltura_Client_StatsService extends Kaltura_Client_ServiceBase
 		$this->client->checkIfError($resultXmlObject->result);
 	}
 
+	/**
+	 * @return Kaltura_Client_Type_CEError
+	 */
 	function reportKceError(Kaltura_Client_Type_CEError $kalturaCEError)
 	{
 		$kparams = array();

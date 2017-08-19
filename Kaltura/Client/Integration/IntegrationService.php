@@ -39,6 +39,9 @@ class Kaltura_Client_Integration_IntegrationService extends Kaltura_Client_Servi
 		parent::__construct($client);
 	}
 
+	/**
+	 * @return int
+	 */
 	function dispatch(Kaltura_Client_Integration_Type_IntegrationJobData $data, $objectType, $objectId)
 	{
 		$kparams = array();
@@ -55,6 +58,9 @@ class Kaltura_Client_Integration_IntegrationService extends Kaltura_Client_Servi
 		return $resultObject;
 	}
 
+	/**
+	 * @return 
+	 */
 	function notify($id)
 	{
 		$kparams = array();

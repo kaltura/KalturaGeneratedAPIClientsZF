@@ -39,6 +39,9 @@ class Kaltura_Client_ConversionProfileAssetParamsService extends Kaltura_Client_
 		parent::__construct($client);
 	}
 
+	/**
+	 * @return Kaltura_Client_Type_ConversionProfileAssetParamsListResponse
+	 */
 	function listAction(Kaltura_Client_Type_ConversionProfileAssetParamsFilter $filter = null, Kaltura_Client_Type_FilterPager $pager = null)
 	{
 		$kparams = array();
@@ -57,6 +60,9 @@ class Kaltura_Client_ConversionProfileAssetParamsService extends Kaltura_Client_
 		return $resultObject;
 	}
 
+	/**
+	 * @return Kaltura_Client_Type_ConversionProfileAssetParams
+	 */
 	function update($conversionProfileId, $assetParamsId, Kaltura_Client_Type_ConversionProfileAssetParams $conversionProfileAssetParams)
 	{
 		$kparams = array();

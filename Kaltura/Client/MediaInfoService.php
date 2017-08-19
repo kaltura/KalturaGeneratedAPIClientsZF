@@ -39,6 +39,9 @@ class Kaltura_Client_MediaInfoService extends Kaltura_Client_ServiceBase
 		parent::__construct($client);
 	}
 
+	/**
+	 * @return Kaltura_Client_Type_MediaInfoListResponse
+	 */
 	function listAction(Kaltura_Client_Type_MediaInfoFilter $filter = null, Kaltura_Client_Type_FilterPager $pager = null)
 	{
 		$kparams = array();

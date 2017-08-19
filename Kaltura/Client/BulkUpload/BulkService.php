@@ -39,6 +39,9 @@ class Kaltura_Client_BulkUpload_BulkService extends Kaltura_Client_ServiceBase
 		parent::__construct($client);
 	}
 
+	/**
+	 * @return Kaltura_Client_Type_BulkUpload
+	 */
 	function abort($id)
 	{
 		$kparams = array();
@@ -54,6 +57,9 @@ class Kaltura_Client_BulkUpload_BulkService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	/**
+	 * @return Kaltura_Client_Type_BulkUpload
+	 */
 	function get($id)
 	{
 		$kparams = array();
@@ -69,6 +75,9 @@ class Kaltura_Client_BulkUpload_BulkService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	/**
+	 * @return Kaltura_Client_Type_BulkUploadListResponse
+	 */
 	function listAction(Kaltura_Client_Type_BulkUploadFilter $bulkUploadFilter = null, Kaltura_Client_Type_FilterPager $pager = null)
 	{
 		$kparams = array();
@@ -87,6 +96,9 @@ class Kaltura_Client_BulkUpload_BulkService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	/**
+	 * @return file
+	 */
 	function serve($id)
 	{
 		if ($this->client->isMultiRequest())
@@ -99,6 +111,9 @@ class Kaltura_Client_BulkUpload_BulkService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	/**
+	 * @return file
+	 */
 	function serveLog($id)
 	{
 		if ($this->client->isMultiRequest())

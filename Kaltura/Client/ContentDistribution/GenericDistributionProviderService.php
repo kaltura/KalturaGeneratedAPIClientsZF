@@ -39,6 +39,9 @@ class Kaltura_Client_ContentDistribution_GenericDistributionProviderService exte
 		parent::__construct($client);
 	}
 
+	/**
+	 * @return Kaltura_Client_ContentDistribution_Type_GenericDistributionProvider
+	 */
 	function add(Kaltura_Client_ContentDistribution_Type_GenericDistributionProvider $genericDistributionProvider)
 	{
 		$kparams = array();
@@ -54,6 +57,9 @@ class Kaltura_Client_ContentDistribution_GenericDistributionProviderService exte
 		return $resultObject;
 	}
 
+	/**
+	 * @return 
+	 */
 	function delete($id)
 	{
 		$kparams = array();
@@ -66,6 +72,9 @@ class Kaltura_Client_ContentDistribution_GenericDistributionProviderService exte
 		$this->client->checkIfError($resultXmlObject->result);
 	}
 
+	/**
+	 * @return Kaltura_Client_ContentDistribution_Type_GenericDistributionProvider
+	 */
 	function get($id)
 	{
 		$kparams = array();
@@ -81,6 +90,9 @@ class Kaltura_Client_ContentDistribution_GenericDistributionProviderService exte
 		return $resultObject;
 	}
 
+	/**
+	 * @return Kaltura_Client_ContentDistribution_Type_GenericDistributionProviderListResponse
+	 */
 	function listAction(Kaltura_Client_ContentDistribution_Type_GenericDistributionProviderFilter $filter = null, Kaltura_Client_Type_FilterPager $pager = null)
 	{
 		$kparams = array();
@@ -99,6 +111,9 @@ class Kaltura_Client_ContentDistribution_GenericDistributionProviderService exte
 		return $resultObject;
 	}
 
+	/**
+	 * @return Kaltura_Client_ContentDistribution_Type_GenericDistributionProvider
+	 */
 	function update($id, Kaltura_Client_ContentDistribution_Type_GenericDistributionProvider $genericDistributionProvider)
 	{
 		$kparams = array();

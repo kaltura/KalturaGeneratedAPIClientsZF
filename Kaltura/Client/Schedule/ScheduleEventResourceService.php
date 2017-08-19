@@ -39,6 +39,9 @@ class Kaltura_Client_Schedule_ScheduleEventResourceService extends Kaltura_Clien
 		parent::__construct($client);
 	}
 
+	/**
+	 * @return Kaltura_Client_Schedule_Type_ScheduleEventResource
+	 */
 	function add(Kaltura_Client_Schedule_Type_ScheduleEventResource $scheduleEventResource)
 	{
 		$kparams = array();
@@ -54,6 +57,9 @@ class Kaltura_Client_Schedule_ScheduleEventResourceService extends Kaltura_Clien
 		return $resultObject;
 	}
 
+	/**
+	 * @return 
+	 */
 	function delete($scheduleEventId, $scheduleResourceId)
 	{
 		$kparams = array();
@@ -67,6 +73,9 @@ class Kaltura_Client_Schedule_ScheduleEventResourceService extends Kaltura_Clien
 		$this->client->checkIfError($resultXmlObject->result);
 	}
 
+	/**
+	 * @return Kaltura_Client_Schedule_Type_ScheduleEventResource
+	 */
 	function get($scheduleEventId, $scheduleResourceId)
 	{
 		$kparams = array();
@@ -83,6 +92,9 @@ class Kaltura_Client_Schedule_ScheduleEventResourceService extends Kaltura_Clien
 		return $resultObject;
 	}
 
+	/**
+	 * @return Kaltura_Client_Schedule_Type_ScheduleEventResourceListResponse
+	 */
 	function listAction(Kaltura_Client_Schedule_Type_ScheduleEventResourceFilter $filter = null, Kaltura_Client_Type_FilterPager $pager = null)
 	{
 		$kparams = array();
@@ -101,6 +113,9 @@ class Kaltura_Client_Schedule_ScheduleEventResourceService extends Kaltura_Clien
 		return $resultObject;
 	}
 
+	/**
+	 * @return Kaltura_Client_Schedule_Type_ScheduleEventResource
+	 */
 	function update($scheduleEventId, $scheduleResourceId, Kaltura_Client_Schedule_Type_ScheduleEventResource $scheduleEventResource)
 	{
 		$kparams = array();

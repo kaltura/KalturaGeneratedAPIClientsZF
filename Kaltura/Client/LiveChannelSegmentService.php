@@ -39,6 +39,9 @@ class Kaltura_Client_LiveChannelSegmentService extends Kaltura_Client_ServiceBas
 		parent::__construct($client);
 	}
 
+	/**
+	 * @return Kaltura_Client_Type_LiveChannelSegment
+	 */
 	function add(Kaltura_Client_Type_LiveChannelSegment $liveChannelSegment)
 	{
 		$kparams = array();
@@ -54,6 +57,9 @@ class Kaltura_Client_LiveChannelSegmentService extends Kaltura_Client_ServiceBas
 		return $resultObject;
 	}
 
+	/**
+	 * @return 
+	 */
 	function delete($id)
 	{
 		$kparams = array();
@@ -66,6 +72,9 @@ class Kaltura_Client_LiveChannelSegmentService extends Kaltura_Client_ServiceBas
 		$this->client->checkIfError($resultXmlObject->result);
 	}
 
+	/**
+	 * @return Kaltura_Client_Type_LiveChannelSegment
+	 */
 	function get($id)
 	{
 		$kparams = array();
@@ -81,6 +90,9 @@ class Kaltura_Client_LiveChannelSegmentService extends Kaltura_Client_ServiceBas
 		return $resultObject;
 	}
 
+	/**
+	 * @return Kaltura_Client_Type_LiveChannelSegmentListResponse
+	 */
 	function listAction(Kaltura_Client_Type_LiveChannelSegmentFilter $filter = null, Kaltura_Client_Type_FilterPager $pager = null)
 	{
 		$kparams = array();
@@ -99,6 +111,9 @@ class Kaltura_Client_LiveChannelSegmentService extends Kaltura_Client_ServiceBas
 		return $resultObject;
 	}
 
+	/**
+	 * @return Kaltura_Client_Type_LiveChannelSegment
+	 */
 	function update($id, Kaltura_Client_Type_LiveChannelSegment $liveChannelSegment)
 	{
 		$kparams = array();

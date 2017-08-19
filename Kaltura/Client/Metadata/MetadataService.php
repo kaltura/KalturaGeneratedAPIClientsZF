@@ -39,6 +39,9 @@ class Kaltura_Client_Metadata_MetadataService extends Kaltura_Client_ServiceBase
 		parent::__construct($client);
 	}
 
+	/**
+	 * @return Kaltura_Client_Metadata_Type_Metadata
+	 */
 	function add($metadataProfileId, $objectType, $objectId, $xmlData)
 	{
 		$kparams = array();
@@ -57,6 +60,9 @@ class Kaltura_Client_Metadata_MetadataService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	/**
+	 * @return Kaltura_Client_Metadata_Type_Metadata
+	 */
 	function addFromBulk($metadataProfileId, $objectType, $objectId, $url)
 	{
 		$kparams = array();
@@ -75,6 +81,9 @@ class Kaltura_Client_Metadata_MetadataService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	/**
+	 * @return Kaltura_Client_Metadata_Type_Metadata
+	 */
 	function addFromFile($metadataProfileId, $objectType, $objectId, $xmlFile)
 	{
 		$kparams = array();
@@ -94,6 +103,9 @@ class Kaltura_Client_Metadata_MetadataService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	/**
+	 * @return Kaltura_Client_Metadata_Type_Metadata
+	 */
 	function addFromUrl($metadataProfileId, $objectType, $objectId, $url)
 	{
 		$kparams = array();
@@ -112,6 +124,9 @@ class Kaltura_Client_Metadata_MetadataService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	/**
+	 * @return 
+	 */
 	function delete($id)
 	{
 		$kparams = array();
@@ -124,6 +139,9 @@ class Kaltura_Client_Metadata_MetadataService extends Kaltura_Client_ServiceBase
 		$this->client->checkIfError($resultXmlObject->result);
 	}
 
+	/**
+	 * @return Kaltura_Client_Metadata_Type_Metadata
+	 */
 	function get($id)
 	{
 		$kparams = array();
@@ -139,6 +157,9 @@ class Kaltura_Client_Metadata_MetadataService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	/**
+	 * @return int
+	 */
 	function index($id, $shouldUpdate)
 	{
 		$kparams = array();
@@ -154,6 +175,9 @@ class Kaltura_Client_Metadata_MetadataService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	/**
+	 * @return 
+	 */
 	function invalidate($id, $version = null)
 	{
 		$kparams = array();
@@ -167,6 +191,9 @@ class Kaltura_Client_Metadata_MetadataService extends Kaltura_Client_ServiceBase
 		$this->client->checkIfError($resultXmlObject->result);
 	}
 
+	/**
+	 * @return Kaltura_Client_Metadata_Type_MetadataListResponse
+	 */
 	function listAction(Kaltura_Client_Metadata_Type_MetadataFilter $filter = null, Kaltura_Client_Type_FilterPager $pager = null)
 	{
 		$kparams = array();
@@ -185,6 +212,9 @@ class Kaltura_Client_Metadata_MetadataService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	/**
+	 * @return file
+	 */
 	function serve($id)
 	{
 		if ($this->client->isMultiRequest())
@@ -197,6 +227,9 @@ class Kaltura_Client_Metadata_MetadataService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	/**
+	 * @return Kaltura_Client_Metadata_Type_Metadata
+	 */
 	function update($id, $xmlData = null, $version = null)
 	{
 		$kparams = array();
@@ -214,6 +247,9 @@ class Kaltura_Client_Metadata_MetadataService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	/**
+	 * @return Kaltura_Client_Metadata_Type_Metadata
+	 */
 	function updateFromFile($id, $xmlFile = null)
 	{
 		$kparams = array();
@@ -231,6 +267,9 @@ class Kaltura_Client_Metadata_MetadataService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	/**
+	 * @return Kaltura_Client_Metadata_Type_Metadata
+	 */
 	function updateFromXSL($id, $xslFile)
 	{
 		$kparams = array();

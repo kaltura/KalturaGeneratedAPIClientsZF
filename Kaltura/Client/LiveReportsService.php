@@ -39,6 +39,9 @@ class Kaltura_Client_LiveReportsService extends Kaltura_Client_ServiceBase
 		parent::__construct($client);
 	}
 
+	/**
+	 * @return Kaltura_Client_Type_LiveReportExportResponse
+	 */
 	function exportToCsv($reportType, Kaltura_Client_Type_LiveReportExportParams $params)
 	{
 		$kparams = array();
@@ -55,6 +58,9 @@ class Kaltura_Client_LiveReportsService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	/**
+	 * @return array
+	 */
 	function getEvents($reportType, Kaltura_Client_Type_LiveReportInputFilter $filter = null, Kaltura_Client_Type_FilterPager $pager = null)
 	{
 		$kparams = array();
@@ -76,6 +82,9 @@ class Kaltura_Client_LiveReportsService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	/**
+	 * @return Kaltura_Client_Type_LiveStatsListResponse
+	 */
 	function getReport($reportType, Kaltura_Client_Type_LiveReportInputFilter $filter = null, Kaltura_Client_Type_FilterPager $pager = null)
 	{
 		$kparams = array();
@@ -95,6 +104,9 @@ class Kaltura_Client_LiveReportsService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	/**
+	 * @return string
+	 */
 	function serveReport($id)
 	{
 		$kparams = array();

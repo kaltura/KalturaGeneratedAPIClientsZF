@@ -39,6 +39,9 @@ class Kaltura_Client_ContentDistribution_EntryDistributionService extends Kaltur
 		parent::__construct($client);
 	}
 
+	/**
+	 * @return Kaltura_Client_ContentDistribution_Type_EntryDistribution
+	 */
 	function add(Kaltura_Client_ContentDistribution_Type_EntryDistribution $entryDistribution)
 	{
 		$kparams = array();
@@ -54,6 +57,9 @@ class Kaltura_Client_ContentDistribution_EntryDistributionService extends Kaltur
 		return $resultObject;
 	}
 
+	/**
+	 * @return 
+	 */
 	function delete($id)
 	{
 		$kparams = array();
@@ -66,6 +72,9 @@ class Kaltura_Client_ContentDistribution_EntryDistributionService extends Kaltur
 		$this->client->checkIfError($resultXmlObject->result);
 	}
 
+	/**
+	 * @return Kaltura_Client_ContentDistribution_Type_EntryDistribution
+	 */
 	function get($id)
 	{
 		$kparams = array();
@@ -81,6 +90,9 @@ class Kaltura_Client_ContentDistribution_EntryDistributionService extends Kaltur
 		return $resultObject;
 	}
 
+	/**
+	 * @return Kaltura_Client_ContentDistribution_Type_EntryDistributionListResponse
+	 */
 	function listAction(Kaltura_Client_ContentDistribution_Type_EntryDistributionFilter $filter = null, Kaltura_Client_Type_FilterPager $pager = null)
 	{
 		$kparams = array();
@@ -99,6 +111,9 @@ class Kaltura_Client_ContentDistribution_EntryDistributionService extends Kaltur
 		return $resultObject;
 	}
 
+	/**
+	 * @return Kaltura_Client_ContentDistribution_Type_EntryDistribution
+	 */
 	function retrySubmit($id)
 	{
 		$kparams = array();
@@ -114,6 +129,9 @@ class Kaltura_Client_ContentDistribution_EntryDistributionService extends Kaltur
 		return $resultObject;
 	}
 
+	/**
+	 * @return file
+	 */
 	function serveReturnedData($id, $actionType)
 	{
 		if ($this->client->isMultiRequest())
@@ -127,6 +145,9 @@ class Kaltura_Client_ContentDistribution_EntryDistributionService extends Kaltur
 		return $resultObject;
 	}
 
+	/**
+	 * @return file
+	 */
 	function serveSentData($id, $actionType)
 	{
 		if ($this->client->isMultiRequest())
@@ -140,6 +161,9 @@ class Kaltura_Client_ContentDistribution_EntryDistributionService extends Kaltur
 		return $resultObject;
 	}
 
+	/**
+	 * @return Kaltura_Client_ContentDistribution_Type_EntryDistribution
+	 */
 	function submitAdd($id, $submitWhenReady = false)
 	{
 		$kparams = array();
@@ -156,6 +180,9 @@ class Kaltura_Client_ContentDistribution_EntryDistributionService extends Kaltur
 		return $resultObject;
 	}
 
+	/**
+	 * @return Kaltura_Client_ContentDistribution_Type_EntryDistribution
+	 */
 	function submitDelete($id)
 	{
 		$kparams = array();
@@ -171,6 +198,9 @@ class Kaltura_Client_ContentDistribution_EntryDistributionService extends Kaltur
 		return $resultObject;
 	}
 
+	/**
+	 * @return Kaltura_Client_ContentDistribution_Type_EntryDistribution
+	 */
 	function submitFetchReport($id)
 	{
 		$kparams = array();
@@ -186,6 +216,9 @@ class Kaltura_Client_ContentDistribution_EntryDistributionService extends Kaltur
 		return $resultObject;
 	}
 
+	/**
+	 * @return Kaltura_Client_ContentDistribution_Type_EntryDistribution
+	 */
 	function submitUpdate($id)
 	{
 		$kparams = array();
@@ -201,6 +234,9 @@ class Kaltura_Client_ContentDistribution_EntryDistributionService extends Kaltur
 		return $resultObject;
 	}
 
+	/**
+	 * @return Kaltura_Client_ContentDistribution_Type_EntryDistribution
+	 */
 	function update($id, Kaltura_Client_ContentDistribution_Type_EntryDistribution $entryDistribution)
 	{
 		$kparams = array();
@@ -217,6 +253,9 @@ class Kaltura_Client_ContentDistribution_EntryDistributionService extends Kaltur
 		return $resultObject;
 	}
 
+	/**
+	 * @return Kaltura_Client_ContentDistribution_Type_EntryDistribution
+	 */
 	function validate($id)
 	{
 		$kparams = array();

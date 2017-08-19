@@ -39,6 +39,9 @@ class Kaltura_Client_Poll_PollService extends Kaltura_Client_ServiceBase
 		parent::__construct($client);
 	}
 
+	/**
+	 * @return string
+	 */
 	function add($pollType = "SINGLE_ANONYMOUS")
 	{
 		$kparams = array();
@@ -53,6 +56,9 @@ class Kaltura_Client_Poll_PollService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	/**
+	 * @return string
+	 */
 	function getVote($pollId, $userId)
 	{
 		$kparams = array();
@@ -68,6 +74,9 @@ class Kaltura_Client_Poll_PollService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	/**
+	 * @return string
+	 */
 	function getVotes($pollId, $answerIds)
 	{
 		$kparams = array();
@@ -83,6 +92,9 @@ class Kaltura_Client_Poll_PollService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	/**
+	 * @return 
+	 */
 	function resetVotes($pollId)
 	{
 		$kparams = array();
@@ -95,6 +107,9 @@ class Kaltura_Client_Poll_PollService extends Kaltura_Client_ServiceBase
 		$this->client->checkIfError($resultXmlObject->result);
 	}
 
+	/**
+	 * @return string
+	 */
 	function vote($pollId, $userId, $answerIds)
 	{
 		$kparams = array();

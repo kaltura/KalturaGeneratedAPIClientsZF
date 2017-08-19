@@ -39,6 +39,9 @@ class Kaltura_Client_LiveChannelService extends Kaltura_Client_ServiceBase
 		parent::__construct($client);
 	}
 
+	/**
+	 * @return Kaltura_Client_Type_LiveChannel
+	 */
 	function add(Kaltura_Client_Type_LiveChannel $liveChannel)
 	{
 		$kparams = array();
@@ -54,6 +57,9 @@ class Kaltura_Client_LiveChannelService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	/**
+	 * @return Kaltura_Client_Type_LiveEntry
+	 */
 	function appendRecording($entryId, $assetId, $mediaServerIndex, Kaltura_Client_Type_DataCenterContentResource $resource, $duration, $isLastChunk = false)
 	{
 		$kparams = array();
@@ -74,6 +80,9 @@ class Kaltura_Client_LiveChannelService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	/**
+	 * @return Kaltura_Client_Type_LiveEntry
+	 */
 	function createRecordedEntry($entryId, $mediaServerIndex, $liveEntryStatus)
 	{
 		$kparams = array();
@@ -91,6 +100,9 @@ class Kaltura_Client_LiveChannelService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	/**
+	 * @return 
+	 */
 	function delete($id)
 	{
 		$kparams = array();
@@ -103,6 +115,9 @@ class Kaltura_Client_LiveChannelService extends Kaltura_Client_ServiceBase
 		$this->client->checkIfError($resultXmlObject->result);
 	}
 
+	/**
+	 * @return Kaltura_Client_Type_LiveChannel
+	 */
 	function get($id)
 	{
 		$kparams = array();
@@ -118,6 +133,9 @@ class Kaltura_Client_LiveChannelService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	/**
+	 * @return bool
+	 */
 	function isLive($id)
 	{
 		$kparams = array();
@@ -132,6 +150,9 @@ class Kaltura_Client_LiveChannelService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	/**
+	 * @return Kaltura_Client_Type_LiveChannelListResponse
+	 */
 	function listAction(Kaltura_Client_Type_LiveChannelFilter $filter = null, Kaltura_Client_Type_FilterPager $pager = null)
 	{
 		$kparams = array();
@@ -150,6 +171,9 @@ class Kaltura_Client_LiveChannelService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	/**
+	 * @return Kaltura_Client_Type_LiveEntry
+	 */
 	function registerMediaServer($entryId, $hostname, $mediaServerIndex, $applicationName = null, $liveEntryStatus = 1, $shouldCreateRecordedEntry = true)
 	{
 		$kparams = array();
@@ -170,6 +194,9 @@ class Kaltura_Client_LiveChannelService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	/**
+	 * @return Kaltura_Client_Type_LiveEntry
+	 */
 	function setRecordedContent($entryId, $mediaServerIndex, Kaltura_Client_Type_DataCenterContentResource $resource, $duration, $recordedEntryId = null, $flavorParamsId = null)
 	{
 		$kparams = array();
@@ -190,6 +217,9 @@ class Kaltura_Client_LiveChannelService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	/**
+	 * @return Kaltura_Client_Type_LiveEntry
+	 */
 	function unregisterMediaServer($entryId, $hostname, $mediaServerIndex)
 	{
 		$kparams = array();
@@ -207,6 +237,9 @@ class Kaltura_Client_LiveChannelService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	/**
+	 * @return Kaltura_Client_Type_LiveChannel
+	 */
 	function update($id, Kaltura_Client_Type_LiveChannel $liveChannel)
 	{
 		$kparams = array();
@@ -223,6 +256,9 @@ class Kaltura_Client_LiveChannelService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	/**
+	 * @return 
+	 */
 	function validateRegisteredMediaServers($entryId)
 	{
 		$kparams = array();

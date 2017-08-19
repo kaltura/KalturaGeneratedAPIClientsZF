@@ -39,6 +39,9 @@ class Kaltura_Client_PlaylistService extends Kaltura_Client_ServiceBase
 		parent::__construct($client);
 	}
 
+	/**
+	 * @return Kaltura_Client_Type_Playlist
+	 */
 	function add(Kaltura_Client_Type_Playlist $playlist, $updateStats = false)
 	{
 		$kparams = array();
@@ -55,6 +58,9 @@ class Kaltura_Client_PlaylistService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	/**
+	 * @return Kaltura_Client_Type_Playlist
+	 */
 	function cloneAction($id, Kaltura_Client_Type_Playlist $newPlaylist = null)
 	{
 		$kparams = array();
@@ -72,6 +78,9 @@ class Kaltura_Client_PlaylistService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	/**
+	 * @return 
+	 */
 	function delete($id)
 	{
 		$kparams = array();
@@ -84,6 +93,9 @@ class Kaltura_Client_PlaylistService extends Kaltura_Client_ServiceBase
 		$this->client->checkIfError($resultXmlObject->result);
 	}
 
+	/**
+	 * @return array
+	 */
 	function execute($id, $detailed = "", Kaltura_Client_Type_Context $playlistContext = null, Kaltura_Client_Type_MediaEntryFilterForPlaylist $filter = null, Kaltura_Client_Type_FilterPager $pager = null)
 	{
 		$kparams = array();
@@ -108,6 +120,9 @@ class Kaltura_Client_PlaylistService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	/**
+	 * @return array
+	 */
 	function executeFromContent($playlistType, $playlistContent, $detailed = "", Kaltura_Client_Type_FilterPager $pager = null)
 	{
 		$kparams = array();
@@ -129,6 +144,9 @@ class Kaltura_Client_PlaylistService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	/**
+	 * @return array
+	 */
 	function executeFromFilters(array $filters, $totalResults, $detailed = "1", Kaltura_Client_Type_FilterPager $pager = null)
 	{
 		$kparams = array();
@@ -153,6 +171,9 @@ class Kaltura_Client_PlaylistService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	/**
+	 * @return Kaltura_Client_Type_Playlist
+	 */
 	function get($id, $version = -1)
 	{
 		$kparams = array();
@@ -169,6 +190,9 @@ class Kaltura_Client_PlaylistService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	/**
+	 * @return Kaltura_Client_Type_Playlist
+	 */
 	function getStatsFromContent($playlistType, $playlistContent)
 	{
 		$kparams = array();
@@ -185,6 +209,9 @@ class Kaltura_Client_PlaylistService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	/**
+	 * @return Kaltura_Client_Type_PlaylistListResponse
+	 */
 	function listAction(Kaltura_Client_Type_PlaylistFilter $filter = null, Kaltura_Client_Type_FilterPager $pager = null)
 	{
 		$kparams = array();
@@ -203,6 +230,9 @@ class Kaltura_Client_PlaylistService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	/**
+	 * @return Kaltura_Client_Type_Playlist
+	 */
 	function update($id, Kaltura_Client_Type_Playlist $playlist, $updateStats = false)
 	{
 		$kparams = array();

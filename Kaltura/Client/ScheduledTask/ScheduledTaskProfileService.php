@@ -39,6 +39,9 @@ class Kaltura_Client_ScheduledTask_ScheduledTaskProfileService extends Kaltura_C
 		parent::__construct($client);
 	}
 
+	/**
+	 * @return Kaltura_Client_ScheduledTask_Type_ScheduledTaskProfile
+	 */
 	function add(Kaltura_Client_ScheduledTask_Type_ScheduledTaskProfile $scheduledTaskProfile)
 	{
 		$kparams = array();
@@ -54,6 +57,9 @@ class Kaltura_Client_ScheduledTask_ScheduledTaskProfileService extends Kaltura_C
 		return $resultObject;
 	}
 
+	/**
+	 * @return 
+	 */
 	function delete($id)
 	{
 		$kparams = array();
@@ -66,6 +72,9 @@ class Kaltura_Client_ScheduledTask_ScheduledTaskProfileService extends Kaltura_C
 		$this->client->checkIfError($resultXmlObject->result);
 	}
 
+	/**
+	 * @return Kaltura_Client_ScheduledTask_Type_ScheduledTaskProfile
+	 */
 	function get($id)
 	{
 		$kparams = array();
@@ -81,6 +90,9 @@ class Kaltura_Client_ScheduledTask_ScheduledTaskProfileService extends Kaltura_C
 		return $resultObject;
 	}
 
+	/**
+	 * @return Kaltura_Client_Type_ObjectListResponse
+	 */
 	function getDryRunResults($requestId)
 	{
 		$kparams = array();
@@ -96,6 +108,9 @@ class Kaltura_Client_ScheduledTask_ScheduledTaskProfileService extends Kaltura_C
 		return $resultObject;
 	}
 
+	/**
+	 * @return Kaltura_Client_ScheduledTask_Type_ScheduledTaskProfileListResponse
+	 */
 	function listAction(Kaltura_Client_ScheduledTask_Type_ScheduledTaskProfileFilter $filter = null, Kaltura_Client_Type_FilterPager $pager = null)
 	{
 		$kparams = array();
@@ -114,6 +129,9 @@ class Kaltura_Client_ScheduledTask_ScheduledTaskProfileService extends Kaltura_C
 		return $resultObject;
 	}
 
+	/**
+	 * @return int
+	 */
 	function requestDryRun($scheduledTaskProfileId, $maxResults = 500)
 	{
 		$kparams = array();
@@ -129,6 +147,9 @@ class Kaltura_Client_ScheduledTask_ScheduledTaskProfileService extends Kaltura_C
 		return $resultObject;
 	}
 
+	/**
+	 * @return Kaltura_Client_ScheduledTask_Type_ScheduledTaskProfile
+	 */
 	function update($id, Kaltura_Client_ScheduledTask_Type_ScheduledTaskProfile $scheduledTaskProfile)
 	{
 		$kparams = array();

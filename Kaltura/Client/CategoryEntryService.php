@@ -39,6 +39,9 @@ class Kaltura_Client_CategoryEntryService extends Kaltura_Client_ServiceBase
 		parent::__construct($client);
 	}
 
+	/**
+	 * @return 
+	 */
 	function activate($entryId, $categoryId)
 	{
 		$kparams = array();
@@ -52,6 +55,9 @@ class Kaltura_Client_CategoryEntryService extends Kaltura_Client_ServiceBase
 		$this->client->checkIfError($resultXmlObject->result);
 	}
 
+	/**
+	 * @return Kaltura_Client_Type_CategoryEntry
+	 */
 	function add(Kaltura_Client_Type_CategoryEntry $categoryEntry)
 	{
 		$kparams = array();
@@ -67,6 +73,9 @@ class Kaltura_Client_CategoryEntryService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	/**
+	 * @return Kaltura_Client_Type_BulkUpload
+	 */
 	function addFromBulkUpload(Kaltura_Client_BulkUpload_Type_BulkServiceData $bulkUploadData, Kaltura_Client_Type_BulkUploadCategoryEntryData $bulkUploadCategoryEntryData = null)
 	{
 		$kparams = array();
@@ -84,6 +93,9 @@ class Kaltura_Client_CategoryEntryService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	/**
+	 * @return 
+	 */
 	function delete($entryId, $categoryId)
 	{
 		$kparams = array();
@@ -97,6 +109,9 @@ class Kaltura_Client_CategoryEntryService extends Kaltura_Client_ServiceBase
 		$this->client->checkIfError($resultXmlObject->result);
 	}
 
+	/**
+	 * @return int
+	 */
 	function index($entryId, $categoryId, $shouldUpdate = true)
 	{
 		$kparams = array();
@@ -113,6 +128,9 @@ class Kaltura_Client_CategoryEntryService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	/**
+	 * @return Kaltura_Client_Type_CategoryEntryListResponse
+	 */
 	function listAction(Kaltura_Client_Type_CategoryEntryFilter $filter = null, Kaltura_Client_Type_FilterPager $pager = null)
 	{
 		$kparams = array();
@@ -131,6 +149,9 @@ class Kaltura_Client_CategoryEntryService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	/**
+	 * @return 
+	 */
 	function reject($entryId, $categoryId)
 	{
 		$kparams = array();
@@ -144,6 +165,9 @@ class Kaltura_Client_CategoryEntryService extends Kaltura_Client_ServiceBase
 		$this->client->checkIfError($resultXmlObject->result);
 	}
 
+	/**
+	 * @return 
+	 */
 	function syncPrivacyContext($entryId, $categoryId)
 	{
 		$kparams = array();

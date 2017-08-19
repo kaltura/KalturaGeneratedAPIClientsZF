@@ -39,6 +39,9 @@ class Kaltura_Client_DropFolder_DropFolderFileService extends Kaltura_Client_Ser
 		parent::__construct($client);
 	}
 
+	/**
+	 * @return Kaltura_Client_DropFolder_Type_DropFolderFile
+	 */
 	function add(Kaltura_Client_DropFolder_Type_DropFolderFile $dropFolderFile)
 	{
 		$kparams = array();
@@ -54,6 +57,9 @@ class Kaltura_Client_DropFolder_DropFolderFileService extends Kaltura_Client_Ser
 		return $resultObject;
 	}
 
+	/**
+	 * @return Kaltura_Client_DropFolder_Type_DropFolderFile
+	 */
 	function delete($dropFolderFileId)
 	{
 		$kparams = array();
@@ -69,6 +75,9 @@ class Kaltura_Client_DropFolder_DropFolderFileService extends Kaltura_Client_Ser
 		return $resultObject;
 	}
 
+	/**
+	 * @return Kaltura_Client_DropFolder_Type_DropFolderFile
+	 */
 	function get($dropFolderFileId)
 	{
 		$kparams = array();
@@ -84,6 +93,9 @@ class Kaltura_Client_DropFolder_DropFolderFileService extends Kaltura_Client_Ser
 		return $resultObject;
 	}
 
+	/**
+	 * @return Kaltura_Client_DropFolder_Type_DropFolderFile
+	 */
 	function ignore($dropFolderFileId)
 	{
 		$kparams = array();
@@ -99,6 +111,9 @@ class Kaltura_Client_DropFolder_DropFolderFileService extends Kaltura_Client_Ser
 		return $resultObject;
 	}
 
+	/**
+	 * @return Kaltura_Client_DropFolder_Type_DropFolderFileListResponse
+	 */
 	function listAction(Kaltura_Client_DropFolder_Type_DropFolderFileFilter $filter = null, Kaltura_Client_Type_FilterPager $pager = null)
 	{
 		$kparams = array();
@@ -117,6 +132,9 @@ class Kaltura_Client_DropFolder_DropFolderFileService extends Kaltura_Client_Ser
 		return $resultObject;
 	}
 
+	/**
+	 * @return Kaltura_Client_DropFolder_Type_DropFolderFile
+	 */
 	function update($dropFolderFileId, Kaltura_Client_DropFolder_Type_DropFolderFile $dropFolderFile)
 	{
 		$kparams = array();
@@ -133,6 +151,9 @@ class Kaltura_Client_DropFolder_DropFolderFileService extends Kaltura_Client_Ser
 		return $resultObject;
 	}
 
+	/**
+	 * @return Kaltura_Client_DropFolder_Type_DropFolderFile
+	 */
 	function updateStatus($dropFolderFileId, $status)
 	{
 		$kparams = array();

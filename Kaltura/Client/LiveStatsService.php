@@ -39,6 +39,9 @@ class Kaltura_Client_LiveStatsService extends Kaltura_Client_ServiceBase
 		parent::__construct($client);
 	}
 
+	/**
+	 * @return bool
+	 */
 	function collect(Kaltura_Client_Type_LiveStatsEvent $event)
 	{
 		$kparams = array();

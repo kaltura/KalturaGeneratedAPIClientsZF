@@ -39,6 +39,9 @@ class Kaltura_Client_CaptionSearch_CaptionAssetItemService extends Kaltura_Clien
 		parent::__construct($client);
 	}
 
+	/**
+	 * @return Kaltura_Client_CaptionSearch_Type_CaptionAssetItemListResponse
+	 */
 	function search(Kaltura_Client_Type_BaseEntryFilter $entryFilter = null, Kaltura_Client_CaptionSearch_Type_CaptionAssetItemFilter $captionAssetItemFilter = null, Kaltura_Client_Type_FilterPager $captionAssetItemPager = null)
 	{
 		$kparams = array();
@@ -59,6 +62,9 @@ class Kaltura_Client_CaptionSearch_CaptionAssetItemService extends Kaltura_Clien
 		return $resultObject;
 	}
 
+	/**
+	 * @return Kaltura_Client_Type_BaseEntryListResponse
+	 */
 	function searchEntries(Kaltura_Client_Type_BaseEntryFilter $entryFilter = null, Kaltura_Client_CaptionSearch_Type_CaptionAssetItemFilter $captionAssetItemFilter = null, Kaltura_Client_Type_FilterPager $captionAssetItemPager = null)
 	{
 		$kparams = array();

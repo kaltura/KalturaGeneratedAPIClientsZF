@@ -39,6 +39,9 @@ class Kaltura_Client_UiConfService extends Kaltura_Client_ServiceBase
 		parent::__construct($client);
 	}
 
+	/**
+	 * @return Kaltura_Client_Type_UiConf
+	 */
 	function add(Kaltura_Client_Type_UiConf $uiConf)
 	{
 		$kparams = array();
@@ -54,6 +57,9 @@ class Kaltura_Client_UiConfService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	/**
+	 * @return Kaltura_Client_Type_UiConf
+	 */
 	function cloneAction($id)
 	{
 		$kparams = array();
@@ -69,6 +75,9 @@ class Kaltura_Client_UiConfService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	/**
+	 * @return 
+	 */
 	function delete($id)
 	{
 		$kparams = array();
@@ -81,6 +90,9 @@ class Kaltura_Client_UiConfService extends Kaltura_Client_ServiceBase
 		$this->client->checkIfError($resultXmlObject->result);
 	}
 
+	/**
+	 * @return Kaltura_Client_Type_UiConf
+	 */
 	function get($id)
 	{
 		$kparams = array();
@@ -96,6 +108,9 @@ class Kaltura_Client_UiConfService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	/**
+	 * @return array
+	 */
 	function getAvailableTypes()
 	{
 		$kparams = array();
@@ -112,6 +127,9 @@ class Kaltura_Client_UiConfService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	/**
+	 * @return Kaltura_Client_Type_UiConfListResponse
+	 */
 	function listAction(Kaltura_Client_Type_UiConfFilter $filter = null, Kaltura_Client_Type_FilterPager $pager = null)
 	{
 		$kparams = array();
@@ -130,6 +148,9 @@ class Kaltura_Client_UiConfService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	/**
+	 * @return Kaltura_Client_Type_UiConfListResponse
+	 */
 	function listTemplates(Kaltura_Client_Type_UiConfFilter $filter = null, Kaltura_Client_Type_FilterPager $pager = null)
 	{
 		$kparams = array();
@@ -148,6 +169,9 @@ class Kaltura_Client_UiConfService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	/**
+	 * @return Kaltura_Client_Type_UiConf
+	 */
 	function update($id, Kaltura_Client_Type_UiConf $uiConf)
 	{
 		$kparams = array();

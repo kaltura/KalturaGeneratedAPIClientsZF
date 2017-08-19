@@ -39,6 +39,9 @@ class Kaltura_Client_FlavorAssetService extends Kaltura_Client_ServiceBase
 		parent::__construct($client);
 	}
 
+	/**
+	 * @return Kaltura_Client_Type_FlavorAsset
+	 */
 	function add($entryId, Kaltura_Client_Type_FlavorAsset $flavorAsset)
 	{
 		$kparams = array();
@@ -55,6 +58,9 @@ class Kaltura_Client_FlavorAssetService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	/**
+	 * @return 
+	 */
 	function convert($entryId, $flavorParamsId, $priority = 0)
 	{
 		$kparams = array();
@@ -69,6 +75,9 @@ class Kaltura_Client_FlavorAssetService extends Kaltura_Client_ServiceBase
 		$this->client->checkIfError($resultXmlObject->result);
 	}
 
+	/**
+	 * @return 
+	 */
 	function delete($id)
 	{
 		$kparams = array();
@@ -81,6 +90,9 @@ class Kaltura_Client_FlavorAssetService extends Kaltura_Client_ServiceBase
 		$this->client->checkIfError($resultXmlObject->result);
 	}
 
+	/**
+	 * @return 
+	 */
 	function deleteLocalContent($assetId)
 	{
 		$kparams = array();
@@ -93,6 +105,9 @@ class Kaltura_Client_FlavorAssetService extends Kaltura_Client_ServiceBase
 		$this->client->checkIfError($resultXmlObject->result);
 	}
 
+	/**
+	 * @return Kaltura_Client_Type_FlavorAsset
+	 */
 	function export($assetId, $storageProfileId)
 	{
 		$kparams = array();
@@ -109,6 +124,9 @@ class Kaltura_Client_FlavorAssetService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	/**
+	 * @return Kaltura_Client_Type_FlavorAsset
+	 */
 	function get($id)
 	{
 		$kparams = array();
@@ -124,6 +142,9 @@ class Kaltura_Client_FlavorAssetService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	/**
+	 * @return array
+	 */
 	function getByEntryId($entryId)
 	{
 		$kparams = array();
@@ -141,6 +162,9 @@ class Kaltura_Client_FlavorAssetService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	/**
+	 * @return string
+	 */
 	function getDownloadUrl($id, $useCdn = false)
 	{
 		$kparams = array();
@@ -156,6 +180,9 @@ class Kaltura_Client_FlavorAssetService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	/**
+	 * @return array
+	 */
 	function getFlavorAssetsWithParams($entryId)
 	{
 		$kparams = array();
@@ -173,6 +200,9 @@ class Kaltura_Client_FlavorAssetService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	/**
+	 * @return Kaltura_Client_Type_RemotePathListResponse
+	 */
 	function getRemotePaths($id)
 	{
 		$kparams = array();
@@ -188,6 +218,9 @@ class Kaltura_Client_FlavorAssetService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	/**
+	 * @return string
+	 */
 	function getUrl($id, $storageId = null, $forceProxy = false, Kaltura_Client_Type_FlavorAssetUrlOptions $options = null)
 	{
 		$kparams = array();
@@ -206,6 +239,9 @@ class Kaltura_Client_FlavorAssetService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	/**
+	 * @return array
+	 */
 	function getWebPlayableByEntryId($entryId)
 	{
 		$kparams = array();
@@ -223,6 +259,9 @@ class Kaltura_Client_FlavorAssetService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	/**
+	 * @return Kaltura_Client_Type_FlavorAssetListResponse
+	 */
 	function listAction(Kaltura_Client_Type_AssetFilter $filter = null, Kaltura_Client_Type_FilterPager $pager = null)
 	{
 		$kparams = array();
@@ -241,6 +280,9 @@ class Kaltura_Client_FlavorAssetService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	/**
+	 * @return 
+	 */
 	function reconvert($id)
 	{
 		$kparams = array();
@@ -253,6 +295,9 @@ class Kaltura_Client_FlavorAssetService extends Kaltura_Client_ServiceBase
 		$this->client->checkIfError($resultXmlObject->result);
 	}
 
+	/**
+	 * @return string
+	 */
 	function serveAdStitchCmd($assetId, $ffprobeJson = null, $duration = null)
 	{
 		$kparams = array();
@@ -269,6 +314,9 @@ class Kaltura_Client_FlavorAssetService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	/**
+	 * @return 
+	 */
 	function setAsSource($assetId)
 	{
 		$kparams = array();
@@ -281,6 +329,9 @@ class Kaltura_Client_FlavorAssetService extends Kaltura_Client_ServiceBase
 		$this->client->checkIfError($resultXmlObject->result);
 	}
 
+	/**
+	 * @return Kaltura_Client_Type_FlavorAsset
+	 */
 	function setContent($id, Kaltura_Client_Type_ContentResource $contentResource)
 	{
 		$kparams = array();
@@ -297,6 +348,9 @@ class Kaltura_Client_FlavorAssetService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	/**
+	 * @return Kaltura_Client_Type_FlavorAsset
+	 */
 	function update($id, Kaltura_Client_Type_FlavorAsset $flavorAsset)
 	{
 		$kparams = array();

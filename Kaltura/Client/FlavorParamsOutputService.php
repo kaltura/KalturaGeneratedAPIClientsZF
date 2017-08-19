@@ -39,6 +39,9 @@ class Kaltura_Client_FlavorParamsOutputService extends Kaltura_Client_ServiceBas
 		parent::__construct($client);
 	}
 
+	/**
+	 * @return Kaltura_Client_Type_FlavorParamsOutput
+	 */
 	function get($id)
 	{
 		$kparams = array();
@@ -54,6 +57,9 @@ class Kaltura_Client_FlavorParamsOutputService extends Kaltura_Client_ServiceBas
 		return $resultObject;
 	}
 
+	/**
+	 * @return Kaltura_Client_Type_FlavorParamsOutputListResponse
+	 */
 	function listAction(Kaltura_Client_Type_FlavorParamsOutputFilter $filter = null, Kaltura_Client_Type_FilterPager $pager = null)
 	{
 		$kparams = array();

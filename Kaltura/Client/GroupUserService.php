@@ -39,6 +39,9 @@ class Kaltura_Client_GroupUserService extends Kaltura_Client_ServiceBase
 		parent::__construct($client);
 	}
 
+	/**
+	 * @return Kaltura_Client_Type_GroupUser
+	 */
 	function add(Kaltura_Client_Type_GroupUser $groupUser)
 	{
 		$kparams = array();
@@ -54,6 +57,9 @@ class Kaltura_Client_GroupUserService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	/**
+	 * @return 
+	 */
 	function delete($userId, $groupId)
 	{
 		$kparams = array();
@@ -67,6 +73,9 @@ class Kaltura_Client_GroupUserService extends Kaltura_Client_ServiceBase
 		$this->client->checkIfError($resultXmlObject->result);
 	}
 
+	/**
+	 * @return Kaltura_Client_Type_GroupUserListResponse
+	 */
 	function listAction(Kaltura_Client_Type_GroupUserFilter $filter = null, Kaltura_Client_Type_FilterPager $pager = null)
 	{
 		$kparams = array();

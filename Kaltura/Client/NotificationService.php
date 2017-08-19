@@ -39,6 +39,9 @@ class Kaltura_Client_NotificationService extends Kaltura_Client_ServiceBase
 		parent::__construct($client);
 	}
 
+	/**
+	 * @return Kaltura_Client_Type_ClientNotification
+	 */
 	function getClientNotification($entryId, $type)
 	{
 		$kparams = array();

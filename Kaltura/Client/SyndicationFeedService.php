@@ -39,6 +39,9 @@ class Kaltura_Client_SyndicationFeedService extends Kaltura_Client_ServiceBase
 		parent::__construct($client);
 	}
 
+	/**
+	 * @return Kaltura_Client_Type_BaseSyndicationFeed
+	 */
 	function add(Kaltura_Client_Type_BaseSyndicationFeed $syndicationFeed)
 	{
 		$kparams = array();
@@ -54,6 +57,9 @@ class Kaltura_Client_SyndicationFeedService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	/**
+	 * @return 
+	 */
 	function delete($id)
 	{
 		$kparams = array();
@@ -66,6 +72,9 @@ class Kaltura_Client_SyndicationFeedService extends Kaltura_Client_ServiceBase
 		$this->client->checkIfError($resultXmlObject->result);
 	}
 
+	/**
+	 * @return Kaltura_Client_Type_BaseSyndicationFeed
+	 */
 	function get($id)
 	{
 		$kparams = array();
@@ -81,6 +90,9 @@ class Kaltura_Client_SyndicationFeedService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	/**
+	 * @return Kaltura_Client_Type_SyndicationFeedEntryCount
+	 */
 	function getEntryCount($feedId)
 	{
 		$kparams = array();
@@ -96,6 +108,9 @@ class Kaltura_Client_SyndicationFeedService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	/**
+	 * @return Kaltura_Client_Type_BaseSyndicationFeedListResponse
+	 */
 	function listAction(Kaltura_Client_Type_BaseSyndicationFeedFilter $filter = null, Kaltura_Client_Type_FilterPager $pager = null)
 	{
 		$kparams = array();
@@ -114,6 +129,9 @@ class Kaltura_Client_SyndicationFeedService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	/**
+	 * @return string
+	 */
 	function requestConversion($feedId)
 	{
 		$kparams = array();
@@ -128,6 +146,9 @@ class Kaltura_Client_SyndicationFeedService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	/**
+	 * @return Kaltura_Client_Type_BaseSyndicationFeed
+	 */
 	function update($id, Kaltura_Client_Type_BaseSyndicationFeed $syndicationFeed)
 	{
 		$kparams = array();

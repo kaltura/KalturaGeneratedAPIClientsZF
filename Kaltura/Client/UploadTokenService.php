@@ -39,6 +39,9 @@ class Kaltura_Client_UploadTokenService extends Kaltura_Client_ServiceBase
 		parent::__construct($client);
 	}
 
+	/**
+	 * @return Kaltura_Client_Type_UploadToken
+	 */
 	function add(Kaltura_Client_Type_UploadToken $uploadToken = null)
 	{
 		$kparams = array();
@@ -55,6 +58,9 @@ class Kaltura_Client_UploadTokenService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	/**
+	 * @return 
+	 */
 	function delete($uploadTokenId)
 	{
 		$kparams = array();
@@ -67,6 +73,9 @@ class Kaltura_Client_UploadTokenService extends Kaltura_Client_ServiceBase
 		$this->client->checkIfError($resultXmlObject->result);
 	}
 
+	/**
+	 * @return Kaltura_Client_Type_UploadToken
+	 */
 	function get($uploadTokenId)
 	{
 		$kparams = array();
@@ -82,6 +91,9 @@ class Kaltura_Client_UploadTokenService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	/**
+	 * @return Kaltura_Client_Type_UploadTokenListResponse
+	 */
 	function listAction(Kaltura_Client_Type_UploadTokenFilter $filter = null, Kaltura_Client_Type_FilterPager $pager = null)
 	{
 		$kparams = array();
@@ -100,6 +112,9 @@ class Kaltura_Client_UploadTokenService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	/**
+	 * @return Kaltura_Client_Type_UploadToken
+	 */
 	function upload($uploadTokenId, $fileData, $resume = false, $finalChunk = true, $resumeAt = -1)
 	{
 		$kparams = array();

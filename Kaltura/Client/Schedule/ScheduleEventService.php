@@ -39,6 +39,9 @@ class Kaltura_Client_Schedule_ScheduleEventService extends Kaltura_Client_Servic
 		parent::__construct($client);
 	}
 
+	/**
+	 * @return Kaltura_Client_Schedule_Type_ScheduleEvent
+	 */
 	function add(Kaltura_Client_Schedule_Type_ScheduleEvent $scheduleEvent)
 	{
 		$kparams = array();
@@ -54,6 +57,9 @@ class Kaltura_Client_Schedule_ScheduleEventService extends Kaltura_Client_Servic
 		return $resultObject;
 	}
 
+	/**
+	 * @return Kaltura_Client_Type_BulkUpload
+	 */
 	function addFromBulkUpload($fileData, Kaltura_Client_ScheduleBulkUpload_Type_BulkUploadICalJobData $bulkUploadData = null)
 	{
 		$kparams = array();
@@ -72,6 +78,9 @@ class Kaltura_Client_Schedule_ScheduleEventService extends Kaltura_Client_Servic
 		return $resultObject;
 	}
 
+	/**
+	 * @return Kaltura_Client_Schedule_Type_ScheduleEvent
+	 */
 	function cancel($scheduleEventId)
 	{
 		$kparams = array();
@@ -87,6 +96,9 @@ class Kaltura_Client_Schedule_ScheduleEventService extends Kaltura_Client_Servic
 		return $resultObject;
 	}
 
+	/**
+	 * @return Kaltura_Client_Schedule_Type_ScheduleEvent
+	 */
 	function delete($scheduleEventId)
 	{
 		$kparams = array();
@@ -102,6 +114,9 @@ class Kaltura_Client_Schedule_ScheduleEventService extends Kaltura_Client_Servic
 		return $resultObject;
 	}
 
+	/**
+	 * @return Kaltura_Client_Schedule_Type_ScheduleEvent
+	 */
 	function get($scheduleEventId)
 	{
 		$kparams = array();
@@ -117,6 +132,9 @@ class Kaltura_Client_Schedule_ScheduleEventService extends Kaltura_Client_Servic
 		return $resultObject;
 	}
 
+	/**
+	 * @return Kaltura_Client_Schedule_Type_ScheduleEventListResponse
+	 */
 	function getConflicts($resourceIds, Kaltura_Client_Schedule_Type_ScheduleEvent $scheduleEvent, $scheduleEventIdToIgnore = null)
 	{
 		$kparams = array();
@@ -134,6 +152,9 @@ class Kaltura_Client_Schedule_ScheduleEventService extends Kaltura_Client_Servic
 		return $resultObject;
 	}
 
+	/**
+	 * @return Kaltura_Client_Schedule_Type_ScheduleEventListResponse
+	 */
 	function listAction(Kaltura_Client_Schedule_Type_ScheduleEventFilter $filter = null, Kaltura_Client_Type_FilterPager $pager = null)
 	{
 		$kparams = array();
@@ -152,6 +173,9 @@ class Kaltura_Client_Schedule_ScheduleEventService extends Kaltura_Client_Servic
 		return $resultObject;
 	}
 
+	/**
+	 * @return Kaltura_Client_Schedule_Type_ScheduleEvent
+	 */
 	function update($scheduleEventId, Kaltura_Client_Schedule_Type_ScheduleEvent $scheduleEvent)
 	{
 		$kparams = array();

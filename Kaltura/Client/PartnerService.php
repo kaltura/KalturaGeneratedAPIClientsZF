@@ -39,6 +39,9 @@ class Kaltura_Client_PartnerService extends Kaltura_Client_ServiceBase
 		parent::__construct($client);
 	}
 
+	/**
+	 * @return int
+	 */
 	function count(Kaltura_Client_Type_PartnerFilter $filter = null)
 	{
 		$kparams = array();
@@ -54,6 +57,9 @@ class Kaltura_Client_PartnerService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	/**
+	 * @return Kaltura_Client_Type_Partner
+	 */
 	function get($id = null)
 	{
 		$kparams = array();
@@ -69,6 +75,9 @@ class Kaltura_Client_PartnerService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	/**
+	 * @return Kaltura_Client_Type_Partner
+	 */
 	function getInfo()
 	{
 		$kparams = array();
@@ -83,6 +92,9 @@ class Kaltura_Client_PartnerService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	/**
+	 * @return Kaltura_Client_Type_Partner
+	 */
 	function getSecrets($partnerId, $adminEmail, $cmsPassword)
 	{
 		$kparams = array();
@@ -100,6 +112,9 @@ class Kaltura_Client_PartnerService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	/**
+	 * @return Kaltura_Client_Type_PartnerStatistics
+	 */
 	function getStatistics()
 	{
 		$kparams = array();
@@ -114,6 +129,9 @@ class Kaltura_Client_PartnerService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	/**
+	 * @return Kaltura_Client_Type_PartnerUsage
+	 */
 	function getUsage($year = "", $month = 1, $resolution = null)
 	{
 		$kparams = array();
@@ -131,6 +149,9 @@ class Kaltura_Client_PartnerService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	/**
+	 * @return Kaltura_Client_Type_PartnerListResponse
+	 */
 	function listAction(Kaltura_Client_Type_PartnerFilter $filter = null, Kaltura_Client_Type_FilterPager $pager = null)
 	{
 		$kparams = array();
@@ -149,6 +170,9 @@ class Kaltura_Client_PartnerService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	/**
+	 * @return Kaltura_Client_Type_FeatureStatusListResponse
+	 */
 	function listFeatureStatus()
 	{
 		$kparams = array();
@@ -163,6 +187,9 @@ class Kaltura_Client_PartnerService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	/**
+	 * @return Kaltura_Client_Type_PartnerListResponse
+	 */
 	function listPartnersForUser(Kaltura_Client_Type_PartnerFilter $partnerFilter = null, Kaltura_Client_Type_FilterPager $pager = null)
 	{
 		$kparams = array();
@@ -181,6 +208,9 @@ class Kaltura_Client_PartnerService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	/**
+	 * @return Kaltura_Client_Type_Partner
+	 */
 	function register(Kaltura_Client_Type_Partner $partner, $cmsPassword = "", $templatePartnerId = null, $silent = false)
 	{
 		$kparams = array();
@@ -199,6 +229,9 @@ class Kaltura_Client_PartnerService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	/**
+	 * @return Kaltura_Client_Type_Partner
+	 */
 	function update(Kaltura_Client_Type_Partner $partner, $allowEmpty = false)
 	{
 		$kparams = array();

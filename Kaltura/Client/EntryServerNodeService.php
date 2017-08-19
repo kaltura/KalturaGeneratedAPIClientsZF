@@ -39,6 +39,9 @@ class Kaltura_Client_EntryServerNodeService extends Kaltura_Client_ServiceBase
 		parent::__construct($client);
 	}
 
+	/**
+	 * @return Kaltura_Client_Type_EntryServerNode
+	 */
 	function get($id)
 	{
 		$kparams = array();
@@ -54,6 +57,9 @@ class Kaltura_Client_EntryServerNodeService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	/**
+	 * @return Kaltura_Client_Type_EntryServerNodeListResponse
+	 */
 	function listAction(Kaltura_Client_Type_EntryServerNodeFilter $filter = null, Kaltura_Client_Type_FilterPager $pager = null)
 	{
 		$kparams = array();
@@ -72,6 +78,9 @@ class Kaltura_Client_EntryServerNodeService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	/**
+	 * @return Kaltura_Client_Type_EntryServerNode
+	 */
 	function update($id, Kaltura_Client_Type_EntryServerNode $entryServerNode)
 	{
 		$kparams = array();
@@ -88,6 +97,9 @@ class Kaltura_Client_EntryServerNodeService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	/**
+	 * @return 
+	 */
 	function validateRegisteredEntryServerNode($id)
 	{
 		$kparams = array();

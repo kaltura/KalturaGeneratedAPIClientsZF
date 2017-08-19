@@ -39,6 +39,9 @@ class Kaltura_Client_UserRoleService extends Kaltura_Client_ServiceBase
 		parent::__construct($client);
 	}
 
+	/**
+	 * @return Kaltura_Client_Type_UserRole
+	 */
 	function add(Kaltura_Client_Type_UserRole $userRole)
 	{
 		$kparams = array();
@@ -54,6 +57,9 @@ class Kaltura_Client_UserRoleService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	/**
+	 * @return Kaltura_Client_Type_UserRole
+	 */
 	function cloneAction($userRoleId)
 	{
 		$kparams = array();
@@ -69,6 +75,9 @@ class Kaltura_Client_UserRoleService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	/**
+	 * @return Kaltura_Client_Type_UserRole
+	 */
 	function delete($userRoleId)
 	{
 		$kparams = array();
@@ -84,6 +93,9 @@ class Kaltura_Client_UserRoleService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	/**
+	 * @return Kaltura_Client_Type_UserRole
+	 */
 	function get($userRoleId)
 	{
 		$kparams = array();
@@ -99,6 +111,9 @@ class Kaltura_Client_UserRoleService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	/**
+	 * @return Kaltura_Client_Type_UserRoleListResponse
+	 */
 	function listAction(Kaltura_Client_Type_UserRoleFilter $filter = null, Kaltura_Client_Type_FilterPager $pager = null)
 	{
 		$kparams = array();
@@ -117,6 +132,9 @@ class Kaltura_Client_UserRoleService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	/**
+	 * @return Kaltura_Client_Type_UserRole
+	 */
 	function update($userRoleId, Kaltura_Client_Type_UserRole $userRole)
 	{
 		$kparams = array();

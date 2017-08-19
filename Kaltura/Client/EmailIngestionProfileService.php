@@ -39,6 +39,9 @@ class Kaltura_Client_EmailIngestionProfileService extends Kaltura_Client_Service
 		parent::__construct($client);
 	}
 
+	/**
+	 * @return Kaltura_Client_Type_EmailIngestionProfile
+	 */
 	function add(Kaltura_Client_Type_EmailIngestionProfile $EmailIP)
 	{
 		$kparams = array();
@@ -54,6 +57,9 @@ class Kaltura_Client_EmailIngestionProfileService extends Kaltura_Client_Service
 		return $resultObject;
 	}
 
+	/**
+	 * @return Kaltura_Client_Type_MediaEntry
+	 */
 	function addMediaEntry(Kaltura_Client_Type_MediaEntry $mediaEntry, $uploadTokenId, $emailProfId, $fromAddress, $emailMsgId)
 	{
 		$kparams = array();
@@ -73,6 +79,9 @@ class Kaltura_Client_EmailIngestionProfileService extends Kaltura_Client_Service
 		return $resultObject;
 	}
 
+	/**
+	 * @return 
+	 */
 	function delete($id)
 	{
 		$kparams = array();
@@ -85,6 +94,9 @@ class Kaltura_Client_EmailIngestionProfileService extends Kaltura_Client_Service
 		$this->client->checkIfError($resultXmlObject->result);
 	}
 
+	/**
+	 * @return Kaltura_Client_Type_EmailIngestionProfile
+	 */
 	function get($id)
 	{
 		$kparams = array();
@@ -100,6 +112,9 @@ class Kaltura_Client_EmailIngestionProfileService extends Kaltura_Client_Service
 		return $resultObject;
 	}
 
+	/**
+	 * @return Kaltura_Client_Type_EmailIngestionProfile
+	 */
 	function getByEmailAddress($emailAddress)
 	{
 		$kparams = array();
@@ -115,6 +130,9 @@ class Kaltura_Client_EmailIngestionProfileService extends Kaltura_Client_Service
 		return $resultObject;
 	}
 
+	/**
+	 * @return Kaltura_Client_Type_EmailIngestionProfile
+	 */
 	function update($id, Kaltura_Client_Type_EmailIngestionProfile $EmailIP)
 	{
 		$kparams = array();

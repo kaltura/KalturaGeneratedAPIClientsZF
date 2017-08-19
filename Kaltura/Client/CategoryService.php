@@ -39,6 +39,9 @@ class Kaltura_Client_CategoryService extends Kaltura_Client_ServiceBase
 		parent::__construct($client);
 	}
 
+	/**
+	 * @return Kaltura_Client_Type_Category
+	 */
 	function add(Kaltura_Client_Type_Category $category)
 	{
 		$kparams = array();
@@ -54,6 +57,9 @@ class Kaltura_Client_CategoryService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	/**
+	 * @return Kaltura_Client_Type_BulkUpload
+	 */
 	function addFromBulkUpload($fileData, Kaltura_Client_Type_BulkUploadJobData $bulkUploadData = null, Kaltura_Client_Type_BulkUploadCategoryData $bulkUploadCategoryData = null)
 	{
 		$kparams = array();
@@ -74,6 +80,9 @@ class Kaltura_Client_CategoryService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	/**
+	 * @return 
+	 */
 	function delete($id, $moveEntriesToParentCategory = 1)
 	{
 		$kparams = array();
@@ -87,6 +96,9 @@ class Kaltura_Client_CategoryService extends Kaltura_Client_ServiceBase
 		$this->client->checkIfError($resultXmlObject->result);
 	}
 
+	/**
+	 * @return Kaltura_Client_Type_Category
+	 */
 	function get($id)
 	{
 		$kparams = array();
@@ -102,6 +114,9 @@ class Kaltura_Client_CategoryService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	/**
+	 * @return int
+	 */
 	function index($id, $shouldUpdate = true)
 	{
 		$kparams = array();
@@ -117,6 +132,9 @@ class Kaltura_Client_CategoryService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	/**
+	 * @return Kaltura_Client_Type_CategoryListResponse
+	 */
 	function listAction(Kaltura_Client_Type_CategoryFilter $filter = null, Kaltura_Client_Type_FilterPager $pager = null)
 	{
 		$kparams = array();
@@ -135,6 +153,9 @@ class Kaltura_Client_CategoryService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	/**
+	 * @return Kaltura_Client_Type_CategoryListResponse
+	 */
 	function move($categoryIds, $targetCategoryParentId)
 	{
 		$kparams = array();
@@ -151,6 +172,9 @@ class Kaltura_Client_CategoryService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	/**
+	 * @return 
+	 */
 	function unlockCategories()
 	{
 		$kparams = array();
@@ -162,6 +186,9 @@ class Kaltura_Client_CategoryService extends Kaltura_Client_ServiceBase
 		$this->client->checkIfError($resultXmlObject->result);
 	}
 
+	/**
+	 * @return Kaltura_Client_Type_Category
+	 */
 	function update($id, Kaltura_Client_Type_Category $category)
 	{
 		$kparams = array();

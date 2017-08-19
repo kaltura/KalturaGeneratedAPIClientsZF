@@ -39,6 +39,9 @@ class Kaltura_Client_BaseEntryService extends Kaltura_Client_ServiceBase
 		parent::__construct($client);
 	}
 
+	/**
+	 * @return Kaltura_Client_Type_BaseEntry
+	 */
 	function add(Kaltura_Client_Type_BaseEntry $entry, $type = null)
 	{
 		$kparams = array();
@@ -55,6 +58,9 @@ class Kaltura_Client_BaseEntryService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	/**
+	 * @return Kaltura_Client_Type_BaseEntry
+	 */
 	function addContent($entryId, Kaltura_Client_Type_Resource $resource)
 	{
 		$kparams = array();
@@ -71,6 +77,9 @@ class Kaltura_Client_BaseEntryService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	/**
+	 * @return Kaltura_Client_Type_BaseEntry
+	 */
 	function addFromUploadedFile(Kaltura_Client_Type_BaseEntry $entry, $uploadTokenId, $type = null)
 	{
 		$kparams = array();
@@ -88,6 +97,9 @@ class Kaltura_Client_BaseEntryService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	/**
+	 * @return 
+	 */
 	function anonymousRank($entryId, $rank)
 	{
 		$kparams = array();
@@ -101,6 +113,9 @@ class Kaltura_Client_BaseEntryService extends Kaltura_Client_ServiceBase
 		$this->client->checkIfError($resultXmlObject->result);
 	}
 
+	/**
+	 * @return 
+	 */
 	function approve($entryId)
 	{
 		$kparams = array();
@@ -113,6 +128,9 @@ class Kaltura_Client_BaseEntryService extends Kaltura_Client_ServiceBase
 		$this->client->checkIfError($resultXmlObject->result);
 	}
 
+	/**
+	 * @return Kaltura_Client_Type_BaseEntry
+	 */
 	function cloneAction($entryId, array $cloneOptions = null)
 	{
 		$kparams = array();
@@ -133,6 +151,9 @@ class Kaltura_Client_BaseEntryService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	/**
+	 * @return int
+	 */
 	function count(Kaltura_Client_Type_BaseEntryFilter $filter = null)
 	{
 		$kparams = array();
@@ -148,6 +169,9 @@ class Kaltura_Client_BaseEntryService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	/**
+	 * @return 
+	 */
 	function delete($entryId)
 	{
 		$kparams = array();
@@ -160,6 +184,9 @@ class Kaltura_Client_BaseEntryService extends Kaltura_Client_ServiceBase
 		$this->client->checkIfError($resultXmlObject->result);
 	}
 
+	/**
+	 * @return Kaltura_Client_Type_BaseEntry
+	 */
 	function export($entryId, $storageProfileId)
 	{
 		$kparams = array();
@@ -176,6 +203,9 @@ class Kaltura_Client_BaseEntryService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	/**
+	 * @return 
+	 */
 	function flag(Kaltura_Client_Type_ModerationFlag $moderationFlag)
 	{
 		$kparams = array();
@@ -188,6 +218,9 @@ class Kaltura_Client_BaseEntryService extends Kaltura_Client_ServiceBase
 		$this->client->checkIfError($resultXmlObject->result);
 	}
 
+	/**
+	 * @return Kaltura_Client_Type_BaseEntry
+	 */
 	function get($entryId, $version = -1)
 	{
 		$kparams = array();
@@ -204,6 +237,9 @@ class Kaltura_Client_BaseEntryService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	/**
+	 * @return array
+	 */
 	function getByIds($entryIds)
 	{
 		$kparams = array();
@@ -221,6 +257,9 @@ class Kaltura_Client_BaseEntryService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	/**
+	 * @return Kaltura_Client_Type_EntryContextDataResult
+	 */
 	function getContextData($entryId, Kaltura_Client_Type_EntryContextDataParams $contextDataParams)
 	{
 		$kparams = array();
@@ -237,6 +276,9 @@ class Kaltura_Client_BaseEntryService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	/**
+	 * @return Kaltura_Client_Type_PlaybackContext
+	 */
 	function getPlaybackContext($entryId, Kaltura_Client_Type_PlaybackContextOptions $contextDataParams)
 	{
 		$kparams = array();
@@ -253,6 +295,9 @@ class Kaltura_Client_BaseEntryService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	/**
+	 * @return Kaltura_Client_Type_RemotePathListResponse
+	 */
 	function getRemotePaths($entryId)
 	{
 		$kparams = array();
@@ -268,6 +313,9 @@ class Kaltura_Client_BaseEntryService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	/**
+	 * @return int
+	 */
 	function index($id, $shouldUpdate = true)
 	{
 		$kparams = array();
@@ -283,6 +331,9 @@ class Kaltura_Client_BaseEntryService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	/**
+	 * @return Kaltura_Client_Type_BaseEntryListResponse
+	 */
 	function listAction(Kaltura_Client_Type_BaseEntryFilter $filter = null, Kaltura_Client_Type_FilterPager $pager = null)
 	{
 		$kparams = array();
@@ -301,6 +352,9 @@ class Kaltura_Client_BaseEntryService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	/**
+	 * @return Kaltura_Client_Type_BaseEntryListResponse
+	 */
 	function listByReferenceId($refId, Kaltura_Client_Type_FilterPager $pager = null)
 	{
 		$kparams = array();
@@ -318,6 +372,9 @@ class Kaltura_Client_BaseEntryService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	/**
+	 * @return Kaltura_Client_Type_ModerationFlagListResponse
+	 */
 	function listFlags($entryId, Kaltura_Client_Type_FilterPager $pager = null)
 	{
 		$kparams = array();
@@ -335,6 +392,9 @@ class Kaltura_Client_BaseEntryService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	/**
+	 * @return 
+	 */
 	function reject($entryId)
 	{
 		$kparams = array();
@@ -347,6 +407,9 @@ class Kaltura_Client_BaseEntryService extends Kaltura_Client_ServiceBase
 		$this->client->checkIfError($resultXmlObject->result);
 	}
 
+	/**
+	 * @return Kaltura_Client_Type_BaseEntry
+	 */
 	function update($entryId, Kaltura_Client_Type_BaseEntry $baseEntry)
 	{
 		$kparams = array();
@@ -363,6 +426,9 @@ class Kaltura_Client_BaseEntryService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	/**
+	 * @return Kaltura_Client_Type_BaseEntry
+	 */
 	function updateContent($entryId, Kaltura_Client_Type_Resource $resource, $conversionProfileId = null, Kaltura_Client_Type_EntryReplacementOptions $advancedOptions = null)
 	{
 		$kparams = array();
@@ -382,6 +448,9 @@ class Kaltura_Client_BaseEntryService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	/**
+	 * @return Kaltura_Client_Type_BaseEntry
+	 */
 	function updateThumbnailFromSourceEntry($entryId, $sourceEntryId, $timeOffset)
 	{
 		$kparams = array();
@@ -399,6 +468,9 @@ class Kaltura_Client_BaseEntryService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	/**
+	 * @return Kaltura_Client_Type_BaseEntry
+	 */
 	function updateThumbnailFromUrl($entryId, $url)
 	{
 		$kparams = array();
@@ -415,6 +487,9 @@ class Kaltura_Client_BaseEntryService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	/**
+	 * @return Kaltura_Client_Type_BaseEntry
+	 */
 	function updateThumbnailJpeg($entryId, $fileData)
 	{
 		$kparams = array();
@@ -432,6 +507,9 @@ class Kaltura_Client_BaseEntryService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	/**
+	 * @return string
+	 */
 	function upload($fileData)
 	{
 		$kparams = array();

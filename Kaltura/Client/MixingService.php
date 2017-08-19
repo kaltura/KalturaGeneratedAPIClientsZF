@@ -39,6 +39,9 @@ class Kaltura_Client_MixingService extends Kaltura_Client_ServiceBase
 		parent::__construct($client);
 	}
 
+	/**
+	 * @return Kaltura_Client_Type_MixEntry
+	 */
 	function add(Kaltura_Client_Type_MixEntry $mixEntry)
 	{
 		$kparams = array();
@@ -54,6 +57,9 @@ class Kaltura_Client_MixingService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	/**
+	 * @return 
+	 */
 	function anonymousRank($entryId, $rank)
 	{
 		$kparams = array();
@@ -67,6 +73,9 @@ class Kaltura_Client_MixingService extends Kaltura_Client_ServiceBase
 		$this->client->checkIfError($resultXmlObject->result);
 	}
 
+	/**
+	 * @return Kaltura_Client_Type_MixEntry
+	 */
 	function appendMediaEntry($mixEntryId, $mediaEntryId)
 	{
 		$kparams = array();
@@ -83,6 +92,9 @@ class Kaltura_Client_MixingService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	/**
+	 * @return Kaltura_Client_Type_MixEntry
+	 */
 	function cloneAction($entryId)
 	{
 		$kparams = array();
@@ -98,6 +110,9 @@ class Kaltura_Client_MixingService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	/**
+	 * @return int
+	 */
 	function count(Kaltura_Client_Type_MediaEntryFilter $filter = null)
 	{
 		$kparams = array();
@@ -113,6 +128,9 @@ class Kaltura_Client_MixingService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	/**
+	 * @return 
+	 */
 	function delete($entryId)
 	{
 		$kparams = array();
@@ -125,6 +143,9 @@ class Kaltura_Client_MixingService extends Kaltura_Client_ServiceBase
 		$this->client->checkIfError($resultXmlObject->result);
 	}
 
+	/**
+	 * @return Kaltura_Client_Type_MixEntry
+	 */
 	function get($entryId, $version = -1)
 	{
 		$kparams = array();
@@ -141,6 +162,9 @@ class Kaltura_Client_MixingService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	/**
+	 * @return array
+	 */
 	function getMixesByMediaId($mediaEntryId)
 	{
 		$kparams = array();
@@ -158,6 +182,9 @@ class Kaltura_Client_MixingService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	/**
+	 * @return array
+	 */
 	function getReadyMediaEntries($mixId, $version = -1)
 	{
 		$kparams = array();
@@ -176,6 +203,9 @@ class Kaltura_Client_MixingService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	/**
+	 * @return Kaltura_Client_Type_MixListResponse
+	 */
 	function listAction(Kaltura_Client_Type_MixEntryFilter $filter = null, Kaltura_Client_Type_FilterPager $pager = null)
 	{
 		$kparams = array();
@@ -194,6 +224,9 @@ class Kaltura_Client_MixingService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	/**
+	 * @return Kaltura_Client_Type_MixEntry
+	 */
 	function update($entryId, Kaltura_Client_Type_MixEntry $mixEntry)
 	{
 		$kparams = array();

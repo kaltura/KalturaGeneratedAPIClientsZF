@@ -39,6 +39,9 @@ class Kaltura_Client_FileAssetService extends Kaltura_Client_ServiceBase
 		parent::__construct($client);
 	}
 
+	/**
+	 * @return Kaltura_Client_Type_FileAsset
+	 */
 	function add(Kaltura_Client_Type_FileAsset $fileAsset)
 	{
 		$kparams = array();
@@ -54,6 +57,9 @@ class Kaltura_Client_FileAssetService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	/**
+	 * @return 
+	 */
 	function delete($id)
 	{
 		$kparams = array();
@@ -66,6 +72,9 @@ class Kaltura_Client_FileAssetService extends Kaltura_Client_ServiceBase
 		$this->client->checkIfError($resultXmlObject->result);
 	}
 
+	/**
+	 * @return Kaltura_Client_Type_FileAsset
+	 */
 	function get($id)
 	{
 		$kparams = array();
@@ -81,6 +90,9 @@ class Kaltura_Client_FileAssetService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	/**
+	 * @return Kaltura_Client_Type_FileAssetListResponse
+	 */
 	function listAction(Kaltura_Client_Type_FileAssetFilter $filter, Kaltura_Client_Type_FilterPager $pager = null)
 	{
 		$kparams = array();
@@ -98,6 +110,9 @@ class Kaltura_Client_FileAssetService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	/**
+	 * @return file
+	 */
 	function serve($id)
 	{
 		if ($this->client->isMultiRequest())
@@ -110,6 +125,9 @@ class Kaltura_Client_FileAssetService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	/**
+	 * @return Kaltura_Client_Type_FileAsset
+	 */
 	function setContent($id, Kaltura_Client_Type_ContentResource $contentResource)
 	{
 		$kparams = array();
@@ -126,6 +144,9 @@ class Kaltura_Client_FileAssetService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	/**
+	 * @return Kaltura_Client_Type_FileAsset
+	 */
 	function update($id, Kaltura_Client_Type_FileAsset $fileAsset)
 	{
 		$kparams = array();
