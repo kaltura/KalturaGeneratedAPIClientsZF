@@ -39,6 +39,9 @@ class Kaltura_Client_Drm_DrmProfileService extends Kaltura_Client_ServiceBase
 		parent::__construct($client);
 	}
 
+	/**
+	 * @return Kaltura_Client_Drm_Type_DrmProfile
+	 */
 	function add(Kaltura_Client_Drm_Type_DrmProfile $drmProfile)
 	{
 		$kparams = array();
@@ -54,6 +57,9 @@ class Kaltura_Client_Drm_DrmProfileService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	/**
+	 * @return Kaltura_Client_Drm_Type_DrmProfile
+	 */
 	function delete($drmProfileId)
 	{
 		$kparams = array();
@@ -69,6 +75,9 @@ class Kaltura_Client_Drm_DrmProfileService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	/**
+	 * @return Kaltura_Client_Drm_Type_DrmProfile
+	 */
 	function get($drmProfileId)
 	{
 		$kparams = array();
@@ -84,6 +93,9 @@ class Kaltura_Client_Drm_DrmProfileService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	/**
+	 * @return Kaltura_Client_Drm_Type_DrmProfile
+	 */
 	function getByProvider($provider)
 	{
 		$kparams = array();
@@ -99,6 +111,9 @@ class Kaltura_Client_Drm_DrmProfileService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	/**
+	 * @return Kaltura_Client_Drm_Type_DrmProfileListResponse
+	 */
 	function listAction(Kaltura_Client_Drm_Type_DrmProfileFilter $filter = null, Kaltura_Client_Type_FilterPager $pager = null)
 	{
 		$kparams = array();
@@ -117,6 +132,9 @@ class Kaltura_Client_Drm_DrmProfileService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	/**
+	 * @return Kaltura_Client_Drm_Type_DrmProfile
+	 */
 	function update($drmProfileId, Kaltura_Client_Drm_Type_DrmProfile $drmProfile)
 	{
 		$kparams = array();

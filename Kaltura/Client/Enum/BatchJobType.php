@@ -51,6 +51,7 @@ class Kaltura_Client_Enum_BatchJobType extends Kaltura_Client_EnumBase
 	const INDEX_TAGS = "tagSearch.IndexTagsByPrivacyContext";
 	const TAG_RESOLVE = "tagSearch.TagResolve";
 	const VIRUS_SCAN = "virusScan.VirusScan";
+	const WIDEVINE_REPOSITORY_SYNC = "widevine.WidevineRepositorySync";
 	const IMPORT = "1";
 	const DELETE = "2";
 	const FLATTEN = "3";

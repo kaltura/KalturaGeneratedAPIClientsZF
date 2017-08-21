@@ -33,5 +33,9 @@
  */
 class Kaltura_Client_Enum_DrmSchemeName extends Kaltura_Client_EnumBase
 {
+	const PLAYREADY_CENC = "drm.PLAYREADY_CENC";
+	const WIDEVINE_CENC = "drm.WIDEVINE_CENC";
+	const PLAYREADY = "playReady.PLAYREADY";
+	const WIDEVINE = "widevine.WIDEVINE";
 }
 
