@@ -52,6 +52,13 @@ class Kaltura_Client_Type_LiveEntryServerNode extends Kaltura_Client_Type_EntryS
 			else
 				$this->streams = Kaltura_Client_ParseUtils::unmarshalArray($xml->streams, "KalturaLiveStreamParams");
 		}
+		if(count($xml->recordingInfo))
+		{
+			if(empty($xml->recordingInfo))
+				$this->recordingInfo = array();
+			else
+				$this->recordingInfo = Kaltura_Client_ParseUtils::unmarshalArray($xml->recordingInfo, "KalturaLiveEntryServerNodeRecordingInfo");
+		}
 	}
 	/**
 	 * parameters of the stream we got
@@ -59,6 +66,13 @@ class Kaltura_Client_Type_LiveEntryServerNode extends Kaltura_Client_Type_EntryS
 	 * @var array of KalturaLiveStreamParams
 	 */
 	public $streams;
+
+	/**
+	 * 
+	 *
+	 * @var array of KalturaLiveEntryServerNodeRecordingInfo
+	 */
+	public $recordingInfo;
 
 
 }

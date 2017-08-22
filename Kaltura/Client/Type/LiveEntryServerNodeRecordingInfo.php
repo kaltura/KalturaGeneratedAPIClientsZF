@@ -31,7 +31,39 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Enum_DrmSchemeName extends Kaltura_Client_EnumBase
+class Kaltura_Client_Type_LiveEntryServerNodeRecordingInfo extends Kaltura_Client_ObjectBase
 {
+	public function getKalturaObjectType()
+	{
+		return 'KalturaLiveEntryServerNodeRecordingInfo';
+	}
+	
+	public function __construct(SimpleXMLElement $xml = null)
+	{
+		parent::__construct($xml);
+		
+		if(is_null($xml))
+			return;
+		
+		if(count($xml->recordedEntryId))
+			$this->recordedEntryId = (string)$xml->recordedEntryId;
+		if(count($xml->duration))
+			$this->duration = (int)$xml->duration;
+	}
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $recordedEntryId = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $duration = null;
+
+
 }
 
