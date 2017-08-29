@@ -46,7 +46,7 @@ class Kaltura_Client_Type_FileAsset extends Kaltura_Client_ObjectBase
 			return;
 		
 		if(count($xml->id))
-			$this->id = (int)$xml->id;
+			$this->id = (string)$xml->id;
 		if(count($xml->partnerId))
 			$this->partnerId = (int)$xml->partnerId;
 		if(count($xml->fileAssetObjectType))
@@ -71,7 +71,7 @@ class Kaltura_Client_Type_FileAsset extends Kaltura_Client_ObjectBase
 	/**
 	 * 
 	 *
-	 * @var int
+	 * @var bigint
 	 * @readonly
 	 */
 	public $id = null;

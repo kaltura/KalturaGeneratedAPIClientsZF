@@ -46,7 +46,7 @@ class Kaltura_Client_Type_ResponseProfile extends Kaltura_Client_Type_DetachedRe
 			return;
 		
 		if(count($xml->id))
-			$this->id = (int)$xml->id;
+			$this->id = (string)$xml->id;
 		if(count($xml->systemName))
 			$this->systemName = (string)$xml->systemName;
 		if(count($xml->partnerId))
@@ -63,7 +63,7 @@ class Kaltura_Client_Type_ResponseProfile extends Kaltura_Client_Type_DetachedRe
 	/**
 	 * Auto generated numeric identifier
 	 *
-	 * @var int
+	 * @var bigint
 	 * @readonly
 	 */
 	public $id = null;

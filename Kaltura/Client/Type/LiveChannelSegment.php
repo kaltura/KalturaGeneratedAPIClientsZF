@@ -79,7 +79,7 @@ class Kaltura_Client_Type_LiveChannelSegment extends Kaltura_Client_ObjectBase
 	/**
 	 * Unique identifier
 	 *
-	 * @var string
+	 * @var bigint
 	 * @readonly
 	 */
 	public $id = null;
@@ -168,7 +168,7 @@ class Kaltura_Client_Type_LiveChannelSegment extends Kaltura_Client_ObjectBase
 	/**
 	 * Live channel segment that the trigger relates to
 	 *
-	 * @var string
+	 * @var bigint
 	 */
 	public $triggerSegmentId = null;
 
