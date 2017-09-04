@@ -42,6 +42,28 @@ class Kaltura_Client_CaptionSearch_CaptionAssetItemService extends Kaltura_Clien
 	/**
 	 * @return Kaltura_Client_CaptionSearch_Type_CaptionAssetItemListResponse
 	 */
+	function listAction($captionAssetId, Kaltura_Client_CaptionSearch_Type_CaptionAssetItemFilter $captionAssetItemFilter = null, Kaltura_Client_Type_FilterPager $captionAssetItemPager = null)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "captionAssetId", $captionAssetId);
+		if ($captionAssetItemFilter !== null)
+			$this->client->addParam($kparams, "captionAssetItemFilter", $captionAssetItemFilter->toParams());
+		if ($captionAssetItemPager !== null)
+			$this->client->addParam($kparams, "captionAssetItemPager", $captionAssetItemPager->toParams());
+		$this->client->queueServiceActionCall("captionsearch_captionassetitem", "list", "KalturaCaptionAssetItemListResponse", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultXml = $this->client->doQueue();
+		$resultXmlObject = new \SimpleXMLElement($resultXml);
+		$this->client->checkIfError($resultXmlObject->result);
+		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaCaptionAssetItemListResponse");
+		$this->client->validateObjectType($resultObject, "Kaltura_Client_CaptionSearch_Type_CaptionAssetItemListResponse");
+		return $resultObject;
+	}
+
+	/**
+	 * @return Kaltura_Client_CaptionSearch_Type_CaptionAssetItemListResponse
+	 */
 	function search(Kaltura_Client_Type_BaseEntryFilter $entryFilter = null, Kaltura_Client_CaptionSearch_Type_CaptionAssetItemFilter $captionAssetItemFilter = null, Kaltura_Client_Type_FilterPager $captionAssetItemPager = null)
 	{
 		$kparams = array();
