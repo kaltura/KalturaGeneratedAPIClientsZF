@@ -31,48 +31,11 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Type_LiveEntryServerNodeRecordingInfo extends Kaltura_Client_ObjectBase
+class Kaltura_Client_Enum_EntryServerNodeRecordingStatus extends Kaltura_Client_EnumBase
 {
-	public function getKalturaObjectType()
-	{
-		return 'KalturaLiveEntryServerNodeRecordingInfo';
-	}
-	
-	public function __construct(SimpleXMLElement $xml = null)
-	{
-		parent::__construct($xml);
-		
-		if(is_null($xml))
-			return;
-		
-		if(count($xml->recordedEntryId))
-			$this->recordedEntryId = (string)$xml->recordedEntryId;
-		if(count($xml->duration))
-			$this->duration = (int)$xml->duration;
-		if(count($xml->recordingStatus))
-			$this->recordingStatus = (int)$xml->recordingStatus;
-	}
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $recordedEntryId = null;
-
-	/**
-	 * 
-	 *
-	 * @var int
-	 */
-	public $duration = null;
-
-	/**
-	 * 
-	 *
-	 * @var Kaltura_Client_Enum_EntryServerNodeRecordingStatus
-	 */
-	public $recordingStatus = null;
-
-
+	const STOPPED = 0;
+	const ON_GOING = 1;
+	const DONE = 2;
+	const DISMISSED = 3;
 }
 

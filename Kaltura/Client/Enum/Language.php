@@ -377,7 +377,7 @@ class Kaltura_Client_Enum_Language extends Kaltura_Client_EnumBase
 	const NE = "Nepali";
 	const NEW_ = "Newari Nepal Bhasa";
 	const NIO = "Nganasan";
-	const NCG = "Nisga'a";
+	const NCG = "Nisgaa";
 	const NIU = "Niuean";
 	const NOG = "Nogai";
 	const NON = "Norse Old";
@@ -421,7 +421,7 @@ class Kaltura_Client_Enum_Language extends Kaltura_Client_EnumBase
 	const PRG = "Prussian";
 	const FUC = "Pulaar";
 	const PA = "Punjabi";
-	const QXQ = "Qashqa'i";
+	const QXQ = "Qashqai";
 	const ALC = "Qawasqar";
 	const QU = "Quechua";
 	const QUC = "Quich Central";
@@ -525,7 +525,7 @@ class Kaltura_Client_Enum_Language extends Kaltura_Client_EnumBase
 	const TI = "Tigrinya";
 	const TLI = "Tlingit";
 	const TCX = "Toda";
-	const OOD = "Tohono O'odham";
+	const OOD = "Tohono Oodham";
 	const TPI = "Tok Pisin";
 	const TO = "Tonga";
 	const TOG = "Tonga (Nyasa)";
