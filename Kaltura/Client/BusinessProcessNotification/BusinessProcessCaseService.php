@@ -39,6 +39,9 @@ class Kaltura_Client_BusinessProcessNotification_BusinessProcessCaseService exte
 		parent::__construct($client);
 	}
 
+	/**
+	 * @return 
+	 */
 	function abort($objectType, $objectId, $businessProcessStartNotificationTemplateId)
 	{
 		$kparams = array();
@@ -53,6 +56,9 @@ class Kaltura_Client_BusinessProcessNotification_BusinessProcessCaseService exte
 		$this->client->checkIfError($resultXmlObject->result);
 	}
 
+	/**
+	 * @return array
+	 */
 	function listAction($objectType, $objectId)
 	{
 		$kparams = array();
@@ -71,6 +77,9 @@ class Kaltura_Client_BusinessProcessNotification_BusinessProcessCaseService exte
 		return $resultObject;
 	}
 
+	/**
+	 * @return file
+	 */
 	function serveDiagram($objectType, $objectId, $businessProcessStartNotificationTemplateId)
 	{
 		if ($this->client->isMultiRequest())

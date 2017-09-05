@@ -39,6 +39,9 @@ class Kaltura_Client_UnicornDistribution_UnicornService extends Kaltura_Client_S
 		parent::__construct($client);
 	}
 
+	/**
+	 * @return 
+	 */
 	function notify($id)
 	{
 		$kparams = array();

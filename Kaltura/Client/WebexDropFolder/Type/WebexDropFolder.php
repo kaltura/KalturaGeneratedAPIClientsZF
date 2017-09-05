@@ -57,6 +57,17 @@ class Kaltura_Client_WebexDropFolder_Type_WebexDropFolder extends Kaltura_Client
 			$this->webexServiceUrl = (string)$xml->webexServiceUrl;
 		if(count($xml->webexHostIdMetadataFieldName))
 			$this->webexHostIdMetadataFieldName = (string)$xml->webexHostIdMetadataFieldName;
+		if(count($xml->deleteFromRecycleBin))
+		{
+			if(!empty($xml->deleteFromRecycleBin))
+				$this->deleteFromRecycleBin = true;
+			else
+				$this->deleteFromRecycleBin = false;
+		}
+		if(count($xml->webexServiceType))
+			$this->webexServiceType = (string)$xml->webexServiceType;
+		if(count($xml->deleteFromTimestamp))
+			$this->deleteFromTimestamp = (int)$xml->deleteFromTimestamp;
 	}
 	/**
 	 * 
@@ -99,6 +110,27 @@ class Kaltura_Client_WebexDropFolder_Type_WebexDropFolder extends Kaltura_Client
 	 * @var string
 	 */
 	public $webexHostIdMetadataFieldName = null;
+
+	/**
+	 * 
+	 *
+	 * @var bool
+	 */
+	public $deleteFromRecycleBin = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $webexServiceType = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $deleteFromTimestamp = null;
 
 
 }

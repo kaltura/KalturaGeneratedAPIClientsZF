@@ -55,6 +55,10 @@ class Kaltura_Client_CrossKalturaDistribution_Type_CrossKalturaDistributionJobPr
 			$this->distributedCaptionAssets = (string)$xml->distributedCaptionAssets;
 		if(count($xml->distributedCuePoints))
 			$this->distributedCuePoints = (string)$xml->distributedCuePoints;
+		if(count($xml->distributedThumbCuePoints))
+			$this->distributedThumbCuePoints = (string)$xml->distributedThumbCuePoints;
+		if(count($xml->distributedTimedThumbAssets))
+			$this->distributedTimedThumbAssets = (string)$xml->distributedTimedThumbAssets;
 	}
 	/**
 	 * Key-value array where the keys are IDs of distributed flavor assets in the source account and the values are the matching IDs in the target account
@@ -90,6 +94,20 @@ class Kaltura_Client_CrossKalturaDistribution_Type_CrossKalturaDistributionJobPr
 	 * @var string
 	 */
 	public $distributedCuePoints = null;
+
+	/**
+	 * Key-value array where the keys are IDs of distributed thumb cue points in the source account and the values are the matching IDs in the target account
+	 *
+	 * @var string
+	 */
+	public $distributedThumbCuePoints = null;
+
+	/**
+	 * Key-value array where the keys are IDs of distributed timed thumb assets in the source account and the values are the matching IDs in the target account
+	 *
+	 * @var string
+	 */
+	public $distributedTimedThumbAssets = null;
 
 
 }

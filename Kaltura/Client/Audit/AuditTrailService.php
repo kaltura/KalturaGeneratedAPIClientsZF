@@ -39,6 +39,9 @@ class Kaltura_Client_Audit_AuditTrailService extends Kaltura_Client_ServiceBase
 		parent::__construct($client);
 	}
 
+	/**
+	 * @return Kaltura_Client_Audit_Type_AuditTrail
+	 */
 	function add(Kaltura_Client_Audit_Type_AuditTrail $auditTrail)
 	{
 		$kparams = array();
@@ -54,6 +57,9 @@ class Kaltura_Client_Audit_AuditTrailService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	/**
+	 * @return Kaltura_Client_Audit_Type_AuditTrail
+	 */
 	function get($id)
 	{
 		$kparams = array();
@@ -69,6 +75,9 @@ class Kaltura_Client_Audit_AuditTrailService extends Kaltura_Client_ServiceBase
 		return $resultObject;
 	}
 
+	/**
+	 * @return Kaltura_Client_Audit_Type_AuditTrailListResponse
+	 */
 	function listAction(Kaltura_Client_Audit_Type_AuditTrailFilter $filter = null, Kaltura_Client_Type_FilterPager $pager = null)
 	{
 		$kparams = array();
