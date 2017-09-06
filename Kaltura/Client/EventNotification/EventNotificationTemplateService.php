@@ -192,42 +192,6 @@ class Kaltura_Client_EventNotification_EventNotificationTemplateService extends 
 	}
 
 	/**
-	 * @return Kaltura_Client_PushNotification_Type_PushNotificationData
-	 */
-	function register($notificationTemplateSystemName, Kaltura_Client_PushNotification_Type_PushNotificationParams $pushNotificationParams)
-	{
-		$kparams = array();
-		$this->client->addParam($kparams, "notificationTemplateSystemName", $notificationTemplateSystemName);
-		$this->client->addParam($kparams, "pushNotificationParams", $pushNotificationParams->toParams());
-		$this->client->queueServiceActionCall("eventnotification_eventnotificationtemplate", "register", "KalturaPushNotificationData", $kparams);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaPushNotificationData");
-		$this->client->validateObjectType($resultObject, "Kaltura_Client_PushNotification_Type_PushNotificationData");
-		return $resultObject;
-	}
-
-	/**
-	 * @return 
-	 */
-	function sendCommand($notificationTemplateSystemName, Kaltura_Client_PushNotification_Type_PushNotificationParams $pushNotificationParams, $command)
-	{
-		$kparams = array();
-		$this->client->addParam($kparams, "notificationTemplateSystemName", $notificationTemplateSystemName);
-		$this->client->addParam($kparams, "pushNotificationParams", $pushNotificationParams->toParams());
-		$this->client->addParam($kparams, "command", $command);
-		$this->client->queueServiceActionCall("eventnotification_eventnotificationtemplate", "sendCommand", null, $kparams);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-	}
-
-	/**
 	 * @return Kaltura_Client_EventNotification_Type_EventNotificationTemplate
 	 */
 	function update($id, Kaltura_Client_EventNotification_Type_EventNotificationTemplate $eventNotificationTemplate)
