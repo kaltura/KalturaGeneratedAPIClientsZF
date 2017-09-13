@@ -34,6 +34,7 @@
 class Kaltura_Client_DropFolder_Enum_DropFolderType extends Kaltura_Client_EnumBase
 {
 	const FEED = "FeedDropFolder.FEED";
+	const WEBEX = "WebexDropFolder.WEBEX";
 	const LOCAL = "1";
 	const FTP = "2";
 	const SCP = "3";
