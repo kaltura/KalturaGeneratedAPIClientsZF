@@ -1004,6 +1004,7 @@ class Kaltura_Client_TypeMap
 		'KalturaServerNodeFilter' => 'Kaltura_Client_Type_ServerNodeFilter',
 		'KalturaServerNodeListResponse' => 'Kaltura_Client_Type_ServerNodeListResponse',
 		'KalturaSessionInfo' => 'Kaltura_Client_Type_SessionInfo',
+		'KalturaSessionResponse' => 'Kaltura_Client_Type_SessionResponse',
 		'KalturaSessionRestriction' => 'Kaltura_Client_Type_SessionRestriction',
 		'KalturaSftpDropFolder' => 'Kaltura_Client_DropFolder_Type_SftpDropFolder',
 		'KalturaSftpDropFolderBaseFilter' => 'Kaltura_Client_DropFolder_Type_SftpDropFolderBaseFilter',

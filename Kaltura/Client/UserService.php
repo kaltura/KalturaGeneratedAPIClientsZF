@@ -251,6 +251,24 @@ class Kaltura_Client_UserService extends Kaltura_Client_ServiceBase
 	}
 
 	/**
+	 * @return Kaltura_Client_Type_SessionResponse
+	 */
+	function loginByKs($requestedPartnerId)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "requestedPartnerId", $requestedPartnerId);
+		$this->client->queueServiceActionCall("user", "loginByKs", "KalturaSessionResponse", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultXml = $this->client->doQueue();
+		$resultXmlObject = new \SimpleXMLElement($resultXml);
+		$this->client->checkIfError($resultXmlObject->result);
+		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaSessionResponse");
+		$this->client->validateObjectType($resultObject, "Kaltura_Client_Type_SessionResponse");
+		return $resultObject;
+	}
+
+	/**
 	 * @return string
 	 */
 	function loginByLoginId($loginId, $password, $partnerId = null, $expiry = 86400, $privileges = "*", $otp = null)

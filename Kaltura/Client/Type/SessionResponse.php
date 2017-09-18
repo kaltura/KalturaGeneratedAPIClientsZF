@@ -31,11 +31,11 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Quiz_Type_QuestionCuePoint extends Kaltura_Client_CuePoint_Type_CuePoint
+class Kaltura_Client_Type_SessionResponse extends Kaltura_Client_Type_StartWidgetSessionResponse
 {
 	public function getKalturaObjectType()
 	{
-		return 'KalturaQuestionCuePoint';
+		return 'KalturaSessionResponse';
 	}
 	
 	public function __construct(SimpleXMLElement $xml = null)
@@ -45,48 +45,7 @@ class Kaltura_Client_Quiz_Type_QuestionCuePoint extends Kaltura_Client_CuePoint_
 		if(is_null($xml))
 			return;
 		
-		if(count($xml->optionalAnswers))
-		{
-			if(empty($xml->optionalAnswers))
-				$this->optionalAnswers = array();
-			else
-				$this->optionalAnswers = Kaltura_Client_ParseUtils::unmarshalArray($xml->optionalAnswers, "KalturaOptionalAnswer");
-		}
-		if(count($xml->hint))
-			$this->hint = (string)$xml->hint;
-		if(count($xml->question))
-			$this->question = (string)$xml->question;
-		if(count($xml->explanation))
-			$this->explanation = (string)$xml->explanation;
 	}
-	/**
-	 * Array of key value answerKey->optionAnswer objects
-	 *
-	 * @var array of KalturaOptionalAnswer
-	 */
-	public $optionalAnswers;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $hint = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $question = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $explanation = null;
-
 
 }
 
