@@ -54,7 +54,7 @@ class Kaltura_Client_Type_SearchResultResponse extends Kaltura_Client_ObjectBase
 		}
 		if(count($xml->needMediaInfo))
 		{
-			if(!empty($xml->needMediaInfo))
+			if(!empty($xml->needMediaInfo) && ((int) $xml->needMediaInfo === 1 || strtolower((string)$xml->needMediaInfo) === 'true'))
 				$this->needMediaInfo = true;
 			else
 				$this->needMediaInfo = false;

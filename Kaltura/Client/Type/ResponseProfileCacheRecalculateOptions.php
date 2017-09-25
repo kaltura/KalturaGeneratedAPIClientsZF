@@ -59,7 +59,7 @@ class Kaltura_Client_Type_ResponseProfileCacheRecalculateOptions extends Kaltura
 			$this->jobCreatedAt = (int)$xml->jobCreatedAt;
 		if(count($xml->isFirstLoop))
 		{
-			if(!empty($xml->isFirstLoop))
+			if(!empty($xml->isFirstLoop) && ((int) $xml->isFirstLoop === 1 || strtolower((string)$xml->isFirstLoop) === 'true'))
 				$this->isFirstLoop = true;
 			else
 				$this->isFirstLoop = false;

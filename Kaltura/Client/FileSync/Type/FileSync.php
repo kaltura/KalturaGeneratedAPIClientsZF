@@ -91,14 +91,14 @@ class Kaltura_Client_FileSync_Type_FileSync extends Kaltura_Client_ObjectBase
 			$this->fileDiscSize = (float)$xml->fileDiscSize;
 		if(count($xml->isCurrentDc))
 		{
-			if(!empty($xml->isCurrentDc))
+			if(!empty($xml->isCurrentDc) && ((int) $xml->isCurrentDc === 1 || strtolower((string)$xml->isCurrentDc) === 'true'))
 				$this->isCurrentDc = true;
 			else
 				$this->isCurrentDc = false;
 		}
 		if(count($xml->isDir))
 		{
-			if(!empty($xml->isDir))
+			if(!empty($xml->isDir) && ((int) $xml->isDir === 1 || strtolower((string)$xml->isDir) === 'true'))
 				$this->isDir = true;
 			else
 				$this->isDir = false;

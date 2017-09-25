@@ -65,7 +65,7 @@ class Kaltura_Client_Cielo24_Type_Cielo24JobProviderData extends Kaltura_Client_
 			$this->spokenLanguage = (string)$xml->spokenLanguage;
 		if(count($xml->replaceMediaContent))
 		{
-			if(!empty($xml->replaceMediaContent))
+			if(!empty($xml->replaceMediaContent) && ((int) $xml->replaceMediaContent === 1 || strtolower((string)$xml->replaceMediaContent) === 'true'))
 				$this->replaceMediaContent = true;
 			else
 				$this->replaceMediaContent = false;

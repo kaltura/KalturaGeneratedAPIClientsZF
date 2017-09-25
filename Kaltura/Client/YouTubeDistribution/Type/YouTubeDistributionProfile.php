@@ -85,21 +85,21 @@ class Kaltura_Client_YouTubeDistribution_Type_YouTubeDistributionProfile extends
 			$this->adServerPartnerId = (string)$xml->adServerPartnerId;
 		if(count($xml->enableAdServer))
 		{
-			if(!empty($xml->enableAdServer))
+			if(!empty($xml->enableAdServer) && ((int) $xml->enableAdServer === 1 || strtolower((string)$xml->enableAdServer) === 'true'))
 				$this->enableAdServer = true;
 			else
 				$this->enableAdServer = false;
 		}
 		if(count($xml->allowPreRollAds))
 		{
-			if(!empty($xml->allowPreRollAds))
+			if(!empty($xml->allowPreRollAds) && ((int) $xml->allowPreRollAds === 1 || strtolower((string)$xml->allowPreRollAds) === 'true'))
 				$this->allowPreRollAds = true;
 			else
 				$this->allowPreRollAds = false;
 		}
 		if(count($xml->allowPostRollAds))
 		{
-			if(!empty($xml->allowPostRollAds))
+			if(!empty($xml->allowPostRollAds) && ((int) $xml->allowPostRollAds === 1 || strtolower((string)$xml->allowPostRollAds) === 'true'))
 				$this->allowPostRollAds = true;
 			else
 				$this->allowPostRollAds = false;
@@ -120,7 +120,7 @@ class Kaltura_Client_YouTubeDistribution_Type_YouTubeDistributionProfile extends
 			$this->allowInvideo = (string)$xml->allowInvideo;
 		if(count($xml->allowMidRollAds))
 		{
-			if(!empty($xml->allowMidRollAds))
+			if(!empty($xml->allowMidRollAds) && ((int) $xml->allowMidRollAds === 1 || strtolower((string)$xml->allowMidRollAds) === 'true'))
 				$this->allowMidRollAds = true;
 			else
 				$this->allowMidRollAds = false;
@@ -137,14 +137,14 @@ class Kaltura_Client_YouTubeDistribution_Type_YouTubeDistributionProfile extends
 			$this->captionAutosync = (string)$xml->captionAutosync;
 		if(count($xml->deleteReference))
 		{
-			if(!empty($xml->deleteReference))
+			if(!empty($xml->deleteReference) && ((int) $xml->deleteReference === 1 || strtolower((string)$xml->deleteReference) === 'true'))
 				$this->deleteReference = true;
 			else
 				$this->deleteReference = false;
 		}
 		if(count($xml->releaseClaims))
 		{
-			if(!empty($xml->releaseClaims))
+			if(!empty($xml->releaseClaims) && ((int) $xml->releaseClaims === 1 || strtolower((string)$xml->releaseClaims) === 'true'))
 				$this->releaseClaims = true;
 			else
 				$this->releaseClaims = false;

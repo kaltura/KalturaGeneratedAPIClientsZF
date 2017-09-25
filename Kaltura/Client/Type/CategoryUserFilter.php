@@ -47,7 +47,7 @@ class Kaltura_Client_Type_CategoryUserFilter extends Kaltura_Client_Type_Categor
 		
 		if(count($xml->categoryDirectMembers))
 		{
-			if(!empty($xml->categoryDirectMembers))
+			if(!empty($xml->categoryDirectMembers) && ((int) $xml->categoryDirectMembers === 1 || strtolower((string)$xml->categoryDirectMembers) === 'true'))
 				$this->categoryDirectMembers = true;
 			else
 				$this->categoryDirectMembers = false;

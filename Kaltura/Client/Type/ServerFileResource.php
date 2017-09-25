@@ -49,7 +49,7 @@ class Kaltura_Client_Type_ServerFileResource extends Kaltura_Client_Type_Generic
 			$this->localFilePath = (string)$xml->localFilePath;
 		if(count($xml->keepOriginalFile))
 		{
-			if(!empty($xml->keepOriginalFile))
+			if(!empty($xml->keepOriginalFile) && ((int) $xml->keepOriginalFile === 1 || strtolower((string)$xml->keepOriginalFile) === 'true'))
 				$this->keepOriginalFile = true;
 			else
 				$this->keepOriginalFile = false;

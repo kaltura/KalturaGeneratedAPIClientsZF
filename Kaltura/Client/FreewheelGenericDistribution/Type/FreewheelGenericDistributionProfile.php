@@ -65,14 +65,14 @@ class Kaltura_Client_FreewheelGenericDistribution_Type_FreewheelGenericDistribut
 			$this->categoryId = (string)$xml->categoryId;
 		if(count($xml->replaceGroup))
 		{
-			if(!empty($xml->replaceGroup))
+			if(!empty($xml->replaceGroup) && ((int) $xml->replaceGroup === 1 || strtolower((string)$xml->replaceGroup) === 'true'))
 				$this->replaceGroup = true;
 			else
 				$this->replaceGroup = false;
 		}
 		if(count($xml->replaceAirDates))
 		{
-			if(!empty($xml->replaceAirDates))
+			if(!empty($xml->replaceAirDates) && ((int) $xml->replaceAirDates === 1 || strtolower((string)$xml->replaceAirDates) === 'true'))
 				$this->replaceAirDates = true;
 			else
 				$this->replaceAirDates = false;

@@ -65,14 +65,14 @@ class Kaltura_Client_EventNotification_Type_EventNotificationTemplate extends Ka
 			$this->updatedAt = (int)$xml->updatedAt;
 		if(count($xml->manualDispatchEnabled))
 		{
-			if(!empty($xml->manualDispatchEnabled))
+			if(!empty($xml->manualDispatchEnabled) && ((int) $xml->manualDispatchEnabled === 1 || strtolower((string)$xml->manualDispatchEnabled) === 'true'))
 				$this->manualDispatchEnabled = true;
 			else
 				$this->manualDispatchEnabled = false;
 		}
 		if(count($xml->automaticDispatchEnabled))
 		{
-			if(!empty($xml->automaticDispatchEnabled))
+			if(!empty($xml->automaticDispatchEnabled) && ((int) $xml->automaticDispatchEnabled === 1 || strtolower((string)$xml->automaticDispatchEnabled) === 'true'))
 				$this->automaticDispatchEnabled = true;
 			else
 				$this->automaticDispatchEnabled = false;

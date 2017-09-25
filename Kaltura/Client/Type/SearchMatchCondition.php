@@ -47,7 +47,7 @@ class Kaltura_Client_Type_SearchMatchCondition extends Kaltura_Client_Type_Searc
 		
 		if(count($xml->not))
 		{
-			if(!empty($xml->not))
+			if(!empty($xml->not) && ((int) $xml->not === 1 || strtolower((string)$xml->not) === 'true'))
 				$this->not = true;
 			else
 				$this->not = false;

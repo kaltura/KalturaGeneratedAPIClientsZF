@@ -51,7 +51,7 @@ class Kaltura_Client_UnicornDistribution_Type_UnicornDistributionJobProviderData
 			$this->title = (string)$xml->title;
 		if(count($xml->mediaChanged))
 		{
-			if(!empty($xml->mediaChanged))
+			if(!empty($xml->mediaChanged) && ((int) $xml->mediaChanged === 1 || strtolower((string)$xml->mediaChanged) === 'true'))
 				$this->mediaChanged = true;
 			else
 				$this->mediaChanged = false;

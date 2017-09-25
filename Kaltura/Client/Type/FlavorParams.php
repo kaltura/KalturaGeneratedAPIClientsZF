@@ -71,7 +71,7 @@ class Kaltura_Client_Type_FlavorParams extends Kaltura_Client_Type_AssetParams
 			$this->conversionEnginesExtraParams = (string)$xml->conversionEnginesExtraParams;
 		if(count($xml->twoPass))
 		{
-			if(!empty($xml->twoPass))
+			if(!empty($xml->twoPass) && ((int) $xml->twoPass === 1 || strtolower((string)$xml->twoPass) === 'true'))
 				$this->twoPass = true;
 			else
 				$this->twoPass = false;

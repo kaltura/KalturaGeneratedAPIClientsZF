@@ -51,7 +51,7 @@ class Kaltura_Client_Type_PlayerEmbedCodeType extends Kaltura_Client_ObjectBase
 			$this->label = (string)$xml->label;
 		if(count($xml->entryOnly))
 		{
-			if(!empty($xml->entryOnly))
+			if(!empty($xml->entryOnly) && ((int) $xml->entryOnly === 1 || strtolower((string)$xml->entryOnly) === 'true'))
 				$this->entryOnly = true;
 			else
 				$this->entryOnly = false;

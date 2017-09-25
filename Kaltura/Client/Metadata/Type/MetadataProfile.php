@@ -75,7 +75,7 @@ class Kaltura_Client_Metadata_Type_MetadataProfile extends Kaltura_Client_Object
 			$this->createMode = (int)$xml->createMode;
 		if(count($xml->disableReIndexing))
 		{
-			if(!empty($xml->disableReIndexing))
+			if(!empty($xml->disableReIndexing) && ((int) $xml->disableReIndexing === 1 || strtolower((string)$xml->disableReIndexing) === 'true'))
 				$this->disableReIndexing = true;
 			else
 				$this->disableReIndexing = false;

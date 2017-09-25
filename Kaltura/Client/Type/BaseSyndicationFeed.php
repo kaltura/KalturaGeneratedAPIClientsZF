@@ -65,7 +65,7 @@ abstract class Kaltura_Client_Type_BaseSyndicationFeed extends Kaltura_Client_Ob
 			$this->createdAt = (int)$xml->createdAt;
 		if(count($xml->allowEmbed))
 		{
-			if(!empty($xml->allowEmbed))
+			if(!empty($xml->allowEmbed) && ((int) $xml->allowEmbed === 1 || strtolower((string)$xml->allowEmbed) === 'true'))
 				$this->allowEmbed = true;
 			else
 				$this->allowEmbed = false;
@@ -76,14 +76,14 @@ abstract class Kaltura_Client_Type_BaseSyndicationFeed extends Kaltura_Client_Ob
 			$this->flavorParamId = (int)$xml->flavorParamId;
 		if(count($xml->transcodeExistingContent))
 		{
-			if(!empty($xml->transcodeExistingContent))
+			if(!empty($xml->transcodeExistingContent) && ((int) $xml->transcodeExistingContent === 1 || strtolower((string)$xml->transcodeExistingContent) === 'true'))
 				$this->transcodeExistingContent = true;
 			else
 				$this->transcodeExistingContent = false;
 		}
 		if(count($xml->addToDefaultConversionProfile))
 		{
-			if(!empty($xml->addToDefaultConversionProfile))
+			if(!empty($xml->addToDefaultConversionProfile) && ((int) $xml->addToDefaultConversionProfile === 1 || strtolower((string)$xml->addToDefaultConversionProfile) === 'true'))
 				$this->addToDefaultConversionProfile = true;
 			else
 				$this->addToDefaultConversionProfile = false;
@@ -96,7 +96,7 @@ abstract class Kaltura_Client_Type_BaseSyndicationFeed extends Kaltura_Client_Ob
 			$this->entriesOrderBy = (string)$xml->entriesOrderBy;
 		if(count($xml->enforceEntitlement))
 		{
-			if(!empty($xml->enforceEntitlement))
+			if(!empty($xml->enforceEntitlement) && ((int) $xml->enforceEntitlement === 1 || strtolower((string)$xml->enforceEntitlement) === 'true'))
 				$this->enforceEntitlement = true;
 			else
 				$this->enforceEntitlement = false;
@@ -107,7 +107,7 @@ abstract class Kaltura_Client_Type_BaseSyndicationFeed extends Kaltura_Client_Ob
 			$this->updatedAt = (int)$xml->updatedAt;
 		if(count($xml->useCategoryEntries))
 		{
-			if(!empty($xml->useCategoryEntries))
+			if(!empty($xml->useCategoryEntries) && ((int) $xml->useCategoryEntries === 1 || strtolower((string)$xml->useCategoryEntries) === 'true'))
 				$this->useCategoryEntries = true;
 			else
 				$this->useCategoryEntries = false;

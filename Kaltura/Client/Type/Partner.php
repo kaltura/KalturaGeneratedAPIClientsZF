@@ -79,7 +79,7 @@ class Kaltura_Client_Type_Partner extends Kaltura_Client_ObjectBase
 			$this->describeYourself = (string)$xml->describeYourself;
 		if(count($xml->adultContent))
 		{
-			if(!empty($xml->adultContent))
+			if(!empty($xml->adultContent) && ((int) $xml->adultContent === 1 || strtolower((string)$xml->adultContent) === 'true'))
 				$this->adultContent = true;
 			else
 				$this->adultContent = false;
@@ -133,7 +133,7 @@ class Kaltura_Client_Type_Partner extends Kaltura_Client_ObjectBase
 			$this->partnerGroupType = (int)$xml->partnerGroupType;
 		if(count($xml->defaultEntitlementEnforcement))
 		{
-			if(!empty($xml->defaultEntitlementEnforcement))
+			if(!empty($xml->defaultEntitlementEnforcement) && ((int) $xml->defaultEntitlementEnforcement === 1 || strtolower((string)$xml->defaultEntitlementEnforcement) === 'true'))
 				$this->defaultEntitlementEnforcement = true;
 			else
 				$this->defaultEntitlementEnforcement = false;
@@ -160,7 +160,7 @@ class Kaltura_Client_Type_Partner extends Kaltura_Client_ObjectBase
 			$this->templatePartnerId = (int)$xml->templatePartnerId;
 		if(count($xml->ignoreSeoLinks))
 		{
-			if(!empty($xml->ignoreSeoLinks))
+			if(!empty($xml->ignoreSeoLinks) && ((int) $xml->ignoreSeoLinks === 1 || strtolower((string)$xml->ignoreSeoLinks) === 'true'))
 				$this->ignoreSeoLinks = true;
 			else
 				$this->ignoreSeoLinks = false;
@@ -171,7 +171,7 @@ class Kaltura_Client_Type_Partner extends Kaltura_Client_ObjectBase
 			$this->cdnHost = (string)$xml->cdnHost;
 		if(count($xml->isFirstLogin))
 		{
-			if(!empty($xml->isFirstLogin))
+			if(!empty($xml->isFirstLogin) && ((int) $xml->isFirstLogin === 1 || strtolower((string)$xml->isFirstLogin) === 'true'))
 				$this->isFirstLogin = true;
 			else
 				$this->isFirstLogin = false;
@@ -186,7 +186,7 @@ class Kaltura_Client_Type_Partner extends Kaltura_Client_ObjectBase
 			$this->referenceId = (string)$xml->referenceId;
 		if(count($xml->timeAlignedRenditions))
 		{
-			if(!empty($xml->timeAlignedRenditions))
+			if(!empty($xml->timeAlignedRenditions) && ((int) $xml->timeAlignedRenditions === 1 || strtolower((string)$xml->timeAlignedRenditions) === 'true'))
 				$this->timeAlignedRenditions = true;
 			else
 				$this->timeAlignedRenditions = false;

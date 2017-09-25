@@ -47,7 +47,7 @@ class Kaltura_Client_Metadata_Type_MetadataReplacementOptionsItem extends Kaltur
 		
 		if(count($xml->shouldCopyMetadata))
 		{
-			if(!empty($xml->shouldCopyMetadata))
+			if(!empty($xml->shouldCopyMetadata) && ((int) $xml->shouldCopyMetadata === 1 || strtolower((string)$xml->shouldCopyMetadata) === 'true'))
 				$this->shouldCopyMetadata = true;
 			else
 				$this->shouldCopyMetadata = false;

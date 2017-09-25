@@ -49,14 +49,14 @@ class Kaltura_Client_Type_ReportInputFilter extends Kaltura_Client_Type_ReportIn
 			$this->keywords = (string)$xml->keywords;
 		if(count($xml->searchInTags))
 		{
-			if(!empty($xml->searchInTags))
+			if(!empty($xml->searchInTags) && ((int) $xml->searchInTags === 1 || strtolower((string)$xml->searchInTags) === 'true'))
 				$this->searchInTags = true;
 			else
 				$this->searchInTags = false;
 		}
 		if(count($xml->searchInAdminTags))
 		{
-			if(!empty($xml->searchInAdminTags))
+			if(!empty($xml->searchInAdminTags) && ((int) $xml->searchInAdminTags === 1 || strtolower((string)$xml->searchInAdminTags) === 'true'))
 				$this->searchInAdminTags = true;
 			else
 				$this->searchInAdminTags = false;

@@ -68,7 +68,7 @@ class Kaltura_Client_Type_AccessControl extends Kaltura_Client_ObjectBase
 		}
 		if(count($xml->containsUnsuportedRestrictions))
 		{
-			if(!empty($xml->containsUnsuportedRestrictions))
+			if(!empty($xml->containsUnsuportedRestrictions) && ((int) $xml->containsUnsuportedRestrictions === 1 || strtolower((string)$xml->containsUnsuportedRestrictions) === 'true'))
 				$this->containsUnsuportedRestrictions = true;
 			else
 				$this->containsUnsuportedRestrictions = false;

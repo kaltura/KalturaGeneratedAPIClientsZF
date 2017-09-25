@@ -47,7 +47,7 @@ class Kaltura_Client_ContentDistribution_Type_ContentDistributionSearchItem exte
 		
 		if(count($xml->noDistributionProfiles))
 		{
-			if(!empty($xml->noDistributionProfiles))
+			if(!empty($xml->noDistributionProfiles) && ((int) $xml->noDistributionProfiles === 1 || strtolower((string)$xml->noDistributionProfiles) === 'true'))
 				$this->noDistributionProfiles = true;
 			else
 				$this->noDistributionProfiles = false;
@@ -62,7 +62,7 @@ class Kaltura_Client_ContentDistribution_Type_ContentDistributionSearchItem exte
 			$this->entryDistributionStatus = (int)$xml->entryDistributionStatus;
 		if(count($xml->hasEntryDistributionValidationErrors))
 		{
-			if(!empty($xml->hasEntryDistributionValidationErrors))
+			if(!empty($xml->hasEntryDistributionValidationErrors) && ((int) $xml->hasEntryDistributionValidationErrors === 1 || strtolower((string)$xml->hasEntryDistributionValidationErrors) === 'true'))
 				$this->hasEntryDistributionValidationErrors = true;
 			else
 				$this->hasEntryDistributionValidationErrors = false;

@@ -47,7 +47,7 @@ class Kaltura_Client_ContentDistribution_Type_DistributionDeleteJobData extends 
 		
 		if(count($xml->keepDistributionItem))
 		{
-			if(!empty($xml->keepDistributionItem))
+			if(!empty($xml->keepDistributionItem) && ((int) $xml->keepDistributionItem === 1 || strtolower((string)$xml->keepDistributionItem) === 'true'))
 				$this->keepDistributionItem = true;
 			else
 				$this->keepDistributionItem = false;

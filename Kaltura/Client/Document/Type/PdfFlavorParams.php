@@ -47,7 +47,7 @@ class Kaltura_Client_Document_Type_PdfFlavorParams extends Kaltura_Client_Type_F
 		
 		if(count($xml->readonly))
 		{
-			if(!empty($xml->readonly))
+			if(!empty($xml->readonly) && ((int) $xml->readonly === 1 || strtolower((string)$xml->readonly) === 'true'))
 				$this->readonly = true;
 			else
 				$this->readonly = false;

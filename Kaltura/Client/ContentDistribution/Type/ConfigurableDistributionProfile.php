@@ -61,7 +61,7 @@ abstract class Kaltura_Client_ContentDistribution_Type_ConfigurableDistributionP
 		}
 		if(count($xml->useCategoryEntries))
 		{
-			if(!empty($xml->useCategoryEntries))
+			if(!empty($xml->useCategoryEntries) && ((int) $xml->useCategoryEntries === 1 || strtolower((string)$xml->useCategoryEntries) === 'true'))
 				$this->useCategoryEntries = true;
 			else
 				$this->useCategoryEntries = false;

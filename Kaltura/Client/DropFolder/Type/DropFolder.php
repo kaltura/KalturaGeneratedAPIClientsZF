@@ -91,7 +91,7 @@ class Kaltura_Client_DropFolder_Type_DropFolder extends Kaltura_Client_ObjectBas
 			$this->lastAccessedAt = (int)$xml->lastAccessedAt;
 		if(count($xml->incremental))
 		{
-			if(!empty($xml->incremental))
+			if(!empty($xml->incremental) && ((int) $xml->incremental === 1 || strtolower((string)$xml->incremental) === 'true'))
 				$this->incremental = true;
 			else
 				$this->incremental = false;
@@ -104,14 +104,14 @@ class Kaltura_Client_DropFolder_Type_DropFolder extends Kaltura_Client_ObjectBas
 			$this->categoriesMetadataFieldName = (string)$xml->categoriesMetadataFieldName;
 		if(count($xml->enforceEntitlement))
 		{
-			if(!empty($xml->enforceEntitlement))
+			if(!empty($xml->enforceEntitlement) && ((int) $xml->enforceEntitlement === 1 || strtolower((string)$xml->enforceEntitlement) === 'true'))
 				$this->enforceEntitlement = true;
 			else
 				$this->enforceEntitlement = false;
 		}
 		if(count($xml->shouldValidateKS))
 		{
-			if(!empty($xml->shouldValidateKS))
+			if(!empty($xml->shouldValidateKS) && ((int) $xml->shouldValidateKS === 1 || strtolower((string)$xml->shouldValidateKS) === 'true'))
 				$this->shouldValidateKS = true;
 			else
 				$this->shouldValidateKS = false;

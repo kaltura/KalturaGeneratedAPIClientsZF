@@ -67,7 +67,7 @@ class Kaltura_Client_YoutubeApiDistribution_Type_YoutubeApiDistributionProfile e
 			$this->googleTokenData = (string)$xml->googleTokenData;
 		if(count($xml->assumeSuccess))
 		{
-			if(!empty($xml->assumeSuccess))
+			if(!empty($xml->assumeSuccess) && ((int) $xml->assumeSuccess === 1 || strtolower((string)$xml->assumeSuccess) === 'true'))
 				$this->assumeSuccess = true;
 			else
 				$this->assumeSuccess = false;

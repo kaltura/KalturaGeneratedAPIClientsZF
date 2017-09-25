@@ -47,7 +47,7 @@ class Kaltura_Client_Type_IpAddressCondition extends Kaltura_Client_Type_MatchCo
 		
 		if(count($xml->acceptInternalIps))
 		{
-			if(!empty($xml->acceptInternalIps))
+			if(!empty($xml->acceptInternalIps) && ((int) $xml->acceptInternalIps === 1 || strtolower((string)$xml->acceptInternalIps) === 'true'))
 				$this->acceptInternalIps = true;
 			else
 				$this->acceptInternalIps = false;

@@ -47,7 +47,7 @@ class Kaltura_Client_Type_DeliveryProfileVodPackagerHls extends Kaltura_Client_T
 		
 		if(count($xml->allowFairplayOffline))
 		{
-			if(!empty($xml->allowFairplayOffline))
+			if(!empty($xml->allowFairplayOffline) && ((int) $xml->allowFairplayOffline === 1 || strtolower((string)$xml->allowFairplayOffline) === 'true'))
 				$this->allowFairplayOffline = true;
 			else
 				$this->allowFairplayOffline = false;

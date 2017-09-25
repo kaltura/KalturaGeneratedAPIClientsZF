@@ -47,14 +47,14 @@ class Kaltura_Client_Type_StorageExportJobData extends Kaltura_Client_Type_Stora
 		
 		if(count($xml->force))
 		{
-			if(!empty($xml->force))
+			if(!empty($xml->force) && ((int) $xml->force === 1 || strtolower((string)$xml->force) === 'true'))
 				$this->force = true;
 			else
 				$this->force = false;
 		}
 		if(count($xml->createLink))
 		{
-			if(!empty($xml->createLink))
+			if(!empty($xml->createLink) && ((int) $xml->createLink === 1 || strtolower((string)$xml->createLink) === 'true'))
 				$this->createLink = true;
 			else
 				$this->createLink = false;

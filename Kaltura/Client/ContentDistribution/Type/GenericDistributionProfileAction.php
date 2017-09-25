@@ -57,7 +57,7 @@ class Kaltura_Client_ContentDistribution_Type_GenericDistributionProfileAction e
 			$this->password = (string)$xml->password;
 		if(count($xml->ftpPassiveMode))
 		{
-			if(!empty($xml->ftpPassiveMode))
+			if(!empty($xml->ftpPassiveMode) && ((int) $xml->ftpPassiveMode === 1 || strtolower((string)$xml->ftpPassiveMode) === 'true'))
 				$this->ftpPassiveMode = true;
 			else
 				$this->ftpPassiveMode = false;

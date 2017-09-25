@@ -47,7 +47,7 @@ class Kaltura_Client_Type_UrlTokenizerKs extends Kaltura_Client_Type_UrlTokenize
 		
 		if(count($xml->usePath))
 		{
-			if(!empty($xml->usePath))
+			if(!empty($xml->usePath) && ((int) $xml->usePath === 1 || strtolower((string)$xml->usePath) === 'true'))
 				$this->usePath = true;
 			else
 				$this->usePath = false;

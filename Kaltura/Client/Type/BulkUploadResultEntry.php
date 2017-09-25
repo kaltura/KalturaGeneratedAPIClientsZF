@@ -73,7 +73,7 @@ class Kaltura_Client_Type_BulkUploadResultEntry extends Kaltura_Client_Type_Bulk
 			$this->thumbnailUrl = (string)$xml->thumbnailUrl;
 		if(count($xml->thumbnailSaved))
 		{
-			if(!empty($xml->thumbnailSaved))
+			if(!empty($xml->thumbnailSaved) && ((int) $xml->thumbnailSaved === 1 || strtolower((string)$xml->thumbnailSaved) === 'true'))
 				$this->thumbnailSaved = true;
 			else
 				$this->thumbnailSaved = false;

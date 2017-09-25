@@ -75,7 +75,7 @@ class Kaltura_Client_Type_MailJobData extends Kaltura_Client_Type_JobData
 			$this->minSendDate = (int)$xml->minSendDate;
 		if(count($xml->isHtml))
 		{
-			if(!empty($xml->isHtml))
+			if(!empty($xml->isHtml) && ((int) $xml->isHtml === 1 || strtolower((string)$xml->isHtml) === 'true'))
 				$this->isHtml = true;
 			else
 				$this->isHtml = false;

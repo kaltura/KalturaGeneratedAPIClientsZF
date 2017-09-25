@@ -57,7 +57,7 @@ class Kaltura_Client_ScheduledTask_Type_MailNotificationObjectTask extends Kaltu
 			$this->link = (string)$xml->link;
 		if(count($xml->sendToUsers))
 		{
-			if(!empty($xml->sendToUsers))
+			if(!empty($xml->sendToUsers) && ((int) $xml->sendToUsers === 1 || strtolower((string)$xml->sendToUsers) === 'true'))
 				$this->sendToUsers = true;
 			else
 				$this->sendToUsers = false;

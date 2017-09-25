@@ -53,7 +53,7 @@ class Kaltura_Client_Type_IndexJobData extends Kaltura_Client_Type_JobData
 			$this->lastIndexDepth = (int)$xml->lastIndexDepth;
 		if(count($xml->shouldUpdate))
 		{
-			if(!empty($xml->shouldUpdate))
+			if(!empty($xml->shouldUpdate) && ((int) $xml->shouldUpdate === 1 || strtolower((string)$xml->shouldUpdate) === 'true'))
 				$this->shouldUpdate = true;
 			else
 				$this->shouldUpdate = false;

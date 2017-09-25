@@ -77,7 +77,7 @@ class Kaltura_Client_Type_StatsEvent extends Kaltura_Client_ObjectBase
 			$this->controlId = (string)$xml->controlId;
 		if(count($xml->seek))
 		{
-			if(!empty($xml->seek))
+			if(!empty($xml->seek) && ((int) $xml->seek === 1 || strtolower((string)$xml->seek) === 'true'))
 				$this->seek = true;
 			else
 				$this->seek = false;
@@ -88,7 +88,7 @@ class Kaltura_Client_Type_StatsEvent extends Kaltura_Client_ObjectBase
 			$this->referrer = (string)$xml->referrer;
 		if(count($xml->isFirstInSession))
 		{
-			if(!empty($xml->isFirstInSession))
+			if(!empty($xml->isFirstInSession) && ((int) $xml->isFirstInSession === 1 || strtolower((string)$xml->isFirstInSession) === 'true'))
 				$this->isFirstInSession = true;
 			else
 				$this->isFirstInSession = false;

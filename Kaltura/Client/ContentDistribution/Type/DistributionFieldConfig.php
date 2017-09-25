@@ -55,7 +55,7 @@ class Kaltura_Client_ContentDistribution_Type_DistributionFieldConfig extends Ka
 			$this->isRequired = (int)$xml->isRequired;
 		if(count($xml->updateOnChange))
 		{
-			if(!empty($xml->updateOnChange))
+			if(!empty($xml->updateOnChange) && ((int) $xml->updateOnChange === 1 || strtolower((string)$xml->updateOnChange) === 'true'))
 				$this->updateOnChange = true;
 			else
 				$this->updateOnChange = false;
@@ -69,14 +69,14 @@ class Kaltura_Client_ContentDistribution_Type_DistributionFieldConfig extends Ka
 		}
 		if(count($xml->isDefault))
 		{
-			if(!empty($xml->isDefault))
+			if(!empty($xml->isDefault) && ((int) $xml->isDefault === 1 || strtolower((string)$xml->isDefault) === 'true'))
 				$this->isDefault = true;
 			else
 				$this->isDefault = false;
 		}
 		if(count($xml->triggerDeleteOnError))
 		{
-			if(!empty($xml->triggerDeleteOnError))
+			if(!empty($xml->triggerDeleteOnError) && ((int) $xml->triggerDeleteOnError === 1 || strtolower((string)$xml->triggerDeleteOnError) === 'true'))
 				$this->triggerDeleteOnError = true;
 			else
 				$this->triggerDeleteOnError = false;

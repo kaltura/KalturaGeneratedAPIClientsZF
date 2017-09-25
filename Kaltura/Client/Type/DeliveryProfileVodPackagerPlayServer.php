@@ -47,7 +47,7 @@ class Kaltura_Client_Type_DeliveryProfileVodPackagerPlayServer extends Kaltura_C
 		
 		if(count($xml->adStitchingEnabled))
 		{
-			if(!empty($xml->adStitchingEnabled))
+			if(!empty($xml->adStitchingEnabled) && ((int) $xml->adStitchingEnabled === 1 || strtolower((string)$xml->adStitchingEnabled) === 'true'))
 				$this->adStitchingEnabled = true;
 			else
 				$this->adStitchingEnabled = false;

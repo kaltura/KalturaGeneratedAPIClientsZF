@@ -47,35 +47,35 @@ class Kaltura_Client_Type_EntryContextDataResult extends Kaltura_Client_Type_Con
 		
 		if(count($xml->isSiteRestricted))
 		{
-			if(!empty($xml->isSiteRestricted))
+			if(!empty($xml->isSiteRestricted) && ((int) $xml->isSiteRestricted === 1 || strtolower((string)$xml->isSiteRestricted) === 'true'))
 				$this->isSiteRestricted = true;
 			else
 				$this->isSiteRestricted = false;
 		}
 		if(count($xml->isCountryRestricted))
 		{
-			if(!empty($xml->isCountryRestricted))
+			if(!empty($xml->isCountryRestricted) && ((int) $xml->isCountryRestricted === 1 || strtolower((string)$xml->isCountryRestricted) === 'true'))
 				$this->isCountryRestricted = true;
 			else
 				$this->isCountryRestricted = false;
 		}
 		if(count($xml->isSessionRestricted))
 		{
-			if(!empty($xml->isSessionRestricted))
+			if(!empty($xml->isSessionRestricted) && ((int) $xml->isSessionRestricted === 1 || strtolower((string)$xml->isSessionRestricted) === 'true'))
 				$this->isSessionRestricted = true;
 			else
 				$this->isSessionRestricted = false;
 		}
 		if(count($xml->isIpAddressRestricted))
 		{
-			if(!empty($xml->isIpAddressRestricted))
+			if(!empty($xml->isIpAddressRestricted) && ((int) $xml->isIpAddressRestricted === 1 || strtolower((string)$xml->isIpAddressRestricted) === 'true'))
 				$this->isIpAddressRestricted = true;
 			else
 				$this->isIpAddressRestricted = false;
 		}
 		if(count($xml->isUserAgentRestricted))
 		{
-			if(!empty($xml->isUserAgentRestricted))
+			if(!empty($xml->isUserAgentRestricted) && ((int) $xml->isUserAgentRestricted === 1 || strtolower((string)$xml->isUserAgentRestricted) === 'true'))
 				$this->isUserAgentRestricted = true;
 			else
 				$this->isUserAgentRestricted = false;
@@ -84,14 +84,14 @@ class Kaltura_Client_Type_EntryContextDataResult extends Kaltura_Client_Type_Con
 			$this->previewLength = (int)$xml->previewLength;
 		if(count($xml->isScheduledNow))
 		{
-			if(!empty($xml->isScheduledNow))
+			if(!empty($xml->isScheduledNow) && ((int) $xml->isScheduledNow === 1 || strtolower((string)$xml->isScheduledNow) === 'true'))
 				$this->isScheduledNow = true;
 			else
 				$this->isScheduledNow = false;
 		}
 		if(count($xml->isAdmin))
 		{
-			if(!empty($xml->isAdmin))
+			if(!empty($xml->isAdmin) && ((int) $xml->isAdmin === 1 || strtolower((string)$xml->isAdmin) === 'true'))
 				$this->isAdmin = true;
 			else
 				$this->isAdmin = false;

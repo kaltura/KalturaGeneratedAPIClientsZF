@@ -47,14 +47,14 @@ class Kaltura_Client_Type_DeliveryProfileLiveAppleHttp extends Kaltura_Client_Ty
 		
 		if(count($xml->disableExtraAttributes))
 		{
-			if(!empty($xml->disableExtraAttributes))
+			if(!empty($xml->disableExtraAttributes) && ((int) $xml->disableExtraAttributes === 1 || strtolower((string)$xml->disableExtraAttributes) === 'true'))
 				$this->disableExtraAttributes = true;
 			else
 				$this->disableExtraAttributes = false;
 		}
 		if(count($xml->forceProxy))
 		{
-			if(!empty($xml->forceProxy))
+			if(!empty($xml->forceProxy) && ((int) $xml->forceProxy === 1 || strtolower((string)$xml->forceProxy) === 'true'))
 				$this->forceProxy = true;
 			else
 				$this->forceProxy = false;

@@ -99,7 +99,7 @@ class Kaltura_Client_Type_User extends Kaltura_Client_ObjectBase
 			$this->lastName = (string)$xml->lastName;
 		if(count($xml->isAdmin))
 		{
-			if(!empty($xml->isAdmin))
+			if(!empty($xml->isAdmin) && ((int) $xml->isAdmin === 1 || strtolower((string)$xml->isAdmin) === 'true'))
 				$this->isAdmin = true;
 			else
 				$this->isAdmin = false;
@@ -114,7 +114,7 @@ class Kaltura_Client_Type_User extends Kaltura_Client_ObjectBase
 			$this->deletedAt = (int)$xml->deletedAt;
 		if(count($xml->loginEnabled))
 		{
-			if(!empty($xml->loginEnabled))
+			if(!empty($xml->loginEnabled) && ((int) $xml->loginEnabled === 1 || strtolower((string)$xml->loginEnabled) === 'true'))
 				$this->loginEnabled = true;
 			else
 				$this->loginEnabled = false;
@@ -125,7 +125,7 @@ class Kaltura_Client_Type_User extends Kaltura_Client_ObjectBase
 			$this->roleNames = (string)$xml->roleNames;
 		if(count($xml->isAccountOwner))
 		{
-			if(!empty($xml->isAccountOwner))
+			if(!empty($xml->isAccountOwner) && ((int) $xml->isAccountOwner === 1 || strtolower((string)$xml->isAccountOwner) === 'true'))
 				$this->isAccountOwner = true;
 			else
 				$this->isAccountOwner = false;

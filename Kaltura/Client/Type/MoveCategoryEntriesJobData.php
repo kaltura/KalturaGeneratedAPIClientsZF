@@ -57,7 +57,7 @@ class Kaltura_Client_Type_MoveCategoryEntriesJobData extends Kaltura_Client_Type
 			$this->lastMovedCategoryEntryPageIndex = (int)$xml->lastMovedCategoryEntryPageIndex;
 		if(count($xml->moveFromChildren))
 		{
-			if(!empty($xml->moveFromChildren))
+			if(!empty($xml->moveFromChildren) && ((int) $xml->moveFromChildren === 1 || strtolower((string)$xml->moveFromChildren) === 'true'))
 				$this->moveFromChildren = true;
 			else
 				$this->moveFromChildren = false;

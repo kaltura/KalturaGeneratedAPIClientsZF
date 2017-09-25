@@ -76,7 +76,7 @@ class Kaltura_Client_Type_Rule extends Kaltura_Client_ObjectBase
 		}
 		if(count($xml->stopProcessing))
 		{
-			if(!empty($xml->stopProcessing))
+			if(!empty($xml->stopProcessing) && ((int) $xml->stopProcessing === 1 || strtolower((string)$xml->stopProcessing) === 'true'))
 				$this->stopProcessing = true;
 			else
 				$this->stopProcessing = false;

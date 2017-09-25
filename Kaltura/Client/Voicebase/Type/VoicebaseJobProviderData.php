@@ -63,7 +63,7 @@ class Kaltura_Client_Voicebase_Type_VoicebaseJobProviderData extends Kaltura_Cli
 			$this->fileLocation = (string)$xml->fileLocation;
 		if(count($xml->replaceMediaContent))
 		{
-			if(!empty($xml->replaceMediaContent))
+			if(!empty($xml->replaceMediaContent) && ((int) $xml->replaceMediaContent === 1 || strtolower((string)$xml->replaceMediaContent) === 'true'))
 				$this->replaceMediaContent = true;
 			else
 				$this->replaceMediaContent = false;

@@ -59,7 +59,7 @@ class Kaltura_Client_WebexDropFolder_Type_WebexDropFolder extends Kaltura_Client
 			$this->webexHostIdMetadataFieldName = (string)$xml->webexHostIdMetadataFieldName;
 		if(count($xml->deleteFromRecycleBin))
 		{
-			if(!empty($xml->deleteFromRecycleBin))
+			if(!empty($xml->deleteFromRecycleBin) && ((int) $xml->deleteFromRecycleBin === 1 || strtolower((string)$xml->deleteFromRecycleBin) === 'true'))
 				$this->deleteFromRecycleBin = true;
 			else
 				$this->deleteFromRecycleBin = false;

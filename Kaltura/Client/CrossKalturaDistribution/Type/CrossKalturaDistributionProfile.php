@@ -64,35 +64,35 @@ class Kaltura_Client_CrossKalturaDistribution_Type_CrossKalturaDistributionProfi
 		}
 		if(count($xml->distributeCaptions))
 		{
-			if(!empty($xml->distributeCaptions))
+			if(!empty($xml->distributeCaptions) && ((int) $xml->distributeCaptions === 1 || strtolower((string)$xml->distributeCaptions) === 'true'))
 				$this->distributeCaptions = true;
 			else
 				$this->distributeCaptions = false;
 		}
 		if(count($xml->distributeCuePoints))
 		{
-			if(!empty($xml->distributeCuePoints))
+			if(!empty($xml->distributeCuePoints) && ((int) $xml->distributeCuePoints === 1 || strtolower((string)$xml->distributeCuePoints) === 'true'))
 				$this->distributeCuePoints = true;
 			else
 				$this->distributeCuePoints = false;
 		}
 		if(count($xml->distributeRemoteFlavorAssetContent))
 		{
-			if(!empty($xml->distributeRemoteFlavorAssetContent))
+			if(!empty($xml->distributeRemoteFlavorAssetContent) && ((int) $xml->distributeRemoteFlavorAssetContent === 1 || strtolower((string)$xml->distributeRemoteFlavorAssetContent) === 'true'))
 				$this->distributeRemoteFlavorAssetContent = true;
 			else
 				$this->distributeRemoteFlavorAssetContent = false;
 		}
 		if(count($xml->distributeRemoteThumbAssetContent))
 		{
-			if(!empty($xml->distributeRemoteThumbAssetContent))
+			if(!empty($xml->distributeRemoteThumbAssetContent) && ((int) $xml->distributeRemoteThumbAssetContent === 1 || strtolower((string)$xml->distributeRemoteThumbAssetContent) === 'true'))
 				$this->distributeRemoteThumbAssetContent = true;
 			else
 				$this->distributeRemoteThumbAssetContent = false;
 		}
 		if(count($xml->distributeRemoteCaptionAssetContent))
 		{
-			if(!empty($xml->distributeRemoteCaptionAssetContent))
+			if(!empty($xml->distributeRemoteCaptionAssetContent) && ((int) $xml->distributeRemoteCaptionAssetContent === 1 || strtolower((string)$xml->distributeRemoteCaptionAssetContent) === 'true'))
 				$this->distributeRemoteCaptionAssetContent = true;
 			else
 				$this->distributeRemoteCaptionAssetContent = false;

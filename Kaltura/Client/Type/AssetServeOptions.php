@@ -47,7 +47,7 @@ class Kaltura_Client_Type_AssetServeOptions extends Kaltura_Client_ObjectBase
 		
 		if(count($xml->download))
 		{
-			if(!empty($xml->download))
+			if(!empty($xml->download) && ((int) $xml->download === 1 || strtolower((string)$xml->download) === 'true'))
 				$this->download = true;
 			else
 				$this->download = false;

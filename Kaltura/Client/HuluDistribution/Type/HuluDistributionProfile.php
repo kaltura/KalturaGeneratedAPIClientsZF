@@ -72,7 +72,7 @@ class Kaltura_Client_HuluDistribution_Type_HuluDistributionProfile extends Kaltu
 			$this->videoMediaType = (string)$xml->videoMediaType;
 		if(count($xml->disableEpisodeNumberCustomValidation))
 		{
-			if(!empty($xml->disableEpisodeNumberCustomValidation))
+			if(!empty($xml->disableEpisodeNumberCustomValidation) && ((int) $xml->disableEpisodeNumberCustomValidation === 1 || strtolower((string)$xml->disableEpisodeNumberCustomValidation) === 'true'))
 				$this->disableEpisodeNumberCustomValidation = true;
 			else
 				$this->disableEpisodeNumberCustomValidation = false;

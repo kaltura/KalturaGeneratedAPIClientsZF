@@ -49,14 +49,14 @@ class Kaltura_Client_Type_ExtractMediaJobData extends Kaltura_Client_Type_Convar
 			$this->flavorAssetId = (string)$xml->flavorAssetId;
 		if(count($xml->calculateComplexity))
 		{
-			if(!empty($xml->calculateComplexity))
+			if(!empty($xml->calculateComplexity) && ((int) $xml->calculateComplexity === 1 || strtolower((string)$xml->calculateComplexity) === 'true'))
 				$this->calculateComplexity = true;
 			else
 				$this->calculateComplexity = false;
 		}
 		if(count($xml->extractId3Tags))
 		{
-			if(!empty($xml->extractId3Tags))
+			if(!empty($xml->extractId3Tags) && ((int) $xml->extractId3Tags === 1 || strtolower((string)$xml->extractId3Tags) === 'true'))
 				$this->extractId3Tags = true;
 			else
 				$this->extractId3Tags = false;

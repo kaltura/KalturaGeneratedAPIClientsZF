@@ -51,21 +51,21 @@ abstract class Kaltura_Client_ContentDistribution_Type_DistributionProvider exte
 			$this->name = (string)$xml->name;
 		if(count($xml->scheduleUpdateEnabled))
 		{
-			if(!empty($xml->scheduleUpdateEnabled))
+			if(!empty($xml->scheduleUpdateEnabled) && ((int) $xml->scheduleUpdateEnabled === 1 || strtolower((string)$xml->scheduleUpdateEnabled) === 'true'))
 				$this->scheduleUpdateEnabled = true;
 			else
 				$this->scheduleUpdateEnabled = false;
 		}
 		if(count($xml->availabilityUpdateEnabled))
 		{
-			if(!empty($xml->availabilityUpdateEnabled))
+			if(!empty($xml->availabilityUpdateEnabled) && ((int) $xml->availabilityUpdateEnabled === 1 || strtolower((string)$xml->availabilityUpdateEnabled) === 'true'))
 				$this->availabilityUpdateEnabled = true;
 			else
 				$this->availabilityUpdateEnabled = false;
 		}
 		if(count($xml->deleteInsteadUpdate))
 		{
-			if(!empty($xml->deleteInsteadUpdate))
+			if(!empty($xml->deleteInsteadUpdate) && ((int) $xml->deleteInsteadUpdate === 1 || strtolower((string)$xml->deleteInsteadUpdate) === 'true'))
 				$this->deleteInsteadUpdate = true;
 			else
 				$this->deleteInsteadUpdate = false;

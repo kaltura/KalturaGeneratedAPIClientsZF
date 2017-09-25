@@ -77,7 +77,7 @@ class Kaltura_Client_Type_UiConf extends Kaltura_Client_ObjectBase
 			$this->confVars = (string)$xml->confVars;
 		if(count($xml->useCdn))
 		{
-			if(!empty($xml->useCdn))
+			if(!empty($xml->useCdn) && ((int) $xml->useCdn === 1 || strtolower((string)$xml->useCdn) === 'true'))
 				$this->useCdn = true;
 			else
 				$this->useCdn = false;

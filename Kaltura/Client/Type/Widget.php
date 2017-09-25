@@ -71,7 +71,7 @@ class Kaltura_Client_Type_Widget extends Kaltura_Client_ObjectBase
 			$this->widgetHTML = (string)$xml->widgetHTML;
 		if(count($xml->enforceEntitlement))
 		{
-			if(!empty($xml->enforceEntitlement))
+			if(!empty($xml->enforceEntitlement) && ((int) $xml->enforceEntitlement === 1 || strtolower((string)$xml->enforceEntitlement) === 'true'))
 				$this->enforceEntitlement = true;
 			else
 				$this->enforceEntitlement = false;
@@ -80,7 +80,7 @@ class Kaltura_Client_Type_Widget extends Kaltura_Client_ObjectBase
 			$this->privacyContext = (string)$xml->privacyContext;
 		if(count($xml->addEmbedHtml5Support))
 		{
-			if(!empty($xml->addEmbedHtml5Support))
+			if(!empty($xml->addEmbedHtml5Support) && ((int) $xml->addEmbedHtml5Support === 1 || strtolower((string)$xml->addEmbedHtml5Support) === 'true'))
 				$this->addEmbedHtml5Support = true;
 			else
 				$this->addEmbedHtml5Support = false;

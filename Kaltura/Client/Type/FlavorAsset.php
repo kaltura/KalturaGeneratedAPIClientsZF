@@ -57,14 +57,14 @@ class Kaltura_Client_Type_FlavorAsset extends Kaltura_Client_Type_Asset
 			$this->frameRate = (float)$xml->frameRate;
 		if(count($xml->isOriginal))
 		{
-			if(!empty($xml->isOriginal))
+			if(!empty($xml->isOriginal) && ((int) $xml->isOriginal === 1 || strtolower((string)$xml->isOriginal) === 'true'))
 				$this->isOriginal = true;
 			else
 				$this->isOriginal = false;
 		}
 		if(count($xml->isWeb))
 		{
-			if(!empty($xml->isWeb))
+			if(!empty($xml->isWeb) && ((int) $xml->isWeb === 1 || strtolower((string)$xml->isWeb) === 'true'))
 				$this->isWeb = true;
 			else
 				$this->isWeb = false;

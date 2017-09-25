@@ -73,7 +73,7 @@ class Kaltura_Client_Type_BulkUploadResultCategory extends Kaltura_Client_Type_B
 			$this->partnerSortValue = (int)$xml->partnerSortValue;
 		if(count($xml->moderation))
 		{
-			if(!empty($xml->moderation))
+			if(!empty($xml->moderation) && ((int) $xml->moderation === 1 || strtolower((string)$xml->moderation) === 'true'))
 				$this->moderation = true;
 			else
 				$this->moderation = false;

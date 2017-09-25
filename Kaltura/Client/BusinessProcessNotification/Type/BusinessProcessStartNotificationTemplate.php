@@ -47,7 +47,7 @@ class Kaltura_Client_BusinessProcessNotification_Type_BusinessProcessStartNotifi
 		
 		if(count($xml->abortOnDeletion))
 		{
-			if(!empty($xml->abortOnDeletion))
+			if(!empty($xml->abortOnDeletion) && ((int) $xml->abortOnDeletion === 1 || strtolower((string)$xml->abortOnDeletion) === 'true'))
 				$this->abortOnDeletion = true;
 			else
 				$this->abortOnDeletion = false;

@@ -55,7 +55,7 @@ class Kaltura_Client_Caption_Type_CopyCaptionsJobData extends Kaltura_Client_Typ
 			$this->duration = (int)$xml->duration;
 		if(count($xml->fullCopy))
 		{
-			if(!empty($xml->fullCopy))
+			if(!empty($xml->fullCopy) && ((int) $xml->fullCopy === 1 || strtolower((string)$xml->fullCopy) === 'true'))
 				$this->fullCopy = true;
 			else
 				$this->fullCopy = false;

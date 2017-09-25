@@ -53,7 +53,7 @@ class Kaltura_Client_Type_UrlTokenizerAkamaiRtmp extends Kaltura_Client_Type_Url
 			$this->aifp = (string)$xml->aifp;
 		if(count($xml->usePrefix))
 		{
-			if(!empty($xml->usePrefix))
+			if(!empty($xml->usePrefix) && ((int) $xml->usePrefix === 1 || strtolower((string)$xml->usePrefix) === 'true'))
 				$this->usePrefix = true;
 			else
 				$this->usePrefix = false;

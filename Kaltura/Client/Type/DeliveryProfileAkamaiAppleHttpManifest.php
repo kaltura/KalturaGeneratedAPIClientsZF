@@ -47,7 +47,7 @@ class Kaltura_Client_Type_DeliveryProfileAkamaiAppleHttpManifest extends Kaltura
 		
 		if(count($xml->supportClipping))
 		{
-			if(!empty($xml->supportClipping))
+			if(!empty($xml->supportClipping) && ((int) $xml->supportClipping === 1 || strtolower((string)$xml->supportClipping) === 'true'))
 				$this->supportClipping = true;
 			else
 				$this->supportClipping = false;

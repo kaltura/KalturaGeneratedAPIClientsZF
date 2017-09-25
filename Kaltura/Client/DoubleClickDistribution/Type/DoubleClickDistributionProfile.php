@@ -59,7 +59,7 @@ class Kaltura_Client_DoubleClickDistribution_Type_DoubleClickDistributionProfile
 			$this->itemsPerPage = (string)$xml->itemsPerPage;
 		if(count($xml->ignoreSchedulingInFeed))
 		{
-			if(!empty($xml->ignoreSchedulingInFeed))
+			if(!empty($xml->ignoreSchedulingInFeed) && ((int) $xml->ignoreSchedulingInFeed === 1 || strtolower((string)$xml->ignoreSchedulingInFeed) === 'true'))
 				$this->ignoreSchedulingInFeed = true;
 			else
 				$this->ignoreSchedulingInFeed = false;

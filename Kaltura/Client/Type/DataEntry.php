@@ -49,7 +49,7 @@ class Kaltura_Client_Type_DataEntry extends Kaltura_Client_Type_BaseEntry
 			$this->dataContent = (string)$xml->dataContent;
 		if(count($xml->retrieveDataContentByGet))
 		{
-			if(!empty($xml->retrieveDataContentByGet))
+			if(!empty($xml->retrieveDataContentByGet) && ((int) $xml->retrieveDataContentByGet === 1 || strtolower((string)$xml->retrieveDataContentByGet) === 'true'))
 				$this->retrieveDataContentByGet = true;
 			else
 				$this->retrieveDataContentByGet = false;

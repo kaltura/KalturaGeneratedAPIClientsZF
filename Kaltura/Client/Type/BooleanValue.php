@@ -47,7 +47,7 @@ class Kaltura_Client_Type_BooleanValue extends Kaltura_Client_Type_Value
 		
 		if(count($xml->value))
 		{
-			if(!empty($xml->value))
+			if(!empty($xml->value) && ((int) $xml->value === 1 || strtolower((string)$xml->value) === 'true'))
 				$this->value = true;
 			else
 				$this->value = false;

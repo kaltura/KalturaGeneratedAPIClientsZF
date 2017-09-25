@@ -53,7 +53,7 @@ class Kaltura_Client_Audit_Type_AuditTrailFileSyncCreateInfo extends Kaltura_Cli
 			$this->dc = (int)$xml->dc;
 		if(count($xml->original))
 		{
-			if(!empty($xml->original))
+			if(!empty($xml->original) && ((int) $xml->original === 1 || strtolower((string)$xml->original) === 'true'))
 				$this->original = true;
 			else
 				$this->original = false;

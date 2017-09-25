@@ -51,7 +51,7 @@ class Kaltura_Client_Type_UrlTokenizer extends Kaltura_Client_ObjectBase
 			$this->key = (string)$xml->key;
 		if(count($xml->limitIpAddress))
 		{
-			if(!empty($xml->limitIpAddress))
+			if(!empty($xml->limitIpAddress) && ((int) $xml->limitIpAddress === 1 || strtolower((string)$xml->limitIpAddress) === 'true'))
 				$this->limitIpAddress = true;
 			else
 				$this->limitIpAddress = false;

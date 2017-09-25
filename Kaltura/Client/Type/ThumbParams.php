@@ -77,7 +77,7 @@ class Kaltura_Client_Type_ThumbParams extends Kaltura_Client_Type_AssetParams
 			$this->density = (int)$xml->density;
 		if(count($xml->stripProfiles))
 		{
-			if(!empty($xml->stripProfiles))
+			if(!empty($xml->stripProfiles) && ((int) $xml->stripProfiles === 1 || strtolower((string)$xml->stripProfiles) === 'true'))
 				$this->stripProfiles = true;
 			else
 				$this->stripProfiles = false;

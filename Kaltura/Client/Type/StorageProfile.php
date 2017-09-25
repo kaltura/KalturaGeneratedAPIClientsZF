@@ -73,7 +73,7 @@ class Kaltura_Client_Type_StorageProfile extends Kaltura_Client_ObjectBase
 			$this->storagePassword = (string)$xml->storagePassword;
 		if(count($xml->storageFtpPassiveMode))
 		{
-			if(!empty($xml->storageFtpPassiveMode))
+			if(!empty($xml->storageFtpPassiveMode) && ((int) $xml->storageFtpPassiveMode === 1 || strtolower((string)$xml->storageFtpPassiveMode) === 'true'))
 				$this->storageFtpPassiveMode = true;
 			else
 				$this->storageFtpPassiveMode = false;
@@ -107,7 +107,7 @@ class Kaltura_Client_Type_StorageProfile extends Kaltura_Client_ObjectBase
 			$this->allowAutoDelete = (int)$xml->allowAutoDelete;
 		if(count($xml->createFileLink))
 		{
-			if(!empty($xml->createFileLink))
+			if(!empty($xml->createFileLink) && ((int) $xml->createFileLink === 1 || strtolower((string)$xml->createFileLink) === 'true'))
 				$this->createFileLink = true;
 			else
 				$this->createFileLink = false;
@@ -134,7 +134,7 @@ class Kaltura_Client_Type_StorageProfile extends Kaltura_Client_ObjectBase
 			$this->passPhrase = (string)$xml->passPhrase;
 		if(count($xml->shouldExportThumbs))
 		{
-			if(!empty($xml->shouldExportThumbs))
+			if(!empty($xml->shouldExportThumbs) && ((int) $xml->shouldExportThumbs === 1 || strtolower((string)$xml->shouldExportThumbs) === 'true'))
 				$this->shouldExportThumbs = true;
 			else
 				$this->shouldExportThumbs = false;

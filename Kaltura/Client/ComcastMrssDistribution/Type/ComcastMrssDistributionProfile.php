@@ -70,21 +70,21 @@ class Kaltura_Client_ComcastMrssDistribution_Type_ComcastMrssDistributionProfile
 			$this->cPlatformTvSeriesField = (string)$xml->cPlatformTvSeriesField;
 		if(count($xml->shouldIncludeCuePoints))
 		{
-			if(!empty($xml->shouldIncludeCuePoints))
+			if(!empty($xml->shouldIncludeCuePoints) && ((int) $xml->shouldIncludeCuePoints === 1 || strtolower((string)$xml->shouldIncludeCuePoints) === 'true'))
 				$this->shouldIncludeCuePoints = true;
 			else
 				$this->shouldIncludeCuePoints = false;
 		}
 		if(count($xml->shouldIncludeCaptions))
 		{
-			if(!empty($xml->shouldIncludeCaptions))
+			if(!empty($xml->shouldIncludeCaptions) && ((int) $xml->shouldIncludeCaptions === 1 || strtolower((string)$xml->shouldIncludeCaptions) === 'true'))
 				$this->shouldIncludeCaptions = true;
 			else
 				$this->shouldIncludeCaptions = false;
 		}
 		if(count($xml->shouldAddThumbExtension))
 		{
-			if(!empty($xml->shouldAddThumbExtension))
+			if(!empty($xml->shouldAddThumbExtension) && ((int) $xml->shouldAddThumbExtension === 1 || strtolower((string)$xml->shouldAddThumbExtension) === 'true'))
 				$this->shouldAddThumbExtension = true;
 			else
 				$this->shouldAddThumbExtension = false;

@@ -51,7 +51,7 @@ class Kaltura_Client_Type_ResponseProfileMapping extends Kaltura_Client_ObjectBa
 			$this->filterProperty = (string)$xml->filterProperty;
 		if(count($xml->allowNull))
 		{
-			if(!empty($xml->allowNull))
+			if(!empty($xml->allowNull) && ((int) $xml->allowNull === 1 || strtolower((string)$xml->allowNull) === 'true'))
 				$this->allowNull = true;
 			else
 				$this->allowNull = false;

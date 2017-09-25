@@ -49,7 +49,7 @@ class Kaltura_Client_Type_PostConvertJobData extends Kaltura_Client_Type_Convart
 			$this->flavorAssetId = (string)$xml->flavorAssetId;
 		if(count($xml->createThumb))
 		{
-			if(!empty($xml->createThumb))
+			if(!empty($xml->createThumb) && ((int) $xml->createThumb === 1 || strtolower((string)$xml->createThumb) === 'true'))
 				$this->createThumb = true;
 			else
 				$this->createThumb = false;

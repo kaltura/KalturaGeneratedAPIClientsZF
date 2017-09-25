@@ -47,7 +47,7 @@ class Kaltura_Client_Type_MixEntry extends Kaltura_Client_Type_PlayableEntry
 		
 		if(count($xml->hasRealThumbnail))
 		{
-			if(!empty($xml->hasRealThumbnail))
+			if(!empty($xml->hasRealThumbnail) && ((int) $xml->hasRealThumbnail === 1 || strtolower((string)$xml->hasRealThumbnail) === 'true'))
 				$this->hasRealThumbnail = true;
 			else
 				$this->hasRealThumbnail = false;

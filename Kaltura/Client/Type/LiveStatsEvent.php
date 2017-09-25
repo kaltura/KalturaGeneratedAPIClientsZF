@@ -63,7 +63,7 @@ class Kaltura_Client_Type_LiveStatsEvent extends Kaltura_Client_ObjectBase
 			$this->referrer = (string)$xml->referrer;
 		if(count($xml->isLive))
 		{
-			if(!empty($xml->isLive))
+			if(!empty($xml->isLive) && ((int) $xml->isLive === 1 || strtolower((string)$xml->isLive) === 'true'))
 				$this->isLive = true;
 			else
 				$this->isLive = false;

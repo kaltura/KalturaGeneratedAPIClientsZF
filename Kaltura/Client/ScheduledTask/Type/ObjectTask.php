@@ -49,7 +49,7 @@ abstract class Kaltura_Client_ScheduledTask_Type_ObjectTask extends Kaltura_Clie
 			$this->type = (string)$xml->type;
 		if(count($xml->stopProcessingOnError))
 		{
-			if(!empty($xml->stopProcessingOnError))
+			if(!empty($xml->stopProcessingOnError) && ((int) $xml->stopProcessingOnError === 1 || strtolower((string)$xml->stopProcessingOnError) === 'true'))
 				$this->stopProcessingOnError = true;
 			else
 				$this->stopProcessingOnError = false;

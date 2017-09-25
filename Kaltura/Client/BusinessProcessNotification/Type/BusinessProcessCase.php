@@ -53,7 +53,7 @@ class Kaltura_Client_BusinessProcessNotification_Type_BusinessProcessCase extend
 			$this->businessProcessStartNotificationTemplateId = (int)$xml->businessProcessStartNotificationTemplateId;
 		if(count($xml->suspended))
 		{
-			if(!empty($xml->suspended))
+			if(!empty($xml->suspended) && ((int) $xml->suspended === 1 || strtolower((string)$xml->suspended) === 'true'))
 				$this->suspended = true;
 			else
 				$this->suspended = false;

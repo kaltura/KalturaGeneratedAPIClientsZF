@@ -55,7 +55,7 @@ class Kaltura_Client_ContentDistribution_Type_GenericDistributionProvider extend
 			$this->partnerId = (int)$xml->partnerId;
 		if(count($xml->isDefault))
 		{
-			if(!empty($xml->isDefault))
+			if(!empty($xml->isDefault) && ((int) $xml->isDefault === 1 || strtolower((string)$xml->isDefault) === 'true'))
 				$this->isDefault = true;
 			else
 				$this->isDefault = false;

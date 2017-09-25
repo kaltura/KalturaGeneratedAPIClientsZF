@@ -60,7 +60,7 @@ class Kaltura_Client_Type_PlayerDeliveryType extends Kaltura_Client_ObjectBase
 			$this->minVersion = (string)$xml->minVersion;
 		if(count($xml->enabledByDefault))
 		{
-			if(!empty($xml->enabledByDefault))
+			if(!empty($xml->enabledByDefault) && ((int) $xml->enabledByDefault === 1 || strtolower((string)$xml->enabledByDefault) === 'true'))
 				$this->enabledByDefault = true;
 			else
 				$this->enabledByDefault = false;
