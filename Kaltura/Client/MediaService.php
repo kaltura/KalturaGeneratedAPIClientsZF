@@ -422,14 +422,13 @@ class Kaltura_Client_MediaService extends Kaltura_Client_ServiceBase
 	/**
 	 * @return file
 	 */
-	function getVolumeMap($entryId, $flavorId = null)
+	function getVolumeMap($entryId)
 	{
 		if ($this->client->isMultiRequest())
 			throw $this->client->getKalturaClientException("Action is not supported as part of multi-request.", Kaltura_Client_ClientException::ERROR_ACTION_IN_MULTIREQUEST);
 		
 		$kparams = array();
 		$this->client->addParam($kparams, "entryId", $entryId);
-		$this->client->addParam($kparams, "flavorId", $flavorId);
 		$this->client->queueServiceActionCall('media', 'getVolumeMap', null, $kparams);
 		$resultObject = $this->client->getServeUrl();
 		return $resultObject;

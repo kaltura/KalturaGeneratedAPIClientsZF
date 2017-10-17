@@ -49,6 +49,8 @@ class Kaltura_Client_ElasticSearch_Type_ESearchMetadataItem extends Kaltura_Clie
 			$this->xpath = (string)$xml->xpath;
 		if(count($xml->metadataProfileId))
 			$this->metadataProfileId = (int)$xml->metadataProfileId;
+		if(count($xml->metadataFieldId))
+			$this->metadataFieldId = (int)$xml->metadataFieldId;
 	}
 	/**
 	 * 
@@ -63,6 +65,13 @@ class Kaltura_Client_ElasticSearch_Type_ESearchMetadataItem extends Kaltura_Clie
 	 * @var int
 	 */
 	public $metadataProfileId = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $metadataFieldId = null;
 
 
 }
