@@ -65,6 +65,8 @@ class Kaltura_Client_Type_UploadToken extends Kaltura_Client_ObjectBase
 			$this->updatedAt = (int)$xml->updatedAt;
 		if(count($xml->uploadUrl))
 			$this->uploadUrl = (string)$xml->uploadUrl;
+		if(count($xml->autoFinalize))
+			$this->autoFinalize = (int)$xml->autoFinalize;
 	}
 	/**
 	 * Upload token unique ID
@@ -145,6 +147,14 @@ class Kaltura_Client_Type_UploadToken extends Kaltura_Client_ObjectBase
 	 * @readonly
 	 */
 	public $uploadUrl = null;
+
+	/**
+	 * autoFinalize - Should the upload be finalized once the file size on disk matches the file size reproted when adding the upload token.
+	 *
+	 * @var Kaltura_Client_Enum_NullableBoolean
+	 * @insertonly
+	 */
+	public $autoFinalize = null;
 
 
 }
