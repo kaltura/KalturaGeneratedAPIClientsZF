@@ -216,7 +216,9 @@ class Kaltura_Client_Enum_Language extends Kaltura_Client_EnumBase
 	const GU = "Gujarati";
 	const GWI = "Gwichin";
 	const HAI = "Haida";
+	const HNN = "Hainanese";
 	const HAS = "Haisla";
+	const HAK = "Hakka";
 	const HUR = "Halkomelem";
 	const HAA = "Han";
 	const HNI = "Hani";
@@ -229,6 +231,7 @@ class Kaltura_Client_Enum_Language extends Kaltura_Client_EnumBase
 	const HIL = "Hiligaynon";
 	const HI = "Hindi";
 	const HMN = "Hmong";
+	const HKK = "Hokkien";
 	const HOP = "Hopi";
 	const CZH = "Huizhou Chinese";
 	const HU = "Hungarian";
@@ -236,8 +239,8 @@ class Kaltura_Client_Enum_Language extends Kaltura_Client_EnumBase
 	const KPO = "Ikposo";
 	const ILO = "Iloko";
 	const SMN = "Inari Sami";
-	const ID = "Indonesian";
 	const IN = "Indonesian";
+	const ID = "Indonesian";
 	const IZH = "Ingrian";
 	const INH = "Ingush";
 	const IA = "Interlingua";
@@ -515,6 +518,7 @@ class Kaltura_Client_Enum_Language extends Kaltura_Client_EnumBase
 	const TTT = "Tat Muslim";
 	const TT = "Tatar";
 	const TE = "Telugu";
+	const TEO = "Teo Chew";
 	const TET = "Tetum";
 	const TH = "Thai";
 	const NOD = "Thai (Northern)";
@@ -571,8 +575,8 @@ class Kaltura_Client_Enum_Language extends Kaltura_Client_EnumBase
 	const WYM = "Wymysorys";
 	const XH = "Xhosa";
 	const AME = "Yanesha";
-	const JI = "Yiddish";
 	const YI = "Yiddish";
+	const JI = "Yiddish";
 	const YO = "Yoruba";
 	const ZAI = "Zapotec Isthmus";
 	const DJE = "Zarma";
