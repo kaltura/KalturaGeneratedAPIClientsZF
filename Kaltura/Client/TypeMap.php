@@ -455,6 +455,7 @@ class Kaltura_Client_TypeMap
 		'KalturaESearchItemDataResult' => 'Kaltura_Client_ElasticSearch_Type_ESearchItemDataResult',
 		'KalturaESearchMetadataItem' => 'Kaltura_Client_ElasticSearch_Type_ESearchMetadataItem',
 		'KalturaESearchMetadataItemData' => 'Kaltura_Client_ElasticSearch_Type_ESearchMetadataItemData',
+		'KalturaESearchObject' => 'Kaltura_Client_ElasticSearch_Type_ESearchObject',
 		'KalturaESearchOperator' => 'Kaltura_Client_ElasticSearch_Type_ESearchOperator',
 		'KalturaESearchOrderBy' => 'Kaltura_Client_ElasticSearch_Type_ESearchOrderBy',
 		'KalturaESearchOrderByItem' => 'Kaltura_Client_ElasticSearch_Type_ESearchOrderByItem',

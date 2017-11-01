@@ -62,7 +62,7 @@ class Kaltura_Client_ElasticSearch_ESearchService extends Kaltura_Client_Service
 	/**
 	 * @return Kaltura_Client_ElasticSearch_Type_ESearchResponse
 	 */
-	function searchCategory(Kaltura_Client_ElasticSearch_Type_ESearchParams $searchParams, Kaltura_Client_Type_Pager $pager = null)
+	function searchCategory(Kaltura_Client_ElasticSearch_Type_ESearchObject $searchParams, Kaltura_Client_Type_Pager $pager = null)
 	{
 		$kparams = array();
 		$this->client->addParam($kparams, "searchParams", $searchParams->toParams());
@@ -82,7 +82,7 @@ class Kaltura_Client_ElasticSearch_ESearchService extends Kaltura_Client_Service
 	/**
 	 * @return Kaltura_Client_ElasticSearch_Type_ESearchResponse
 	 */
-	function searchEntry(Kaltura_Client_ElasticSearch_Type_ESearchParams $searchParams, Kaltura_Client_Type_Pager $pager = null)
+	function searchEntry(Kaltura_Client_ElasticSearch_Type_ESearchObject $searchParams, Kaltura_Client_Type_Pager $pager = null)
 	{
 		$kparams = array();
 		$this->client->addParam($kparams, "searchParams", $searchParams->toParams());
@@ -102,7 +102,7 @@ class Kaltura_Client_ElasticSearch_ESearchService extends Kaltura_Client_Service
 	/**
 	 * @return Kaltura_Client_ElasticSearch_Type_ESearchResponse
 	 */
-	function searchUser(Kaltura_Client_ElasticSearch_Type_ESearchParams $searchParams, Kaltura_Client_Type_Pager $pager = null)
+	function searchUser(Kaltura_Client_ElasticSearch_Type_ESearchObject $searchParams, Kaltura_Client_Type_Pager $pager = null)
 	{
 		$kparams = array();
 		$this->client->addParam($kparams, "searchParams", $searchParams->toParams());

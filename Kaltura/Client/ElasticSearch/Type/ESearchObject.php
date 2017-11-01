@@ -31,11 +31,11 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_ElasticSearch_Type_ESearchParams extends Kaltura_Client_ElasticSearch_Type_ESearchObject
+abstract class Kaltura_Client_ElasticSearch_Type_ESearchObject extends Kaltura_Client_ObjectBase
 {
 	public function getKalturaObjectType()
 	{
-		return 'KalturaESearchParams';
+		return 'KalturaESearchObject';
 	}
 	
 	public function __construct(SimpleXMLElement $xml = null)
@@ -45,34 +45,7 @@ class Kaltura_Client_ElasticSearch_Type_ESearchParams extends Kaltura_Client_Ela
 		if(is_null($xml))
 			return;
 		
-		if(count($xml->searchOperator) && !empty($xml->searchOperator))
-			$this->searchOperator = Kaltura_Client_ParseUtils::unmarshalObject($xml->searchOperator, "KalturaESearchOperator");
-		if(count($xml->objectStatuses))
-			$this->objectStatuses = (string)$xml->objectStatuses;
-		if(count($xml->orderBy) && !empty($xml->orderBy))
-			$this->orderBy = Kaltura_Client_ParseUtils::unmarshalObject($xml->orderBy, "KalturaESearchOrderBy");
 	}
-	/**
-	 * 
-	 *
-	 * @var Kaltura_Client_ElasticSearch_Type_ESearchOperator
-	 */
-	public $searchOperator;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $objectStatuses = null;
-
-	/**
-	 * 
-	 *
-	 * @var Kaltura_Client_ElasticSearch_Type_ESearchOrderBy
-	 */
-	public $orderBy;
-
 
 }
 
