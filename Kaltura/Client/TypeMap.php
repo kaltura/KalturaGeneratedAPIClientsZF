@@ -460,6 +460,7 @@ class Kaltura_Client_TypeMap
 		'KalturaESearchOrderBy' => 'Kaltura_Client_ElasticSearch_Type_ESearchOrderBy',
 		'KalturaESearchOrderByItem' => 'Kaltura_Client_ElasticSearch_Type_ESearchOrderByItem',
 		'KalturaESearchParams' => 'Kaltura_Client_ElasticSearch_Type_ESearchParams',
+		'KalturaESearchQuery' => 'Kaltura_Client_ElasticSearch_Type_ESearchQuery',
 		'KalturaESearchRange' => 'Kaltura_Client_ElasticSearch_Type_ESearchRange',
 		'KalturaESearchResponse' => 'Kaltura_Client_ElasticSearch_Type_ESearchResponse',
 		'KalturaESearchResult' => 'Kaltura_Client_ElasticSearch_Type_ESearchResult',
