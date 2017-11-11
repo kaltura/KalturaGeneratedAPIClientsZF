@@ -51,6 +51,8 @@ class Kaltura_Client_Caption_Type_ParseMultiLanguageCaptionAssetJobData extends 
 			$this->entryId = (string)$xml->entryId;
 		if(count($xml->fileLocation))
 			$this->fileLocation = (string)$xml->fileLocation;
+		if(count($xml->fileEncryptionKey))
+			$this->fileEncryptionKey = (string)$xml->fileEncryptionKey;
 	}
 	/**
 	 * 
@@ -72,6 +74,13 @@ class Kaltura_Client_Caption_Type_ParseMultiLanguageCaptionAssetJobData extends 
 	 * @var string
 	 */
 	public $fileLocation = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $fileEncryptionKey = null;
 
 
 }

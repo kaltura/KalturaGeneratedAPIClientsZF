@@ -85,6 +85,17 @@ abstract class Kaltura_Client_Type_LiveEntry extends Kaltura_Client_Type_MediaEn
 			$this->liveStatus = (int)$xml->liveStatus;
 		if(count($xml->segmentDuration))
 			$this->segmentDuration = (int)$xml->segmentDuration;
+		if(count($xml->explicitLive))
+		{
+			if(!empty($xml->explicitLive) && ((int) $xml->explicitLive === 1 || strtolower((string)$xml->explicitLive) === 'true'))
+				$this->explicitLive = true;
+			else
+				$this->explicitLive = false;
+		}
+		if(count($xml->viewMode))
+			$this->viewMode = (int)$xml->viewMode;
+		if(count($xml->recordingStatus))
+			$this->recordingStatus = (int)$xml->recordingStatus;
 	}
 	/**
 	 * The message to be presented when the stream is offline
@@ -193,6 +204,27 @@ abstract class Kaltura_Client_Type_LiveEntry extends Kaltura_Client_Type_MediaEn
 	 * @var int
 	 */
 	public $segmentDuration = null;
+
+	/**
+	 * 
+	 *
+	 * @var bool
+	 */
+	public $explicitLive = null;
+
+	/**
+	 * 
+	 *
+	 * @var Kaltura_Client_Enum_ViewMode
+	 */
+	public $viewMode = null;
+
+	/**
+	 * 
+	 *
+	 * @var Kaltura_Client_Enum_RecordingStatus
+	 */
+	public $recordingStatus = null;
 
 
 }

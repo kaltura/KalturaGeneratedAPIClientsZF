@@ -45,15 +45,15 @@ class Kaltura_Client_ElasticSearch_Type_ESearchQuery extends Kaltura_Client_Elas
 		if(is_null($xml))
 			return;
 		
-		if(count($xml->eSerachQuery))
-			$this->eSerachQuery = (string)$xml->eSerachQuery;
+		if(count($xml->eSearchQuery))
+			$this->eSearchQuery = (string)$xml->eSearchQuery;
 	}
 	/**
 	 * 
 	 *
 	 * @var string
 	 */
-	public $eSerachQuery = null;
+	public $eSearchQuery = null;
 
 
 }

@@ -33,11 +33,9 @@
  */
 class Kaltura_Client_Enum_RecordingStatus extends Kaltura_Client_EnumBase
 {
-	const SCHEDULED = "SCHEDULED";
-	const RECORDING = "RECORDING";
-	const RECORDED = "RECORDED";
-	const CANCELED = "CANCELED";
-	const FAILED = "FAILED";
-	const DELETED = "DELETED";
+	const STOPPED = 0;
+	const PAUSED = 1;
+	const ACTIVE = 2;
+	const DISABLED = 3;
 }
 

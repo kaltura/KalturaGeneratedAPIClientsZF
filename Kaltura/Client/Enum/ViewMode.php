@@ -31,57 +31,9 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Type_FileSyncDescriptor extends Kaltura_Client_ObjectBase
+class Kaltura_Client_Enum_ViewMode extends Kaltura_Client_EnumBase
 {
-	public function getKalturaObjectType()
-	{
-		return 'KalturaFileSyncDescriptor';
-	}
-	
-	public function __construct(SimpleXMLElement $xml = null)
-	{
-		parent::__construct($xml);
-		
-		if(is_null($xml))
-			return;
-		
-		if(count($xml->fileSyncLocalPath))
-			$this->fileSyncLocalPath = (string)$xml->fileSyncLocalPath;
-		if(count($xml->fileEncryptionKey))
-			$this->fileEncryptionKey = (string)$xml->fileEncryptionKey;
-		if(count($xml->fileSyncRemoteUrl))
-			$this->fileSyncRemoteUrl = (string)$xml->fileSyncRemoteUrl;
-		if(count($xml->fileSyncObjectSubType))
-			$this->fileSyncObjectSubType = (int)$xml->fileSyncObjectSubType;
-	}
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $fileSyncLocalPath = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $fileEncryptionKey = null;
-
-	/**
-	 * The translated path as used by the scheduler
-	 *
-	 * @var string
-	 */
-	public $fileSyncRemoteUrl = null;
-
-	/**
-	 * 
-	 *
-	 * @var int
-	 */
-	public $fileSyncObjectSubType = null;
-
-
+	const PREVIEW = 0;
+	const ALLOW_ALL = 1;
 }
 
