@@ -45,7 +45,16 @@ class Kaltura_Client_Schedule_Type_LiveStreamScheduleEvent extends Kaltura_Clien
 		if(is_null($xml))
 			return;
 		
+		if(count($xml->projectedAudience))
+			$this->projectedAudience = (int)$xml->projectedAudience;
 	}
+	/**
+	 * Defines the expected audience.
+	 *
+	 * @var int
+	 */
+	public $projectedAudience = null;
+
 
 }
 

@@ -364,7 +364,7 @@ class Kaltura_Client_Type_User extends Kaltura_Client_ObjectBase
 	 * 
 	 *
 	 * @var bool
-	 * @readonly
+	 * @insertonly
 	 */
 	public $loginEnabled = null;
 
@@ -387,7 +387,7 @@ class Kaltura_Client_Type_User extends Kaltura_Client_ObjectBase
 	 * 
 	 *
 	 * @var bool
-	 * @readonly
+	 * @insertonly
 	 */
 	public $isAccountOwner = null;
 
