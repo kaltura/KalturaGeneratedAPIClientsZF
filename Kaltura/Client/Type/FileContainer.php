@@ -31,11 +31,11 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_YoutubeApiDistribution_Type_YouTubeApiCaptionDistributionInfo extends Kaltura_Client_ObjectBase
+class Kaltura_Client_Type_FileContainer extends Kaltura_Client_ObjectBase
 {
 	public function getKalturaObjectType()
 	{
-		return 'KalturaYouTubeApiCaptionDistributionInfo';
+		return 'KalturaFileContainer';
 	}
 	
 	public function __construct(SimpleXMLElement $xml = null)
@@ -45,37 +45,13 @@ class Kaltura_Client_YoutubeApiDistribution_Type_YouTubeApiCaptionDistributionIn
 		if(is_null($xml))
 			return;
 		
-		if(count($xml->language))
-			$this->language = (string)$xml->language;
-		if(count($xml->label))
-			$this->label = (string)$xml->label;
 		if(count($xml->filePath))
 			$this->filePath = (string)$xml->filePath;
 		if(count($xml->encryptionKey))
 			$this->encryptionKey = (string)$xml->encryptionKey;
-		if(count($xml->remoteId))
-			$this->remoteId = (string)$xml->remoteId;
-		if(count($xml->action))
-			$this->action = (int)$xml->action;
-		if(count($xml->version))
-			$this->version = (string)$xml->version;
-		if(count($xml->assetId))
-			$this->assetId = (string)$xml->assetId;
+		if(count($xml->fileSize))
+			$this->fileSize = (int)$xml->fileSize;
 	}
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $language = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $label = null;
-
 	/**
 	 * 
 	 *
@@ -93,30 +69,9 @@ class Kaltura_Client_YoutubeApiDistribution_Type_YouTubeApiCaptionDistributionIn
 	/**
 	 * 
 	 *
-	 * @var string
+	 * @var int
 	 */
-	public $remoteId = null;
-
-	/**
-	 * 
-	 *
-	 * @var Kaltura_Client_YoutubeApiDistribution_Enum_YouTubeApiDistributionCaptionAction
-	 */
-	public $action = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $version = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $assetId = null;
+	public $fileSize = null;
 
 
 }

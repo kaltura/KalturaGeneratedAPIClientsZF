@@ -45,8 +45,8 @@ class Kaltura_Client_VirusScan_Type_VirusScanJobData extends Kaltura_Client_Type
 		if(is_null($xml))
 			return;
 		
-		if(count($xml->srcFilePath))
-			$this->srcFilePath = (string)$xml->srcFilePath;
+		if(count($xml->fileContainer) && !empty($xml->fileContainer))
+			$this->fileContainer = Kaltura_Client_ParseUtils::unmarshalObject($xml->fileContainer, "KalturaFileContainer");
 		if(count($xml->flavorAssetId))
 			$this->flavorAssetId = (string)$xml->flavorAssetId;
 		if(count($xml->scanResult))
@@ -57,9 +57,9 @@ class Kaltura_Client_VirusScan_Type_VirusScanJobData extends Kaltura_Client_Type
 	/**
 	 * 
 	 *
-	 * @var string
+	 * @var Kaltura_Client_Type_FileContainer
 	 */
-	public $srcFilePath = null;
+	public $fileContainer;
 
 	/**
 	 * 

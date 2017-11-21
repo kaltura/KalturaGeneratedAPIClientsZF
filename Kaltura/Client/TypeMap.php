@@ -558,6 +558,7 @@ class Kaltura_Client_TypeMap
 		'KalturaFileAssetBaseFilter' => 'Kaltura_Client_Type_FileAssetBaseFilter',
 		'KalturaFileAssetFilter' => 'Kaltura_Client_Type_FileAssetFilter',
 		'KalturaFileAssetListResponse' => 'Kaltura_Client_Type_FileAssetListResponse',
+		'KalturaFileContainer' => 'Kaltura_Client_Type_FileContainer',
 		'KalturaFileExistsResponse' => 'Kaltura_Client_Type_FileExistsResponse',
 		'KalturaFileSync' => 'Kaltura_Client_FileSync_Type_FileSync',
 		'KalturaFileSyncBaseFilter' => 'Kaltura_Client_FileSync_Type_FileSyncBaseFilter',
