@@ -191,6 +191,13 @@ class Kaltura_Client_Type_Partner extends Kaltura_Client_ObjectBase
 			else
 				$this->timeAlignedRenditions = false;
 		}
+		if(count($xml->eSearchLanguages))
+		{
+			if(empty($xml->eSearchLanguages))
+				$this->eSearchLanguages = array();
+			else
+				$this->eSearchLanguages = Kaltura_Client_ParseUtils::unmarshalArray($xml->eSearchLanguages, "KalturaESearchLanguageItem");
+		}
 	}
 	/**
 	 * 
@@ -585,6 +592,13 @@ class Kaltura_Client_Type_Partner extends Kaltura_Client_ObjectBase
 	 * @readonly
 	 */
 	public $timeAlignedRenditions = null;
+
+	/**
+	 * 
+	 *
+	 * @var array of KalturaESearchLanguageItem
+	 */
+	public $eSearchLanguages;
 
 
 }

@@ -86,12 +86,7 @@ abstract class Kaltura_Client_Type_LiveEntry extends Kaltura_Client_Type_MediaEn
 		if(count($xml->segmentDuration))
 			$this->segmentDuration = (int)$xml->segmentDuration;
 		if(count($xml->explicitLive))
-		{
-			if(!empty($xml->explicitLive) && ((int) $xml->explicitLive === 1 || strtolower((string)$xml->explicitLive) === 'true'))
-				$this->explicitLive = true;
-			else
-				$this->explicitLive = false;
-		}
+			$this->explicitLive = (int)$xml->explicitLive;
 		if(count($xml->viewMode))
 			$this->viewMode = (int)$xml->viewMode;
 		if(count($xml->recordingStatus))
@@ -208,7 +203,7 @@ abstract class Kaltura_Client_Type_LiveEntry extends Kaltura_Client_Type_MediaEn
 	/**
 	 * 
 	 *
-	 * @var bool
+	 * @var Kaltura_Client_Enum_NullableBoolean
 	 */
 	public $explicitLive = null;
 

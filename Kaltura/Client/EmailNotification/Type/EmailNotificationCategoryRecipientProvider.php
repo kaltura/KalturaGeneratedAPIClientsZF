@@ -47,6 +47,8 @@ class Kaltura_Client_EmailNotification_Type_EmailNotificationCategoryRecipientPr
 		
 		if(count($xml->categoryId) && !empty($xml->categoryId))
 			$this->categoryId = Kaltura_Client_ParseUtils::unmarshalObject($xml->categoryId, "KalturaStringValue");
+		if(count($xml->categoryIds) && !empty($xml->categoryIds))
+			$this->categoryIds = Kaltura_Client_ParseUtils::unmarshalObject($xml->categoryIds, "KalturaStringValue");
 		if(count($xml->categoryUserFilter) && !empty($xml->categoryUserFilter))
 			$this->categoryUserFilter = Kaltura_Client_ParseUtils::unmarshalObject($xml->categoryUserFilter, "KalturaCategoryUserProviderFilter");
 	}
@@ -56,6 +58,13 @@ class Kaltura_Client_EmailNotification_Type_EmailNotificationCategoryRecipientPr
 	 * @var Kaltura_Client_Type_StringValue
 	 */
 	public $categoryId;
+
+	/**
+	 * The IDs of the categories whose subscribers should receive the email notification.
+	 *
+	 * @var Kaltura_Client_Type_StringValue
+	 */
+	public $categoryIds;
 
 	/**
 	 * 

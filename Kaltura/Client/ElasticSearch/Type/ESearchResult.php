@@ -47,6 +47,8 @@ abstract class Kaltura_Client_ElasticSearch_Type_ESearchResult extends Kaltura_C
 		
 		if(count($xml->object) && !empty($xml->object))
 			$this->object = Kaltura_Client_ParseUtils::unmarshalObject($xml->object, "KalturaObjectBase");
+		if(count($xml->highlight))
+			$this->highlight = (string)$xml->highlight;
 		if(count($xml->itemsData))
 		{
 			if(empty($xml->itemsData))
@@ -61,6 +63,13 @@ abstract class Kaltura_Client_ElasticSearch_Type_ESearchResult extends Kaltura_C
 	 * @var KalturaObjectBase
 	 */
 	public $object;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $highlight = null;
 
 	/**
 	 * 

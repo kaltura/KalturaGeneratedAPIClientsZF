@@ -31,7 +31,7 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_ElasticSearch_Type_ESearchParams extends Kaltura_Client_ElasticSearch_Type_ESearchObject
+class Kaltura_Client_ElasticSearch_Type_ESearchParams extends Kaltura_Client_ObjectBase
 {
 	public function getKalturaObjectType()
 	{
@@ -49,8 +49,17 @@ class Kaltura_Client_ElasticSearch_Type_ESearchParams extends Kaltura_Client_Ela
 			$this->searchOperator = Kaltura_Client_ParseUtils::unmarshalObject($xml->searchOperator, "KalturaESearchOperator");
 		if(count($xml->objectStatuses))
 			$this->objectStatuses = (string)$xml->objectStatuses;
+		if(count($xml->objectId))
+			$this->objectId = (string)$xml->objectId;
 		if(count($xml->orderBy) && !empty($xml->orderBy))
 			$this->orderBy = Kaltura_Client_ParseUtils::unmarshalObject($xml->orderBy, "KalturaESearchOrderBy");
+		if(count($xml->useHighlight))
+		{
+			if(!empty($xml->useHighlight) && ((int) $xml->useHighlight === 1 || strtolower((string)$xml->useHighlight) === 'true'))
+				$this->useHighlight = true;
+			else
+				$this->useHighlight = false;
+		}
 	}
 	/**
 	 * 
@@ -69,9 +78,23 @@ class Kaltura_Client_ElasticSearch_Type_ESearchParams extends Kaltura_Client_Ela
 	/**
 	 * 
 	 *
+	 * @var string
+	 */
+	public $objectId = null;
+
+	/**
+	 * 
+	 *
 	 * @var Kaltura_Client_ElasticSearch_Type_ESearchOrderBy
 	 */
 	public $orderBy;
+
+	/**
+	 * 
+	 *
+	 * @var bool
+	 */
+	public $useHighlight = null;
 
 
 }

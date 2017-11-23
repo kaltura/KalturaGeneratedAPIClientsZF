@@ -45,7 +45,16 @@ abstract class Kaltura_Client_ElasticSearch_Type_ESearchItemData extends Kaltura
 		if(is_null($xml))
 			return;
 		
+		if(count($xml->highlight))
+			$this->highlight = (string)$xml->highlight;
 	}
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $highlight = null;
+
 
 }
 

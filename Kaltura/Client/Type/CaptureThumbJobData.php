@@ -45,8 +45,8 @@ class Kaltura_Client_Type_CaptureThumbJobData extends Kaltura_Client_Type_JobDat
 		if(is_null($xml))
 			return;
 		
-		if(count($xml->srcFileSyncLocalPath))
-			$this->srcFileSyncLocalPath = (string)$xml->srcFileSyncLocalPath;
+		if(count($xml->fileContainer) && !empty($xml->fileContainer))
+			$this->fileContainer = Kaltura_Client_ParseUtils::unmarshalObject($xml->fileContainer, "KalturaFileContainer");
 		if(count($xml->actualSrcFileSyncLocalPath))
 			$this->actualSrcFileSyncLocalPath = (string)$xml->actualSrcFileSyncLocalPath;
 		if(count($xml->srcFileSyncRemoteUrl))
@@ -65,9 +65,9 @@ class Kaltura_Client_Type_CaptureThumbJobData extends Kaltura_Client_Type_JobDat
 	/**
 	 * 
 	 *
-	 * @var string
+	 * @var Kaltura_Client_Type_FileContainer
 	 */
-	public $srcFileSyncLocalPath = null;
+	public $fileContainer;
 
 	/**
 	 * The translated path as used by the scheduler

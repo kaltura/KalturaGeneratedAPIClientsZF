@@ -31,11 +31,11 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_ElasticSearch_Type_ESearchQuery extends Kaltura_Client_ElasticSearch_Type_ESearchBaseItem
+class Kaltura_Client_Type_ESearchLanguageItem extends Kaltura_Client_ObjectBase
 {
 	public function getKalturaObjectType()
 	{
-		return 'KalturaESearchQuery';
+		return 'KalturaESearchLanguageItem';
 	}
 	
 	public function __construct(SimpleXMLElement $xml = null)
@@ -45,15 +45,15 @@ class Kaltura_Client_ElasticSearch_Type_ESearchQuery extends Kaltura_Client_Elas
 		if(is_null($xml))
 			return;
 		
-		if(count($xml->eSearchQuery))
-			$this->eSearchQuery = (string)$xml->eSearchQuery;
+		if(count($xml->eSerachLanguage))
+			$this->eSerachLanguage = (string)$xml->eSerachLanguage;
 	}
 	/**
 	 * 
 	 *
-	 * @var string
+	 * @var Kaltura_Client_Enum_ESearchLanguage
 	 */
-	public $eSearchQuery = null;
+	public $eSerachLanguage = null;
 
 
 }
