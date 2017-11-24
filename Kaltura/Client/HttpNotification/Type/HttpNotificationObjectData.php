@@ -58,6 +58,13 @@ class Kaltura_Client_HttpNotification_Type_HttpNotificationObjectData extends Ka
 		}
 		if(count($xml->code))
 			$this->code = (string)$xml->code;
+		if(count($xml->dataStringReplacements))
+		{
+			if(empty($xml->dataStringReplacements))
+				$this->dataStringReplacements = array();
+			else
+				$this->dataStringReplacements = Kaltura_Client_ParseUtils::unmarshalArray($xml->dataStringReplacements, "KalturaKeyValue");
+		}
 	}
 	/**
 	 * Kaltura API object type
@@ -86,6 +93,13 @@ class Kaltura_Client_HttpNotification_Type_HttpNotificationObjectData extends Ka
 	 * @var string
 	 */
 	public $code = null;
+
+	/**
+	 * An array of pattern-replacement pairs used for data string regex replacements
+	 *
+	 * @var array of KalturaKeyValue
+	 */
+	public $dataStringReplacements;
 
 
 }
