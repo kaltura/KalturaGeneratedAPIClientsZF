@@ -68,6 +68,8 @@ class Kaltura_Client_Voicebase_Type_VoicebaseJobProviderData extends Kaltura_Cli
 			else
 				$this->replaceMediaContent = false;
 		}
+		if(count($xml->additionalParameters))
+			$this->additionalParameters = (string)$xml->additionalParameters;
 	}
 	/**
 	 * Entry ID
@@ -134,6 +136,14 @@ class Kaltura_Client_Voicebase_Type_VoicebaseJobProviderData extends Kaltura_Cli
 	 * @var bool
 	 */
 	public $replaceMediaContent = null;
+
+	/**
+	 * additional parameters to send to VoiceBase
+	 *
+	 * @var string
+	 * @readonly
+	 */
+	public $additionalParameters = null;
 
 
 }
