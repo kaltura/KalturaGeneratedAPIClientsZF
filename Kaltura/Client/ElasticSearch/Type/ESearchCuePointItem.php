@@ -47,6 +47,8 @@ class Kaltura_Client_ElasticSearch_Type_ESearchCuePointItem extends Kaltura_Clie
 		
 		if(count($xml->fieldName))
 			$this->fieldName = (string)$xml->fieldName;
+		if(count($xml->cuePointType))
+			$this->cuePointType = (string)$xml->cuePointType;
 	}
 	/**
 	 * 
@@ -54,6 +56,13 @@ class Kaltura_Client_ElasticSearch_Type_ESearchCuePointItem extends Kaltura_Clie
 	 * @var Kaltura_Client_ElasticSearch_Enum_ESearchCuePointFieldName
 	 */
 	public $fieldName = null;
+
+	/**
+	 * 
+	 *
+	 * @var Kaltura_Client_CuePoint_Enum_CuePointType
+	 */
+	public $cuePointType = null;
 
 
 }

@@ -66,6 +66,8 @@ class Kaltura_Client_Type_StorageJobData extends Kaltura_Client_Type_JobData
 		}
 		if(count($xml->srcFileSyncLocalPath))
 			$this->srcFileSyncLocalPath = (string)$xml->srcFileSyncLocalPath;
+		if(count($xml->srcFileEncryptionKey))
+			$this->srcFileEncryptionKey = (string)$xml->srcFileEncryptionKey;
 		if(count($xml->srcFileSyncId))
 			$this->srcFileSyncId = (string)$xml->srcFileSyncId;
 		if(count($xml->destFileSyncStoredPath))
@@ -126,6 +128,13 @@ class Kaltura_Client_Type_StorageJobData extends Kaltura_Client_Type_JobData
 	 * @var string
 	 */
 	public $srcFileSyncLocalPath = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $srcFileEncryptionKey = null;
 
 	/**
 	 * 
