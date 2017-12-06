@@ -31,11 +31,11 @@
  * @package Kaltura
  * @subpackage Client
  */
-abstract class Kaltura_Client_ElasticSearch_Type_ESearchResult extends Kaltura_Client_ObjectBase
+class Kaltura_Client_ElasticSearch_Type_ESearchHighlight extends Kaltura_Client_ObjectBase
 {
 	public function getKalturaObjectType()
 	{
-		return 'KalturaESearchResult';
+		return 'KalturaESearchHighlight';
 	}
 	
 	public function __construct(SimpleXMLElement $xml = null)
@@ -45,43 +45,29 @@ abstract class Kaltura_Client_ElasticSearch_Type_ESearchResult extends Kaltura_C
 		if(is_null($xml))
 			return;
 		
-		if(count($xml->object) && !empty($xml->object))
-			$this->object = Kaltura_Client_ParseUtils::unmarshalObject($xml->object, "KalturaObjectBase");
-		if(count($xml->highlight))
+		if(count($xml->fieldName))
+			$this->fieldName = (string)$xml->fieldName;
+		if(count($xml->hits))
 		{
-			if(empty($xml->highlight))
-				$this->highlight = array();
+			if(empty($xml->hits))
+				$this->hits = array();
 			else
-				$this->highlight = Kaltura_Client_ParseUtils::unmarshalArray($xml->highlight, "KalturaESearchHighlight");
-		}
-		if(count($xml->itemsData))
-		{
-			if(empty($xml->itemsData))
-				$this->itemsData = array();
-			else
-				$this->itemsData = Kaltura_Client_ParseUtils::unmarshalArray($xml->itemsData, "KalturaESearchItemDataResult");
+				$this->hits = Kaltura_Client_ParseUtils::unmarshalArray($xml->hits, "KalturaString");
 		}
 	}
 	/**
 	 * 
 	 *
-	 * @var KalturaObjectBase
+	 * @var string
 	 */
-	public $object;
+	public $fieldName = null;
 
 	/**
 	 * 
 	 *
-	 * @var array of KalturaESearchHighlight
+	 * @var array of KalturaString
 	 */
-	public $highlight;
-
-	/**
-	 * 
-	 *
-	 * @var array of KalturaESearchItemDataResult
-	 */
-	public $itemsData;
+	public $hits;
 
 
 }

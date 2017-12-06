@@ -47,6 +47,8 @@ class Kaltura_Client_Type_MediaEntryFilterForPlaylist extends Kaltura_Client_Typ
 		
 		if(count($xml->limit))
 			$this->limit = (int)$xml->limit;
+		if(count($xml->name))
+			$this->name = (string)$xml->name;
 	}
 	/**
 	 * 
@@ -54,6 +56,13 @@ class Kaltura_Client_Type_MediaEntryFilterForPlaylist extends Kaltura_Client_Typ
 	 * @var int
 	 */
 	public $limit = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $name = null;
 
 
 }
