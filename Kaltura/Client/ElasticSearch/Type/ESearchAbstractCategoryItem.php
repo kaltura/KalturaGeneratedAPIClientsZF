@@ -31,33 +31,48 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_ElasticSearch_Enum_ESearchCategoryFieldName extends Kaltura_Client_EnumBase
+abstract class Kaltura_Client_ElasticSearch_Type_ESearchAbstractCategoryItem extends Kaltura_Client_ElasticSearch_Type_ESearchCategoryBaseItem
 {
-	const CONTRIBUTION_POLICY = "contribution_policy";
-	const CREATED_AT = "created_at";
-	const DEPTH = "depth";
-	const DESCRIPTION = "description";
-	const DIRECT_ENTRIES_COUNT = "direct_entries_count";
-	const DIRECT_SUB_CATEGORIES_COUNT = "direct_sub_categories_count";
-	const DISPLAY_IN_SEARCH = "display_in_search";
-	const ENTRIES_COUNT = "entries_count";
-	const FULL_IDS = "full_ids";
-	const FULL_NAME = "full_name";
-	const INHERITANCE_TYPE = "inheritance_type";
-	const INHERITED_PARENT_ID = "inherited_parent_id";
-	const MEMBERS_COUNT = "members_count";
-	const MODERATION = "moderation";
-	const NAME = "name";
-	const PARENT_ID = "parent_id";
-	const PENDING_ENTRIES_COUNT = "pending_entries_count";
-	const PENDING_MEMBERS_COUNT = "pending_members_count";
-	const PRIVACY = "privacy";
-	const PRIVACY_CONTEXT = "privacy_context";
-	const PRIVACY_CONTEXTS = "privacy_contexts";
-	const REFERENCE_ID = "reference_id";
-	const TAGS = "tags";
-	const UPDATED_AT = "updated_at";
-	const USER_ID = "user_id";
-	const USER_IDS = "user_ids";
+	public function getKalturaObjectType()
+	{
+		return 'KalturaESearchAbstractCategoryItem';
+	}
+	
+	public function __construct(SimpleXMLElement $xml = null)
+	{
+		parent::__construct($xml);
+		
+		if(is_null($xml))
+			return;
+		
+		if(count($xml->searchTerm))
+			$this->searchTerm = (string)$xml->searchTerm;
+		if(count($xml->itemType))
+			$this->itemType = (int)$xml->itemType;
+		if(count($xml->range) && !empty($xml->range))
+			$this->range = Kaltura_Client_ParseUtils::unmarshalObject($xml->range, "KalturaESearchRange");
+	}
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $searchTerm = null;
+
+	/**
+	 * 
+	 *
+	 * @var Kaltura_Client_ElasticSearch_Enum_ESearchItemType
+	 */
+	public $itemType = null;
+
+	/**
+	 * 
+	 *
+	 * @var Kaltura_Client_ElasticSearch_Type_ESearchRange
+	 */
+	public $range;
+
+
 }
 

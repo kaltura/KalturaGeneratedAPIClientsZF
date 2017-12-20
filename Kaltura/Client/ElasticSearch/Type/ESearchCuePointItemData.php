@@ -69,6 +69,8 @@ class Kaltura_Client_ElasticSearch_Type_ESearchCuePointItemData extends Kaltura_
 			$this->hint = (string)$xml->hint;
 		if(count($xml->explanation))
 			$this->explanation = (string)$xml->explanation;
+		if(count($xml->assetId))
+			$this->assetId = (string)$xml->assetId;
 	}
 	/**
 	 * 
@@ -153,6 +155,13 @@ class Kaltura_Client_ElasticSearch_Type_ESearchCuePointItemData extends Kaltura_
 	 * @var string
 	 */
 	public $explanation = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $assetId = null;
 
 
 }

@@ -31,33 +31,44 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_ElasticSearch_Enum_ESearchCategoryFieldName extends Kaltura_Client_EnumBase
+class Kaltura_Client_ElasticSearch_Type_ESearchEntryOperator extends Kaltura_Client_ElasticSearch_Type_ESearchEntryBaseItem
 {
-	const CONTRIBUTION_POLICY = "contribution_policy";
-	const CREATED_AT = "created_at";
-	const DEPTH = "depth";
-	const DESCRIPTION = "description";
-	const DIRECT_ENTRIES_COUNT = "direct_entries_count";
-	const DIRECT_SUB_CATEGORIES_COUNT = "direct_sub_categories_count";
-	const DISPLAY_IN_SEARCH = "display_in_search";
-	const ENTRIES_COUNT = "entries_count";
-	const FULL_IDS = "full_ids";
-	const FULL_NAME = "full_name";
-	const INHERITANCE_TYPE = "inheritance_type";
-	const INHERITED_PARENT_ID = "inherited_parent_id";
-	const MEMBERS_COUNT = "members_count";
-	const MODERATION = "moderation";
-	const NAME = "name";
-	const PARENT_ID = "parent_id";
-	const PENDING_ENTRIES_COUNT = "pending_entries_count";
-	const PENDING_MEMBERS_COUNT = "pending_members_count";
-	const PRIVACY = "privacy";
-	const PRIVACY_CONTEXT = "privacy_context";
-	const PRIVACY_CONTEXTS = "privacy_contexts";
-	const REFERENCE_ID = "reference_id";
-	const TAGS = "tags";
-	const UPDATED_AT = "updated_at";
-	const USER_ID = "user_id";
-	const USER_IDS = "user_ids";
+	public function getKalturaObjectType()
+	{
+		return 'KalturaESearchEntryOperator';
+	}
+	
+	public function __construct(SimpleXMLElement $xml = null)
+	{
+		parent::__construct($xml);
+		
+		if(is_null($xml))
+			return;
+		
+		if(count($xml->operator))
+			$this->operator = (int)$xml->operator;
+		if(count($xml->searchItems))
+		{
+			if(empty($xml->searchItems))
+				$this->searchItems = array();
+			else
+				$this->searchItems = Kaltura_Client_ParseUtils::unmarshalArray($xml->searchItems, "KalturaESearchEntryBaseItem");
+		}
+	}
+	/**
+	 * 
+	 *
+	 * @var Kaltura_Client_ElasticSearch_Enum_ESearchOperatorType
+	 */
+	public $operator = null;
+
+	/**
+	 * 
+	 *
+	 * @var array of KalturaESearchEntryBaseItem
+	 */
+	public $searchItems;
+
+
 }
 

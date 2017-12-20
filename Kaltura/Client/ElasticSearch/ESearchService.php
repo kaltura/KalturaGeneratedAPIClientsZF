@@ -40,29 +40,9 @@ class Kaltura_Client_ElasticSearch_ESearchService extends Kaltura_Client_Service
 	}
 
 	/**
-	 * @return array
-	 */
-	function getAllowedSearchTypes(Kaltura_Client_ElasticSearch_Type_ESearchItem $searchItem)
-	{
-		$kparams = array();
-		$this->client->addParam($kparams, "searchItem", $searchItem->toParams());
-		$this->client->queueServiceActionCall("elasticsearch_esearch", "getAllowedSearchTypes", "KalturaKeyValue", $kparams);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = Kaltura_Client_ParseUtils::unmarshalArray($resultXmlObject->result, "KalturaKeyValue");
-		foreach($resultObject as $resultObjectItem){
-			$this->client->validateObjectType($resultObjectItem, "Kaltura_Client_Type_KeyValue");
-		}
-		return $resultObject;
-	}
-
-	/**
 	 * @return Kaltura_Client_ElasticSearch_Type_ESearchResponse
 	 */
-	function searchCategory(Kaltura_Client_ElasticSearch_Type_ESearchParams $searchParams, Kaltura_Client_Type_Pager $pager = null)
+	function searchCategory(Kaltura_Client_ElasticSearch_Type_ESearchCategoryParams $searchParams, Kaltura_Client_Type_Pager $pager = null)
 	{
 		$kparams = array();
 		$this->client->addParam($kparams, "searchParams", $searchParams->toParams());
@@ -82,7 +62,7 @@ class Kaltura_Client_ElasticSearch_ESearchService extends Kaltura_Client_Service
 	/**
 	 * @return Kaltura_Client_ElasticSearch_Type_ESearchResponse
 	 */
-	function searchEntry(Kaltura_Client_ElasticSearch_Type_ESearchParams $searchParams, Kaltura_Client_Type_Pager $pager = null)
+	function searchEntry(Kaltura_Client_ElasticSearch_Type_ESearchEntryParams $searchParams, Kaltura_Client_Type_Pager $pager = null)
 	{
 		$kparams = array();
 		$this->client->addParam($kparams, "searchParams", $searchParams->toParams());
@@ -102,7 +82,7 @@ class Kaltura_Client_ElasticSearch_ESearchService extends Kaltura_Client_Service
 	/**
 	 * @return Kaltura_Client_ElasticSearch_Type_ESearchResponse
 	 */
-	function searchUser(Kaltura_Client_ElasticSearch_Type_ESearchParams $searchParams, Kaltura_Client_Type_Pager $pager = null)
+	function searchUser(Kaltura_Client_ElasticSearch_Type_ESearchUserParams $searchParams, Kaltura_Client_Type_Pager $pager = null)
 	{
 		$kparams = array();
 		$this->client->addParam($kparams, "searchParams", $searchParams->toParams());

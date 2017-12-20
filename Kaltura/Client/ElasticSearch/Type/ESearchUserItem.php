@@ -31,7 +31,7 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_ElasticSearch_Type_ESearchUserItem extends Kaltura_Client_ElasticSearch_Type_ESearchItem
+class Kaltura_Client_ElasticSearch_Type_ESearchUserItem extends Kaltura_Client_ElasticSearch_Type_ESearchAbstractUserItem
 {
 	public function getKalturaObjectType()
 	{

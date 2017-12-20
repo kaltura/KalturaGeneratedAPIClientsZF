@@ -33,16 +33,16 @@
  */
 class Kaltura_Client_ElasticSearch_Enum_ESearchUserFieldName extends Kaltura_Client_EnumBase
 {
-	const USER_CREATED_AT = "created_at";
-	const USER_EMAIL = "email";
-	const USER_FIRST_NAME = "first_name";
-	const USER_GROUP_IDS = "group_ids";
-	const USER_TYPE = "kuser_type";
-	const USER_LAST_NAME = "last_name";
-	const USER_PERMISSION_NAMES = "permission_names";
-	const USER_ROLE_IDS = "role_ids";
-	const USER_SCREEN_NAME = "screen_name";
-	const USER_TAGS = "tags";
-	const USER_UPDATED_AT = "updated_at";
+	const CREATED_AT = "created_at";
+	const EMAIL = "email";
+	const FIRST_NAME = "first_name";
+	const GROUP_IDS = "group_ids";
+	const LAST_NAME = "last_name";
+	const PERMISSION_NAMES = "permission_names";
+	const ROLE_IDS = "role_ids";
+	const SCREEN_NAME = "screen_name";
+	const TAGS = "tags";
+	const UPDATED_AT = "updated_at";
+	const TYPE = "user_type";
 }
 

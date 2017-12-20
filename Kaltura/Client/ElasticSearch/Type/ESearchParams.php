@@ -31,7 +31,7 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_ElasticSearch_Type_ESearchParams extends Kaltura_Client_ObjectBase
+abstract class Kaltura_Client_ElasticSearch_Type_ESearchParams extends Kaltura_Client_ObjectBase
 {
 	public function getKalturaObjectType()
 	{
@@ -45,8 +45,6 @@ class Kaltura_Client_ElasticSearch_Type_ESearchParams extends Kaltura_Client_Obj
 		if(is_null($xml))
 			return;
 		
-		if(count($xml->searchOperator) && !empty($xml->searchOperator))
-			$this->searchOperator = Kaltura_Client_ParseUtils::unmarshalObject($xml->searchOperator, "KalturaESearchOperator");
 		if(count($xml->objectStatuses))
 			$this->objectStatuses = (string)$xml->objectStatuses;
 		if(count($xml->objectId))
@@ -61,13 +59,6 @@ class Kaltura_Client_ElasticSearch_Type_ESearchParams extends Kaltura_Client_Obj
 				$this->useHighlight = false;
 		}
 	}
-	/**
-	 * 
-	 *
-	 * @var Kaltura_Client_ElasticSearch_Type_ESearchOperator
-	 */
-	public $searchOperator;
-
 	/**
 	 * 
 	 *
