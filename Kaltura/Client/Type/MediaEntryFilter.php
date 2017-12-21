@@ -45,7 +45,25 @@ class Kaltura_Client_Type_MediaEntryFilter extends Kaltura_Client_Type_MediaEntr
 		if(is_null($xml))
 			return;
 		
+		if(count($xml->isSequenceEntry))
+			$this->isSequenceEntry = (int)$xml->isSequenceEntry;
+		if(count($xml->sequenceEntryIdsIn))
+			$this->sequenceEntryIdsIn = (string)$xml->sequenceEntryIdsIn;
 	}
+	/**
+	 * 
+	 *
+	 * @var Kaltura_Client_Enum_NullableBoolean
+	 */
+	public $isSequenceEntry = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $sequenceEntryIdsIn = null;
+
 
 }
 

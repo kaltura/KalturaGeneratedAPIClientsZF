@@ -74,6 +74,10 @@ class Kaltura_Client_Type_MediaEntry extends Kaltura_Client_Type_PlayableEntry
 			else
 				$this->streams = Kaltura_Client_ParseUtils::unmarshalArray($xml->streams, "KalturaStreamContainer");
 		}
+		if(count($xml->isSequenceEntry))
+			$this->isSequenceEntry = (int)$xml->isSequenceEntry;
+		if(count($xml->sequenceEntryIds))
+			$this->sequenceEntryIds = (string)$xml->sequenceEntryIds;
 	}
 	/**
 	 * The media type of the entry
@@ -167,6 +171,20 @@ class Kaltura_Client_Type_MediaEntry extends Kaltura_Client_Type_PlayableEntry
 	 * @var array of KalturaStreamContainer
 	 */
 	public $streams;
+
+	/**
+	 * True if the entry is a sequence entry
+	 *
+	 * @var Kaltura_Client_Enum_NullableBoolean
+	 */
+	public $isSequenceEntry = null;
+
+	/**
+	 * The sequence entries of the entry
+	 *
+	 * @var string
+	 */
+	public $sequenceEntryIds = null;
 
 
 }
