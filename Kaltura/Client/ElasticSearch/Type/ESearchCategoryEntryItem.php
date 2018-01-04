@@ -31,40 +31,39 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_ElasticSearch_Enum_ESearchEntryFieldName extends Kaltura_Client_EnumBase
+class Kaltura_Client_ElasticSearch_Type_ESearchCategoryEntryItem extends Kaltura_Client_ElasticSearch_Type_ESearchAbstractEntryItem
 {
-	const ACCESS_CONTROL_ID = "access_control_id";
-	const ADMIN_TAGS = "admin_tags";
-	const CONVERSION_PROFILE_ID = "conversion_profile_id";
-	const CREATED_AT = "created_at";
-	const CREATOR_ID = "creator_kuser_id";
-	const CREDIT = "credit";
-	const DESCRIPTION = "description";
-	const END_DATE = "end_date";
-	const ENTITLED_USER_EDIT = "entitled_kusers_edit";
-	const ENTITLED_USER_PUBLISH = "entitled_kusers_publish";
-	const ENTRY_TYPE = "entry_type";
-	const EXTERNAL_SOURCE_TYPE = "external_source_type";
-	const ID = "id";
-	const IS_LIVE = "is_live";
-	const IS_QUIZ = "is_quiz";
-	const USER_ID = "kuser_id";
-	const LENGTH_IN_MSECS = "length_in_msecs";
-	const MEDIA_TYPE = "media_type";
-	const MODERATION_STATUS = "moderation_status";
-	const NAME = "name";
-	const PARENT_ENTRY_ID = "parent_id";
-	const PUSH_PUBLISH = "push_publish";
-	const RECORDED_ENTRY_ID = "recorded_entry_id";
-	const REDIRECT_ENTRY_ID = "redirect_entry_id";
-	const REFERENCE_ID = "reference_id";
-	const SITE_URL = "site_url";
-	const SOURCE_TYPE = "source_type";
-	const START_DATE = "start_date";
-	const TAGS = "tags";
-	const TEMPLATE_ENTRY_ID = "template_entry_id";
-	const UPDATED_AT = "updated_at";
-	const VIEWS = "views";
-	const VOTES = "votes";
+	public function getKalturaObjectType()
+	{
+		return 'KalturaESearchCategoryEntryItem';
+	}
+	
+	public function __construct(SimpleXMLElement $xml = null)
+	{
+		parent::__construct($xml);
+		
+		if(is_null($xml))
+			return;
+		
+		if(count($xml->fieldName))
+			$this->fieldName = (string)$xml->fieldName;
+		if(count($xml->categoryEntryStatus))
+			$this->categoryEntryStatus = (int)$xml->categoryEntryStatus;
+	}
+	/**
+	 * 
+	 *
+	 * @var Kaltura_Client_ElasticSearch_Enum_ESearchCategoryEntryFieldName
+	 */
+	public $fieldName = null;
+
+	/**
+	 * 
+	 *
+	 * @var Kaltura_Client_Enum_CategoryEntryStatus
+	 */
+	public $categoryEntryStatus = null;
+
+
 }
 
