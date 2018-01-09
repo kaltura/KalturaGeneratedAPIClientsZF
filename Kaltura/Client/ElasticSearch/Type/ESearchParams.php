@@ -51,13 +51,6 @@ abstract class Kaltura_Client_ElasticSearch_Type_ESearchParams extends Kaltura_C
 			$this->objectId = (string)$xml->objectId;
 		if(count($xml->orderBy) && !empty($xml->orderBy))
 			$this->orderBy = Kaltura_Client_ParseUtils::unmarshalObject($xml->orderBy, "KalturaESearchOrderBy");
-		if(count($xml->useHighlight))
-		{
-			if(!empty($xml->useHighlight) && ((int) $xml->useHighlight === 1 || strtolower((string)$xml->useHighlight) === 'true'))
-				$this->useHighlight = true;
-			else
-				$this->useHighlight = false;
-		}
 	}
 	/**
 	 * 
@@ -79,13 +72,6 @@ abstract class Kaltura_Client_ElasticSearch_Type_ESearchParams extends Kaltura_C
 	 * @var Kaltura_Client_ElasticSearch_Type_ESearchOrderBy
 	 */
 	public $orderBy;
-
-	/**
-	 * 
-	 *
-	 * @var bool
-	 */
-	public $useHighlight = null;
 
 
 }

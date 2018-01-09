@@ -51,6 +51,13 @@ abstract class Kaltura_Client_ElasticSearch_Type_ESearchAbstractCategoryItem ext
 			$this->itemType = (int)$xml->itemType;
 		if(count($xml->range) && !empty($xml->range))
 			$this->range = Kaltura_Client_ParseUtils::unmarshalObject($xml->range, "KalturaESearchRange");
+		if(count($xml->addHighlight))
+		{
+			if(!empty($xml->addHighlight) && ((int) $xml->addHighlight === 1 || strtolower((string)$xml->addHighlight) === 'true'))
+				$this->addHighlight = true;
+			else
+				$this->addHighlight = false;
+		}
 	}
 	/**
 	 * 
@@ -72,6 +79,13 @@ abstract class Kaltura_Client_ElasticSearch_Type_ESearchAbstractCategoryItem ext
 	 * @var Kaltura_Client_ElasticSearch_Type_ESearchRange
 	 */
 	public $range;
+
+	/**
+	 * 
+	 *
+	 * @var bool
+	 */
+	public $addHighlight = null;
 
 
 }
