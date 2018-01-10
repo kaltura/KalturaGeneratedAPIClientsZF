@@ -106,6 +106,7 @@ class Kaltura_Client_TypeMap
 		'KalturaAssetPropertiesCompareCondition' => 'Kaltura_Client_Type_AssetPropertiesCompareCondition',
 		'KalturaAssetResource' => 'Kaltura_Client_Type_AssetResource',
 		'KalturaAssetServeOptions' => 'Kaltura_Client_Type_AssetServeOptions',
+		'KalturaAssetTypeCondition' => 'Kaltura_Client_Type_AssetTypeCondition',
 		'KalturaAssetsParamsResourceContainers' => 'Kaltura_Client_Type_AssetsParamsResourceContainers',
 		'KalturaAttachmentAsset' => 'Kaltura_Client_Attachment_Type_AttachmentAsset',
 		'KalturaAttachmentAssetBaseFilter' => 'Kaltura_Client_Attachment_Type_AttachmentAssetBaseFilter',
