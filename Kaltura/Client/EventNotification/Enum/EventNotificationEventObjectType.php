@@ -79,5 +79,6 @@ class Kaltura_Client_EventNotification_Enum_EventNotificationEventObjectType ext
 	const WIDGET = "36";
 	const CATEGORYENTRY = "37";
 	const LIVE_STREAM = "38";
+	const SERVER_NODE = "39";
 }
 

@@ -150,6 +150,24 @@ class Kaltura_Client_ServerNodeService extends Kaltura_Client_ServiceBase
 	/**
 	 * @return Kaltura_Client_Type_ServerNode
 	 */
+	function markOffline($serverNodeId)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "serverNodeId", $serverNodeId);
+		$this->client->queueServiceActionCall("servernode", "markOffline", "KalturaServerNode", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultXml = $this->client->doQueue();
+		$resultXmlObject = new \SimpleXMLElement($resultXml);
+		$this->client->checkIfError($resultXmlObject->result);
+		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaServerNode");
+		$this->client->validateObjectType($resultObject, "Kaltura_Client_Type_ServerNode");
+		return $resultObject;
+	}
+
+	/**
+	 * @return Kaltura_Client_Type_ServerNode
+	 */
 	function reportStatus($hostName, Kaltura_Client_Type_ServerNode $serverNode = null)
 	{
 		$kparams = array();
