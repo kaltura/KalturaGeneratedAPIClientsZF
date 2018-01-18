@@ -35,7 +35,9 @@ class Kaltura_Client_ElasticSearch_Enum_ESearchEntryOrderByFieldName extends Kal
 {
 	const CREATED_AT = "created_at";
 	const END_DATE = "end_date";
+	const LAST_PLAYED_AT = "last_played_at";
 	const NAME = "name";
+	const PLAYS = "plays";
 	const START_DATE = "start_date";
 	const UPDATED_AT = "updated_at";
 	const VIEWS = "views";
