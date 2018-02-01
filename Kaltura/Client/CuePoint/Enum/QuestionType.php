@@ -31,30 +31,14 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_ElasticSearch_Type_ESearchCuePointItem extends Kaltura_Client_ElasticSearch_Type_ESearchEntryAbstractNestedItem
+class Kaltura_Client_CuePoint_Enum_QuestionType extends Kaltura_Client_EnumBase
 {
-	public function getKalturaObjectType()
-	{
-		return 'KalturaESearchCuePointItem';
-	}
-	
-	public function __construct(SimpleXMLElement $xml = null)
-	{
-		parent::__construct($xml);
-		
-		if(is_null($xml))
-			return;
-		
-		if(count($xml->fieldName))
-			$this->fieldName = (string)$xml->fieldName;
-	}
-	/**
-	 * 
-	 *
-	 * @var Kaltura_Client_ElasticSearch_Enum_ESearchCuePointFieldName
-	 */
-	public $fieldName = null;
-
-
+	const MULTIPLE_CHOICE_ANSWER = 1;
+	const TRUE_FALSE = 2;
+	const REFLECTION_POINT = 3;
+	const MULTIPLE_ANSWER_QUESTION = 4;
+	const FILL_IN_BLANK = 5;
+	const HOT_SPOT = 6;
+	const GO_TO = 7;
 }
 

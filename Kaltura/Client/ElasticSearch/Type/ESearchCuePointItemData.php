@@ -54,7 +54,12 @@ class Kaltura_Client_ElasticSearch_Type_ESearchCuePointItemData extends Kaltura_
 		if(count($xml->text))
 			$this->text = (string)$xml->text;
 		if(count($xml->tags))
-			$this->tags = (string)$xml->tags;
+		{
+			if(empty($xml->tags))
+				$this->tags = array();
+			else
+				$this->tags = Kaltura_Client_ParseUtils::unmarshalArray($xml->tags, "KalturaString");
+		}
 		if(count($xml->startTime))
 			$this->startTime = (string)$xml->startTime;
 		if(count($xml->endTime))
@@ -64,7 +69,12 @@ class Kaltura_Client_ElasticSearch_Type_ESearchCuePointItemData extends Kaltura_
 		if(count($xml->question))
 			$this->question = (string)$xml->question;
 		if(count($xml->answers))
-			$this->answers = (string)$xml->answers;
+		{
+			if(empty($xml->answers))
+				$this->answers = array();
+			else
+				$this->answers = Kaltura_Client_ParseUtils::unmarshalArray($xml->answers, "KalturaString");
+		}
 		if(count($xml->hint))
 			$this->hint = (string)$xml->hint;
 		if(count($xml->explanation))
@@ -103,9 +113,9 @@ class Kaltura_Client_ElasticSearch_Type_ESearchCuePointItemData extends Kaltura_
 	/**
 	 * 
 	 *
-	 * @var string
+	 * @var array of KalturaString
 	 */
-	public $tags = null;
+	public $tags;
 
 	/**
 	 * 
@@ -138,9 +148,9 @@ class Kaltura_Client_ElasticSearch_Type_ESearchCuePointItemData extends Kaltura_
 	/**
 	 * 
 	 *
-	 * @var string
+	 * @var array of KalturaString
 	 */
-	public $answers = null;
+	public $answers;
 
 	/**
 	 * 

@@ -31,11 +31,11 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_ElasticSearch_Type_ESearchCuePointItem extends Kaltura_Client_ElasticSearch_Type_ESearchEntryAbstractNestedItem
+abstract class Kaltura_Client_ElasticSearch_Type_ESearchEntryNestedBaseItem extends Kaltura_Client_ElasticSearch_Type_ESearchEntryBaseNestedObject
 {
 	public function getKalturaObjectType()
 	{
-		return 'KalturaESearchCuePointItem';
+		return 'KalturaESearchEntryNestedBaseItem';
 	}
 	
 	public function __construct(SimpleXMLElement $xml = null)
@@ -45,16 +45,7 @@ class Kaltura_Client_ElasticSearch_Type_ESearchCuePointItem extends Kaltura_Clie
 		if(is_null($xml))
 			return;
 		
-		if(count($xml->fieldName))
-			$this->fieldName = (string)$xml->fieldName;
 	}
-	/**
-	 * 
-	 *
-	 * @var Kaltura_Client_ElasticSearch_Enum_ESearchCuePointFieldName
-	 */
-	public $fieldName = null;
-
 
 }
 

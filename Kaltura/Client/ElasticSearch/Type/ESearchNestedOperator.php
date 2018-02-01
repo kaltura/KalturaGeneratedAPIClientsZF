@@ -31,11 +31,11 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_ElasticSearch_Type_ESearchCuePointItem extends Kaltura_Client_ElasticSearch_Type_ESearchEntryAbstractNestedItem
+class Kaltura_Client_ElasticSearch_Type_ESearchNestedOperator extends Kaltura_Client_ElasticSearch_Type_ESearchEntryNestedBaseItem
 {
 	public function getKalturaObjectType()
 	{
-		return 'KalturaESearchCuePointItem';
+		return 'KalturaESearchNestedOperator';
 	}
 	
 	public function __construct(SimpleXMLElement $xml = null)
@@ -45,15 +45,29 @@ class Kaltura_Client_ElasticSearch_Type_ESearchCuePointItem extends Kaltura_Clie
 		if(is_null($xml))
 			return;
 		
-		if(count($xml->fieldName))
-			$this->fieldName = (string)$xml->fieldName;
+		if(count($xml->operator))
+			$this->operator = (int)$xml->operator;
+		if(count($xml->searchItems))
+		{
+			if(empty($xml->searchItems))
+				$this->searchItems = array();
+			else
+				$this->searchItems = Kaltura_Client_ParseUtils::unmarshalArray($xml->searchItems, "KalturaESearchEntryNestedBaseItem");
+		}
 	}
 	/**
 	 * 
 	 *
-	 * @var Kaltura_Client_ElasticSearch_Enum_ESearchCuePointFieldName
+	 * @var Kaltura_Client_ElasticSearch_Enum_ESearchOperatorType
 	 */
-	public $fieldName = null;
+	public $operator = null;
+
+	/**
+	 * 
+	 *
+	 * @var array of KalturaESearchEntryNestedBaseItem
+	 */
+	public $searchItems;
 
 
 }

@@ -31,11 +31,11 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_ElasticSearch_Type_ESearchCuePointItem extends Kaltura_Client_ElasticSearch_Type_ESearchEntryAbstractNestedItem
+abstract class Kaltura_Client_ElasticSearch_Type_ESearchEntryAbstractNestedItem extends Kaltura_Client_ElasticSearch_Type_ESearchEntryNestedBaseItem
 {
 	public function getKalturaObjectType()
 	{
-		return 'KalturaESearchCuePointItem';
+		return 'KalturaESearchEntryAbstractNestedItem';
 	}
 	
 	public function __construct(SimpleXMLElement $xml = null)
@@ -45,15 +45,47 @@ class Kaltura_Client_ElasticSearch_Type_ESearchCuePointItem extends Kaltura_Clie
 		if(is_null($xml))
 			return;
 		
-		if(count($xml->fieldName))
-			$this->fieldName = (string)$xml->fieldName;
+		if(count($xml->searchTerm))
+			$this->searchTerm = (string)$xml->searchTerm;
+		if(count($xml->itemType))
+			$this->itemType = (int)$xml->itemType;
+		if(count($xml->range) && !empty($xml->range))
+			$this->range = Kaltura_Client_ParseUtils::unmarshalObject($xml->range, "KalturaESearchRange");
+		if(count($xml->addHighlight))
+		{
+			if(!empty($xml->addHighlight) && ((int) $xml->addHighlight === 1 || strtolower((string)$xml->addHighlight) === 'true'))
+				$this->addHighlight = true;
+			else
+				$this->addHighlight = false;
+		}
 	}
 	/**
 	 * 
 	 *
-	 * @var Kaltura_Client_ElasticSearch_Enum_ESearchCuePointFieldName
+	 * @var string
 	 */
-	public $fieldName = null;
+	public $searchTerm = null;
+
+	/**
+	 * 
+	 *
+	 * @var Kaltura_Client_ElasticSearch_Enum_ESearchItemType
+	 */
+	public $itemType = null;
+
+	/**
+	 * 
+	 *
+	 * @var Kaltura_Client_ElasticSearch_Type_ESearchRange
+	 */
+	public $range;
+
+	/**
+	 * 
+	 *
+	 * @var bool
+	 */
+	public $addHighlight = null;
 
 
 }

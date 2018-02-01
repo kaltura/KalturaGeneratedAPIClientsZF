@@ -44,5 +44,6 @@ class Kaltura_Client_ElasticSearch_Enum_ESearchCuePointFieldName extends Kaltura
 	const SUB_TYPE = "sub_type";
 	const TAGS = "tags";
 	const TEXT = "text";
+	const TYPE = "type";
 }
 
