@@ -42,8 +42,8 @@ class Kaltura_Client_Enum_BatchJobType extends Kaltura_Client_EnumBase
 	const DISTRIBUTION_SUBMIT = "contentDistribution.DistributionSubmit";
 	const DISTRIBUTION_SYNC = "contentDistribution.DistributionSync";
 	const DISTRIBUTION_UPDATE = "contentDistribution.DistributionUpdate";
-	const DROP_FOLDER_CONTENT_PROCESSOR = "dropFolder.DropFolderContentProcessor";
 	const CONVERT = "0";
+	const DROP_FOLDER_CONTENT_PROCESSOR = "dropFolder.DropFolderContentProcessor";
 	const DROP_FOLDER_WATCHER = "dropFolder.DropFolderWatcher";
 	const EVENT_NOTIFICATION_HANDLER = "eventNotification.EventNotificationHandler";
 	const INTEGRATION = "integration.Integration";
@@ -93,5 +93,6 @@ class Kaltura_Client_Enum_BatchJobType extends Kaltura_Client_EnumBase
 	const COPY_CAPTIONS = "43";
 	const CHUNKED_ENCODE_JOB_SCHEDULER = "44";
 	const SERVER_NODE_MONITOR = "45";
+	const USERS_CSV = "46";
 }
 

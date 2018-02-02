@@ -155,6 +155,29 @@ class Kaltura_Client_UserService extends Kaltura_Client_ServiceBase
 	}
 
 	/**
+	 * @return string
+	 */
+	function exportToCsv(Kaltura_Client_Type_UserFilter $filter, $metadataProfileId = null, array $additionalFields = null)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "filter", $filter->toParams());
+		$this->client->addParam($kparams, "metadataProfileId", $metadataProfileId);
+		if ($additionalFields !== null)
+			foreach($additionalFields as $index => $obj)
+			{
+				$this->client->addParam($kparams, "additionalFields:$index", $obj->toParams());
+			}
+		$this->client->queueServiceActionCall("user", "exportToCsv", null, $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultXml = $this->client->doQueue();
+		$resultXmlObject = new \SimpleXMLElement($resultXml);
+		$this->client->checkIfError($resultXmlObject->result);
+		$resultObject = (string)Kaltura_Client_ParseUtils::unmarshalSimpleType($resultXmlObject->result);
+		return $resultObject;
+	}
+
+	/**
 	 * @return Kaltura_Client_Type_User
 	 */
 	function get($userId = null)
@@ -318,6 +341,23 @@ class Kaltura_Client_UserService extends Kaltura_Client_ServiceBase
 		$resultXml = $this->client->doQueue();
 		$resultXmlObject = new \SimpleXMLElement($resultXml);
 		$this->client->checkIfError($resultXmlObject->result);
+	}
+
+	/**
+	 * @return string
+	 */
+	function serveCsv($id)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "id", $id);
+		$this->client->queueServiceActionCall("user", "serveCsv", null, $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultXml = $this->client->doQueue();
+		$resultXmlObject = new \SimpleXMLElement($resultXml);
+		$this->client->checkIfError($resultXmlObject->result);
+		$resultObject = (string)Kaltura_Client_ParseUtils::unmarshalSimpleType($resultXmlObject->result);
+		return $resultObject;
 	}
 
 	/**
