@@ -51,8 +51,8 @@ class Kaltura_Client_Metadata_Type_TransformMetadataJobData extends Kaltura_Clie
 			$this->srcVersion = (int)$xml->srcVersion;
 		if(count($xml->destVersion))
 			$this->destVersion = (int)$xml->destVersion;
-		if(count($xml->destXsdPath))
-			$this->destXsdPath = (string)$xml->destXsdPath;
+		if(count($xml->destXsd) && !empty($xml->destXsd))
+			$this->destXsd = Kaltura_Client_ParseUtils::unmarshalObject($xml->destXsd, "KalturaFileContainer");
 		if(count($xml->metadataProfileId))
 			$this->metadataProfileId = (int)$xml->metadataProfileId;
 	}
@@ -80,9 +80,9 @@ class Kaltura_Client_Metadata_Type_TransformMetadataJobData extends Kaltura_Clie
 	/**
 	 * 
 	 *
-	 * @var string
+	 * @var Kaltura_Client_Type_FileContainer
 	 */
-	public $destXsdPath = null;
+	public $destXsd;
 
 	/**
 	 * 
