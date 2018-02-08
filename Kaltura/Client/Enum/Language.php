@@ -131,8 +131,6 @@ class Kaltura_Client_Enum_Language extends Kaltura_Client_EnumBase
 	const CIC = "Chickasaw";
 	const CLC = "Chilcotin";
 	const ZH = "Chinese";
-	const ZH_HANS = "Chinese (Simplified)";
-	const ZH_HANT = "Chinese (Traditional)";
 	const CHN = "Chinook jargon";
 	const CHP = "Chipewyan";
 	const CIW = "Chippewa";
@@ -577,8 +575,8 @@ class Kaltura_Client_Enum_Language extends Kaltura_Client_EnumBase
 	const WYM = "Wymysorys";
 	const XH = "Xhosa";
 	const AME = "Yanesha";
-	const JI = "Yiddish";
 	const YI = "Yiddish";
+	const JI = "Yiddish";
 	const YO = "Yoruba";
 	const ZAI = "Zapotec Isthmus";
 	const DJE = "Zarma";

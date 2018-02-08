@@ -178,8 +178,6 @@ class Kaltura_Client_Enum_LanguageCode extends Kaltura_Client_EnumBase
 	const YI = "yi";
 	const YO = "yo";
 	const ZH = "zh";
-	const ZH_HANS = "zh_s";
-	const ZH_HANT = "zh_t";
 	const ZU = "zu";
 }
 
