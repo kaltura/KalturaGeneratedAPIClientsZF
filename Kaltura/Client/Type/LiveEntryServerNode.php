@@ -9,7 +9,7 @@
 // to do with audio, video, and animation what Wiki platfroms allow them to do with
 // text.
 //
-// Copyright (C) 2006-2017  Kaltura Inc.
+// Copyright (C) 2006-2018  Kaltura Inc.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -59,6 +59,13 @@ class Kaltura_Client_Type_LiveEntryServerNode extends Kaltura_Client_Type_EntryS
 			else
 				$this->recordingInfo = Kaltura_Client_ParseUtils::unmarshalArray($xml->recordingInfo, "KalturaLiveEntryServerNodeRecordingInfo");
 		}
+		if(count($xml->isPlayableUser))
+		{
+			if(!empty($xml->isPlayableUser) && ((int) $xml->isPlayableUser === 1 || strtolower((string)$xml->isPlayableUser) === 'true'))
+				$this->isPlayableUser = true;
+			else
+				$this->isPlayableUser = false;
+		}
 	}
 	/**
 	 * parameters of the stream we got
@@ -73,6 +80,13 @@ class Kaltura_Client_Type_LiveEntryServerNode extends Kaltura_Client_Type_EntryS
 	 * @var array of KalturaLiveEntryServerNodeRecordingInfo
 	 */
 	public $recordingInfo;
+
+	/**
+	 * 
+	 *
+	 * @var bool
+	 */
+	public $isPlayableUser = null;
 
 
 }
