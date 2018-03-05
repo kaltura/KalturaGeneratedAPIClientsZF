@@ -47,8 +47,8 @@ class Kaltura_Client_FacebookDistribution_Type_FacebookDistributionJobProviderDa
 		
 		if(count($xml->videoAssetFilePath))
 			$this->videoAssetFilePath = (string)$xml->videoAssetFilePath;
-		if(count($xml->thumbAssetFilePath))
-			$this->thumbAssetFilePath = (string)$xml->thumbAssetFilePath;
+		if(count($xml->thumbAssetId))
+			$this->thumbAssetId = (string)$xml->thumbAssetId;
 		if(count($xml->captionsInfo))
 		{
 			if(empty($xml->captionsInfo))
@@ -69,7 +69,7 @@ class Kaltura_Client_FacebookDistribution_Type_FacebookDistributionJobProviderDa
 	 *
 	 * @var string
 	 */
-	public $thumbAssetFilePath = null;
+	public $thumbAssetId = null;
 
 	/**
 	 * 

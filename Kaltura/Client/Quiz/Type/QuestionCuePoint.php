@@ -60,6 +60,8 @@ class Kaltura_Client_Quiz_Type_QuestionCuePoint extends Kaltura_Client_CuePoint_
 			$this->explanation = (string)$xml->explanation;
 		if(count($xml->questionType))
 			$this->questionType = (int)$xml->questionType;
+		if(count($xml->presentationOrder))
+			$this->presentationOrder = (int)$xml->presentationOrder;
 	}
 	/**
 	 * Array of key value answerKey->optionAnswer objects
@@ -95,6 +97,13 @@ class Kaltura_Client_Quiz_Type_QuestionCuePoint extends Kaltura_Client_CuePoint_
 	 * @var Kaltura_Client_CuePoint_Enum_QuestionType
 	 */
 	public $questionType = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $presentationOrder = null;
 
 
 }
