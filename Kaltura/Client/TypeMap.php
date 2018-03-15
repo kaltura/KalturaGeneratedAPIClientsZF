@@ -753,6 +753,8 @@ class Kaltura_Client_TypeMap
 		'KalturaLiveEntryScheduleResourceBaseFilter' => 'Kaltura_Client_Schedule_Type_LiveEntryScheduleResourceBaseFilter',
 		'KalturaLiveEntryScheduleResourceFilter' => 'Kaltura_Client_Schedule_Type_LiveEntryScheduleResourceFilter',
 		'KalturaLiveEntryServerNode' => 'Kaltura_Client_Type_LiveEntryServerNode',
+		'KalturaLiveEntryServerNodeBaseFilter' => 'Kaltura_Client_Type_LiveEntryServerNodeBaseFilter',
+		'KalturaLiveEntryServerNodeFilter' => 'Kaltura_Client_Type_LiveEntryServerNodeFilter',
 		'KalturaLiveEntryServerNodeRecordingInfo' => 'Kaltura_Client_Type_LiveEntryServerNodeRecordingInfo',
 		'KalturaLiveParams' => 'Kaltura_Client_Type_LiveParams',
 		'KalturaLiveParamsBaseFilter' => 'Kaltura_Client_Type_LiveParamsBaseFilter',

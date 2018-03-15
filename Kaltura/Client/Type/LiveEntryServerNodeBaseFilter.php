@@ -31,11 +31,11 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Quiz_Type_QuestionCuePoint extends Kaltura_Client_CuePoint_Type_CuePoint
+abstract class Kaltura_Client_Type_LiveEntryServerNodeBaseFilter extends Kaltura_Client_Type_EntryServerNodeFilter
 {
 	public function getKalturaObjectType()
 	{
-		return 'KalturaQuestionCuePoint';
+		return 'KalturaLiveEntryServerNodeBaseFilter';
 	}
 	
 	public function __construct(SimpleXMLElement $xml = null)
@@ -45,75 +45,7 @@ class Kaltura_Client_Quiz_Type_QuestionCuePoint extends Kaltura_Client_CuePoint_
 		if(is_null($xml))
 			return;
 		
-		if(count($xml->optionalAnswers))
-		{
-			if(empty($xml->optionalAnswers))
-				$this->optionalAnswers = array();
-			else
-				$this->optionalAnswers = Kaltura_Client_ParseUtils::unmarshalArray($xml->optionalAnswers, "KalturaOptionalAnswer");
-		}
-		if(count($xml->hint))
-			$this->hint = (string)$xml->hint;
-		if(count($xml->question))
-			$this->question = (string)$xml->question;
-		if(count($xml->explanation))
-			$this->explanation = (string)$xml->explanation;
-		if(count($xml->questionType))
-			$this->questionType = (int)$xml->questionType;
-		if(count($xml->presentationOrder))
-			$this->presentationOrder = (int)$xml->presentationOrder;
-		if(count($xml->excludeFromScore))
-			$this->excludeFromScore = (int)$xml->excludeFromScore;
 	}
-	/**
-	 * Array of key value answerKey->optionAnswer objects
-	 *
-	 * @var array of KalturaOptionalAnswer
-	 */
-	public $optionalAnswers;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $hint = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $question = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $explanation = null;
-
-	/**
-	 * 
-	 *
-	 * @var Kaltura_Client_CuePoint_Enum_QuestionType
-	 */
-	public $questionType = null;
-
-	/**
-	 * 
-	 *
-	 * @var int
-	 */
-	public $presentationOrder = null;
-
-	/**
-	 * 
-	 *
-	 * @var Kaltura_Client_Enum_NullableBoolean
-	 */
-	public $excludeFromScore = null;
-
 
 }
 
