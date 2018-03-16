@@ -100,6 +100,8 @@ class Kaltura_Client_Type_ConversionProfile extends Kaltura_Client_ObjectBase
 			$this->mediaInfoXslTransformation = (string)$xml->mediaInfoXslTransformation;
 		if(count($xml->defaultReplacementOptions) && !empty($xml->defaultReplacementOptions))
 			$this->defaultReplacementOptions = Kaltura_Client_ParseUtils::unmarshalObject($xml->defaultReplacementOptions, "KalturaEntryReplacementOptions");
+		if(count($xml->defaultAudioLang))
+			$this->defaultAudioLang = (string)$xml->defaultAudioLang;
 	}
 	/**
 	 * The id of the Conversion Profile
@@ -281,6 +283,13 @@ class Kaltura_Client_Type_ConversionProfile extends Kaltura_Client_ObjectBase
 	 * @var Kaltura_Client_Type_EntryReplacementOptions
 	 */
 	public $defaultReplacementOptions;
+
+	/**
+	 * 
+	 *
+	 * @var Kaltura_Client_Enum_Language
+	 */
+	public $defaultAudioLang = null;
 
 
 }
