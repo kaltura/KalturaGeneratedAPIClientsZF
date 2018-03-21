@@ -148,6 +148,21 @@ class Kaltura_Client_ScheduledTask_ScheduledTaskProfileService extends Kaltura_C
 	}
 
 	/**
+	 * @return file
+	 */
+	function serveDryRunResults($requestId)
+	{
+		if ($this->client->isMultiRequest())
+			throw $this->client->getKalturaClientException("Action is not supported as part of multi-request.", Kaltura_Client_ClientException::ERROR_ACTION_IN_MULTIREQUEST);
+		
+		$kparams = array();
+		$this->client->addParam($kparams, "requestId", $requestId);
+		$this->client->queueServiceActionCall('scheduledtask_scheduledtaskprofile', 'serveDryRunResults', null, $kparams);
+		$resultObject = $this->client->getServeUrl();
+		return $resultObject;
+	}
+
+	/**
 	 * @return Kaltura_Client_ScheduledTask_Type_ScheduledTaskProfile
 	 */
 	function update($id, Kaltura_Client_ScheduledTask_Type_ScheduledTaskProfile $scheduledTaskProfile)
