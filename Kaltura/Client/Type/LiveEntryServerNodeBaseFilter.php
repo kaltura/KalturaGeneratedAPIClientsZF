@@ -31,7 +31,7 @@
  * @package Kaltura
  * @subpackage Client
  */
-abstract class Kaltura_Client_Type_LiveEntryServerNodeBaseFilter extends Kaltura_Client_Type_EntryServerNodeFilter
+class Kaltura_Client_Type_LiveEntryServerNodeBaseFilter extends Kaltura_Client_Type_EntryServerNodeFilter
 {
 	public function getKalturaObjectType()
 	{
