@@ -45,7 +45,16 @@ class Kaltura_Client_ElasticSearch_Type_ESearchEntryResult extends Kaltura_Clien
 		if(is_null($xml))
 			return;
 		
+		if(count($xml->object) && !empty($xml->object))
+			$this->object = Kaltura_Client_ParseUtils::unmarshalObject($xml->object, "KalturaBaseEntry");
 	}
+	/**
+	 * 
+	 *
+	 * @var Kaltura_Client_Type_BaseEntry
+	 */
+	public $object;
+
 
 }
 

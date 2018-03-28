@@ -45,7 +45,16 @@ class Kaltura_Client_ElasticSearch_Type_ESearchCategoryResult extends Kaltura_Cl
 		if(is_null($xml))
 			return;
 		
+		if(count($xml->object) && !empty($xml->object))
+			$this->object = Kaltura_Client_ParseUtils::unmarshalObject($xml->object, "KalturaCategory");
 	}
+	/**
+	 * 
+	 *
+	 * @var Kaltura_Client_Type_Category
+	 */
+	public $object;
+
 
 }
 
