@@ -91,6 +91,8 @@ abstract class Kaltura_Client_Type_LiveEntry extends Kaltura_Client_Type_MediaEn
 			$this->viewMode = (int)$xml->viewMode;
 		if(count($xml->recordingStatus))
 			$this->recordingStatus = (int)$xml->recordingStatus;
+		if(count($xml->lastBroadcastEndTime))
+			$this->lastBroadcastEndTime = (int)$xml->lastBroadcastEndTime;
 	}
 	/**
 	 * The message to be presented when the stream is offline
@@ -220,6 +222,14 @@ abstract class Kaltura_Client_Type_LiveEntry extends Kaltura_Client_Type_MediaEn
 	 * @var Kaltura_Client_Enum_RecordingStatus
 	 */
 	public $recordingStatus = null;
+
+	/**
+	 * The time the last broadcast finished.
+	 *
+	 * @var int
+	 * @readonly
+	 */
+	public $lastBroadcastEndTime = null;
 
 
 }
