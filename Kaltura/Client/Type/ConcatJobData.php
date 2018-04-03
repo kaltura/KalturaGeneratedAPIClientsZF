@@ -62,6 +62,13 @@ class Kaltura_Client_Type_ConcatJobData extends Kaltura_Client_Type_JobData
 			$this->duration = (float)$xml->duration;
 		if(count($xml->concatenatedDuration))
 			$this->concatenatedDuration = (float)$xml->concatenatedDuration;
+		if(count($xml->shouldSort))
+		{
+			if(!empty($xml->shouldSort) && ((int) $xml->shouldSort === 1 || strtolower((string)$xml->shouldSort) === 'true'))
+				$this->shouldSort = true;
+			else
+				$this->shouldSort = false;
+		}
 	}
 	/**
 	 * Source files to be concatenated
@@ -104,6 +111,13 @@ class Kaltura_Client_Type_ConcatJobData extends Kaltura_Client_Type_JobData
 	 * @var float
 	 */
 	public $concatenatedDuration = null;
+
+	/**
+	 * Should Sort the clip parts
+	 *
+	 * @var bool
+	 */
+	public $shouldSort = null;
 
 
 }

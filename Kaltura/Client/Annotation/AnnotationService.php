@@ -205,6 +205,26 @@ class Kaltura_Client_Annotation_AnnotationService extends Kaltura_Client_Service
 	}
 
 	/**
+	 * @return Kaltura_Client_CuePoint_Type_CuePoint
+	 */
+	function updateCuePointsTimes($id, $startTime, $endTime = null)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "id", $id);
+		$this->client->addParam($kparams, "startTime", $startTime);
+		$this->client->addParam($kparams, "endTime", $endTime);
+		$this->client->queueServiceActionCall("annotation_annotation", "updateCuePointsTimes", "KalturaCuePoint", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultXml = $this->client->doQueue();
+		$resultXmlObject = new \SimpleXMLElement($resultXml);
+		$this->client->checkIfError($resultXmlObject->result);
+		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaCuePoint");
+		$this->client->validateObjectType($resultObject, "Kaltura_Client_CuePoint_Type_CuePoint");
+		return $resultObject;
+	}
+
+	/**
 	 * @return 
 	 */
 	function updateStatus($id, $status)

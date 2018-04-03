@@ -238,6 +238,8 @@ class Kaltura_Client_TypeMap
 		'KalturaClientConfiguration' => 'Kaltura_Client_Type_ClientConfiguration',
 		'KalturaClientNotification' => 'Kaltura_Client_Type_ClientNotification',
 		'KalturaClipAttributes' => 'Kaltura_Client_Type_ClipAttributes',
+		'KalturaClipConcatJobData' => 'Kaltura_Client_Type_ClipConcatJobData',
+		'KalturaClipDescription' => 'Kaltura_Client_Type_ClipDescription',
 		'KalturaCodeCuePoint' => 'Kaltura_Client_CodeCuePoint_Type_CodeCuePoint',
 		'KalturaCodeCuePointBaseFilter' => 'Kaltura_Client_CodeCuePoint_Type_CodeCuePointBaseFilter',
 		'KalturaCodeCuePointFilter' => 'Kaltura_Client_CodeCuePoint_Type_CodeCuePointFilter',

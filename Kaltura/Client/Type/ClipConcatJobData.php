@@ -31,11 +31,11 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Type_ClipAttributes extends Kaltura_Client_Type_OperationAttributes
+class Kaltura_Client_Type_ClipConcatJobData extends Kaltura_Client_Type_JobData
 {
 	public function getKalturaObjectType()
 	{
-		return 'KalturaClipAttributes';
+		return 'KalturaClipConcatJobData';
 	}
 	
 	public function __construct(SimpleXMLElement $xml = null)
@@ -45,33 +45,38 @@ class Kaltura_Client_Type_ClipAttributes extends Kaltura_Client_Type_OperationAt
 		if(is_null($xml))
 			return;
 		
-		if(count($xml->offset))
-			$this->offset = (int)$xml->offset;
-		if(count($xml->duration))
-			$this->duration = (int)$xml->duration;
-		if(count($xml->globalOffsetInDestination))
-			$this->globalOffsetInDestination = (int)$xml->globalOffsetInDestination;
+		if(count($xml->partnerId))
+			$this->partnerId = (int)$xml->partnerId;
+		if(count($xml->priority))
+			$this->priority = (int)$xml->priority;
+		if(count($xml->operationAttributes))
+		{
+			if(empty($xml->operationAttributes))
+				$this->operationAttributes = array();
+			else
+				$this->operationAttributes = Kaltura_Client_ParseUtils::unmarshalArray($xml->operationAttributes, "KalturaObject");
+		}
 	}
 	/**
-	 * Offset in milliseconds
+	 * $partnerId
 	 *
 	 * @var int
 	 */
-	public $offset = null;
+	public $partnerId = null;
 
 	/**
-	 * Duration in milliseconds
+	 * $priority
 	 *
 	 * @var int
 	 */
-	public $duration = null;
+	public $priority = null;
 
 	/**
-	 * global Offset In Destination in milliseconds
+	 * clip operations
 	 *
-	 * @var int
+	 * @var array of KalturaObject
 	 */
-	public $globalOffsetInDestination = null;
+	public $operationAttributes;
 
 
 }
