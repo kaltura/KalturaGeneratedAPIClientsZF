@@ -45,14 +45,15 @@ class Kaltura_Client_Caption_Type_CopyCaptionsJobData extends Kaltura_Client_Typ
 		if(is_null($xml))
 			return;
 		
-		if(count($xml->sourceEntryId))
-			$this->sourceEntryId = (string)$xml->sourceEntryId;
 		if(count($xml->entryId))
 			$this->entryId = (string)$xml->entryId;
-		if(count($xml->offset))
-			$this->offset = (int)$xml->offset;
-		if(count($xml->duration))
-			$this->duration = (int)$xml->duration;
+		if(count($xml->clipsDescriptionArray))
+		{
+			if(empty($xml->clipsDescriptionArray))
+				$this->clipsDescriptionArray = array();
+			else
+				$this->clipsDescriptionArray = Kaltura_Client_ParseUtils::unmarshalArray($xml->clipsDescriptionArray, "KalturaClipDescription");
+		}
 		if(count($xml->fullCopy))
 		{
 			if(!empty($xml->fullCopy) && ((int) $xml->fullCopy === 1 || strtolower((string)$xml->fullCopy) === 'true'))
@@ -62,13 +63,6 @@ class Kaltura_Client_Caption_Type_CopyCaptionsJobData extends Kaltura_Client_Typ
 		}
 	}
 	/**
-	 * source entry Id
-	 *
-	 * @var string
-	 */
-	public $sourceEntryId = null;
-
-	/**
 	 * entry Id
 	 *
 	 * @var string
@@ -76,18 +70,11 @@ class Kaltura_Client_Caption_Type_CopyCaptionsJobData extends Kaltura_Client_Typ
 	public $entryId = null;
 
 	/**
-	 * clip offset
+	 * an array of source start time and duration
 	 *
-	 * @var int
+	 * @var array of KalturaClipDescription
 	 */
-	public $offset = null;
-
-	/**
-	 * clip duration
-	 *
-	 * @var int
-	 */
-	public $duration = null;
+	public $clipsDescriptionArray;
 
 	/**
 	 * 
