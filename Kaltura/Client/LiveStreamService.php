@@ -236,18 +236,21 @@ class Kaltura_Client_LiveStreamService extends Kaltura_Client_ServiceBase
 	}
 
 	/**
-	 * @return 
+	 * @return Kaltura_Client_Type_LiveEntry
 	 */
 	function regenerateStreamToken($entryId)
 	{
 		$kparams = array();
 		$this->client->addParam($kparams, "entryId", $entryId);
-		$this->client->queueServiceActionCall("livestream", "regenerateStreamToken", null, $kparams);
+		$this->client->queueServiceActionCall("livestream", "regenerateStreamToken", "KalturaLiveEntry", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
 		$resultXml = $this->client->doQueue();
 		$resultXmlObject = new \SimpleXMLElement($resultXml);
 		$this->client->checkIfError($resultXmlObject->result);
+		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaLiveEntry");
+		$this->client->validateObjectType($resultObject, "Kaltura_Client_Type_LiveEntry");
+		return $resultObject;
 	}
 
 	/**
