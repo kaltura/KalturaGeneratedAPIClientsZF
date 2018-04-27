@@ -497,6 +497,7 @@ class Kaltura_Client_TypeMap
 		'KalturaEdgeServerNode' => 'Kaltura_Client_Type_EdgeServerNode',
 		'KalturaEdgeServerNodeBaseFilter' => 'Kaltura_Client_Type_EdgeServerNodeBaseFilter',
 		'KalturaEdgeServerNodeFilter' => 'Kaltura_Client_Type_EdgeServerNodeFilter',
+		'KalturaEffect' => 'Kaltura_Client_Type_Effect',
 		'KalturaEmailIngestionProfile' => 'Kaltura_Client_Type_EmailIngestionProfile',
 		'KalturaEmailNotificationCategoryRecipientJobData' => 'Kaltura_Client_EmailNotification_Type_EmailNotificationCategoryRecipientJobData',
 		'KalturaEmailNotificationCategoryRecipientProvider' => 'Kaltura_Client_EmailNotification_Type_EmailNotificationCategoryRecipientProvider',

@@ -31,11 +31,11 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Type_ClipAttributes extends Kaltura_Client_Type_OperationAttributes
+class Kaltura_Client_Type_Effect extends Kaltura_Client_ObjectBase
 {
 	public function getKalturaObjectType()
 	{
-		return 'KalturaClipAttributes';
+		return 'KalturaEffect';
 	}
 	
 	public function __construct(SimpleXMLElement $xml = null)
@@ -45,47 +45,24 @@ class Kaltura_Client_Type_ClipAttributes extends Kaltura_Client_Type_OperationAt
 		if(is_null($xml))
 			return;
 		
-		if(count($xml->offset))
-			$this->offset = (int)$xml->offset;
-		if(count($xml->duration))
-			$this->duration = (int)$xml->duration;
-		if(count($xml->globalOffsetInDestination))
-			$this->globalOffsetInDestination = (int)$xml->globalOffsetInDestination;
-		if(count($xml->effectArray))
-		{
-			if(empty($xml->effectArray))
-				$this->effectArray = array();
-			else
-				$this->effectArray = Kaltura_Client_ParseUtils::unmarshalArray($xml->effectArray, "KalturaEffect");
-		}
+		if(count($xml->effectType))
+			$this->effectType = (int)$xml->effectType;
+		if(count($xml->value))
+			$this->value = (string)$xml->value;
 	}
 	/**
-	 * Offset in milliseconds
+	 * 
 	 *
-	 * @var int
+	 * @var Kaltura_Client_Enum_EffectType
 	 */
-	public $offset = null;
+	public $effectType = null;
 
 	/**
-	 * Duration in milliseconds
+	 * value
 	 *
-	 * @var int
+	 * @var string
 	 */
-	public $duration = null;
-
-	/**
-	 * global Offset In Destination in milliseconds
-	 *
-	 * @var int
-	 */
-	public $globalOffsetInDestination = null;
-
-	/**
-	 * global Offset In Destination in milliseconds
-	 *
-	 * @var array of KalturaEffect
-	 */
-	public $effectArray;
+	public $value = null;
 
 
 }
