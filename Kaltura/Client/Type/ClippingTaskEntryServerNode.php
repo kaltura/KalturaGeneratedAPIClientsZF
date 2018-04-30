@@ -31,10 +31,48 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Enum_EntryServerNodeType extends Kaltura_Client_EnumBase
+class Kaltura_Client_Type_ClippingTaskEntryServerNode extends Kaltura_Client_Type_TaskEntryServerNode
 {
-	const LIVE_PRIMARY = "0";
-	const LIVE_BACKUP = "1";
-	const LIVE_CLIPPING_TASK = "2";
+	public function getKalturaObjectType()
+	{
+		return 'KalturaClippingTaskEntryServerNode';
+	}
+	
+	public function __construct(SimpleXMLElement $xml = null)
+	{
+		parent::__construct($xml);
+		
+		if(is_null($xml))
+			return;
+		
+		if(count($xml->clipAttributes) && !empty($xml->clipAttributes))
+			$this->clipAttributes = Kaltura_Client_ParseUtils::unmarshalObject($xml->clipAttributes, "KalturaClipAttributes");
+		if(count($xml->clippedEntryId))
+			$this->clippedEntryId = (string)$xml->clippedEntryId;
+		if(count($xml->liveEntryId))
+			$this->liveEntryId = (string)$xml->liveEntryId;
+	}
+	/**
+	 * 
+	 *
+	 * @var Kaltura_Client_Type_ClipAttributes
+	 */
+	public $clipAttributes;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $clippedEntryId = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $liveEntryId = null;
+
+
 }
 

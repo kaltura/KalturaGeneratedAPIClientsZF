@@ -31,10 +31,21 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Enum_EntryServerNodeType extends Kaltura_Client_EnumBase
+abstract class Kaltura_Client_Type_TaskEntryServerNode extends Kaltura_Client_Type_EntryServerNode
 {
-	const LIVE_PRIMARY = "0";
-	const LIVE_BACKUP = "1";
-	const LIVE_CLIPPING_TASK = "2";
+	public function getKalturaObjectType()
+	{
+		return 'KalturaTaskEntryServerNode';
+	}
+	
+	public function __construct(SimpleXMLElement $xml = null)
+	{
+		parent::__construct($xml);
+		
+		if(is_null($xml))
+			return;
+		
+	}
+
 }
 
