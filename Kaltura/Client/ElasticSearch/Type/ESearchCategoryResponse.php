@@ -31,11 +31,11 @@
  * @package Kaltura
  * @subpackage Client
  */
-abstract class Kaltura_Client_ElasticSearch_Type_ESearchResponse extends Kaltura_Client_ObjectBase
+class Kaltura_Client_ElasticSearch_Type_ESearchCategoryResponse extends Kaltura_Client_ElasticSearch_Type_ESearchResponse
 {
 	public function getKalturaObjectType()
 	{
-		return 'KalturaESearchResponse';
+		return 'KalturaESearchCategoryResponse';
 	}
 	
 	public function __construct(SimpleXMLElement $xml = null)
@@ -45,16 +45,21 @@ abstract class Kaltura_Client_ElasticSearch_Type_ESearchResponse extends Kaltura
 		if(is_null($xml))
 			return;
 		
-		if(count($xml->totalCount))
-			$this->totalCount = (int)$xml->totalCount;
+		if(count($xml->objects))
+		{
+			if(empty($xml->objects))
+				$this->objects = array();
+			else
+				$this->objects = Kaltura_Client_ParseUtils::unmarshalArray($xml->objects, "KalturaESearchCategoryResult");
+		}
 	}
 	/**
 	 * 
 	 *
-	 * @var int
+	 * @var array of KalturaESearchCategoryResult
 	 * @readonly
 	 */
-	public $totalCount = null;
+	public $objects;
 
 
 }

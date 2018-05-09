@@ -40,7 +40,7 @@ class Kaltura_Client_ElasticSearch_ESearchService extends Kaltura_Client_Service
 	}
 
 	/**
-	 * @return Kaltura_Client_ElasticSearch_Type_ESearchResponse
+	 * @return Kaltura_Client_ElasticSearch_Type_ESearchCategoryResponse
 	 */
 	function searchCategory(Kaltura_Client_ElasticSearch_Type_ESearchCategoryParams $searchParams, Kaltura_Client_Type_Pager $pager = null)
 	{
@@ -48,19 +48,19 @@ class Kaltura_Client_ElasticSearch_ESearchService extends Kaltura_Client_Service
 		$this->client->addParam($kparams, "searchParams", $searchParams->toParams());
 		if ($pager !== null)
 			$this->client->addParam($kparams, "pager", $pager->toParams());
-		$this->client->queueServiceActionCall("elasticsearch_esearch", "searchCategory", "KalturaESearchResponse", $kparams);
+		$this->client->queueServiceActionCall("elasticsearch_esearch", "searchCategory", "KalturaESearchCategoryResponse", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
 		$resultXml = $this->client->doQueue();
 		$resultXmlObject = new \SimpleXMLElement($resultXml);
 		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaESearchResponse");
-		$this->client->validateObjectType($resultObject, "Kaltura_Client_ElasticSearch_Type_ESearchResponse");
+		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaESearchCategoryResponse");
+		$this->client->validateObjectType($resultObject, "Kaltura_Client_ElasticSearch_Type_ESearchCategoryResponse");
 		return $resultObject;
 	}
 
 	/**
-	 * @return Kaltura_Client_ElasticSearch_Type_ESearchResponse
+	 * @return Kaltura_Client_ElasticSearch_Type_ESearchEntryResponse
 	 */
 	function searchEntry(Kaltura_Client_ElasticSearch_Type_ESearchEntryParams $searchParams, Kaltura_Client_Type_Pager $pager = null)
 	{
@@ -68,19 +68,19 @@ class Kaltura_Client_ElasticSearch_ESearchService extends Kaltura_Client_Service
 		$this->client->addParam($kparams, "searchParams", $searchParams->toParams());
 		if ($pager !== null)
 			$this->client->addParam($kparams, "pager", $pager->toParams());
-		$this->client->queueServiceActionCall("elasticsearch_esearch", "searchEntry", "KalturaESearchResponse", $kparams);
+		$this->client->queueServiceActionCall("elasticsearch_esearch", "searchEntry", "KalturaESearchEntryResponse", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
 		$resultXml = $this->client->doQueue();
 		$resultXmlObject = new \SimpleXMLElement($resultXml);
 		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaESearchResponse");
-		$this->client->validateObjectType($resultObject, "Kaltura_Client_ElasticSearch_Type_ESearchResponse");
+		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaESearchEntryResponse");
+		$this->client->validateObjectType($resultObject, "Kaltura_Client_ElasticSearch_Type_ESearchEntryResponse");
 		return $resultObject;
 	}
 
 	/**
-	 * @return Kaltura_Client_ElasticSearch_Type_ESearchResponse
+	 * @return Kaltura_Client_ElasticSearch_Type_ESearchUserResponse
 	 */
 	function searchUser(Kaltura_Client_ElasticSearch_Type_ESearchUserParams $searchParams, Kaltura_Client_Type_Pager $pager = null)
 	{
@@ -88,14 +88,14 @@ class Kaltura_Client_ElasticSearch_ESearchService extends Kaltura_Client_Service
 		$this->client->addParam($kparams, "searchParams", $searchParams->toParams());
 		if ($pager !== null)
 			$this->client->addParam($kparams, "pager", $pager->toParams());
-		$this->client->queueServiceActionCall("elasticsearch_esearch", "searchUser", "KalturaESearchResponse", $kparams);
+		$this->client->queueServiceActionCall("elasticsearch_esearch", "searchUser", "KalturaESearchUserResponse", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
 		$resultXml = $this->client->doQueue();
 		$resultXmlObject = new \SimpleXMLElement($resultXml);
 		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaESearchResponse");
-		$this->client->validateObjectType($resultObject, "Kaltura_Client_ElasticSearch_Type_ESearchResponse");
+		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaESearchUserResponse");
+		$this->client->validateObjectType($resultObject, "Kaltura_Client_ElasticSearch_Type_ESearchUserResponse");
 		return $resultObject;
 	}
 }
