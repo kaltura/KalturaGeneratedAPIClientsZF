@@ -40,5 +40,6 @@ class Kaltura_Client_Enum_SchedulerStatusType extends Kaltura_Client_EnumBase
 	const RUNNING_BATCHES_DISC_IO = 5;
 	const RUNNING_BATCHES_DISC_SPACE = 6;
 	const RUNNING_BATCHES_IS_RUNNING = 7;
+	const RUNNING_BATCHES_LAST_EXECUTION_TIME = 8;
 }
 
