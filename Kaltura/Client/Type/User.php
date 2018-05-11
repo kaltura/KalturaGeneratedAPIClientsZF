@@ -134,6 +134,8 @@ class Kaltura_Client_Type_User extends Kaltura_Client_ObjectBase
 			$this->allowedPartnerIds = (string)$xml->allowedPartnerIds;
 		if(count($xml->allowedPartnerPackages))
 			$this->allowedPartnerPackages = (string)$xml->allowedPartnerPackages;
+		if(count($xml->userMode))
+			$this->userMode = (int)$xml->userMode;
 	}
 	/**
 	 * 
@@ -404,6 +406,13 @@ class Kaltura_Client_Type_User extends Kaltura_Client_ObjectBase
 	 * @var string
 	 */
 	public $allowedPartnerPackages = null;
+
+	/**
+	 * 
+	 *
+	 * @var Kaltura_Client_Enum_UserMode
+	 */
+	public $userMode = null;
 
 
 }
