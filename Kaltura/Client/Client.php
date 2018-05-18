@@ -352,7 +352,7 @@ class Kaltura_Client_Client extends Kaltura_Client_ClientBase
 
 	/**
 	 * Manage partner users on Kaltura's side
-	 *  The userId in kaltura is the unique Id in the partner's system, and the [partnerId,Id] couple are unique key in kaltura's DB
+	 *  The userId in kaltura is the unique ID in the partner's system, and the [partnerId,Id] couple are unique key in kaltura's DB
 	 * @var Kaltura_Client_UserService
 	 */
 	public $user = null;
@@ -372,7 +372,7 @@ class Kaltura_Client_Client extends Kaltura_Client_ClientBase
 	{
 		parent::__construct($config);
 		
-		$this->setClientTag('php5:18-05-17');
+		$this->setClientTag('php5:18-05-18');
 		$this->setApiVersion('3.3.0');
 		
 		$this->accessControlProfile = new Kaltura_Client_AccessControlProfileService($this);
