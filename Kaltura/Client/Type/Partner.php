@@ -191,6 +191,10 @@ class Kaltura_Client_Type_Partner extends Kaltura_Client_ObjectBase
 			else
 				$this->timeAlignedRenditions = false;
 		}
+		if(count($xml->ovpEnvironmentUrl))
+			$this->ovpEnvironmentUrl = (string)$xml->ovpEnvironmentUrl;
+		if(count($xml->ottEnvironmentUrl))
+			$this->ottEnvironmentUrl = (string)$xml->ottEnvironmentUrl;
 		if(count($xml->eSearchLanguages))
 		{
 			if(empty($xml->eSearchLanguages))
@@ -198,12 +202,6 @@ class Kaltura_Client_Type_Partner extends Kaltura_Client_ObjectBase
 			else
 				$this->eSearchLanguages = Kaltura_Client_ParseUtils::unmarshalArray($xml->eSearchLanguages, "KalturaESearchLanguageItem");
 		}
-		if(count($xml->publisherEnvironmentType))
-			$this->publisherEnvironmentType = (int)$xml->publisherEnvironmentType;
-		if(count($xml->ovpEnvironmentUrl))
-			$this->ovpEnvironmentUrl = (string)$xml->ovpEnvironmentUrl;
-		if(count($xml->ottEnvironmentUrl))
-			$this->ottEnvironmentUrl = (string)$xml->ottEnvironmentUrl;
 	}
 	/**
 	 * 
@@ -602,21 +600,6 @@ class Kaltura_Client_Type_Partner extends Kaltura_Client_ObjectBase
 	/**
 	 * 
 	 *
-	 * @var array of KalturaESearchLanguageItem
-	 */
-	public $eSearchLanguages;
-
-	/**
-	 * 
-	 *
-	 * @var int
-	 * @readonly
-	 */
-	public $publisherEnvironmentType = null;
-
-	/**
-	 * 
-	 *
 	 * @var string
 	 * @readonly
 	 */
@@ -629,6 +612,13 @@ class Kaltura_Client_Type_Partner extends Kaltura_Client_ObjectBase
 	 * @readonly
 	 */
 	public $ottEnvironmentUrl = null;
+
+	/**
+	 * 
+	 *
+	 * @var array of KalturaESearchLanguageItem
+	 */
+	public $eSearchLanguages;
 
 
 }

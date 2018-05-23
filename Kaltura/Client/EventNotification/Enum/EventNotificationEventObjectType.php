@@ -81,5 +81,7 @@ class Kaltura_Client_EventNotification_Enum_EventNotificationEventObjectType ext
 	const LIVE_STREAM = "38";
 	const SERVER_NODE = "39";
 	const ENTRY_SERVER_NODE = "40";
+	const REACH_PROFILE = "41";
+	const ENTRY_VENDOR_TASK = "42";
 }
 

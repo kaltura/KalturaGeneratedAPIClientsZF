@@ -31,9 +31,30 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_ScheduledTask_Enum_ObjectFilterEngineType extends Kaltura_Client_EnumBase
+class Kaltura_Client_EmailNotification_Type_EmailNotificationGroupRecipientJobData extends Kaltura_Client_EmailNotification_Type_EmailNotificationRecipientJobData
 {
-	const ENTRY = "1";
-	const ENTRY_VENDOR_TASK = "2";
+	public function getKalturaObjectType()
+	{
+		return 'KalturaEmailNotificationGroupRecipientJobData';
+	}
+	
+	public function __construct(SimpleXMLElement $xml = null)
+	{
+		parent::__construct($xml);
+		
+		if(is_null($xml))
+			return;
+		
+		if(count($xml->groupId))
+			$this->groupId = (string)$xml->groupId;
+	}
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $groupId = null;
+
+
 }
 

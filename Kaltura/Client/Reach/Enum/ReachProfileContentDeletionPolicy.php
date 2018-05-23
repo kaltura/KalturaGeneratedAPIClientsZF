@@ -31,9 +31,12 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_ScheduledTask_Enum_ObjectFilterEngineType extends Kaltura_Client_EnumBase
+class Kaltura_Client_Reach_Enum_ReachProfileContentDeletionPolicy extends Kaltura_Client_EnumBase
 {
-	const ENTRY = "1";
-	const ENTRY_VENDOR_TASK = "2";
+	const DO_NOTHING = 1;
+	const DELETE_ONCE_PROCESSED = 2;
+	const DELETE_AFTER_WEEK = 3;
+	const DELETE_AFTER_MONTH = 4;
+	const DELETE_AFTER_THREE_MONTHS = 5;
 }
 

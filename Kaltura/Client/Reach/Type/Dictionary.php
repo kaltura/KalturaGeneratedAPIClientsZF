@@ -31,9 +31,39 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_ScheduledTask_Enum_ObjectFilterEngineType extends Kaltura_Client_EnumBase
+class Kaltura_Client_Reach_Type_Dictionary extends Kaltura_Client_ObjectBase
 {
-	const ENTRY = "1";
-	const ENTRY_VENDOR_TASK = "2";
+	public function getKalturaObjectType()
+	{
+		return 'KalturaDictionary';
+	}
+	
+	public function __construct(SimpleXMLElement $xml = null)
+	{
+		parent::__construct($xml);
+		
+		if(is_null($xml))
+			return;
+		
+		if(count($xml->language))
+			$this->language = (string)$xml->language;
+		if(count($xml->data))
+			$this->data = (string)$xml->data;
+	}
+	/**
+	 * 
+	 *
+	 * @var Kaltura_Client_Reach_Enum_CatalogItemLanguage
+	 */
+	public $language = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $data = null;
+
+
 }
 

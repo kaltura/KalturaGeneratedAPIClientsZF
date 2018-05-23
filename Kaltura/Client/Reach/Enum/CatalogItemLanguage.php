@@ -31,9 +31,26 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_ScheduledTask_Enum_ObjectFilterEngineType extends Kaltura_Client_EnumBase
+class Kaltura_Client_Reach_Enum_CatalogItemLanguage extends Kaltura_Client_EnumBase
 {
-	const ENTRY = "1";
-	const ENTRY_VENDOR_TASK = "2";
+	const AR = "Arabic";
+	const YUE = "Cantonese";
+	const ZH = "Chinese";
+	const NL = "Dutch";
+	const EN = "English";
+	const EN_US = "English (American)";
+	const EN_GB = "English (British)";
+	const FR = "French";
+	const DE = "German";
+	const HE = "Hebrew";
+	const HI = "Hindi";
+	const IT = "Italian";
+	const JA = "Japanese";
+	const KO = "Korean";
+	const CMN = "Mandarin Chinese";
+	const PT = "Portuguese";
+	const RU = "Russian";
+	const ES = "Spanish";
+	const TR = "Turkish";
 }
 

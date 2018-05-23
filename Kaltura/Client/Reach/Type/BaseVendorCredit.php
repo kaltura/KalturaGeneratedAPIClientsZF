@@ -31,9 +31,21 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_ScheduledTask_Enum_ObjectFilterEngineType extends Kaltura_Client_EnumBase
+abstract class Kaltura_Client_Reach_Type_BaseVendorCredit extends Kaltura_Client_ObjectBase
 {
-	const ENTRY = "1";
-	const ENTRY_VENDOR_TASK = "2";
+	public function getKalturaObjectType()
+	{
+		return 'KalturaBaseVendorCredit';
+	}
+	
+	public function __construct(SimpleXMLElement $xml = null)
+	{
+		parent::__construct($xml);
+		
+		if(is_null($xml))
+			return;
+		
+	}
+
 }
 

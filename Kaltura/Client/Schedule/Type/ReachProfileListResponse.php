@@ -31,9 +31,36 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_ScheduledTask_Enum_ObjectFilterEngineType extends Kaltura_Client_EnumBase
+class Kaltura_Client_Schedule_Type_ReachProfileListResponse extends Kaltura_Client_Type_ListResponse
 {
-	const ENTRY = "1";
-	const ENTRY_VENDOR_TASK = "2";
+	public function getKalturaObjectType()
+	{
+		return 'KalturaReachProfileListResponse';
+	}
+	
+	public function __construct(SimpleXMLElement $xml = null)
+	{
+		parent::__construct($xml);
+		
+		if(is_null($xml))
+			return;
+		
+		if(count($xml->objects))
+		{
+			if(empty($xml->objects))
+				$this->objects = array();
+			else
+				$this->objects = Kaltura_Client_ParseUtils::unmarshalArray($xml->objects, "KalturaReachProfile");
+		}
+	}
+	/**
+	 * 
+	 *
+	 * @var array of KalturaReachProfile
+	 * @readonly
+	 */
+	public $objects;
+
+
 }
 

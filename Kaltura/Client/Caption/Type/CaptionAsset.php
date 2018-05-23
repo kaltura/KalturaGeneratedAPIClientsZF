@@ -63,6 +63,13 @@ class Kaltura_Client_Caption_Type_CaptionAsset extends Kaltura_Client_Type_Asset
 			$this->parentId = (string)$xml->parentId;
 		if(count($xml->accuracy))
 			$this->accuracy = (int)$xml->accuracy;
+		if(count($xml->displayOnPlayer))
+		{
+			if(!empty($xml->displayOnPlayer) && ((int) $xml->displayOnPlayer === 1 || strtolower((string)$xml->displayOnPlayer) === 'true'))
+				$this->displayOnPlayer = true;
+			else
+				$this->displayOnPlayer = false;
+		}
 	}
 	/**
 	 * The Caption Params used to create this Caption Asset
@@ -131,6 +138,13 @@ class Kaltura_Client_Caption_Type_CaptionAsset extends Kaltura_Client_Type_Asset
 	 * @var int
 	 */
 	public $accuracy = null;
+
+	/**
+	 * The Accuracy of the caption content
+	 *
+	 * @var bool
+	 */
+	public $displayOnPlayer = null;
 
 
 }

@@ -31,9 +31,9 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_ScheduledTask_Enum_ObjectFilterEngineType extends Kaltura_Client_EnumBase
+class Kaltura_Client_Reach_Enum_ReachProfileType extends Kaltura_Client_EnumBase
 {
-	const ENTRY = "1";
-	const ENTRY_VENDOR_TASK = "2";
+	const FREE_TRIAL = 1;
+	const PAID = 2;
 }
 
