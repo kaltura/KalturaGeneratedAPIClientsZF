@@ -77,6 +77,13 @@ abstract class Kaltura_Client_CuePoint_Type_CuePoint extends Kaltura_Client_Obje
 			$this->thumbOffset = (int)$xml->thumbOffset;
 		if(count($xml->systemName))
 			$this->systemName = (string)$xml->systemName;
+		if(count($xml->isMomentary))
+		{
+			if(!empty($xml->isMomentary) && ((int) $xml->isMomentary === 1 || strtolower((string)$xml->isMomentary) === 'true'))
+				$this->isMomentary = true;
+			else
+				$this->isMomentary = false;
+		}
 	}
 	/**
 	 * 
@@ -197,6 +204,13 @@ abstract class Kaltura_Client_CuePoint_Type_CuePoint extends Kaltura_Client_Obje
 	 * @var string
 	 */
 	public $systemName = null;
+
+	/**
+	 * 
+	 *
+	 * @var bool
+	 */
+	public $isMomentary = null;
 
 
 }
