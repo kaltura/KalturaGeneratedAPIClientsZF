@@ -209,6 +209,7 @@ abstract class Kaltura_Client_CuePoint_Type_CuePoint extends Kaltura_Client_Obje
 	 * 
 	 *
 	 * @var bool
+	 * @readonly
 	 */
 	public $isMomentary = null;
 

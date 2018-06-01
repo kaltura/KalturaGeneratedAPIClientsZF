@@ -71,6 +71,14 @@ class Kaltura_Client_YouTubeDistribution_Type_YouTubeDistributionJobProviderData
 			$this->googleClientSecret = (string)$xml->googleClientSecret;
 		if(count($xml->googleTokenData))
 			$this->googleTokenData = (string)$xml->googleTokenData;
+		if(count($xml->captionsCsvMap))
+			$this->captionsCsvMap = (string)$xml->captionsCsvMap;
+		if(count($xml->submitCsvMap))
+			$this->submitCsvMap = (string)$xml->submitCsvMap;
+		if(count($xml->updateCsvMap))
+			$this->updateCsvMap = (string)$xml->updateCsvMap;
+		if(count($xml->deleteVideoIds))
+			$this->deleteVideoIds = (string)$xml->deleteVideoIds;
 	}
 	/**
 	 * 
@@ -162,6 +170,34 @@ class Kaltura_Client_YouTubeDistribution_Type_YouTubeDistributionJobProviderData
 	 * @var string
 	 */
 	public $googleTokenData = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $captionsCsvMap = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $submitCsvMap = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $updateCsvMap = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $deleteVideoIds = null;
 
 
 }
