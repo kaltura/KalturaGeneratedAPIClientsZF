@@ -49,6 +49,8 @@ class Kaltura_Client_YouTubeDistribution_Type_YouTubeDistributionJobProviderData
 			$this->videoAssetFilePath = (string)$xml->videoAssetFilePath;
 		if(count($xml->thumbAssetFilePath))
 			$this->thumbAssetFilePath = (string)$xml->thumbAssetFilePath;
+		if(count($xml->thumbAssetId))
+			$this->thumbAssetId = (string)$xml->thumbAssetId;
 		if(count($xml->captionAssetIds))
 			$this->captionAssetIds = (string)$xml->captionAssetIds;
 		if(count($xml->sftpDirectory))
@@ -93,6 +95,13 @@ class Kaltura_Client_YouTubeDistribution_Type_YouTubeDistributionJobProviderData
 	 * @var string
 	 */
 	public $thumbAssetFilePath = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $thumbAssetId = null;
 
 	/**
 	 * 
