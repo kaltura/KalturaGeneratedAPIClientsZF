@@ -359,6 +359,8 @@ class Kaltura_Client_TypeMap
 		'KalturaDeliveryProfileLiveAppleHttp' => 'Kaltura_Client_Type_DeliveryProfileLiveAppleHttp',
 		'KalturaDeliveryProfileLiveAppleHttpBaseFilter' => 'Kaltura_Client_Type_DeliveryProfileLiveAppleHttpBaseFilter',
 		'KalturaDeliveryProfileLiveAppleHttpFilter' => 'Kaltura_Client_Type_DeliveryProfileLiveAppleHttpFilter',
+		'KalturaDeliveryProfileLivePackager' => 'Kaltura_Client_Type_DeliveryProfileLivePackager',
+		'KalturaDeliveryProfileLivePackagerHls' => 'Kaltura_Client_Type_DeliveryProfileLivePackagerHls',
 		'KalturaDeliveryProfileRtmp' => 'Kaltura_Client_Type_DeliveryProfileRtmp',
 		'KalturaDeliveryProfileRtmpBaseFilter' => 'Kaltura_Client_Type_DeliveryProfileRtmpBaseFilter',
 		'KalturaDeliveryProfileRtmpFilter' => 'Kaltura_Client_Type_DeliveryProfileRtmpFilter',
