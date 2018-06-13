@@ -191,6 +191,8 @@ class Kaltura_Client_Type_Partner extends Kaltura_Client_ObjectBase
 			else
 				$this->timeAlignedRenditions = false;
 		}
+		if(count($xml->publisherEnvironmentType))
+			$this->publisherEnvironmentType = (int)$xml->publisherEnvironmentType;
 		if(count($xml->ovpEnvironmentUrl))
 			$this->ovpEnvironmentUrl = (string)$xml->ovpEnvironmentUrl;
 		if(count($xml->ottEnvironmentUrl))
@@ -596,6 +598,14 @@ class Kaltura_Client_Type_Partner extends Kaltura_Client_ObjectBase
 	 * @readonly
 	 */
 	public $timeAlignedRenditions = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 * @readonly
+	 */
+	public $publisherEnvironmentType = null;
 
 	/**
 	 * 
