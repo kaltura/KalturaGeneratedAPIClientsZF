@@ -1183,6 +1183,7 @@ class Kaltura_Client_TypeMap
 		'KalturaUrlTokenizerLimeLight' => 'Kaltura_Client_Type_UrlTokenizerLimeLight',
 		'KalturaUrlTokenizerVelocix' => 'Kaltura_Client_Type_UrlTokenizerVelocix',
 		'KalturaUrlTokenizerVnpt' => 'Kaltura_Client_Type_UrlTokenizerVnpt',
+		'KalturaUrlTokenizerWowzaSecureToken' => 'Kaltura_Client_Type_UrlTokenizerWowzaSecureToken',
 		'KalturaUser' => 'Kaltura_Client_Type_User',
 		'KalturaUserAgentCondition' => 'Kaltura_Client_Type_UserAgentCondition',
 		'KalturaUserAgentContextField' => 'Kaltura_Client_Type_UserAgentContextField',

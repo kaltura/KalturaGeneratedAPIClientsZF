@@ -31,22 +31,39 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Enum_BatchJobStatus extends Kaltura_Client_EnumBase
+class Kaltura_Client_Type_UrlTokenizerWowzaSecureToken extends Kaltura_Client_Type_UrlTokenizer
 {
-	const PENDING = 0;
-	const QUEUED = 1;
-	const PROCESSING = 2;
-	const PROCESSED = 3;
-	const MOVEFILE = 4;
-	const FINISHED = 5;
-	const FAILED = 6;
-	const ABORTED = 7;
-	const ALMOST_DONE = 8;
-	const RETRY = 9;
-	const FATAL = 10;
-	const DONT_PROCESS = 11;
-	const FINISHED_PARTIALLY = 12;
-	const SUSPEND = 13;
-	const SUSPEND_ALMOST_DONE = 14;
+	public function getKalturaObjectType()
+	{
+		return 'KalturaUrlTokenizerWowzaSecureToken';
+	}
+	
+	public function __construct(SimpleXMLElement $xml = null)
+	{
+		parent::__construct($xml);
+		
+		if(is_null($xml))
+			return;
+		
+		if(count($xml->paramPrefix))
+			$this->paramPrefix = (string)$xml->paramPrefix;
+		if(count($xml->hashAlgorithm))
+			$this->hashAlgorithm = (string)$xml->hashAlgorithm;
+	}
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $paramPrefix = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $hashAlgorithm = null;
+
+
 }
 
