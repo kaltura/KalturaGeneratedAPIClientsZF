@@ -46,7 +46,7 @@ abstract class Kaltura_Client_Type_FileAssetBaseFilter extends Kaltura_Client_Ty
 			return;
 		
 		if(count($xml->idEqual))
-			$this->idEqual = (int)$xml->idEqual;
+			$this->idEqual = (string)$xml->idEqual;
 		if(count($xml->idIn))
 			$this->idIn = (string)$xml->idIn;
 		if(count($xml->partnerIdEqual))
@@ -73,7 +73,7 @@ abstract class Kaltura_Client_Type_FileAssetBaseFilter extends Kaltura_Client_Ty
 	/**
 	 * 
 	 *
-	 * @var int
+	 * @var bigint
 	 */
 	public $idEqual = null;
 
