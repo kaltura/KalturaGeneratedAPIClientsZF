@@ -84,6 +84,8 @@ abstract class Kaltura_Client_CuePoint_Type_CuePoint extends Kaltura_Client_Obje
 			else
 				$this->isMomentary = false;
 		}
+		if(count($xml->copiedFrom))
+			$this->copiedFrom = (string)$xml->copiedFrom;
 	}
 	/**
 	 * 
@@ -212,6 +214,14 @@ abstract class Kaltura_Client_CuePoint_Type_CuePoint extends Kaltura_Client_Obje
 	 * @readonly
 	 */
 	public $isMomentary = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 * @readonly
+	 */
+	public $copiedFrom = null;
 
 
 }
