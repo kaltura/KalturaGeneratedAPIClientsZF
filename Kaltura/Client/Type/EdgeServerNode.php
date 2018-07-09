@@ -47,8 +47,6 @@ class Kaltura_Client_Type_EdgeServerNode extends Kaltura_Client_Type_DeliverySer
 		
 		if(count($xml->playbackDomain))
 			$this->playbackDomain = (string)$xml->playbackDomain;
-		if(count($xml->config))
-			$this->config = (string)$xml->config;
 	}
 	/**
 	 * Delivery server playback Domain
@@ -56,13 +54,6 @@ class Kaltura_Client_Type_EdgeServerNode extends Kaltura_Client_Type_DeliverySer
 	 * @var string
 	 */
 	public $playbackDomain = null;
-
-	/**
-	 * Overdie edge server default configuration - json format
-	 *
-	 * @var string
-	 */
-	public $config = null;
 
 
 }

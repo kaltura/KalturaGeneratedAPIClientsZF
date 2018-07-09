@@ -52,6 +52,8 @@ abstract class Kaltura_Client_Type_DeliveryServerNode extends Kaltura_Client_Typ
 			else
 				$this->deliveryProfileIds = Kaltura_Client_ParseUtils::unmarshalArray($xml->deliveryProfileIds, "KalturaKeyValue");
 		}
+		if(count($xml->config))
+			$this->config = (string)$xml->config;
 	}
 	/**
 	 * Delivery profile ids
@@ -59,6 +61,13 @@ abstract class Kaltura_Client_Type_DeliveryServerNode extends Kaltura_Client_Typ
 	 * @var array of KalturaKeyValue
 	 */
 	public $deliveryProfileIds;
+
+	/**
+	 * Override server node default configuration - json format
+	 *
+	 * @var string
+	 */
+	public $config = null;
 
 
 }
