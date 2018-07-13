@@ -73,6 +73,8 @@ abstract class Kaltura_Client_ScheduledTask_Type_ScheduledTaskProfileBaseFilter 
 			$this->lastExecutionStartedAtGreaterThanOrEqual = (int)$xml->lastExecutionStartedAtGreaterThanOrEqual;
 		if(count($xml->lastExecutionStartedAtLessThanOrEqual))
 			$this->lastExecutionStartedAtLessThanOrEqual = (int)$xml->lastExecutionStartedAtLessThanOrEqual;
+		if(count($xml->lastExecutionStartedAtLessThanOrEqualOrNull))
+			$this->lastExecutionStartedAtLessThanOrEqualOrNull = (int)$xml->lastExecutionStartedAtLessThanOrEqualOrNull;
 	}
 	/**
 	 * 
@@ -171,6 +173,13 @@ abstract class Kaltura_Client_ScheduledTask_Type_ScheduledTaskProfileBaseFilter 
 	 * @var int
 	 */
 	public $lastExecutionStartedAtLessThanOrEqual = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $lastExecutionStartedAtLessThanOrEqualOrNull = null;
 
 
 }
