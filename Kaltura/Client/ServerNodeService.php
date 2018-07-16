@@ -41,6 +41,7 @@ class Kaltura_Client_ServerNodeService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return Kaltura_Client_Type_ServerNode
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function add(Kaltura_Client_Type_ServerNode $serverNode)
 	{
@@ -59,6 +60,7 @@ class Kaltura_Client_ServerNodeService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return 
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function delete($serverNodeId)
 	{
@@ -74,6 +76,7 @@ class Kaltura_Client_ServerNodeService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return Kaltura_Client_Type_ServerNode
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function disable($serverNodeId)
 	{
@@ -92,6 +95,7 @@ class Kaltura_Client_ServerNodeService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return Kaltura_Client_Type_ServerNode
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function enable($serverNodeId)
 	{
@@ -110,6 +114,7 @@ class Kaltura_Client_ServerNodeService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return Kaltura_Client_Type_ServerNode
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function get($serverNodeId)
 	{
@@ -128,6 +133,7 @@ class Kaltura_Client_ServerNodeService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return Kaltura_Client_Type_ServerNodeListResponse
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function listAction(Kaltura_Client_Type_ServerNodeFilter $filter = null, Kaltura_Client_Type_FilterPager $pager = null)
 	{
@@ -149,6 +155,7 @@ class Kaltura_Client_ServerNodeService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return Kaltura_Client_Type_ServerNode
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function markOffline($serverNodeId)
 	{
@@ -167,6 +174,7 @@ class Kaltura_Client_ServerNodeService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return Kaltura_Client_Type_ServerNode
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function reportStatus($hostName, Kaltura_Client_Type_ServerNode $serverNode = null)
 	{
@@ -187,6 +195,7 @@ class Kaltura_Client_ServerNodeService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return Kaltura_Client_Type_ServerNode
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function update($serverNodeId, Kaltura_Client_Type_ServerNode $serverNode)
 	{

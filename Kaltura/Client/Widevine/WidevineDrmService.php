@@ -41,6 +41,7 @@ class Kaltura_Client_Widevine_WidevineDrmService extends Kaltura_Client_ServiceB
 
 	/**
 	 * @return string
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function getLicense($flavorAssetId, $referrer = null)
 	{

@@ -41,6 +41,7 @@ class Kaltura_Client_MixingService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return Kaltura_Client_Type_MixEntry
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function add(Kaltura_Client_Type_MixEntry $mixEntry)
 	{
@@ -59,6 +60,7 @@ class Kaltura_Client_MixingService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return 
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function anonymousRank($entryId, $rank)
 	{
@@ -75,6 +77,7 @@ class Kaltura_Client_MixingService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return Kaltura_Client_Type_MixEntry
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function appendMediaEntry($mixEntryId, $mediaEntryId)
 	{
@@ -94,6 +97,7 @@ class Kaltura_Client_MixingService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return Kaltura_Client_Type_MixEntry
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function cloneAction($entryId)
 	{
@@ -112,6 +116,7 @@ class Kaltura_Client_MixingService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return int
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function count(Kaltura_Client_Type_MediaEntryFilter $filter = null)
 	{
@@ -130,6 +135,7 @@ class Kaltura_Client_MixingService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return 
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function delete($entryId)
 	{
@@ -145,6 +151,7 @@ class Kaltura_Client_MixingService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return Kaltura_Client_Type_MixEntry
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function get($entryId, $version = -1)
 	{
@@ -164,6 +171,7 @@ class Kaltura_Client_MixingService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return array
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function getMixesByMediaId($mediaEntryId)
 	{
@@ -184,6 +192,7 @@ class Kaltura_Client_MixingService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return array
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function getReadyMediaEntries($mixId, $version = -1)
 	{
@@ -205,6 +214,7 @@ class Kaltura_Client_MixingService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return Kaltura_Client_Type_MixListResponse
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function listAction(Kaltura_Client_Type_MixEntryFilter $filter = null, Kaltura_Client_Type_FilterPager $pager = null)
 	{
@@ -226,6 +236,7 @@ class Kaltura_Client_MixingService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return Kaltura_Client_Type_MixEntry
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function update($entryId, Kaltura_Client_Type_MixEntry $mixEntry)
 	{

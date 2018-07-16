@@ -41,6 +41,7 @@ class Kaltura_Client_PlaylistService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return Kaltura_Client_Type_Playlist
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function add(Kaltura_Client_Type_Playlist $playlist, $updateStats = false)
 	{
@@ -60,6 +61,7 @@ class Kaltura_Client_PlaylistService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return Kaltura_Client_Type_Playlist
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function cloneAction($id, Kaltura_Client_Type_Playlist $newPlaylist = null)
 	{
@@ -80,6 +82,7 @@ class Kaltura_Client_PlaylistService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return 
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function delete($id)
 	{
@@ -95,6 +98,7 @@ class Kaltura_Client_PlaylistService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return array
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function execute($id, $detailed = "", Kaltura_Client_Type_Context $playlistContext = null, Kaltura_Client_Type_MediaEntryFilterForPlaylist $filter = null, Kaltura_Client_Type_FilterPager $pager = null)
 	{
@@ -122,6 +126,7 @@ class Kaltura_Client_PlaylistService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return array
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function executeFromContent($playlistType, $playlistContent, $detailed = "", Kaltura_Client_Type_FilterPager $pager = null)
 	{
@@ -146,6 +151,7 @@ class Kaltura_Client_PlaylistService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return array
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function executeFromFilters(array $filters, $totalResults, $detailed = "1", Kaltura_Client_Type_FilterPager $pager = null)
 	{
@@ -173,6 +179,7 @@ class Kaltura_Client_PlaylistService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return Kaltura_Client_Type_Playlist
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function get($id, $version = -1)
 	{
@@ -192,6 +199,7 @@ class Kaltura_Client_PlaylistService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return Kaltura_Client_Type_Playlist
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function getStatsFromContent($playlistType, $playlistContent)
 	{
@@ -211,6 +219,7 @@ class Kaltura_Client_PlaylistService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return Kaltura_Client_Type_PlaylistListResponse
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function listAction(Kaltura_Client_Type_PlaylistFilter $filter = null, Kaltura_Client_Type_FilterPager $pager = null)
 	{
@@ -232,6 +241,7 @@ class Kaltura_Client_PlaylistService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return Kaltura_Client_Type_Playlist
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function update($id, Kaltura_Client_Type_Playlist $playlist, $updateStats = false)
 	{

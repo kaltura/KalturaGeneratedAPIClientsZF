@@ -41,6 +41,7 @@ class Kaltura_Client_ContentDistribution_DistributionProfileService extends Kalt
 
 	/**
 	 * @return Kaltura_Client_ContentDistribution_Type_DistributionProfile
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function add(Kaltura_Client_ContentDistribution_Type_DistributionProfile $distributionProfile)
 	{
@@ -59,6 +60,7 @@ class Kaltura_Client_ContentDistribution_DistributionProfileService extends Kalt
 
 	/**
 	 * @return 
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function delete($id)
 	{
@@ -74,6 +76,7 @@ class Kaltura_Client_ContentDistribution_DistributionProfileService extends Kalt
 
 	/**
 	 * @return Kaltura_Client_ContentDistribution_Type_DistributionProfile
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function get($id)
 	{
@@ -92,6 +95,7 @@ class Kaltura_Client_ContentDistribution_DistributionProfileService extends Kalt
 
 	/**
 	 * @return Kaltura_Client_ContentDistribution_Type_DistributionProfileListResponse
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function listAction(Kaltura_Client_ContentDistribution_Type_DistributionProfileFilter $filter = null, Kaltura_Client_Type_FilterPager $pager = null)
 	{
@@ -113,6 +117,7 @@ class Kaltura_Client_ContentDistribution_DistributionProfileService extends Kalt
 
 	/**
 	 * @return Kaltura_Client_ContentDistribution_Type_DistributionProfileListResponse
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function listByPartner(Kaltura_Client_Type_PartnerFilter $filter = null, Kaltura_Client_Type_FilterPager $pager = null)
 	{
@@ -134,6 +139,7 @@ class Kaltura_Client_ContentDistribution_DistributionProfileService extends Kalt
 
 	/**
 	 * @return Kaltura_Client_ContentDistribution_Type_DistributionProfile
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function update($id, Kaltura_Client_ContentDistribution_Type_DistributionProfile $distributionProfile)
 	{
@@ -153,6 +159,7 @@ class Kaltura_Client_ContentDistribution_DistributionProfileService extends Kalt
 
 	/**
 	 * @return Kaltura_Client_ContentDistribution_Type_DistributionProfile
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function updateStatus($id, $status)
 	{

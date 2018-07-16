@@ -41,6 +41,7 @@ class Kaltura_Client_ScheduledTask_ScheduledTaskProfileService extends Kaltura_C
 
 	/**
 	 * @return Kaltura_Client_ScheduledTask_Type_ScheduledTaskProfile
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function add(Kaltura_Client_ScheduledTask_Type_ScheduledTaskProfile $scheduledTaskProfile)
 	{
@@ -59,6 +60,7 @@ class Kaltura_Client_ScheduledTask_ScheduledTaskProfileService extends Kaltura_C
 
 	/**
 	 * @return 
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function delete($id)
 	{
@@ -74,6 +76,7 @@ class Kaltura_Client_ScheduledTask_ScheduledTaskProfileService extends Kaltura_C
 
 	/**
 	 * @return Kaltura_Client_ScheduledTask_Type_ScheduledTaskProfile
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function get($id)
 	{
@@ -92,6 +95,7 @@ class Kaltura_Client_ScheduledTask_ScheduledTaskProfileService extends Kaltura_C
 
 	/**
 	 * @return Kaltura_Client_Type_ObjectListResponse
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function getDryRunResults($requestId)
 	{
@@ -110,6 +114,7 @@ class Kaltura_Client_ScheduledTask_ScheduledTaskProfileService extends Kaltura_C
 
 	/**
 	 * @return Kaltura_Client_ScheduledTask_Type_ScheduledTaskProfileListResponse
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function listAction(Kaltura_Client_ScheduledTask_Type_ScheduledTaskProfileFilter $filter = null, Kaltura_Client_Type_FilterPager $pager = null)
 	{
@@ -131,6 +136,7 @@ class Kaltura_Client_ScheduledTask_ScheduledTaskProfileService extends Kaltura_C
 
 	/**
 	 * @return int
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function requestDryRun($scheduledTaskProfileId, $maxResults = 500)
 	{
@@ -149,6 +155,7 @@ class Kaltura_Client_ScheduledTask_ScheduledTaskProfileService extends Kaltura_C
 
 	/**
 	 * @return file
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function serveDryRunResults($requestId)
 	{
@@ -164,6 +171,7 @@ class Kaltura_Client_ScheduledTask_ScheduledTaskProfileService extends Kaltura_C
 
 	/**
 	 * @return Kaltura_Client_ScheduledTask_Type_ScheduledTaskProfile
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function update($id, Kaltura_Client_ScheduledTask_Type_ScheduledTaskProfile $scheduledTaskProfile)
 	{

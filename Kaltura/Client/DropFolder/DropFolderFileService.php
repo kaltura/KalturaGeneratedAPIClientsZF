@@ -41,6 +41,7 @@ class Kaltura_Client_DropFolder_DropFolderFileService extends Kaltura_Client_Ser
 
 	/**
 	 * @return Kaltura_Client_DropFolder_Type_DropFolderFile
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function add(Kaltura_Client_DropFolder_Type_DropFolderFile $dropFolderFile)
 	{
@@ -59,6 +60,7 @@ class Kaltura_Client_DropFolder_DropFolderFileService extends Kaltura_Client_Ser
 
 	/**
 	 * @return Kaltura_Client_DropFolder_Type_DropFolderFile
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function delete($dropFolderFileId)
 	{
@@ -77,6 +79,7 @@ class Kaltura_Client_DropFolder_DropFolderFileService extends Kaltura_Client_Ser
 
 	/**
 	 * @return Kaltura_Client_DropFolder_Type_DropFolderFile
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function get($dropFolderFileId)
 	{
@@ -95,6 +98,7 @@ class Kaltura_Client_DropFolder_DropFolderFileService extends Kaltura_Client_Ser
 
 	/**
 	 * @return Kaltura_Client_DropFolder_Type_DropFolderFile
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function ignore($dropFolderFileId)
 	{
@@ -113,6 +117,7 @@ class Kaltura_Client_DropFolder_DropFolderFileService extends Kaltura_Client_Ser
 
 	/**
 	 * @return Kaltura_Client_DropFolder_Type_DropFolderFileListResponse
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function listAction(Kaltura_Client_DropFolder_Type_DropFolderFileFilter $filter = null, Kaltura_Client_Type_FilterPager $pager = null)
 	{
@@ -134,6 +139,7 @@ class Kaltura_Client_DropFolder_DropFolderFileService extends Kaltura_Client_Ser
 
 	/**
 	 * @return Kaltura_Client_DropFolder_Type_DropFolderFile
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function update($dropFolderFileId, Kaltura_Client_DropFolder_Type_DropFolderFile $dropFolderFile)
 	{
@@ -153,6 +159,7 @@ class Kaltura_Client_DropFolder_DropFolderFileService extends Kaltura_Client_Ser
 
 	/**
 	 * @return Kaltura_Client_DropFolder_Type_DropFolderFile
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function updateStatus($dropFolderFileId, $status)
 	{

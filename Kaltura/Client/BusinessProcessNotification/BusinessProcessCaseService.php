@@ -41,6 +41,7 @@ class Kaltura_Client_BusinessProcessNotification_BusinessProcessCaseService exte
 
 	/**
 	 * @return 
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function abort($objectType, $objectId, $businessProcessStartNotificationTemplateId)
 	{
@@ -58,6 +59,7 @@ class Kaltura_Client_BusinessProcessNotification_BusinessProcessCaseService exte
 
 	/**
 	 * @return array
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function listAction($objectType, $objectId)
 	{
@@ -79,6 +81,7 @@ class Kaltura_Client_BusinessProcessNotification_BusinessProcessCaseService exte
 
 	/**
 	 * @return file
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function serveDiagram($objectType, $objectId, $businessProcessStartNotificationTemplateId)
 	{

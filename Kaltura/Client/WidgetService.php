@@ -41,6 +41,7 @@ class Kaltura_Client_WidgetService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return Kaltura_Client_Type_Widget
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function add(Kaltura_Client_Type_Widget $widget)
 	{
@@ -59,6 +60,7 @@ class Kaltura_Client_WidgetService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return Kaltura_Client_Type_Widget
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function cloneAction(Kaltura_Client_Type_Widget $widget)
 	{
@@ -77,6 +79,7 @@ class Kaltura_Client_WidgetService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return Kaltura_Client_Type_Widget
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function get($id)
 	{
@@ -95,6 +98,7 @@ class Kaltura_Client_WidgetService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return Kaltura_Client_Type_WidgetListResponse
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function listAction(Kaltura_Client_Type_WidgetFilter $filter = null, Kaltura_Client_Type_FilterPager $pager = null)
 	{
@@ -116,6 +120,7 @@ class Kaltura_Client_WidgetService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return Kaltura_Client_Type_Widget
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function update($id, Kaltura_Client_Type_Widget $widget)
 	{

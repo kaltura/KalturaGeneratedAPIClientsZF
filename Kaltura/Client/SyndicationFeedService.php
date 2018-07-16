@@ -41,6 +41,7 @@ class Kaltura_Client_SyndicationFeedService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return Kaltura_Client_Type_BaseSyndicationFeed
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function add(Kaltura_Client_Type_BaseSyndicationFeed $syndicationFeed)
 	{
@@ -59,6 +60,7 @@ class Kaltura_Client_SyndicationFeedService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return 
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function delete($id)
 	{
@@ -74,6 +76,7 @@ class Kaltura_Client_SyndicationFeedService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return Kaltura_Client_Type_BaseSyndicationFeed
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function get($id)
 	{
@@ -92,6 +95,7 @@ class Kaltura_Client_SyndicationFeedService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return Kaltura_Client_Type_SyndicationFeedEntryCount
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function getEntryCount($feedId)
 	{
@@ -110,6 +114,7 @@ class Kaltura_Client_SyndicationFeedService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return Kaltura_Client_Type_BaseSyndicationFeedListResponse
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function listAction(Kaltura_Client_Type_BaseSyndicationFeedFilter $filter = null, Kaltura_Client_Type_FilterPager $pager = null)
 	{
@@ -131,6 +136,7 @@ class Kaltura_Client_SyndicationFeedService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return string
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function requestConversion($feedId)
 	{
@@ -148,6 +154,7 @@ class Kaltura_Client_SyndicationFeedService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return Kaltura_Client_Type_BaseSyndicationFeed
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function update($id, Kaltura_Client_Type_BaseSyndicationFeed $syndicationFeed)
 	{

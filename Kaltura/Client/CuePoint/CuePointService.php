@@ -41,6 +41,7 @@ class Kaltura_Client_CuePoint_CuePointService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return Kaltura_Client_CuePoint_Type_CuePoint
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function add(Kaltura_Client_CuePoint_Type_CuePoint $cuePoint)
 	{
@@ -59,6 +60,7 @@ class Kaltura_Client_CuePoint_CuePointService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return Kaltura_Client_CuePoint_Type_CuePointListResponse
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function addFromBulk($fileData)
 	{
@@ -78,6 +80,7 @@ class Kaltura_Client_CuePoint_CuePointService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return Kaltura_Client_CuePoint_Type_CuePoint
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function cloneAction($id, $entryId)
 	{
@@ -97,6 +100,7 @@ class Kaltura_Client_CuePoint_CuePointService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return int
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function count(Kaltura_Client_CuePoint_Type_CuePointFilter $filter = null)
 	{
@@ -115,6 +119,7 @@ class Kaltura_Client_CuePoint_CuePointService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return 
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function delete($id)
 	{
@@ -130,6 +135,7 @@ class Kaltura_Client_CuePoint_CuePointService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return Kaltura_Client_CuePoint_Type_CuePoint
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function get($id)
 	{
@@ -148,6 +154,7 @@ class Kaltura_Client_CuePoint_CuePointService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return Kaltura_Client_CuePoint_Type_CuePointListResponse
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function listAction(Kaltura_Client_CuePoint_Type_CuePointFilter $filter = null, Kaltura_Client_Type_FilterPager $pager = null)
 	{
@@ -169,6 +176,7 @@ class Kaltura_Client_CuePoint_CuePointService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return file
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function serveBulk(Kaltura_Client_CuePoint_Type_CuePointFilter $filter = null, Kaltura_Client_Type_FilterPager $pager = null)
 	{
@@ -187,6 +195,7 @@ class Kaltura_Client_CuePoint_CuePointService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return Kaltura_Client_CuePoint_Type_CuePoint
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function update($id, Kaltura_Client_CuePoint_Type_CuePoint $cuePoint)
 	{
@@ -206,6 +215,7 @@ class Kaltura_Client_CuePoint_CuePointService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return Kaltura_Client_CuePoint_Type_CuePoint
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function updateCuePointsTimes($id, $startTime, $endTime = null)
 	{
@@ -226,6 +236,7 @@ class Kaltura_Client_CuePoint_CuePointService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return 
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function updateStatus($id, $status)
 	{

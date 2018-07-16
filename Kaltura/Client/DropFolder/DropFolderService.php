@@ -41,6 +41,7 @@ class Kaltura_Client_DropFolder_DropFolderService extends Kaltura_Client_Service
 
 	/**
 	 * @return Kaltura_Client_DropFolder_Type_DropFolder
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function add(Kaltura_Client_DropFolder_Type_DropFolder $dropFolder)
 	{
@@ -59,6 +60,7 @@ class Kaltura_Client_DropFolder_DropFolderService extends Kaltura_Client_Service
 
 	/**
 	 * @return Kaltura_Client_DropFolder_Type_DropFolder
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function delete($dropFolderId)
 	{
@@ -77,6 +79,7 @@ class Kaltura_Client_DropFolder_DropFolderService extends Kaltura_Client_Service
 
 	/**
 	 * @return Kaltura_Client_DropFolder_Type_DropFolder
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function freeExclusiveDropFolder($dropFolderId, $errorCode = null, $errorDescription = null)
 	{
@@ -97,6 +100,7 @@ class Kaltura_Client_DropFolder_DropFolderService extends Kaltura_Client_Service
 
 	/**
 	 * @return Kaltura_Client_DropFolder_Type_DropFolder
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function get($dropFolderId)
 	{
@@ -115,6 +119,7 @@ class Kaltura_Client_DropFolder_DropFolderService extends Kaltura_Client_Service
 
 	/**
 	 * @return Kaltura_Client_DropFolder_Type_DropFolder
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function getExclusiveDropFolder($tag, $maxTime)
 	{
@@ -134,6 +139,7 @@ class Kaltura_Client_DropFolder_DropFolderService extends Kaltura_Client_Service
 
 	/**
 	 * @return Kaltura_Client_DropFolder_Type_DropFolderListResponse
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function listAction(Kaltura_Client_DropFolder_Type_DropFolderFilter $filter = null, Kaltura_Client_Type_FilterPager $pager = null)
 	{
@@ -155,6 +161,7 @@ class Kaltura_Client_DropFolder_DropFolderService extends Kaltura_Client_Service
 
 	/**
 	 * @return Kaltura_Client_DropFolder_Type_DropFolder
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function update($dropFolderId, Kaltura_Client_DropFolder_Type_DropFolder $dropFolder)
 	{

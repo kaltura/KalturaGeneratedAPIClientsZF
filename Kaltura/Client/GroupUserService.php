@@ -41,6 +41,7 @@ class Kaltura_Client_GroupUserService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return Kaltura_Client_Type_GroupUser
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function add(Kaltura_Client_Type_GroupUser $groupUser)
 	{
@@ -59,6 +60,7 @@ class Kaltura_Client_GroupUserService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return 
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function delete($userId, $groupId)
 	{
@@ -75,6 +77,7 @@ class Kaltura_Client_GroupUserService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return Kaltura_Client_Type_GroupUserListResponse
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function listAction(Kaltura_Client_Type_GroupUserFilter $filter = null, Kaltura_Client_Type_FilterPager $pager = null)
 	{
@@ -96,6 +99,7 @@ class Kaltura_Client_GroupUserService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return Kaltura_Client_Type_BulkUpload
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function sync($userId, $groupIds, $removeFromExistingGroups = true, $createNewGroups = true)
 	{

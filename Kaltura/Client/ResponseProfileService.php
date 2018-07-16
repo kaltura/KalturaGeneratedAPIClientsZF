@@ -41,6 +41,7 @@ class Kaltura_Client_ResponseProfileService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return Kaltura_Client_Type_ResponseProfile
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function add(Kaltura_Client_Type_ResponseProfile $addResponseProfile)
 	{
@@ -59,6 +60,7 @@ class Kaltura_Client_ResponseProfileService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return Kaltura_Client_Type_ResponseProfile
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function cloneAction($id, Kaltura_Client_Type_ResponseProfile $profile)
 	{
@@ -78,6 +80,7 @@ class Kaltura_Client_ResponseProfileService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return 
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function delete($id)
 	{
@@ -93,6 +96,7 @@ class Kaltura_Client_ResponseProfileService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return Kaltura_Client_Type_ResponseProfile
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function get($id)
 	{
@@ -111,6 +115,7 @@ class Kaltura_Client_ResponseProfileService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return Kaltura_Client_Type_ResponseProfileListResponse
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function listAction(Kaltura_Client_Type_ResponseProfileFilter $filter = null, Kaltura_Client_Type_FilterPager $pager = null)
 	{
@@ -132,6 +137,7 @@ class Kaltura_Client_ResponseProfileService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return Kaltura_Client_Type_ResponseProfileCacheRecalculateResults
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function recalculate(Kaltura_Client_Type_ResponseProfileCacheRecalculateOptions $options)
 	{
@@ -150,6 +156,7 @@ class Kaltura_Client_ResponseProfileService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return Kaltura_Client_Type_ResponseProfile
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function update($id, Kaltura_Client_Type_ResponseProfile $updateResponseProfile)
 	{
@@ -169,6 +176,7 @@ class Kaltura_Client_ResponseProfileService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return Kaltura_Client_Type_ResponseProfile
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function updateStatus($id, $status)
 	{

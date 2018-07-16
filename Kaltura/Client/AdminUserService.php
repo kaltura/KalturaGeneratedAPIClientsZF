@@ -41,6 +41,7 @@ class Kaltura_Client_AdminUserService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return string
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function login($email, $password, $partnerId = null)
 	{
@@ -60,6 +61,7 @@ class Kaltura_Client_AdminUserService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return 
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function resetPassword($email)
 	{
@@ -75,6 +77,7 @@ class Kaltura_Client_AdminUserService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return 
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function setInitialPassword($hashKey, $newPassword)
 	{
@@ -91,6 +94,7 @@ class Kaltura_Client_AdminUserService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return Kaltura_Client_Type_AdminUser
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function updatePassword($email, $password, $newEmail = "", $newPassword = "")
 	{

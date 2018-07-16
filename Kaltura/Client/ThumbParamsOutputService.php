@@ -41,6 +41,7 @@ class Kaltura_Client_ThumbParamsOutputService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return Kaltura_Client_Type_ThumbParamsOutput
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function get($id)
 	{
@@ -59,6 +60,7 @@ class Kaltura_Client_ThumbParamsOutputService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return Kaltura_Client_Type_ThumbParamsOutputListResponse
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function listAction(Kaltura_Client_Type_ThumbParamsOutputFilter $filter = null, Kaltura_Client_Type_FilterPager $pager = null)
 	{

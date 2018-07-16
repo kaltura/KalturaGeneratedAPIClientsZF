@@ -41,6 +41,7 @@ class Kaltura_Client_UploadTokenService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return Kaltura_Client_Type_UploadToken
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function add(Kaltura_Client_Type_UploadToken $uploadToken = null)
 	{
@@ -60,6 +61,7 @@ class Kaltura_Client_UploadTokenService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return 
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function delete($uploadTokenId)
 	{
@@ -75,6 +77,7 @@ class Kaltura_Client_UploadTokenService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return Kaltura_Client_Type_UploadToken
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function get($uploadTokenId)
 	{
@@ -93,6 +96,7 @@ class Kaltura_Client_UploadTokenService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return Kaltura_Client_Type_UploadTokenListResponse
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function listAction(Kaltura_Client_Type_UploadTokenFilter $filter = null, Kaltura_Client_Type_FilterPager $pager = null)
 	{
@@ -114,6 +118,7 @@ class Kaltura_Client_UploadTokenService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return Kaltura_Client_Type_UploadToken
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function upload($uploadTokenId, $fileData, $resume = false, $finalChunk = true, $resumeAt = -1)
 	{

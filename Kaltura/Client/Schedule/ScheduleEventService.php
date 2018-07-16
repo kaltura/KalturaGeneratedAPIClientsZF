@@ -41,6 +41,7 @@ class Kaltura_Client_Schedule_ScheduleEventService extends Kaltura_Client_Servic
 
 	/**
 	 * @return Kaltura_Client_Schedule_Type_ScheduleEvent
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function add(Kaltura_Client_Schedule_Type_ScheduleEvent $scheduleEvent)
 	{
@@ -59,6 +60,7 @@ class Kaltura_Client_Schedule_ScheduleEventService extends Kaltura_Client_Servic
 
 	/**
 	 * @return Kaltura_Client_Type_BulkUpload
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function addFromBulkUpload($fileData, Kaltura_Client_ScheduleBulkUpload_Type_BulkUploadICalJobData $bulkUploadData = null)
 	{
@@ -80,6 +82,7 @@ class Kaltura_Client_Schedule_ScheduleEventService extends Kaltura_Client_Servic
 
 	/**
 	 * @return Kaltura_Client_Schedule_Type_ScheduleEvent
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function cancel($scheduleEventId)
 	{
@@ -98,6 +101,7 @@ class Kaltura_Client_Schedule_ScheduleEventService extends Kaltura_Client_Servic
 
 	/**
 	 * @return Kaltura_Client_Schedule_Type_ScheduleEvent
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function delete($scheduleEventId)
 	{
@@ -116,6 +120,7 @@ class Kaltura_Client_Schedule_ScheduleEventService extends Kaltura_Client_Servic
 
 	/**
 	 * @return Kaltura_Client_Schedule_Type_ScheduleEvent
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function get($scheduleEventId)
 	{
@@ -134,6 +139,7 @@ class Kaltura_Client_Schedule_ScheduleEventService extends Kaltura_Client_Servic
 
 	/**
 	 * @return Kaltura_Client_Schedule_Type_ScheduleEventListResponse
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function getConflicts($resourceIds, Kaltura_Client_Schedule_Type_ScheduleEvent $scheduleEvent, $scheduleEventIdToIgnore = null)
 	{
@@ -154,6 +160,7 @@ class Kaltura_Client_Schedule_ScheduleEventService extends Kaltura_Client_Servic
 
 	/**
 	 * @return Kaltura_Client_Schedule_Type_ScheduleEventListResponse
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function listAction(Kaltura_Client_Schedule_Type_ScheduleEventFilter $filter = null, Kaltura_Client_Type_FilterPager $pager = null)
 	{
@@ -175,6 +182,7 @@ class Kaltura_Client_Schedule_ScheduleEventService extends Kaltura_Client_Servic
 
 	/**
 	 * @return Kaltura_Client_Schedule_Type_ScheduleEvent
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function update($scheduleEventId, Kaltura_Client_Schedule_Type_ScheduleEvent $scheduleEvent)
 	{

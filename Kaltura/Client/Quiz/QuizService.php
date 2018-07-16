@@ -41,6 +41,7 @@ class Kaltura_Client_Quiz_QuizService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return Kaltura_Client_Quiz_Type_Quiz
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function add($entryId, Kaltura_Client_Quiz_Type_Quiz $quiz)
 	{
@@ -60,6 +61,7 @@ class Kaltura_Client_Quiz_QuizService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return Kaltura_Client_Quiz_Type_Quiz
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function get($entryId)
 	{
@@ -78,6 +80,7 @@ class Kaltura_Client_Quiz_QuizService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return string
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function getUrl($entryId, $quizOutputType)
 	{
@@ -96,6 +99,7 @@ class Kaltura_Client_Quiz_QuizService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return Kaltura_Client_Quiz_Type_QuizListResponse
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function listAction(Kaltura_Client_Quiz_Type_QuizFilter $filter = null, Kaltura_Client_Type_FilterPager $pager = null)
 	{
@@ -117,6 +121,7 @@ class Kaltura_Client_Quiz_QuizService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return file
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function serve($entryId, $quizOutputType)
 	{
@@ -133,6 +138,7 @@ class Kaltura_Client_Quiz_QuizService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return Kaltura_Client_Quiz_Type_Quiz
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function update($entryId, Kaltura_Client_Quiz_Type_Quiz $quiz)
 	{

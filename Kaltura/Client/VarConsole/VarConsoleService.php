@@ -41,6 +41,7 @@ class Kaltura_Client_VarConsole_VarConsoleService extends Kaltura_Client_Service
 
 	/**
 	 * @return Kaltura_Client_VarConsole_Type_PartnerUsageListResponse
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function getPartnerUsage(Kaltura_Client_Type_PartnerFilter $partnerFilter = null, Kaltura_Client_Type_ReportInputFilter $usageFilter = null, Kaltura_Client_Type_FilterPager $pager = null)
 	{
@@ -64,6 +65,7 @@ class Kaltura_Client_VarConsole_VarConsoleService extends Kaltura_Client_Service
 
 	/**
 	 * @return 
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function updateStatus($id, $status)
 	{

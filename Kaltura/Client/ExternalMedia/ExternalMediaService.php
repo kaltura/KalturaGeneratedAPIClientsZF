@@ -41,6 +41,7 @@ class Kaltura_Client_ExternalMedia_ExternalMediaService extends Kaltura_Client_S
 
 	/**
 	 * @return Kaltura_Client_ExternalMedia_Type_ExternalMediaEntry
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function add(Kaltura_Client_ExternalMedia_Type_ExternalMediaEntry $entry)
 	{
@@ -59,6 +60,7 @@ class Kaltura_Client_ExternalMedia_ExternalMediaService extends Kaltura_Client_S
 
 	/**
 	 * @return int
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function count(Kaltura_Client_ExternalMedia_Type_ExternalMediaEntryFilter $filter = null)
 	{
@@ -77,6 +79,7 @@ class Kaltura_Client_ExternalMedia_ExternalMediaService extends Kaltura_Client_S
 
 	/**
 	 * @return 
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function delete($id)
 	{
@@ -92,6 +95,7 @@ class Kaltura_Client_ExternalMedia_ExternalMediaService extends Kaltura_Client_S
 
 	/**
 	 * @return Kaltura_Client_ExternalMedia_Type_ExternalMediaEntry
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function get($id)
 	{
@@ -110,6 +114,7 @@ class Kaltura_Client_ExternalMedia_ExternalMediaService extends Kaltura_Client_S
 
 	/**
 	 * @return Kaltura_Client_ExternalMedia_Type_ExternalMediaEntryListResponse
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function listAction(Kaltura_Client_ExternalMedia_Type_ExternalMediaEntryFilter $filter = null, Kaltura_Client_Type_FilterPager $pager = null)
 	{
@@ -131,6 +136,7 @@ class Kaltura_Client_ExternalMedia_ExternalMediaService extends Kaltura_Client_S
 
 	/**
 	 * @return Kaltura_Client_ExternalMedia_Type_ExternalMediaEntry
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function update($id, Kaltura_Client_ExternalMedia_Type_ExternalMediaEntry $entry)
 	{

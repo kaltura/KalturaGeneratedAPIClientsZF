@@ -41,6 +41,7 @@ class Kaltura_Client_ElasticSearch_ESearchService extends Kaltura_Client_Service
 
 	/**
 	 * @return Kaltura_Client_ElasticSearch_Type_ESearchCategoryResponse
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function searchCategory(Kaltura_Client_ElasticSearch_Type_ESearchCategoryParams $searchParams, Kaltura_Client_Type_Pager $pager = null)
 	{
@@ -61,6 +62,7 @@ class Kaltura_Client_ElasticSearch_ESearchService extends Kaltura_Client_Service
 
 	/**
 	 * @return Kaltura_Client_ElasticSearch_Type_ESearchEntryResponse
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function searchEntry(Kaltura_Client_ElasticSearch_Type_ESearchEntryParams $searchParams, Kaltura_Client_Type_Pager $pager = null)
 	{
@@ -81,6 +83,7 @@ class Kaltura_Client_ElasticSearch_ESearchService extends Kaltura_Client_Service
 
 	/**
 	 * @return Kaltura_Client_ElasticSearch_Type_ESearchUserResponse
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function searchUser(Kaltura_Client_ElasticSearch_Type_ESearchUserParams $searchParams, Kaltura_Client_Type_Pager $pager = null)
 	{

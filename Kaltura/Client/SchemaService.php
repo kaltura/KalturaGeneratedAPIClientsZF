@@ -41,6 +41,7 @@ class Kaltura_Client_SchemaService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return file
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function serve($type)
 	{

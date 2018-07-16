@@ -41,6 +41,7 @@ class Kaltura_Client_EventNotification_EventNotificationTemplateService extends 
 
 	/**
 	 * @return Kaltura_Client_EventNotification_Type_EventNotificationTemplate
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function add(Kaltura_Client_EventNotification_Type_EventNotificationTemplate $eventNotificationTemplate)
 	{
@@ -59,6 +60,7 @@ class Kaltura_Client_EventNotification_EventNotificationTemplateService extends 
 
 	/**
 	 * @return Kaltura_Client_EventNotification_Type_EventNotificationTemplate
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function cloneAction($id, Kaltura_Client_EventNotification_Type_EventNotificationTemplate $eventNotificationTemplate = null)
 	{
@@ -79,6 +81,7 @@ class Kaltura_Client_EventNotification_EventNotificationTemplateService extends 
 
 	/**
 	 * @return 
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function delete($id)
 	{
@@ -94,6 +97,7 @@ class Kaltura_Client_EventNotification_EventNotificationTemplateService extends 
 
 	/**
 	 * @return int
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function dispatch($id, Kaltura_Client_EventNotification_Type_EventNotificationScope $scope)
 	{
@@ -112,6 +116,7 @@ class Kaltura_Client_EventNotification_EventNotificationTemplateService extends 
 
 	/**
 	 * @return Kaltura_Client_EventNotification_Type_EventNotificationTemplate
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function get($id)
 	{
@@ -130,6 +135,7 @@ class Kaltura_Client_EventNotification_EventNotificationTemplateService extends 
 
 	/**
 	 * @return Kaltura_Client_EventNotification_Type_EventNotificationTemplateListResponse
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function listAction(Kaltura_Client_EventNotification_Type_EventNotificationTemplateFilter $filter = null, Kaltura_Client_Type_FilterPager $pager = null)
 	{
@@ -151,6 +157,7 @@ class Kaltura_Client_EventNotification_EventNotificationTemplateService extends 
 
 	/**
 	 * @return Kaltura_Client_EventNotification_Type_EventNotificationTemplateListResponse
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function listByPartner(Kaltura_Client_Type_PartnerFilter $filter = null, Kaltura_Client_Type_FilterPager $pager = null)
 	{
@@ -172,6 +179,7 @@ class Kaltura_Client_EventNotification_EventNotificationTemplateService extends 
 
 	/**
 	 * @return Kaltura_Client_EventNotification_Type_EventNotificationTemplateListResponse
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function listTemplates(Kaltura_Client_EventNotification_Type_EventNotificationTemplateFilter $filter = null, Kaltura_Client_Type_FilterPager $pager = null)
 	{
@@ -193,6 +201,7 @@ class Kaltura_Client_EventNotification_EventNotificationTemplateService extends 
 
 	/**
 	 * @return Kaltura_Client_PushNotification_Type_PushNotificationData
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function register($notificationTemplateSystemName, Kaltura_Client_PushNotification_Type_PushNotificationParams $pushNotificationParams)
 	{
@@ -212,6 +221,7 @@ class Kaltura_Client_EventNotification_EventNotificationTemplateService extends 
 
 	/**
 	 * @return 
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function sendCommand($notificationTemplateSystemName, Kaltura_Client_PushNotification_Type_PushNotificationParams $pushNotificationParams, $command)
 	{
@@ -229,6 +239,7 @@ class Kaltura_Client_EventNotification_EventNotificationTemplateService extends 
 
 	/**
 	 * @return Kaltura_Client_EventNotification_Type_EventNotificationTemplate
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function update($id, Kaltura_Client_EventNotification_Type_EventNotificationTemplate $eventNotificationTemplate)
 	{
@@ -248,6 +259,7 @@ class Kaltura_Client_EventNotification_EventNotificationTemplateService extends 
 
 	/**
 	 * @return Kaltura_Client_EventNotification_Type_EventNotificationTemplate
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function updateStatus($id, $status)
 	{

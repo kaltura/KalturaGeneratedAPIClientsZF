@@ -41,6 +41,7 @@ class Kaltura_Client_SessionService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return 
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function end()
 	{
@@ -55,6 +56,7 @@ class Kaltura_Client_SessionService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return Kaltura_Client_Type_SessionInfo
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function get($session = null)
 	{
@@ -73,6 +75,7 @@ class Kaltura_Client_SessionService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return string
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function impersonate($secret, $impersonatedPartnerId, $userId = "", $type = 0, $partnerId = null, $expiry = 86400, $privileges = null)
 	{
@@ -96,6 +99,7 @@ class Kaltura_Client_SessionService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return Kaltura_Client_Type_SessionInfo
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function impersonateByKs($session, $type = null, $expiry = null, $privileges = null)
 	{
@@ -117,6 +121,7 @@ class Kaltura_Client_SessionService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return string
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function start($secret, $userId = "", $type = 0, $partnerId = null, $expiry = 86400, $privileges = null)
 	{
@@ -139,6 +144,7 @@ class Kaltura_Client_SessionService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return Kaltura_Client_Type_StartWidgetSessionResponse
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function startWidgetSession($widgetId, $expiry = 86400)
 	{

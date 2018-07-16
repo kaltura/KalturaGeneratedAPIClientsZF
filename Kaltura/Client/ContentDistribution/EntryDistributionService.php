@@ -41,6 +41,7 @@ class Kaltura_Client_ContentDistribution_EntryDistributionService extends Kaltur
 
 	/**
 	 * @return Kaltura_Client_ContentDistribution_Type_EntryDistribution
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function add(Kaltura_Client_ContentDistribution_Type_EntryDistribution $entryDistribution)
 	{
@@ -59,6 +60,7 @@ class Kaltura_Client_ContentDistribution_EntryDistributionService extends Kaltur
 
 	/**
 	 * @return 
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function delete($id)
 	{
@@ -74,6 +76,7 @@ class Kaltura_Client_ContentDistribution_EntryDistributionService extends Kaltur
 
 	/**
 	 * @return Kaltura_Client_ContentDistribution_Type_EntryDistribution
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function get($id)
 	{
@@ -92,6 +95,7 @@ class Kaltura_Client_ContentDistribution_EntryDistributionService extends Kaltur
 
 	/**
 	 * @return Kaltura_Client_ContentDistribution_Type_EntryDistributionListResponse
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function listAction(Kaltura_Client_ContentDistribution_Type_EntryDistributionFilter $filter = null, Kaltura_Client_Type_FilterPager $pager = null)
 	{
@@ -113,6 +117,7 @@ class Kaltura_Client_ContentDistribution_EntryDistributionService extends Kaltur
 
 	/**
 	 * @return Kaltura_Client_ContentDistribution_Type_EntryDistribution
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function retrySubmit($id)
 	{
@@ -131,6 +136,7 @@ class Kaltura_Client_ContentDistribution_EntryDistributionService extends Kaltur
 
 	/**
 	 * @return file
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function serveReturnedData($id, $actionType)
 	{
@@ -147,6 +153,7 @@ class Kaltura_Client_ContentDistribution_EntryDistributionService extends Kaltur
 
 	/**
 	 * @return file
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function serveSentData($id, $actionType)
 	{
@@ -163,6 +170,7 @@ class Kaltura_Client_ContentDistribution_EntryDistributionService extends Kaltur
 
 	/**
 	 * @return Kaltura_Client_ContentDistribution_Type_EntryDistribution
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function submitAdd($id, $submitWhenReady = false)
 	{
@@ -182,6 +190,7 @@ class Kaltura_Client_ContentDistribution_EntryDistributionService extends Kaltur
 
 	/**
 	 * @return Kaltura_Client_ContentDistribution_Type_EntryDistribution
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function submitDelete($id)
 	{
@@ -200,6 +209,7 @@ class Kaltura_Client_ContentDistribution_EntryDistributionService extends Kaltur
 
 	/**
 	 * @return Kaltura_Client_ContentDistribution_Type_EntryDistribution
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function submitFetchReport($id)
 	{
@@ -218,6 +228,7 @@ class Kaltura_Client_ContentDistribution_EntryDistributionService extends Kaltur
 
 	/**
 	 * @return Kaltura_Client_ContentDistribution_Type_EntryDistribution
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function submitUpdate($id)
 	{
@@ -236,6 +247,7 @@ class Kaltura_Client_ContentDistribution_EntryDistributionService extends Kaltur
 
 	/**
 	 * @return Kaltura_Client_ContentDistribution_Type_EntryDistribution
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function update($id, Kaltura_Client_ContentDistribution_Type_EntryDistribution $entryDistribution)
 	{
@@ -255,6 +267,7 @@ class Kaltura_Client_ContentDistribution_EntryDistributionService extends Kaltur
 
 	/**
 	 * @return Kaltura_Client_ContentDistribution_Type_EntryDistribution
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function validate($id)
 	{

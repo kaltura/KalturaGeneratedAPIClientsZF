@@ -41,6 +41,7 @@ class Kaltura_Client_UserEntryService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return Kaltura_Client_Type_UserEntry
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function add(Kaltura_Client_Type_UserEntry $userEntry)
 	{
@@ -59,6 +60,7 @@ class Kaltura_Client_UserEntryService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return int
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function bulkDelete(Kaltura_Client_Type_UserEntryFilter $filter)
 	{
@@ -76,6 +78,7 @@ class Kaltura_Client_UserEntryService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return Kaltura_Client_Type_UserEntry
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function delete($id)
 	{
@@ -94,6 +97,7 @@ class Kaltura_Client_UserEntryService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return Kaltura_Client_Type_UserEntry
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function get($id)
 	{
@@ -112,6 +116,7 @@ class Kaltura_Client_UserEntryService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return Kaltura_Client_Type_UserEntryListResponse
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function listAction(Kaltura_Client_Type_UserEntryFilter $filter = null, Kaltura_Client_Type_FilterPager $pager = null)
 	{
@@ -133,6 +138,7 @@ class Kaltura_Client_UserEntryService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return Kaltura_Client_Type_QuizUserEntry
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function submitQuiz($id)
 	{
@@ -151,6 +157,7 @@ class Kaltura_Client_UserEntryService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return 
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function update($id, Kaltura_Client_Type_UserEntry $userEntry)
 	{

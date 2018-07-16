@@ -41,6 +41,7 @@ class Kaltura_Client_Document_DocumentsService extends Kaltura_Client_ServiceBas
 
 	/**
 	 * @return Kaltura_Client_Document_Type_DocumentEntry
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function addFromEntry($sourceEntryId, Kaltura_Client_Document_Type_DocumentEntry $documentEntry = null, $sourceFlavorParamsId = null)
 	{
@@ -62,6 +63,7 @@ class Kaltura_Client_Document_DocumentsService extends Kaltura_Client_ServiceBas
 
 	/**
 	 * @return Kaltura_Client_Document_Type_DocumentEntry
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function addFromFlavorAsset($sourceFlavorAssetId, Kaltura_Client_Document_Type_DocumentEntry $documentEntry = null)
 	{
@@ -82,6 +84,7 @@ class Kaltura_Client_Document_DocumentsService extends Kaltura_Client_ServiceBas
 
 	/**
 	 * @return Kaltura_Client_Document_Type_DocumentEntry
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function addFromUploadedFile(Kaltura_Client_Document_Type_DocumentEntry $documentEntry, $uploadTokenId)
 	{
@@ -101,6 +104,7 @@ class Kaltura_Client_Document_DocumentsService extends Kaltura_Client_ServiceBas
 
 	/**
 	 * @return Kaltura_Client_Document_Type_DocumentEntry
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function approveReplace($entryId)
 	{
@@ -119,6 +123,7 @@ class Kaltura_Client_Document_DocumentsService extends Kaltura_Client_ServiceBas
 
 	/**
 	 * @return Kaltura_Client_Document_Type_DocumentEntry
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function cancelReplace($entryId)
 	{
@@ -137,6 +142,7 @@ class Kaltura_Client_Document_DocumentsService extends Kaltura_Client_ServiceBas
 
 	/**
 	 * @return bigint
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function convert($entryId, $conversionProfileId = null, array $dynamicConversionAttributes = null)
 	{
@@ -160,6 +166,7 @@ class Kaltura_Client_Document_DocumentsService extends Kaltura_Client_ServiceBas
 
 	/**
 	 * @return string
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function convertPptToSwf($entryId)
 	{
@@ -177,6 +184,7 @@ class Kaltura_Client_Document_DocumentsService extends Kaltura_Client_ServiceBas
 
 	/**
 	 * @return 
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function delete($entryId)
 	{
@@ -192,6 +200,7 @@ class Kaltura_Client_Document_DocumentsService extends Kaltura_Client_ServiceBas
 
 	/**
 	 * @return Kaltura_Client_Document_Type_DocumentEntry
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function get($entryId, $version = -1)
 	{
@@ -211,6 +220,7 @@ class Kaltura_Client_Document_DocumentsService extends Kaltura_Client_ServiceBas
 
 	/**
 	 * @return Kaltura_Client_Document_Type_DocumentListResponse
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function listAction(Kaltura_Client_Document_Type_DocumentEntryFilter $filter = null, Kaltura_Client_Type_FilterPager $pager = null)
 	{
@@ -232,6 +242,7 @@ class Kaltura_Client_Document_DocumentsService extends Kaltura_Client_ServiceBas
 
 	/**
 	 * @return file
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function serve($entryId, $flavorAssetId = null, $forceProxy = false)
 	{
@@ -249,6 +260,7 @@ class Kaltura_Client_Document_DocumentsService extends Kaltura_Client_ServiceBas
 
 	/**
 	 * @return file
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function serveByFlavorParamsId($entryId, $flavorParamsId = null, $forceProxy = false)
 	{
@@ -266,6 +278,7 @@ class Kaltura_Client_Document_DocumentsService extends Kaltura_Client_ServiceBas
 
 	/**
 	 * @return Kaltura_Client_Document_Type_DocumentEntry
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function update($entryId, Kaltura_Client_Document_Type_DocumentEntry $documentEntry)
 	{
@@ -285,6 +298,7 @@ class Kaltura_Client_Document_DocumentsService extends Kaltura_Client_ServiceBas
 
 	/**
 	 * @return Kaltura_Client_Document_Type_DocumentEntry
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function updateContent($entryId, Kaltura_Client_Type_Resource $resource, $conversionProfileId = null)
 	{
@@ -305,6 +319,7 @@ class Kaltura_Client_Document_DocumentsService extends Kaltura_Client_ServiceBas
 
 	/**
 	 * @return string
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function upload($fileData)
 	{

@@ -41,6 +41,7 @@ class Kaltura_Client_Integration_IntegrationService extends Kaltura_Client_Servi
 
 	/**
 	 * @return int
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function dispatch(Kaltura_Client_Integration_Type_IntegrationJobData $data, $objectType, $objectId)
 	{
@@ -60,6 +61,7 @@ class Kaltura_Client_Integration_IntegrationService extends Kaltura_Client_Servi
 
 	/**
 	 * @return 
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function notify($id)
 	{

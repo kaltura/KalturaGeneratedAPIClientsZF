@@ -41,6 +41,7 @@ class Kaltura_Client_PartnerService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return int
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function count(Kaltura_Client_Type_PartnerFilter $filter = null)
 	{
@@ -59,6 +60,7 @@ class Kaltura_Client_PartnerService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return Kaltura_Client_Type_Partner
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function get($id = null)
 	{
@@ -77,6 +79,7 @@ class Kaltura_Client_PartnerService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return Kaltura_Client_Type_Partner
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function getInfo()
 	{
@@ -94,6 +97,7 @@ class Kaltura_Client_PartnerService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return Kaltura_Client_Type_Partner
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function getSecrets($partnerId, $adminEmail, $cmsPassword)
 	{
@@ -114,6 +118,7 @@ class Kaltura_Client_PartnerService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return Kaltura_Client_Type_PartnerStatistics
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function getStatistics()
 	{
@@ -131,6 +136,7 @@ class Kaltura_Client_PartnerService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return Kaltura_Client_Type_PartnerUsage
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function getUsage($year = "", $month = 1, $resolution = null)
 	{
@@ -151,6 +157,7 @@ class Kaltura_Client_PartnerService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return Kaltura_Client_Type_PartnerListResponse
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function listAction(Kaltura_Client_Type_PartnerFilter $filter = null, Kaltura_Client_Type_FilterPager $pager = null)
 	{
@@ -172,6 +179,7 @@ class Kaltura_Client_PartnerService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return Kaltura_Client_Type_FeatureStatusListResponse
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function listFeatureStatus()
 	{
@@ -189,6 +197,7 @@ class Kaltura_Client_PartnerService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return Kaltura_Client_Type_PartnerListResponse
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function listPartnersForUser(Kaltura_Client_Type_PartnerFilter $partnerFilter = null, Kaltura_Client_Type_FilterPager $pager = null)
 	{
@@ -210,6 +219,7 @@ class Kaltura_Client_PartnerService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return Kaltura_Client_Type_Partner
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function register(Kaltura_Client_Type_Partner $partner, $cmsPassword = "", $templatePartnerId = null, $silent = false)
 	{
@@ -231,6 +241,7 @@ class Kaltura_Client_PartnerService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return Kaltura_Client_Type_Partner
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function update(Kaltura_Client_Type_Partner $partner, $allowEmpty = false)
 	{

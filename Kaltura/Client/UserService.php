@@ -41,6 +41,7 @@ class Kaltura_Client_UserService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return Kaltura_Client_Type_User
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function add(Kaltura_Client_Type_User $user)
 	{
@@ -59,6 +60,7 @@ class Kaltura_Client_UserService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return Kaltura_Client_Type_BulkUpload
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function addFromBulkUpload($fileData, Kaltura_Client_Type_BulkUploadJobData $bulkUploadData = null, Kaltura_Client_Type_BulkUploadUserData $bulkUploadUserData = null)
 	{
@@ -82,6 +84,7 @@ class Kaltura_Client_UserService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return bool
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function checkLoginDataExists(Kaltura_Client_Type_UserLoginDataFilter $filter)
 	{
@@ -99,6 +102,7 @@ class Kaltura_Client_UserService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return Kaltura_Client_Type_User
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function delete($userId)
 	{
@@ -117,6 +121,7 @@ class Kaltura_Client_UserService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return Kaltura_Client_Type_User
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function disableLogin($userId = null, $loginId = null)
 	{
@@ -136,6 +141,7 @@ class Kaltura_Client_UserService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return Kaltura_Client_Type_User
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function enableLogin($userId, $loginId, $password = null)
 	{
@@ -156,6 +162,7 @@ class Kaltura_Client_UserService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return string
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function exportToCsv(Kaltura_Client_Type_UserFilter $filter = null, $metadataProfileId = null, array $additionalFields = null)
 	{
@@ -180,6 +187,7 @@ class Kaltura_Client_UserService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return Kaltura_Client_Type_User
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function get($userId = null)
 	{
@@ -198,6 +206,7 @@ class Kaltura_Client_UserService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return Kaltura_Client_Type_User
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function getByLoginId($loginId)
 	{
@@ -216,6 +225,7 @@ class Kaltura_Client_UserService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return string
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function index($id, $shouldUpdate = true)
 	{
@@ -234,6 +244,7 @@ class Kaltura_Client_UserService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return Kaltura_Client_Type_UserListResponse
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function listAction(Kaltura_Client_Type_UserFilter $filter = null, Kaltura_Client_Type_FilterPager $pager = null)
 	{
@@ -255,6 +266,7 @@ class Kaltura_Client_UserService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return string
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function login($partnerId, $userId, $password, $expiry = 86400, $privileges = "*")
 	{
@@ -276,6 +288,7 @@ class Kaltura_Client_UserService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return Kaltura_Client_Type_SessionResponse
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function loginByKs($requestedPartnerId)
 	{
@@ -294,6 +307,7 @@ class Kaltura_Client_UserService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return string
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function loginByLoginId($loginId, $password, $partnerId = null, $expiry = 86400, $privileges = "*", $otp = null)
 	{
@@ -316,6 +330,7 @@ class Kaltura_Client_UserService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return 
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function notifyBan($userId)
 	{
@@ -331,6 +346,7 @@ class Kaltura_Client_UserService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return 
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function resetPassword($email)
 	{
@@ -346,6 +362,7 @@ class Kaltura_Client_UserService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return string
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function serveCsv($id)
 	{
@@ -363,6 +380,7 @@ class Kaltura_Client_UserService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return 
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function setInitialPassword($hashKey, $newPassword)
 	{
@@ -379,6 +397,7 @@ class Kaltura_Client_UserService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return Kaltura_Client_Type_User
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function update($userId, Kaltura_Client_Type_User $user)
 	{
@@ -398,6 +417,7 @@ class Kaltura_Client_UserService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return 
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function updateLoginData($oldLoginId, $password, $newLoginId = "", $newPassword = "", $newFirstName = null, $newLastName = null)
 	{

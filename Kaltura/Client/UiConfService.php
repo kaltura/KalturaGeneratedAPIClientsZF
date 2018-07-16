@@ -41,6 +41,7 @@ class Kaltura_Client_UiConfService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return Kaltura_Client_Type_UiConf
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function add(Kaltura_Client_Type_UiConf $uiConf)
 	{
@@ -59,6 +60,7 @@ class Kaltura_Client_UiConfService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return Kaltura_Client_Type_UiConf
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function cloneAction($id)
 	{
@@ -77,6 +79,7 @@ class Kaltura_Client_UiConfService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return 
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function delete($id)
 	{
@@ -92,6 +95,7 @@ class Kaltura_Client_UiConfService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return Kaltura_Client_Type_UiConf
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function get($id)
 	{
@@ -110,6 +114,7 @@ class Kaltura_Client_UiConfService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return array
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function getAvailableTypes()
 	{
@@ -129,6 +134,7 @@ class Kaltura_Client_UiConfService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return Kaltura_Client_Type_UiConfListResponse
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function listAction(Kaltura_Client_Type_UiConfFilter $filter = null, Kaltura_Client_Type_FilterPager $pager = null)
 	{
@@ -150,6 +156,7 @@ class Kaltura_Client_UiConfService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return Kaltura_Client_Type_UiConfListResponse
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function listTemplates(Kaltura_Client_Type_UiConfFilter $filter = null, Kaltura_Client_Type_FilterPager $pager = null)
 	{
@@ -171,6 +178,7 @@ class Kaltura_Client_UiConfService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return Kaltura_Client_Type_UiConf
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function update($id, Kaltura_Client_Type_UiConf $uiConf)
 	{

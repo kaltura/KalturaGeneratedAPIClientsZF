@@ -41,6 +41,7 @@ class Kaltura_Client_PlayReady_PlayReadyDrmService extends Kaltura_Client_Servic
 
 	/**
 	 * @return Kaltura_Client_PlayReady_Type_PlayReadyContentKey
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function generateKey()
 	{
@@ -58,6 +59,7 @@ class Kaltura_Client_PlayReady_PlayReadyDrmService extends Kaltura_Client_Servic
 
 	/**
 	 * @return array
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function getContentKeys($keyIds)
 	{
@@ -78,6 +80,7 @@ class Kaltura_Client_PlayReady_PlayReadyDrmService extends Kaltura_Client_Servic
 
 	/**
 	 * @return Kaltura_Client_PlayReady_Type_PlayReadyContentKey
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function getEntryContentKey($entryId, $createIfMissing = false)
 	{
@@ -97,6 +100,7 @@ class Kaltura_Client_PlayReady_PlayReadyDrmService extends Kaltura_Client_Servic
 
 	/**
 	 * @return Kaltura_Client_PlayReady_Type_PlayReadyLicenseDetails
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function getLicenseDetails($keyId, $deviceId, $deviceType, $entryId = null, $referrer = null)
 	{

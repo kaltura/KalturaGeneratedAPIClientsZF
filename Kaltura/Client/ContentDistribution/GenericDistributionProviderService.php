@@ -41,6 +41,7 @@ class Kaltura_Client_ContentDistribution_GenericDistributionProviderService exte
 
 	/**
 	 * @return Kaltura_Client_ContentDistribution_Type_GenericDistributionProvider
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function add(Kaltura_Client_ContentDistribution_Type_GenericDistributionProvider $genericDistributionProvider)
 	{
@@ -59,6 +60,7 @@ class Kaltura_Client_ContentDistribution_GenericDistributionProviderService exte
 
 	/**
 	 * @return 
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function delete($id)
 	{
@@ -74,6 +76,7 @@ class Kaltura_Client_ContentDistribution_GenericDistributionProviderService exte
 
 	/**
 	 * @return Kaltura_Client_ContentDistribution_Type_GenericDistributionProvider
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function get($id)
 	{
@@ -92,6 +95,7 @@ class Kaltura_Client_ContentDistribution_GenericDistributionProviderService exte
 
 	/**
 	 * @return Kaltura_Client_ContentDistribution_Type_GenericDistributionProviderListResponse
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function listAction(Kaltura_Client_ContentDistribution_Type_GenericDistributionProviderFilter $filter = null, Kaltura_Client_Type_FilterPager $pager = null)
 	{
@@ -113,6 +117,7 @@ class Kaltura_Client_ContentDistribution_GenericDistributionProviderService exte
 
 	/**
 	 * @return Kaltura_Client_ContentDistribution_Type_GenericDistributionProvider
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function update($id, Kaltura_Client_ContentDistribution_Type_GenericDistributionProvider $genericDistributionProvider)
 	{

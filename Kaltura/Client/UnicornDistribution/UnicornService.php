@@ -41,6 +41,7 @@ class Kaltura_Client_UnicornDistribution_UnicornService extends Kaltura_Client_S
 
 	/**
 	 * @return 
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function notify($id)
 	{

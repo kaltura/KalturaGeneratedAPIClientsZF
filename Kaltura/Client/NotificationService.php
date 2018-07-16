@@ -41,6 +41,7 @@ class Kaltura_Client_NotificationService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return Kaltura_Client_Type_ClientNotification
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function getClientNotification($entryId, $type)
 	{

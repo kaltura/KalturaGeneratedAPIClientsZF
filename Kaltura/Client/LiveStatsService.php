@@ -41,6 +41,7 @@ class Kaltura_Client_LiveStatsService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return bool
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function collect(Kaltura_Client_Type_LiveStatsEvent $event)
 	{

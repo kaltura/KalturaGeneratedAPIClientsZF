@@ -41,6 +41,7 @@ class Kaltura_Client_FlavorAssetService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return Kaltura_Client_Type_FlavorAsset
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function add($entryId, Kaltura_Client_Type_FlavorAsset $flavorAsset)
 	{
@@ -60,6 +61,7 @@ class Kaltura_Client_FlavorAssetService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return 
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function convert($entryId, $flavorParamsId, $priority = 0)
 	{
@@ -77,6 +79,7 @@ class Kaltura_Client_FlavorAssetService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return 
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function delete($id)
 	{
@@ -92,6 +95,7 @@ class Kaltura_Client_FlavorAssetService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return 
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function deleteLocalContent($assetId)
 	{
@@ -107,6 +111,7 @@ class Kaltura_Client_FlavorAssetService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return Kaltura_Client_Type_FlavorAsset
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function export($assetId, $storageProfileId)
 	{
@@ -126,6 +131,7 @@ class Kaltura_Client_FlavorAssetService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return Kaltura_Client_Type_FlavorAsset
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function get($id)
 	{
@@ -144,6 +150,7 @@ class Kaltura_Client_FlavorAssetService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return array
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function getByEntryId($entryId)
 	{
@@ -164,6 +171,7 @@ class Kaltura_Client_FlavorAssetService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return string
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function getDownloadUrl($id, $useCdn = false)
 	{
@@ -182,6 +190,7 @@ class Kaltura_Client_FlavorAssetService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return array
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function getFlavorAssetsWithParams($entryId)
 	{
@@ -202,6 +211,7 @@ class Kaltura_Client_FlavorAssetService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return Kaltura_Client_Type_RemotePathListResponse
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function getRemotePaths($id)
 	{
@@ -220,6 +230,7 @@ class Kaltura_Client_FlavorAssetService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return string
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function getUrl($id, $storageId = null, $forceProxy = false, Kaltura_Client_Type_FlavorAssetUrlOptions $options = null)
 	{
@@ -241,6 +252,7 @@ class Kaltura_Client_FlavorAssetService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return file
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function getVolumeMap($flavorId)
 	{
@@ -256,6 +268,7 @@ class Kaltura_Client_FlavorAssetService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return array
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function getWebPlayableByEntryId($entryId)
 	{
@@ -276,6 +289,7 @@ class Kaltura_Client_FlavorAssetService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return Kaltura_Client_Type_FlavorAssetListResponse
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function listAction(Kaltura_Client_Type_AssetFilter $filter = null, Kaltura_Client_Type_FilterPager $pager = null)
 	{
@@ -297,6 +311,7 @@ class Kaltura_Client_FlavorAssetService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return 
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function reconvert($id)
 	{
@@ -312,6 +327,7 @@ class Kaltura_Client_FlavorAssetService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return string
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function serveAdStitchCmd($assetId, $ffprobeJson = null, $duration = null)
 	{
@@ -331,6 +347,7 @@ class Kaltura_Client_FlavorAssetService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return 
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function setAsSource($assetId)
 	{
@@ -346,6 +363,7 @@ class Kaltura_Client_FlavorAssetService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return Kaltura_Client_Type_FlavorAsset
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function setContent($id, Kaltura_Client_Type_ContentResource $contentResource)
 	{
@@ -365,6 +383,7 @@ class Kaltura_Client_FlavorAssetService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return Kaltura_Client_Type_FlavorAsset
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function update($id, Kaltura_Client_Type_FlavorAsset $flavorAsset)
 	{

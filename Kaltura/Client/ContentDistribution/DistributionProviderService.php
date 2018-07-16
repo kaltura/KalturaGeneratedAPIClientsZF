@@ -41,6 +41,7 @@ class Kaltura_Client_ContentDistribution_DistributionProviderService extends Kal
 
 	/**
 	 * @return Kaltura_Client_ContentDistribution_Type_DistributionProviderListResponse
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function listAction(Kaltura_Client_ContentDistribution_Type_DistributionProviderFilter $filter = null, Kaltura_Client_Type_FilterPager $pager = null)
 	{

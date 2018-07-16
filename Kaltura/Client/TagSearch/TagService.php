@@ -41,6 +41,7 @@ class Kaltura_Client_TagSearch_TagService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return int
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function deletePending()
 	{
@@ -57,6 +58,7 @@ class Kaltura_Client_TagSearch_TagService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return 
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function indexCategoryEntryTags($categoryId, $pcToDecrement, $pcToIncrement)
 	{
@@ -74,6 +76,7 @@ class Kaltura_Client_TagSearch_TagService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return Kaltura_Client_TagSearch_Type_TagListResponse
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function search(Kaltura_Client_TagSearch_Type_TagFilter $tagFilter, Kaltura_Client_Type_FilterPager $pager = null)
 	{

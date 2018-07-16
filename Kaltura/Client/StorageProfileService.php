@@ -41,6 +41,7 @@ class Kaltura_Client_StorageProfileService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return Kaltura_Client_Type_StorageProfile
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function add(Kaltura_Client_Type_StorageProfile $storageProfile)
 	{
@@ -59,6 +60,7 @@ class Kaltura_Client_StorageProfileService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return Kaltura_Client_Type_StorageProfile
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function get($storageProfileId)
 	{
@@ -77,6 +79,7 @@ class Kaltura_Client_StorageProfileService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return Kaltura_Client_Type_StorageProfileListResponse
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function listAction(Kaltura_Client_Type_StorageProfileFilter $filter = null, Kaltura_Client_Type_FilterPager $pager = null)
 	{
@@ -98,6 +101,7 @@ class Kaltura_Client_StorageProfileService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return Kaltura_Client_Type_StorageProfile
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function update($storageProfileId, Kaltura_Client_Type_StorageProfile $storageProfile)
 	{
@@ -117,6 +121,7 @@ class Kaltura_Client_StorageProfileService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return 
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function updateStatus($storageId, $status)
 	{

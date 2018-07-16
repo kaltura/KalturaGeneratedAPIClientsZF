@@ -41,6 +41,7 @@ class Kaltura_Client_Drm_DrmPolicyService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return Kaltura_Client_Drm_Type_DrmPolicy
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function add(Kaltura_Client_Drm_Type_DrmPolicy $drmPolicy)
 	{
@@ -59,6 +60,7 @@ class Kaltura_Client_Drm_DrmPolicyService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return Kaltura_Client_Drm_Type_DrmPolicy
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function delete($drmPolicyId)
 	{
@@ -77,6 +79,7 @@ class Kaltura_Client_Drm_DrmPolicyService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return Kaltura_Client_Drm_Type_DrmPolicy
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function get($drmPolicyId)
 	{
@@ -95,6 +98,7 @@ class Kaltura_Client_Drm_DrmPolicyService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return Kaltura_Client_Drm_Type_DrmPolicyListResponse
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function listAction(Kaltura_Client_Drm_Type_DrmPolicyFilter $filter = null, Kaltura_Client_Type_FilterPager $pager = null)
 	{
@@ -116,6 +120,7 @@ class Kaltura_Client_Drm_DrmPolicyService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return Kaltura_Client_Drm_Type_DrmPolicy
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function update($drmPolicyId, Kaltura_Client_Drm_Type_DrmPolicy $drmPolicy)
 	{

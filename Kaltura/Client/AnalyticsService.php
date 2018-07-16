@@ -41,6 +41,7 @@ class Kaltura_Client_AnalyticsService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return Kaltura_Client_Type_ReportResponse
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function query(Kaltura_Client_Type_AnalyticsFilter $filter, Kaltura_Client_Type_FilterPager $pager = null)
 	{

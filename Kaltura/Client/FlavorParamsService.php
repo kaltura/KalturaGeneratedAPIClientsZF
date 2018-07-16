@@ -41,6 +41,7 @@ class Kaltura_Client_FlavorParamsService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return Kaltura_Client_Type_FlavorParams
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function add(Kaltura_Client_Type_FlavorParams $flavorParams)
 	{
@@ -59,6 +60,7 @@ class Kaltura_Client_FlavorParamsService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return 
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function delete($id)
 	{
@@ -74,6 +76,7 @@ class Kaltura_Client_FlavorParamsService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return Kaltura_Client_Type_FlavorParams
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function get($id)
 	{
@@ -92,6 +95,7 @@ class Kaltura_Client_FlavorParamsService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return array
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function getByConversionProfileId($conversionProfileId)
 	{
@@ -112,6 +116,7 @@ class Kaltura_Client_FlavorParamsService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return Kaltura_Client_Type_FlavorParamsListResponse
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function listAction(Kaltura_Client_Type_FlavorParamsFilter $filter = null, Kaltura_Client_Type_FilterPager $pager = null)
 	{
@@ -133,6 +138,7 @@ class Kaltura_Client_FlavorParamsService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return Kaltura_Client_Type_FlavorParams
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function update($id, Kaltura_Client_Type_FlavorParams $flavorParams)
 	{

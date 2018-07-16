@@ -41,6 +41,7 @@ class Kaltura_Client_Like_LikeService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return bool
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function checkLikeExists($entryId, $userId = null)
 	{
@@ -59,6 +60,7 @@ class Kaltura_Client_Like_LikeService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return bool
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function like($entryId)
 	{
@@ -76,6 +78,7 @@ class Kaltura_Client_Like_LikeService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return Kaltura_Client_Like_Type_LikeListResponse
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function listAction(Kaltura_Client_Like_Type_LikeFilter $filter = null, Kaltura_Client_Type_FilterPager $pager = null)
 	{
@@ -97,6 +100,7 @@ class Kaltura_Client_Like_LikeService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return bool
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function unlike($entryId)
 	{

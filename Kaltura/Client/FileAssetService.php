@@ -41,6 +41,7 @@ class Kaltura_Client_FileAssetService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return Kaltura_Client_Type_FileAsset
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function add(Kaltura_Client_Type_FileAsset $fileAsset)
 	{
@@ -59,6 +60,7 @@ class Kaltura_Client_FileAssetService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return 
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function delete($id)
 	{
@@ -74,6 +76,7 @@ class Kaltura_Client_FileAssetService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return Kaltura_Client_Type_FileAsset
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function get($id)
 	{
@@ -92,6 +95,7 @@ class Kaltura_Client_FileAssetService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return Kaltura_Client_Type_FileAssetListResponse
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function listAction(Kaltura_Client_Type_FileAssetFilter $filter, Kaltura_Client_Type_FilterPager $pager = null)
 	{
@@ -112,6 +116,7 @@ class Kaltura_Client_FileAssetService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return file
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function serve($id)
 	{
@@ -127,6 +132,7 @@ class Kaltura_Client_FileAssetService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return Kaltura_Client_Type_FileAsset
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function setContent($id, Kaltura_Client_Type_ContentResource $contentResource)
 	{
@@ -146,6 +152,7 @@ class Kaltura_Client_FileAssetService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return Kaltura_Client_Type_FileAsset
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function update($id, Kaltura_Client_Type_FileAsset $fileAsset)
 	{

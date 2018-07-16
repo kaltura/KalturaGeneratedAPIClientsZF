@@ -41,6 +41,7 @@ class Kaltura_Client_CategoryUserService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return Kaltura_Client_Type_CategoryUser
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function activate($categoryId, $userId)
 	{
@@ -60,6 +61,7 @@ class Kaltura_Client_CategoryUserService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return Kaltura_Client_Type_CategoryUser
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function add(Kaltura_Client_Type_CategoryUser $categoryUser)
 	{
@@ -78,6 +80,7 @@ class Kaltura_Client_CategoryUserService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return Kaltura_Client_Type_BulkUpload
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function addFromBulkUpload($fileData, Kaltura_Client_Type_BulkUploadJobData $bulkUploadData = null, Kaltura_Client_Type_BulkUploadCategoryUserData $bulkUploadCategoryUserData = null)
 	{
@@ -101,6 +104,7 @@ class Kaltura_Client_CategoryUserService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return 
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function copyFromCategory($categoryId)
 	{
@@ -116,6 +120,7 @@ class Kaltura_Client_CategoryUserService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return Kaltura_Client_Type_CategoryUser
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function deactivate($categoryId, $userId)
 	{
@@ -135,6 +140,7 @@ class Kaltura_Client_CategoryUserService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return 
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function delete($categoryId, $userId)
 	{
@@ -151,6 +157,7 @@ class Kaltura_Client_CategoryUserService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return Kaltura_Client_Type_CategoryUser
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function get($categoryId, $userId)
 	{
@@ -170,6 +177,7 @@ class Kaltura_Client_CategoryUserService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return int
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function index($userId, $categoryId, $shouldUpdate = true)
 	{
@@ -189,6 +197,7 @@ class Kaltura_Client_CategoryUserService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return Kaltura_Client_Type_CategoryUserListResponse
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function listAction(Kaltura_Client_Type_CategoryUserFilter $filter = null, Kaltura_Client_Type_FilterPager $pager = null)
 	{
@@ -210,6 +219,7 @@ class Kaltura_Client_CategoryUserService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return Kaltura_Client_Type_CategoryUser
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function update($categoryId, $userId, Kaltura_Client_Type_CategoryUser $categoryUser, $override = false)
 	{

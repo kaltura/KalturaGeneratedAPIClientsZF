@@ -41,6 +41,7 @@ class Kaltura_Client_Attachment_AttachmentAssetService extends Kaltura_Client_Se
 
 	/**
 	 * @return Kaltura_Client_Attachment_Type_AttachmentAsset
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function add($entryId, Kaltura_Client_Attachment_Type_AttachmentAsset $attachmentAsset)
 	{
@@ -60,6 +61,7 @@ class Kaltura_Client_Attachment_AttachmentAssetService extends Kaltura_Client_Se
 
 	/**
 	 * @return 
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function delete($attachmentAssetId)
 	{
@@ -75,6 +77,7 @@ class Kaltura_Client_Attachment_AttachmentAssetService extends Kaltura_Client_Se
 
 	/**
 	 * @return Kaltura_Client_Attachment_Type_AttachmentAsset
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function get($attachmentAssetId)
 	{
@@ -93,6 +96,7 @@ class Kaltura_Client_Attachment_AttachmentAssetService extends Kaltura_Client_Se
 
 	/**
 	 * @return Kaltura_Client_Type_RemotePathListResponse
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function getRemotePaths($id)
 	{
@@ -111,6 +115,7 @@ class Kaltura_Client_Attachment_AttachmentAssetService extends Kaltura_Client_Se
 
 	/**
 	 * @return string
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function getUrl($id, $storageId = null)
 	{
@@ -129,6 +134,7 @@ class Kaltura_Client_Attachment_AttachmentAssetService extends Kaltura_Client_Se
 
 	/**
 	 * @return Kaltura_Client_Attachment_Type_AttachmentAssetListResponse
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function listAction(Kaltura_Client_Type_AssetFilter $filter = null, Kaltura_Client_Type_FilterPager $pager = null)
 	{
@@ -150,6 +156,7 @@ class Kaltura_Client_Attachment_AttachmentAssetService extends Kaltura_Client_Se
 
 	/**
 	 * @return file
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function serve($attachmentAssetId, Kaltura_Client_Attachment_Type_AttachmentServeOptions $serveOptions = null)
 	{
@@ -167,6 +174,7 @@ class Kaltura_Client_Attachment_AttachmentAssetService extends Kaltura_Client_Se
 
 	/**
 	 * @return Kaltura_Client_Attachment_Type_AttachmentAsset
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function setContent($id, Kaltura_Client_Type_ContentResource $contentResource)
 	{
@@ -186,6 +194,7 @@ class Kaltura_Client_Attachment_AttachmentAssetService extends Kaltura_Client_Se
 
 	/**
 	 * @return Kaltura_Client_Attachment_Type_AttachmentAsset
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function update($id, Kaltura_Client_Attachment_Type_AttachmentAsset $attachmentAsset)
 	{

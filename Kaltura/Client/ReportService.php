@@ -41,6 +41,7 @@ class Kaltura_Client_ReportService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return Kaltura_Client_Type_ReportResponse
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function execute($id, array $params = null)
 	{
@@ -64,6 +65,7 @@ class Kaltura_Client_ReportService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return array
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function getBaseTotal($reportType, Kaltura_Client_Type_ReportInputFilter $reportInputFilter, $objectIds = null)
 	{
@@ -86,6 +88,7 @@ class Kaltura_Client_ReportService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return file
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function getCsv($id, array $params = null)
 	{
@@ -106,6 +109,7 @@ class Kaltura_Client_ReportService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return file
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function getCsvFromStringParams($id, $params = null)
 	{
@@ -122,6 +126,7 @@ class Kaltura_Client_ReportService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return array
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function getGraphs($reportType, Kaltura_Client_Type_ReportInputFilter $reportInputFilter, $dimension = null, $objectIds = null)
 	{
@@ -145,6 +150,7 @@ class Kaltura_Client_ReportService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return Kaltura_Client_Type_ReportTable
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function getTable($reportType, Kaltura_Client_Type_ReportInputFilter $reportInputFilter, Kaltura_Client_Type_FilterPager $pager, $order = null, $objectIds = null)
 	{
@@ -167,6 +173,7 @@ class Kaltura_Client_ReportService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return Kaltura_Client_Type_ReportTotal
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function getTotal($reportType, Kaltura_Client_Type_ReportInputFilter $reportInputFilter, $objectIds = null)
 	{
@@ -187,6 +194,7 @@ class Kaltura_Client_ReportService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return string
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function getUrlForReportAsCsv($reportTitle, $reportText, $headers, $reportType, Kaltura_Client_Type_ReportInputFilter $reportInputFilter, $dimension = null, Kaltura_Client_Type_FilterPager $pager = null, $order = null, $objectIds = null)
 	{
@@ -213,6 +221,7 @@ class Kaltura_Client_ReportService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return string
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function serve($id)
 	{

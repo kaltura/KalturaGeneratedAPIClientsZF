@@ -41,6 +41,7 @@ class Kaltura_Client_CategoryService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return Kaltura_Client_Type_Category
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function add(Kaltura_Client_Type_Category $category)
 	{
@@ -59,6 +60,7 @@ class Kaltura_Client_CategoryService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return Kaltura_Client_Type_BulkUpload
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function addFromBulkUpload($fileData, Kaltura_Client_Type_BulkUploadJobData $bulkUploadData = null, Kaltura_Client_Type_BulkUploadCategoryData $bulkUploadCategoryData = null)
 	{
@@ -82,6 +84,7 @@ class Kaltura_Client_CategoryService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return 
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function delete($id, $moveEntriesToParentCategory = 1)
 	{
@@ -98,6 +101,7 @@ class Kaltura_Client_CategoryService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return Kaltura_Client_Type_Category
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function get($id)
 	{
@@ -116,6 +120,7 @@ class Kaltura_Client_CategoryService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return int
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function index($id, $shouldUpdate = true)
 	{
@@ -134,6 +139,7 @@ class Kaltura_Client_CategoryService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return Kaltura_Client_Type_CategoryListResponse
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function listAction(Kaltura_Client_Type_CategoryFilter $filter = null, Kaltura_Client_Type_FilterPager $pager = null)
 	{
@@ -155,6 +161,7 @@ class Kaltura_Client_CategoryService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return bool
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function move($categoryIds, $targetCategoryParentId)
 	{
@@ -173,6 +180,7 @@ class Kaltura_Client_CategoryService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return 
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function unlockCategories()
 	{
@@ -187,6 +195,7 @@ class Kaltura_Client_CategoryService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return Kaltura_Client_Type_Category
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function update($id, Kaltura_Client_Type_Category $category)
 	{

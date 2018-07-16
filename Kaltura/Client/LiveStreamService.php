@@ -41,6 +41,7 @@ class Kaltura_Client_LiveStreamService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return Kaltura_Client_Type_LiveStreamEntry
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function add(Kaltura_Client_Type_LiveStreamEntry $liveStreamEntry, $sourceType = null)
 	{
@@ -60,6 +61,7 @@ class Kaltura_Client_LiveStreamService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return Kaltura_Client_Type_LiveStreamEntry
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function addLiveStreamPushPublishConfiguration($entryId, $protocol, $url = null, Kaltura_Client_Type_LiveStreamConfiguration $liveStreamConfiguration = null)
 	{
@@ -82,6 +84,7 @@ class Kaltura_Client_LiveStreamService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return Kaltura_Client_Type_LiveEntry
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function appendRecording($entryId, $assetId, $mediaServerIndex, Kaltura_Client_Type_DataCenterContentResource $resource, $duration, $isLastChunk = false)
 	{
@@ -105,6 +108,7 @@ class Kaltura_Client_LiveStreamService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return Kaltura_Client_Type_LiveStreamEntry
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function authenticate($entryId, $token, $hostname = null, $mediaServerIndex = null, $applicationName = null)
 	{
@@ -127,6 +131,7 @@ class Kaltura_Client_LiveStreamService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return 
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function createPeriodicSyncPoints($entryId, $interval, $duration)
 	{
@@ -144,6 +149,7 @@ class Kaltura_Client_LiveStreamService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return Kaltura_Client_Type_LiveEntry
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function createRecordedEntry($entryId, $mediaServerIndex, $liveEntryStatus)
 	{
@@ -164,6 +170,7 @@ class Kaltura_Client_LiveStreamService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return 
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function delete($entryId)
 	{
@@ -179,6 +186,7 @@ class Kaltura_Client_LiveStreamService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return Kaltura_Client_Type_LiveStreamEntry
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function get($entryId, $version = -1)
 	{
@@ -198,6 +206,7 @@ class Kaltura_Client_LiveStreamService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return bool
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function isLive($id, $protocol)
 	{
@@ -216,6 +225,7 @@ class Kaltura_Client_LiveStreamService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return Kaltura_Client_Type_LiveStreamListResponse
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function listAction(Kaltura_Client_Type_LiveStreamEntryFilter $filter = null, Kaltura_Client_Type_FilterPager $pager = null)
 	{
@@ -237,6 +247,7 @@ class Kaltura_Client_LiveStreamService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return Kaltura_Client_Type_LiveEntry
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function regenerateStreamToken($entryId)
 	{
@@ -255,6 +266,7 @@ class Kaltura_Client_LiveStreamService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return Kaltura_Client_Type_LiveEntry
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function registerMediaServer($entryId, $hostname, $mediaServerIndex, $applicationName = null, $liveEntryStatus = 1, $shouldCreateRecordedEntry = true)
 	{
@@ -278,6 +290,7 @@ class Kaltura_Client_LiveStreamService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return Kaltura_Client_Type_LiveStreamEntry
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function removeLiveStreamPushPublishConfiguration($entryId, $protocol)
 	{
@@ -297,6 +310,7 @@ class Kaltura_Client_LiveStreamService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return Kaltura_Client_Type_LiveEntry
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function setRecordedContent($entryId, $mediaServerIndex, Kaltura_Client_Type_DataCenterContentResource $resource, $duration, $recordedEntryId = null, $flavorParamsId = null)
 	{
@@ -320,6 +334,7 @@ class Kaltura_Client_LiveStreamService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return Kaltura_Client_Type_LiveEntry
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function unregisterMediaServer($entryId, $hostname, $mediaServerIndex)
 	{
@@ -340,6 +355,7 @@ class Kaltura_Client_LiveStreamService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return Kaltura_Client_Type_LiveStreamEntry
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function update($entryId, Kaltura_Client_Type_LiveStreamEntry $liveStreamEntry)
 	{
@@ -359,6 +375,7 @@ class Kaltura_Client_LiveStreamService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return Kaltura_Client_Type_LiveStreamEntry
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function updateOfflineThumbnailFromUrl($entryId, $url)
 	{
@@ -378,6 +395,7 @@ class Kaltura_Client_LiveStreamService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return Kaltura_Client_Type_LiveStreamEntry
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function updateOfflineThumbnailJpeg($entryId, $fileData)
 	{
@@ -398,6 +416,7 @@ class Kaltura_Client_LiveStreamService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return 
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function validateRegisteredMediaServers($entryId)
 	{

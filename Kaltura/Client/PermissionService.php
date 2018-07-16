@@ -41,6 +41,7 @@ class Kaltura_Client_PermissionService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return Kaltura_Client_Type_Permission
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function add(Kaltura_Client_Type_Permission $permission)
 	{
@@ -59,6 +60,7 @@ class Kaltura_Client_PermissionService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return Kaltura_Client_Type_Permission
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function delete($permissionName)
 	{
@@ -77,6 +79,7 @@ class Kaltura_Client_PermissionService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return Kaltura_Client_Type_Permission
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function get($permissionName)
 	{
@@ -95,6 +98,7 @@ class Kaltura_Client_PermissionService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return string
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function getCurrentPermissions()
 	{
@@ -111,6 +115,7 @@ class Kaltura_Client_PermissionService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return Kaltura_Client_Type_PermissionListResponse
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function listAction(Kaltura_Client_Type_PermissionFilter $filter = null, Kaltura_Client_Type_FilterPager $pager = null)
 	{
@@ -132,6 +137,7 @@ class Kaltura_Client_PermissionService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return Kaltura_Client_Type_Permission
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function update($permissionName, Kaltura_Client_Type_Permission $permission)
 	{

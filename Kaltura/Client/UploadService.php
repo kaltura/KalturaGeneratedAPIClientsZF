@@ -41,6 +41,7 @@ class Kaltura_Client_UploadService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return Kaltura_Client_Type_UploadResponse
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function getUploadedFileTokenByFileName($fileName)
 	{
@@ -59,6 +60,7 @@ class Kaltura_Client_UploadService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return string
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function upload($fileData)
 	{

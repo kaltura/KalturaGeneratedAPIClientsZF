@@ -41,6 +41,7 @@ class Kaltura_Client_DataService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return Kaltura_Client_Type_DataEntry
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function add(Kaltura_Client_Type_DataEntry $dataEntry)
 	{
@@ -59,6 +60,7 @@ class Kaltura_Client_DataService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return string
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function addContent($entryId, Kaltura_Client_Type_GenericDataCenterContentResource $resource)
 	{
@@ -77,6 +79,7 @@ class Kaltura_Client_DataService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return 
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function delete($entryId)
 	{
@@ -92,6 +95,7 @@ class Kaltura_Client_DataService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return Kaltura_Client_Type_DataEntry
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function get($entryId, $version = -1)
 	{
@@ -111,6 +115,7 @@ class Kaltura_Client_DataService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return Kaltura_Client_Type_DataListResponse
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function listAction(Kaltura_Client_Type_DataEntryFilter $filter = null, Kaltura_Client_Type_FilterPager $pager = null)
 	{
@@ -132,6 +137,7 @@ class Kaltura_Client_DataService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return file
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function serve($entryId, $version = -1, $forceProxy = false)
 	{
@@ -149,6 +155,7 @@ class Kaltura_Client_DataService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return Kaltura_Client_Type_DataEntry
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function update($entryId, Kaltura_Client_Type_DataEntry $documentEntry)
 	{

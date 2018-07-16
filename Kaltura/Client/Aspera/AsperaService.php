@@ -41,6 +41,7 @@ class Kaltura_Client_Aspera_AsperaService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return string
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function getFaspUrl($flavorAssetId)
 	{

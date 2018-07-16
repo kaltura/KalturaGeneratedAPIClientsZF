@@ -41,6 +41,7 @@ class Kaltura_Client_CaptionSearch_CaptionAssetItemService extends Kaltura_Clien
 
 	/**
 	 * @return Kaltura_Client_CaptionSearch_Type_CaptionAssetItemListResponse
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function listAction($captionAssetId, Kaltura_Client_CaptionSearch_Type_CaptionAssetItemFilter $captionAssetItemFilter = null, Kaltura_Client_Type_FilterPager $captionAssetItemPager = null)
 	{
@@ -63,6 +64,7 @@ class Kaltura_Client_CaptionSearch_CaptionAssetItemService extends Kaltura_Clien
 
 	/**
 	 * @return Kaltura_Client_CaptionSearch_Type_CaptionAssetItemListResponse
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function search(Kaltura_Client_Type_BaseEntryFilter $entryFilter = null, Kaltura_Client_CaptionSearch_Type_CaptionAssetItemFilter $captionAssetItemFilter = null, Kaltura_Client_Type_FilterPager $captionAssetItemPager = null)
 	{
@@ -86,6 +88,7 @@ class Kaltura_Client_CaptionSearch_CaptionAssetItemService extends Kaltura_Clien
 
 	/**
 	 * @return Kaltura_Client_Type_BaseEntryListResponse
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function searchEntries(Kaltura_Client_Type_BaseEntryFilter $entryFilter = null, Kaltura_Client_CaptionSearch_Type_CaptionAssetItemFilter $captionAssetItemFilter = null, Kaltura_Client_Type_FilterPager $captionAssetItemPager = null)
 	{

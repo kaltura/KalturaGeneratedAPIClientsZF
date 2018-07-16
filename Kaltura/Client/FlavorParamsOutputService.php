@@ -41,6 +41,7 @@ class Kaltura_Client_FlavorParamsOutputService extends Kaltura_Client_ServiceBas
 
 	/**
 	 * @return Kaltura_Client_Type_FlavorParamsOutput
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function get($id)
 	{
@@ -59,6 +60,7 @@ class Kaltura_Client_FlavorParamsOutputService extends Kaltura_Client_ServiceBas
 
 	/**
 	 * @return Kaltura_Client_Type_FlavorParamsOutputListResponse
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function listAction(Kaltura_Client_Type_FlavorParamsOutputFilter $filter = null, Kaltura_Client_Type_FilterPager $pager = null)
 	{

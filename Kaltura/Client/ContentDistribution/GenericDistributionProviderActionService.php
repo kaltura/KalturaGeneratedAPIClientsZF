@@ -41,6 +41,7 @@ class Kaltura_Client_ContentDistribution_GenericDistributionProviderActionServic
 
 	/**
 	 * @return Kaltura_Client_ContentDistribution_Type_GenericDistributionProviderAction
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function add(Kaltura_Client_ContentDistribution_Type_GenericDistributionProviderAction $genericDistributionProviderAction)
 	{
@@ -59,6 +60,7 @@ class Kaltura_Client_ContentDistribution_GenericDistributionProviderActionServic
 
 	/**
 	 * @return Kaltura_Client_ContentDistribution_Type_GenericDistributionProviderAction
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function addMrssTransform($id, $xslData)
 	{
@@ -78,6 +80,7 @@ class Kaltura_Client_ContentDistribution_GenericDistributionProviderActionServic
 
 	/**
 	 * @return Kaltura_Client_ContentDistribution_Type_GenericDistributionProviderAction
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function addMrssTransformFromFile($id, $xslFile)
 	{
@@ -98,6 +101,7 @@ class Kaltura_Client_ContentDistribution_GenericDistributionProviderActionServic
 
 	/**
 	 * @return Kaltura_Client_ContentDistribution_Type_GenericDistributionProviderAction
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function addMrssValidate($id, $xsdData)
 	{
@@ -117,6 +121,7 @@ class Kaltura_Client_ContentDistribution_GenericDistributionProviderActionServic
 
 	/**
 	 * @return Kaltura_Client_ContentDistribution_Type_GenericDistributionProviderAction
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function addMrssValidateFromFile($id, $xsdFile)
 	{
@@ -137,6 +142,7 @@ class Kaltura_Client_ContentDistribution_GenericDistributionProviderActionServic
 
 	/**
 	 * @return Kaltura_Client_ContentDistribution_Type_GenericDistributionProviderAction
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function addResultsTransform($id, $transformData)
 	{
@@ -156,6 +162,7 @@ class Kaltura_Client_ContentDistribution_GenericDistributionProviderActionServic
 
 	/**
 	 * @return Kaltura_Client_ContentDistribution_Type_GenericDistributionProviderAction
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function addResultsTransformFromFile($id, $transformFile)
 	{
@@ -176,6 +183,7 @@ class Kaltura_Client_ContentDistribution_GenericDistributionProviderActionServic
 
 	/**
 	 * @return 
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function delete($id)
 	{
@@ -191,6 +199,7 @@ class Kaltura_Client_ContentDistribution_GenericDistributionProviderActionServic
 
 	/**
 	 * @return 
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function deleteByProviderId($genericDistributionProviderId, $actionType)
 	{
@@ -207,6 +216,7 @@ class Kaltura_Client_ContentDistribution_GenericDistributionProviderActionServic
 
 	/**
 	 * @return Kaltura_Client_ContentDistribution_Type_GenericDistributionProviderAction
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function get($id)
 	{
@@ -225,6 +235,7 @@ class Kaltura_Client_ContentDistribution_GenericDistributionProviderActionServic
 
 	/**
 	 * @return Kaltura_Client_ContentDistribution_Type_GenericDistributionProviderAction
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function getByProviderId($genericDistributionProviderId, $actionType)
 	{
@@ -244,6 +255,7 @@ class Kaltura_Client_ContentDistribution_GenericDistributionProviderActionServic
 
 	/**
 	 * @return Kaltura_Client_ContentDistribution_Type_GenericDistributionProviderActionListResponse
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function listAction(Kaltura_Client_ContentDistribution_Type_GenericDistributionProviderActionFilter $filter = null, Kaltura_Client_Type_FilterPager $pager = null)
 	{
@@ -265,6 +277,7 @@ class Kaltura_Client_ContentDistribution_GenericDistributionProviderActionServic
 
 	/**
 	 * @return Kaltura_Client_ContentDistribution_Type_GenericDistributionProviderAction
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function update($id, Kaltura_Client_ContentDistribution_Type_GenericDistributionProviderAction $genericDistributionProviderAction)
 	{
@@ -284,6 +297,7 @@ class Kaltura_Client_ContentDistribution_GenericDistributionProviderActionServic
 
 	/**
 	 * @return Kaltura_Client_ContentDistribution_Type_GenericDistributionProviderAction
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function updateByProviderId($genericDistributionProviderId, $actionType, Kaltura_Client_ContentDistribution_Type_GenericDistributionProviderAction $genericDistributionProviderAction)
 	{

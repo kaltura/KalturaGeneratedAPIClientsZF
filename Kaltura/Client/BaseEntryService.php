@@ -41,6 +41,7 @@ class Kaltura_Client_BaseEntryService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return Kaltura_Client_Type_BaseEntry
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function add(Kaltura_Client_Type_BaseEntry $entry, $type = null)
 	{
@@ -60,6 +61,7 @@ class Kaltura_Client_BaseEntryService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return Kaltura_Client_Type_BaseEntry
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function addContent($entryId, Kaltura_Client_Type_Resource $resource)
 	{
@@ -79,6 +81,7 @@ class Kaltura_Client_BaseEntryService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return Kaltura_Client_Type_BaseEntry
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function addFromUploadedFile(Kaltura_Client_Type_BaseEntry $entry, $uploadTokenId, $type = null)
 	{
@@ -99,6 +102,7 @@ class Kaltura_Client_BaseEntryService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return 
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function anonymousRank($entryId, $rank)
 	{
@@ -115,6 +119,7 @@ class Kaltura_Client_BaseEntryService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return 
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function approve($entryId)
 	{
@@ -130,6 +135,7 @@ class Kaltura_Client_BaseEntryService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return Kaltura_Client_Type_BaseEntry
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function cloneAction($entryId, array $cloneOptions = null)
 	{
@@ -153,6 +159,7 @@ class Kaltura_Client_BaseEntryService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return int
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function count(Kaltura_Client_Type_BaseEntryFilter $filter = null)
 	{
@@ -171,6 +178,7 @@ class Kaltura_Client_BaseEntryService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return 
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function delete($entryId)
 	{
@@ -186,6 +194,7 @@ class Kaltura_Client_BaseEntryService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return Kaltura_Client_Type_BaseEntry
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function export($entryId, $storageProfileId)
 	{
@@ -205,6 +214,7 @@ class Kaltura_Client_BaseEntryService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return 
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function flag(Kaltura_Client_Type_ModerationFlag $moderationFlag)
 	{
@@ -220,6 +230,7 @@ class Kaltura_Client_BaseEntryService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return Kaltura_Client_Type_BaseEntry
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function get($entryId, $version = -1)
 	{
@@ -239,6 +250,7 @@ class Kaltura_Client_BaseEntryService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return array
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function getByIds($entryIds)
 	{
@@ -259,6 +271,7 @@ class Kaltura_Client_BaseEntryService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return Kaltura_Client_Type_EntryContextDataResult
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function getContextData($entryId, Kaltura_Client_Type_EntryContextDataParams $contextDataParams)
 	{
@@ -278,6 +291,7 @@ class Kaltura_Client_BaseEntryService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return Kaltura_Client_Type_PlaybackContext
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function getPlaybackContext($entryId, Kaltura_Client_Type_PlaybackContextOptions $contextDataParams)
 	{
@@ -297,6 +311,7 @@ class Kaltura_Client_BaseEntryService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return Kaltura_Client_Type_RemotePathListResponse
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function getRemotePaths($entryId)
 	{
@@ -315,6 +330,7 @@ class Kaltura_Client_BaseEntryService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return int
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function index($id, $shouldUpdate = true)
 	{
@@ -333,6 +349,7 @@ class Kaltura_Client_BaseEntryService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return Kaltura_Client_Type_BaseEntryListResponse
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function listAction(Kaltura_Client_Type_BaseEntryFilter $filter = null, Kaltura_Client_Type_FilterPager $pager = null)
 	{
@@ -354,6 +371,7 @@ class Kaltura_Client_BaseEntryService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return Kaltura_Client_Type_BaseEntryListResponse
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function listByReferenceId($refId, Kaltura_Client_Type_FilterPager $pager = null)
 	{
@@ -374,6 +392,7 @@ class Kaltura_Client_BaseEntryService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return Kaltura_Client_Type_ModerationFlagListResponse
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function listFlags($entryId, Kaltura_Client_Type_FilterPager $pager = null)
 	{
@@ -394,6 +413,7 @@ class Kaltura_Client_BaseEntryService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return 
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function reject($entryId)
 	{
@@ -409,6 +429,7 @@ class Kaltura_Client_BaseEntryService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return Kaltura_Client_Type_BaseEntry
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function update($entryId, Kaltura_Client_Type_BaseEntry $baseEntry)
 	{
@@ -428,6 +449,7 @@ class Kaltura_Client_BaseEntryService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return Kaltura_Client_Type_BaseEntry
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function updateContent($entryId, Kaltura_Client_Type_Resource $resource, $conversionProfileId = null, Kaltura_Client_Type_EntryReplacementOptions $advancedOptions = null)
 	{
@@ -450,6 +472,7 @@ class Kaltura_Client_BaseEntryService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return Kaltura_Client_Type_BaseEntry
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function updateThumbnailFromSourceEntry($entryId, $sourceEntryId, $timeOffset)
 	{
@@ -470,6 +493,7 @@ class Kaltura_Client_BaseEntryService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return Kaltura_Client_Type_BaseEntry
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function updateThumbnailFromUrl($entryId, $url)
 	{
@@ -489,6 +513,7 @@ class Kaltura_Client_BaseEntryService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return Kaltura_Client_Type_BaseEntry
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function updateThumbnailJpeg($entryId, $fileData)
 	{
@@ -509,6 +534,7 @@ class Kaltura_Client_BaseEntryService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return string
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function upload($fileData)
 	{

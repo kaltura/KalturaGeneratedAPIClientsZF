@@ -41,6 +41,7 @@ class Kaltura_Client_CategoryEntryService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return 
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function activate($entryId, $categoryId)
 	{
@@ -57,6 +58,7 @@ class Kaltura_Client_CategoryEntryService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return Kaltura_Client_Type_CategoryEntry
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function add(Kaltura_Client_Type_CategoryEntry $categoryEntry)
 	{
@@ -75,6 +77,7 @@ class Kaltura_Client_CategoryEntryService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return Kaltura_Client_Type_BulkUpload
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function addFromBulkUpload(Kaltura_Client_BulkUpload_Type_BulkServiceData $bulkUploadData, Kaltura_Client_Type_BulkUploadCategoryEntryData $bulkUploadCategoryEntryData = null)
 	{
@@ -95,6 +98,7 @@ class Kaltura_Client_CategoryEntryService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return 
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function delete($entryId, $categoryId)
 	{
@@ -111,6 +115,7 @@ class Kaltura_Client_CategoryEntryService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return int
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function index($entryId, $categoryId, $shouldUpdate = true)
 	{
@@ -130,6 +135,7 @@ class Kaltura_Client_CategoryEntryService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return Kaltura_Client_Type_CategoryEntryListResponse
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function listAction(Kaltura_Client_Type_CategoryEntryFilter $filter = null, Kaltura_Client_Type_FilterPager $pager = null)
 	{
@@ -151,6 +157,7 @@ class Kaltura_Client_CategoryEntryService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return 
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function reject($entryId, $categoryId)
 	{
@@ -167,6 +174,7 @@ class Kaltura_Client_CategoryEntryService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return 
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function syncPrivacyContext($entryId, $categoryId)
 	{

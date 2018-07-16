@@ -41,6 +41,7 @@ class Kaltura_Client_EntryServerNodeService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return Kaltura_Client_Type_EntryServerNode
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function get($id)
 	{
@@ -59,6 +60,7 @@ class Kaltura_Client_EntryServerNodeService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return Kaltura_Client_Type_EntryServerNodeListResponse
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function listAction(Kaltura_Client_Type_EntryServerNodeFilter $filter = null, Kaltura_Client_Type_FilterPager $pager = null)
 	{
@@ -80,6 +82,7 @@ class Kaltura_Client_EntryServerNodeService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return Kaltura_Client_Type_EntryServerNode
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function update($id, Kaltura_Client_Type_EntryServerNode $entryServerNode)
 	{
@@ -99,6 +102,7 @@ class Kaltura_Client_EntryServerNodeService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return Kaltura_Client_Type_EntryServerNode
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function updateStatus($id, $status)
 	{
@@ -118,6 +122,7 @@ class Kaltura_Client_EntryServerNodeService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return 
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function validateRegisteredEntryServerNode($id)
 	{

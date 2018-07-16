@@ -41,6 +41,7 @@ class Kaltura_Client_Metadata_MetadataService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return Kaltura_Client_Metadata_Type_Metadata
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function add($metadataProfileId, $objectType, $objectId, $xmlData)
 	{
@@ -62,6 +63,7 @@ class Kaltura_Client_Metadata_MetadataService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return Kaltura_Client_Metadata_Type_Metadata
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function addFromBulk($metadataProfileId, $objectType, $objectId, $url)
 	{
@@ -83,6 +85,7 @@ class Kaltura_Client_Metadata_MetadataService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return Kaltura_Client_Metadata_Type_Metadata
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function addFromFile($metadataProfileId, $objectType, $objectId, $xmlFile)
 	{
@@ -105,6 +108,7 @@ class Kaltura_Client_Metadata_MetadataService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return Kaltura_Client_Metadata_Type_Metadata
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function addFromUrl($metadataProfileId, $objectType, $objectId, $url)
 	{
@@ -126,6 +130,7 @@ class Kaltura_Client_Metadata_MetadataService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return 
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function delete($id)
 	{
@@ -141,6 +146,7 @@ class Kaltura_Client_Metadata_MetadataService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return Kaltura_Client_Metadata_Type_Metadata
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function get($id)
 	{
@@ -159,6 +165,7 @@ class Kaltura_Client_Metadata_MetadataService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return int
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function index($id, $shouldUpdate)
 	{
@@ -177,6 +184,7 @@ class Kaltura_Client_Metadata_MetadataService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return 
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function invalidate($id, $version = null)
 	{
@@ -193,6 +201,7 @@ class Kaltura_Client_Metadata_MetadataService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return Kaltura_Client_Metadata_Type_MetadataListResponse
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function listAction(Kaltura_Client_Metadata_Type_MetadataFilter $filter = null, Kaltura_Client_Type_FilterPager $pager = null)
 	{
@@ -214,6 +223,7 @@ class Kaltura_Client_Metadata_MetadataService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return file
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function serve($id)
 	{
@@ -229,6 +239,7 @@ class Kaltura_Client_Metadata_MetadataService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return Kaltura_Client_Metadata_Type_Metadata
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function update($id, $xmlData = null, $version = null)
 	{
@@ -249,6 +260,7 @@ class Kaltura_Client_Metadata_MetadataService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return Kaltura_Client_Metadata_Type_Metadata
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function updateFromFile($id, $xmlFile = null)
 	{
@@ -269,6 +281,7 @@ class Kaltura_Client_Metadata_MetadataService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return Kaltura_Client_Metadata_Type_Metadata
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function updateFromXSL($id, $xslFile)
 	{

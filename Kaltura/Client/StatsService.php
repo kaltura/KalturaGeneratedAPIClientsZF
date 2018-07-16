@@ -41,6 +41,7 @@ class Kaltura_Client_StatsService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return bool
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function collect(Kaltura_Client_Type_StatsEvent $event)
 	{
@@ -58,6 +59,7 @@ class Kaltura_Client_StatsService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return 
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function kmcCollect(Kaltura_Client_Type_StatsKmcEvent $kmcEvent)
 	{
@@ -73,6 +75,7 @@ class Kaltura_Client_StatsService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return 
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function reportDeviceCapabilities($data)
 	{
@@ -88,6 +91,7 @@ class Kaltura_Client_StatsService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return 
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function reportError($errorCode, $errorMessage)
 	{
@@ -104,6 +108,7 @@ class Kaltura_Client_StatsService extends Kaltura_Client_ServiceBase
 
 	/**
 	 * @return Kaltura_Client_Type_CEError
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function reportKceError(Kaltura_Client_Type_CEError $kalturaCEError)
 	{

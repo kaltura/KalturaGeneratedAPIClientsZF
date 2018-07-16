@@ -41,6 +41,7 @@ class Kaltura_Client_Drm_DrmLicenseAccessService extends Kaltura_Client_ServiceB
 
 	/**
 	 * @return Kaltura_Client_Drm_Type_DrmLicenseAccessDetails
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function getAccess($entryId, $flavorIds, $referrer)
 	{
