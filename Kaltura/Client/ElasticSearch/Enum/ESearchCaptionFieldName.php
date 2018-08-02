@@ -35,6 +35,8 @@ class Kaltura_Client_ElasticSearch_Enum_ESearchCaptionFieldName extends Kaltura_
 {
 	const CONTENT = "content";
 	const END_TIME = "end_time";
+	const LABEL = "label";
+	const LANGUAGE = "language";
 	const START_TIME = "start_time";
 }
 
