@@ -119,7 +119,7 @@ class Kaltura_Client_AppTokenService extends Kaltura_Client_ServiceBase
 	 * @return Kaltura_Client_Type_SessionInfo
 	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
-	function startSession($id, $tokenHash, $userId = null, $type = null, $expiry = null)
+	function startSession($id, $tokenHash, $userId = null, $type = null, $expiry = null, $sessionPrivileges = null)
 	{
 		$kparams = array();
 		$this->client->addParam($kparams, "id", $id);
@@ -127,6 +127,7 @@ class Kaltura_Client_AppTokenService extends Kaltura_Client_ServiceBase
 		$this->client->addParam($kparams, "userId", $userId);
 		$this->client->addParam($kparams, "type", $type);
 		$this->client->addParam($kparams, "expiry", $expiry);
+		$this->client->addParam($kparams, "sessionPrivileges", $sessionPrivileges);
 		$this->client->queueServiceActionCall("apptoken", "startSession", "KalturaSessionInfo", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();

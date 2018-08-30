@@ -449,6 +449,7 @@ class Kaltura_Client_TypeMap
 		'KalturaESearchAbstractCategoryItem' => 'Kaltura_Client_ElasticSearch_Type_ESearchAbstractCategoryItem',
 		'KalturaESearchAbstractEntryItem' => 'Kaltura_Client_ElasticSearch_Type_ESearchAbstractEntryItem',
 		'KalturaESearchAbstractUserItem' => 'Kaltura_Client_ElasticSearch_Type_ESearchAbstractUserItem',
+		'KalturaESearchBaseFilter' => 'Kaltura_Client_ElasticSearch_Type_ESearchBaseFilter',
 		'KalturaESearchBaseItem' => 'Kaltura_Client_ElasticSearch_Type_ESearchBaseItem',
 		'KalturaESearchCaptionItem' => 'Kaltura_Client_ElasticSearch_Type_ESearchCaptionItem',
 		'KalturaESearchCaptionItemData' => 'Kaltura_Client_ElasticSearch_Type_ESearchCaptionItemData',
