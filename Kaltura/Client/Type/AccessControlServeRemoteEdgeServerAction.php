@@ -47,6 +47,8 @@ class Kaltura_Client_Type_AccessControlServeRemoteEdgeServerAction extends Kaltu
 		
 		if(count($xml->edgeServerIds))
 			$this->edgeServerIds = (string)$xml->edgeServerIds;
+		if(count($xml->seamlessFallbackEnabled))
+			$this->seamlessFallbackEnabled = (int)$xml->seamlessFallbackEnabled;
 	}
 	/**
 	 * Comma separated list of edge servers playBack should be done from
@@ -54,6 +56,13 @@ class Kaltura_Client_Type_AccessControlServeRemoteEdgeServerAction extends Kaltu
 	 * @var string
 	 */
 	public $edgeServerIds = null;
+
+	/**
+	 * 
+	 *
+	 * @var Kaltura_Client_Enum_NullableBoolean
+	 */
+	public $seamlessFallbackEnabled = null;
 
 
 }

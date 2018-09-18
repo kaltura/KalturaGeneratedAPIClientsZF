@@ -37,5 +37,6 @@ class Kaltura_Client_Enum_ServerNodeStatus extends Kaltura_Client_EnumBase
 	const DISABLED = 2;
 	const DELETED = 3;
 	const NOT_REGISTERED = 4;
+	const NOT_HEALTHY = 5;
 }
 

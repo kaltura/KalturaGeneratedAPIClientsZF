@@ -132,6 +132,27 @@ class Kaltura_Client_ServerNodeService extends Kaltura_Client_ServiceBase
 	}
 
 	/**
+	 * @return string
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
+	 */
+	function getFullPath($hostName, $protocol = "http", $deliveryFormat = null, $deliveryType = null)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "hostName", $hostName);
+		$this->client->addParam($kparams, "protocol", $protocol);
+		$this->client->addParam($kparams, "deliveryFormat", $deliveryFormat);
+		$this->client->addParam($kparams, "deliveryType", $deliveryType);
+		$this->client->queueServiceActionCall("servernode", "getFullPath", null, $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultXml = $this->client->doQueue();
+		$resultXmlObject = new \SimpleXMLElement($resultXml);
+		$this->client->checkIfError($resultXmlObject->result);
+		$resultObject = (string)Kaltura_Client_ParseUtils::unmarshalSimpleType($resultXmlObject->result);
+		return $resultObject;
+	}
+
+	/**
 	 * @return Kaltura_Client_Type_ServerNodeListResponse
 	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
@@ -176,12 +197,13 @@ class Kaltura_Client_ServerNodeService extends Kaltura_Client_ServiceBase
 	 * @return Kaltura_Client_Type_ServerNode
 	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
-	function reportStatus($hostName, Kaltura_Client_Type_ServerNode $serverNode = null)
+	function reportStatus($hostName, Kaltura_Client_Type_ServerNode $serverNode = null, $serverNodeStatus = 1)
 	{
 		$kparams = array();
 		$this->client->addParam($kparams, "hostName", $hostName);
 		if ($serverNode !== null)
 			$this->client->addParam($kparams, "serverNode", $serverNode->toParams());
+		$this->client->addParam($kparams, "serverNodeStatus", $serverNodeStatus);
 		$this->client->queueServiceActionCall("servernode", "reportStatus", "KalturaServerNode", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
