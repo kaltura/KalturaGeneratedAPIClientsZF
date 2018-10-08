@@ -57,6 +57,8 @@ class Kaltura_Client_Type_CaptureThumbJobData extends Kaltura_Client_Type_JobDat
 			$this->thumbAssetId = (string)$xml->thumbAssetId;
 		if(count($xml->srcAssetId))
 			$this->srcAssetId = (string)$xml->srcAssetId;
+		if(count($xml->srcAssetEncryptionKey))
+			$this->srcAssetEncryptionKey = (string)$xml->srcAssetEncryptionKey;
 		if(count($xml->srcAssetType))
 			$this->srcAssetType = (string)$xml->srcAssetType;
 		if(count($xml->thumbPath))
@@ -103,6 +105,13 @@ class Kaltura_Client_Type_CaptureThumbJobData extends Kaltura_Client_Type_JobDat
 	 * @var string
 	 */
 	public $srcAssetId = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $srcAssetEncryptionKey = null;
 
 	/**
 	 * 

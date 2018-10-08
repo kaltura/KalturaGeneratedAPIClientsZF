@@ -47,6 +47,8 @@ class Kaltura_Client_Type_PostConvertJobData extends Kaltura_Client_Type_Convart
 		
 		if(count($xml->flavorAssetId))
 			$this->flavorAssetId = (string)$xml->flavorAssetId;
+		if(count($xml->flavorAssetEncryptionKey))
+			$this->flavorAssetEncryptionKey = (string)$xml->flavorAssetEncryptionKey;
 		if(count($xml->createThumb))
 		{
 			if(!empty($xml->createThumb) && ((int) $xml->createThumb === 1 || strtolower((string)$xml->createThumb) === 'true'))
@@ -71,6 +73,13 @@ class Kaltura_Client_Type_PostConvertJobData extends Kaltura_Client_Type_Convart
 	 * @var string
 	 */
 	public $flavorAssetId = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $flavorAssetEncryptionKey = null;
 
 	/**
 	 * Indicates if a thumbnail should be created
