@@ -73,6 +73,8 @@ class Kaltura_Client_Type_BulkUploadJobData extends Kaltura_Client_Type_JobData
 			$this->emailRecipients = (string)$xml->emailRecipients;
 		if(count($xml->numOfErrorObjects))
 			$this->numOfErrorObjects = (int)$xml->numOfErrorObjects;
+		if(count($xml->privileges))
+			$this->privileges = (string)$xml->privileges;
 	}
 	/**
 	 * 
@@ -182,6 +184,13 @@ class Kaltura_Client_Type_BulkUploadJobData extends Kaltura_Client_Type_JobData
 	 * @var int
 	 */
 	public $numOfErrorObjects = null;
+
+	/**
+	 * privileges for the job
+	 *
+	 * @var string
+	 */
+	public $privileges = null;
 
 
 }
