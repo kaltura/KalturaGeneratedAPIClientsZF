@@ -31,7 +31,7 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Type_DropFolderXmlBulkUploadJobData extends Kaltura_Client_BulkUploadXml_Type_BulkUploadXmlJobData
+class Kaltura_Client_DropFolderXmlBulkUpload_Type_DropFolderXmlBulkUploadJobData extends Kaltura_Client_BulkUploadXml_Type_BulkUploadXmlJobData
 {
 	public function getKalturaObjectType()
 	{
