@@ -43,6 +43,7 @@ class Kaltura_Client_ElasticSearch_Enum_ESearchUserFieldName extends Kaltura_Cli
 	const SCREEN_NAME = "screen_name";
 	const TAGS = "tags";
 	const UPDATED_AT = "updated_at";
+	const USER_ID = "user_id";
 	const TYPE = "user_type";
 }
 
