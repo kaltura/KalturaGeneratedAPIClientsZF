@@ -69,6 +69,8 @@ class Kaltura_Client_Type_ReportInputFilter extends Kaltura_Client_Type_ReportIn
 			$this->customVar2In = (string)$xml->customVar2In;
 		if(count($xml->customVar3In))
 			$this->customVar3In = (string)$xml->customVar3In;
+		if(count($xml->devicesIn))
+			$this->devicesIn = (string)$xml->devicesIn;
 		if(count($xml->timeZoneOffset))
 			$this->timeZoneOffset = (int)$xml->timeZoneOffset;
 		if(count($xml->interval))
@@ -122,6 +124,13 @@ class Kaltura_Client_Type_ReportInputFilter extends Kaltura_Client_Type_ReportIn
 	 * @var string
 	 */
 	public $customVar3In = null;
+
+	/**
+	 * Filter by device
+	 *
+	 * @var string
+	 */
+	public $devicesIn = null;
 
 	/**
 	 * Time zone offset in minutes
