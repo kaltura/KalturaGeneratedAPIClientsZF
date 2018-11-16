@@ -71,6 +71,10 @@ class Kaltura_Client_Type_ReportInputFilter extends Kaltura_Client_Type_ReportIn
 			$this->customVar3In = (string)$xml->customVar3In;
 		if(count($xml->devicesIn))
 			$this->devicesIn = (string)$xml->devicesIn;
+		if(count($xml->countriesIn))
+			$this->countriesIn = (string)$xml->countriesIn;
+		if(count($xml->regionsIn))
+			$this->regionsIn = (string)$xml->regionsIn;
 		if(count($xml->timeZoneOffset))
 			$this->timeZoneOffset = (int)$xml->timeZoneOffset;
 		if(count($xml->interval))
@@ -131,6 +135,20 @@ class Kaltura_Client_Type_ReportInputFilter extends Kaltura_Client_Type_ReportIn
 	 * @var string
 	 */
 	public $devicesIn = null;
+
+	/**
+	 * Filter by country
+	 *
+	 * @var string
+	 */
+	public $countriesIn = null;
+
+	/**
+	 * Filter by region
+	 *
+	 * @var string
+	 */
+	public $regionsIn = null;
 
 	/**
 	 * Time zone offset in minutes
