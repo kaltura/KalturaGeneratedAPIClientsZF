@@ -65,7 +65,7 @@ class Kaltura_Client_Enum_ReportType extends Kaltura_Client_EnumBase
 	const TOP_CUSTOM_VAR1 = "29";
 	const CITIES = "30";
 	const OPERATING_SYSTEM_FAMILIES = "32";
-	const BROWSERS_FAMIILES = "33";
+	const BROWSERS_FAMILIES = "33";
 	const PARTNER_USAGE = "201";
 }
 
