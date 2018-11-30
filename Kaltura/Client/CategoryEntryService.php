@@ -193,7 +193,7 @@ class Kaltura_Client_CategoryEntryService extends Kaltura_Client_ServiceBase
 	 * @return Kaltura_Client_Type_BulkUpload
 	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
-	function updateStatusfrombulk($fileData, Kaltura_Client_Type_BulkUploadJobData $bulkUploadData = null, Kaltura_Client_Type_BulkUploadCategoryEntryData $bulkUploadCategoryEntryData = null)
+	function updateStatusFromBulk($fileData, Kaltura_Client_Type_BulkUploadJobData $bulkUploadData = null, Kaltura_Client_Type_BulkUploadCategoryEntryData $bulkUploadCategoryEntryData = null)
 	{
 		$kparams = array();
 		$kfiles = array();
@@ -202,7 +202,7 @@ class Kaltura_Client_CategoryEntryService extends Kaltura_Client_ServiceBase
 			$this->client->addParam($kparams, "bulkUploadData", $bulkUploadData->toParams());
 		if ($bulkUploadCategoryEntryData !== null)
 			$this->client->addParam($kparams, "bulkUploadCategoryEntryData", $bulkUploadCategoryEntryData->toParams());
-		$this->client->queueServiceActionCall("categoryentry", "updateStatusfrombulk",  "KalturaBulkUpload", $kparams, $kfiles);
+		$this->client->queueServiceActionCall("categoryentry", "updateStatusFromBulk",  "KalturaBulkUpload", $kparams, $kfiles);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
 		$resultXml = $this->client->doQueue();
