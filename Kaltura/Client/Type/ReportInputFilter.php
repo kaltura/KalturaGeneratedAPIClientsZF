@@ -63,6 +63,8 @@ class Kaltura_Client_Type_ReportInputFilter extends Kaltura_Client_Type_ReportIn
 		}
 		if(count($xml->categories))
 			$this->categories = (string)$xml->categories;
+		if(count($xml->categoriesIdsIn))
+			$this->categoriesIdsIn = (string)$xml->categoriesIdsIn;
 		if(count($xml->customVar1In))
 			$this->customVar1In = (string)$xml->customVar1In;
 		if(count($xml->customVar2In))
@@ -75,6 +77,8 @@ class Kaltura_Client_Type_ReportInputFilter extends Kaltura_Client_Type_ReportIn
 			$this->countryIn = (string)$xml->countryIn;
 		if(count($xml->regionIn))
 			$this->regionIn = (string)$xml->regionIn;
+		if(count($xml->citiesIn))
+			$this->citiesIn = (string)$xml->citiesIn;
 		if(count($xml->operatingSystemFamilyIn))
 			$this->operatingSystemFamilyIn = (string)$xml->operatingSystemFamilyIn;
 		if(count($xml->browserFamilyIn))
@@ -83,6 +87,10 @@ class Kaltura_Client_Type_ReportInputFilter extends Kaltura_Client_Type_ReportIn
 			$this->timeZoneOffset = (int)$xml->timeZoneOffset;
 		if(count($xml->interval))
 			$this->interval = (string)$xml->interval;
+		if(count($xml->mediaTypeIn))
+			$this->mediaTypeIn = (string)$xml->mediaTypeIn;
+		if(count($xml->sourceTypeIn))
+			$this->sourceTypeIn = (string)$xml->sourceTypeIn;
 	}
 	/**
 	 * Search keywords to filter objects
@@ -92,25 +100,32 @@ class Kaltura_Client_Type_ReportInputFilter extends Kaltura_Client_Type_ReportIn
 	public $keywords = null;
 
 	/**
-	 * Search keywords in onjects tags
+	 * Search keywords in objects tags
 	 *
 	 * @var bool
 	 */
 	public $searchInTags = null;
 
 	/**
-	 * Search keywords in onjects admin tags
+	 * Search keywords in objects admin tags
 	 *
 	 * @var bool
 	 */
 	public $searchInAdminTags = null;
 
 	/**
-	 * Search onjects in specified categories
+	 * Search objects in specified categories
 	 *
 	 * @var string
 	 */
 	public $categories = null;
+
+	/**
+	 * Search objects in specified category ids
+	 *
+	 * @var string
+	 */
+	public $categoriesIdsIn = null;
 
 	/**
 	 * Filter by customVar1
@@ -155,6 +170,13 @@ class Kaltura_Client_Type_ReportInputFilter extends Kaltura_Client_Type_ReportIn
 	public $regionIn = null;
 
 	/**
+	 * Filter by city
+	 *
+	 * @var string
+	 */
+	public $citiesIn = null;
+
+	/**
 	 * Filter by operating system family
 	 *
 	 * @var string
@@ -181,6 +203,20 @@ class Kaltura_Client_Type_ReportInputFilter extends Kaltura_Client_Type_ReportIn
 	 * @var Kaltura_Client_Enum_ReportInterval
 	 */
 	public $interval = null;
+
+	/**
+	 * Filter by media types
+	 *
+	 * @var string
+	 */
+	public $mediaTypeIn = null;
+
+	/**
+	 * Filter by source types
+	 *
+	 * @var string
+	 */
+	public $sourceTypeIn = null;
 
 
 }
