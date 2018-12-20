@@ -33,6 +33,7 @@
  */
 class Kaltura_Client_ElasticSearch_Enum_ESearchCaptionFieldName extends Kaltura_Client_EnumBase
 {
+	const CAPTION_ASSET_ID = "caption_asset_id";
 	const CONTENT = "content";
 	const END_TIME = "end_time";
 	const LABEL = "label";
