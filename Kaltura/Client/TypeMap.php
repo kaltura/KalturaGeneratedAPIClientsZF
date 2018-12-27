@@ -219,6 +219,7 @@ class Kaltura_Client_TypeMap
 		'KalturaCaptionParamsBaseFilter' => 'Kaltura_Client_Caption_Type_CaptionParamsBaseFilter',
 		'KalturaCaptionParamsFilter' => 'Kaltura_Client_Caption_Type_CaptionParamsFilter',
 		'KalturaCaptionParamsListResponse' => 'Kaltura_Client_Caption_Type_CaptionParamsListResponse',
+		'KalturaCaptionPlaybackPluginData' => 'Kaltura_Client_Caption_Type_CaptionPlaybackPluginData',
 		'KalturaCaptureThumbJobData' => 'Kaltura_Client_Type_CaptureThumbJobData',
 		'KalturaCategory' => 'Kaltura_Client_Type_Category',
 		'KalturaCategoryBaseFilter' => 'Kaltura_Client_Type_CategoryBaseFilter',
