@@ -43,6 +43,7 @@ class Kaltura_Client_ElasticSearch_Enum_ESearchEntryFieldName extends Kaltura_Cl
 	const END_DATE = "end_date";
 	const ENTITLED_USER_EDIT = "entitled_kusers_edit";
 	const ENTITLED_USER_PUBLISH = "entitled_kusers_publish";
+	const ENTITLED_USER_VIEW = "entitled_kusers_view";
 	const ENTRY_TYPE = "entry_type";
 	const EXTERNAL_SOURCE_TYPE = "external_source_type";
 	const ID = "id";
