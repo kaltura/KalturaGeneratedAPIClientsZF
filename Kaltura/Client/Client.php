@@ -9,7 +9,7 @@
 // to do with audio, video, and animation what Wiki platfroms allow them to do with
 // text.
 //
-// Copyright (C) 2006-2018  Kaltura Inc.
+// Copyright (C) 2006-2019  Kaltura Inc.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -372,7 +372,7 @@ class Kaltura_Client_Client extends Kaltura_Client_ClientBase
 	{
 		parent::__construct($config);
 		
-		$this->setClientTag('php5:19-01-06');
+		$this->setClientTag('php5:19-01-07');
 		$this->setApiVersion('14.11.0');
 		
 		$this->accessControlProfile = new Kaltura_Client_AccessControlProfileService($this);
