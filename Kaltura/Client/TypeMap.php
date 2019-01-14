@@ -181,6 +181,7 @@ class Kaltura_Client_TypeMap
 		'KalturaBulkUploadResultCategoryEntry' => 'Kaltura_Client_Type_BulkUploadResultCategoryEntry',
 		'KalturaBulkUploadResultCategoryUser' => 'Kaltura_Client_Type_BulkUploadResultCategoryUser',
 		'KalturaBulkUploadResultEntry' => 'Kaltura_Client_Type_BulkUploadResultEntry',
+		'KalturaBulkUploadResultJob' => 'Kaltura_Client_BulkUploadFilter_Type_BulkUploadResultJob',
 		'KalturaBulkUploadResultScheduleEvent' => 'Kaltura_Client_ScheduleBulkUpload_Type_BulkUploadResultScheduleEvent',
 		'KalturaBulkUploadResultScheduleResource' => 'Kaltura_Client_ScheduleBulkUpload_Type_BulkUploadResultScheduleResource',
 		'KalturaBulkUploadResultUser' => 'Kaltura_Client_Type_BulkUploadResultUser',
