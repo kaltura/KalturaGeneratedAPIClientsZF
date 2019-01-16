@@ -31,63 +31,10 @@
  * @package Kaltura
  * @subpackage Client
  */
-abstract class Kaltura_Client_Schedule_Type_EntryScheduleEvent extends Kaltura_Client_Schedule_Type_ScheduleEvent
+class Kaltura_Client_Schedule_Enum_ScheduleEventConflictType extends Kaltura_Client_EnumBase
 {
-	public function getKalturaObjectType()
-	{
-		return 'KalturaEntryScheduleEvent';
-	}
-	
-	public function __construct(SimpleXMLElement $xml = null)
-	{
-		parent::__construct($xml);
-		
-		if(is_null($xml))
-			return;
-		
-		if(count($xml->templateEntryId))
-			$this->templateEntryId = (string)$xml->templateEntryId;
-		if(count($xml->entryIds))
-			$this->entryIds = (string)$xml->entryIds;
-		if(count($xml->categoryIds))
-			$this->categoryIds = (string)$xml->categoryIds;
-		if(count($xml->blackoutConflicts))
-		{
-			if(empty($xml->blackoutConflicts))
-				$this->blackoutConflicts = array();
-			else
-				$this->blackoutConflicts = Kaltura_Client_ParseUtils::unmarshalArray($xml->blackoutConflicts, "KalturaScheduleEvent");
-		}
-	}
-	/**
-	 * Entry to be used as template during content ingestion
-	 *
-	 * @var string
-	 */
-	public $templateEntryId = null;
-
-	/**
-	 * Entries that associated with this event
-	 *
-	 * @var string
-	 */
-	public $entryIds = null;
-
-	/**
-	 * Categories that associated with this event
-	 *
-	 * @var string
-	 */
-	public $categoryIds = null;
-
-	/**
-	 * Blackout schedule events the conflict with this event
-	 *
-	 * @var array of KalturaScheduleEvent
-	 * @readonly
-	 */
-	public $blackoutConflicts;
-
-
+	const RESOURCE_CONFLICT = 1;
+	const BLACKOUT_CONFLICT = 2;
+	const BOTH = 3;
 }
 

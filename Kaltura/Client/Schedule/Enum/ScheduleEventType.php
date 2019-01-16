@@ -35,5 +35,6 @@ class Kaltura_Client_Schedule_Enum_ScheduleEventType extends Kaltura_Client_Enum
 {
 	const RECORD = 1;
 	const LIVE_STREAM = 2;
+	const BLACKOUT = 3;
 }
 

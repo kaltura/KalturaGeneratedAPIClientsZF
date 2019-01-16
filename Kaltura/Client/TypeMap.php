@@ -156,6 +156,8 @@ class Kaltura_Client_TypeMap
 		'KalturaBatchQueuesStatus' => 'Kaltura_Client_Type_BatchQueuesStatus',
 		'KalturaBeaconAbstractScheduledResourceItem' => 'Kaltura_Client_ElasticSearch_Type_BeaconAbstractScheduledResourceItem',
 		'KalturaBeaconScheduledResourceBaseItem' => 'Kaltura_Client_ElasticSearch_Type_BeaconScheduledResourceBaseItem',
+		'KalturaBlackoutScheduleEvent' => 'Kaltura_Client_Schedule_Type_BlackoutScheduleEvent',
+		'KalturaBlackoutScheduleEventFilter' => 'Kaltura_Client_Schedule_Type_BlackoutScheduleEventFilter',
 		'KalturaBooleanField' => 'Kaltura_Client_Type_BooleanField',
 		'KalturaBooleanValue' => 'Kaltura_Client_Type_BooleanValue',
 		'KalturaBpmEventNotificationIntegrationJobTriggerData' => 'Kaltura_Client_BpmEventNotificationIntegration_Type_BpmEventNotificationIntegrationJobTriggerData',

@@ -99,13 +99,14 @@ class Kaltura_Client_Schedule_ScheduleEventResourceService extends Kaltura_Clien
 	 * @return Kaltura_Client_Schedule_Type_ScheduleEventResourceListResponse
 	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
-	function listAction(Kaltura_Client_Schedule_Type_ScheduleEventResourceFilter $filter = null, Kaltura_Client_Type_FilterPager $pager = null)
+	function listAction(Kaltura_Client_Schedule_Type_ScheduleEventResourceFilter $filter = null, Kaltura_Client_Type_FilterPager $pager = null, $filterBlackoutConflicts = true)
 	{
 		$kparams = array();
 		if ($filter !== null)
 			$this->client->addParam($kparams, "filter", $filter->toParams());
 		if ($pager !== null)
 			$this->client->addParam($kparams, "pager", $pager->toParams());
+		$this->client->addParam($kparams, "filterBlackoutConflicts", $filterBlackoutConflicts);
 		$this->client->queueServiceActionCall("schedule_scheduleeventresource", "list", "KalturaScheduleEventResourceListResponse", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();

@@ -31,11 +31,11 @@
  * @package Kaltura
  * @subpackage Client
  */
-abstract class Kaltura_Client_Schedule_Type_EntryScheduleEvent extends Kaltura_Client_Schedule_Type_ScheduleEvent
+class Kaltura_Client_Schedule_Type_BlackoutScheduleEventFilter extends Kaltura_Client_Schedule_Type_RecordScheduleEventBaseFilter
 {
 	public function getKalturaObjectType()
 	{
-		return 'KalturaEntryScheduleEvent';
+		return 'KalturaBlackoutScheduleEventFilter';
 	}
 	
 	public function __construct(SimpleXMLElement $xml = null)
@@ -45,49 +45,7 @@ abstract class Kaltura_Client_Schedule_Type_EntryScheduleEvent extends Kaltura_C
 		if(is_null($xml))
 			return;
 		
-		if(count($xml->templateEntryId))
-			$this->templateEntryId = (string)$xml->templateEntryId;
-		if(count($xml->entryIds))
-			$this->entryIds = (string)$xml->entryIds;
-		if(count($xml->categoryIds))
-			$this->categoryIds = (string)$xml->categoryIds;
-		if(count($xml->blackoutConflicts))
-		{
-			if(empty($xml->blackoutConflicts))
-				$this->blackoutConflicts = array();
-			else
-				$this->blackoutConflicts = Kaltura_Client_ParseUtils::unmarshalArray($xml->blackoutConflicts, "KalturaScheduleEvent");
-		}
 	}
-	/**
-	 * Entry to be used as template during content ingestion
-	 *
-	 * @var string
-	 */
-	public $templateEntryId = null;
-
-	/**
-	 * Entries that associated with this event
-	 *
-	 * @var string
-	 */
-	public $entryIds = null;
-
-	/**
-	 * Categories that associated with this event
-	 *
-	 * @var string
-	 */
-	public $categoryIds = null;
-
-	/**
-	 * Blackout schedule events the conflict with this event
-	 *
-	 * @var array of KalturaScheduleEvent
-	 * @readonly
-	 */
-	public $blackoutConflicts;
-
 
 }
 
