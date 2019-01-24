@@ -51,6 +51,8 @@ class Kaltura_Client_Quiz_Type_AnswerCuePoint extends Kaltura_Client_CuePoint_Ty
 			$this->quizUserEntryId = (string)$xml->quizUserEntryId;
 		if(count($xml->answerKey))
 			$this->answerKey = (string)$xml->answerKey;
+		if(count($xml->openAnswer))
+			$this->openAnswer = (string)$xml->openAnswer;
 		if(count($xml->isCorrect))
 			$this->isCorrect = (int)$xml->isCorrect;
 		if(count($xml->correctAnswerKeys))
@@ -85,6 +87,13 @@ class Kaltura_Client_Quiz_Type_AnswerCuePoint extends Kaltura_Client_CuePoint_Ty
 	 * @var string
 	 */
 	public $answerKey = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $openAnswer = null;
 
 	/**
 	 * 

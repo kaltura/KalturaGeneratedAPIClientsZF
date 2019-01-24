@@ -47,6 +47,8 @@ class Kaltura_Client_Type_QuizUserEntry extends Kaltura_Client_Type_UserEntry
 		
 		if(count($xml->score))
 			$this->score = (float)$xml->score;
+		if(count($xml->feedback))
+			$this->feedback = (string)$xml->feedback;
 	}
 	/**
 	 * 
@@ -55,6 +57,13 @@ class Kaltura_Client_Type_QuizUserEntry extends Kaltura_Client_Type_UserEntry
 	 * @readonly
 	 */
 	public $score = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $feedback = null;
 
 
 }
