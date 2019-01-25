@@ -64,6 +64,8 @@ class Kaltura_Client_Quiz_Type_AnswerCuePoint extends Kaltura_Client_CuePoint_Ty
 		}
 		if(count($xml->explanation))
 			$this->explanation = (string)$xml->explanation;
+		if(count($xml->feedback))
+			$this->feedback = (string)$xml->feedback;
 	}
 	/**
 	 * 
@@ -118,6 +120,13 @@ class Kaltura_Client_Quiz_Type_AnswerCuePoint extends Kaltura_Client_CuePoint_Ty
 	 * @readonly
 	 */
 	public $explanation = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $feedback = null;
 
 
 }

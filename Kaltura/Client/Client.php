@@ -284,7 +284,8 @@ class Kaltura_Client_Client extends Kaltura_Client_ClientBase
 	public $stats = null;
 
 	/**
-	 * Storage Profiles service
+	 * The Storage Profile service allows you to export your Kaltura content to external storage volumes.
+	 *  This service is disabled by default, please contact your account manager if you wish to enable it for your partner.
 	 * @var Kaltura_Client_StorageProfileService
 	 */
 	public $storageProfile = null;
@@ -372,7 +373,7 @@ class Kaltura_Client_Client extends Kaltura_Client_ClientBase
 	{
 		parent::__construct($config);
 		
-		$this->setClientTag('php5:19-01-24');
+		$this->setClientTag('php5:19-01-25');
 		$this->setApiVersion('14.13.0');
 		
 		$this->accessControlProfile = new Kaltura_Client_AccessControlProfileService($this);
