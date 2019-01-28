@@ -62,6 +62,8 @@ class Kaltura_Client_Caption_Type_CaptionPlaybackPluginData extends Kaltura_Clie
 			else
 				$this->isDefault = false;
 		}
+		if(count($xml->languageCode))
+			$this->languageCode = (string)$xml->languageCode;
 	}
 	/**
 	 * 
@@ -104,6 +106,13 @@ class Kaltura_Client_Caption_Type_CaptionPlaybackPluginData extends Kaltura_Clie
 	 * @var bool
 	 */
 	public $isDefault = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $languageCode = null;
 
 
 }
