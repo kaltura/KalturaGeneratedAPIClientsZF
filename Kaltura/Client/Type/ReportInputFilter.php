@@ -91,6 +91,8 @@ class Kaltura_Client_Type_ReportInputFilter extends Kaltura_Client_Type_ReportIn
 			$this->mediaTypeIn = (string)$xml->mediaTypeIn;
 		if(count($xml->sourceTypeIn))
 			$this->sourceTypeIn = (string)$xml->sourceTypeIn;
+		if(count($xml->ownerIdsIn))
+			$this->ownerIdsIn = (string)$xml->ownerIdsIn;
 	}
 	/**
 	 * Search keywords to filter objects
@@ -217,6 +219,13 @@ class Kaltura_Client_Type_ReportInputFilter extends Kaltura_Client_Type_ReportIn
 	 * @var string
 	 */
 	public $sourceTypeIn = null;
+
+	/**
+	 * Filter by entry owner
+	 *
+	 * @var string
+	 */
+	public $ownerIdsIn = null;
 
 
 }
