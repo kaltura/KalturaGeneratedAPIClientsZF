@@ -93,6 +93,8 @@ class Kaltura_Client_Type_ReportInputFilter extends Kaltura_Client_Type_ReportIn
 			$this->sourceTypeIn = (string)$xml->sourceTypeIn;
 		if(count($xml->ownerIdsIn))
 			$this->ownerIdsIn = (string)$xml->ownerIdsIn;
+		if(count($xml->entryOperator) && !empty($xml->entryOperator))
+			$this->entryOperator = Kaltura_Client_ParseUtils::unmarshalObject($xml->entryOperator, "KalturaESearchEntryOperator");
 	}
 	/**
 	 * Search keywords to filter objects
@@ -226,6 +228,13 @@ class Kaltura_Client_Type_ReportInputFilter extends Kaltura_Client_Type_ReportIn
 	 * @var string
 	 */
 	public $ownerIdsIn = null;
+
+	/**
+	 * 
+	 *
+	 * @var Kaltura_Client_ElasticSearch_Type_ESearchEntryOperator
+	 */
+	public $entryOperator;
 
 
 }
