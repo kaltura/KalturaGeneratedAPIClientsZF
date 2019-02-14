@@ -988,6 +988,7 @@ class Kaltura_Client_TypeMap
 		'KalturaReportInputFilter' => 'Kaltura_Client_Type_ReportInputFilter',
 		'KalturaReportListResponse' => 'Kaltura_Client_Type_ReportListResponse',
 		'KalturaReportResponse' => 'Kaltura_Client_Type_ReportResponse',
+		'KalturaReportResponseOptions' => 'Kaltura_Client_Type_ReportResponseOptions',
 		'KalturaReportTable' => 'Kaltura_Client_Type_ReportTable',
 		'KalturaReportTotal' => 'Kaltura_Client_Type_ReportTotal',
 		'KalturaRequestConfiguration' => 'Kaltura_Client_Type_RequestConfiguration',
