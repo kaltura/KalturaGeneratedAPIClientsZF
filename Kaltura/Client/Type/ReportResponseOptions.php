@@ -47,6 +47,13 @@ class Kaltura_Client_Type_ReportResponseOptions extends Kaltura_Client_ObjectBas
 		
 		if(count($xml->delimiter))
 			$this->delimiter = (string)$xml->delimiter;
+		if(count($xml->skipEmptyDates))
+		{
+			if(!empty($xml->skipEmptyDates) && ((int) $xml->skipEmptyDates === 1 || strtolower((string)$xml->skipEmptyDates) === 'true'))
+				$this->skipEmptyDates = true;
+			else
+				$this->skipEmptyDates = false;
+		}
 	}
 	/**
 	 * 
@@ -54,6 +61,13 @@ class Kaltura_Client_Type_ReportResponseOptions extends Kaltura_Client_ObjectBas
 	 * @var string
 	 */
 	public $delimiter = null;
+
+	/**
+	 * 
+	 *
+	 * @var bool
+	 */
+	public $skipEmptyDates = null;
 
 
 }
