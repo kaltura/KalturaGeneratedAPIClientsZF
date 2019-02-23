@@ -95,6 +95,10 @@ class Kaltura_Client_Type_ReportInputFilter extends Kaltura_Client_Type_ReportIn
 			$this->ownerIdsIn = (string)$xml->ownerIdsIn;
 		if(count($xml->entryOperator) && !empty($xml->entryOperator))
 			$this->entryOperator = Kaltura_Client_ParseUtils::unmarshalObject($xml->entryOperator, "KalturaESearchEntryOperator");
+		if(count($xml->entryCreatedAtGreaterThanOrEqual))
+			$this->entryCreatedAtGreaterThanOrEqual = (int)$xml->entryCreatedAtGreaterThanOrEqual;
+		if(count($xml->entryCreatedAtLessThanOrEqual))
+			$this->entryCreatedAtLessThanOrEqual = (int)$xml->entryCreatedAtLessThanOrEqual;
 	}
 	/**
 	 * Search keywords to filter objects
@@ -235,6 +239,20 @@ class Kaltura_Client_Type_ReportInputFilter extends Kaltura_Client_Type_ReportIn
 	 * @var Kaltura_Client_ElasticSearch_Type_ESearchEntryOperator
 	 */
 	public $entryOperator;
+
+	/**
+	 * Entry created at greater than or equal as Unix timestamp
+	 *
+	 * @var int
+	 */
+	public $entryCreatedAtGreaterThanOrEqual = null;
+
+	/**
+	 * Entry created at less than or equal as Unix timestamp
+	 *
+	 * @var int
+	 */
+	public $entryCreatedAtLessThanOrEqual = null;
 
 
 }
