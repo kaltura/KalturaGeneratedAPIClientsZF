@@ -99,6 +99,8 @@ class Kaltura_Client_Type_ReportInputFilter extends Kaltura_Client_Type_ReportIn
 			$this->entryCreatedAtGreaterThanOrEqual = (int)$xml->entryCreatedAtGreaterThanOrEqual;
 		if(count($xml->entryCreatedAtLessThanOrEqual))
 			$this->entryCreatedAtLessThanOrEqual = (int)$xml->entryCreatedAtLessThanOrEqual;
+		if(count($xml->entryIdIn))
+			$this->entryIdIn = (string)$xml->entryIdIn;
 	}
 	/**
 	 * Search keywords to filter objects
@@ -253,6 +255,13 @@ class Kaltura_Client_Type_ReportInputFilter extends Kaltura_Client_Type_ReportIn
 	 * @var int
 	 */
 	public $entryCreatedAtLessThanOrEqual = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $entryIdIn = null;
 
 
 }

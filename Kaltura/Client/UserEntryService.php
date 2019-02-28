@@ -156,7 +156,7 @@ class Kaltura_Client_UserEntryService extends Kaltura_Client_ServiceBase
 	}
 
 	/**
-	 * @return 
+	 * @return Kaltura_Client_Type_UserEntry
 	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function update($id, Kaltura_Client_Type_UserEntry $userEntry)
@@ -164,11 +164,14 @@ class Kaltura_Client_UserEntryService extends Kaltura_Client_ServiceBase
 		$kparams = array();
 		$this->client->addParam($kparams, "id", $id);
 		$this->client->addParam($kparams, "userEntry", $userEntry->toParams());
-		$this->client->queueServiceActionCall("userentry", "update", null, $kparams);
+		$this->client->queueServiceActionCall("userentry", "update", "KalturaUserEntry", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
 		$resultXml = $this->client->doQueue();
 		$resultXmlObject = new \SimpleXMLElement($resultXml);
 		$this->client->checkIfError($resultXmlObject->result);
+		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaUserEntry");
+		$this->client->validateObjectType($resultObject, "Kaltura_Client_Type_UserEntry");
+		return $resultObject;
 	}
 }
