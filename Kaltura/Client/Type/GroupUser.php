@@ -45,6 +45,8 @@ class Kaltura_Client_Type_GroupUser extends Kaltura_Client_ObjectBase
 		if(is_null($xml))
 			return;
 		
+		if(count($xml->id))
+			$this->id = (string)$xml->id;
 		if(count($xml->userId))
 			$this->userId = (string)$xml->userId;
 		if(count($xml->groupId))
@@ -59,7 +61,17 @@ class Kaltura_Client_Type_GroupUser extends Kaltura_Client_ObjectBase
 			$this->updatedAt = (int)$xml->updatedAt;
 		if(count($xml->creationMode))
 			$this->creationMode = (int)$xml->creationMode;
+		if(count($xml->userRole))
+			$this->userRole = (int)$xml->userRole;
 	}
+	/**
+	 * 
+	 *
+	 * @var string
+	 * @readonly
+	 */
+	public $id = null;
+
 	/**
 	 * 
 	 *
@@ -115,6 +127,13 @@ class Kaltura_Client_Type_GroupUser extends Kaltura_Client_ObjectBase
 	 * @insertonly
 	 */
 	public $creationMode = null;
+
+	/**
+	 * 
+	 *
+	 * @var Kaltura_Client_Enum_GroupUserRole
+	 */
+	public $userRole = null;
 
 
 }

@@ -66,6 +66,8 @@ class Kaltura_Client_Quiz_Type_Quiz extends Kaltura_Client_ObjectBase
 			$this->allowDownload = (int)$xml->allowDownload;
 		if(count($xml->showGradeAfterSubmission))
 			$this->showGradeAfterSubmission = (int)$xml->showGradeAfterSubmission;
+		if(count($xml->maxRetakesAllowed))
+			$this->maxRetakesAllowed = (int)$xml->maxRetakesAllowed;
 	}
 	/**
 	 * 
@@ -123,6 +125,13 @@ class Kaltura_Client_Quiz_Type_Quiz extends Kaltura_Client_ObjectBase
 	 * @var Kaltura_Client_Enum_NullableBoolean
 	 */
 	public $showGradeAfterSubmission = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $maxRetakesAllowed = null;
 
 
 }
