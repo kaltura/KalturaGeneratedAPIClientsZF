@@ -31,11 +31,11 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Type_QuizUserEntry extends Kaltura_Client_Type_UserEntry
+class Kaltura_Client_Reach_Type_CatalogItemAdvancedFilter extends Kaltura_Client_Type_SearchItem
 {
 	public function getKalturaObjectType()
 	{
-		return 'KalturaQuizUserEntry';
+		return 'KalturaCatalogItemAdvancedFilter';
 	}
 	
 	public function __construct(SimpleXMLElement $xml = null)
@@ -45,45 +45,78 @@ class Kaltura_Client_Type_QuizUserEntry extends Kaltura_Client_Type_UserEntry
 		if(is_null($xml))
 			return;
 		
-		if(count($xml->score))
-			$this->score = (float)$xml->score;
-		if(count($xml->calculatedScore))
-			$this->calculatedScore = (float)$xml->calculatedScore;
-		if(count($xml->feedback))
-			$this->feedback = (string)$xml->feedback;
-		if(count($xml->version))
-			$this->version = (int)$xml->version;
+		if(count($xml->serviceTypeEqual))
+			$this->serviceTypeEqual = (int)$xml->serviceTypeEqual;
+		if(count($xml->serviceTypeIn))
+			$this->serviceTypeIn = (string)$xml->serviceTypeIn;
+		if(count($xml->serviceFeatureEqual))
+			$this->serviceFeatureEqual = (int)$xml->serviceFeatureEqual;
+		if(count($xml->serviceFeatureIn))
+			$this->serviceFeatureIn = (string)$xml->serviceFeatureIn;
+		if(count($xml->turnAroundTimeEqual))
+			$this->turnAroundTimeEqual = (int)$xml->turnAroundTimeEqual;
+		if(count($xml->turnAroundTimeIn))
+			$this->turnAroundTimeIn = (string)$xml->turnAroundTimeIn;
+		if(count($xml->sourceLanguageEqual))
+			$this->sourceLanguageEqual = (string)$xml->sourceLanguageEqual;
+		if(count($xml->targetLanguageEqual))
+			$this->targetLanguageEqual = (string)$xml->targetLanguageEqual;
 	}
 	/**
 	 * 
 	 *
-	 * @var float
-	 * @readonly
+	 * @var Kaltura_Client_Reach_Enum_VendorServiceType
 	 */
-	public $score = null;
-
-	/**
-	 * 
-	 *
-	 * @var float
-	 * @readonly
-	 */
-	public $calculatedScore = null;
+	public $serviceTypeEqual = null;
 
 	/**
 	 * 
 	 *
 	 * @var string
 	 */
-	public $feedback = null;
+	public $serviceTypeIn = null;
 
 	/**
 	 * 
 	 *
-	 * @var int
-	 * @readonly
+	 * @var Kaltura_Client_Reach_Enum_VendorServiceFeature
 	 */
-	public $version = null;
+	public $serviceFeatureEqual = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $serviceFeatureIn = null;
+
+	/**
+	 * 
+	 *
+	 * @var Kaltura_Client_Reach_Enum_VendorServiceTurnAroundTime
+	 */
+	public $turnAroundTimeEqual = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $turnAroundTimeIn = null;
+
+	/**
+	 * 
+	 *
+	 * @var Kaltura_Client_Reach_Enum_CatalogItemLanguage
+	 */
+	public $sourceLanguageEqual = null;
+
+	/**
+	 * 
+	 *
+	 * @var Kaltura_Client_Reach_Enum_CatalogItemLanguage
+	 */
+	public $targetLanguageEqual = null;
 
 
 }

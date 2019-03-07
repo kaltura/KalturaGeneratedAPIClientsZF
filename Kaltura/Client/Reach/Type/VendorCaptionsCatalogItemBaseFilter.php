@@ -31,29 +31,57 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Enum_ConditionType extends Kaltura_Client_EnumBase
+abstract class Kaltura_Client_Reach_Type_VendorCaptionsCatalogItemBaseFilter extends Kaltura_Client_Reach_Type_VendorCatalogItemFilter
 {
-	const EVENT_NOTIFICATION_FIELD = "eventNotification.BooleanField";
-	const EVENT_NOTIFICATION_OBJECT_CHANGED = "eventNotification.ObjectChanged";
-	const METADATA_FIELD_CHANGED = "metadata.FieldChanged";
-	const METADATA_FIELD_COMPARE = "metadata.FieldCompare";
-	const METADATA_FIELD_MATCH = "metadata.FieldMatch";
-	const EVENT_CATEGORY_ENTRY = "reach.CategoryEntry";
-	const AUTHENTICATED = "1";
-	const COUNTRY = "2";
-	const IP_ADDRESS = "3";
-	const SITE = "4";
-	const USER_AGENT = "5";
-	const FIELD_MATCH = "6";
-	const FIELD_COMPARE = "7";
-	const ASSET_PROPERTIES_COMPARE = "8";
-	const USER_ROLE = "9";
-	const GEO_DISTANCE = "10";
-	const OR_OPERATOR = "11";
-	const HASH = "12";
-	const DELIVERY_PROFILE = "13";
-	const ACTIVE_EDGE_VALIDATE = "14";
-	const ANONYMOUS_IP = "15";
-	const ASSET_TYPE = "16";
+	public function getKalturaObjectType()
+	{
+		return 'KalturaVendorCaptionsCatalogItemBaseFilter';
+	}
+	
+	public function __construct(SimpleXMLElement $xml = null)
+	{
+		parent::__construct($xml);
+		
+		if(is_null($xml))
+			return;
+		
+		if(count($xml->sourceLanguageEqual))
+			$this->sourceLanguageEqual = (string)$xml->sourceLanguageEqual;
+		if(count($xml->sourceLanguageIn))
+			$this->sourceLanguageIn = (string)$xml->sourceLanguageIn;
+		if(count($xml->outputFormatEqual))
+			$this->outputFormatEqual = (int)$xml->outputFormatEqual;
+		if(count($xml->outputFormatIn))
+			$this->outputFormatIn = (string)$xml->outputFormatIn;
+	}
+	/**
+	 * 
+	 *
+	 * @var Kaltura_Client_Reach_Enum_CatalogItemLanguage
+	 */
+	public $sourceLanguageEqual = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $sourceLanguageIn = null;
+
+	/**
+	 * 
+	 *
+	 * @var Kaltura_Client_Reach_Enum_VendorCatalogItemOutputFormat
+	 */
+	public $outputFormatEqual = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $outputFormatIn = null;
+
+
 }
 

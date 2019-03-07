@@ -35,7 +35,9 @@ class Kaltura_Client_Enum_QuizUserEntryOrderBy extends Kaltura_Client_EnumBase
 {
 	const CREATED_AT_ASC = "+createdAt";
 	const UPDATED_AT_ASC = "+updatedAt";
+	const VERSION_ASC = "+version";
 	const CREATED_AT_DESC = "-createdAt";
 	const UPDATED_AT_DESC = "-updatedAt";
+	const VERSION_DESC = "-version";
 }
 

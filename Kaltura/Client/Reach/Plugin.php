@@ -31,60 +31,65 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Type_QuizUserEntry extends Kaltura_Client_Type_UserEntry
+class Kaltura_Client_Reach_Plugin extends Kaltura_Client_Plugin
 {
-	public function getKalturaObjectType()
+	/**
+	 * @var Kaltura_Client_Reach_VendorCatalogItemService
+	 */
+	public $vendorCatalogItem = null;
+
+	/**
+	 * @var Kaltura_Client_Reach_ReachProfileService
+	 */
+	public $reachProfile = null;
+
+	/**
+	 * @var Kaltura_Client_Reach_EntryVendorTaskService
+	 */
+	public $entryVendorTask = null;
+
+	/**
+	 * @var Kaltura_Client_Reach_PartnerCatalogItemService
+	 */
+	public $PartnerCatalogItem = null;
+
+	protected function __construct(Kaltura_Client_Client $client)
 	{
-		return 'KalturaQuizUserEntry';
+		parent::__construct($client);
+		$this->vendorCatalogItem = new Kaltura_Client_Reach_VendorCatalogItemService($client);
+		$this->reachProfile = new Kaltura_Client_Reach_ReachProfileService($client);
+		$this->entryVendorTask = new Kaltura_Client_Reach_EntryVendorTaskService($client);
+		$this->PartnerCatalogItem = new Kaltura_Client_Reach_PartnerCatalogItemService($client);
 	}
-	
-	public function __construct(SimpleXMLElement $xml = null)
+
+	/**
+	 * @return Kaltura_Client_Reach_Plugin
+	 */
+	public static function get(Kaltura_Client_Client $client)
 	{
-		parent::__construct($xml);
-		
-		if(is_null($xml))
-			return;
-		
-		if(count($xml->score))
-			$this->score = (float)$xml->score;
-		if(count($xml->calculatedScore))
-			$this->calculatedScore = (float)$xml->calculatedScore;
-		if(count($xml->feedback))
-			$this->feedback = (string)$xml->feedback;
-		if(count($xml->version))
-			$this->version = (int)$xml->version;
+		return new Kaltura_Client_Reach_Plugin($client);
 	}
-	/**
-	 * 
-	 *
-	 * @var float
-	 * @readonly
-	 */
-	public $score = null;
 
 	/**
-	 * 
-	 *
-	 * @var float
-	 * @readonly
+	 * @return array<Kaltura_Client_ServiceBase>
 	 */
-	public $calculatedScore = null;
+	public function getServices()
+	{
+		$services = array(
+			'vendorCatalogItem' => $this->vendorCatalogItem,
+			'reachProfile' => $this->reachProfile,
+			'entryVendorTask' => $this->entryVendorTask,
+			'PartnerCatalogItem' => $this->PartnerCatalogItem,
+		);
+		return $services;
+	}
 
 	/**
-	 * 
-	 *
-	 * @var string
+	 * @return string
 	 */
-	public $feedback = null;
-
-	/**
-	 * 
-	 *
-	 * @var int
-	 * @readonly
-	 */
-	public $version = null;
-
-
+	public function getName()
+	{
+		return 'reach';
+	}
 }
 
