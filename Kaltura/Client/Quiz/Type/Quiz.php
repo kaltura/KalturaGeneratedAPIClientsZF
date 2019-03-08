@@ -66,8 +66,8 @@ class Kaltura_Client_Quiz_Type_Quiz extends Kaltura_Client_ObjectBase
 			$this->allowDownload = (int)$xml->allowDownload;
 		if(count($xml->showGradeAfterSubmission))
 			$this->showGradeAfterSubmission = (int)$xml->showGradeAfterSubmission;
-		if(count($xml->maxRetakesAllowed))
-			$this->maxRetakesAllowed = (int)$xml->maxRetakesAllowed;
+		if(count($xml->attemptsAllowed))
+			$this->attemptsAllowed = (int)$xml->attemptsAllowed;
 		if(count($xml->scoreType))
 			$this->scoreType = (int)$xml->scoreType;
 	}
@@ -133,7 +133,7 @@ class Kaltura_Client_Quiz_Type_Quiz extends Kaltura_Client_ObjectBase
 	 *
 	 * @var int
 	 */
-	public $maxRetakesAllowed = null;
+	public $attemptsAllowed = null;
 
 	/**
 	 * 

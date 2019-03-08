@@ -173,6 +173,7 @@ class Kaltura_Client_TypeMap
 		'KalturaBeaconSearchScheduledResourceOrderByItem' => 'Kaltura_Client_Beacon_Type_BeaconSearchScheduledResourceOrderByItem',
 		'KalturaBlackoutScheduleEvent' => 'Kaltura_Client_Schedule_Type_BlackoutScheduleEvent',
 		'KalturaBlackoutScheduleEventFilter' => 'Kaltura_Client_Schedule_Type_BlackoutScheduleEventFilter',
+		'KalturaBooleanEventNotificationCondition' => 'Kaltura_Client_Type_BooleanEventNotificationCondition',
 		'KalturaBooleanField' => 'Kaltura_Client_Type_BooleanField',
 		'KalturaBooleanValue' => 'Kaltura_Client_Type_BooleanValue',
 		'KalturaBpmEventNotificationIntegrationJobTriggerData' => 'Kaltura_Client_BpmEventNotificationIntegration_Type_BpmEventNotificationIntegrationJobTriggerData',
