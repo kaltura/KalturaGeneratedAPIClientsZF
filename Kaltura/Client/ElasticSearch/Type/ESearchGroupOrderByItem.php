@@ -31,11 +31,30 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_ElasticSearch_Enum_ESearchUserOrderByFieldName extends Kaltura_Client_EnumBase
+class Kaltura_Client_ElasticSearch_Type_ESearchGroupOrderByItem extends Kaltura_Client_ElasticSearch_Type_ESearchOrderByItem
 {
-	const CREATED_AT = "created_at";
-	const USER_ID = "puser_id";
-	const SCREEN_NAME = "screen_name";
-	const UPDATED_AT = "updated_at";
+	public function getKalturaObjectType()
+	{
+		return 'KalturaESearchGroupOrderByItem';
+	}
+	
+	public function __construct(SimpleXMLElement $xml = null)
+	{
+		parent::__construct($xml);
+		
+		if(is_null($xml))
+			return;
+		
+		if(count($xml->sortField))
+			$this->sortField = (string)$xml->sortField;
+	}
+	/**
+	 * 
+	 *
+	 * @var Kaltura_Client_ElasticSearch_Enum_ESearchGroupOrderByFieldName
+	 */
+	public $sortField = null;
+
+
 }
 

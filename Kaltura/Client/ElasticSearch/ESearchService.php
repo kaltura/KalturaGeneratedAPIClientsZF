@@ -82,6 +82,27 @@ class Kaltura_Client_ElasticSearch_ESearchService extends Kaltura_Client_Service
 	}
 
 	/**
+	 * @return Kaltura_Client_ElasticSearch_Type_ESearchGroupResponse
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
+	 */
+	function searchGroup(Kaltura_Client_ElasticSearch_Type_ESearchGroupParams $searchParams, Kaltura_Client_Type_Pager $pager = null)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "searchParams", $searchParams->toParams());
+		if ($pager !== null)
+			$this->client->addParam($kparams, "pager", $pager->toParams());
+		$this->client->queueServiceActionCall("elasticsearch_esearch", "searchGroup", "KalturaESearchGroupResponse", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultXml = $this->client->doQueue();
+		$resultXmlObject = new \SimpleXMLElement($resultXml);
+		$this->client->checkIfError($resultXmlObject->result);
+		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaESearchGroupResponse");
+		$this->client->validateObjectType($resultObject, "Kaltura_Client_ElasticSearch_Type_ESearchGroupResponse");
+		return $resultObject;
+	}
+
+	/**
 	 * @return Kaltura_Client_ElasticSearch_Type_ESearchUserResponse
 	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */

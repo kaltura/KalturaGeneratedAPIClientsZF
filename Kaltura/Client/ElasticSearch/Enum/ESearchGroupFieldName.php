@@ -31,11 +31,18 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_ElasticSearch_Enum_ESearchUserOrderByFieldName extends Kaltura_Client_EnumBase
+class Kaltura_Client_ElasticSearch_Enum_ESearchGroupFieldName extends Kaltura_Client_EnumBase
 {
 	const CREATED_AT = "created_at";
-	const USER_ID = "puser_id";
+	const EMAIL = "email";
+	const FIRST_NAME = "first_name";
+	const GROUP_IDS = "group_ids";
+	const LAST_NAME = "last_name";
+	const PERMISSION_NAMES = "permission_names";
+	const ROLE_IDS = "role_ids";
 	const SCREEN_NAME = "screen_name";
+	const TAGS = "tags";
 	const UPDATED_AT = "updated_at";
+	const USER_ID = "user_id";
 }
 
