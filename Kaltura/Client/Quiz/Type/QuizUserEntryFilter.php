@@ -45,16 +45,7 @@ class Kaltura_Client_Quiz_Type_QuizUserEntryFilter extends Kaltura_Client_Type_Q
 		if(is_null($xml))
 			return;
 		
-		if(count($xml->versionEqual))
-			$this->versionEqual = (int)$xml->versionEqual;
 	}
-	/**
-	 * 
-	 *
-	 * @var int
-	 */
-	public $versionEqual = null;
-
 
 }
 

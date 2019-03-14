@@ -31,11 +31,11 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Group_Type_Group extends Kaltura_Client_Type_BaseUser
+class Kaltura_Client_Group_Type_GroupListResponse extends Kaltura_Client_Type_ListResponse
 {
 	public function getKalturaObjectType()
 	{
-		return 'KalturaGroup';
+		return 'KalturaGroupListResponse';
 	}
 	
 	public function __construct(SimpleXMLElement $xml = null)
@@ -45,16 +45,21 @@ class Kaltura_Client_Group_Type_Group extends Kaltura_Client_Type_BaseUser
 		if(is_null($xml))
 			return;
 		
-		if(count($xml->membersCount))
-			$this->membersCount = (int)$xml->membersCount;
+		if(count($xml->objects))
+		{
+			if(empty($xml->objects))
+				$this->objects = array();
+			else
+				$this->objects = Kaltura_Client_ParseUtils::unmarshalArray($xml->objects, "KalturaGroup");
+		}
 	}
 	/**
 	 * 
 	 *
-	 * @var int
+	 * @var array of KalturaGroup
 	 * @readonly
 	 */
-	public $membersCount = null;
+	public $objects;
 
 
 }

@@ -31,31 +31,44 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Group_Type_Group extends Kaltura_Client_Type_BaseUser
+class Kaltura_Client_Group_Plugin extends Kaltura_Client_Plugin
 {
-	public function getKalturaObjectType()
-	{
-		return 'KalturaGroup';
-	}
-	
-	public function __construct(SimpleXMLElement $xml = null)
-	{
-		parent::__construct($xml);
-		
-		if(is_null($xml))
-			return;
-		
-		if(count($xml->membersCount))
-			$this->membersCount = (int)$xml->membersCount;
-	}
 	/**
-	 * 
-	 *
-	 * @var int
-	 * @readonly
+	 * @var Kaltura_Client_Group_GroupService
 	 */
-	public $membersCount = null;
+	public $group = null;
 
+	protected function __construct(Kaltura_Client_Client $client)
+	{
+		parent::__construct($client);
+		$this->group = new Kaltura_Client_Group_GroupService($client);
+	}
 
+	/**
+	 * @return Kaltura_Client_Group_Plugin
+	 */
+	public static function get(Kaltura_Client_Client $client)
+	{
+		return new Kaltura_Client_Group_Plugin($client);
+	}
+
+	/**
+	 * @return array<Kaltura_Client_ServiceBase>
+	 */
+	public function getServices()
+	{
+		$services = array(
+			'group' => $this->group,
+		);
+		return $services;
+	}
+
+	/**
+	 * @return string
+	 */
+	public function getName()
+	{
+		return 'group';
+	}
 }
 
