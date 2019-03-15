@@ -31,11 +31,11 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_ElasticSearch_Type_ESearchGroupParams extends Kaltura_Client_ElasticSearch_Type_ESearchParams
+class Kaltura_Client_Group_Type_ESearchGroupMetadataItem extends Kaltura_Client_Group_Type_ESearchAbstractGroupItem
 {
 	public function getKalturaObjectType()
 	{
-		return 'KalturaESearchGroupParams';
+		return 'KalturaESearchGroupMetadataItem';
 	}
 	
 	public function __construct(SimpleXMLElement $xml = null)
@@ -45,15 +45,33 @@ class Kaltura_Client_ElasticSearch_Type_ESearchGroupParams extends Kaltura_Clien
 		if(is_null($xml))
 			return;
 		
-		if(count($xml->searchOperator) && !empty($xml->searchOperator))
-			$this->searchOperator = Kaltura_Client_ParseUtils::unmarshalObject($xml->searchOperator, "KalturaESearchGroupOperator");
+		if(count($xml->xpath))
+			$this->xpath = (string)$xml->xpath;
+		if(count($xml->metadataProfileId))
+			$this->metadataProfileId = (int)$xml->metadataProfileId;
+		if(count($xml->metadataFieldId))
+			$this->metadataFieldId = (int)$xml->metadataFieldId;
 	}
 	/**
 	 * 
 	 *
-	 * @var Kaltura_Client_Group_Type_ESearchGroupOperator
+	 * @var string
 	 */
-	public $searchOperator;
+	public $xpath = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $metadataProfileId = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $metadataFieldId = null;
 
 
 }

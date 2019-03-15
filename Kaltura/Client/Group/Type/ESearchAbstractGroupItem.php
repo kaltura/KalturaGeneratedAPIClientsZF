@@ -31,18 +31,62 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_ElasticSearch_Enum_ESearchGroupFieldName extends Kaltura_Client_EnumBase
+abstract class Kaltura_Client_Group_Type_ESearchAbstractGroupItem extends Kaltura_Client_Group_Type_ESearchGroupBaseItem
 {
-	const CREATED_AT = "created_at";
-	const EMAIL = "email";
-	const FIRST_NAME = "first_name";
-	const GROUP_IDS = "group_ids";
-	const LAST_NAME = "last_name";
-	const PERMISSION_NAMES = "permission_names";
-	const ROLE_IDS = "role_ids";
-	const SCREEN_NAME = "screen_name";
-	const TAGS = "tags";
-	const UPDATED_AT = "updated_at";
-	const USER_ID = "user_id";
+	public function getKalturaObjectType()
+	{
+		return 'KalturaESearchAbstractGroupItem';
+	}
+	
+	public function __construct(SimpleXMLElement $xml = null)
+	{
+		parent::__construct($xml);
+		
+		if(is_null($xml))
+			return;
+		
+		if(count($xml->searchTerm))
+			$this->searchTerm = (string)$xml->searchTerm;
+		if(count($xml->itemType))
+			$this->itemType = (int)$xml->itemType;
+		if(count($xml->range) && !empty($xml->range))
+			$this->range = Kaltura_Client_ParseUtils::unmarshalObject($xml->range, "KalturaESearchRange");
+		if(count($xml->addHighlight))
+		{
+			if(!empty($xml->addHighlight) && ((int) $xml->addHighlight === 1 || strtolower((string)$xml->addHighlight) === 'true'))
+				$this->addHighlight = true;
+			else
+				$this->addHighlight = false;
+		}
+	}
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $searchTerm = null;
+
+	/**
+	 * 
+	 *
+	 * @var Kaltura_Client_ElasticSearch_Enum_ESearchItemType
+	 */
+	public $itemType = null;
+
+	/**
+	 * 
+	 *
+	 * @var Kaltura_Client_ElasticSearch_Type_ESearchRange
+	 */
+	public $range;
+
+	/**
+	 * 
+	 *
+	 * @var bool
+	 */
+	public $addHighlight = null;
+
+
 }
 

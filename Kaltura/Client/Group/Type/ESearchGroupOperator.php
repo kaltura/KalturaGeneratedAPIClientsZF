@@ -31,7 +31,7 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_ElasticSearch_Type_ESearchGroupOperator extends Kaltura_Client_ElasticSearch_Type_ESearchUserOperator
+class Kaltura_Client_Group_Type_ESearchGroupOperator extends Kaltura_Client_Group_Type_ESearchGroupBaseItem
 {
 	public function getKalturaObjectType()
 	{
@@ -45,7 +45,30 @@ class Kaltura_Client_ElasticSearch_Type_ESearchGroupOperator extends Kaltura_Cli
 		if(is_null($xml))
 			return;
 		
+		if(count($xml->operator))
+			$this->operator = (int)$xml->operator;
+		if(count($xml->searchItems))
+		{
+			if(empty($xml->searchItems))
+				$this->searchItems = array();
+			else
+				$this->searchItems = Kaltura_Client_ParseUtils::unmarshalArray($xml->searchItems, "KalturaESearchGroupBaseItem");
+		}
 	}
+	/**
+	 * 
+	 *
+	 * @var Kaltura_Client_ElasticSearch_Enum_ESearchOperatorType
+	 */
+	public $operator = null;
+
+	/**
+	 * 
+	 *
+	 * @var array of KalturaESearchGroupBaseItem
+	 */
+	public $searchItems;
+
 
 }
 

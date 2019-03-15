@@ -31,30 +31,18 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_ElasticSearch_Type_ESearchGroupParams extends Kaltura_Client_ElasticSearch_Type_ESearchParams
+class Kaltura_Client_Group_Enum_ESearchGroupFieldName extends Kaltura_Client_EnumBase
 {
-	public function getKalturaObjectType()
-	{
-		return 'KalturaESearchGroupParams';
-	}
-	
-	public function __construct(SimpleXMLElement $xml = null)
-	{
-		parent::__construct($xml);
-		
-		if(is_null($xml))
-			return;
-		
-		if(count($xml->searchOperator) && !empty($xml->searchOperator))
-			$this->searchOperator = Kaltura_Client_ParseUtils::unmarshalObject($xml->searchOperator, "KalturaESearchGroupOperator");
-	}
-	/**
-	 * 
-	 *
-	 * @var Kaltura_Client_Group_Type_ESearchGroupOperator
-	 */
-	public $searchOperator;
-
-
+	const CREATED_AT = "created_at";
+	const EMAIL = "email";
+	const FIRST_NAME = "first_name";
+	const GROUP_IDS = "group_ids";
+	const LAST_NAME = "last_name";
+	const PERMISSION_NAMES = "permission_names";
+	const ROLE_IDS = "role_ids";
+	const SCREEN_NAME = "screen_name";
+	const TAGS = "tags";
+	const UPDATED_AT = "updated_at";
+	const USER_ID = "user_id";
 }
 
