@@ -27,23 +27,33 @@
 // @ignore
 // ===================================================================================================
 
+
 /**
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Reach_Enum_VendorServiceTurnAroundTime extends Kaltura_Client_EnumBase
+class Kaltura_Client_ExportcsvService extends Kaltura_Client_ServiceBase
 {
-	const BEST_EFFORT = -1;
-	const IMMEDIATE = 0;
-	const THIRTY_MINUTES = 1800;
-	const TWO_HOURS = 7200;
-	const THREE_HOURS = 10800;
-	const SIX_HOURS = 21600;
-	const EIGHT_HOURS = 28800;
-	const TWELVE_HOURS = 43200;
-	const TWENTY_FOUR_HOURS = 86400;
-	const FORTY_EIGHT_HOURS = 172800;
-	const FOUR_DAYS = 345600;
-	const TEN_DAYS = 864000;
-}
+	function __construct(Kaltura_Client_Client $client = null)
+	{
+		parent::__construct($client);
+	}
 
+	/**
+	 * @return string
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
+	 */
+	function serveCsv($id)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "id", $id);
+		$this->client->queueServiceActionCall("exportcsv", "serveCsv", null, $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultXml = $this->client->doQueue();
+		$resultXmlObject = new \SimpleXMLElement($resultXml);
+		$this->client->checkIfError($resultXmlObject->result);
+		$resultObject = (string)Kaltura_Client_ParseUtils::unmarshalSimpleType($resultXmlObject->result);
+		return $resultObject;
+	}
+}

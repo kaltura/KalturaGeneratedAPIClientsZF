@@ -31,19 +31,30 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Reach_Enum_VendorServiceTurnAroundTime extends Kaltura_Client_EnumBase
+class Kaltura_Client_ElasticSearch_Type_MediaEsearchExportToCsvJobData extends Kaltura_Client_Type_ExportCsvJobData
 {
-	const BEST_EFFORT = -1;
-	const IMMEDIATE = 0;
-	const THIRTY_MINUTES = 1800;
-	const TWO_HOURS = 7200;
-	const THREE_HOURS = 10800;
-	const SIX_HOURS = 21600;
-	const EIGHT_HOURS = 28800;
-	const TWELVE_HOURS = 43200;
-	const TWENTY_FOUR_HOURS = 86400;
-	const FORTY_EIGHT_HOURS = 172800;
-	const FOUR_DAYS = 345600;
-	const TEN_DAYS = 864000;
+	public function getKalturaObjectType()
+	{
+		return 'KalturaMediaEsearchExportToCsvJobData';
+	}
+	
+	public function __construct(SimpleXMLElement $xml = null)
+	{
+		parent::__construct($xml);
+		
+		if(is_null($xml))
+			return;
+		
+		if(count($xml->searchParams) && !empty($xml->searchParams))
+			$this->searchParams = Kaltura_Client_ParseUtils::unmarshalObject($xml->searchParams, "KalturaESearchEntryParams");
+	}
+	/**
+	 * Esearch parameters for the entry search
+	 *
+	 * @var Kaltura_Client_ElasticSearch_Type_ESearchEntryParams
+	 */
+	public $searchParams;
+
+
 }
 

@@ -62,6 +62,26 @@ class Kaltura_Client_Group_GroupService extends Kaltura_Client_ServiceBase
 	 * @return Kaltura_Client_Group_Type_Group
 	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
+	function cloneAction($originalGroupId, $newGroupName)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "originalGroupId", $originalGroupId);
+		$this->client->addParam($kparams, "newGroupName", $newGroupName);
+		$this->client->queueServiceActionCall("group_group", "clone", "KalturaGroup", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultXml = $this->client->doQueue();
+		$resultXmlObject = new \SimpleXMLElement($resultXml);
+		$this->client->checkIfError($resultXmlObject->result);
+		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaGroup");
+		$this->client->validateObjectType($resultObject, "Kaltura_Client_Group_Type_Group");
+		return $resultObject;
+	}
+
+	/**
+	 * @return Kaltura_Client_Group_Type_Group
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
+	 */
 	function delete($groupId)
 	{
 		$kparams = array();

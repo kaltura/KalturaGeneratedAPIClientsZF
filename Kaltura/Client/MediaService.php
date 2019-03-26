@@ -380,6 +380,24 @@ class Kaltura_Client_MediaService extends Kaltura_Client_ServiceBase
 	}
 
 	/**
+	 * @return string
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
+	 */
+	function exportToCsv(Kaltura_Client_ElasticSearch_Type_MediaEsearchExportToCsvJobData $data)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "data", $data->toParams());
+		$this->client->queueServiceActionCall("media", "exportToCsv", null, $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultXml = $this->client->doQueue();
+		$resultXmlObject = new \SimpleXMLElement($resultXml);
+		$this->client->checkIfError($resultXmlObject->result);
+		$resultObject = (string)Kaltura_Client_ParseUtils::unmarshalSimpleType($resultXmlObject->result);
+		return $resultObject;
+	}
+
+	/**
 	 * @return 
 	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */

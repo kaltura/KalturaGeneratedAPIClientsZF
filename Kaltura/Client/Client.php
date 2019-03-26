@@ -131,6 +131,12 @@ class Kaltura_Client_Client extends Kaltura_Client_ClientBase
 	public $entryServerNode = null;
 
 	/**
+	 * Export CSV service is used to manage CSV exports of objects
+	 * @var Kaltura_Client_ExportcsvService
+	 */
+	public $exportcsv = null;
+
+	/**
 	 * Manage file assets
 	 * @var Kaltura_Client_FileAssetService
 	 */
@@ -373,8 +379,8 @@ class Kaltura_Client_Client extends Kaltura_Client_ClientBase
 	{
 		parent::__construct($config);
 		
-		$this->setClientTag('php5:19-03-19');
-		$this->setApiVersion('14.16.0');
+		$this->setClientTag('php5:19-03-26');
+		$this->setApiVersion('14.17.0');
 		
 		$this->accessControlProfile = new Kaltura_Client_AccessControlProfileService($this);
 		$this->accessControl = new Kaltura_Client_AccessControlService($this);
@@ -392,6 +398,7 @@ class Kaltura_Client_Client extends Kaltura_Client_ClientBase
 		$this->deliveryProfile = new Kaltura_Client_DeliveryProfileService($this);
 		$this->EmailIngestionProfile = new Kaltura_Client_EmailIngestionProfileService($this);
 		$this->entryServerNode = new Kaltura_Client_EntryServerNodeService($this);
+		$this->exportcsv = new Kaltura_Client_ExportcsvService($this);
 		$this->fileAsset = new Kaltura_Client_FileAssetService($this);
 		$this->flavorAsset = new Kaltura_Client_FlavorAssetService($this);
 		$this->flavorParamsOutput = new Kaltura_Client_FlavorParamsOutputService($this);

@@ -31,7 +31,7 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Reach_Type_EntryVendorTaskCsvJobData extends Kaltura_Client_Type_JobData
+class Kaltura_Client_Reach_Type_EntryVendorTaskCsvJobData extends Kaltura_Client_Type_ExportCsvJobData
 {
 	public function getKalturaObjectType()
 	{
@@ -47,12 +47,6 @@ class Kaltura_Client_Reach_Type_EntryVendorTaskCsvJobData extends Kaltura_Client
 		
 		if(count($xml->filter) && !empty($xml->filter))
 			$this->filter = Kaltura_Client_ParseUtils::unmarshalObject($xml->filter, "KalturaEntryVendorTaskFilter");
-		if(count($xml->userName))
-			$this->userName = (string)$xml->userName;
-		if(count($xml->userMail))
-			$this->userMail = (string)$xml->userMail;
-		if(count($xml->outputPath))
-			$this->outputPath = (string)$xml->outputPath;
 	}
 	/**
 	 * The filter should return the list of users that need to be specified in the csv.
@@ -60,27 +54,6 @@ class Kaltura_Client_Reach_Type_EntryVendorTaskCsvJobData extends Kaltura_Client
 	 * @var Kaltura_Client_Reach_Type_EntryVendorTaskFilter
 	 */
 	public $filter;
-
-	/**
-	 * The users name
-	 *
-	 * @var string
-	 */
-	public $userName = null;
-
-	/**
-	 * The users email
-	 *
-	 * @var string
-	 */
-	public $userMail = null;
-
-	/**
-	 * The file location
-	 *
-	 * @var string
-	 */
-	public $outputPath = null;
 
 
 }
