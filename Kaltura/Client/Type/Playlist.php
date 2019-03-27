@@ -95,6 +95,7 @@ class Kaltura_Client_Type_Playlist extends Kaltura_Client_Type_BaseEntry
 	 * Type of playlist
 	 *
 	 * @var Kaltura_Client_Enum_PlaylistType
+	 * @insertonly
 	 */
 	public $playlistType = null;
 
