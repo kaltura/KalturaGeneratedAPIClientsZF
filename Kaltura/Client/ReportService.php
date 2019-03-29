@@ -64,6 +64,25 @@ class Kaltura_Client_ReportService extends Kaltura_Client_ServiceBase
 	}
 
 	/**
+	 * @return Kaltura_Client_Type_ReportExportResponse
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
+	 */
+	function exportToCsv(Kaltura_Client_Type_ReportExportParams $params)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "params", $params->toParams());
+		$this->client->queueServiceActionCall("report", "exportToCsv", "KalturaReportExportResponse", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultXml = $this->client->doQueue();
+		$resultXmlObject = new \SimpleXMLElement($resultXml);
+		$this->client->checkIfError($resultXmlObject->result);
+		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaReportExportResponse");
+		$this->client->validateObjectType($resultObject, "Kaltura_Client_Type_ReportExportResponse");
+		return $resultObject;
+	}
+
+	/**
 	 * @return array
 	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */

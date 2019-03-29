@@ -77,5 +77,8 @@ class Kaltura_Client_Enum_MailType extends Kaltura_Client_EnumBase
 	const MAIL_TYPE_LIVE_REPORT_EXPORT_ABORT = "132";
 	const MAIL_TYPE_USERS_CSV = "133";
 	const MAIL_TYPE_OBJECTS_CSV = "135";
+	const MAIL_TYPE_REPORT_EXPORT_SUCCESS = "136";
+	const MAIL_TYPE_REPORT_EXPORT_FAILURE = "137";
+	const MAIL_TYPE_REPORT_EXPORT_ABORT = "138";
 }
 
