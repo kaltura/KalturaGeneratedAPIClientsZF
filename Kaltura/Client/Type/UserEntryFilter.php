@@ -53,6 +53,8 @@ class Kaltura_Client_Type_UserEntryFilter extends Kaltura_Client_Type_UserEntryB
 			$this->privacyContextEqual = (string)$xml->privacyContextEqual;
 		if(count($xml->privacyContextIn))
 			$this->privacyContextIn = (string)$xml->privacyContextIn;
+		if(count($xml->partnerId))
+			$this->partnerId = (int)$xml->partnerId;
 	}
 	/**
 	 * 
@@ -81,6 +83,13 @@ class Kaltura_Client_Type_UserEntryFilter extends Kaltura_Client_Type_UserEntryB
 	 * @var string
 	 */
 	public $privacyContextIn = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $partnerId = null;
 
 
 }

@@ -31,7 +31,7 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_BulkUploadFilter_Type_BulkServiceFilterData extends Kaltura_Client_BulkUpload_Type_BulkServiceData
+class Kaltura_Client_BulkUploadFilter_Type_BulkServiceFilterData extends Kaltura_Client_BulkUploadFilter_Type_BulkServiceFilterDataBase
 {
 	public function getKalturaObjectType()
 	{
@@ -45,18 +45,9 @@ class Kaltura_Client_BulkUploadFilter_Type_BulkServiceFilterData extends Kaltura
 		if(is_null($xml))
 			return;
 		
-		if(count($xml->filter) && !empty($xml->filter))
-			$this->filter = Kaltura_Client_ParseUtils::unmarshalObject($xml->filter, "KalturaFilter");
 		if(count($xml->templateObject) && !empty($xml->templateObject))
 			$this->templateObject = Kaltura_Client_ParseUtils::unmarshalObject($xml->templateObject, "KalturaObjectBase");
 	}
-	/**
-	 * Filter for extracting the objects list to upload
-	 *
-	 * @var Kaltura_Client_Type_Filter
-	 */
-	public $filter;
-
 	/**
 	 * Template object for new object creation
 	 *
