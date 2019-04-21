@@ -47,6 +47,8 @@ abstract class Kaltura_Client_CuePoint_Type_CuePoint extends Kaltura_Client_Obje
 		
 		if(count($xml->id))
 			$this->id = (string)$xml->id;
+		if(count($xml->intId))
+			$this->intId = (int)$xml->intId;
 		if(count($xml->cuePointType))
 			$this->cuePointType = (string)$xml->cuePointType;
 		if(count($xml->status))
@@ -94,6 +96,14 @@ abstract class Kaltura_Client_CuePoint_Type_CuePoint extends Kaltura_Client_Obje
 	 * @readonly
 	 */
 	public $id = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 * @readonly
+	 */
+	public $intId = null;
 
 	/**
 	 * 
