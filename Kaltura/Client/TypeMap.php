@@ -518,6 +518,7 @@ class Kaltura_Client_TypeMap
 		'KalturaESearchGroupParams' => 'Kaltura_Client_ElasticSearch_Type_ESearchGroupParams',
 		'KalturaESearchGroupResponse' => 'Kaltura_Client_ElasticSearch_Type_ESearchGroupResponse',
 		'KalturaESearchGroupResult' => 'Kaltura_Client_ElasticSearch_Type_ESearchGroupResult',
+		'KalturaESearchGroupUserItem' => 'Kaltura_Client_ElasticSearch_Type_ESearchGroupUserItem',
 		'KalturaESearchHighlight' => 'Kaltura_Client_ElasticSearch_Type_ESearchHighlight',
 		'KalturaESearchHistory' => 'Kaltura_Client_SearchHistory_Type_ESearchHistory',
 		'KalturaESearchHistoryFilter' => 'Kaltura_Client_SearchHistory_Type_ESearchHistoryFilter',
