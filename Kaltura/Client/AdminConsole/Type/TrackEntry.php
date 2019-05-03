@@ -79,6 +79,8 @@ class Kaltura_Client_AdminConsole_Type_TrackEntry extends Kaltura_Client_ObjectB
 			$this->updatedAt = (int)$xml->updatedAt;
 		if(count($xml->userIp))
 			$this->userIp = (string)$xml->userIp;
+		if(count($xml->sessionId))
+			$this->sessionId = (int)$xml->sessionId;
 	}
 	/**
 	 * 
@@ -198,6 +200,13 @@ class Kaltura_Client_AdminConsole_Type_TrackEntry extends Kaltura_Client_ObjectB
 	 * @var string
 	 */
 	public $userIp = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $sessionId = null;
 
 
 }
