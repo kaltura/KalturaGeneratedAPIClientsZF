@@ -62,10 +62,11 @@ class Kaltura_Client_Group_GroupService extends Kaltura_Client_ServiceBase
 	 * @return Kaltura_Client_Group_Type_Group
 	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
-	function cloneAction($originalGroupId, $newGroupName)
+	function cloneAction($originalGroupId, $newGroupId, $newGroupName = null)
 	{
 		$kparams = array();
 		$this->client->addParam($kparams, "originalGroupId", $originalGroupId);
+		$this->client->addParam($kparams, "newGroupId", $newGroupId);
 		$this->client->addParam($kparams, "newGroupName", $newGroupName);
 		$this->client->queueServiceActionCall("group_group", "clone", "KalturaGroup", $kparams);
 		if ($this->client->isMultiRequest())
