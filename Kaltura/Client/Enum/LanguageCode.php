@@ -104,6 +104,7 @@ class Kaltura_Client_Enum_LanguageCode extends Kaltura_Client_EnumBase
 	const KU = "ku";
 	const KY = "ky";
 	const LA = "la";
+	const LB = "lb";
 	const LI = "li";
 	const LN = "ln";
 	const LO = "lo";
