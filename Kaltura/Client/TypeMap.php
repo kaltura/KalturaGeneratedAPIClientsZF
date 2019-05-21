@@ -938,6 +938,7 @@ class Kaltura_Client_TypeMap
 		'KalturaPartnerBaseFilter' => 'Kaltura_Client_Type_PartnerBaseFilter',
 		'KalturaPartnerFilter' => 'Kaltura_Client_Type_PartnerFilter',
 		'KalturaPartnerListResponse' => 'Kaltura_Client_Type_PartnerListResponse',
+		'KalturaPartnerPublicInfo' => 'Kaltura_Client_Type_PartnerPublicInfo',
 		'KalturaPartnerStatistics' => 'Kaltura_Client_Type_PartnerStatistics',
 		'KalturaPartnerUsage' => 'Kaltura_Client_Type_PartnerUsage',
 		'KalturaPartnerUsageListResponse' => 'Kaltura_Client_VarConsole_Type_PartnerUsageListResponse',

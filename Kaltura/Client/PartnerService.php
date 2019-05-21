@@ -96,6 +96,25 @@ class Kaltura_Client_PartnerService extends Kaltura_Client_ServiceBase
 	}
 
 	/**
+	 * @return Kaltura_Client_Type_PartnerPublicInfo
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
+	 */
+	function getPublicInfo($id = null)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "id", $id);
+		$this->client->queueServiceActionCall("partner", "getPublicInfo", "KalturaPartnerPublicInfo", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultXml = $this->client->doQueue();
+		$resultXmlObject = new \SimpleXMLElement($resultXml);
+		$this->client->checkIfError($resultXmlObject->result);
+		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaPartnerPublicInfo");
+		$this->client->validateObjectType($resultObject, "Kaltura_Client_Type_PartnerPublicInfo");
+		return $resultObject;
+	}
+
+	/**
 	 * @return Kaltura_Client_Type_Partner
 	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
