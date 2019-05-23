@@ -49,6 +49,13 @@ class Kaltura_Client_Type_PartnerPublicInfo extends Kaltura_Client_ObjectBase
 			$this->analyticsUrl = (string)$xml->analyticsUrl;
 		if(count($xml->ottEnvironmentUrl))
 			$this->ottEnvironmentUrl = (string)$xml->ottEnvironmentUrl;
+		if(count($xml->analyticsPersistentSessionId))
+		{
+			if(!empty($xml->analyticsPersistentSessionId) && ((int) $xml->analyticsPersistentSessionId === 1 || strtolower((string)$xml->analyticsPersistentSessionId) === 'true'))
+				$this->analyticsPersistentSessionId = true;
+			else
+				$this->analyticsPersistentSessionId = false;
+		}
 	}
 	/**
 	 * 
@@ -63,6 +70,13 @@ class Kaltura_Client_Type_PartnerPublicInfo extends Kaltura_Client_ObjectBase
 	 * @var string
 	 */
 	public $ottEnvironmentUrl = null;
+
+	/**
+	 * 
+	 *
+	 * @var bool
+	 */
+	public $analyticsPersistentSessionId = null;
 
 
 }
