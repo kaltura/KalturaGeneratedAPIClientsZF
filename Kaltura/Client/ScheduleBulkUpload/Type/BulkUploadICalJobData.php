@@ -31,7 +31,7 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_ScheduleBulkUpload_Type_BulkUploadICalJobData extends Kaltura_Client_Type_BulkUploadJobData
+class Kaltura_Client_ScheduleBulkUpload_Type_BulkUploadICalJobData extends Kaltura_Client_ScheduleBulkUpload_Type_BulkUploadScheduleEventJobData
 {
 	public function getKalturaObjectType()
 	{

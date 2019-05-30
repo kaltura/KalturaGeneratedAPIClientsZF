@@ -31,19 +31,21 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Enum_EntryStatus extends Kaltura_Client_EnumBase
+abstract class Kaltura_Client_ScheduleBulkUpload_Type_BulkUploadScheduleEventJobData extends Kaltura_Client_Type_BulkUploadJobData
 {
-	const ERROR_IMPORTING = "-2";
-	const ERROR_CONVERTING = "-1";
-	const IMPORT = "0";
-	const INFECTED = "virusScan.Infected";
-	const SCAN_FAILURE = "virusScan.ScanFailure";
-	const PRECONVERT = "1";
-	const READY = "2";
-	const DELETED = "3";
-	const PENDING = "4";
-	const MODERATE = "5";
-	const BLOCKED = "6";
-	const NO_CONTENT = "7";
+	public function getKalturaObjectType()
+	{
+		return 'KalturaBulkUploadScheduleEventJobData';
+	}
+	
+	public function __construct(SimpleXMLElement $xml = null)
+	{
+		parent::__construct($xml);
+		
+		if(is_null($xml))
+			return;
+		
+	}
+
 }
 

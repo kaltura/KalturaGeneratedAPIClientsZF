@@ -206,6 +206,8 @@ class Kaltura_Client_TypeMap
 		'KalturaBulkUploadResultScheduleResource' => 'Kaltura_Client_ScheduleBulkUpload_Type_BulkUploadResultScheduleResource',
 		'KalturaBulkUploadResultUser' => 'Kaltura_Client_Type_BulkUploadResultUser',
 		'KalturaBulkUploadResultUserEntry' => 'Kaltura_Client_Type_BulkUploadResultUserEntry',
+		'KalturaBulkUploadScheduleEventCsvJobData' => 'Kaltura_Client_ScheduleBulkUpload_Type_BulkUploadScheduleEventCsvJobData',
+		'KalturaBulkUploadScheduleEventJobData' => 'Kaltura_Client_ScheduleBulkUpload_Type_BulkUploadScheduleEventJobData',
 		'KalturaBulkUploadUserData' => 'Kaltura_Client_Type_BulkUploadUserData',
 		'KalturaBulkUploadXmlJobData' => 'Kaltura_Client_BulkUploadXml_Type_BulkUploadXmlJobData',
 		'KalturaBusinessProcessAbortNotificationTemplate' => 'Kaltura_Client_BusinessProcessNotification_Type_BusinessProcessAbortNotificationTemplate',

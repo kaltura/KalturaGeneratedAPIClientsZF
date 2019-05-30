@@ -62,7 +62,7 @@ class Kaltura_Client_Schedule_ScheduleEventService extends Kaltura_Client_Servic
 	 * @return Kaltura_Client_Type_BulkUpload
 	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
-	function addFromBulkUpload($fileData, Kaltura_Client_ScheduleBulkUpload_Type_BulkUploadICalJobData $bulkUploadData = null)
+	function addFromBulkUpload($fileData, Kaltura_Client_ScheduleBulkUpload_Type_BulkUploadScheduleEventJobData $bulkUploadData = null)
 	{
 		$kparams = array();
 		$kfiles = array();

@@ -31,19 +31,45 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Enum_EntryStatus extends Kaltura_Client_EnumBase
+class Kaltura_Client_ScheduleBulkUpload_Type_BulkUploadScheduleEventCsvJobData extends Kaltura_Client_ScheduleBulkUpload_Type_BulkUploadScheduleEventJobData
 {
-	const ERROR_IMPORTING = "-2";
-	const ERROR_CONVERTING = "-1";
-	const IMPORT = "0";
-	const INFECTED = "virusScan.Infected";
-	const SCAN_FAILURE = "virusScan.ScanFailure";
-	const PRECONVERT = "1";
-	const READY = "2";
-	const DELETED = "3";
-	const PENDING = "4";
-	const MODERATE = "5";
-	const BLOCKED = "6";
-	const NO_CONTENT = "7";
+	public function getKalturaObjectType()
+	{
+		return 'KalturaBulkUploadScheduleEventCsvJobData';
+	}
+	
+	public function __construct(SimpleXMLElement $xml = null)
+	{
+		parent::__construct($xml);
+		
+		if(is_null($xml))
+			return;
+		
+		if(count($xml->csvVersion))
+			$this->csvVersion = (int)$xml->csvVersion;
+		if(count($xml->columns))
+		{
+			if(empty($xml->columns))
+				$this->columns = array();
+			else
+				$this->columns = Kaltura_Client_ParseUtils::unmarshalArray($xml->columns, "KalturaString");
+		}
+	}
+	/**
+	 * The version of the csv file
+	 *
+	 * @var Kaltura_Client_BulkUploadCsv_Enum_BulkUploadCsvVersion
+	 * @readonly
+	 */
+	public $csvVersion = null;
+
+	/**
+	 * Array containing CSV headers
+	 *
+	 * @var array of KalturaString
+	 */
+	public $columns;
+
+
 }
 

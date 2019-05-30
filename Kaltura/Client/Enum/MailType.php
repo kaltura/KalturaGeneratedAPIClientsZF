@@ -80,5 +80,6 @@ class Kaltura_Client_Enum_MailType extends Kaltura_Client_EnumBase
 	const MAIL_TYPE_REPORT_EXPORT_SUCCESS = "136";
 	const MAIL_TYPE_REPORT_EXPORT_FAILURE = "137";
 	const MAIL_TYPE_REPORT_EXPORT_ABORT = "138";
+	const MAIL_TYPE_SIP_FAILURE = "139";
 }
 
