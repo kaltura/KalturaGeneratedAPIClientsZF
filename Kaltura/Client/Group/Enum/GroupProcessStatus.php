@@ -31,40 +31,9 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Group_Type_Group extends Kaltura_Client_Type_BaseUser
+class Kaltura_Client_Group_Enum_GroupProcessStatus extends Kaltura_Client_EnumBase
 {
-	public function getKalturaObjectType()
-	{
-		return 'KalturaGroup';
-	}
-	
-	public function __construct(SimpleXMLElement $xml = null)
-	{
-		parent::__construct($xml);
-		
-		if(is_null($xml))
-			return;
-		
-		if(count($xml->membersCount))
-			$this->membersCount = (int)$xml->membersCount;
-		if(count($xml->processStatus))
-			$this->processStatus = (int)$xml->processStatus;
-	}
-	/**
-	 * 
-	 *
-	 * @var int
-	 * @readonly
-	 */
-	public $membersCount = null;
-
-	/**
-	 * 
-	 *
-	 * @var Kaltura_Client_Group_Enum_GroupProcessStatus
-	 */
-	public $processStatus = null;
-
-
+	const NONE = 0;
+	const PROCESSING = 1;
 }
 
