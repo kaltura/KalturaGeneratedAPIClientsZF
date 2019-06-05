@@ -204,6 +204,13 @@ class Kaltura_Client_Type_Partner extends Kaltura_Client_ObjectBase
 			else
 				$this->eSearchLanguages = Kaltura_Client_ParseUtils::unmarshalArray($xml->eSearchLanguages, "KalturaESearchLanguageItem");
 		}
+		if(count($xml->authenticationType))
+		{
+			if(!empty($xml->authenticationType) && ((int) $xml->authenticationType === 1 || strtolower((string)$xml->authenticationType) === 'true'))
+				$this->authenticationType = true;
+			else
+				$this->authenticationType = false;
+		}
 	}
 	/**
 	 * 
@@ -629,6 +636,14 @@ class Kaltura_Client_Type_Partner extends Kaltura_Client_ObjectBase
 	 * @var array of KalturaESearchLanguageItem
 	 */
 	public $eSearchLanguages;
+
+	/**
+	 * 
+	 *
+	 * @var bool
+	 * @readonly
+	 */
+	public $authenticationType = null;
 
 
 }

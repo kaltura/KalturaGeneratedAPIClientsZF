@@ -127,6 +127,7 @@ class Kaltura_Client_TypeMap
 		'KalturaAuditTrailListResponse' => 'Kaltura_Client_Audit_Type_AuditTrailListResponse',
 		'KalturaAuditTrailTextInfo' => 'Kaltura_Client_Audit_Type_AuditTrailTextInfo',
 		'KalturaAuthenticatedCondition' => 'Kaltura_Client_Type_AuthenticatedCondition',
+		'KalturaAuthentication' => 'Kaltura_Client_Type_Authentication',
 		'KalturaAvnDistributionProfile' => 'Kaltura_Client_AvnDistribution_Type_AvnDistributionProfile',
 		'KalturaAvnDistributionProfileBaseFilter' => 'Kaltura_Client_AvnDistribution_Type_AvnDistributionProfileBaseFilter',
 		'KalturaAvnDistributionProfileFilter' => 'Kaltura_Client_AvnDistribution_Type_AvnDistributionProfileFilter',
