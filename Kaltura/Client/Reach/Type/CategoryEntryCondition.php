@@ -47,6 +47,8 @@ class Kaltura_Client_Reach_Type_CategoryEntryCondition extends Kaltura_Client_Ty
 		
 		if(count($xml->categoryId))
 			$this->categoryId = (int)$xml->categoryId;
+		if(count($xml->categoryIds))
+			$this->categoryIds = (string)$xml->categoryIds;
 		if(count($xml->categoryUserPermission))
 			$this->categoryUserPermission = (int)$xml->categoryUserPermission;
 		if(count($xml->comparison))
@@ -58,6 +60,13 @@ class Kaltura_Client_Reach_Type_CategoryEntryCondition extends Kaltura_Client_Ty
 	 * @var int
 	 */
 	public $categoryId = null;
+
+	/**
+	 * Category id's to check condition for
+	 *
+	 * @var string
+	 */
+	public $categoryIds = null;
 
 	/**
 	 * Minimum category user level permission to validate

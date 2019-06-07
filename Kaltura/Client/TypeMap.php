@@ -1289,6 +1289,8 @@ class Kaltura_Client_TypeMap
 		'KalturaVendorCatalogItemFilter' => 'Kaltura_Client_Reach_Type_VendorCatalogItemFilter',
 		'KalturaVendorCatalogItemListResponse' => 'Kaltura_Client_Reach_Type_VendorCatalogItemListResponse',
 		'KalturaVendorCatalogItemPricing' => 'Kaltura_Client_Reach_Type_VendorCatalogItemPricing',
+		'KalturaVendorChapteringCatalogItem' => 'Kaltura_Client_Reach_Type_VendorChapteringCatalogItem',
+		'KalturaVendorChapteringCatalogItemFilter' => 'Kaltura_Client_Reach_Type_VendorChapteringCatalogItemFilter',
 		'KalturaVendorCredit' => 'Kaltura_Client_Reach_Type_VendorCredit',
 		'KalturaVendorTaskData' => 'Kaltura_Client_Reach_Type_VendorTaskData',
 		'KalturaVendorTranslationCatalogItem' => 'Kaltura_Client_Reach_Type_VendorTranslationCatalogItem',

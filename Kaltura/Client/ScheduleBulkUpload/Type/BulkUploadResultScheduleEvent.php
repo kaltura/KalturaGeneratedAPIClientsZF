@@ -97,7 +97,7 @@ class Kaltura_Client_ScheduleBulkUpload_Type_BulkUploadResultScheduleEvent exten
 	/**
 	 * 
 	 *
-	 * @var Kaltura_Client_Schedule_Enum_ScheduleEventType
+	 * @var int
 	 */
 	public $eventType = null;
 

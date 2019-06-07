@@ -31,12 +31,21 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Reach_Enum_VendorServiceFeature extends Kaltura_Client_EnumBase
+class Kaltura_Client_Reach_Type_VendorChapteringCatalogItemFilter extends Kaltura_Client_Reach_Type_VendorCaptionsCatalogItemBaseFilter
 {
-	const CAPTIONS = 1;
-	const TRANSLATION = 2;
-	const ALIGNMENT = 3;
-	const AUDIO_DESCRIPTION = 4;
-	const CHAPTERING = 5;
+	public function getKalturaObjectType()
+	{
+		return 'KalturaVendorChapteringCatalogItemFilter';
+	}
+	
+	public function __construct(SimpleXMLElement $xml = null)
+	{
+		parent::__construct($xml);
+		
+		if(is_null($xml))
+			return;
+		
+	}
+
 }
 

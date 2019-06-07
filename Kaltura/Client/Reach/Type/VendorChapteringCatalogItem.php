@@ -31,12 +31,30 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Reach_Enum_VendorServiceFeature extends Kaltura_Client_EnumBase
+class Kaltura_Client_Reach_Type_VendorChapteringCatalogItem extends Kaltura_Client_Reach_Type_VendorCatalogItem
 {
-	const CAPTIONS = 1;
-	const TRANSLATION = 2;
-	const ALIGNMENT = 3;
-	const AUDIO_DESCRIPTION = 4;
-	const CHAPTERING = 5;
+	public function getKalturaObjectType()
+	{
+		return 'KalturaVendorChapteringCatalogItem';
+	}
+	
+	public function __construct(SimpleXMLElement $xml = null)
+	{
+		parent::__construct($xml);
+		
+		if(is_null($xml))
+			return;
+		
+		if(count($xml->sourceLanguage))
+			$this->sourceLanguage = (string)$xml->sourceLanguage;
+	}
+	/**
+	 * 
+	 *
+	 * @var Kaltura_Client_Reach_Enum_CatalogItemLanguage
+	 */
+	public $sourceLanguage = null;
+
+
 }
 
