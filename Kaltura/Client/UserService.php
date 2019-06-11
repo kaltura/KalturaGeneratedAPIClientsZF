@@ -397,7 +397,7 @@ class Kaltura_Client_UserService extends Kaltura_Client_ServiceBase
 	}
 
 	/**
-	 * @return 
+	 * @return Kaltura_Client_Type_Authentication
 	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function setInitialPassword($hashKey, $newPassword)
@@ -405,12 +405,15 @@ class Kaltura_Client_UserService extends Kaltura_Client_ServiceBase
 		$kparams = array();
 		$this->client->addParam($kparams, "hashKey", $hashKey);
 		$this->client->addParam($kparams, "newPassword", $newPassword);
-		$this->client->queueServiceActionCall("user", "setInitialPassword", null, $kparams);
+		$this->client->queueServiceActionCall("user", "setInitialPassword", "KalturaAuthentication", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
 		$resultXml = $this->client->doQueue();
 		$resultXmlObject = new \SimpleXMLElement($resultXml);
 		$this->client->checkIfError($resultXmlObject->result);
+		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaAuthentication");
+		$this->client->validateObjectType($resultObject, "Kaltura_Client_Type_Authentication");
+		return $resultObject;
 	}
 
 	/**

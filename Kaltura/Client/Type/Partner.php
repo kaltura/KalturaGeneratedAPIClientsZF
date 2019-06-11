@@ -635,7 +635,7 @@ class Kaltura_Client_Type_Partner extends Kaltura_Client_ObjectBase
 	/**
 	 * 
 	 *
-	 * @var int
+	 * @var Kaltura_Client_Enum_PartnerAuthenticationType
 	 * @readonly
 	 */
 	public $authenticationType = null;
