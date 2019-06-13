@@ -36,9 +36,11 @@ class Kaltura_Client_Enum_LanguageCode extends Kaltura_Client_EnumBase
 	const AA = "aa";
 	const AB = "ab";
 	const AF = "af";
+	const ALG = "alg";
 	const AM = "am";
 	const AR = "ar";
 	const AS_ = "as";
+	const ATH = "ath";
 	const AY = "ay";
 	const AZ = "az";
 	const BA = "ba";
@@ -51,6 +53,8 @@ class Kaltura_Client_Enum_LanguageCode extends Kaltura_Client_EnumBase
 	const BR = "br";
 	const CA = "ca";
 	const CO = "co";
+	const CR = "cr";
+	const CRG = "crg";
 	const CS = "cs";
 	const CY = "cy";
 	const DA = "da";
@@ -86,7 +90,9 @@ class Kaltura_Client_Enum_LanguageCode extends Kaltura_Client_EnumBase
 	const ID = "id";
 	const IE = "ie";
 	const IK = "ik";
+	const IKT = "ikt";
 	const IN = "in";
+	const IRO = "iro";
 	const IS = "is";
 	const IT = "it";
 	const IU = "iu";
@@ -112,6 +118,7 @@ class Kaltura_Client_Enum_LanguageCode extends Kaltura_Client_EnumBase
 	const LV = "lv";
 	const MG = "mg";
 	const MI = "mi";
+	const MIC = "mic";
 	const MK = "mk";
 	const ML = "ml";
 	const MN = "mn";
@@ -119,13 +126,16 @@ class Kaltura_Client_Enum_LanguageCode extends Kaltura_Client_EnumBase
 	const MR = "mr";
 	const MS = "ms";
 	const MT = "mt";
-	const MU = "multilingual";
+	const MU = "mu";
 	const MY = "my";
 	const NA = "na";
 	const NE = "ne";
 	const NL = "nl";
 	const NO = "no";
 	const OC = "oc";
+	const OJ = "oj";
+	const OJS = "ojs";
+	const OJW = "ojw";
 	const OM = "om";
 	const OR_ = "or";
 	const PA = "pa";
@@ -139,6 +149,7 @@ class Kaltura_Client_Enum_LanguageCode extends Kaltura_Client_EnumBase
 	const RU = "ru";
 	const RW = "rw";
 	const SA = "sa";
+	const SAL = "sal";
 	const SD = "sd";
 	const SG = "sg";
 	const SH = "sh";
@@ -146,6 +157,7 @@ class Kaltura_Client_Enum_LanguageCode extends Kaltura_Client_EnumBase
 	const SK = "sk";
 	const SL = "sl";
 	const SM = "sm";
+	const SMI = "smi";
 	const SN = "sn";
 	const SO = "so";
 	const SQ = "sq";
@@ -156,6 +168,7 @@ class Kaltura_Client_Enum_LanguageCode extends Kaltura_Client_EnumBase
 	const SV = "sv";
 	const SW = "sw";
 	const TA = "ta";
+	const TCE = "tce";
 	const TE = "te";
 	const TG = "tg";
 	const TH = "th";
@@ -170,6 +183,7 @@ class Kaltura_Client_Enum_LanguageCode extends Kaltura_Client_EnumBase
 	const TW = "tw";
 	const UG = "ug";
 	const UK = "uk";
+	const UN = "un";
 	const UR = "ur";
 	const UZ = "uz";
 	const VI = "vi";
@@ -180,5 +194,6 @@ class Kaltura_Client_Enum_LanguageCode extends Kaltura_Client_EnumBase
 	const YO = "yo";
 	const ZH = "zh";
 	const ZU = "zu";
+	const ZXX = "zxx";
 }
 
