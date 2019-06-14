@@ -48,6 +48,7 @@ class Kaltura_Client_Enum_LanguageCode extends Kaltura_Client_EnumBase
 	const BG = "bg";
 	const BH = "bh";
 	const BI = "bi";
+	const BLA = "bla";
 	const BN = "bn";
 	const BO = "bo";
 	const BR = "br";
@@ -123,6 +124,7 @@ class Kaltura_Client_Enum_LanguageCode extends Kaltura_Client_EnumBase
 	const ML = "ml";
 	const MN = "mn";
 	const MO = "mo";
+	const MOE = "moe";
 	const MR = "mr";
 	const MS = "ms";
 	const MT = "mt";
@@ -136,6 +138,7 @@ class Kaltura_Client_Enum_LanguageCode extends Kaltura_Client_EnumBase
 	const OJ = "oj";
 	const OJS = "ojs";
 	const OJW = "ojw";
+	const OKA = "oka";
 	const OM = "om";
 	const OR_ = "or";
 	const PA = "pa";
