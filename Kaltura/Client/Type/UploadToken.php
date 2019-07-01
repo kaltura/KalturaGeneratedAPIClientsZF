@@ -67,6 +67,8 @@ class Kaltura_Client_Type_UploadToken extends Kaltura_Client_ObjectBase
 			$this->uploadUrl = (string)$xml->uploadUrl;
 		if(count($xml->autoFinalize))
 			$this->autoFinalize = (int)$xml->autoFinalize;
+		if(count($xml->minimumChunkSize))
+			$this->minimumChunkSize = (float)$xml->minimumChunkSize;
 	}
 	/**
 	 * Upload token unique ID
@@ -155,6 +157,14 @@ class Kaltura_Client_Type_UploadToken extends Kaltura_Client_ObjectBase
 	 * @insertonly
 	 */
 	public $autoFinalize = null;
+
+	/**
+	 * set the minimum size in bytes for each uploaded part of the file
+	 *
+	 * @var float
+	 * @insertonly
+	 */
+	public $minimumChunkSize = null;
 
 
 }
