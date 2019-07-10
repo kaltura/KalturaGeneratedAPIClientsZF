@@ -118,12 +118,13 @@ class Kaltura_Client_PartnerService extends Kaltura_Client_ServiceBase
 	 * @return Kaltura_Client_Type_Partner
 	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
-	function getSecrets($partnerId, $adminEmail, $cmsPassword)
+	function getSecrets($partnerId, $adminEmail, $cmsPassword, $otp = null)
 	{
 		$kparams = array();
 		$this->client->addParam($kparams, "partnerId", $partnerId);
 		$this->client->addParam($kparams, "adminEmail", $adminEmail);
 		$this->client->addParam($kparams, "cmsPassword", $cmsPassword);
+		$this->client->addParam($kparams, "otp", $otp);
 		$this->client->queueServiceActionCall("partner", "getSecrets", "KalturaPartner", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();

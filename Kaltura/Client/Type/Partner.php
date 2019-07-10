@@ -96,6 +96,8 @@ class Kaltura_Client_Type_Partner extends Kaltura_Client_ObjectBase
 			$this->mergeEntryLists = (int)$xml->mergeEntryLists;
 		if(count($xml->notificationsConfig))
 			$this->notificationsConfig = (string)$xml->notificationsConfig;
+		if(count($xml->allowedFromEmailWhiteList))
+			$this->allowedFromEmailWhiteList = (string)$xml->allowedFromEmailWhiteList;
 		if(count($xml->maxUploadSize))
 			$this->maxUploadSize = (int)$xml->maxUploadSize;
 		if(count($xml->partnerPackage))
@@ -370,6 +372,13 @@ class Kaltura_Client_Type_Partner extends Kaltura_Client_ObjectBase
 	 * @var string
 	 */
 	public $notificationsConfig = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $allowedFromEmailWhiteList = null;
 
 	/**
 	 * 
