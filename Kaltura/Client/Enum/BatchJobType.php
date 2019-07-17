@@ -34,6 +34,7 @@
 class Kaltura_Client_Enum_BatchJobType extends Kaltura_Client_EnumBase
 {
 	const CONVERT = "0";
+	const CONVERT_CAPTION_ASSET = "caption.convertcaptionasset";
 	const PARSE_MULTI_LANGUAGE_CAPTION_ASSET = "caption.parsemultilanguagecaptionasset";
 	const PARSE_CAPTION_ASSET = "captionSearch.parseCaptionAsset";
 	const DISTRIBUTION_DELETE = "contentDistribution.DistributionDelete";

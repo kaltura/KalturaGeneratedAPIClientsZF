@@ -31,12 +31,66 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Caption_Enum_CaptionType extends Kaltura_Client_EnumBase
+class Kaltura_Client_Caption_Type_ConvertCaptionAssetJobData extends Kaltura_Client_Type_JobData
 {
-	const SRT = "1";
-	const DFXP = "2";
-	const WEBVTT = "3";
-	const CAP = "4";
-	const SCC = "5";
+	public function getKalturaObjectType()
+	{
+		return 'KalturaConvertCaptionAssetJobData';
+	}
+	
+	public function __construct(SimpleXMLElement $xml = null)
+	{
+		parent::__construct($xml);
+		
+		if(is_null($xml))
+			return;
+		
+		if(count($xml->captionAssetId))
+			$this->captionAssetId = (string)$xml->captionAssetId;
+		if(count($xml->fileLocation))
+			$this->fileLocation = (string)$xml->fileLocation;
+		if(count($xml->fileEncryptionKey))
+			$this->fileEncryptionKey = (string)$xml->fileEncryptionKey;
+		if(count($xml->fromType))
+			$this->fromType = (string)$xml->fromType;
+		if(count($xml->toType))
+			$this->toType = (string)$xml->toType;
+	}
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $captionAssetId = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $fileLocation = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $fileEncryptionKey = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $fromType = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $toType = null;
+
+
 }
 

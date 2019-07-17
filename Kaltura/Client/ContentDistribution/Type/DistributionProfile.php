@@ -113,6 +113,8 @@ abstract class Kaltura_Client_ContentDistribution_Type_DistributionProfile exten
 			$this->recommendedDcForDownload = (int)$xml->recommendedDcForDownload;
 		if(count($xml->recommendedDcForExecute))
 			$this->recommendedDcForExecute = (int)$xml->recommendedDcForExecute;
+		if(count($xml->distributeTrigger))
+			$this->distributeTrigger = (int)$xml->distributeTrigger;
 	}
 	/**
 	 * Auto generated unique id
@@ -286,6 +288,13 @@ abstract class Kaltura_Client_ContentDistribution_Type_DistributionProfile exten
 	 * @var int
 	 */
 	public $recommendedDcForExecute = null;
+
+	/**
+	 * The event that trigger the automatic distribute
+	 *
+	 * @var Kaltura_Client_ContentDistribution_Enum_DistributeTrigger
+	 */
+	public $distributeTrigger = null;
 
 
 }

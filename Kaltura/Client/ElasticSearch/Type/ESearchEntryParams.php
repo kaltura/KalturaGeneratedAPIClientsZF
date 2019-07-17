@@ -47,6 +47,8 @@ class Kaltura_Client_ElasticSearch_Type_ESearchEntryParams extends Kaltura_Clien
 		
 		if(count($xml->searchOperator) && !empty($xml->searchOperator))
 			$this->searchOperator = Kaltura_Client_ParseUtils::unmarshalObject($xml->searchOperator, "KalturaESearchEntryOperator");
+		if(count($xml->aggregations) && !empty($xml->aggregations))
+			$this->aggregations = Kaltura_Client_ParseUtils::unmarshalObject($xml->aggregations, "KalturaESearchAggregation");
 	}
 	/**
 	 * 
@@ -54,6 +56,13 @@ class Kaltura_Client_ElasticSearch_Type_ESearchEntryParams extends Kaltura_Clien
 	 * @var Kaltura_Client_ElasticSearch_Type_ESearchEntryOperator
 	 */
 	public $searchOperator;
+
+	/**
+	 * 
+	 *
+	 * @var Kaltura_Client_ElasticSearch_Type_ESearchAggregation
+	 */
+	public $aggregations;
 
 
 }

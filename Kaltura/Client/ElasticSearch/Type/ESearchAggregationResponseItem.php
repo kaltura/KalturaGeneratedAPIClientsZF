@@ -31,12 +31,53 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Caption_Enum_CaptionType extends Kaltura_Client_EnumBase
+class Kaltura_Client_ElasticSearch_Type_ESearchAggregationResponseItem extends Kaltura_Client_ObjectBase
 {
-	const SRT = "1";
-	const DFXP = "2";
-	const WEBVTT = "3";
-	const CAP = "4";
-	const SCC = "5";
+	public function getKalturaObjectType()
+	{
+		return 'KalturaESearchAggregationResponseItem';
+	}
+	
+	public function __construct(SimpleXMLElement $xml = null)
+	{
+		parent::__construct($xml);
+		
+		if(is_null($xml))
+			return;
+		
+		if(count($xml->name))
+			$this->name = (string)$xml->name;
+		if(count($xml->fieldName))
+			$this->fieldName = (string)$xml->fieldName;
+		if(count($xml->buckets))
+		{
+			if(empty($xml->buckets))
+				$this->buckets = array();
+			else
+				$this->buckets = Kaltura_Client_ParseUtils::unmarshalArray($xml->buckets, "KalturaESearchAggregationBucket");
+		}
+	}
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $name = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $fieldName = null;
+
+	/**
+	 * 
+	 *
+	 * @var array of KalturaESearchAggregationBucket
+	 */
+	public $buckets;
+
+
 }
 

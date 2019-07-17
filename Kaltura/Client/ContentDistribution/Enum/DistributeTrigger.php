@@ -31,12 +31,9 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Caption_Enum_CaptionType extends Kaltura_Client_EnumBase
+class Kaltura_Client_ContentDistribution_Enum_DistributeTrigger extends Kaltura_Client_EnumBase
 {
-	const SRT = "1";
-	const DFXP = "2";
-	const WEBVTT = "3";
-	const CAP = "4";
-	const SCC = "5";
+	const ENTRY_READY = 1;
+	const MODERATION_APPROVED = 2;
 }
 

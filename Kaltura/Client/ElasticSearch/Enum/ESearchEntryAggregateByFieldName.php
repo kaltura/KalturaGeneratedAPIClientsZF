@@ -31,12 +31,11 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Caption_Enum_CaptionType extends Kaltura_Client_EnumBase
+class Kaltura_Client_ElasticSearch_Enum_ESearchEntryAggregateByFieldName extends Kaltura_Client_EnumBase
 {
-	const SRT = "1";
-	const DFXP = "2";
-	const WEBVTT = "3";
-	const CAP = "4";
-	const SCC = "5";
+	const ACCESS_CONTROL_PROFILE = "access_control_profile_id";
+	const ENTRY_TYPE = "entry_type";
+	const MEDIA_TYPE = "media_type";
+	const TAGS = "tags";
 }
 

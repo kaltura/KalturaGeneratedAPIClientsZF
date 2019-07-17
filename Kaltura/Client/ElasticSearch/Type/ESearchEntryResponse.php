@@ -52,6 +52,13 @@ class Kaltura_Client_ElasticSearch_Type_ESearchEntryResponse extends Kaltura_Cli
 			else
 				$this->objects = Kaltura_Client_ParseUtils::unmarshalArray($xml->objects, "KalturaESearchEntryResult");
 		}
+		if(count($xml->aggregations))
+		{
+			if(empty($xml->aggregations))
+				$this->aggregations = array();
+			else
+				$this->aggregations = Kaltura_Client_ParseUtils::unmarshalArray($xml->aggregations, "KalturaESearchAggregationResponseItem");
+		}
 	}
 	/**
 	 * 
@@ -60,6 +67,14 @@ class Kaltura_Client_ElasticSearch_Type_ESearchEntryResponse extends Kaltura_Cli
 	 * @readonly
 	 */
 	public $objects;
+
+	/**
+	 * 
+	 *
+	 * @var array of KalturaESearchAggregationResponseItem
+	 * @readonly
+	 */
+	public $aggregations;
 
 
 }

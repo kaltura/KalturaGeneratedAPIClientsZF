@@ -440,7 +440,7 @@ class Kaltura_Client_UserService extends Kaltura_Client_ServiceBase
 	 * @return 
 	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
-	function updateLoginData($oldLoginId, $password, $newLoginId = "", $newPassword = "", $newFirstName = null, $newLastName = null)
+	function updateLoginData($oldLoginId, $password, $newLoginId = "", $newPassword = "", $newFirstName = null, $newLastName = null, $otp = null)
 	{
 		$kparams = array();
 		$this->client->addParam($kparams, "oldLoginId", $oldLoginId);
@@ -449,6 +449,7 @@ class Kaltura_Client_UserService extends Kaltura_Client_ServiceBase
 		$this->client->addParam($kparams, "newPassword", $newPassword);
 		$this->client->addParam($kparams, "newFirstName", $newFirstName);
 		$this->client->addParam($kparams, "newLastName", $newLastName);
+		$this->client->addParam($kparams, "otp", $otp);
 		$this->client->queueServiceActionCall("user", "updateLoginData", null, $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();

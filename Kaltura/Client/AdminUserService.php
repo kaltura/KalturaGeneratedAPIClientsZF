@@ -99,13 +99,14 @@ class Kaltura_Client_AdminUserService extends Kaltura_Client_ServiceBase
 	 * @return Kaltura_Client_Type_AdminUser
 	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
-	function updatePassword($email, $password, $newEmail = "", $newPassword = "")
+	function updatePassword($email, $password, $newEmail = "", $newPassword = "", $otp = null)
 	{
 		$kparams = array();
 		$this->client->addParam($kparams, "email", $email);
 		$this->client->addParam($kparams, "password", $password);
 		$this->client->addParam($kparams, "newEmail", $newEmail);
 		$this->client->addParam($kparams, "newPassword", $newPassword);
+		$this->client->addParam($kparams, "otp", $otp);
 		$this->client->queueServiceActionCall("adminuser", "updatePassword", "KalturaAdminUser", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
