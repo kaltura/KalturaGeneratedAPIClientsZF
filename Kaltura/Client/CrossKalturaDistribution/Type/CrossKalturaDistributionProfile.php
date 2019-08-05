@@ -69,6 +69,24 @@ class Kaltura_Client_CrossKalturaDistribution_Type_CrossKalturaDistributionProfi
 			else
 				$this->distributeCaptions = false;
 		}
+		if(count($xml->designatedCategories))
+			$this->designatedCategories = (string)$xml->designatedCategories;
+		if(count($xml->distributeCategories))
+		{
+			if(!empty($xml->distributeCategories) && ((int) $xml->distributeCategories === 1 || strtolower((string)$xml->distributeCategories) === 'true'))
+				$this->distributeCategories = true;
+			else
+				$this->distributeCategories = false;
+		}
+		if(count($xml->collaboratorsCustomMetadataProfileId))
+			$this->collaboratorsCustomMetadataProfileId = (string)$xml->collaboratorsCustomMetadataProfileId;
+		if(count($xml->collaboratorsFromCustomMetadataProfile))
+		{
+			if(!empty($xml->collaboratorsFromCustomMetadataProfile) && ((int) $xml->collaboratorsFromCustomMetadataProfile === 1 || strtolower((string)$xml->collaboratorsFromCustomMetadataProfile) === 'true'))
+				$this->collaboratorsFromCustomMetadataProfile = true;
+			else
+				$this->collaboratorsFromCustomMetadataProfile = false;
+		}
 		if(count($xml->distributeCuePoints))
 		{
 			if(!empty($xml->distributeCuePoints) && ((int) $xml->distributeCuePoints === 1 || strtolower((string)$xml->distributeCuePoints) === 'true'))
@@ -146,6 +164,13 @@ class Kaltura_Client_CrossKalturaDistribution_Type_CrossKalturaDistributionProfi
 			else
 				$this->mapCaptionParamsIds = Kaltura_Client_ParseUtils::unmarshalArray($xml->mapCaptionParamsIds, "KalturaKeyValue");
 		}
+		if(count($xml->mapAttachmentParamsIds))
+		{
+			if(empty($xml->mapAttachmentParamsIds))
+				$this->mapAttachmentParamsIds = array();
+			else
+				$this->mapAttachmentParamsIds = Kaltura_Client_ParseUtils::unmarshalArray($xml->mapAttachmentParamsIds, "KalturaKeyValue");
+		}
 	}
 	/**
 	 * 
@@ -195,6 +220,34 @@ class Kaltura_Client_CrossKalturaDistribution_Type_CrossKalturaDistributionProfi
 	 * @var bool
 	 */
 	public $distributeCaptions = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $designatedCategories = null;
+
+	/**
+	 * 
+	 *
+	 * @var bool
+	 */
+	public $distributeCategories = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $collaboratorsCustomMetadataProfileId = null;
+
+	/**
+	 * 
+	 *
+	 * @var bool
+	 */
+	public $collaboratorsFromCustomMetadataProfile = null;
 
 	/**
 	 * 
@@ -272,6 +325,13 @@ class Kaltura_Client_CrossKalturaDistribution_Type_CrossKalturaDistributionProfi
 	 * @var array of KalturaKeyValue
 	 */
 	public $mapCaptionParamsIds;
+
+	/**
+	 * 
+	 *
+	 * @var array of KalturaKeyValue
+	 */
+	public $mapAttachmentParamsIds;
 
 
 }
