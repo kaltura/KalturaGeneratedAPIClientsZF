@@ -616,6 +616,7 @@ class Kaltura_Client_TypeMap
 		'KalturaEventFieldCondition' => 'Kaltura_Client_EventNotification_Type_EventFieldCondition',
 		'KalturaEventNotificationArrayParameter' => 'Kaltura_Client_EventNotification_Type_EventNotificationArrayParameter',
 		'KalturaEventNotificationDispatchJobData' => 'Kaltura_Client_EventNotification_Type_EventNotificationDispatchJobData',
+		'KalturaEventNotificationDispatchScope' => 'Kaltura_Client_EventNotification_Type_EventNotificationDispatchScope',
 		'KalturaEventNotificationParameter' => 'Kaltura_Client_EventNotification_Type_EventNotificationParameter',
 		'KalturaEventNotificationScope' => 'Kaltura_Client_EventNotification_Type_EventNotificationScope',
 		'KalturaEventNotificationTemplate' => 'Kaltura_Client_EventNotification_Type_EventNotificationTemplate',
