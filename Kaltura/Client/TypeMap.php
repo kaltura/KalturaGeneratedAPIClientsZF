@@ -1255,6 +1255,7 @@ class Kaltura_Client_TypeMap
 		'KalturaUrlTokenizerCht' => 'Kaltura_Client_Type_UrlTokenizerCht',
 		'KalturaUrlTokenizerCloudFront' => 'Kaltura_Client_Type_UrlTokenizerCloudFront',
 		'KalturaUrlTokenizerKs' => 'Kaltura_Client_Type_UrlTokenizerKs',
+		'KalturaUrlTokenizerL3' => 'Kaltura_Client_Type_UrlTokenizerL3',
 		'KalturaUrlTokenizerLevel3' => 'Kaltura_Client_Type_UrlTokenizerLevel3',
 		'KalturaUrlTokenizerLimeLight' => 'Kaltura_Client_Type_UrlTokenizerLimeLight',
 		'KalturaUrlTokenizerVelocix' => 'Kaltura_Client_Type_UrlTokenizerVelocix',
