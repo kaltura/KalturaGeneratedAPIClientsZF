@@ -44,9 +44,12 @@ class Kaltura_Client_Reach_Enum_CatalogItemLanguage extends Kaltura_Client_EnumB
 	const FI = "Finnish";
 	const FR = "French";
 	const DE = "German";
+	const EL = "Greek";
 	const HE = "Hebrew";
 	const HI = "Hindi";
 	const IS = "Icelandic";
+	const IN = "Indonesian";
+	const ID = "Indonesian";
 	const IT = "Italian";
 	const JA = "Japanese";
 	const KO = "Korean";
@@ -54,6 +57,7 @@ class Kaltura_Client_Reach_Enum_CatalogItemLanguage extends Kaltura_Client_EnumB
 	const NO = "Norwegian";
 	const PL = "Polish";
 	const PT = "Portuguese";
+	const RO = "Romanian";
 	const RU = "Russian";
 	const ES = "Spanish";
 	const SV = "Swedish";
