@@ -47,9 +47,9 @@ class Kaltura_Client_Reach_Enum_CatalogItemLanguage extends Kaltura_Client_EnumB
 	const EL = "Greek";
 	const HE = "Hebrew";
 	const HI = "Hindi";
+	const HU = "Hungarian";
 	const IS = "Icelandic";
 	const IN = "Indonesian";
-	const ID = "Indonesian";
 	const IT = "Italian";
 	const JA = "Japanese";
 	const KO = "Korean";
