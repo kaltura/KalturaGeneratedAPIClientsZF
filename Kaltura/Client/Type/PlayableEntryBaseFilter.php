@@ -49,6 +49,8 @@ abstract class Kaltura_Client_Type_PlayableEntryBaseFilter extends Kaltura_Clien
 			$this->lastPlayedAtGreaterThanOrEqual = (int)$xml->lastPlayedAtGreaterThanOrEqual;
 		if(count($xml->lastPlayedAtLessThanOrEqual))
 			$this->lastPlayedAtLessThanOrEqual = (int)$xml->lastPlayedAtLessThanOrEqual;
+		if(count($xml->lastPlayedAtLessThanOrEqualOrNull))
+			$this->lastPlayedAtLessThanOrEqualOrNull = (int)$xml->lastPlayedAtLessThanOrEqualOrNull;
 		if(count($xml->durationLessThan))
 			$this->durationLessThan = (int)$xml->durationLessThan;
 		if(count($xml->durationGreaterThan))
@@ -73,6 +75,13 @@ abstract class Kaltura_Client_Type_PlayableEntryBaseFilter extends Kaltura_Clien
 	 * @var int
 	 */
 	public $lastPlayedAtLessThanOrEqual = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $lastPlayedAtLessThanOrEqualOrNull = null;
 
 	/**
 	 * 
