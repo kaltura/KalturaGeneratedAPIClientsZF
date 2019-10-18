@@ -47,6 +47,10 @@ class Kaltura_Client_Reach_Type_EntryVendorTaskFilter extends Kaltura_Client_Rea
 		
 		if(count($xml->freeText))
 			$this->freeText = (string)$xml->freeText;
+		if(count($xml->expectedFinishTimeGreaterThanOrEqual))
+			$this->expectedFinishTimeGreaterThanOrEqual = (int)$xml->expectedFinishTimeGreaterThanOrEqual;
+		if(count($xml->expectedFinishTimeLessThanOrEqual))
+			$this->expectedFinishTimeLessThanOrEqual = (int)$xml->expectedFinishTimeLessThanOrEqual;
 	}
 	/**
 	 * 
@@ -54,6 +58,20 @@ class Kaltura_Client_Reach_Type_EntryVendorTaskFilter extends Kaltura_Client_Rea
 	 * @var string
 	 */
 	public $freeText = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $expectedFinishTimeGreaterThanOrEqual = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $expectedFinishTimeLessThanOrEqual = null;
 
 
 }

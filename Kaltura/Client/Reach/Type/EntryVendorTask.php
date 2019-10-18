@@ -95,6 +95,12 @@ class Kaltura_Client_Reach_Type_EntryVendorTask extends Kaltura_Client_ObjectBas
 			$this->creationMode = (int)$xml->creationMode;
 		if(count($xml->taskJobData) && !empty($xml->taskJobData))
 			$this->taskJobData = Kaltura_Client_ParseUtils::unmarshalObject($xml->taskJobData, "KalturaVendorTaskData");
+		if(count($xml->expectedFinishTime))
+			$this->expectedFinishTime = (int)$xml->expectedFinishTime;
+		if(count($xml->serviceType))
+			$this->serviceType = (int)$xml->serviceType;
+		if(count($xml->serviceFeature))
+			$this->serviceFeature = (int)$xml->serviceFeature;
 	}
 	/**
 	 * 
@@ -287,6 +293,30 @@ class Kaltura_Client_Reach_Type_EntryVendorTask extends Kaltura_Client_ObjectBas
 	 * @var Kaltura_Client_Reach_Type_VendorTaskData
 	 */
 	public $taskJobData;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 * @readonly
+	 */
+	public $expectedFinishTime = null;
+
+	/**
+	 * 
+	 *
+	 * @var Kaltura_Client_Reach_Enum_VendorServiceType
+	 * @readonly
+	 */
+	public $serviceType = null;
+
+	/**
+	 * 
+	 *
+	 * @var Kaltura_Client_Reach_Enum_VendorServiceFeature
+	 * @readonly
+	 */
+	public $serviceFeature = null;
 
 
 }
