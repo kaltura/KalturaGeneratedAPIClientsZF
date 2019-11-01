@@ -31,7 +31,7 @@
  * @package Kaltura
  * @subpackage Client
  */
-abstract class Kaltura_Client_Type_UserBaseFilter extends Kaltura_Client_Type_RelatedFilter
+abstract class Kaltura_Client_Type_UserBaseFilter extends Kaltura_Client_Type_BaseUserFilter
 {
 	public function getKalturaObjectType()
 	{
@@ -45,46 +45,17 @@ abstract class Kaltura_Client_Type_UserBaseFilter extends Kaltura_Client_Type_Re
 		if(is_null($xml))
 			return;
 		
-		if(count($xml->partnerIdEqual))
-			$this->partnerIdEqual = (int)$xml->partnerIdEqual;
 		if(count($xml->typeEqual))
 			$this->typeEqual = (int)$xml->typeEqual;
 		if(count($xml->typeIn))
 			$this->typeIn = (string)$xml->typeIn;
-		if(count($xml->screenNameLike))
-			$this->screenNameLike = (string)$xml->screenNameLike;
-		if(count($xml->screenNameStartsWith))
-			$this->screenNameStartsWith = (string)$xml->screenNameStartsWith;
-		if(count($xml->emailLike))
-			$this->emailLike = (string)$xml->emailLike;
-		if(count($xml->emailStartsWith))
-			$this->emailStartsWith = (string)$xml->emailStartsWith;
-		if(count($xml->tagsMultiLikeOr))
-			$this->tagsMultiLikeOr = (string)$xml->tagsMultiLikeOr;
-		if(count($xml->tagsMultiLikeAnd))
-			$this->tagsMultiLikeAnd = (string)$xml->tagsMultiLikeAnd;
-		if(count($xml->statusEqual))
-			$this->statusEqual = (int)$xml->statusEqual;
-		if(count($xml->statusIn))
-			$this->statusIn = (string)$xml->statusIn;
-		if(count($xml->createdAtGreaterThanOrEqual))
-			$this->createdAtGreaterThanOrEqual = (int)$xml->createdAtGreaterThanOrEqual;
-		if(count($xml->createdAtLessThanOrEqual))
-			$this->createdAtLessThanOrEqual = (int)$xml->createdAtLessThanOrEqual;
+		if(count($xml->isAdminEqual))
+			$this->isAdminEqual = (int)$xml->isAdminEqual;
 		if(count($xml->firstNameStartsWith))
 			$this->firstNameStartsWith = (string)$xml->firstNameStartsWith;
 		if(count($xml->lastNameStartsWith))
 			$this->lastNameStartsWith = (string)$xml->lastNameStartsWith;
-		if(count($xml->isAdminEqual))
-			$this->isAdminEqual = (int)$xml->isAdminEqual;
 	}
-	/**
-	 * 
-	 *
-	 * @var int
-	 */
-	public $partnerIdEqual = null;
-
 	/**
 	 * 
 	 *
@@ -102,72 +73,9 @@ abstract class Kaltura_Client_Type_UserBaseFilter extends Kaltura_Client_Type_Re
 	/**
 	 * 
 	 *
-	 * @var string
+	 * @var Kaltura_Client_Enum_NullableBoolean
 	 */
-	public $screenNameLike = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $screenNameStartsWith = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $emailLike = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $emailStartsWith = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $tagsMultiLikeOr = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $tagsMultiLikeAnd = null;
-
-	/**
-	 * 
-	 *
-	 * @var Kaltura_Client_Enum_UserStatus
-	 */
-	public $statusEqual = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $statusIn = null;
-
-	/**
-	 * 
-	 *
-	 * @var int
-	 */
-	public $createdAtGreaterThanOrEqual = null;
-
-	/**
-	 * 
-	 *
-	 * @var int
-	 */
-	public $createdAtLessThanOrEqual = null;
+	public $isAdminEqual = null;
 
 	/**
 	 * 
@@ -182,13 +90,6 @@ abstract class Kaltura_Client_Type_UserBaseFilter extends Kaltura_Client_Type_Re
 	 * @var string
 	 */
 	public $lastNameStartsWith = null;
-
-	/**
-	 * 
-	 *
-	 * @var Kaltura_Client_Enum_NullableBoolean
-	 */
-	public $isAdminEqual = null;
 
 
 }

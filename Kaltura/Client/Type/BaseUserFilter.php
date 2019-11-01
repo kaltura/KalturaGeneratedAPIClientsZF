@@ -31,13 +31,21 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Enum_AdminUserOrderBy extends Kaltura_Client_EnumBase
+abstract class Kaltura_Client_Type_BaseUserFilter extends Kaltura_Client_Type_BaseUserBaseFilter
 {
-	const CREATED_AT_ASC = "+createdAt";
-	const ID_ASC = "+id";
-	const UPDATED_AT_ASC = "+updatedAt";
-	const CREATED_AT_DESC = "-createdAt";
-	const ID_DESC = "-id";
-	const UPDATED_AT_DESC = "-updatedAt";
+	public function getKalturaObjectType()
+	{
+		return 'KalturaBaseUserFilter';
+	}
+	
+	public function __construct(SimpleXMLElement $xml = null)
+	{
+		parent::__construct($xml);
+		
+		if(is_null($xml))
+			return;
+		
+	}
+
 }
 

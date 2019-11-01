@@ -149,6 +149,8 @@ class Kaltura_Client_TypeMap
 		'KalturaBaseSyndicationFeedFilter' => 'Kaltura_Client_Type_BaseSyndicationFeedFilter',
 		'KalturaBaseSyndicationFeedListResponse' => 'Kaltura_Client_Type_BaseSyndicationFeedListResponse',
 		'KalturaBaseUser' => 'Kaltura_Client_Type_BaseUser',
+		'KalturaBaseUserBaseFilter' => 'Kaltura_Client_Type_BaseUserBaseFilter',
+		'KalturaBaseUserFilter' => 'Kaltura_Client_Type_BaseUserFilter',
 		'KalturaBaseVendorCredit' => 'Kaltura_Client_Reach_Type_BaseVendorCredit',
 		'KalturaBatchGetExclusiveNotificationJobsResponse' => 'Kaltura_Client_Type_BatchGetExclusiveNotificationJobsResponse',
 		'KalturaBatchHistoryData' => 'Kaltura_Client_Type_BatchHistoryData',
