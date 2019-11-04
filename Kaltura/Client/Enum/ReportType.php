@@ -94,6 +94,7 @@ class Kaltura_Client_Enum_ReportType extends Kaltura_Client_EnumBase
 	const PLATFORMS_DISCOVERY_REALTIME = "10010";
 	const PLAYBACK_TYPE_REALTIME = "10011";
 	const CONTENT_REALTIME = "10012";
+	const DISCOVERY_VIEW_REALTIME = "10013";
 	const CONTENT_DROPOFF_VPAAS = "20001";
 	const TOP_SYNDICATION_VPAAS = "20002";
 	const USER_TOP_CONTENT_VPAAS = "20003";
