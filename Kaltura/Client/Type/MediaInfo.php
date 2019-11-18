@@ -115,6 +115,18 @@ class Kaltura_Client_Type_MediaInfo extends Kaltura_Client_ObjectBase
 			$this->complexityValue = (int)$xml->complexityValue;
 		if(count($xml->maxGOP))
 			$this->maxGOP = (float)$xml->maxGOP;
+		if(count($xml->matrixCoefficients))
+			$this->matrixCoefficients = (string)$xml->matrixCoefficients;
+		if(count($xml->colorTransfer))
+			$this->colorTransfer = (string)$xml->colorTransfer;
+		if(count($xml->colorPrimaries))
+			$this->colorPrimaries = (string)$xml->colorPrimaries;
+		if(count($xml->pixelFormat))
+			$this->pixelFormat = (string)$xml->pixelFormat;
+		if(count($xml->chromaSubsampling))
+			$this->chromaSubsampling = (string)$xml->chromaSubsampling;
+		if(count($xml->bitsDepth))
+			$this->bitsDepth = (int)$xml->bitsDepth;
 	}
 	/**
 	 * The id of the media info
@@ -361,6 +373,48 @@ class Kaltura_Client_Type_MediaInfo extends Kaltura_Client_ObjectBase
 	 * @var float
 	 */
 	public $maxGOP = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $matrixCoefficients = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $colorTransfer = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $colorPrimaries = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $pixelFormat = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $chromaSubsampling = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $bitsDepth = null;
 
 
 }

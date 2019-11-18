@@ -125,6 +125,10 @@ abstract class Kaltura_Client_Type_BaseEntryBaseFilter extends Kaltura_Client_Ty
 			$this->updatedAtGreaterThanOrEqual = (int)$xml->updatedAtGreaterThanOrEqual;
 		if(count($xml->updatedAtLessThanOrEqual))
 			$this->updatedAtLessThanOrEqual = (int)$xml->updatedAtLessThanOrEqual;
+		if(count($xml->rankLessThanOrEqual))
+			$this->rankLessThanOrEqual = (float)$xml->rankLessThanOrEqual;
+		if(count($xml->rankGreaterThanOrEqual))
+			$this->rankGreaterThanOrEqual = (float)$xml->rankGreaterThanOrEqual;
 		if(count($xml->totalRankLessThanOrEqual))
 			$this->totalRankLessThanOrEqual = (int)$xml->totalRankLessThanOrEqual;
 		if(count($xml->totalRankGreaterThanOrEqual))
@@ -486,6 +490,20 @@ abstract class Kaltura_Client_Type_BaseEntryBaseFilter extends Kaltura_Client_Ty
 	 * @var int
 	 */
 	public $updatedAtLessThanOrEqual = null;
+
+	/**
+	 * 
+	 *
+	 * @var float
+	 */
+	public $rankLessThanOrEqual = null;
+
+	/**
+	 * 
+	 *
+	 * @var float
+	 */
+	public $rankGreaterThanOrEqual = null;
 
 	/**
 	 * 

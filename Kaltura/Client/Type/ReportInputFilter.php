@@ -101,6 +101,10 @@ class Kaltura_Client_Type_ReportInputFilter extends Kaltura_Client_Type_ReportIn
 			$this->entryCreatedAtLessThanOrEqual = (int)$xml->entryCreatedAtLessThanOrEqual;
 		if(count($xml->entryIdIn))
 			$this->entryIdIn = (string)$xml->entryIdIn;
+		if(count($xml->playbackTypeIn))
+			$this->playbackTypeIn = (string)$xml->playbackTypeIn;
+		if(count($xml->playbackContextIdsIn))
+			$this->playbackContextIdsIn = (string)$xml->playbackContextIdsIn;
 	}
 	/**
 	 * Search keywords to filter objects
@@ -262,6 +266,20 @@ class Kaltura_Client_Type_ReportInputFilter extends Kaltura_Client_Type_ReportIn
 	 * @var string
 	 */
 	public $entryIdIn = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $playbackTypeIn = null;
+
+	/**
+	 * filter by playback context ids
+	 *
+	 * @var string
+	 */
+	public $playbackContextIdsIn = null;
 
 
 }
