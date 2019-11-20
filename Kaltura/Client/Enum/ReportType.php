@@ -116,6 +116,7 @@ class Kaltura_Client_Enum_ReportType extends Kaltura_Client_EnumBase
 	const PLAYER_RELATED_INTERACTIONS_VPAAS = "20019";
 	const PLAYBACK_RATE_VPAAS = "20020";
 	const PARTNER_USAGE_VPAAS = "20021";
+	const TOP_PLAYBACK_CONTEXT_VPAAS = "20022";
 	const QOE_OVERVIEW = "30001";
 	const QOE_EXPERIENCE = "30002";
 	const QOE_EXPERIENCE_PLATFORMS = "30003";

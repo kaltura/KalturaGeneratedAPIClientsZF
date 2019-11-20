@@ -81,7 +81,6 @@ class Kaltura_Client_TypeMap
 		'KalturaAnswerCuePoint' => 'Kaltura_Client_Quiz_Type_AnswerCuePoint',
 		'KalturaAnswerCuePointBaseFilter' => 'Kaltura_Client_Quiz_Type_AnswerCuePointBaseFilter',
 		'KalturaAnswerCuePointFilter' => 'Kaltura_Client_Quiz_Type_AnswerCuePointFilter',
-		'KalturaApFeedDropFolder' => 'Kaltura_Client_ApFeedDropFolder_Type_ApFeedDropFolder',
 		'KalturaApiActionPermissionItem' => 'Kaltura_Client_Type_ApiActionPermissionItem',
 		'KalturaApiActionPermissionItemBaseFilter' => 'Kaltura_Client_Type_ApiActionPermissionItemBaseFilter',
 		'KalturaApiActionPermissionItemFilter' => 'Kaltura_Client_Type_ApiActionPermissionItemFilter',
