@@ -44,5 +44,6 @@ class Kaltura_Client_Metadata_Enum_MetadataObjectType extends Kaltura_Client_Enu
 	const USER = "3";
 	const PARTNER = "4";
 	const DYNAMIC_OBJECT = "5";
+	const USER_ENTRY = "6";
 }
 

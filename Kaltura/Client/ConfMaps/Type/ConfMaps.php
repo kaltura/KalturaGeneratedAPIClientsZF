@@ -49,6 +49,8 @@ class Kaltura_Client_ConfMaps_Type_ConfMaps extends Kaltura_Client_ObjectBase
 			$this->name = (string)$xml->name;
 		if(count($xml->content))
 			$this->content = (string)$xml->content;
+		if(count($xml->rawData))
+			$this->rawData = (string)$xml->rawData;
 		if(count($xml->isEditable))
 		{
 			if(!empty($xml->isEditable) && ((int) $xml->isEditable === 1 || strtolower((string)$xml->isEditable) === 'true'))
@@ -56,8 +58,8 @@ class Kaltura_Client_ConfMaps_Type_ConfMaps extends Kaltura_Client_ObjectBase
 			else
 				$this->isEditable = false;
 		}
-		if(count($xml->lastUpdate))
-			$this->lastUpdate = (int)$xml->lastUpdate;
+		if(count($xml->createdAt))
+			$this->createdAt = (int)$xml->createdAt;
 		if(count($xml->relatedHost))
 			$this->relatedHost = (string)$xml->relatedHost;
 		if(count($xml->version))
@@ -85,6 +87,13 @@ class Kaltura_Client_ConfMaps_Type_ConfMaps extends Kaltura_Client_ObjectBase
 	public $content = null;
 
 	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $rawData = null;
+
+	/**
 	 * IsEditable - true / false
 	 *
 	 * @var bool
@@ -98,7 +107,7 @@ class Kaltura_Client_ConfMaps_Type_ConfMaps extends Kaltura_Client_ObjectBase
 	 * @var int
 	 * @readonly
 	 */
-	public $lastUpdate = null;
+	public $createdAt = null;
 
 	/**
 	 * Regex that represent the host/s that this map affect
