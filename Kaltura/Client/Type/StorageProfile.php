@@ -139,6 +139,10 @@ class Kaltura_Client_Type_StorageProfile extends Kaltura_Client_ObjectBase
 			else
 				$this->shouldExportThumbs = false;
 		}
+		if(count($xml->mappedPackagerUrl))
+			$this->mappedPackagerUrl = (string)$xml->mappedPackagerUrl;
+		if(count($xml->regularPackagerUrl))
+			$this->regularPackagerUrl = (string)$xml->regularPackagerUrl;
 	}
 	/**
 	 * 
@@ -367,6 +371,20 @@ class Kaltura_Client_Type_StorageProfile extends Kaltura_Client_ObjectBase
 	 * @var bool
 	 */
 	public $shouldExportThumbs = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $mappedPackagerUrl = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $regularPackagerUrl = null;
 
 
 }
