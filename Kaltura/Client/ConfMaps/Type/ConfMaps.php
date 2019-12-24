@@ -51,6 +51,8 @@ class Kaltura_Client_ConfMaps_Type_ConfMaps extends Kaltura_Client_ObjectBase
 			$this->content = (string)$xml->content;
 		if(count($xml->rawData))
 			$this->rawData = (string)$xml->rawData;
+		if(count($xml->userId))
+			$this->userId = (string)$xml->userId;
 		if(count($xml->isEditable))
 		{
 			if(!empty($xml->isEditable) && ((int) $xml->isEditable === 1 || strtolower((string)$xml->isEditable) === 'true'))
@@ -92,6 +94,13 @@ class Kaltura_Client_ConfMaps_Type_ConfMaps extends Kaltura_Client_ObjectBase
 	 * @var string
 	 */
 	public $rawData = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $userId = null;
 
 	/**
 	 * IsEditable - true / false

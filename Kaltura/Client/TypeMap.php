@@ -748,6 +748,7 @@ class Kaltura_Client_TypeMap
 		'KalturaGroupUserFilter' => 'Kaltura_Client_Type_GroupUserFilter',
 		'KalturaGroupUserListResponse' => 'Kaltura_Client_Type_GroupUserListResponse',
 		'KalturaHashCondition' => 'Kaltura_Client_Type_HashCondition',
+		'KalturaHttpHeaderCondition' => 'Kaltura_Client_Type_HttpHeaderCondition',
 		'KalturaHttpNotification' => 'Kaltura_Client_HttpNotification_Type_HttpNotification',
 		'KalturaHttpNotificationData' => 'Kaltura_Client_HttpNotification_Type_HttpNotificationData',
 		'KalturaHttpNotificationDataFields' => 'Kaltura_Client_HttpNotification_Type_HttpNotificationDataFields',
