@@ -31,11 +31,11 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_ElasticSearch_Type_MediaEsearchExportToCsvJobData extends Kaltura_Client_Type_ExportCsvJobData
+class Kaltura_Client_Type_ExportToCsvOptions extends Kaltura_Client_ObjectBase
 {
 	public function getKalturaObjectType()
 	{
-		return 'KalturaMediaEsearchExportToCsvJobData';
+		return 'KalturaExportToCsvOptions';
 	}
 	
 	public function __construct(SimpleXMLElement $xml = null)
@@ -45,29 +45,16 @@ class Kaltura_Client_ElasticSearch_Type_MediaEsearchExportToCsvJobData extends K
 		if(is_null($xml))
 			return;
 		
-		if(count($xml->searchParams) && !empty($xml->searchParams))
-			$this->searchParams = Kaltura_Client_ParseUtils::unmarshalObject($xml->searchParams, "KalturaESearchEntryParams");
-		if(count($xml->options))
-		{
-			if(empty($xml->options))
-				$this->options = array();
-			else
-				$this->options = Kaltura_Client_ParseUtils::unmarshalArray($xml->options, "KalturaExportToCsvOptions");
-		}
+		if(count($xml->format))
+			$this->format = (string)$xml->format;
 	}
 	/**
-	 * Esearch parameters for the entry search
+	 * The format of the outputted date string. There are also several predefined date constants that may be used instead, so for example DATE_RSS contains the format string 'D, d M Y H:i:s'.
+	 * 	 https://www.php.net/manual/en/function.date.php
 	 *
-	 * @var Kaltura_Client_ElasticSearch_Type_ESearchEntryParams
+	 * @var string
 	 */
-	public $searchParams;
-
-	/**
-	 * options
-	 *
-	 * @var array of KalturaExportToCsvOptions
-	 */
-	public $options;
+	public $format = null;
 
 
 }

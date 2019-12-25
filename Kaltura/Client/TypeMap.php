@@ -629,6 +629,7 @@ class Kaltura_Client_TypeMap
 		'KalturaExclusiveLockKey' => 'Kaltura_Client_Type_ExclusiveLockKey',
 		'KalturaExecuteMetadataXsltObjectTask' => 'Kaltura_Client_ScheduledTaskMetadata_Type_ExecuteMetadataXsltObjectTask',
 		'KalturaExportCsvJobData' => 'Kaltura_Client_Type_ExportCsvJobData',
+		'KalturaExportToCsvOptions' => 'Kaltura_Client_Type_ExportToCsvOptions',
 		'KalturaExtendingItemMrssParameter' => 'Kaltura_Client_Type_ExtendingItemMrssParameter',
 		'KalturaExternalMediaEntry' => 'Kaltura_Client_ExternalMedia_Type_ExternalMediaEntry',
 		'KalturaExternalMediaEntryBaseFilter' => 'Kaltura_Client_ExternalMedia_Type_ExternalMediaEntryBaseFilter',
