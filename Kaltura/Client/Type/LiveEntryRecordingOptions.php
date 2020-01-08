@@ -9,7 +9,7 @@
 // to do with audio, video, and animation what Wiki platfroms allow them to do with
 // text.
 //
-// Copyright (C) 2006-2019  Kaltura Inc.
+// Copyright (C) 2006-2020  Kaltura Inc.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -53,6 +53,10 @@ class Kaltura_Client_Type_LiveEntryRecordingOptions extends Kaltura_Client_Objec
 			$this->shouldCopyThumbnail = (int)$xml->shouldCopyThumbnail;
 		if(count($xml->shouldMakeHidden))
 			$this->shouldMakeHidden = (int)$xml->shouldMakeHidden;
+		if(count($xml->shouldAutoArchive))
+			$this->shouldAutoArchive = (int)$xml->shouldAutoArchive;
+		if(count($xml->nonDeletedCuePointsTags))
+			$this->nonDeletedCuePointsTags = (string)$xml->nonDeletedCuePointsTags;
 	}
 	/**
 	 * 
@@ -81,6 +85,20 @@ class Kaltura_Client_Type_LiveEntryRecordingOptions extends Kaltura_Client_Objec
 	 * @var Kaltura_Client_Enum_NullableBoolean
 	 */
 	public $shouldMakeHidden = null;
+
+	/**
+	 * 
+	 *
+	 * @var Kaltura_Client_Enum_NullableBoolean
+	 */
+	public $shouldAutoArchive = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $nonDeletedCuePointsTags = null;
 
 
 }
