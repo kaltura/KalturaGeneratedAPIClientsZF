@@ -81,8 +81,12 @@ class Kaltura_Client_Type_ReportInputFilter extends Kaltura_Client_Type_ReportIn
 			$this->citiesIn = (string)$xml->citiesIn;
 		if(count($xml->operatingSystemFamilyIn))
 			$this->operatingSystemFamilyIn = (string)$xml->operatingSystemFamilyIn;
+		if(count($xml->operatingSystemIn))
+			$this->operatingSystemIn = (string)$xml->operatingSystemIn;
 		if(count($xml->browserFamilyIn))
 			$this->browserFamilyIn = (string)$xml->browserFamilyIn;
+		if(count($xml->browserIn))
+			$this->browserIn = (string)$xml->browserIn;
 		if(count($xml->timeZoneOffset))
 			$this->timeZoneOffset = (int)$xml->timeZoneOffset;
 		if(count($xml->interval))
@@ -107,6 +111,12 @@ class Kaltura_Client_Type_ReportInputFilter extends Kaltura_Client_Type_ReportIn
 			$this->playbackContextIdsIn = (string)$xml->playbackContextIdsIn;
 		if(count($xml->rootEntryIdIn))
 			$this->rootEntryIdIn = (string)$xml->rootEntryIdIn;
+		if(count($xml->errorCodeIn))
+			$this->errorCodeIn = (string)$xml->errorCodeIn;
+		if(count($xml->playerVersionIn))
+			$this->playerVersionIn = (string)$xml->playerVersionIn;
+		if(count($xml->ispIn))
+			$this->ispIn = (string)$xml->ispIn;
 	}
 	/**
 	 * Search keywords to filter objects
@@ -200,11 +210,25 @@ class Kaltura_Client_Type_ReportInputFilter extends Kaltura_Client_Type_ReportIn
 	public $operatingSystemFamilyIn = null;
 
 	/**
+	 * Filter by operating system
+	 *
+	 * @var string
+	 */
+	public $operatingSystemIn = null;
+
+	/**
 	 * Filter by browser family
 	 *
 	 * @var string
 	 */
 	public $browserFamilyIn = null;
+
+	/**
+	 * Filter by browser
+	 *
+	 * @var string
+	 */
+	public $browserIn = null;
 
 	/**
 	 * Time zone offset in minutes
@@ -289,6 +313,27 @@ class Kaltura_Client_Type_ReportInputFilter extends Kaltura_Client_Type_ReportIn
 	 * @var string
 	 */
 	public $rootEntryIdIn = null;
+
+	/**
+	 * filter by error code
+	 *
+	 * @var string
+	 */
+	public $errorCodeIn = null;
+
+	/**
+	 * filter by player version
+	 *
+	 * @var string
+	 */
+	public $playerVersionIn = null;
+
+	/**
+	 * filter by isp
+	 *
+	 * @var string
+	 */
+	public $ispIn = null;
 
 
 }

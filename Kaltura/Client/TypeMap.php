@@ -857,6 +857,7 @@ class Kaltura_Client_TypeMap
 		'KalturaLiveStreamAdminEntryMatchAttributeCondition' => 'Kaltura_Client_Type_LiveStreamAdminEntryMatchAttributeCondition',
 		'KalturaLiveStreamBitrate' => 'Kaltura_Client_Type_LiveStreamBitrate',
 		'KalturaLiveStreamConfiguration' => 'Kaltura_Client_Type_LiveStreamConfiguration',
+		'KalturaLiveStreamDetails' => 'Kaltura_Client_Type_LiveStreamDetails',
 		'KalturaLiveStreamEntry' => 'Kaltura_Client_Type_LiveStreamEntry',
 		'KalturaLiveStreamEntryBaseFilter' => 'Kaltura_Client_Type_LiveStreamEntryBaseFilter',
 		'KalturaLiveStreamEntryCompareAttributeCondition' => 'Kaltura_Client_Type_LiveStreamEntryCompareAttributeCondition',

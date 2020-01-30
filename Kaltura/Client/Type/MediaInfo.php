@@ -123,6 +123,8 @@ class Kaltura_Client_Type_MediaInfo extends Kaltura_Client_ObjectBase
 			$this->colorPrimaries = (string)$xml->colorPrimaries;
 		if(count($xml->pixelFormat))
 			$this->pixelFormat = (string)$xml->pixelFormat;
+		if(count($xml->colorSpace))
+			$this->colorSpace = (string)$xml->colorSpace;
 		if(count($xml->chromaSubsampling))
 			$this->chromaSubsampling = (string)$xml->chromaSubsampling;
 		if(count($xml->bitsDepth))
@@ -401,6 +403,13 @@ class Kaltura_Client_Type_MediaInfo extends Kaltura_Client_ObjectBase
 	 * @var string
 	 */
 	public $pixelFormat = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $colorSpace = null;
 
 	/**
 	 * 

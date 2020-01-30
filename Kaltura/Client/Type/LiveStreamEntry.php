@@ -60,6 +60,10 @@ class Kaltura_Client_Type_LiveStreamEntry extends Kaltura_Client_Type_LiveEntry
 			$this->primaryBroadcastingUrl = (string)$xml->primaryBroadcastingUrl;
 		if(count($xml->secondaryBroadcastingUrl))
 			$this->secondaryBroadcastingUrl = (string)$xml->secondaryBroadcastingUrl;
+		if(count($xml->primarySecuredBroadcastingUrl))
+			$this->primarySecuredBroadcastingUrl = (string)$xml->primarySecuredBroadcastingUrl;
+		if(count($xml->secondarySecuredBroadcastingUrl))
+			$this->secondarySecuredBroadcastingUrl = (string)$xml->secondarySecuredBroadcastingUrl;
 		if(count($xml->primaryRtspBroadcastingUrl))
 			$this->primaryRtspBroadcastingUrl = (string)$xml->primaryRtspBroadcastingUrl;
 		if(count($xml->secondaryRtspBroadcastingUrl))
@@ -121,6 +125,20 @@ class Kaltura_Client_Type_LiveStreamEntry extends Kaltura_Client_Type_LiveEntry
 	 * @var string
 	 */
 	public $secondaryBroadcastingUrl = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $primarySecuredBroadcastingUrl = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $secondarySecuredBroadcastingUrl = null;
 
 	/**
 	 * 

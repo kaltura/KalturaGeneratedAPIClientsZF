@@ -31,11 +31,11 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Reach_Type_UnlimitedVendorCredit extends Kaltura_Client_Reach_Type_BaseVendorCredit
+class Kaltura_Client_Type_LiveStreamDetails extends Kaltura_Client_ObjectBase
 {
 	public function getKalturaObjectType()
 	{
-		return 'KalturaUnlimitedVendorCredit';
+		return 'KalturaLiveStreamDetails';
 	}
 	
 	public function __construct(SimpleXMLElement $xml = null)
@@ -45,25 +45,56 @@ class Kaltura_Client_Reach_Type_UnlimitedVendorCredit extends Kaltura_Client_Rea
 		if(is_null($xml))
 			return;
 		
-		if(count($xml->credit))
-			$this->credit = (int)$xml->credit;
-		if(count($xml->fromDate))
-			$this->fromDate = (int)$xml->fromDate;
+		if(count($xml->primaryStreamStatus))
+			$this->primaryStreamStatus = (int)$xml->primaryStreamStatus;
+		if(count($xml->secondaryStreamStatus))
+			$this->secondaryStreamStatus = (int)$xml->secondaryStreamStatus;
+		if(count($xml->viewMode))
+			$this->viewMode = (int)$xml->viewMode;
+		if(count($xml->wasBroadcast))
+		{
+			if(!empty($xml->wasBroadcast) && ((int) $xml->wasBroadcast === 1 || strtolower((string)$xml->wasBroadcast) === 'true'))
+				$this->wasBroadcast = true;
+			else
+				$this->wasBroadcast = false;
+		}
+		if(count($xml->broadcastStatus))
+			$this->broadcastStatus = (int)$xml->broadcastStatus;
 	}
 	/**
-	 * 
+	 * The status of the primary stream
 	 *
-	 * @var int
-	 * @readonly
+	 * @var Kaltura_Client_Enum_EntryServerNodeStatus
 	 */
-	public $credit = null;
+	public $primaryStreamStatus = null;
+
+	/**
+	 * The status of the secondary stream
+	 *
+	 * @var Kaltura_Client_Enum_EntryServerNodeStatus
+	 */
+	public $secondaryStreamStatus = null;
 
 	/**
 	 * 
 	 *
-	 * @var int
+	 * @var Kaltura_Client_Enum_ViewMode
 	 */
-	public $fromDate = null;
+	public $viewMode = null;
+
+	/**
+	 * 
+	 *
+	 * @var bool
+	 */
+	public $wasBroadcast = null;
+
+	/**
+	 * 
+	 *
+	 * @var Kaltura_Client_Enum_LiveStreamBroadcastStatus
+	 */
+	public $broadcastStatus = null;
 
 
 }

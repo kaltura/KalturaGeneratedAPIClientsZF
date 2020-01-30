@@ -223,6 +223,25 @@ class Kaltura_Client_LiveStreamService extends Kaltura_Client_ServiceBase
 	}
 
 	/**
+	 * @return Kaltura_Client_Type_LiveStreamDetails
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
+	 */
+	function getDetails($id)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "id", $id);
+		$this->client->queueServiceActionCall("livestream", "getDetails", "KalturaLiveStreamDetails", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultXml = $this->client->doQueue();
+		$resultXmlObject = new \SimpleXMLElement($resultXml);
+		$this->client->checkIfError($resultXmlObject->result);
+		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaLiveStreamDetails");
+		$this->client->validateObjectType($resultObject, "Kaltura_Client_Type_LiveStreamDetails");
+		return $resultObject;
+	}
+
+	/**
 	 * @return bool
 	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
