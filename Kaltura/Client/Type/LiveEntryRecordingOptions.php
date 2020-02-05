@@ -57,6 +57,8 @@ class Kaltura_Client_Type_LiveEntryRecordingOptions extends Kaltura_Client_Objec
 			$this->shouldAutoArchive = (int)$xml->shouldAutoArchive;
 		if(count($xml->nonDeletedCuePointsTags))
 			$this->nonDeletedCuePointsTags = (string)$xml->nonDeletedCuePointsTags;
+		if(count($xml->archiveVodSuffixTimezone))
+			$this->archiveVodSuffixTimezone = (string)$xml->archiveVodSuffixTimezone;
 	}
 	/**
 	 * 
@@ -99,6 +101,13 @@ class Kaltura_Client_Type_LiveEntryRecordingOptions extends Kaltura_Client_Objec
 	 * @var string
 	 */
 	public $nonDeletedCuePointsTags = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $archiveVodSuffixTimezone = null;
 
 
 }

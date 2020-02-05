@@ -69,6 +69,8 @@ abstract class Kaltura_Client_Type_EntryServerNodeBaseFilter extends Kaltura_Cli
 			$this->serverTypeEqual = (string)$xml->serverTypeEqual;
 		if(count($xml->serverTypeIn))
 			$this->serverTypeIn = (string)$xml->serverTypeIn;
+		if(count($xml->serverTypeNotIn))
+			$this->serverTypeNotIn = (string)$xml->serverTypeNotIn;
 	}
 	/**
 	 * 
@@ -153,6 +155,13 @@ abstract class Kaltura_Client_Type_EntryServerNodeBaseFilter extends Kaltura_Cli
 	 * @var string
 	 */
 	public $serverTypeIn = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $serverTypeNotIn = null;
 
 
 }
