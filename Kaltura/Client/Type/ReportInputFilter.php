@@ -117,6 +117,8 @@ class Kaltura_Client_Type_ReportInputFilter extends Kaltura_Client_Type_ReportIn
 			$this->playerVersionIn = (string)$xml->playerVersionIn;
 		if(count($xml->ispIn))
 			$this->ispIn = (string)$xml->ispIn;
+		if(count($xml->applicationVersionIn))
+			$this->applicationVersionIn = (string)$xml->applicationVersionIn;
 	}
 	/**
 	 * Search keywords to filter objects
@@ -334,6 +336,13 @@ class Kaltura_Client_Type_ReportInputFilter extends Kaltura_Client_Type_ReportIn
 	 * @var string
 	 */
 	public $ispIn = null;
+
+	/**
+	 * filter by application version
+	 *
+	 * @var string
+	 */
+	public $applicationVersionIn = null;
 
 
 }
