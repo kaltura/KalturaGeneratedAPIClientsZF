@@ -47,6 +47,8 @@ class Kaltura_Client_Type_LiveEntryArchiveJobData extends Kaltura_Client_Type_Jo
 		
 		if(count($xml->liveEntryId))
 			$this->liveEntryId = (string)$xml->liveEntryId;
+		if(count($xml->vodEntryId))
+			$this->vodEntryId = (string)$xml->vodEntryId;
 	}
 	/**
 	 * 
@@ -54,6 +56,13 @@ class Kaltura_Client_Type_LiveEntryArchiveJobData extends Kaltura_Client_Type_Jo
 	 * @var string
 	 */
 	public $liveEntryId = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $vodEntryId = null;
 
 
 }
