@@ -79,6 +79,8 @@ abstract class Kaltura_Client_Type_PartnerBaseFilter extends Kaltura_Client_Type
 			$this->createdAtGreaterThanOrEqual = (int)$xml->createdAtGreaterThanOrEqual;
 		if(count($xml->idGreaterThan))
 			$this->idGreaterThan = (int)$xml->idGreaterThan;
+		if(count($xml->monitorUsageEqual))
+			$this->monitorUsageEqual = (int)$xml->monitorUsageEqual;
 	}
 	/**
 	 * 
@@ -198,6 +200,13 @@ abstract class Kaltura_Client_Type_PartnerBaseFilter extends Kaltura_Client_Type
 	 * @var int
 	 */
 	public $idGreaterThan = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $monitorUsageEqual = null;
 
 
 }
