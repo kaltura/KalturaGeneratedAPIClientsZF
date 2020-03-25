@@ -31,10 +31,21 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Enum_UserEntryType extends Kaltura_Client_EnumBase
+class Kaltura_Client_WatchLater_Type_WatchLaterUserEntry extends Kaltura_Client_Type_UserEntry
 {
-	const QUIZ = "quiz.QUIZ";
-	const VIEW_HISTORY = "viewHistory.VIEW_HISTORY";
-	const WATCH_LATER = "watchLater.WATCH_LATER";
+	public function getKalturaObjectType()
+	{
+		return 'KalturaWatchLaterUserEntry';
+	}
+	
+	public function __construct(SimpleXMLElement $xml = null)
+	{
+		parent::__construct($xml);
+		
+		if(is_null($xml))
+			return;
+		
+	}
+
 }
 
