@@ -69,6 +69,13 @@ class Kaltura_Client_ScheduledTask_Type_ModifyEntryObjectTask extends Kaltura_Cl
 			$this->inputEntitledUsersEdit = (string)$xml->inputEntitledUsersEdit;
 		if(count($xml->inputEntitledUsersPublish))
 			$this->inputEntitledUsersPublish = (string)$xml->inputEntitledUsersPublish;
+		if(count($xml->resetMediaRepurposingProcess))
+		{
+			if(!empty($xml->resetMediaRepurposingProcess) && ((int) $xml->resetMediaRepurposingProcess === 1 || strtolower((string)$xml->resetMediaRepurposingProcess) === 'true'))
+				$this->resetMediaRepurposingProcess = true;
+			else
+				$this->resetMediaRepurposingProcess = false;
+		}
 	}
 	/**
 	 * The input metadata profile id
@@ -118,6 +125,13 @@ class Kaltura_Client_ScheduledTask_Type_ModifyEntryObjectTask extends Kaltura_Cl
 	 * @var string
 	 */
 	public $inputEntitledUsersPublish = null;
+
+	/**
+	 * Should clear the media repurposing data and therefore reset the process
+	 *
+	 * @var bool
+	 */
+	public $resetMediaRepurposingProcess = null;
 
 
 }

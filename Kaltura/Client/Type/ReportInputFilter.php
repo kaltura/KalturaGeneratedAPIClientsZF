@@ -119,6 +119,8 @@ class Kaltura_Client_Type_ReportInputFilter extends Kaltura_Client_Type_ReportIn
 			$this->ispIn = (string)$xml->ispIn;
 		if(count($xml->applicationVersionIn))
 			$this->applicationVersionIn = (string)$xml->applicationVersionIn;
+		if(count($xml->nodeIdsIn))
+			$this->nodeIdsIn = (string)$xml->nodeIdsIn;
 	}
 	/**
 	 * Search keywords to filter objects
@@ -343,6 +345,13 @@ class Kaltura_Client_Type_ReportInputFilter extends Kaltura_Client_Type_ReportIn
 	 * @var string
 	 */
 	public $applicationVersionIn = null;
+
+	/**
+	 * filter by node id
+	 *
+	 * @var string
+	 */
+	public $nodeIdsIn = null;
 
 
 }
