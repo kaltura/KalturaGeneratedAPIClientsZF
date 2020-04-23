@@ -31,18 +31,48 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Enum_EntryType extends Kaltura_Client_EnumBase
+class Kaltura_Client_Rating_Type_RatingCount extends Kaltura_Client_ObjectBase
 {
-	const AUTOMATIC = "-1";
-	const CONFERENCE_ENTRY_SERVER = "conference.CONFERENCE_ENTRY_SERVER";
-	const EXTERNAL_MEDIA = "externalMedia.externalMedia";
-	const SIP_ENTRY_SERVER = "sip.SIP_ENTRY_SERVER";
-	const MEDIA_CLIP = "1";
-	const MIX = "2";
-	const PLAYLIST = "5";
-	const DATA = "6";
-	const LIVE_STREAM = "7";
-	const LIVE_CHANNEL = "8";
-	const DOCUMENT = "10";
+	public function getKalturaObjectType()
+	{
+		return 'KalturaRatingCount';
+	}
+	
+	public function __construct(SimpleXMLElement $xml = null)
+	{
+		parent::__construct($xml);
+		
+		if(is_null($xml))
+			return;
+		
+		if(count($xml->entryId))
+			$this->entryId = (string)$xml->entryId;
+		if(count($xml->rank))
+			$this->rank = (int)$xml->rank;
+		if(count($xml->count))
+			$this->count = (int)$xml->count;
+	}
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $entryId = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $rank = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $count = null;
+
+
 }
 

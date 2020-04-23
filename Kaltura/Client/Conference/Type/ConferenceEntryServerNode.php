@@ -31,18 +31,41 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Enum_EntryType extends Kaltura_Client_EnumBase
+class Kaltura_Client_Conference_Type_ConferenceEntryServerNode extends Kaltura_Client_Type_EntryServerNode
 {
-	const AUTOMATIC = "-1";
-	const CONFERENCE_ENTRY_SERVER = "conference.CONFERENCE_ENTRY_SERVER";
-	const EXTERNAL_MEDIA = "externalMedia.externalMedia";
-	const SIP_ENTRY_SERVER = "sip.SIP_ENTRY_SERVER";
-	const MEDIA_CLIP = "1";
-	const MIX = "2";
-	const PLAYLIST = "5";
-	const DATA = "6";
-	const LIVE_STREAM = "7";
-	const LIVE_CHANNEL = "8";
-	const DOCUMENT = "10";
+	public function getKalturaObjectType()
+	{
+		return 'KalturaConferenceEntryServerNode';
+	}
+	
+	public function __construct(SimpleXMLElement $xml = null)
+	{
+		parent::__construct($xml);
+		
+		if(is_null($xml))
+			return;
+		
+		if(count($xml->confRoomStatus))
+			$this->confRoomStatus = (int)$xml->confRoomStatus;
+		if(count($xml->registered))
+			$this->registered = (int)$xml->registered;
+	}
+	/**
+	 * 
+	 *
+	 * @var Kaltura_Client_Conference_Enum_ConferenceRoomStatus
+	 * @readonly
+	 */
+	public $confRoomStatus = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 * @readonly
+	 */
+	public $registered = null;
+
+
 }
 

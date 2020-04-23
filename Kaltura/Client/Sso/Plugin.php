@@ -31,18 +31,44 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Enum_EntryType extends Kaltura_Client_EnumBase
+class Kaltura_Client_Sso_Plugin extends Kaltura_Client_Plugin
 {
-	const AUTOMATIC = "-1";
-	const CONFERENCE_ENTRY_SERVER = "conference.CONFERENCE_ENTRY_SERVER";
-	const EXTERNAL_MEDIA = "externalMedia.externalMedia";
-	const SIP_ENTRY_SERVER = "sip.SIP_ENTRY_SERVER";
-	const MEDIA_CLIP = "1";
-	const MIX = "2";
-	const PLAYLIST = "5";
-	const DATA = "6";
-	const LIVE_STREAM = "7";
-	const LIVE_CHANNEL = "8";
-	const DOCUMENT = "10";
+	/**
+	 * @var Kaltura_Client_Sso_SsoService
+	 */
+	public $sso = null;
+
+	protected function __construct(Kaltura_Client_Client $client)
+	{
+		parent::__construct($client);
+		$this->sso = new Kaltura_Client_Sso_SsoService($client);
+	}
+
+	/**
+	 * @return Kaltura_Client_Sso_Plugin
+	 */
+	public static function get(Kaltura_Client_Client $client)
+	{
+		return new Kaltura_Client_Sso_Plugin($client);
+	}
+
+	/**
+	 * @return array<Kaltura_Client_ServiceBase>
+	 */
+	public function getServices()
+	{
+		$services = array(
+			'sso' => $this->sso,
+		);
+		return $services;
+	}
+
+	/**
+	 * @return string
+	 */
+	public function getName()
+	{
+		return 'sso';
+	}
 }
 

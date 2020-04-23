@@ -27,22 +27,31 @@
 // @ignore
 // ===================================================================================================
 
+
 /**
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Enum_EntryType extends Kaltura_Client_EnumBase
+class Kaltura_Client_Thumbnail_ThumbnailService extends Kaltura_Client_ServiceBase
 {
-	const AUTOMATIC = "-1";
-	const CONFERENCE_ENTRY_SERVER = "conference.CONFERENCE_ENTRY_SERVER";
-	const EXTERNAL_MEDIA = "externalMedia.externalMedia";
-	const SIP_ENTRY_SERVER = "sip.SIP_ENTRY_SERVER";
-	const MEDIA_CLIP = "1";
-	const MIX = "2";
-	const PLAYLIST = "5";
-	const DATA = "6";
-	const LIVE_STREAM = "7";
-	const LIVE_CHANNEL = "8";
-	const DOCUMENT = "10";
-}
+	function __construct(Kaltura_Client_Client $client = null)
+	{
+		parent::__construct($client);
+	}
 
+	/**
+	 * @return 
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
+	 */
+	function transform($transformString)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "transformString", $transformString);
+		$this->client->queueServiceActionCall("thumbnail_thumbnail", "transform", null, $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultXml = $this->client->doQueue();
+		$resultXmlObject = new \SimpleXMLElement($resultXml);
+		$this->client->checkIfError($resultXmlObject->result);
+	}
+}

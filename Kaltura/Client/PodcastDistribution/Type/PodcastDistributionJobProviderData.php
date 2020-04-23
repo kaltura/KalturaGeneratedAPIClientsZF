@@ -31,18 +31,48 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Enum_EntryType extends Kaltura_Client_EnumBase
+class Kaltura_Client_PodcastDistribution_Type_PodcastDistributionJobProviderData extends Kaltura_Client_ContentDistribution_Type_DistributionJobProviderData
 {
-	const AUTOMATIC = "-1";
-	const CONFERENCE_ENTRY_SERVER = "conference.CONFERENCE_ENTRY_SERVER";
-	const EXTERNAL_MEDIA = "externalMedia.externalMedia";
-	const SIP_ENTRY_SERVER = "sip.SIP_ENTRY_SERVER";
-	const MEDIA_CLIP = "1";
-	const MIX = "2";
-	const PLAYLIST = "5";
-	const DATA = "6";
-	const LIVE_STREAM = "7";
-	const LIVE_CHANNEL = "8";
-	const DOCUMENT = "10";
+	public function getKalturaObjectType()
+	{
+		return 'KalturaPodcastDistributionJobProviderData';
+	}
+	
+	public function __construct(SimpleXMLElement $xml = null)
+	{
+		parent::__construct($xml);
+		
+		if(is_null($xml))
+			return;
+		
+		if(count($xml->xml))
+			$this->xml = (string)$xml->xml;
+		if(count($xml->metadataProfileId))
+			$this->metadataProfileId = (int)$xml->metadataProfileId;
+		if(count($xml->distributionProfileId))
+			$this->distributionProfileId = (int)$xml->distributionProfileId;
+	}
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $xml = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $metadataProfileId = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $distributionProfileId = null;
+
+
 }
 
