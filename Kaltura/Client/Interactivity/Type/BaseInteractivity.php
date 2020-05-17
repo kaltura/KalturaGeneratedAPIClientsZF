@@ -31,17 +31,60 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Enum_BulkUploadObjectType extends Kaltura_Client_EnumBase
+abstract class Kaltura_Client_Interactivity_Type_BaseInteractivity extends Kaltura_Client_ObjectBase
 {
-	const JOB = "bulkUploadFilter.JOB";
-	const SCHEDULE_EVENT = "scheduleBulkUpload.SCHEDULE_EVENT";
-	const SCHEDULE_RESOURCE = "scheduleBulkUpload.SCHEDULE_RESOURCE";
-	const ENTRY = "1";
-	const CATEGORY = "2";
-	const USER = "3";
-	const CATEGORY_USER = "4";
-	const CATEGORY_ENTRY = "5";
-	const USER_ENTRY = "6";
-	const VENDOR_CATALOG_ITEM = "7";
+	public function getKalturaObjectType()
+	{
+		return 'KalturaBaseInteractivity';
+	}
+	
+	public function __construct(SimpleXMLElement $xml = null)
+	{
+		parent::__construct($xml);
+		
+		if(is_null($xml))
+			return;
+		
+		if(count($xml->data))
+			$this->data = (string)$xml->data;
+		if(count($xml->version))
+			$this->version = (int)$xml->version;
+		if(count($xml->entryId))
+			$this->entryId = (string)$xml->entryId;
+		if(count($xml->updatedAt))
+			$this->updatedAt = (int)$xml->updatedAt;
+	}
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $data = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 * @readonly
+	 */
+	public $version = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 * @readonly
+	 */
+	public $entryId = null;
+
+	/**
+	 * Interactivity update date as Unix timestamp (In seconds)
+	 *
+	 * @var int
+	 * @readonly
+	 */
+	public $updatedAt = null;
+
+
 }
 

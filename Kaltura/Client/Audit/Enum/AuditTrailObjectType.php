@@ -41,6 +41,7 @@ class Kaltura_Client_Audit_Enum_AuditTrailObjectType extends Kaltura_Client_Enum
 	const METADATA_PROFILE = "MetadataProfile";
 	const PARTNER = "Partner";
 	const PERMISSION = "Permission";
+	const REACH_PROFILE = "ReachProfile";
 	const UPLOAD_TOKEN = "UploadToken";
 	const USER_LOGIN_DATA = "UserLoginData";
 	const USER_ROLE = "UserRole";

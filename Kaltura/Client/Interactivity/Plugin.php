@@ -31,17 +31,51 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Enum_BulkUploadObjectType extends Kaltura_Client_EnumBase
+class Kaltura_Client_Interactivity_Plugin extends Kaltura_Client_Plugin
 {
-	const JOB = "bulkUploadFilter.JOB";
-	const SCHEDULE_EVENT = "scheduleBulkUpload.SCHEDULE_EVENT";
-	const SCHEDULE_RESOURCE = "scheduleBulkUpload.SCHEDULE_RESOURCE";
-	const ENTRY = "1";
-	const CATEGORY = "2";
-	const USER = "3";
-	const CATEGORY_USER = "4";
-	const CATEGORY_ENTRY = "5";
-	const USER_ENTRY = "6";
-	const VENDOR_CATALOG_ITEM = "7";
+	/**
+	 * @var Kaltura_Client_Interactivity_InteractivityService
+	 */
+	public $interactivity = null;
+
+	/**
+	 * @var Kaltura_Client_Interactivity_VolatileInteractivityService
+	 */
+	public $volatileInteractivity = null;
+
+	protected function __construct(Kaltura_Client_Client $client)
+	{
+		parent::__construct($client);
+		$this->interactivity = new Kaltura_Client_Interactivity_InteractivityService($client);
+		$this->volatileInteractivity = new Kaltura_Client_Interactivity_VolatileInteractivityService($client);
+	}
+
+	/**
+	 * @return Kaltura_Client_Interactivity_Plugin
+	 */
+	public static function get(Kaltura_Client_Client $client)
+	{
+		return new Kaltura_Client_Interactivity_Plugin($client);
+	}
+
+	/**
+	 * @return array<Kaltura_Client_ServiceBase>
+	 */
+	public function getServices()
+	{
+		$services = array(
+			'interactivity' => $this->interactivity,
+			'volatileInteractivity' => $this->volatileInteractivity,
+		);
+		return $services;
+	}
+
+	/**
+	 * @return string
+	 */
+	public function getName()
+	{
+		return 'interactivity';
+	}
 }
 

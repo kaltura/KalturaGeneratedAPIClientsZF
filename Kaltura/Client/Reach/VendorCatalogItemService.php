@@ -59,6 +59,30 @@ class Kaltura_Client_Reach_VendorCatalogItemService extends Kaltura_Client_Servi
 	}
 
 	/**
+	 * @return Kaltura_Client_Type_BulkUpload
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
+	 */
+	function addFromBulkUpload($fileData, Kaltura_Client_Type_BulkUploadJobData $bulkUploadData = null, Kaltura_Client_Type_BulkUploadVendorCatalogItemData $bulkUploadVendorCatalogItemData = null)
+	{
+		$kparams = array();
+		$kfiles = array();
+		$this->client->addParam($kfiles, "fileData", $fileData);
+		if ($bulkUploadData !== null)
+			$this->client->addParam($kparams, "bulkUploadData", $bulkUploadData->toParams());
+		if ($bulkUploadVendorCatalogItemData !== null)
+			$this->client->addParam($kparams, "bulkUploadVendorCatalogItemData", $bulkUploadVendorCatalogItemData->toParams());
+		$this->client->queueServiceActionCall("reach_vendorcatalogitem", "addFromBulkUpload",  "KalturaBulkUpload", $kparams, $kfiles);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultXml = $this->client->doQueue();
+		$resultXmlObject = new \SimpleXMLElement($resultXml);
+		$this->client->checkIfError($resultXmlObject->result);
+		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaBulkUpload");
+		$this->client->validateObjectType($resultObject, "Kaltura_Client_Type_BulkUpload");
+		return $resultObject;
+	}
+
+	/**
 	 * @return 
 	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
@@ -94,6 +118,24 @@ class Kaltura_Client_Reach_VendorCatalogItemService extends Kaltura_Client_Servi
 	}
 
 	/**
+	 * @return string
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
+	 */
+	function getServeUrl($vendorPartnerId = null)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "vendorPartnerId", $vendorPartnerId);
+		$this->client->queueServiceActionCall("reach_vendorcatalogitem", "getServeUrl", null, $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultXml = $this->client->doQueue();
+		$resultXmlObject = new \SimpleXMLElement($resultXml);
+		$this->client->checkIfError($resultXmlObject->result);
+		$resultObject = (string)Kaltura_Client_ParseUtils::unmarshalSimpleType($resultXmlObject->result);
+		return $resultObject;
+	}
+
+	/**
 	 * @return Kaltura_Client_Reach_Type_VendorCatalogItemListResponse
 	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
@@ -112,6 +154,22 @@ class Kaltura_Client_Reach_VendorCatalogItemService extends Kaltura_Client_Servi
 		$this->client->checkIfError($resultXmlObject->result);
 		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaVendorCatalogItemListResponse");
 		$this->client->validateObjectType($resultObject, "Kaltura_Client_Reach_Type_VendorCatalogItemListResponse");
+		return $resultObject;
+	}
+
+	/**
+	 * @return file
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
+	 */
+	function serve($vendorPartnerId = null)
+	{
+		if ($this->client->isMultiRequest())
+			throw $this->client->getKalturaClientException("Action is not supported as part of multi-request.", Kaltura_Client_ClientException::ERROR_ACTION_IN_MULTIREQUEST);
+		
+		$kparams = array();
+		$this->client->addParam($kparams, "vendorPartnerId", $vendorPartnerId);
+		$this->client->queueServiceActionCall('reach_vendorcatalogitem', 'serve', null, $kparams);
+		$resultObject = $this->client->getServeUrl();
 		return $resultObject;
 	}
 

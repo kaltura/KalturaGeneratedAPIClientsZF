@@ -101,6 +101,8 @@ class Kaltura_Client_Reach_Type_EntryVendorTask extends Kaltura_Client_ObjectBas
 			$this->serviceType = (int)$xml->serviceType;
 		if(count($xml->serviceFeature))
 			$this->serviceFeature = (int)$xml->serviceFeature;
+		if(count($xml->turnAroundTime))
+			$this->turnAroundTime = (int)$xml->turnAroundTime;
 	}
 	/**
 	 * 
@@ -317,6 +319,14 @@ class Kaltura_Client_Reach_Type_EntryVendorTask extends Kaltura_Client_ObjectBas
 	 * @readonly
 	 */
 	public $serviceFeature = null;
+
+	/**
+	 * 
+	 *
+	 * @var Kaltura_Client_Reach_Enum_VendorServiceTurnAroundTime
+	 * @readonly
+	 */
+	public $turnAroundTime = null;
 
 
 }

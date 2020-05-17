@@ -36,5 +36,6 @@ class Kaltura_Client_Enum_PlaylistType extends Kaltura_Client_EnumBase
 	const STATIC_LIST = 3;
 	const DYNAMIC = 10;
 	const EXTERNAL = 101;
+	const PATH = 102;
 }
 

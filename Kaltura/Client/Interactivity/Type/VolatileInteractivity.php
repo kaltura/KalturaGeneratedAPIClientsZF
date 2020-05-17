@@ -31,17 +31,21 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Enum_BulkUploadObjectType extends Kaltura_Client_EnumBase
+class Kaltura_Client_Interactivity_Type_VolatileInteractivity extends Kaltura_Client_Interactivity_Type_BaseInteractivity
 {
-	const JOB = "bulkUploadFilter.JOB";
-	const SCHEDULE_EVENT = "scheduleBulkUpload.SCHEDULE_EVENT";
-	const SCHEDULE_RESOURCE = "scheduleBulkUpload.SCHEDULE_RESOURCE";
-	const ENTRY = "1";
-	const CATEGORY = "2";
-	const USER = "3";
-	const CATEGORY_USER = "4";
-	const CATEGORY_ENTRY = "5";
-	const USER_ENTRY = "6";
-	const VENDOR_CATALOG_ITEM = "7";
+	public function getKalturaObjectType()
+	{
+		return 'KalturaVolatileInteractivity';
+	}
+	
+	public function __construct(SimpleXMLElement $xml = null)
+	{
+		parent::__construct($xml);
+		
+		if(is_null($xml))
+			return;
+		
+	}
+
 }
 

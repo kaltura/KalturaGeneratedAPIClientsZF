@@ -76,6 +76,26 @@ class Kaltura_Client_Caption_CaptionAssetService extends Kaltura_Client_ServiceB
 	}
 
 	/**
+	 * @return Kaltura_Client_Type_FlavorAsset
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
+	 */
+	function export($assetId, $storageProfileId)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "assetId", $assetId);
+		$this->client->addParam($kparams, "storageProfileId", $storageProfileId);
+		$this->client->queueServiceActionCall("caption_captionasset", "export", "KalturaFlavorAsset", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultXml = $this->client->doQueue();
+		$resultXmlObject = new \SimpleXMLElement($resultXml);
+		$this->client->checkIfError($resultXmlObject->result);
+		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaFlavorAsset");
+		$this->client->validateObjectType($resultObject, "Kaltura_Client_Type_FlavorAsset");
+		return $resultObject;
+	}
+
+	/**
 	 * @return Kaltura_Client_Caption_Type_CaptionAsset
 	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
