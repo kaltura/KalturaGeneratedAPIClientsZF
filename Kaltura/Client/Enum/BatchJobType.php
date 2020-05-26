@@ -104,5 +104,7 @@ class Kaltura_Client_Enum_BatchJobType extends Kaltura_Client_EnumBase
 	const LIVE_ENTRY_ARCHIVE = "51";
 	const STORAGE_UPDATE = "52";
 	const STORAGE_PERIODIC_EXPORT = "53";
+	const STORAGE_PERIODIC_PURGE = "54";
+	const STORAGE_PERIODIC_DELETE_LOCAL = "55";
 }
 

@@ -109,6 +109,8 @@ class Kaltura_Client_FileSync_Type_FileSync extends Kaltura_Client_ObjectBase
 			$this->srcPath = (string)$xml->srcPath;
 		if(count($xml->srcEncKey))
 			$this->srcEncKey = (string)$xml->srcEncKey;
+		if(count($xml->storageClass))
+			$this->storageClass = (string)$xml->storageClass;
 	}
 	/**
 	 * 
@@ -320,6 +322,13 @@ class Kaltura_Client_FileSync_Type_FileSync extends Kaltura_Client_ObjectBase
 	 * @var string
 	 */
 	public $srcEncKey = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $storageClass = null;
 
 
 }

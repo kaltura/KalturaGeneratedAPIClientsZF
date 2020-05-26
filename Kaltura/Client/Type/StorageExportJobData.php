@@ -59,6 +59,10 @@ class Kaltura_Client_Type_StorageExportJobData extends Kaltura_Client_Type_Stora
 			else
 				$this->createLink = false;
 		}
+		if(count($xml->assetId))
+			$this->assetId = (string)$xml->assetId;
+		if(count($xml->externalUrl))
+			$this->externalUrl = (string)$xml->externalUrl;
 	}
 	/**
 	 * 
@@ -73,6 +77,20 @@ class Kaltura_Client_Type_StorageExportJobData extends Kaltura_Client_Type_Stora
 	 * @var bool
 	 */
 	public $createLink = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $assetId = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $externalUrl = null;
 
 
 }
