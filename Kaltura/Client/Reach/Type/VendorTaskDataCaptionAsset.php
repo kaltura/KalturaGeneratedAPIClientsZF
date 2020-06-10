@@ -31,11 +31,11 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Type_BaseEntryFilter extends Kaltura_Client_Type_BaseEntryBaseFilter
+abstract class Kaltura_Client_Reach_Type_VendorTaskDataCaptionAsset extends Kaltura_Client_Reach_Type_VendorTaskData
 {
 	public function getKalturaObjectType()
 	{
-		return 'KalturaBaseEntryFilter';
+		return 'KalturaVendorTaskDataCaptionAsset';
 	}
 	
 	public function __construct(SimpleXMLElement $xml = null)
@@ -45,60 +45,16 @@ class Kaltura_Client_Type_BaseEntryFilter extends Kaltura_Client_Type_BaseEntryB
 		if(is_null($xml))
 			return;
 		
-		if(count($xml->freeText))
-			$this->freeText = (string)$xml->freeText;
-		if(count($xml->excludedFreeTextGroups))
-			$this->excludedFreeTextGroups = (string)$xml->excludedFreeTextGroups;
-		if(count($xml->isRoot))
-			$this->isRoot = (int)$xml->isRoot;
-		if(count($xml->categoriesFullNameIn))
-			$this->categoriesFullNameIn = (string)$xml->categoriesFullNameIn;
-		if(count($xml->categoryAncestorIdIn))
-			$this->categoryAncestorIdIn = (string)$xml->categoryAncestorIdIn;
-		if(count($xml->redirectFromEntryId))
-			$this->redirectFromEntryId = (string)$xml->redirectFromEntryId;
+		if(count($xml->captionAssetId))
+			$this->captionAssetId = (string)$xml->captionAssetId;
 	}
 	/**
-	 * 
+	 * Optional - The id of the caption asset object
 	 *
 	 * @var string
+	 * @insertonly
 	 */
-	public $freeText = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $excludedFreeTextGroups = null;
-
-	/**
-	 * 
-	 *
-	 * @var Kaltura_Client_Enum_NullableBoolean
-	 */
-	public $isRoot = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $categoriesFullNameIn = null;
-
-	/**
-	 * All entries within this categoy or in child categories
-	 *
-	 * @var string
-	 */
-	public $categoryAncestorIdIn = null;
-
-	/**
-	 * The id of the original entry
-	 *
-	 * @var string
-	 */
-	public $redirectFromEntryId = null;
+	public $captionAssetId = null;
 
 
 }

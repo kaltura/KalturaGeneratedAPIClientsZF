@@ -457,4 +457,23 @@ class Kaltura_Client_UserService extends Kaltura_Client_ServiceBase
 		$resultXmlObject = new \SimpleXMLElement($resultXml);
 		$this->client->checkIfError($resultXmlObject->result);
 	}
+
+	/**
+	 * @return Kaltura_Client_Type_Authentication
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
+	 */
+	function validateHashKey($hashKey)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "hashKey", $hashKey);
+		$this->client->queueServiceActionCall("user", "validateHashKey", "KalturaAuthentication", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultXml = $this->client->doQueue();
+		$resultXmlObject = new \SimpleXMLElement($resultXml);
+		$this->client->checkIfError($resultXmlObject->result);
+		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaAuthentication");
+		$this->client->validateObjectType($resultObject, "Kaltura_Client_Type_Authentication");
+		return $resultObject;
+	}
 }

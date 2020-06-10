@@ -31,7 +31,7 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Reach_Type_AlignmentVendorTaskData extends Kaltura_Client_Reach_Type_VendorTaskData
+class Kaltura_Client_Reach_Type_AlignmentVendorTaskData extends Kaltura_Client_Reach_Type_VendorTaskDataCaptionAsset
 {
 	public function getKalturaObjectType()
 	{
@@ -49,8 +49,6 @@ class Kaltura_Client_Reach_Type_AlignmentVendorTaskData extends Kaltura_Client_R
 			$this->textTranscriptAssetId = (string)$xml->textTranscriptAssetId;
 		if(count($xml->jsonTranscriptAssetId))
 			$this->jsonTranscriptAssetId = (string)$xml->jsonTranscriptAssetId;
-		if(count($xml->captionAssetId))
-			$this->captionAssetId = (string)$xml->captionAssetId;
 	}
 	/**
 	 * The id of the text transcript object the vendor should use while runing the alignment task
@@ -66,14 +64,6 @@ class Kaltura_Client_Reach_Type_AlignmentVendorTaskData extends Kaltura_Client_R
 	 * @insertonly
 	 */
 	public $jsonTranscriptAssetId = null;
-
-	/**
-	 * Optional - The id of the caption asset object the vendor should update once alignment task processing is done
-	 *
-	 * @var string
-	 * @insertonly
-	 */
-	public $captionAssetId = null;
 
 
 }
