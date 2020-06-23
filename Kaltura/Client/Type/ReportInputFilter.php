@@ -123,6 +123,8 @@ class Kaltura_Client_Type_ReportInputFilter extends Kaltura_Client_Type_ReportIn
 			$this->nodeIdsIn = (string)$xml->nodeIdsIn;
 		if(count($xml->categoriesAncestorIdIn))
 			$this->categoriesAncestorIdIn = (string)$xml->categoriesAncestorIdIn;
+		if(count($xml->hotspotIdIn))
+			$this->hotspotIdIn = (string)$xml->hotspotIdIn;
 	}
 	/**
 	 * Search keywords to filter objects
@@ -361,6 +363,13 @@ class Kaltura_Client_Type_ReportInputFilter extends Kaltura_Client_Type_ReportIn
 	 * @var string
 	 */
 	public $categoriesAncestorIdIn = null;
+
+	/**
+	 * filter by hotspot id
+	 *
+	 * @var string
+	 */
+	public $hotspotIdIn = null;
 
 
 }

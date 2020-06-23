@@ -79,10 +79,12 @@ class Kaltura_Client_Interactivity_InteractivityService extends Kaltura_Client_S
 	 * @return Kaltura_Client_Interactivity_Type_Interactivity
 	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
-	function get($entryId)
+	function get($entryId, Kaltura_Client_Interactivity_Type_InteractivityDataFilter $dataFilter = null)
 	{
 		$kparams = array();
 		$this->client->addParam($kparams, "entryId", $entryId);
+		if ($dataFilter !== null)
+			$this->client->addParam($kparams, "dataFilter", $dataFilter->toParams());
 		$this->client->queueServiceActionCall("interactivity_interactivity", "get", "KalturaInteractivity", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
