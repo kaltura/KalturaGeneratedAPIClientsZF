@@ -157,6 +157,8 @@ class Kaltura_Client_Type_StorageProfile extends Kaltura_Client_ObjectBase
 			else
 				$this->shouldExportCaptions = false;
 		}
+		if(count($xml->excludedEntryTypes))
+			$this->excludedEntryTypes = (string)$xml->excludedEntryTypes;
 	}
 	/**
 	 * 
@@ -413,6 +415,13 @@ class Kaltura_Client_Type_StorageProfile extends Kaltura_Client_ObjectBase
 	 * @var bool
 	 */
 	public $shouldExportCaptions = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $excludedEntryTypes = null;
 
 
 }
