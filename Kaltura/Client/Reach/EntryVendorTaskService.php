@@ -176,6 +176,27 @@ class Kaltura_Client_Reach_EntryVendorTaskService extends Kaltura_Client_Service
 	}
 
 	/**
+	 * @return string
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
+	 */
+	function getServeUrl($filterType = null, $filterInput = null, $status = null, $dueDate = null)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "filterType", $filterType);
+		$this->client->addParam($kparams, "filterInput", $filterInput);
+		$this->client->addParam($kparams, "status", $status);
+		$this->client->addParam($kparams, "dueDate", $dueDate);
+		$this->client->queueServiceActionCall("reach_entryvendortask", "getServeUrl", null, $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultXml = $this->client->doQueue();
+		$resultXmlObject = new \SimpleXMLElement($resultXml);
+		$this->client->checkIfError($resultXmlObject->result);
+		$resultObject = (string)Kaltura_Client_ParseUtils::unmarshalSimpleType($resultXmlObject->result);
+		return $resultObject;
+	}
+
+	/**
 	 * @return Kaltura_Client_Reach_Type_EntryVendorTaskListResponse
 	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
@@ -214,6 +235,25 @@ class Kaltura_Client_Reach_EntryVendorTaskService extends Kaltura_Client_Service
 		$this->client->checkIfError($resultXmlObject->result);
 		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaEntryVendorTask");
 		$this->client->validateObjectType($resultObject, "Kaltura_Client_Reach_Type_EntryVendorTask");
+		return $resultObject;
+	}
+
+	/**
+	 * @return file
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
+	 */
+	function serve($vendorPartnerId = null, $partnerId = null, $status = null, $dueDate = null)
+	{
+		if ($this->client->isMultiRequest())
+			throw $this->client->getKalturaClientException("Action is not supported as part of multi-request.", Kaltura_Client_ClientException::ERROR_ACTION_IN_MULTIREQUEST);
+		
+		$kparams = array();
+		$this->client->addParam($kparams, "vendorPartnerId", $vendorPartnerId);
+		$this->client->addParam($kparams, "partnerId", $partnerId);
+		$this->client->addParam($kparams, "status", $status);
+		$this->client->addParam($kparams, "dueDate", $dueDate);
+		$this->client->queueServiceActionCall('reach_entryvendortask', 'serve', null, $kparams);
+		$resultObject = $this->client->getServeUrl();
 		return $resultObject;
 	}
 

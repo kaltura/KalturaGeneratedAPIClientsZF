@@ -51,6 +51,8 @@ class Kaltura_Client_Type_MediaEntry extends Kaltura_Client_Type_PlayableEntry
 			$this->conversionQuality = (string)$xml->conversionQuality;
 		if(count($xml->sourceType))
 			$this->sourceType = (string)$xml->sourceType;
+		if(count($xml->sourceVersion))
+			$this->sourceVersion = (string)$xml->sourceVersion;
 		if(count($xml->searchProviderType))
 			$this->searchProviderType = (int)$xml->searchProviderType;
 		if(count($xml->searchProviderId))
@@ -98,6 +100,14 @@ class Kaltura_Client_Type_MediaEntry extends Kaltura_Client_Type_PlayableEntry
 	 * @insertonly
 	 */
 	public $sourceType = null;
+
+	/**
+	 * The source version of the entry
+	 *
+	 * @var string
+	 * @insertonly
+	 */
+	public $sourceVersion = null;
 
 	/**
 	 * The search provider type used to import this entry

@@ -140,6 +140,10 @@ class Kaltura_Client_Type_BaseEntry extends Kaltura_Client_ObjectBase
 			$this->templateEntryId = (string)$xml->templateEntryId;
 		if(count($xml->displayInSearch))
 			$this->displayInSearch = (int)$xml->displayInSearch;
+		if(count($xml->application))
+			$this->application = (string)$xml->application;
+		if(count($xml->applicationVersion))
+			$this->applicationVersion = (string)$xml->applicationVersion;
 	}
 	/**
 	 * Auto generated 10 characters alphanumeric string
@@ -476,6 +480,22 @@ class Kaltura_Client_Type_BaseEntry extends Kaltura_Client_ObjectBase
 	 * @var Kaltura_Client_Enum_EntryDisplayInSearchType
 	 */
 	public $displayInSearch = null;
+
+	/**
+	 * Entry application
+	 *
+	 * @var Kaltura_Client_Enum_EntryApplication
+	 * @insertonly
+	 */
+	public $application = null;
+
+	/**
+	 * Entry application version
+	 *
+	 * @var string
+	 * @insertonly
+	 */
+	public $applicationVersion = null;
 
 
 }
