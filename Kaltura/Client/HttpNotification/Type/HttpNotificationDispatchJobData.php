@@ -49,6 +49,8 @@ class Kaltura_Client_HttpNotification_Type_HttpNotificationDispatchJobData exten
 			$this->url = (string)$xml->url;
 		if(count($xml->method))
 			$this->method = (int)$xml->method;
+		if(count($xml->contentType))
+			$this->contentType = (string)$xml->contentType;
 		if(count($xml->data))
 			$this->data = (string)$xml->data;
 		if(count($xml->timeout))
@@ -102,6 +104,13 @@ class Kaltura_Client_HttpNotification_Type_HttpNotificationDispatchJobData exten
 	 * @var Kaltura_Client_HttpNotification_Enum_HttpNotificationMethod
 	 */
 	public $method = null;
+
+	/**
+	 * The type of the data to send.
+	 *
+	 * @var string
+	 */
+	public $contentType = null;
 
 	/**
 	 * Data to send.

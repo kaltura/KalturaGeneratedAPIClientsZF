@@ -43,11 +43,12 @@ class Kaltura_Client_Sip_PexipService extends Kaltura_Client_ServiceBase
 	 * @return string
 	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
-	function generateSipUrl($entryId, $regenerate = false)
+	function generateSipUrl($entryId, $regenerate = false, $sourceType = 1)
 	{
 		$kparams = array();
 		$this->client->addParam($kparams, "entryId", $entryId);
 		$this->client->addParam($kparams, "regenerate", $regenerate);
+		$this->client->addParam($kparams, "sourceType", $sourceType);
 		$this->client->queueServiceActionCall("sip_pexip", "generateSipUrl", null, $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
@@ -59,7 +60,7 @@ class Kaltura_Client_Sip_PexipService extends Kaltura_Client_ServiceBase
 	}
 
 	/**
-	 * @return bool
+	 * @return 
 	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function handleIncomingCall()
@@ -71,8 +72,6 @@ class Kaltura_Client_Sip_PexipService extends Kaltura_Client_ServiceBase
 		$resultXml = $this->client->doQueue();
 		$resultXmlObject = new \SimpleXMLElement($resultXml);
 		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = (bool)Kaltura_Client_ParseUtils::unmarshalSimpleType($resultXmlObject->result);
-		return $resultObject;
 	}
 
 	/**
