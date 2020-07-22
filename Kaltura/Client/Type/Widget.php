@@ -87,6 +87,8 @@ class Kaltura_Client_Type_Widget extends Kaltura_Client_ObjectBase
 		}
 		if(count($xml->roles))
 			$this->roles = (string)$xml->roles;
+		if(count($xml->privileges))
+			$this->privileges = (string)$xml->privileges;
 	}
 	/**
 	 * 
@@ -205,6 +207,13 @@ class Kaltura_Client_Type_Widget extends Kaltura_Client_ObjectBase
 	 * @var string
 	 */
 	public $roles = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $privileges = null;
 
 
 }
