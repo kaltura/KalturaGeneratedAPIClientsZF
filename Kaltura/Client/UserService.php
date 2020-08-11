@@ -366,10 +366,11 @@ class Kaltura_Client_UserService extends Kaltura_Client_ServiceBase
 	 * @return 
 	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
-	function resetPassword($email)
+	function resetPassword($email, $linkType = null)
 	{
 		$kparams = array();
 		$this->client->addParam($kparams, "email", $email);
+		$this->client->addParam($kparams, "linkType", $linkType);
 		$this->client->queueServiceActionCall("user", "resetPassword", null, $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
