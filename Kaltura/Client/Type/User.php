@@ -82,6 +82,10 @@ class Kaltura_Client_Type_User extends Kaltura_Client_Type_BaseUser
 			else
 				$this->loginEnabled = false;
 		}
+		if(count($xml->registrationInfo))
+			$this->registrationInfo = (string)$xml->registrationInfo;
+		if(count($xml->attendanceInfo))
+			$this->attendanceInfo = (string)$xml->attendanceInfo;
 	}
 	/**
 	 * 
@@ -163,6 +167,20 @@ class Kaltura_Client_Type_User extends Kaltura_Client_Type_BaseUser
 	 * @insertonly
 	 */
 	public $loginEnabled = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $registrationInfo = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $attendanceInfo = null;
 
 
 }
