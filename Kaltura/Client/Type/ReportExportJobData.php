@@ -56,6 +56,15 @@ class Kaltura_Client_Type_ReportExportJobData extends Kaltura_Client_Type_JobDat
 		}
 		if(count($xml->filePaths))
 			$this->filePaths = (string)$xml->filePaths;
+		if(count($xml->reportsGroup))
+			$this->reportsGroup = (string)$xml->reportsGroup;
+		if(count($xml->files))
+		{
+			if(empty($xml->files))
+				$this->files = array();
+			else
+				$this->files = Kaltura_Client_ParseUtils::unmarshalArray($xml->files, "KalturaReportExportFile");
+		}
 	}
 	/**
 	 * 
@@ -77,6 +86,20 @@ class Kaltura_Client_Type_ReportExportJobData extends Kaltura_Client_Type_JobDat
 	 * @var string
 	 */
 	public $filePaths = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $reportsGroup = null;
+
+	/**
+	 * 
+	 *
+	 * @var array of KalturaReportExportFile
+	 */
+	public $files;
 
 
 }

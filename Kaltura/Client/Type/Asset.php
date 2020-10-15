@@ -73,6 +73,8 @@ class Kaltura_Client_Type_Asset extends Kaltura_Client_ObjectBase
 			$this->partnerDescription = (string)$xml->partnerDescription;
 		if(count($xml->actualSourceAssetParamsIds))
 			$this->actualSourceAssetParamsIds = (string)$xml->actualSourceAssetParamsIds;
+		if(count($xml->sizeInBytes))
+			$this->sizeInBytes = (int)$xml->sizeInBytes;
 	}
 	/**
 	 * The ID of the Flavor Asset
@@ -181,6 +183,14 @@ class Kaltura_Client_Type_Asset extends Kaltura_Client_ObjectBase
 	 * @var string
 	 */
 	public $actualSourceAssetParamsIds = null;
+
+	/**
+	 * The size (in Bytes) of the asset
+	 *
+	 * @var int
+	 * @readonly
+	 */
+	public $sizeInBytes = null;
 
 
 }

@@ -47,6 +47,10 @@ class Kaltura_Client_Schedule_Type_LiveStreamScheduleEvent extends Kaltura_Clien
 		
 		if(count($xml->projectedAudience))
 			$this->projectedAudience = (int)$xml->projectedAudience;
+		if(count($xml->sourceEntryId))
+			$this->sourceEntryId = (string)$xml->sourceEntryId;
+		if(count($xml->preStartTime))
+			$this->preStartTime = (int)$xml->preStartTime;
 	}
 	/**
 	 * Defines the expected audience.
@@ -54,6 +58,20 @@ class Kaltura_Client_Schedule_Type_LiveStreamScheduleEvent extends Kaltura_Clien
 	 * @var int
 	 */
 	public $projectedAudience = null;
+
+	/**
+	 * The entry ID of the source entry (for simulive)
+	 *
+	 * @var string
+	 */
+	public $sourceEntryId = null;
+
+	/**
+	 * The time relative time before the startTime considered as preStart time
+	 *
+	 * @var int
+	 */
+	public $preStartTime = null;
 
 
 }

@@ -31,47 +31,39 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Reach_Enum_CatalogItemLanguage extends Kaltura_Client_EnumBase
+class Kaltura_Client_Type_ReportExportFile extends Kaltura_Client_ObjectBase
 {
-	const AR = "Arabic";
-	const YUE = "Cantonese";
-	const ZH = "Chinese";
-	const DA = "Danish";
-	const NL = "Dutch";
-	const EN = "English";
-	const EN_US = "English (American)";
-	const EN_GB = "English (British)";
-	const FI = "Finnish";
-	const FR = "French";
-	const FR_CA = "French (Canada)";
-	const DE = "German";
-	const EL = "Greek";
-	const HE = "Hebrew";
-	const HI = "Hindi";
-	const HU = "Hungarian";
-	const IS = "Icelandic";
-	const IN = "Indonesian";
-	const GA = "Irish";
-	const IT = "Italian";
-	const JA = "Japanese";
-	const KO = "Korean";
-	const ML = "Malayalam";
-	const CMN = "Mandarin Chinese";
-	const NO = "Norwegian";
-	const PL = "Polish";
-	const PT = "Portuguese";
-	const RO = "Romanian";
-	const RU = "Russian";
-	const ES = "Spanish";
-	const SV = "Swedish";
-	const ZH_TW = "Taiwanese Mandarin";
-	const TA = "Tamil";
-	const TH = "Thai";
-	const TR = "Turkish";
-	const UK = "Ukrainian";
-	const UR = "Urdu";
-	const VI = "Vietnamese";
-	const CY = "Welsh";
-	const ZU = "Zulu";
+	public function getKalturaObjectType()
+	{
+		return 'KalturaReportExportFile';
+	}
+	
+	public function __construct(SimpleXMLElement $xml = null)
+	{
+		parent::__construct($xml);
+		
+		if(is_null($xml))
+			return;
+		
+		if(count($xml->fileId))
+			$this->fileId = (string)$xml->fileId;
+		if(count($xml->fileName))
+			$this->fileName = (string)$xml->fileName;
+	}
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $fileId = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $fileName = null;
+
+
 }
 

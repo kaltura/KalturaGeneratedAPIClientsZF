@@ -67,6 +67,8 @@ class Kaltura_Client_Type_StorageProfile extends Kaltura_Client_ObjectBase
 			$this->storageUrl = (string)$xml->storageUrl;
 		if(count($xml->storageBaseDir))
 			$this->storageBaseDir = (string)$xml->storageBaseDir;
+		if(count($xml->pathPrefix))
+			$this->pathPrefix = (string)$xml->pathPrefix;
 		if(count($xml->storageUsername))
 			$this->storageUsername = (string)$xml->storageUsername;
 		if(count($xml->storagePassword))
@@ -240,6 +242,13 @@ class Kaltura_Client_Type_StorageProfile extends Kaltura_Client_ObjectBase
 	 * @var string
 	 */
 	public $storageBaseDir = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $pathPrefix = null;
 
 	/**
 	 * 

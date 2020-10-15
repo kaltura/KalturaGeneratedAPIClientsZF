@@ -167,6 +167,13 @@ class Kaltura_Client_Type_Partner extends Kaltura_Client_ObjectBase
 			else
 				$this->ignoreSeoLinks = false;
 		}
+		if(count($xml->blockDirectLogin))
+		{
+			if(!empty($xml->blockDirectLogin) && ((int) $xml->blockDirectLogin === 1 || strtolower((string)$xml->blockDirectLogin) === 'true'))
+				$this->blockDirectLogin = true;
+			else
+				$this->blockDirectLogin = false;
+		}
 		if(count($xml->host))
 			$this->host = (string)$xml->host;
 		if(count($xml->cdnHost))
@@ -493,7 +500,6 @@ class Kaltura_Client_Type_Partner extends Kaltura_Client_ObjectBase
 	 * 
 	 *
 	 * @var array of KalturaKeyValue
-	 * @insertonly
 	 */
 	public $additionalParams;
 
@@ -568,6 +574,14 @@ class Kaltura_Client_Type_Partner extends Kaltura_Client_ObjectBase
 	 * @readonly
 	 */
 	public $ignoreSeoLinks = null;
+
+	/**
+	 * 
+	 *
+	 * @var bool
+	 * @readonly
+	 */
+	public $blockDirectLogin = null;
 
 	/**
 	 * 

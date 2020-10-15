@@ -1095,6 +1095,7 @@ class Kaltura_Client_TypeMap
 		'KalturaReport' => 'Kaltura_Client_Type_Report',
 		'KalturaReportBaseFilter' => 'Kaltura_Client_Type_ReportBaseFilter',
 		'KalturaReportBaseTotal' => 'Kaltura_Client_Type_ReportBaseTotal',
+		'KalturaReportExportFile' => 'Kaltura_Client_Type_ReportExportFile',
 		'KalturaReportExportItem' => 'Kaltura_Client_Type_ReportExportItem',
 		'KalturaReportExportJobData' => 'Kaltura_Client_Type_ReportExportJobData',
 		'KalturaReportExportParams' => 'Kaltura_Client_Type_ReportExportParams',

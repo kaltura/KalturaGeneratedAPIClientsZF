@@ -56,6 +56,8 @@ class Kaltura_Client_Type_ReportExportParams extends Kaltura_Client_ObjectBase
 			else
 				$this->reportItems = Kaltura_Client_ParseUtils::unmarshalArray($xml->reportItems, "KalturaReportExportItem");
 		}
+		if(count($xml->reportsItemsGroup))
+			$this->reportsItemsGroup = (string)$xml->reportsItemsGroup;
 	}
 	/**
 	 * 
@@ -77,6 +79,13 @@ class Kaltura_Client_Type_ReportExportParams extends Kaltura_Client_ObjectBase
 	 * @var array of KalturaReportExportItem
 	 */
 	public $reportItems;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $reportsItemsGroup = null;
 
 
 }

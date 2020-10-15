@@ -285,7 +285,7 @@ class Kaltura_Client_LiveStreamService extends Kaltura_Client_ServiceBase
 	 * @return bool
 	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
-	function isLive($id, $protocol)
+	function isLive($id, $protocol = null)
 	{
 		$kparams = array();
 		$this->client->addParam($kparams, "id", $id);
