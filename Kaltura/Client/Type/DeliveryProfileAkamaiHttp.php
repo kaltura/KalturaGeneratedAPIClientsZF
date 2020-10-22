@@ -31,7 +31,7 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Type_DeliveryProfileAkamaiHttp extends Kaltura_Client_Type_DeliveryProfile
+class Kaltura_Client_Type_DeliveryProfileAkamaiHttp extends Kaltura_Client_Type_DeliveryProfileHttp
 {
 	public function getKalturaObjectType()
 	{

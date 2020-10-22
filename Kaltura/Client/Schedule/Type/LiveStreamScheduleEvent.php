@@ -51,6 +51,8 @@ class Kaltura_Client_Schedule_Type_LiveStreamScheduleEvent extends Kaltura_Clien
 			$this->sourceEntryId = (string)$xml->sourceEntryId;
 		if(count($xml->preStartTime))
 			$this->preStartTime = (int)$xml->preStartTime;
+		if(count($xml->postEndTime))
+			$this->postEndTime = (int)$xml->postEndTime;
 	}
 	/**
 	 * Defines the expected audience.
@@ -72,6 +74,13 @@ class Kaltura_Client_Schedule_Type_LiveStreamScheduleEvent extends Kaltura_Clien
 	 * @var int
 	 */
 	public $preStartTime = null;
+
+	/**
+	 * The time relative time before the endTime considered as postEnd time
+	 *
+	 * @var int
+	 */
+	public $postEndTime = null;
 
 
 }

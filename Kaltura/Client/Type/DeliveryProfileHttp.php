@@ -31,22 +31,30 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Enum_PlaybackProtocol extends Kaltura_Client_EnumBase
+class Kaltura_Client_Type_DeliveryProfileHttp extends Kaltura_Client_Type_DeliveryProfile
 {
-	const APPLE_HTTP = "applehttp";
-	const APPLE_HTTP_TO_MC = "applehttp_to_mc";
-	const AUTO = "auto";
-	const DOWNLOAD = "download";
-	const AKAMAI_HD = "hdnetwork";
-	const AKAMAI_HDS = "hdnetworkmanifest";
-	const HDS = "hds";
-	const HLS = "hls";
-	const HTTP = "http";
-	const MPEG_DASH = "mpegdash";
-	const MULTICAST_SL = "multicast_silverlight";
-	const RTMP = "rtmp";
-	const RTSP = "rtsp";
-	const SILVER_LIGHT = "sl";
-	const URL = "url";
+	public function getKalturaObjectType()
+	{
+		return 'KalturaDeliveryProfileHttp';
+	}
+	
+	public function __construct(SimpleXMLElement $xml = null)
+	{
+		parent::__construct($xml);
+		
+		if(is_null($xml))
+			return;
+		
+		if(count($xml->maxSize))
+			$this->maxSize = (int)$xml->maxSize;
+	}
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $maxSize = null;
+
+
 }
 
