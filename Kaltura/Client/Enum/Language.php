@@ -432,6 +432,7 @@ class Kaltura_Client_Enum_Language extends Kaltura_Client_EnumBase
 	const PL = "Polish";
 	const PNT = "Pontic";
 	const PT = "Portuguese";
+	const PT_BR = "Portuguese (Brazil)";
 	const POT = "Potawatomi";
 	const PRG = "Prussian";
 	const FUC = "Pulaar";
@@ -504,6 +505,7 @@ class Kaltura_Client_Enum_Language extends Kaltura_Client_EnumBase
 	const SMA = "Southern Sami";
 	const TCE = "Southern Tutchone";
 	const ES = "Spanish";
+	const ES_XL = "Spanish (Latin America)";
 	const SRN = "Sranan";
 	const STO = "Stoney";
 	const XSV = "Sudovian";
@@ -592,8 +594,8 @@ class Kaltura_Client_Enum_Language extends Kaltura_Client_EnumBase
 	const WYM = "Wymysorys";
 	const XH = "Xhosa";
 	const AME = "Yanesha";
-	const YI = "Yiddish";
 	const JI = "Yiddish";
+	const YI = "Yiddish";
 	const YO = "Yoruba";
 	const ZAI = "Zapotec Isthmus";
 	const DJE = "Zarma";

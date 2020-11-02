@@ -67,6 +67,7 @@ class Kaltura_Client_Enum_LanguageCode extends Kaltura_Client_EnumBase
 	const EN_US = "en_us";
 	const EO = "eo";
 	const ES = "es";
+	const ES_XL = "es_xl";
 	const ET = "et";
 	const EU = "eu";
 	const FA = "fa";
@@ -146,6 +147,7 @@ class Kaltura_Client_Enum_LanguageCode extends Kaltura_Client_EnumBase
 	const PL = "pl";
 	const PS = "ps";
 	const PT = "pt";
+	const PT_BR = "pt_br";
 	const QU = "qu";
 	const RM = "rm";
 	const RN = "rn";
