@@ -45,7 +45,17 @@ abstract class Kaltura_Client_Reach_Type_VendorTaskData extends Kaltura_Client_O
 		if(is_null($xml))
 			return;
 		
+		if(count($xml->entryDuration))
+			$this->entryDuration = (int)$xml->entryDuration;
 	}
+	/**
+	 * The duration of the entry for which the task was created for in milliseconds
+	 *
+	 * @var int
+	 * @readonly
+	 */
+	public $entryDuration = null;
+
 
 }
 
