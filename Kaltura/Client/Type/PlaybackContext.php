@@ -80,6 +80,8 @@ class Kaltura_Client_Type_PlaybackContext extends Kaltura_Client_ObjectBase
 			else
 				$this->messages = Kaltura_Client_ParseUtils::unmarshalArray($xml->messages, "KalturaAccessControlMessage");
 		}
+		if(count($xml->bumperData) && !empty($xml->bumperData))
+			$this->bumperData = Kaltura_Client_ParseUtils::unmarshalObject($xml->bumperData, "KalturaTypedArray");
 	}
 	/**
 	 * 
@@ -115,6 +117,13 @@ class Kaltura_Client_Type_PlaybackContext extends Kaltura_Client_ObjectBase
 	 * @var array of KalturaAccessControlMessage
 	 */
 	public $messages;
+
+	/**
+	 * 
+	 *
+	 * @var Kaltura_Client_Type_TypedArray
+	 */
+	public $bumperData;
 
 
 }

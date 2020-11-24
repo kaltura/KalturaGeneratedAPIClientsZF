@@ -67,6 +67,13 @@ abstract class Kaltura_Client_Reach_Type_VendorCatalogItem extends Kaltura_Clien
 			$this->turnAroundTime = (int)$xml->turnAroundTime;
 		if(count($xml->pricing) && !empty($xml->pricing))
 			$this->pricing = Kaltura_Client_ParseUtils::unmarshalObject($xml->pricing, "KalturaVendorCatalogItemPricing");
+		if(count($xml->allowResubmission))
+		{
+			if(!empty($xml->allowResubmission) && ((int) $xml->allowResubmission === 1 || strtolower((string)$xml->allowResubmission) === 'true'))
+				$this->allowResubmission = true;
+			else
+				$this->allowResubmission = false;
+		}
 	}
 	/**
 	 * 
@@ -149,6 +156,13 @@ abstract class Kaltura_Client_Reach_Type_VendorCatalogItem extends Kaltura_Clien
 	 * @var Kaltura_Client_Reach_Type_VendorCatalogItemPricing
 	 */
 	public $pricing;
+
+	/**
+	 * 
+	 *
+	 * @var bool
+	 */
+	public $allowResubmission = null;
 
 
 }
