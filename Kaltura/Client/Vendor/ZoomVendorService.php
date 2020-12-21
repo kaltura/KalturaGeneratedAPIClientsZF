@@ -74,6 +74,25 @@ class Kaltura_Client_Vendor_ZoomVendorService extends Kaltura_Client_ServiceBase
 	}
 
 	/**
+	 * @return Kaltura_Client_Vendor_Type_ZoomIntegrationSetting
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
+	 */
+	function get($partnerId)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "partnerId", $partnerId);
+		$this->client->queueServiceActionCall("vendor_zoomvendor", "get", "KalturaZoomIntegrationSetting", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultXml = $this->client->doQueue();
+		$resultXmlObject = new \SimpleXMLElement($resultXml);
+		$this->client->checkIfError($resultXmlObject->result);
+		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaZoomIntegrationSetting");
+		$this->client->validateObjectType($resultObject, "Kaltura_Client_Vendor_Type_ZoomIntegrationSetting");
+		return $resultObject;
+	}
+
+	/**
 	 * @return string
 	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */

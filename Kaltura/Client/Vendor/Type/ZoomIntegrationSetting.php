@@ -55,8 +55,8 @@ class Kaltura_Client_Vendor_Type_ZoomIntegrationSetting extends Kaltura_Client_O
 			$this->enableRecordingUpload = (int)$xml->enableRecordingUpload;
 		if(count($xml->createUserIfNotExist))
 			$this->createUserIfNotExist = (int)$xml->createUserIfNotExist;
-		if(count($xml->handleParticipantMode))
-			$this->handleParticipantMode = (int)$xml->handleParticipantMode;
+		if(count($xml->handleParticipantsMode))
+			$this->handleParticipantsMode = (int)$xml->handleParticipantsMode;
 		if(count($xml->zoomUserMatchingMode))
 			$this->zoomUserMatchingMode = (int)$xml->zoomUserMatchingMode;
 		if(count($xml->zoomUserPostfix))
@@ -65,6 +65,8 @@ class Kaltura_Client_Vendor_Type_ZoomIntegrationSetting extends Kaltura_Client_O
 			$this->zoomWebinarCategory = (string)$xml->zoomWebinarCategory;
 		if(count($xml->enableWebinarUploads))
 			$this->enableWebinarUploads = (int)$xml->enableWebinarUploads;
+		if(count($xml->conversionProfileId))
+			$this->conversionProfileId = (int)$xml->conversionProfileId;
 	}
 	/**
 	 * 
@@ -84,6 +86,7 @@ class Kaltura_Client_Vendor_Type_ZoomIntegrationSetting extends Kaltura_Client_O
 	 * 
 	 *
 	 * @var string
+	 * @readonly
 	 */
 	public $accountId = null;
 
@@ -106,7 +109,7 @@ class Kaltura_Client_Vendor_Type_ZoomIntegrationSetting extends Kaltura_Client_O
 	 *
 	 * @var Kaltura_Client_Vendor_Enum_HandleParticipantsMode
 	 */
-	public $handleParticipantMode = null;
+	public $handleParticipantsMode = null;
 
 	/**
 	 * 
@@ -135,6 +138,13 @@ class Kaltura_Client_Vendor_Type_ZoomIntegrationSetting extends Kaltura_Client_O
 	 * @var Kaltura_Client_Enum_NullableBoolean
 	 */
 	public $enableWebinarUploads = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $conversionProfileId = null;
 
 
 }
