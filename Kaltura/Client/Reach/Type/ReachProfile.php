@@ -9,7 +9,7 @@
 // to do with audio, video, and animation what Wiki platfroms allow them to do with
 // text.
 //
-// Copyright (C) 2006-2020  Kaltura Inc.
+// Copyright (C) 2006-2021  Kaltura Inc.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -79,6 +79,10 @@ class Kaltura_Client_Reach_Type_ReachProfile extends Kaltura_Client_ObjectBase
 			$this->enableProfanityRemoval = (int)$xml->enableProfanityRemoval;
 		if(count($xml->maxCharactersPerCaptionLine))
 			$this->maxCharactersPerCaptionLine = (int)$xml->maxCharactersPerCaptionLine;
+		if(count($xml->labelAdditionForMachineServiceType))
+			$this->labelAdditionForMachineServiceType = (string)$xml->labelAdditionForMachineServiceType;
+		if(count($xml->labelAdditionForHumanServiceType))
+			$this->labelAdditionForHumanServiceType = (string)$xml->labelAdditionForHumanServiceType;
 		if(count($xml->contentDeletionPolicy))
 			$this->contentDeletionPolicy = (int)$xml->contentDeletionPolicy;
 		if(count($xml->rules))
@@ -227,6 +231,20 @@ class Kaltura_Client_Reach_Type_ReachProfile extends Kaltura_Client_ObjectBase
 	 * @var int
 	 */
 	public $maxCharactersPerCaptionLine = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $labelAdditionForMachineServiceType = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $labelAdditionForHumanServiceType = null;
 
 	/**
 	 * 

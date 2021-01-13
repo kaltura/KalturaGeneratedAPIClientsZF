@@ -9,7 +9,7 @@
 // to do with audio, video, and animation what Wiki platfroms allow them to do with
 // text.
 //
-// Copyright (C) 2006-2020  Kaltura Inc.
+// Copyright (C) 2006-2021  Kaltura Inc.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -51,6 +51,8 @@ class Kaltura_Client_Type_ExportCsvJobData extends Kaltura_Client_Type_JobData
 			$this->userMail = (string)$xml->userMail;
 		if(count($xml->outputPath))
 			$this->outputPath = (string)$xml->outputPath;
+		if(count($xml->sharedOutputPath))
+			$this->sharedOutputPath = (string)$xml->sharedOutputPath;
 	}
 	/**
 	 * The users name
@@ -72,6 +74,13 @@ class Kaltura_Client_Type_ExportCsvJobData extends Kaltura_Client_Type_JobData
 	 * @var string
 	 */
 	public $outputPath = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $sharedOutputPath = null;
 
 
 }
