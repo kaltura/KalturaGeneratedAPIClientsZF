@@ -53,6 +53,8 @@ class Kaltura_Client_Type_ImportJobData extends Kaltura_Client_Type_JobData
 			$this->flavorAssetId = (string)$xml->flavorAssetId;
 		if(count($xml->fileSize))
 			$this->fileSize = (int)$xml->fileSize;
+		if(count($xml->destFileSharedPath))
+			$this->destFileSharedPath = (string)$xml->destFileSharedPath;
 	}
 	/**
 	 * 
@@ -81,6 +83,13 @@ class Kaltura_Client_Type_ImportJobData extends Kaltura_Client_Type_JobData
 	 * @var int
 	 */
 	public $fileSize = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $destFileSharedPath = null;
 
 
 }
