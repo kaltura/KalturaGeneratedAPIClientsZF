@@ -86,6 +86,12 @@ class Kaltura_Client_Type_User extends Kaltura_Client_Type_BaseUser
 			$this->registrationInfo = (string)$xml->registrationInfo;
 		if(count($xml->attendanceInfo))
 			$this->attendanceInfo = (string)$xml->attendanceInfo;
+		if(count($xml->title))
+			$this->title = (string)$xml->title;
+		if(count($xml->company))
+			$this->company = (string)$xml->company;
+		if(count($xml->ksPrivileges))
+			$this->ksPrivileges = (string)$xml->ksPrivileges;
 	}
 	/**
 	 * 
@@ -181,6 +187,27 @@ class Kaltura_Client_Type_User extends Kaltura_Client_Type_BaseUser
 	 * @var string
 	 */
 	public $attendanceInfo = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $title = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $company = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $ksPrivileges = null;
 
 
 }

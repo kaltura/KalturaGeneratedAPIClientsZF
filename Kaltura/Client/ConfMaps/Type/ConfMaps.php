@@ -72,6 +72,8 @@ class Kaltura_Client_ConfMaps_Type_ConfMaps extends Kaltura_Client_ObjectBase
 			$this->remarks = (string)$xml->remarks;
 		if(count($xml->status))
 			$this->status = (int)$xml->status;
+		if(count($xml->changeDescription))
+			$this->changeDescription = (string)$xml->changeDescription;
 	}
 	/**
 	 * Name of the map
@@ -155,6 +157,13 @@ class Kaltura_Client_ConfMaps_Type_ConfMaps extends Kaltura_Client_ObjectBase
 	 * @var Kaltura_Client_ConfMaps_Enum_ConfMapsStatus
 	 */
 	public $status = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $changeDescription = null;
 
 
 }

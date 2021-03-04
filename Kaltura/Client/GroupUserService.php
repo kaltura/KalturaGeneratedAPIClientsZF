@@ -101,7 +101,7 @@ class Kaltura_Client_GroupUserService extends Kaltura_Client_ServiceBase
 	 * @return Kaltura_Client_Type_BulkUpload
 	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
-	function sync($userId, $groupIds, $removeFromExistingGroups = true, $createNewGroups = true)
+	function sync($userId, $groupIds = null, $removeFromExistingGroups = true, $createNewGroups = true)
 	{
 		$kparams = array();
 		$this->client->addParam($kparams, "userId", $userId);

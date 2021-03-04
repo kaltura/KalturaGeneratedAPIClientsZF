@@ -66,6 +66,8 @@ class Kaltura_Client_Type_LiveEntryServerNode extends Kaltura_Client_Type_EntryS
 			else
 				$this->isPlayableUser = false;
 		}
+		if(count($xml->viewMode))
+			$this->viewMode = (int)$xml->viewMode;
 	}
 	/**
 	 * parameters of the stream we got
@@ -87,6 +89,13 @@ class Kaltura_Client_Type_LiveEntryServerNode extends Kaltura_Client_Type_EntryS
 	 * @var bool
 	 */
 	public $isPlayableUser = null;
+
+	/**
+	 * 
+	 *
+	 * @var Kaltura_Client_Enum_ViewMode
+	 */
+	public $viewMode = null;
 
 
 }

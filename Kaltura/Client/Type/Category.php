@@ -115,6 +115,8 @@ class Kaltura_Client_Type_Category extends Kaltura_Client_ObjectBase
 			$this->isAggregationCategory = (int)$xml->isAggregationCategory;
 		if(count($xml->aggregationCategories))
 			$this->aggregationCategories = (string)$xml->aggregationCategories;
+		if(count($xml->adminTags))
+			$this->adminTags = (string)$xml->adminTags;
 	}
 	/**
 	 * The id of the Category
@@ -378,6 +380,13 @@ class Kaltura_Client_Type_Category extends Kaltura_Client_ObjectBase
 	 * @var string
 	 */
 	public $aggregationCategories = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $adminTags = null;
 
 
 }
