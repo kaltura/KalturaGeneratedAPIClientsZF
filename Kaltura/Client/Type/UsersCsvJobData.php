@@ -56,6 +56,13 @@ class Kaltura_Client_Type_UsersCsvJobData extends Kaltura_Client_Type_ExportCsvJ
 			else
 				$this->additionalFields = Kaltura_Client_ParseUtils::unmarshalArray($xml->additionalFields, "KalturaCsvAdditionalFieldInfo");
 		}
+		if(count($xml->mappedFields))
+		{
+			if(empty($xml->mappedFields))
+				$this->mappedFields = array();
+			else
+				$this->mappedFields = Kaltura_Client_ParseUtils::unmarshalArray($xml->mappedFields, "KalturaKeyValue");
+		}
 	}
 	/**
 	 * The filter should return the list of users that need to be specified in the csv.
@@ -77,6 +84,13 @@ class Kaltura_Client_Type_UsersCsvJobData extends Kaltura_Client_Type_ExportCsvJ
 	 * @var array of KalturaCsvAdditionalFieldInfo
 	 */
 	public $additionalFields;
+
+	/**
+	 * Array of header names and their mapped user fields
+	 *
+	 * @var array of KalturaKeyValue
+	 */
+	public $mappedFields;
 
 
 }

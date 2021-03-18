@@ -31,11 +31,11 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Type_StreamContainer extends Kaltura_Client_ObjectBase
+class Kaltura_Client_Schedule_Type_MeetingScheduleEventFilter extends Kaltura_Client_Schedule_Type_MeetingScheduleEventBaseFilter
 {
 	public function getKalturaObjectType()
 	{
-		return 'KalturaStreamContainer';
+		return 'KalturaMeetingScheduleEventFilter';
 	}
 	
 	public function __construct(SimpleXMLElement $xml = null)
@@ -45,70 +45,7 @@ class Kaltura_Client_Type_StreamContainer extends Kaltura_Client_ObjectBase
 		if(is_null($xml))
 			return;
 		
-		if(count($xml->id))
-			$this->id = (string)$xml->id;
-		if(count($xml->type))
-			$this->type = (string)$xml->type;
-		if(count($xml->trackIndex))
-			$this->trackIndex = (int)$xml->trackIndex;
-		if(count($xml->language))
-			$this->language = (string)$xml->language;
-		if(count($xml->channelIndex))
-			$this->channelIndex = (int)$xml->channelIndex;
-		if(count($xml->label))
-			$this->label = (string)$xml->label;
-		if(count($xml->channelLayout))
-			$this->channelLayout = (string)$xml->channelLayout;
 	}
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $id = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $type = null;
-
-	/**
-	 * 
-	 *
-	 * @var int
-	 */
-	public $trackIndex = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $language = null;
-
-	/**
-	 * 
-	 *
-	 * @var int
-	 */
-	public $channelIndex = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $label = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $channelLayout = null;
-
 
 }
 
