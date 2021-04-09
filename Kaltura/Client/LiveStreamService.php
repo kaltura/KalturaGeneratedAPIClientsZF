@@ -83,26 +83,6 @@ class Kaltura_Client_LiveStreamService extends Kaltura_Client_ServiceBase
 	}
 
 	/**
-	 * @return Kaltura_Client_Conference_Type_RoomDetails
-	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
-	 */
-	function allocateConferenceRoom($entryId, $env = "")
-	{
-		$kparams = array();
-		$this->client->addParam($kparams, "entryId", $entryId);
-		$this->client->addParam($kparams, "env", $env);
-		$this->client->queueServiceActionCall("livestream", "allocateConferenceRoom", "KalturaRoomDetails", $kparams);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaRoomDetails");
-		$this->client->validateObjectType($resultObject, "Kaltura_Client_Conference_Type_RoomDetails");
-		return $resultObject;
-	}
-
-	/**
 	 * @return Kaltura_Client_Type_LiveEntry
 	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
@@ -224,25 +204,6 @@ class Kaltura_Client_LiveStreamService extends Kaltura_Client_ServiceBase
 	}
 
 	/**
-	 * @return bool
-	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
-	 */
-	function finishConf($entryId, $serverNodeId = null)
-	{
-		$kparams = array();
-		$this->client->addParam($kparams, "entryId", $entryId);
-		$this->client->addParam($kparams, "serverNodeId", $serverNodeId);
-		$this->client->queueServiceActionCall("livestream", "finishConf", null, $kparams);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = (bool)Kaltura_Client_ParseUtils::unmarshalSimpleType($resultXmlObject->result);
-		return $resultObject;
-	}
-
-	/**
 	 * @return Kaltura_Client_Type_LiveStreamEntry
 	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
@@ -338,24 +299,6 @@ class Kaltura_Client_LiveStreamService extends Kaltura_Client_ServiceBase
 		$this->client->checkIfError($resultXmlObject->result);
 		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaLiveEntry");
 		$this->client->validateObjectType($resultObject, "Kaltura_Client_Type_LiveEntry");
-		return $resultObject;
-	}
-
-	/**
-	 * @return bool
-	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
-	 */
-	function registerConf($entryId)
-	{
-		$kparams = array();
-		$this->client->addParam($kparams, "entryId", $entryId);
-		$this->client->queueServiceActionCall("livestream", "registerConf", null, $kparams);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = (bool)Kaltura_Client_ParseUtils::unmarshalSimpleType($resultXmlObject->result);
 		return $resultObject;
 	}
 

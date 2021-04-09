@@ -33,33 +33,9 @@
  */
 class Kaltura_Client_Reach_Plugin extends Kaltura_Client_Plugin
 {
-	/**
-	 * @var Kaltura_Client_Reach_VendorCatalogItemService
-	 */
-	public $vendorCatalogItem = null;
-
-	/**
-	 * @var Kaltura_Client_Reach_ReachProfileService
-	 */
-	public $reachProfile = null;
-
-	/**
-	 * @var Kaltura_Client_Reach_EntryVendorTaskService
-	 */
-	public $entryVendorTask = null;
-
-	/**
-	 * @var Kaltura_Client_Reach_PartnerCatalogItemService
-	 */
-	public $PartnerCatalogItem = null;
-
 	protected function __construct(Kaltura_Client_Client $client)
 	{
 		parent::__construct($client);
-		$this->vendorCatalogItem = new Kaltura_Client_Reach_VendorCatalogItemService($client);
-		$this->reachProfile = new Kaltura_Client_Reach_ReachProfileService($client);
-		$this->entryVendorTask = new Kaltura_Client_Reach_EntryVendorTaskService($client);
-		$this->PartnerCatalogItem = new Kaltura_Client_Reach_PartnerCatalogItemService($client);
 	}
 
 	/**
@@ -76,10 +52,6 @@ class Kaltura_Client_Reach_Plugin extends Kaltura_Client_Plugin
 	public function getServices()
 	{
 		$services = array(
-			'vendorCatalogItem' => $this->vendorCatalogItem,
-			'reachProfile' => $this->reachProfile,
-			'entryVendorTask' => $this->entryVendorTask,
-			'PartnerCatalogItem' => $this->PartnerCatalogItem,
 		);
 		return $services;
 	}

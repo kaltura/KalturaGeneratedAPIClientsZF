@@ -33,15 +33,9 @@
  */
 class Kaltura_Client_Widevine_Plugin extends Kaltura_Client_Plugin
 {
-	/**
-	 * @var Kaltura_Client_Widevine_WidevineDrmService
-	 */
-	public $widevineDrm = null;
-
 	protected function __construct(Kaltura_Client_Client $client)
 	{
 		parent::__construct($client);
-		$this->widevineDrm = new Kaltura_Client_Widevine_WidevineDrmService($client);
 	}
 
 	/**
@@ -58,7 +52,6 @@ class Kaltura_Client_Widevine_Plugin extends Kaltura_Client_Plugin
 	public function getServices()
 	{
 		$services = array(
-			'widevineDrm' => $this->widevineDrm,
 		);
 		return $services;
 	}

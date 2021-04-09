@@ -33,15 +33,9 @@
  */
 class Kaltura_Client_AvnDistribution_Plugin extends Kaltura_Client_Plugin
 {
-	/**
-	 * @var Kaltura_Client_AvnDistribution_AvnService
-	 */
-	public $avn = null;
-
 	protected function __construct(Kaltura_Client_Client $client)
 	{
 		parent::__construct($client);
-		$this->avn = new Kaltura_Client_AvnDistribution_AvnService($client);
 	}
 
 	/**
@@ -58,7 +52,6 @@ class Kaltura_Client_AvnDistribution_Plugin extends Kaltura_Client_Plugin
 	public function getServices()
 	{
 		$services = array(
-			'avn' => $this->avn,
 		);
 		return $services;
 	}

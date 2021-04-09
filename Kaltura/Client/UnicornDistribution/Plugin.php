@@ -33,15 +33,9 @@
  */
 class Kaltura_Client_UnicornDistribution_Plugin extends Kaltura_Client_Plugin
 {
-	/**
-	 * @var Kaltura_Client_UnicornDistribution_UnicornService
-	 */
-	public $unicorn = null;
-
 	protected function __construct(Kaltura_Client_Client $client)
 	{
 		parent::__construct($client);
-		$this->unicorn = new Kaltura_Client_UnicornDistribution_UnicornService($client);
 	}
 
 	/**
@@ -58,7 +52,6 @@ class Kaltura_Client_UnicornDistribution_Plugin extends Kaltura_Client_Plugin
 	public function getServices()
 	{
 		$services = array(
-			'unicorn' => $this->unicorn,
 		);
 		return $services;
 	}

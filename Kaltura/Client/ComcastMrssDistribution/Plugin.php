@@ -33,15 +33,9 @@
  */
 class Kaltura_Client_ComcastMrssDistribution_Plugin extends Kaltura_Client_Plugin
 {
-	/**
-	 * @var Kaltura_Client_ComcastMrssDistribution_ComcastMrssService
-	 */
-	public $comcastMrss = null;
-
 	protected function __construct(Kaltura_Client_Client $client)
 	{
 		parent::__construct($client);
-		$this->comcastMrss = new Kaltura_Client_ComcastMrssDistribution_ComcastMrssService($client);
 	}
 
 	/**
@@ -58,7 +52,6 @@ class Kaltura_Client_ComcastMrssDistribution_Plugin extends Kaltura_Client_Plugi
 	public function getServices()
 	{
 		$services = array(
-			'comcastMrss' => $this->comcastMrss,
 		);
 		return $services;
 	}

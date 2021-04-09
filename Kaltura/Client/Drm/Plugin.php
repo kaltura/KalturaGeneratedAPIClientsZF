@@ -33,27 +33,9 @@
  */
 class Kaltura_Client_Drm_Plugin extends Kaltura_Client_Plugin
 {
-	/**
-	 * @var Kaltura_Client_Drm_DrmPolicyService
-	 */
-	public $drmPolicy = null;
-
-	/**
-	 * @var Kaltura_Client_Drm_DrmProfileService
-	 */
-	public $drmProfile = null;
-
-	/**
-	 * @var Kaltura_Client_Drm_DrmLicenseAccessService
-	 */
-	public $drmLicenseAccess = null;
-
 	protected function __construct(Kaltura_Client_Client $client)
 	{
 		parent::__construct($client);
-		$this->drmPolicy = new Kaltura_Client_Drm_DrmPolicyService($client);
-		$this->drmProfile = new Kaltura_Client_Drm_DrmProfileService($client);
-		$this->drmLicenseAccess = new Kaltura_Client_Drm_DrmLicenseAccessService($client);
 	}
 
 	/**
@@ -70,9 +52,6 @@ class Kaltura_Client_Drm_Plugin extends Kaltura_Client_Plugin
 	public function getServices()
 	{
 		$services = array(
-			'drmPolicy' => $this->drmPolicy,
-			'drmProfile' => $this->drmProfile,
-			'drmLicenseAccess' => $this->drmLicenseAccess,
 		);
 		return $services;
 	}
