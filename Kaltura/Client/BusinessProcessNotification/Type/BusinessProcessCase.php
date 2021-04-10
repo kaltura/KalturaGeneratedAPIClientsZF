@@ -31,44 +31,71 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_UnicornDistribution_Plugin extends Kaltura_Client_Plugin
+class Kaltura_Client_BusinessProcessNotification_Type_BusinessProcessCase extends Kaltura_Client_ObjectBase
 {
-	/**
-	 * @var Kaltura_Client_UnicornDistribution_UnicornService
-	 */
-	public $unicorn = null;
-
-	protected function __construct(Kaltura_Client_Client $client)
+	public function getKalturaObjectType()
 	{
-		parent::__construct($client);
-		$this->unicorn = new Kaltura_Client_UnicornDistribution_UnicornService($client);
+		return 'KalturaBusinessProcessCase';
 	}
+	
+	public function __construct(SimpleXMLElement $xml = null)
+	{
+		parent::__construct($xml);
+		
+		if(is_null($xml))
+			return;
+		
+		if(count($xml->id))
+			$this->id = (string)$xml->id;
+		if(count($xml->businessProcessId))
+			$this->businessProcessId = (string)$xml->businessProcessId;
+		if(count($xml->businessProcessStartNotificationTemplateId))
+			$this->businessProcessStartNotificationTemplateId = (int)$xml->businessProcessStartNotificationTemplateId;
+		if(count($xml->suspended))
+		{
+			if(!empty($xml->suspended) && ((int) $xml->suspended === 1 || strtolower((string)$xml->suspended) === 'true'))
+				$this->suspended = true;
+			else
+				$this->suspended = false;
+		}
+		if(count($xml->activityId))
+			$this->activityId = (string)$xml->activityId;
+	}
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $id = null;
 
 	/**
-	 * @return Kaltura_Client_UnicornDistribution_Plugin
+	 * 
+	 *
+	 * @var string
 	 */
-	public static function get(Kaltura_Client_Client $client)
-	{
-		return new Kaltura_Client_UnicornDistribution_Plugin($client);
-	}
+	public $businessProcessId = null;
 
 	/**
-	 * @return array<Kaltura_Client_ServiceBase>
+	 * 
+	 *
+	 * @var int
 	 */
-	public function getServices()
-	{
-		$services = array(
-			'unicorn' => $this->unicorn,
-		);
-		return $services;
-	}
+	public $businessProcessStartNotificationTemplateId = null;
 
 	/**
-	 * @return string
+	 * 
+	 *
+	 * @var bool
 	 */
-	public function getName()
-	{
-		return 'unicornDistribution';
-	}
+	public $suspended = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $activityId = null;
+
+
 }
 

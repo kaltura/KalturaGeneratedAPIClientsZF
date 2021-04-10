@@ -33,9 +33,15 @@
  */
 class Kaltura_Client_Rating_Plugin extends Kaltura_Client_Plugin
 {
+	/**
+	 * @var Kaltura_Client_Rating_RatingService
+	 */
+	public $rating = null;
+
 	protected function __construct(Kaltura_Client_Client $client)
 	{
 		parent::__construct($client);
+		$this->rating = new Kaltura_Client_Rating_RatingService($client);
 	}
 
 	/**
@@ -52,6 +58,7 @@ class Kaltura_Client_Rating_Plugin extends Kaltura_Client_Plugin
 	public function getServices()
 	{
 		$services = array(
+			'rating' => $this->rating,
 		);
 		return $services;
 	}

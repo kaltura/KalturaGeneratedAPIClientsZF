@@ -31,44 +31,35 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_UnicornDistribution_Plugin extends Kaltura_Client_Plugin
+class Kaltura_Client_Beacon_Type_BeaconSearchScheduledResourceOrderBy extends Kaltura_Client_ObjectBase
 {
-	/**
-	 * @var Kaltura_Client_UnicornDistribution_UnicornService
-	 */
-	public $unicorn = null;
-
-	protected function __construct(Kaltura_Client_Client $client)
+	public function getKalturaObjectType()
 	{
-		parent::__construct($client);
-		$this->unicorn = new Kaltura_Client_UnicornDistribution_UnicornService($client);
+		return 'KalturaBeaconSearchScheduledResourceOrderBy';
 	}
-
-	/**
-	 * @return Kaltura_Client_UnicornDistribution_Plugin
-	 */
-	public static function get(Kaltura_Client_Client $client)
+	
+	public function __construct(SimpleXMLElement $xml = null)
 	{
-		return new Kaltura_Client_UnicornDistribution_Plugin($client);
+		parent::__construct($xml);
+		
+		if(is_null($xml))
+			return;
+		
+		if(count($xml->orderItems))
+		{
+			if(empty($xml->orderItems))
+				$this->orderItems = array();
+			else
+				$this->orderItems = Kaltura_Client_ParseUtils::unmarshalArray($xml->orderItems, "KalturaBeaconSearchScheduledResourceOrderByItem");
+		}
 	}
-
 	/**
-	 * @return array<Kaltura_Client_ServiceBase>
+	 * 
+	 *
+	 * @var array of KalturaBeaconSearchScheduledResourceOrderByItem
 	 */
-	public function getServices()
-	{
-		$services = array(
-			'unicorn' => $this->unicorn,
-		);
-		return $services;
-	}
+	public $orderItems;
 
-	/**
-	 * @return string
-	 */
-	public function getName()
-	{
-		return 'unicornDistribution';
-	}
+
 }
 

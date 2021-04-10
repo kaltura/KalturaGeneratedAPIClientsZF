@@ -33,9 +33,15 @@
  */
 class Kaltura_Client_PlayReady_Plugin extends Kaltura_Client_Plugin
 {
+	/**
+	 * @var Kaltura_Client_PlayReady_PlayReadyDrmService
+	 */
+	public $playReadyDrm = null;
+
 	protected function __construct(Kaltura_Client_Client $client)
 	{
 		parent::__construct($client);
+		$this->playReadyDrm = new Kaltura_Client_PlayReady_PlayReadyDrmService($client);
 	}
 
 	/**
@@ -52,6 +58,7 @@ class Kaltura_Client_PlayReady_Plugin extends Kaltura_Client_Plugin
 	public function getServices()
 	{
 		$services = array(
+			'playReadyDrm' => $this->playReadyDrm,
 		);
 		return $services;
 	}

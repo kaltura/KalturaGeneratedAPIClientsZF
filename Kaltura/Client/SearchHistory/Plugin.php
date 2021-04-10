@@ -33,9 +33,15 @@
  */
 class Kaltura_Client_SearchHistory_Plugin extends Kaltura_Client_Plugin
 {
+	/**
+	 * @var Kaltura_Client_SearchHistory_SearchHistoryService
+	 */
+	public $searchHistory = null;
+
 	protected function __construct(Kaltura_Client_Client $client)
 	{
 		parent::__construct($client);
+		$this->searchHistory = new Kaltura_Client_SearchHistory_SearchHistoryService($client);
 	}
 
 	/**
@@ -52,6 +58,7 @@ class Kaltura_Client_SearchHistory_Plugin extends Kaltura_Client_Plugin
 	public function getServices()
 	{
 		$services = array(
+			'searchHistory' => $this->searchHistory,
 		);
 		return $services;
 	}

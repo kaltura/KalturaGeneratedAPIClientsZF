@@ -33,9 +33,15 @@
  */
 class Kaltura_Client_DoubleClickDistribution_Plugin extends Kaltura_Client_Plugin
 {
+	/**
+	 * @var Kaltura_Client_DoubleClickDistribution_DoubleClickService
+	 */
+	public $doubleClick = null;
+
 	protected function __construct(Kaltura_Client_Client $client)
 	{
 		parent::__construct($client);
+		$this->doubleClick = new Kaltura_Client_DoubleClickDistribution_DoubleClickService($client);
 	}
 
 	/**
@@ -52,6 +58,7 @@ class Kaltura_Client_DoubleClickDistribution_Plugin extends Kaltura_Client_Plugi
 	public function getServices()
 	{
 		$services = array(
+			'doubleClick' => $this->doubleClick,
 		);
 		return $services;
 	}

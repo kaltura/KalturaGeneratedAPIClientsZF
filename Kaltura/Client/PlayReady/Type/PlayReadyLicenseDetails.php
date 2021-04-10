@@ -31,44 +31,57 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_UnicornDistribution_Plugin extends Kaltura_Client_Plugin
+class Kaltura_Client_PlayReady_Type_PlayReadyLicenseDetails extends Kaltura_Client_ObjectBase
 {
-	/**
-	 * @var Kaltura_Client_UnicornDistribution_UnicornService
-	 */
-	public $unicorn = null;
-
-	protected function __construct(Kaltura_Client_Client $client)
+	public function getKalturaObjectType()
 	{
-		parent::__construct($client);
-		$this->unicorn = new Kaltura_Client_UnicornDistribution_UnicornService($client);
+		return 'KalturaPlayReadyLicenseDetails';
 	}
-
-	/**
-	 * @return Kaltura_Client_UnicornDistribution_Plugin
-	 */
-	public static function get(Kaltura_Client_Client $client)
+	
+	public function __construct(SimpleXMLElement $xml = null)
 	{
-		return new Kaltura_Client_UnicornDistribution_Plugin($client);
+		parent::__construct($xml);
+		
+		if(is_null($xml))
+			return;
+		
+		if(count($xml->policy) && !empty($xml->policy))
+			$this->policy = Kaltura_Client_ParseUtils::unmarshalObject($xml->policy, "KalturaPlayReadyPolicy");
+		if(count($xml->beginDate))
+			$this->beginDate = (int)$xml->beginDate;
+		if(count($xml->expirationDate))
+			$this->expirationDate = (int)$xml->expirationDate;
+		if(count($xml->removalDate))
+			$this->removalDate = (int)$xml->removalDate;
 	}
-
 	/**
-	 * @return array<Kaltura_Client_ServiceBase>
+	 * PlayReady policy object
+	 *
+	 * @var Kaltura_Client_PlayReady_Type_PlayReadyPolicy
 	 */
-	public function getServices()
-	{
-		$services = array(
-			'unicorn' => $this->unicorn,
-		);
-		return $services;
-	}
+	public $policy;
 
 	/**
-	 * @return string
+	 * License begin date
+	 *
+	 * @var int
 	 */
-	public function getName()
-	{
-		return 'unicornDistribution';
-	}
+	public $beginDate = null;
+
+	/**
+	 * License expiration date
+	 *
+	 * @var int
+	 */
+	public $expirationDate = null;
+
+	/**
+	 * License removal date
+	 *
+	 * @var int
+	 */
+	public $removalDate = null;
+
+
 }
 

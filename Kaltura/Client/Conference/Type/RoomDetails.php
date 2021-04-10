@@ -31,44 +31,66 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_UnicornDistribution_Plugin extends Kaltura_Client_Plugin
+class Kaltura_Client_Conference_Type_RoomDetails extends Kaltura_Client_ObjectBase
 {
-	/**
-	 * @var Kaltura_Client_UnicornDistribution_UnicornService
-	 */
-	public $unicorn = null;
-
-	protected function __construct(Kaltura_Client_Client $client)
+	public function getKalturaObjectType()
 	{
-		parent::__construct($client);
-		$this->unicorn = new Kaltura_Client_UnicornDistribution_UnicornService($client);
+		return 'KalturaRoomDetails';
 	}
+	
+	public function __construct(SimpleXMLElement $xml = null)
+	{
+		parent::__construct($xml);
+		
+		if(is_null($xml))
+			return;
+		
+		if(count($xml->serverUrl))
+			$this->serverUrl = (string)$xml->serverUrl;
+		if(count($xml->entryId))
+			$this->entryId = (string)$xml->entryId;
+		if(count($xml->token))
+			$this->token = (string)$xml->token;
+		if(count($xml->expiry))
+			$this->expiry = (int)$xml->expiry;
+		if(count($xml->serverName))
+			$this->serverName = (string)$xml->serverName;
+	}
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $serverUrl = null;
 
 	/**
-	 * @return Kaltura_Client_UnicornDistribution_Plugin
+	 * 
+	 *
+	 * @var string
 	 */
-	public static function get(Kaltura_Client_Client $client)
-	{
-		return new Kaltura_Client_UnicornDistribution_Plugin($client);
-	}
+	public $entryId = null;
 
 	/**
-	 * @return array<Kaltura_Client_ServiceBase>
+	 * 
+	 *
+	 * @var string
 	 */
-	public function getServices()
-	{
-		$services = array(
-			'unicorn' => $this->unicorn,
-		);
-		return $services;
-	}
+	public $token = null;
 
 	/**
-	 * @return string
+	 * 
+	 *
+	 * @var int
 	 */
-	public function getName()
-	{
-		return 'unicornDistribution';
-	}
+	public $expiry = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $serverName = null;
+
+
 }
 

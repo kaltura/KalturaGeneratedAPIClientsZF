@@ -31,44 +31,39 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_UnicornDistribution_Plugin extends Kaltura_Client_Plugin
+class Kaltura_Client_PlayReady_Type_PlayReadyContentKey extends Kaltura_Client_ObjectBase
 {
-	/**
-	 * @var Kaltura_Client_UnicornDistribution_UnicornService
-	 */
-	public $unicorn = null;
-
-	protected function __construct(Kaltura_Client_Client $client)
+	public function getKalturaObjectType()
 	{
-		parent::__construct($client);
-		$this->unicorn = new Kaltura_Client_UnicornDistribution_UnicornService($client);
+		return 'KalturaPlayReadyContentKey';
 	}
-
-	/**
-	 * @return Kaltura_Client_UnicornDistribution_Plugin
-	 */
-	public static function get(Kaltura_Client_Client $client)
+	
+	public function __construct(SimpleXMLElement $xml = null)
 	{
-		return new Kaltura_Client_UnicornDistribution_Plugin($client);
+		parent::__construct($xml);
+		
+		if(is_null($xml))
+			return;
+		
+		if(count($xml->keyId))
+			$this->keyId = (string)$xml->keyId;
+		if(count($xml->contentKey))
+			$this->contentKey = (string)$xml->contentKey;
 	}
-
 	/**
-	 * @return array<Kaltura_Client_ServiceBase>
+	 * Guid - key id of the specific content
+	 *
+	 * @var string
 	 */
-	public function getServices()
-	{
-		$services = array(
-			'unicorn' => $this->unicorn,
-		);
-		return $services;
-	}
+	public $keyId = null;
 
 	/**
-	 * @return string
+	 * License content key 64 bit encoded
+	 *
+	 * @var string
 	 */
-	public function getName()
-	{
-		return 'unicornDistribution';
-	}
+	public $contentKey = null;
+
+
 }
 

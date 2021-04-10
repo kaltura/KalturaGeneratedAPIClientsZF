@@ -31,44 +31,62 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_UnicornDistribution_Plugin extends Kaltura_Client_Plugin
+class Kaltura_Client_Drm_Type_DrmLicenseAccessDetails extends Kaltura_Client_ObjectBase
 {
-	/**
-	 * @var Kaltura_Client_UnicornDistribution_UnicornService
-	 */
-	public $unicorn = null;
-
-	protected function __construct(Kaltura_Client_Client $client)
+	public function getKalturaObjectType()
 	{
-		parent::__construct($client);
-		$this->unicorn = new Kaltura_Client_UnicornDistribution_UnicornService($client);
+		return 'KalturaDrmLicenseAccessDetails';
 	}
+	
+	public function __construct(SimpleXMLElement $xml = null)
+	{
+		parent::__construct($xml);
+		
+		if(is_null($xml))
+			return;
+		
+		if(count($xml->policy))
+			$this->policy = (string)$xml->policy;
+		if(count($xml->duration))
+			$this->duration = (int)$xml->duration;
+		if(count($xml->absolute_duration))
+			$this->absolute_duration = (int)$xml->absolute_duration;
+		if(count($xml->licenseParams))
+		{
+			if(empty($xml->licenseParams))
+				$this->licenseParams = array();
+			else
+				$this->licenseParams = Kaltura_Client_ParseUtils::unmarshalArray($xml->licenseParams, "KalturaKeyValue");
+		}
+	}
+	/**
+	 * Drm policy name
+	 *
+	 * @var string
+	 */
+	public $policy = null;
 
 	/**
-	 * @return Kaltura_Client_UnicornDistribution_Plugin
+	 * movie duration in seconds
+	 *
+	 * @var int
 	 */
-	public static function get(Kaltura_Client_Client $client)
-	{
-		return new Kaltura_Client_UnicornDistribution_Plugin($client);
-	}
+	public $duration = null;
 
 	/**
-	 * @return array<Kaltura_Client_ServiceBase>
+	 * playback window in seconds
+	 *
+	 * @var int
 	 */
-	public function getServices()
-	{
-		$services = array(
-			'unicorn' => $this->unicorn,
-		);
-		return $services;
-	}
+	public $absolute_duration = null;
 
 	/**
-	 * @return string
+	 * 
+	 *
+	 * @var array of KalturaKeyValue
 	 */
-	public function getName()
-	{
-		return 'unicornDistribution';
-	}
+	public $licenseParams;
+
+
 }
 
