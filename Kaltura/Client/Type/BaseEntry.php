@@ -6,7 +6,7 @@
 //                          |_|\_\__,_|_|\__|\_,_|_| \__,_|
 //
 // This file is part of the Kaltura Collaborative Media Suite which allows users
-// to do with audio, video, and animation what Wiki platfroms allow them to do with
+// to do with audio, video, and animation what Wiki platforms allow them to do with
 // text.
 //
 // Copyright (C) 2006-2021  Kaltura Inc.
@@ -144,6 +144,13 @@ class Kaltura_Client_Type_BaseEntry extends Kaltura_Client_ObjectBase
 			$this->application = (string)$xml->application;
 		if(count($xml->applicationVersion))
 			$this->applicationVersion = (string)$xml->applicationVersion;
+		if(count($xml->blockAutoTranscript))
+		{
+			if(!empty($xml->blockAutoTranscript) && ((int) $xml->blockAutoTranscript === 1 || strtolower((string)$xml->blockAutoTranscript) === 'true'))
+				$this->blockAutoTranscript = true;
+			else
+				$this->blockAutoTranscript = false;
+		}
 	}
 	/**
 	 * Auto generated 10 characters alphanumeric string
@@ -496,6 +503,13 @@ class Kaltura_Client_Type_BaseEntry extends Kaltura_Client_ObjectBase
 	 * @insertonly
 	 */
 	public $applicationVersion = null;
+
+	/**
+	 * Block auto transcript on Entry
+	 *
+	 * @var bool
+	 */
+	public $blockAutoTranscript = null;
 
 
 }

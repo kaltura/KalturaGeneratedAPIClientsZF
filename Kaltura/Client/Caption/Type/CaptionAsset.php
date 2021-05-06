@@ -6,7 +6,7 @@
 //                          |_|\_\__,_|_|\__|\_,_|_| \__,_|
 //
 // This file is part of the Kaltura Collaborative Media Suite which allows users
-// to do with audio, video, and animation what Wiki platfroms allow them to do with
+// to do with audio, video, and animation what Wiki platforms allow them to do with
 // text.
 //
 // Copyright (C) 2006-2021  Kaltura Inc.
@@ -57,6 +57,8 @@ class Kaltura_Client_Caption_Type_CaptionAsset extends Kaltura_Client_Type_Asset
 			$this->label = (string)$xml->label;
 		if(count($xml->format))
 			$this->format = (string)$xml->format;
+		if(count($xml->source))
+			$this->source = (string)$xml->source;
 		if(count($xml->status))
 			$this->status = (int)$xml->status;
 		if(count($xml->parentId))
@@ -117,6 +119,14 @@ class Kaltura_Client_Caption_Type_CaptionAsset extends Kaltura_Client_Type_Asset
 	 * @insertonly
 	 */
 	public $format = null;
+
+	/**
+	 * The source of the asset
+	 *
+	 * @var Kaltura_Client_Caption_Enum_CaptionSource
+	 * @insertonly
+	 */
+	public $source = null;
 
 	/**
 	 * The status of the asset

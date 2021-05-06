@@ -6,7 +6,7 @@
 //                          |_|\_\__,_|_|\__|\_,_|_| \__,_|
 //
 // This file is part of the Kaltura Collaborative Media Suite which allows users
-// to do with audio, video, and animation what Wiki platfroms allow them to do with
+// to do with audio, video, and animation what Wiki platforms allow them to do with
 // text.
 //
 // Copyright (C) 2006-2021  Kaltura Inc.
@@ -143,6 +143,7 @@ class Kaltura_Client_TypeMap
 		'KalturaBaseEntryListResponse' => 'Kaltura_Client_Type_BaseEntryListResponse',
 		'KalturaBaseEntryMatchAttributeCondition' => 'Kaltura_Client_Type_BaseEntryMatchAttributeCondition',
 		'KalturaBaseInteractivity' => 'Kaltura_Client_Interactivity_Type_BaseInteractivity',
+		'KalturaBaseLiveScheduleEvent' => 'Kaltura_Client_Schedule_Type_BaseLiveScheduleEvent',
 		'KalturaBaseResponseProfile' => 'Kaltura_Client_Type_BaseResponseProfile',
 		'KalturaBaseRestriction' => 'Kaltura_Client_Type_BaseRestriction',
 		'KalturaBaseSyndicationFeed' => 'Kaltura_Client_Type_BaseSyndicationFeed',
@@ -595,6 +596,7 @@ class Kaltura_Client_TypeMap
 		'KalturaEmailNotificationUserRecipientJobData' => 'Kaltura_Client_EmailNotification_Type_EmailNotificationUserRecipientJobData',
 		'KalturaEmailNotificationUserRecipientProvider' => 'Kaltura_Client_EmailNotification_Type_EmailNotificationUserRecipientProvider',
 		'KalturaEndUserReportInputFilter' => 'Kaltura_Client_Type_EndUserReportInputFilter',
+		'KalturaEntriesCsvJobData' => 'Kaltura_Client_Type_EntriesCsvJobData',
 		'KalturaEntryCaptionAdvancedFilter' => 'Kaltura_Client_ElasticSearch_Type_EntryCaptionAdvancedFilter',
 		'KalturaEntryCaptionAssetSearchItem' => 'Kaltura_Client_CaptionSearch_Type_EntryCaptionAssetSearchItem',
 		'KalturaEntryContext' => 'Kaltura_Client_Type_EntryContext',
@@ -867,6 +869,8 @@ class Kaltura_Client_TypeMap
 		'KalturaLiveParams' => 'Kaltura_Client_Type_LiveParams',
 		'KalturaLiveParamsBaseFilter' => 'Kaltura_Client_Type_LiveParamsBaseFilter',
 		'KalturaLiveParamsFilter' => 'Kaltura_Client_Type_LiveParamsFilter',
+		'KalturaLiveRedirectScheduleEvent' => 'Kaltura_Client_Schedule_Type_LiveRedirectScheduleEvent',
+		'KalturaLiveRedirectScheduleEventFilter' => 'Kaltura_Client_Schedule_Type_LiveRedirectScheduleEventFilter',
 		'KalturaLiveReportExportJobData' => 'Kaltura_Client_Type_LiveReportExportJobData',
 		'KalturaLiveReportExportParams' => 'Kaltura_Client_Type_LiveReportExportParams',
 		'KalturaLiveReportExportResponse' => 'Kaltura_Client_Type_LiveReportExportResponse',
@@ -901,6 +905,7 @@ class Kaltura_Client_TypeMap
 		'KalturaLockFileSyncsResponse' => 'Kaltura_Client_Type_LockFileSyncsResponse',
 		'KalturaMailJobData' => 'Kaltura_Client_Type_MailJobData',
 		'KalturaMailNotificationObjectTask' => 'Kaltura_Client_ScheduledTask_Type_MailNotificationObjectTask',
+		'KalturaMappedObjectsCsvJobData' => 'Kaltura_Client_Type_MappedObjectsCsvJobData',
 		'KalturaMatchCondition' => 'Kaltura_Client_Type_MatchCondition',
 		'KalturaMatchMetadataCondition' => 'Kaltura_Client_Metadata_Type_MatchMetadataCondition',
 		'KalturaMediaEntry' => 'Kaltura_Client_Type_MediaEntry',
@@ -1441,6 +1446,7 @@ class Kaltura_Client_TypeMap
 		'KalturaYoutubeApiDistributionProviderBaseFilter' => 'Kaltura_Client_YoutubeApiDistribution_Type_YoutubeApiDistributionProviderBaseFilter',
 		'KalturaYoutubeApiDistributionProviderFilter' => 'Kaltura_Client_YoutubeApiDistribution_Type_YoutubeApiDistributionProviderFilter',
 		'KalturaZoomIntegrationSetting' => 'Kaltura_Client_Vendor_Type_ZoomIntegrationSetting',
+		'KalturaZoomIntegrationSettingResponse' => 'Kaltura_Client_Vendor_Type_ZoomIntegrationSettingResponse',
 	);
 	
 	public static function getZendType($kalturaType)

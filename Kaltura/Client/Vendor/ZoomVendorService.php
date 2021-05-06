@@ -6,7 +6,7 @@
 //                          |_|\_\__,_|_|\__|\_,_|_| \__,_|
 //
 // This file is part of the Kaltura Collaborative Media Suite which allows users
-// to do with audio, video, and animation what Wiki platfroms allow them to do with
+// to do with audio, video, and animation what Wiki platforms allow them to do with
 // text.
 //
 // Copyright (C) 2006-2021  Kaltura Inc.
@@ -93,6 +93,42 @@ class Kaltura_Client_Vendor_ZoomVendorService extends Kaltura_Client_ServiceBase
 	}
 
 	/**
+	 * @return Kaltura_Client_Vendor_Type_ZoomIntegrationSettingResponse
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
+	 */
+	function listAction(Kaltura_Client_Type_FilterPager $pager = null)
+	{
+		$kparams = array();
+		if ($pager !== null)
+			$this->client->addParam($kparams, "pager", $pager->toParams());
+		$this->client->queueServiceActionCall("vendor_zoomvendor", "list", "KalturaZoomIntegrationSettingResponse", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultXml = $this->client->doQueue();
+		$resultXmlObject = new \SimpleXMLElement($resultXml);
+		$this->client->checkIfError($resultXmlObject->result);
+		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaZoomIntegrationSettingResponse");
+		$this->client->validateObjectType($resultObject, "Kaltura_Client_Vendor_Type_ZoomIntegrationSettingResponse");
+		return $resultObject;
+	}
+
+	/**
+	 * @return 
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
+	 */
+	function localRegistrationPage($jwt)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "jwt", $jwt);
+		$this->client->queueServiceActionCall("vendor_zoomvendor", "localRegistrationPage", null, $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultXml = $this->client->doQueue();
+		$resultXmlObject = new \SimpleXMLElement($resultXml);
+		$this->client->checkIfError($resultXmlObject->result);
+	}
+
+	/**
 	 * @return string
 	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
@@ -107,6 +143,21 @@ class Kaltura_Client_Vendor_ZoomVendorService extends Kaltura_Client_ServiceBase
 		$this->client->checkIfError($resultXmlObject->result);
 		$resultObject = (string)Kaltura_Client_ParseUtils::unmarshalSimpleType($resultXmlObject->result);
 		return $resultObject;
+	}
+
+	/**
+	 * @return 
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
+	 */
+	function preOauthValidation()
+	{
+		$kparams = array();
+		$this->client->queueServiceActionCall("vendor_zoomvendor", "preOauthValidation", null, $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultXml = $this->client->doQueue();
+		$resultXmlObject = new \SimpleXMLElement($resultXml);
+		$this->client->checkIfError($resultXmlObject->result);
 	}
 
 	/**
