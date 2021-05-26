@@ -75,6 +75,12 @@ class Kaltura_Client_Vendor_Type_ZoomIntegrationSetting extends Kaltura_Client_O
 			$this->enableZoomTranscription = (int)$xml->enableZoomTranscription;
 		if(count($xml->zoomAccountDescription))
 			$this->zoomAccountDescription = (string)$xml->zoomAccountDescription;
+		if(count($xml->createdAt))
+			$this->createdAt = (string)$xml->createdAt;
+		if(count($xml->updatedAt))
+			$this->updatedAt = (string)$xml->updatedAt;
+		if(count($xml->enableMeetingUpload))
+			$this->enableMeetingUpload = (int)$xml->enableMeetingUpload;
 	}
 	/**
 	 * 
@@ -181,6 +187,27 @@ class Kaltura_Client_Vendor_Type_ZoomIntegrationSetting extends Kaltura_Client_O
 	 * @var string
 	 */
 	public $zoomAccountDescription = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $createdAt = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $updatedAt = null;
+
+	/**
+	 * 
+	 *
+	 * @var Kaltura_Client_Enum_NullableBoolean
+	 */
+	public $enableMeetingUpload = null;
 
 
 }

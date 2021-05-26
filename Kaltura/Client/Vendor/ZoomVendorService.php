@@ -129,7 +129,7 @@ class Kaltura_Client_Vendor_ZoomVendorService extends Kaltura_Client_ServiceBase
 	}
 
 	/**
-	 * @return string
+	 * @return 
 	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function oauthValidation()
@@ -141,12 +141,10 @@ class Kaltura_Client_Vendor_ZoomVendorService extends Kaltura_Client_ServiceBase
 		$resultXml = $this->client->doQueue();
 		$resultXmlObject = new \SimpleXMLElement($resultXml);
 		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = (string)Kaltura_Client_ParseUtils::unmarshalSimpleType($resultXmlObject->result);
-		return $resultObject;
 	}
 
 	/**
-	 * @return 
+	 * @return string
 	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function preOauthValidation()
@@ -158,6 +156,8 @@ class Kaltura_Client_Vendor_ZoomVendorService extends Kaltura_Client_ServiceBase
 		$resultXml = $this->client->doQueue();
 		$resultXmlObject = new \SimpleXMLElement($resultXml);
 		$this->client->checkIfError($resultXmlObject->result);
+		$resultObject = (string)Kaltura_Client_ParseUtils::unmarshalSimpleType($resultXmlObject->result);
+		return $resultObject;
 	}
 
 	/**
