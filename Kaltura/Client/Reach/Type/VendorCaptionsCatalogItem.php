@@ -45,8 +45,6 @@ class Kaltura_Client_Reach_Type_VendorCaptionsCatalogItem extends Kaltura_Client
 		if(is_null($xml))
 			return;
 		
-		if(count($xml->sourceLanguage))
-			$this->sourceLanguage = (string)$xml->sourceLanguage;
 		if(count($xml->outputFormat))
 			$this->outputFormat = (int)$xml->outputFormat;
 		if(count($xml->enableSpeakerId))
@@ -54,13 +52,6 @@ class Kaltura_Client_Reach_Type_VendorCaptionsCatalogItem extends Kaltura_Client
 		if(count($xml->fixedPriceAddons))
 			$this->fixedPriceAddons = (int)$xml->fixedPriceAddons;
 	}
-	/**
-	 * 
-	 *
-	 * @var Kaltura_Client_Reach_Enum_CatalogItemLanguage
-	 */
-	public $sourceLanguage = null;
-
 	/**
 	 * 
 	 *

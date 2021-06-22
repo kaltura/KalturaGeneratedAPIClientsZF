@@ -45,20 +45,11 @@ class Kaltura_Client_Reach_Type_VendorAudioDescriptionCatalogItem extends Kaltur
 		if(is_null($xml))
 			return;
 		
-		if(count($xml->sourceLanguage))
-			$this->sourceLanguage = (string)$xml->sourceLanguage;
 		if(count($xml->flavorParamsId))
 			$this->flavorParamsId = (int)$xml->flavorParamsId;
 		if(count($xml->clearAudioFlavorParamsId))
 			$this->clearAudioFlavorParamsId = (int)$xml->clearAudioFlavorParamsId;
 	}
-	/**
-	 * 
-	 *
-	 * @var Kaltura_Client_Reach_Enum_CatalogItemLanguage
-	 */
-	public $sourceLanguage = null;
-
 	/**
 	 * 
 	 *

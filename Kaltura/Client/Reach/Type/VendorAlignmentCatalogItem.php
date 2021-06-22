@@ -45,18 +45,9 @@ class Kaltura_Client_Reach_Type_VendorAlignmentCatalogItem extends Kaltura_Clien
 		if(is_null($xml))
 			return;
 		
-		if(count($xml->sourceLanguage))
-			$this->sourceLanguage = (string)$xml->sourceLanguage;
 		if(count($xml->outputFormat))
 			$this->outputFormat = (int)$xml->outputFormat;
 	}
-	/**
-	 * 
-	 *
-	 * @var Kaltura_Client_Reach_Enum_CatalogItemLanguage
-	 */
-	public $sourceLanguage = null;
-
 	/**
 	 * 
 	 *

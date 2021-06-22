@@ -31,23 +31,31 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Reach_Enum_EntryVendorTaskOrderBy extends Kaltura_Client_EnumBase
+class Kaltura_Client_Reach_Type_IntelligentTaggingVendorTaskData extends Kaltura_Client_Reach_Type_VendorTaskData
 {
-	const CREATED_AT_ASC = "+createdAt";
-	const EXPECTED_FINISH_TIME_ASC = "+expectedFinishTime";
-	const FINISH_TIME_ASC = "+finishTime";
-	const ID_ASC = "+id";
-	const PRICE_ASC = "+price";
-	const QUEUE_TIME_ASC = "+queueTime";
-	const STATUS_ASC = "+status";
-	const UPDATED_AT_ASC = "+updatedAt";
-	const CREATED_AT_DESC = "-createdAt";
-	const EXPECTED_FINISH_TIME_DESC = "-expectedFinishTime";
-	const FINISH_TIME_DESC = "-finishTime";
-	const ID_DESC = "-id";
-	const PRICE_DESC = "-price";
-	const QUEUE_TIME_DESC = "-queueTime";
-	const STATUS_DESC = "-status";
-	const UPDATED_AT_DESC = "-updatedAt";
+	public function getKalturaObjectType()
+	{
+		return 'KalturaIntelligentTaggingVendorTaskData';
+	}
+	
+	public function __construct(SimpleXMLElement $xml = null)
+	{
+		parent::__construct($xml);
+		
+		if(is_null($xml))
+			return;
+		
+		if(count($xml->assetId))
+			$this->assetId = (string)$xml->assetId;
+	}
+	/**
+	 * Optional - The id of the caption asset object
+	 *
+	 * @var string
+	 * @insertonly
+	 */
+	public $assetId = null;
+
+
 }
 

@@ -67,6 +67,10 @@ abstract class Kaltura_Client_Reach_Type_VendorCatalogItem extends Kaltura_Clien
 			$this->turnAroundTime = (int)$xml->turnAroundTime;
 		if(count($xml->pricing) && !empty($xml->pricing))
 			$this->pricing = Kaltura_Client_ParseUtils::unmarshalObject($xml->pricing, "KalturaVendorCatalogItemPricing");
+		if(count($xml->engineType))
+			$this->engineType = (string)$xml->engineType;
+		if(count($xml->sourceLanguage))
+			$this->sourceLanguage = (string)$xml->sourceLanguage;
 		if(count($xml->allowResubmission))
 		{
 			if(!empty($xml->allowResubmission) && ((int) $xml->allowResubmission === 1 || strtolower((string)$xml->allowResubmission) === 'true'))
@@ -156,6 +160,20 @@ abstract class Kaltura_Client_Reach_Type_VendorCatalogItem extends Kaltura_Clien
 	 * @var Kaltura_Client_Reach_Type_VendorCatalogItemPricing
 	 */
 	public $pricing;
+
+	/**
+	 * Property showing the catalog item's engine type, in case a vendor can offer the same service via different engines.
+	 *
+	 * @var Kaltura_Client_Reach_Enum_ReachVendorEngineType
+	 */
+	public $engineType = null;
+
+	/**
+	 * 
+	 *
+	 * @var Kaltura_Client_Reach_Enum_CatalogItemLanguage
+	 */
+	public $sourceLanguage = null;
 
 	/**
 	 * 

@@ -45,16 +45,7 @@ class Kaltura_Client_Reach_Type_VendorChapteringCatalogItem extends Kaltura_Clie
 		if(is_null($xml))
 			return;
 		
-		if(count($xml->sourceLanguage))
-			$this->sourceLanguage = (string)$xml->sourceLanguage;
 	}
-	/**
-	 * 
-	 *
-	 * @var Kaltura_Client_Reach_Enum_CatalogItemLanguage
-	 */
-	public $sourceLanguage = null;
-
 
 }
 

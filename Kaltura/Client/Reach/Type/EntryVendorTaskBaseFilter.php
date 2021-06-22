@@ -49,6 +49,8 @@ abstract class Kaltura_Client_Reach_Type_EntryVendorTaskBaseFilter extends Kaltu
 			$this->idEqual = (string)$xml->idEqual;
 		if(count($xml->idIn))
 			$this->idIn = (string)$xml->idIn;
+		if(count($xml->idNotIn))
+			$this->idNotIn = (string)$xml->idNotIn;
 		if(count($xml->vendorPartnerIdEqual))
 			$this->vendorPartnerIdEqual = (int)$xml->vendorPartnerIdEqual;
 		if(count($xml->vendorPartnerIdIn))
@@ -87,6 +89,10 @@ abstract class Kaltura_Client_Reach_Type_EntryVendorTaskBaseFilter extends Kaltu
 			$this->userIdEqual = (string)$xml->userIdEqual;
 		if(count($xml->contextEqual))
 			$this->contextEqual = (string)$xml->contextEqual;
+		if(count($xml->expectedFinishTimeGreaterThanOrEqual))
+			$this->expectedFinishTimeGreaterThanOrEqual = (int)$xml->expectedFinishTimeGreaterThanOrEqual;
+		if(count($xml->expectedFinishTimeLessThanOrEqual))
+			$this->expectedFinishTimeLessThanOrEqual = (int)$xml->expectedFinishTimeLessThanOrEqual;
 	}
 	/**
 	 * 
@@ -101,6 +107,13 @@ abstract class Kaltura_Client_Reach_Type_EntryVendorTaskBaseFilter extends Kaltu
 	 * @var string
 	 */
 	public $idIn = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $idNotIn = null;
 
 	/**
 	 * 
@@ -234,6 +247,20 @@ abstract class Kaltura_Client_Reach_Type_EntryVendorTaskBaseFilter extends Kaltu
 	 * @var string
 	 */
 	public $contextEqual = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $expectedFinishTimeGreaterThanOrEqual = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $expectedFinishTimeLessThanOrEqual = null;
 
 
 }
