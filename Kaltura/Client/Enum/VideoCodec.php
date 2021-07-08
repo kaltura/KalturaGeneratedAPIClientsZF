@@ -34,6 +34,7 @@
 class Kaltura_Client_Enum_VideoCodec extends Kaltura_Client_EnumBase
 {
 	const NONE = "";
+	const AV1 = "AV1";
 	const APCH = "apch";
 	const APCN = "apcn";
 	const APCO = "apco";

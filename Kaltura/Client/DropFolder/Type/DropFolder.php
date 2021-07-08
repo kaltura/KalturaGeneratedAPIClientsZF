@@ -67,6 +67,8 @@ class Kaltura_Client_DropFolder_Type_DropFolder extends Kaltura_Client_ObjectBas
 			$this->fileSizeCheckInterval = (int)$xml->fileSizeCheckInterval;
 		if(count($xml->fileDeletePolicy))
 			$this->fileDeletePolicy = (int)$xml->fileDeletePolicy;
+		if(count($xml->fileDeleteRegex))
+			$this->fileDeleteRegex = (string)$xml->fileDeleteRegex;
 		if(count($xml->autoFileDeleteDays))
 			$this->autoFileDeleteDays = (int)$xml->autoFileDeleteDays;
 		if(count($xml->fileHandlerType))
@@ -195,6 +197,13 @@ class Kaltura_Client_DropFolder_Type_DropFolder extends Kaltura_Client_ObjectBas
 	 * @var Kaltura_Client_DropFolder_Enum_DropFolderFileDeletePolicy
 	 */
 	public $fileDeletePolicy = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $fileDeleteRegex = null;
 
 	/**
 	 * 
