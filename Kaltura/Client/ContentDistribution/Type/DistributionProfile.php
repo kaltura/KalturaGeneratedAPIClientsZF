@@ -115,6 +115,13 @@ abstract class Kaltura_Client_ContentDistribution_Type_DistributionProfile exten
 			$this->recommendedDcForExecute = (int)$xml->recommendedDcForExecute;
 		if(count($xml->distributeTrigger))
 			$this->distributeTrigger = (int)$xml->distributeTrigger;
+		if(count($xml->supportImageEntry))
+		{
+			if(!empty($xml->supportImageEntry) && ((int) $xml->supportImageEntry === 1 || strtolower((string)$xml->supportImageEntry) === 'true'))
+				$this->supportImageEntry = true;
+			else
+				$this->supportImageEntry = false;
+		}
 	}
 	/**
 	 * Auto generated unique id
@@ -295,6 +302,14 @@ abstract class Kaltura_Client_ContentDistribution_Type_DistributionProfile exten
 	 * @var Kaltura_Client_ContentDistribution_Enum_DistributeTrigger
 	 */
 	public $distributeTrigger = null;
+
+	/**
+	 * 
+	 *
+	 * @var bool
+	 * @readonly
+	 */
+	public $supportImageEntry = null;
 
 
 }

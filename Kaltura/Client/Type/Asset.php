@@ -74,7 +74,7 @@ class Kaltura_Client_Type_Asset extends Kaltura_Client_ObjectBase
 		if(count($xml->actualSourceAssetParamsIds))
 			$this->actualSourceAssetParamsIds = (string)$xml->actualSourceAssetParamsIds;
 		if(count($xml->sizeInBytes))
-			$this->sizeInBytes = (int)$xml->sizeInBytes;
+			$this->sizeInBytes = (string)$xml->sizeInBytes;
 	}
 	/**
 	 * The ID of the Flavor Asset
@@ -187,7 +187,7 @@ class Kaltura_Client_Type_Asset extends Kaltura_Client_ObjectBase
 	/**
 	 * The size (in Bytes) of the asset
 	 *
-	 * @var int
+	 * @var bigint
 	 * @readonly
 	 */
 	public $sizeInBytes = null;

@@ -31,12 +31,35 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Drm_Enum_DrmLicenseScenario extends Kaltura_Client_EnumBase
+class Kaltura_Client_Type_DeliveryProfileVod extends Kaltura_Client_Type_DeliveryProfile
 {
-	const NONE = "0";
-	const PROTECTION = "playReady.PROTECTION";
-	const PURCHASE = "playReady.PURCHASE";
-	const RENTAL = "playReady.RENTAL";
-	const SUBSCRIPTION = "playReady.SUBSCRIPTION";
+	public function getKalturaObjectType()
+	{
+		return 'KalturaDeliveryProfileVod';
+	}
+	
+	public function __construct(SimpleXMLElement $xml = null)
+	{
+		parent::__construct($xml);
+		
+		if(is_null($xml))
+			return;
+		
+		if(count($xml->simuliveSupport))
+		{
+			if(!empty($xml->simuliveSupport) && ((int) $xml->simuliveSupport === 1 || strtolower((string)$xml->simuliveSupport) === 'true'))
+				$this->simuliveSupport = true;
+			else
+				$this->simuliveSupport = false;
+		}
+	}
+	/**
+	 * 
+	 *
+	 * @var bool
+	 */
+	public $simuliveSupport = null;
+
+
 }
 

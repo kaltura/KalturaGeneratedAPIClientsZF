@@ -65,6 +65,8 @@ class Kaltura_Client_Type_ReportExportJobData extends Kaltura_Client_Type_JobDat
 			else
 				$this->files = Kaltura_Client_ParseUtils::unmarshalArray($xml->files, "KalturaReportExportFile");
 		}
+		if(count($xml->baseUrl))
+			$this->baseUrl = (string)$xml->baseUrl;
 	}
 	/**
 	 * 
@@ -100,6 +102,13 @@ class Kaltura_Client_Type_ReportExportJobData extends Kaltura_Client_Type_JobDat
 	 * @var array of KalturaReportExportFile
 	 */
 	public $files;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $baseUrl = null;
 
 
 }

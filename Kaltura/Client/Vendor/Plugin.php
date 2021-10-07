@@ -38,10 +38,16 @@ class Kaltura_Client_Vendor_Plugin extends Kaltura_Client_Plugin
 	 */
 	public $zoomVendor = null;
 
+	/**
+	 * @var Kaltura_Client_Vendor_VendorIntegrationService
+	 */
+	public $vendorIntegration = null;
+
 	protected function __construct(Kaltura_Client_Client $client)
 	{
 		parent::__construct($client);
 		$this->zoomVendor = new Kaltura_Client_Vendor_ZoomVendorService($client);
+		$this->vendorIntegration = new Kaltura_Client_Vendor_VendorIntegrationService($client);
 	}
 
 	/**
@@ -59,6 +65,7 @@ class Kaltura_Client_Vendor_Plugin extends Kaltura_Client_Plugin
 	{
 		$services = array(
 			'zoomVendor' => $this->zoomVendor,
+			'vendorIntegration' => $this->vendorIntegration,
 		);
 		return $services;
 	}

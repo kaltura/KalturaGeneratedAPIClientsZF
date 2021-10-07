@@ -63,6 +63,10 @@ abstract class Kaltura_Client_Schedule_Type_ScheduleEvent extends Kaltura_Client
 			$this->endDate = (int)$xml->endDate;
 		if(count($xml->referenceId))
 			$this->referenceId = (string)$xml->referenceId;
+		if(count($xml->linkedTo) && !empty($xml->linkedTo))
+			$this->linkedTo = Kaltura_Client_ParseUtils::unmarshalObject($xml->linkedTo, "KalturaLinkedScheduleEvent");
+		if(count($xml->linkedBy))
+			$this->linkedBy = (string)$xml->linkedBy;
 		if(count($xml->classificationType))
 			$this->classificationType = (int)$xml->classificationType;
 		if(count($xml->geoLatitude))
@@ -162,6 +166,20 @@ abstract class Kaltura_Client_Schedule_Type_ScheduleEvent extends Kaltura_Client
 	 * @var string
 	 */
 	public $referenceId = null;
+
+	/**
+	 * Contains the Id of the event that influences the timing of this event and the offset of time.
+	 *
+	 * @var Kaltura_Client_Schedule_Type_LinkedScheduleEvent
+	 */
+	public $linkedTo;
+
+	/**
+	 * An array of Schedule Event Ids that their start time depends on the end of the current.
+	 *
+	 * @var string
+	 */
+	public $linkedBy = null;
 
 	/**
 	 * 

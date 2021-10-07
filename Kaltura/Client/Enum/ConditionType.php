@@ -57,5 +57,6 @@ class Kaltura_Client_Enum_ConditionType extends Kaltura_Client_EnumBase
 	const ASSET_TYPE = "16";
 	const BOOLEAN = "17";
 	const HTTP_HEADER = "18";
+	const ENTRY_SCHEDULED = "19";
 }
 

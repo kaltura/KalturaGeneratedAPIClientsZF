@@ -31,12 +31,10 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Drm_Enum_DrmLicenseScenario extends Kaltura_Client_EnumBase
+class Kaltura_Client_Enum_TwoFactorAuthenticationMode extends Kaltura_Client_EnumBase
 {
-	const NONE = "0";
-	const PROTECTION = "playReady.PROTECTION";
-	const PURCHASE = "playReady.PURCHASE";
-	const RENTAL = "playReady.RENTAL";
-	const SUBSCRIPTION = "playReady.SUBSCRIPTION";
+	const ALL = 0;
+	const ADMIN_USERS_ONLY = 1;
+	const NON_ADMIN_USERS_ONLY = 2;
 }
 

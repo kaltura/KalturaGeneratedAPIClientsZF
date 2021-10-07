@@ -31,12 +31,39 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Drm_Enum_DrmLicenseScenario extends Kaltura_Client_EnumBase
+class Kaltura_Client_Schedule_Type_LinkedScheduleEvent extends Kaltura_Client_ObjectBase
 {
-	const NONE = "0";
-	const PROTECTION = "playReady.PROTECTION";
-	const PURCHASE = "playReady.PURCHASE";
-	const RENTAL = "playReady.RENTAL";
-	const SUBSCRIPTION = "playReady.SUBSCRIPTION";
+	public function getKalturaObjectType()
+	{
+		return 'KalturaLinkedScheduleEvent';
+	}
+	
+	public function __construct(SimpleXMLElement $xml = null)
+	{
+		parent::__construct($xml);
+		
+		if(is_null($xml))
+			return;
+		
+		if(count($xml->offset))
+			$this->offset = (int)$xml->offset;
+		if(count($xml->eventId))
+			$this->eventId = (int)$xml->eventId;
+	}
+	/**
+	 * The time between the end of the event which it's id is in $eventId and the start of the event holding this object
+	 *
+	 * @var int
+	 */
+	public $offset = null;
+
+	/**
+	 * The id of the event influencing the start of the event holding this object
+	 *
+	 * @var int
+	 */
+	public $eventId = null;
+
+
 }
 

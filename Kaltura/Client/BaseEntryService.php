@@ -458,6 +458,22 @@ class Kaltura_Client_BaseEntryService extends Kaltura_Client_ServiceBase
 	}
 
 	/**
+	 * @return file
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
+	 */
+	function servePlaybackKey($entryId)
+	{
+		if ($this->client->isMultiRequest())
+			throw $this->client->getKalturaClientException("Action is not supported as part of multi-request.", Kaltura_Client_ClientException::ERROR_ACTION_IN_MULTIREQUEST);
+		
+		$kparams = array();
+		$this->client->addParam($kparams, "entryId", $entryId);
+		$this->client->queueServiceActionCall('baseentry', 'servePlaybackKey', null, $kparams);
+		$resultObject = $this->client->getServeUrl();
+		return $resultObject;
+	}
+
+	/**
 	 * @return Kaltura_Client_Type_BaseEntry
 	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */

@@ -248,6 +248,8 @@ class Kaltura_Client_Type_Partner extends Kaltura_Client_ObjectBase
 			$this->loginBlockPeriod = (int)$xml->loginBlockPeriod;
 		if(count($xml->numPrevPassToKeep))
 			$this->numPrevPassToKeep = (int)$xml->numPrevPassToKeep;
+		if(count($xml->twoFactorAuthenticationMode))
+			$this->twoFactorAuthenticationMode = (int)$xml->twoFactorAuthenticationMode;
 	}
 	/**
 	 * 
@@ -801,6 +803,14 @@ class Kaltura_Client_Type_Partner extends Kaltura_Client_ObjectBase
 	 * @var int
 	 */
 	public $numPrevPassToKeep = null;
+
+	/**
+	 * 
+	 *
+	 * @var Kaltura_Client_Enum_TwoFactorAuthenticationMode
+	 * @readonly
+	 */
+	public $twoFactorAuthenticationMode = null;
 
 
 }

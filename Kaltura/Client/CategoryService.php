@@ -83,6 +83,27 @@ class Kaltura_Client_CategoryService extends Kaltura_Client_ServiceBase
 	}
 
 	/**
+	 * @return Kaltura_Client_Type_Category
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
+	 */
+	function cloneAction($categoryId, $fromPartnerId, $parentCategoryId = null)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "categoryId", $categoryId);
+		$this->client->addParam($kparams, "fromPartnerId", $fromPartnerId);
+		$this->client->addParam($kparams, "parentCategoryId", $parentCategoryId);
+		$this->client->queueServiceActionCall("category", "clone", "KalturaCategory", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultXml = $this->client->doQueue();
+		$resultXmlObject = new \SimpleXMLElement($resultXml);
+		$this->client->checkIfError($resultXmlObject->result);
+		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaCategory");
+		$this->client->validateObjectType($resultObject, "Kaltura_Client_Type_Category");
+		return $resultObject;
+	}
+
+	/**
 	 * @return 
 	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */

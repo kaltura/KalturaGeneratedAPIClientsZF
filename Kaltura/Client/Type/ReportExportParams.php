@@ -58,6 +58,8 @@ class Kaltura_Client_Type_ReportExportParams extends Kaltura_Client_ObjectBase
 		}
 		if(count($xml->reportsItemsGroup))
 			$this->reportsItemsGroup = (string)$xml->reportsItemsGroup;
+		if(count($xml->baseUrl))
+			$this->baseUrl = (string)$xml->baseUrl;
 	}
 	/**
 	 * 
@@ -86,6 +88,13 @@ class Kaltura_Client_Type_ReportExportParams extends Kaltura_Client_ObjectBase
 	 * @var string
 	 */
 	public $reportsItemsGroup = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $baseUrl = null;
 
 
 }

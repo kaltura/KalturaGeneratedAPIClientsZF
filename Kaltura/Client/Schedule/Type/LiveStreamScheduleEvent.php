@@ -53,6 +53,10 @@ class Kaltura_Client_Schedule_Type_LiveStreamScheduleEvent extends Kaltura_Clien
 			$this->preStartTime = (int)$xml->preStartTime;
 		if(count($xml->postEndTime))
 			$this->postEndTime = (int)$xml->postEndTime;
+		if(count($xml->preStartEntryId))
+			$this->preStartEntryId = (string)$xml->preStartEntryId;
+		if(count($xml->postEndEntryId))
+			$this->postEndEntryId = (string)$xml->postEndEntryId;
 	}
 	/**
 	 * The entry ID of the source entry (for simulive)
@@ -81,6 +85,20 @@ class Kaltura_Client_Schedule_Type_LiveStreamScheduleEvent extends Kaltura_Clien
 	 * @var int
 	 */
 	public $postEndTime = null;
+
+	/**
+	 * The entry id of the pre start entry
+	 *
+	 * @var string
+	 */
+	public $preStartEntryId = null;
+
+	/**
+	 * The entry id of the post end entry
+	 *
+	 * @var string
+	 */
+	public $postEndEntryId = null;
 
 
 }

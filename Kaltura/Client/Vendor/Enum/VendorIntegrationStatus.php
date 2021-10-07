@@ -31,12 +31,10 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Drm_Enum_DrmLicenseScenario extends Kaltura_Client_EnumBase
+class Kaltura_Client_Vendor_Enum_VendorIntegrationStatus extends Kaltura_Client_EnumBase
 {
-	const NONE = "0";
-	const PROTECTION = "playReady.PROTECTION";
-	const PURCHASE = "playReady.PURCHASE";
-	const RENTAL = "playReady.RENTAL";
-	const SUBSCRIPTION = "playReady.SUBSCRIPTION";
+	const DISABLED = 1;
+	const ACTIVE = 2;
+	const DELETED = 3;
 }
 

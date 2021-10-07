@@ -31,12 +31,21 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Drm_Enum_DrmLicenseScenario extends Kaltura_Client_EnumBase
+abstract class Kaltura_Client_Schedule_Type_VodScheduleEventBaseFilter extends Kaltura_Client_Schedule_Type_EntryScheduleEventFilter
 {
-	const NONE = "0";
-	const PROTECTION = "playReady.PROTECTION";
-	const PURCHASE = "playReady.PURCHASE";
-	const RENTAL = "playReady.RENTAL";
-	const SUBSCRIPTION = "playReady.SUBSCRIPTION";
+	public function getKalturaObjectType()
+	{
+		return 'KalturaVodScheduleEventBaseFilter';
+	}
+	
+	public function __construct(SimpleXMLElement $xml = null)
+	{
+		parent::__construct($xml);
+		
+		if(is_null($xml))
+			return;
+		
+	}
+
 }
 

@@ -38,5 +38,6 @@ class Kaltura_Client_Schedule_Enum_ScheduleEventType extends Kaltura_Client_Enum
 	const BLACKOUT = 3;
 	const MEETING = 4;
 	const LIVE_REDIRECT = 5;
+	const VOD = 6;
 }
 

@@ -59,6 +59,8 @@ class Kaltura_Client_Type_BaseEntryFilter extends Kaltura_Client_Type_BaseEntryB
 			$this->categoryAncestorIdIn = (string)$xml->categoryAncestorIdIn;
 		if(count($xml->redirectFromEntryId))
 			$this->redirectFromEntryId = (string)$xml->redirectFromEntryId;
+		if(count($xml->conversionProfileIdEqual))
+			$this->conversionProfileIdEqual = (int)$xml->conversionProfileIdEqual;
 	}
 	/**
 	 * 
@@ -108,6 +110,13 @@ class Kaltura_Client_Type_BaseEntryFilter extends Kaltura_Client_Type_BaseEntryB
 	 * @var string
 	 */
 	public $redirectFromEntryId = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $conversionProfileIdEqual = null;
 
 
 }

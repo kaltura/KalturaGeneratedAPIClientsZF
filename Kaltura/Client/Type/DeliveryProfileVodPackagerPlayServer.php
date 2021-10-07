@@ -31,7 +31,7 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Type_DeliveryProfileVodPackagerPlayServer extends Kaltura_Client_Type_DeliveryProfile
+class Kaltura_Client_Type_DeliveryProfileVodPackagerPlayServer extends Kaltura_Client_Type_DeliveryProfileVod
 {
 	public function getKalturaObjectType()
 	{

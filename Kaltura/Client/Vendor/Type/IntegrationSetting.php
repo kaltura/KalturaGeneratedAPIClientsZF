@@ -31,11 +31,11 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Vendor_Type_ZoomIntegrationSetting extends Kaltura_Client_Vendor_Type_IntegrationSetting
+abstract class Kaltura_Client_Vendor_Type_IntegrationSetting extends Kaltura_Client_ObjectBase
 {
 	public function getKalturaObjectType()
 	{
-		return 'KalturaZoomIntegrationSetting';
+		return 'KalturaIntegrationSetting';
 	}
 	
 	public function __construct(SimpleXMLElement $xml = null)
@@ -45,96 +45,111 @@ class Kaltura_Client_Vendor_Type_ZoomIntegrationSetting extends Kaltura_Client_V
 		if(is_null($xml))
 			return;
 		
-		if(count($xml->zoomCategory))
-			$this->zoomCategory = (string)$xml->zoomCategory;
-		if(count($xml->enableRecordingUpload))
-			$this->enableRecordingUpload = (int)$xml->enableRecordingUpload;
-		if(count($xml->zoomUserMatchingMode))
-			$this->zoomUserMatchingMode = (int)$xml->zoomUserMatchingMode;
-		if(count($xml->zoomUserPostfix))
-			$this->zoomUserPostfix = (string)$xml->zoomUserPostfix;
-		if(count($xml->zoomWebinarCategory))
-			$this->zoomWebinarCategory = (string)$xml->zoomWebinarCategory;
-		if(count($xml->enableWebinarUploads))
-			$this->enableWebinarUploads = (int)$xml->enableWebinarUploads;
-		if(count($xml->jwtToken))
-			$this->jwtToken = (string)$xml->jwtToken;
-		if(count($xml->enableZoomTranscription))
-			$this->enableZoomTranscription = (int)$xml->enableZoomTranscription;
-		if(count($xml->zoomAccountDescription))
-			$this->zoomAccountDescription = (string)$xml->zoomAccountDescription;
-		if(count($xml->enableMeetingUpload))
-			$this->enableMeetingUpload = (int)$xml->enableMeetingUpload;
+		if(count($xml->id))
+			$this->id = (int)$xml->id;
+		if(count($xml->status))
+			$this->status = (int)$xml->status;
+		if(count($xml->defaultUserId))
+			$this->defaultUserId = (string)$xml->defaultUserId;
+		if(count($xml->accountId))
+			$this->accountId = (string)$xml->accountId;
+		if(count($xml->createUserIfNotExist))
+			$this->createUserIfNotExist = (int)$xml->createUserIfNotExist;
+		if(count($xml->conversionProfileId))
+			$this->conversionProfileId = (int)$xml->conversionProfileId;
+		if(count($xml->handleParticipantsMode))
+			$this->handleParticipantsMode = (int)$xml->handleParticipantsMode;
+		if(count($xml->deletionPolicy))
+			$this->deletionPolicy = (int)$xml->deletionPolicy;
+		if(count($xml->createdAt))
+			$this->createdAt = (string)$xml->createdAt;
+		if(count($xml->updatedAt))
+			$this->updatedAt = (string)$xml->updatedAt;
+		if(count($xml->partnerId))
+			$this->partnerId = (int)$xml->partnerId;
 	}
 	/**
 	 * 
 	 *
+	 * @var int
+	 * @readonly
+	 */
+	public $id = null;
+
+	/**
+	 * 
+	 *
+	 * @var Kaltura_Client_Vendor_Enum_VendorIntegrationStatus
+	 * @readonly
+	 */
+	public $status = null;
+
+	/**
+	 * 
+	 *
 	 * @var string
 	 */
-	public $zoomCategory = null;
+	public $defaultUserId = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 * @readonly
+	 */
+	public $accountId = null;
 
 	/**
 	 * 
 	 *
 	 * @var Kaltura_Client_Enum_NullableBoolean
 	 */
-	public $enableRecordingUpload = null;
+	public $createUserIfNotExist = null;
 
 	/**
 	 * 
 	 *
-	 * @var Kaltura_Client_Vendor_Enum_ZoomUsersMatching
+	 * @var int
 	 */
-	public $zoomUserMatchingMode = null;
+	public $conversionProfileId = null;
 
 	/**
 	 * 
 	 *
-	 * @var string
+	 * @var Kaltura_Client_Vendor_Enum_HandleParticipantsMode
 	 */
-	public $zoomUserPostfix = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $zoomWebinarCategory = null;
+	public $handleParticipantsMode = null;
 
 	/**
 	 * 
 	 *
 	 * @var Kaltura_Client_Enum_NullableBoolean
 	 */
-	public $enableWebinarUploads = null;
+	public $deletionPolicy = null;
 
 	/**
 	 * 
 	 *
 	 * @var string
+	 * @readonly
 	 */
-	public $jwtToken = null;
-
-	/**
-	 * 
-	 *
-	 * @var Kaltura_Client_Enum_NullableBoolean
-	 */
-	public $enableZoomTranscription = null;
+	public $createdAt = null;
 
 	/**
 	 * 
 	 *
 	 * @var string
+	 * @readonly
 	 */
-	public $zoomAccountDescription = null;
+	public $updatedAt = null;
 
 	/**
 	 * 
 	 *
-	 * @var Kaltura_Client_Enum_NullableBoolean
+	 * @var int
+	 * @readonly
 	 */
-	public $enableMeetingUpload = null;
+	public $partnerId = null;
 
 
 }
