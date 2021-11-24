@@ -31,14 +31,30 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_DropFolder_Enum_DropFolderErrorCode extends Kaltura_Client_EnumBase
+class Kaltura_Client_Type_RegexItem extends Kaltura_Client_ObjectBase
 {
-	const ERROR_CONNECT = "1";
-	const ERROR_AUTENTICATE = "2";
-	const ERROR_GET_PHISICAL_FILE_LIST = "3";
-	const ERROR_GET_DB_FILE_LIST = "4";
-	const DROP_FOLDER_APP_ERROR = "5";
-	const CONTENT_MATCH_POLICY_UNDEFINED = "6";
-	const MISSING_CONFIG = "7";
+	public function getKalturaObjectType()
+	{
+		return 'KalturaRegexItem';
+	}
+	
+	public function __construct(SimpleXMLElement $xml = null)
+	{
+		parent::__construct($xml);
+		
+		if(is_null($xml))
+			return;
+		
+		if(count($xml->regex))
+			$this->regex = (string)$xml->regex;
+	}
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $regex = null;
+
+
 }
 

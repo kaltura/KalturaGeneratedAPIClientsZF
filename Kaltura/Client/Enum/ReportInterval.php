@@ -39,5 +39,6 @@ class Kaltura_Client_Enum_ReportInterval extends Kaltura_Client_EnumBase
 	const MONTHS = "months";
 	const TEN_MINUTES = "ten_minutes";
 	const TEN_SECONDS = "ten_seconds";
+	const YEARS = "years";
 }
 
