@@ -31,11 +31,11 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Type_StorageExportJobData extends Kaltura_Client_Type_StorageJobData
+class Kaltura_Client_Type_DynamicEmailContents extends Kaltura_Client_ObjectBase
 {
 	public function getKalturaObjectType()
 	{
-		return 'KalturaStorageExportJobData';
+		return 'KalturaDynamicEmailContents';
 	}
 	
 	public function __construct(SimpleXMLElement $xml = null)
@@ -45,61 +45,24 @@ class Kaltura_Client_Type_StorageExportJobData extends Kaltura_Client_Type_Stora
 		if(is_null($xml))
 			return;
 		
-		if(count($xml->force))
-		{
-			if(!empty($xml->force) && ((int) $xml->force === 1 || strtolower((string)$xml->force) === 'true'))
-				$this->force = true;
-			else
-				$this->force = false;
-		}
-		if(count($xml->createLink))
-		{
-			if(!empty($xml->createLink) && ((int) $xml->createLink === 1 || strtolower((string)$xml->createLink) === 'true'))
-				$this->createLink = true;
-			else
-				$this->createLink = false;
-		}
-		if(count($xml->assetId))
-			$this->assetId = (string)$xml->assetId;
-		if(count($xml->externalUrl))
-			$this->externalUrl = (string)$xml->externalUrl;
-		if(count($xml->port))
-			$this->port = (int)$xml->port;
+		if(count($xml->emailSubject))
+			$this->emailSubject = (string)$xml->emailSubject;
+		if(count($xml->emailBody))
+			$this->emailBody = (string)$xml->emailBody;
 	}
 	/**
-	 * 
-	 *
-	 * @var bool
-	 */
-	public $force = null;
-
-	/**
-	 * 
-	 *
-	 * @var bool
-	 */
-	public $createLink = null;
-
-	/**
-	 * 
+	 * The subject of the customized email
 	 *
 	 * @var string
 	 */
-	public $assetId = null;
+	public $emailSubject = null;
 
 	/**
-	 * 
+	 * The body of the customized email
 	 *
 	 * @var string
 	 */
-	public $externalUrl = null;
-
-	/**
-	 * 
-	 *
-	 * @var int
-	 */
-	public $port = null;
+	public $emailBody = null;
 
 
 }

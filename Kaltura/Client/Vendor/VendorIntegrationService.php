@@ -121,11 +121,11 @@ class Kaltura_Client_Vendor_VendorIntegrationService extends Kaltura_Client_Serv
 	 * @return Kaltura_Client_Vendor_Type_IntegrationSetting
 	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
-	function updateStatus($id, Kaltura_Client_Vendor_Type_IntegrationSetting $status)
+	function updateStatus($id, $status)
 	{
 		$kparams = array();
 		$this->client->addParam($kparams, "id", $id);
-		$this->client->addParam($kparams, "status", $status->toParams());
+		$this->client->addParam($kparams, "status", $status);
 		$this->client->queueServiceActionCall("vendor_vendorintegration", "updateStatus", "KalturaIntegrationSetting", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();

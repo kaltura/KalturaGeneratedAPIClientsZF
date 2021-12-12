@@ -501,6 +501,7 @@ class Kaltura_Client_TypeMap
 		'KalturaDropFolderListResponse' => 'Kaltura_Client_DropFolder_Type_DropFolderListResponse',
 		'KalturaDropFolderXmlBulkUploadFileHandlerConfig' => 'Kaltura_Client_DropFolderXmlBulkUpload_Type_DropFolderXmlBulkUploadFileHandlerConfig',
 		'KalturaDropFolderXmlBulkUploadJobData' => 'Kaltura_Client_DropFolderXmlBulkUpload_Type_DropFolderXmlBulkUploadJobData',
+		'KalturaDynamicEmailContents' => 'Kaltura_Client_Type_DynamicEmailContents',
 		'KalturaDynamicObjectSearchItem' => 'Kaltura_Client_Metadata_Type_DynamicObjectSearchItem',
 		'KalturaESearchAbstractCategoryItem' => 'Kaltura_Client_ElasticSearch_Type_ESearchAbstractCategoryItem',
 		'KalturaESearchAbstractEntryItem' => 'Kaltura_Client_ElasticSearch_Type_ESearchAbstractEntryItem',

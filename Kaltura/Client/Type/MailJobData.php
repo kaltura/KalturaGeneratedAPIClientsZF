@@ -65,6 +65,8 @@ class Kaltura_Client_Type_MailJobData extends Kaltura_Client_Type_JobData
 			$this->bodyParams = (string)$xml->bodyParams;
 		if(count($xml->subjectParams))
 			$this->subjectParams = (string)$xml->subjectParams;
+		if(count($xml->dynamicEmailContents) && !empty($xml->dynamicEmailContents))
+			$this->dynamicEmailContents = Kaltura_Client_ParseUtils::unmarshalObject($xml->dynamicEmailContents, "KalturaDynamicEmailContents");
 		if(count($xml->templatePath))
 			$this->templatePath = (string)$xml->templatePath;
 		if(count($xml->language))
@@ -152,6 +154,13 @@ class Kaltura_Client_Type_MailJobData extends Kaltura_Client_Type_JobData
 	 * @var string
 	 */
 	public $subjectParams = null;
+
+	/**
+	 * 
+	 *
+	 * @var Kaltura_Client_Type_DynamicEmailContents
+	 */
+	public $dynamicEmailContents;
 
 	/**
 	 * 
