@@ -47,6 +47,13 @@ class Kaltura_Client_Type_DeliveryProfileLivePackager extends Kaltura_Client_Typ
 		
 		if(count($xml->livePackagerSigningDomain))
 			$this->livePackagerSigningDomain = (string)$xml->livePackagerSigningDomain;
+		if(count($xml->shouldRedirect))
+		{
+			if(!empty($xml->shouldRedirect) && ((int) $xml->shouldRedirect === 1 || strtolower((string)$xml->shouldRedirect) === 'true'))
+				$this->shouldRedirect = true;
+			else
+				$this->shouldRedirect = false;
+		}
 	}
 	/**
 	 * Domain used to sign the live url
@@ -54,6 +61,13 @@ class Kaltura_Client_Type_DeliveryProfileLivePackager extends Kaltura_Client_Typ
 	 * @var string
 	 */
 	public $livePackagerSigningDomain = null;
+
+	/**
+	 * 
+	 *
+	 * @var bool
+	 */
+	public $shouldRedirect = null;
 
 
 }
