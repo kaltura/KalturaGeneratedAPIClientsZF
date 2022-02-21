@@ -31,11 +31,11 @@
  * @package Kaltura
  * @subpackage Client
  */
-abstract class Kaltura_Client_Type_UserEntry extends Kaltura_Client_ObjectBase
+class Kaltura_Client_Reach_Type_VendorDubbingCatalogItem extends Kaltura_Client_Reach_Type_VendorCatalogItem
 {
 	public function getKalturaObjectType()
 	{
-		return 'KalturaUserEntry';
+		return 'KalturaVendorDubbingCatalogItem';
 	}
 	
 	public function __construct(SimpleXMLElement $xml = null)
@@ -45,95 +45,33 @@ abstract class Kaltura_Client_Type_UserEntry extends Kaltura_Client_ObjectBase
 		if(is_null($xml))
 			return;
 		
-		if(count($xml->id))
-			$this->id = (string)$xml->id;
-		if(count($xml->entryId))
-			$this->entryId = (string)$xml->entryId;
-		if(count($xml->userId))
-			$this->userId = (string)$xml->userId;
-		if(count($xml->partnerId))
-			$this->partnerId = (int)$xml->partnerId;
-		if(count($xml->status))
-			$this->status = (string)$xml->status;
-		if(count($xml->createdAt))
-			$this->createdAt = (int)$xml->createdAt;
-		if(count($xml->updatedAt))
-			$this->updatedAt = (int)$xml->updatedAt;
-		if(count($xml->type))
-			$this->type = (string)$xml->type;
-		if(count($xml->extendedStatus))
-			$this->extendedStatus = (string)$xml->extendedStatus;
+		if(count($xml->flavorParamsId))
+			$this->flavorParamsId = (int)$xml->flavorParamsId;
+		if(count($xml->clearAudioFlavorParamsId))
+			$this->clearAudioFlavorParamsId = (int)$xml->clearAudioFlavorParamsId;
+		if(count($xml->targetLanguage))
+			$this->targetLanguage = (string)$xml->targetLanguage;
 	}
 	/**
-	 * unique auto-generated identifier
-	 *
-	 * @var bigint
-	 * @readonly
-	 */
-	public $id = null;
-
-	/**
 	 * 
 	 *
-	 * @var string
-	 * @insertonly
+	 * @var int
 	 */
-	public $entryId = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 * @insertonly
-	 */
-	public $userId = null;
+	public $flavorParamsId = null;
 
 	/**
 	 * 
 	 *
 	 * @var int
-	 * @readonly
 	 */
-	public $partnerId = null;
+	public $clearAudioFlavorParamsId = null;
 
 	/**
 	 * 
 	 *
-	 * @var Kaltura_Client_Enum_UserEntryStatus
-	 * @readonly
+	 * @var Kaltura_Client_Reach_Enum_CatalogItemLanguage
 	 */
-	public $status = null;
-
-	/**
-	 * 
-	 *
-	 * @var int
-	 * @readonly
-	 */
-	public $createdAt = null;
-
-	/**
-	 * 
-	 *
-	 * @var int
-	 * @readonly
-	 */
-	public $updatedAt = null;
-
-	/**
-	 * 
-	 *
-	 * @var Kaltura_Client_Enum_UserEntryType
-	 * @readonly
-	 */
-	public $type = null;
-
-	/**
-	 * 
-	 *
-	 * @var Kaltura_Client_Enum_UserEntryExtendedStatus
-	 */
-	public $extendedStatus = null;
+	public $targetLanguage = null;
 
 
 }
