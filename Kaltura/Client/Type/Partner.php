@@ -262,6 +262,10 @@ class Kaltura_Client_Type_Partner extends Kaltura_Client_ObjectBase
 			else
 				$this->isSelfServe = false;
 		}
+		if(count($xml->allowedDomains))
+			$this->allowedDomains = (string)$xml->allowedDomains;
+		if(count($xml->excludedAdminRoleName))
+			$this->excludedAdminRoleName = (string)$xml->excludedAdminRoleName;
 	}
 	/**
 	 * 
@@ -830,6 +834,22 @@ class Kaltura_Client_Type_Partner extends Kaltura_Client_ObjectBase
 	 * @var bool
 	 */
 	public $isSelfServe = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 * @readonly
+	 */
+	public $allowedDomains = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 * @readonly
+	 */
+	public $excludedAdminRoleName = null;
 
 
 }

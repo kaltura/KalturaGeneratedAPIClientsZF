@@ -68,6 +68,14 @@ class Kaltura_Client_Type_LiveStreamEntry extends Kaltura_Client_Type_LiveEntry
 			$this->primaryRtspBroadcastingUrl = (string)$xml->primaryRtspBroadcastingUrl;
 		if(count($xml->secondaryRtspBroadcastingUrl))
 			$this->secondaryRtspBroadcastingUrl = (string)$xml->secondaryRtspBroadcastingUrl;
+		if(count($xml->primarySrtBroadcastingUrl))
+			$this->primarySrtBroadcastingUrl = (string)$xml->primarySrtBroadcastingUrl;
+		if(count($xml->primarySrtStreamId))
+			$this->primarySrtStreamId = (string)$xml->primarySrtStreamId;
+		if(count($xml->secondarySrtBroadcastingUrl))
+			$this->secondarySrtBroadcastingUrl = (string)$xml->secondarySrtBroadcastingUrl;
+		if(count($xml->secondarySrtStreamId))
+			$this->secondarySrtStreamId = (string)$xml->secondarySrtStreamId;
 		if(count($xml->streamName))
 			$this->streamName = (string)$xml->streamName;
 		if(count($xml->streamUrl))
@@ -84,6 +92,8 @@ class Kaltura_Client_Type_LiveStreamEntry extends Kaltura_Client_Type_LiveEntry
 			$this->streamPassword = (string)$xml->streamPassword;
 		if(count($xml->streamUsername))
 			$this->streamUsername = (string)$xml->streamUsername;
+		if(count($xml->srtPass))
+			$this->srtPass = (string)$xml->srtPass;
 		if(count($xml->primaryServerNodeId))
 			$this->primaryServerNodeId = (int)$xml->primaryServerNodeId;
 		if(count($xml->sipToken))
@@ -161,6 +171,34 @@ class Kaltura_Client_Type_LiveStreamEntry extends Kaltura_Client_Type_LiveEntry
 	 *
 	 * @var string
 	 */
+	public $primarySrtBroadcastingUrl = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $primarySrtStreamId = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $secondarySrtBroadcastingUrl = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $secondarySrtStreamId = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
 	public $streamName = null;
 
 	/**
@@ -212,6 +250,13 @@ class Kaltura_Client_Type_LiveStreamEntry extends Kaltura_Client_Type_LiveEntry
 	 * @readonly
 	 */
 	public $streamUsername = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $srtPass = null;
 
 	/**
 	 * The Streams primary server node id

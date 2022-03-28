@@ -94,6 +94,13 @@ class Kaltura_Client_Type_User extends Kaltura_Client_Type_BaseUser
 			$this->ksPrivileges = (string)$xml->ksPrivileges;
 		if(count($xml->encryptedSeed))
 			$this->encryptedSeed = (string)$xml->encryptedSeed;
+		if(count($xml->isSsoExcluded))
+		{
+			if(!empty($xml->isSsoExcluded) && ((int) $xml->isSsoExcluded === 1 || strtolower((string)$xml->isSsoExcluded) === 'true'))
+				$this->isSsoExcluded = true;
+			else
+				$this->isSsoExcluded = false;
+		}
 	}
 	/**
 	 * 
@@ -218,6 +225,13 @@ class Kaltura_Client_Type_User extends Kaltura_Client_Type_BaseUser
 	 * @readonly
 	 */
 	public $encryptedSeed = null;
+
+	/**
+	 * 
+	 *
+	 * @var bool
+	 */
+	public $isSsoExcluded = null;
 
 
 }
