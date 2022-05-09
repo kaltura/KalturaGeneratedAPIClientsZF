@@ -31,11 +31,11 @@
  * @package Kaltura
  * @subpackage Client
  */
-abstract class Kaltura_Client_ElasticSearch_Type_ESearchResult extends Kaltura_Client_ObjectBase
+class Kaltura_Client_Metadata_Type_TransformMetadataResponse extends Kaltura_Client_ObjectBase
 {
 	public function getKalturaObjectType()
 	{
-		return 'KalturaESearchResult';
+		return 'KalturaTransformMetadataResponse';
 	}
 	
 	public function __construct(SimpleXMLElement $xml = null)
@@ -45,34 +45,41 @@ abstract class Kaltura_Client_ElasticSearch_Type_ESearchResult extends Kaltura_C
 		if(is_null($xml))
 			return;
 		
-		if(count($xml->highlight))
+		if(count($xml->objects))
 		{
-			if(empty($xml->highlight))
-				$this->highlight = array();
+			if(empty($xml->objects))
+				$this->objects = array();
 			else
-				$this->highlight = Kaltura_Client_ParseUtils::unmarshalArray($xml->highlight, "KalturaESearchHighlight");
+				$this->objects = Kaltura_Client_ParseUtils::unmarshalArray($xml->objects, "KalturaMetadata");
 		}
-		if(count($xml->itemsData))
-		{
-			if(empty($xml->itemsData))
-				$this->itemsData = array();
-			else
-				$this->itemsData = Kaltura_Client_ParseUtils::unmarshalArray($xml->itemsData, "KalturaESearchItemDataResult");
-		}
+		if(count($xml->totalCount))
+			$this->totalCount = (int)$xml->totalCount;
+		if(count($xml->lowerVersionCount))
+			$this->lowerVersionCount = (int)$xml->lowerVersionCount;
 	}
 	/**
 	 * 
 	 *
-	 * @var array of KalturaESearchHighlight
+	 * @var array of KalturaMetadata
+	 * @readonly
 	 */
-	public $highlight;
+	public $objects;
 
 	/**
 	 * 
 	 *
-	 * @var array of KalturaESearchItemDataResult
+	 * @var int
+	 * @readonly
 	 */
-	public $itemsData;
+	public $totalCount = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 * @readonly
+	 */
+	public $lowerVersionCount = null;
 
 
 }

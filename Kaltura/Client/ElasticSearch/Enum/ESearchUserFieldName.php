@@ -33,6 +33,7 @@
  */
 class Kaltura_Client_ElasticSearch_Enum_ESearchUserFieldName extends Kaltura_Client_EnumBase
 {
+	const COMPANY = "company";
 	const CREATED_AT = "created_at";
 	const EMAIL = "email";
 	const FIRST_NAME = "first_name";
@@ -42,6 +43,7 @@ class Kaltura_Client_ElasticSearch_Enum_ESearchUserFieldName extends Kaltura_Cli
 	const ROLE_IDS = "role_ids";
 	const SCREEN_NAME = "screen_name";
 	const TAGS = "tags";
+	const TITLE = "title";
 	const UPDATED_AT = "updated_at";
 	const USER_ID = "user_id";
 	const TYPE = "user_type";

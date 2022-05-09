@@ -32,7 +32,7 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_ThumbParamsOutputService extends Kaltura_Client_ServiceBase
+class Kaltura_Client_Metadata_MetadataBatchService extends Kaltura_Client_ServiceBase
 {
 	function __construct(Kaltura_Client_Client $client = null)
 	{
@@ -40,43 +40,51 @@ class Kaltura_Client_ThumbParamsOutputService extends Kaltura_Client_ServiceBase
 	}
 
 	/**
-	 * @return Kaltura_Client_Type_ThumbParamsOutput
+	 * @return array
 	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
-	function get($id)
+	function getExclusiveTransformMetadataJobs(Kaltura_Client_Type_ExclusiveLockKey $lockKey, $maxExecutionTime, $numberOfJobs, Kaltura_Client_Type_BatchJobFilter $filter = null, $maxJobToPull = null)
 	{
 		$kparams = array();
-		$this->client->addParam($kparams, "id", $id);
-		$this->client->queueServiceActionCall("thumbparamsoutput", "get", "KalturaThumbParamsOutput", $kparams);
+		$this->client->addParam($kparams, "lockKey", $lockKey->toParams());
+		$this->client->addParam($kparams, "maxExecutionTime", $maxExecutionTime);
+		$this->client->addParam($kparams, "numberOfJobs", $numberOfJobs);
+		if ($filter !== null)
+			$this->client->addParam($kparams, "filter", $filter->toParams());
+		$this->client->addParam($kparams, "maxJobToPull", $maxJobToPull);
+		$this->client->queueServiceActionCall("metadata_metadatabatch", "getExclusiveTransformMetadataJobs", "KalturaBatchJob", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
 		$resultXml = $this->client->doQueue();
 		$resultXmlObject = new \SimpleXMLElement($resultXml);
 		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaThumbParamsOutput");
-		$this->client->validateObjectType($resultObject, "Kaltura_Client_Type_ThumbParamsOutput");
+		$resultObject = Kaltura_Client_ParseUtils::unmarshalArray($resultXmlObject->result, "KalturaBatchJob");
+		foreach($resultObject as $resultObjectItem){
+			$this->client->validateObjectType($resultObjectItem, "Kaltura_Client_Type_BatchJob");
+		}
 		return $resultObject;
 	}
 
 	/**
-	 * @return Kaltura_Client_Type_ThumbParamsOutputListResponse
+	 * @return Kaltura_Client_Metadata_Type_TransformMetadataResponse
 	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
-	function listAction(Kaltura_Client_Type_ThumbParamsOutputFilter $filter = null, Kaltura_Client_Type_FilterPager $pager = null)
+	function getTransformMetadataObjects($metadataProfileId, $srcVersion, $destVersion, Kaltura_Client_Type_FilterPager $pager = null)
 	{
 		$kparams = array();
-		if ($filter !== null)
-			$this->client->addParam($kparams, "filter", $filter->toParams());
+		$this->client->addParam($kparams, "metadataProfileId", $metadataProfileId);
+		$this->client->addParam($kparams, "srcVersion", $srcVersion);
+		$this->client->addParam($kparams, "destVersion", $destVersion);
 		if ($pager !== null)
 			$this->client->addParam($kparams, "pager", $pager->toParams());
-		$this->client->queueServiceActionCall("thumbparamsoutput", "list", "KalturaThumbParamsOutputListResponse", $kparams);
+		$this->client->queueServiceActionCall("metadata_metadatabatch", "getTransformMetadataObjects", "KalturaTransformMetadataResponse", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
 		$resultXml = $this->client->doQueue();
 		$resultXmlObject = new \SimpleXMLElement($resultXml);
 		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaThumbParamsOutputListResponse");
-		$this->client->validateObjectType($resultObject, "Kaltura_Client_Type_ThumbParamsOutputListResponse");
+		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaTransformMetadataResponse");
+		$this->client->validateObjectType($resultObject, "Kaltura_Client_Metadata_Type_TransformMetadataResponse");
 		return $resultObject;
 	}
 }
