@@ -31,48 +31,15 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Type_ExclusiveLockKey extends Kaltura_Client_ObjectBase
+class Kaltura_Client_Enum_LiveReportExportType extends Kaltura_Client_EnumBase
 {
-	public function getKalturaObjectType()
-	{
-		return 'KalturaExclusiveLockKey';
-	}
-	
-	public function __construct(SimpleXMLElement $xml = null)
-	{
-		parent::__construct($xml);
-		
-		if(is_null($xml))
-			return;
-		
-		if(count($xml->schedulerId))
-			$this->schedulerId = (int)$xml->schedulerId;
-		if(count($xml->workerId))
-			$this->workerId = (int)$xml->workerId;
-		if(count($xml->batchIndex))
-			$this->batchIndex = (int)$xml->batchIndex;
-	}
-	/**
-	 * 
-	 *
-	 * @var int
-	 */
-	public $schedulerId = null;
-
-	/**
-	 * 
-	 *
-	 * @var int
-	 */
-	public $workerId = null;
-
-	/**
-	 * 
-	 *
-	 * @var int
-	 */
-	public $batchIndex = null;
-
-
+	const PARTNER_TOTAL_ALL = 1;
+	const PARTNER_TOTAL_LIVE = 2;
+	const ENTRY_TIME_LINE_ALL = 11;
+	const ENTRY_TIME_LINE_LIVE = 12;
+	const LOCATION_ALL = 21;
+	const LOCATION_LIVE = 22;
+	const SYNDICATION_ALL = 31;
+	const SYNDICATION_LIVE = 32;
 }
 
