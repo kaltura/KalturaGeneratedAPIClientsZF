@@ -85,29 +85,6 @@ class Kaltura_Client_LiveReportsService extends Kaltura_Client_ServiceBase
 	}
 
 	/**
-	 * @return Kaltura_Client_Type_LiveStatsListResponse
-	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
-	 */
-	function getReport($reportType, Kaltura_Client_Type_LiveReportInputFilter $filter = null, Kaltura_Client_Type_FilterPager $pager = null)
-	{
-		$kparams = array();
-		$this->client->addParam($kparams, "reportType", $reportType);
-		if ($filter !== null)
-			$this->client->addParam($kparams, "filter", $filter->toParams());
-		if ($pager !== null)
-			$this->client->addParam($kparams, "pager", $pager->toParams());
-		$this->client->queueServiceActionCall("livereports", "getReport", "KalturaLiveStatsListResponse", $kparams);
-		if ($this->client->isMultiRequest())
-			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaLiveStatsListResponse");
-		$this->client->validateObjectType($resultObject, "Kaltura_Client_Type_LiveStatsListResponse");
-		return $resultObject;
-	}
-
-	/**
 	 * @return string
 	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */

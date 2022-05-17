@@ -180,6 +180,26 @@ class Kaltura_Client_DropFolder_DropFolderService extends Kaltura_Client_Service
 	}
 
 	/**
+	 * @return Kaltura_Client_DropFolder_Type_DropFolder
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
+	 */
+	function updateBasicFields($dropFolderId, Kaltura_Client_DropFolder_Type_BasicFieldsDropFolder $dropFolder)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "dropFolderId", $dropFolderId);
+		$this->client->addParam($kparams, "dropFolder", $dropFolder->toParams());
+		$this->client->queueServiceActionCall("dropfolder_dropfolder", "updateBasicFields", "KalturaDropFolder", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultXml = $this->client->doQueue();
+		$resultXmlObject = new \SimpleXMLElement($resultXml);
+		$this->client->checkIfError($resultXmlObject->result);
+		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaDropFolder");
+		$this->client->validateObjectType($resultObject, "Kaltura_Client_DropFolder_Type_DropFolder");
+		return $resultObject;
+	}
+
+	/**
 	 * @return 
 	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
