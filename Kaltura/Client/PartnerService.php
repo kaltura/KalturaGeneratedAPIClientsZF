@@ -155,6 +155,27 @@ class Kaltura_Client_PartnerService extends Kaltura_Client_ServiceBase
 	}
 
 	/**
+	 * @return Kaltura_Client_Type_PartnerUsage
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
+	 */
+	function getUsage($year = "", $month = 1, $resolution = null)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "year", $year);
+		$this->client->addParam($kparams, "month", $month);
+		$this->client->addParam($kparams, "resolution", $resolution);
+		$this->client->queueServiceActionCall("partner", "getUsage", "KalturaPartnerUsage", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultXml = $this->client->doQueue();
+		$resultXmlObject = new \SimpleXMLElement($resultXml);
+		$this->client->checkIfError($resultXmlObject->result);
+		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaPartnerUsage");
+		$this->client->validateObjectType($resultObject, "Kaltura_Client_Type_PartnerUsage");
+		return $resultObject;
+	}
+
+	/**
 	 * @return Kaltura_Client_Type_PartnerListResponse
 	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */

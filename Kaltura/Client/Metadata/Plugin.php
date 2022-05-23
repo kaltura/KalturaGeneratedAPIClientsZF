@@ -43,17 +43,11 @@ class Kaltura_Client_Metadata_Plugin extends Kaltura_Client_Plugin
 	 */
 	public $metadataProfile = null;
 
-	/**
-	 * @var Kaltura_Client_Metadata_MetadataBatchService
-	 */
-	public $metadataBatch = null;
-
 	protected function __construct(Kaltura_Client_Client $client)
 	{
 		parent::__construct($client);
 		$this->metadata = new Kaltura_Client_Metadata_MetadataService($client);
 		$this->metadataProfile = new Kaltura_Client_Metadata_MetadataProfileService($client);
-		$this->metadataBatch = new Kaltura_Client_Metadata_MetadataBatchService($client);
 	}
 
 	/**
@@ -72,7 +66,6 @@ class Kaltura_Client_Metadata_Plugin extends Kaltura_Client_Plugin
 		$services = array(
 			'metadata' => $this->metadata,
 			'metadataProfile' => $this->metadataProfile,
-			'metadataBatch' => $this->metadataBatch,
 		);
 		return $services;
 	}
