@@ -52,7 +52,7 @@ class Kaltura_Client_Type_StatsKmcEvent extends Kaltura_Client_ObjectBase
 		if(count($xml->kmcEventType))
 			$this->kmcEventType = (int)$xml->kmcEventType;
 		if(count($xml->eventTimestamp))
-			$this->eventTimestamp = (float)$xml->eventTimestamp;
+			$this->eventTimestamp = (int)$xml->eventTimestamp;
 		if(count($xml->sessionId))
 			$this->sessionId = (string)$xml->sessionId;
 		if(count($xml->partnerId))
@@ -92,7 +92,7 @@ class Kaltura_Client_Type_StatsKmcEvent extends Kaltura_Client_ObjectBase
 	/**
 	 * the client's timestamp of this event
 	 *
-	 * @var float
+	 * @var int
 	 */
 	public $eventTimestamp = null;
 
