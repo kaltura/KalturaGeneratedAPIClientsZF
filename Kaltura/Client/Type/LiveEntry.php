@@ -78,7 +78,7 @@ abstract class Kaltura_Client_Type_LiveEntry extends Kaltura_Client_Type_MediaEn
 		if(count($xml->lastBroadcast))
 			$this->lastBroadcast = (int)$xml->lastBroadcast;
 		if(count($xml->currentBroadcastStartTime))
-			$this->currentBroadcastStartTime = (int)$xml->currentBroadcastStartTime;
+			$this->currentBroadcastStartTime = (float)$xml->currentBroadcastStartTime;
 		if(count($xml->recordingOptions) && !empty($xml->recordingOptions))
 			$this->recordingOptions = Kaltura_Client_ParseUtils::unmarshalObject($xml->recordingOptions, "KalturaLiveEntryRecordingOptions");
 		if(count($xml->liveStatus))
@@ -178,7 +178,7 @@ abstract class Kaltura_Client_Type_LiveEntry extends Kaltura_Client_Type_MediaEn
 	/**
 	 * The time (unix timestamp in milliseconds) in which the entry broadcast started or 0 when the entry is off the air
 	 *
-	 * @var int
+	 * @var float
 	 */
 	public $currentBroadcastStartTime = null;
 

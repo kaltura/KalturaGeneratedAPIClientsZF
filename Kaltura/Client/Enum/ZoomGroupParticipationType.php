@@ -31,51 +31,10 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_BusinessProcessNotification_Plugin extends Kaltura_Client_Plugin
+class Kaltura_Client_Enum_ZoomGroupParticipationType extends Kaltura_Client_EnumBase
 {
-	/**
-	 * @var Kaltura_Client_BusinessProcessNotification_BusinessProcessServerService
-	 */
-	public $businessProcessServer = null;
-
-	/**
-	 * @var Kaltura_Client_BusinessProcessNotification_BusinessProcessCaseService
-	 */
-	public $businessProcessCase = null;
-
-	protected function __construct(Kaltura_Client_Client $client)
-	{
-		parent::__construct($client);
-		$this->businessProcessServer = new Kaltura_Client_BusinessProcessNotification_BusinessProcessServerService($client);
-		$this->businessProcessCase = new Kaltura_Client_BusinessProcessNotification_BusinessProcessCaseService($client);
-	}
-
-	/**
-	 * @return Kaltura_Client_BusinessProcessNotification_Plugin
-	 */
-	public static function get(Kaltura_Client_Client $client)
-	{
-		return new Kaltura_Client_BusinessProcessNotification_Plugin($client);
-	}
-
-	/**
-	 * @return array<Kaltura_Client_ServiceBase>
-	 */
-	public function getServices()
-	{
-		$services = array(
-			'businessProcessServer' => $this->businessProcessServer,
-			'businessProcessCase' => $this->businessProcessCase,
-		);
-		return $services;
-	}
-
-	/**
-	 * @return string
-	 */
-	public function getName()
-	{
-		return 'businessProcessNotification';
-	}
+	const NO_CLASSIFICATION = 0;
+	const OPT_IN = 1;
+	const OPT_OUT = 2;
 }
 

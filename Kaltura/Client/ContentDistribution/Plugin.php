@@ -58,6 +58,11 @@ class Kaltura_Client_ContentDistribution_Plugin extends Kaltura_Client_Plugin
 	 */
 	public $genericDistributionProviderAction = null;
 
+	/**
+	 * @var Kaltura_Client_ContentDistribution_ContentDistributionBatchService
+	 */
+	public $contentDistributionBatch = null;
+
 	protected function __construct(Kaltura_Client_Client $client)
 	{
 		parent::__construct($client);
@@ -66,6 +71,7 @@ class Kaltura_Client_ContentDistribution_Plugin extends Kaltura_Client_Plugin
 		$this->distributionProvider = new Kaltura_Client_ContentDistribution_DistributionProviderService($client);
 		$this->genericDistributionProvider = new Kaltura_Client_ContentDistribution_GenericDistributionProviderService($client);
 		$this->genericDistributionProviderAction = new Kaltura_Client_ContentDistribution_GenericDistributionProviderActionService($client);
+		$this->contentDistributionBatch = new Kaltura_Client_ContentDistribution_ContentDistributionBatchService($client);
 	}
 
 	/**
@@ -87,6 +93,7 @@ class Kaltura_Client_ContentDistribution_Plugin extends Kaltura_Client_Plugin
 			'distributionProvider' => $this->distributionProvider,
 			'genericDistributionProvider' => $this->genericDistributionProvider,
 			'genericDistributionProviderAction' => $this->genericDistributionProviderAction,
+			'contentDistributionBatch' => $this->contentDistributionBatch,
 		);
 		return $services;
 	}
