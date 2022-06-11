@@ -31,22 +31,37 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_ElasticSearch_Enum_ESearchUserFieldName extends Kaltura_Client_EnumBase
+class Kaltura_Client_Voicebase_Plugin extends Kaltura_Client_Plugin
 {
-	const COMPANY = "company";
-	const COUNTRY = "country";
-	const CREATED_AT = "created_at";
-	const EMAIL = "email";
-	const FIRST_NAME = "first_name";
-	const GROUP_IDS = "group_ids";
-	const LAST_NAME = "last_name";
-	const PERMISSION_NAMES = "permission_names";
-	const ROLE_IDS = "role_ids";
-	const SCREEN_NAME = "screen_name";
-	const TAGS = "tags";
-	const TITLE = "title";
-	const UPDATED_AT = "updated_at";
-	const USER_ID = "user_id";
-	const TYPE = "user_type";
+	protected function __construct(Kaltura_Client_Client $client)
+	{
+		parent::__construct($client);
+	}
+
+	/**
+	 * @return Kaltura_Client_Voicebase_Plugin
+	 */
+	public static function get(Kaltura_Client_Client $client)
+	{
+		return new Kaltura_Client_Voicebase_Plugin($client);
+	}
+
+	/**
+	 * @return array<Kaltura_Client_ServiceBase>
+	 */
+	public function getServices()
+	{
+		$services = array(
+		);
+		return $services;
+	}
+
+	/**
+	 * @return string
+	 */
+	public function getName()
+	{
+		return 'voicebase';
+	}
 }
 

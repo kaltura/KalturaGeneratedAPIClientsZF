@@ -34,6 +34,7 @@
 class Kaltura_Client_Group_Enum_ESearchGroupFieldName extends Kaltura_Client_EnumBase
 {
 	const COMPANY = "company";
+	const COUNTRY = "country";
 	const CREATED_AT = "created_at";
 	const EMAIL = "email";
 	const FIRST_NAME = "first_name";
