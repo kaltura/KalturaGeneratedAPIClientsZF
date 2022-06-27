@@ -31,11 +31,11 @@
  * @package Kaltura
  * @subpackage Client
  */
-abstract class Kaltura_Client_Type_MappedObjectsCsvJobData extends Kaltura_Client_Type_ExportCsvJobData
+class Kaltura_Client_Schedule_Type_LiveCaptionFeature extends Kaltura_Client_Schedule_Type_LiveFeature
 {
 	public function getKalturaObjectType()
 	{
-		return 'KalturaMappedObjectsCsvJobData';
+		return 'KalturaLiveCaptionFeature';
 	}
 	
 	public function __construct(SimpleXMLElement $xml = null)
@@ -45,52 +45,42 @@ abstract class Kaltura_Client_Type_MappedObjectsCsvJobData extends Kaltura_Clien
 		if(is_null($xml))
 			return;
 		
-		if(count($xml->metadataProfileId))
-			$this->metadataProfileId = (int)$xml->metadataProfileId;
-		if(count($xml->additionalFields))
-		{
-			if(empty($xml->additionalFields))
-				$this->additionalFields = array();
-			else
-				$this->additionalFields = Kaltura_Client_ParseUtils::unmarshalArray($xml->additionalFields, "KalturaCsvAdditionalFieldInfo");
-		}
-		if(count($xml->mappedFields))
-		{
-			if(empty($xml->mappedFields))
-				$this->mappedFields = array();
-			else
-				$this->mappedFields = Kaltura_Client_ParseUtils::unmarshalArray($xml->mappedFields, "KalturaKeyValue");
-		}
-		if(count($xml->options) && !empty($xml->options))
-			$this->options = Kaltura_Client_ParseUtils::unmarshalObject($xml->options, "KalturaExportToCsvOptions");
+		if(count($xml->mediaUrl))
+			$this->mediaUrl = (string)$xml->mediaUrl;
+		if(count($xml->mediaKey))
+			$this->mediaKey = (string)$xml->mediaKey;
+		if(count($xml->captionUrl))
+			$this->captionUrl = (string)$xml->captionUrl;
+		if(count($xml->captionToken))
+			$this->captionToken = (string)$xml->captionToken;
 	}
 	/**
-	 * The metadata profile we should look the xpath in
+	 * 
 	 *
-	 * @var int
+	 * @var string
 	 */
-	public $metadataProfileId = null;
-
-	/**
-	 * The xpath to look in the metadataProfileId  and the wanted csv field name
-	 *
-	 * @var array of KalturaCsvAdditionalFieldInfo
-	 */
-	public $additionalFields;
-
-	/**
-	 * Array of header names and their mapped user fields
-	 *
-	 * @var array of KalturaKeyValue
-	 */
-	public $mappedFields;
+	public $mediaUrl = null;
 
 	/**
 	 * 
 	 *
-	 * @var Kaltura_Client_Type_ExportToCsvOptions
+	 * @var string
 	 */
-	public $options;
+	public $mediaKey = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $captionUrl = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $captionToken = null;
 
 
 }

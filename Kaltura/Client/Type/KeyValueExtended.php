@@ -31,11 +31,11 @@
  * @package Kaltura
  * @subpackage Client
  */
-abstract class Kaltura_Client_Type_MappedObjectsCsvJobData extends Kaltura_Client_Type_ExportCsvJobData
+class Kaltura_Client_Type_KeyValueExtended extends Kaltura_Client_Type_KeyValue
 {
 	public function getKalturaObjectType()
 	{
-		return 'KalturaMappedObjectsCsvJobData';
+		return 'KalturaKeyValueExtended';
 	}
 	
 	public function __construct(SimpleXMLElement $xml = null)
@@ -45,52 +45,15 @@ abstract class Kaltura_Client_Type_MappedObjectsCsvJobData extends Kaltura_Clien
 		if(is_null($xml))
 			return;
 		
-		if(count($xml->metadataProfileId))
-			$this->metadataProfileId = (int)$xml->metadataProfileId;
-		if(count($xml->additionalFields))
-		{
-			if(empty($xml->additionalFields))
-				$this->additionalFields = array();
-			else
-				$this->additionalFields = Kaltura_Client_ParseUtils::unmarshalArray($xml->additionalFields, "KalturaCsvAdditionalFieldInfo");
-		}
-		if(count($xml->mappedFields))
-		{
-			if(empty($xml->mappedFields))
-				$this->mappedFields = array();
-			else
-				$this->mappedFields = Kaltura_Client_ParseUtils::unmarshalArray($xml->mappedFields, "KalturaKeyValue");
-		}
-		if(count($xml->options) && !empty($xml->options))
-			$this->options = Kaltura_Client_ParseUtils::unmarshalObject($xml->options, "KalturaExportToCsvOptions");
+		if(count($xml->predefinedFormat))
+			$this->predefinedFormat = (int)$xml->predefinedFormat;
 	}
-	/**
-	 * The metadata profile we should look the xpath in
-	 *
-	 * @var int
-	 */
-	public $metadataProfileId = null;
-
-	/**
-	 * The xpath to look in the metadataProfileId  and the wanted csv field name
-	 *
-	 * @var array of KalturaCsvAdditionalFieldInfo
-	 */
-	public $additionalFields;
-
-	/**
-	 * Array of header names and their mapped user fields
-	 *
-	 * @var array of KalturaKeyValue
-	 */
-	public $mappedFields;
-
 	/**
 	 * 
 	 *
-	 * @var Kaltura_Client_Type_ExportToCsvOptions
+	 * @var Kaltura_Client_Enum_NullableBoolean
 	 */
-	public $options;
+	public $predefinedFormat = null;
 
 
 }
