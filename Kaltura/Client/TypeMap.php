@@ -258,6 +258,7 @@ class Kaltura_Client_TypeMap
 		'KalturaCaptureSpaceUpdateResponseInfoHash' => 'Kaltura_Client_CaptureSpace_Type_CaptureSpaceUpdateResponseInfoHash',
 		'KalturaCaptureThumbJobData' => 'Kaltura_Client_Type_CaptureThumbJobData',
 		'KalturaCatalogItemAdvancedFilter' => 'Kaltura_Client_Reach_Type_CatalogItemAdvancedFilter',
+		'KalturaCategoriesCsvJobData' => 'Kaltura_Client_Type_CategoriesCsvJobData',
 		'KalturaCategory' => 'Kaltura_Client_Type_Category',
 		'KalturaCategoryBaseFilter' => 'Kaltura_Client_Type_CategoryBaseFilter',
 		'KalturaCategoryEntry' => 'Kaltura_Client_Type_CategoryEntry',

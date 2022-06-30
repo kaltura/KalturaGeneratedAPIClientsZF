@@ -34,11 +34,6 @@
 class Kaltura_Client_BusinessProcessNotification_Plugin extends Kaltura_Client_Plugin
 {
 	/**
-	 * @var Kaltura_Client_BusinessProcessNotification_BusinessProcessServerService
-	 */
-	public $businessProcessServer = null;
-
-	/**
 	 * @var Kaltura_Client_BusinessProcessNotification_BusinessProcessCaseService
 	 */
 	public $businessProcessCase = null;
@@ -46,7 +41,6 @@ class Kaltura_Client_BusinessProcessNotification_Plugin extends Kaltura_Client_P
 	protected function __construct(Kaltura_Client_Client $client)
 	{
 		parent::__construct($client);
-		$this->businessProcessServer = new Kaltura_Client_BusinessProcessNotification_BusinessProcessServerService($client);
 		$this->businessProcessCase = new Kaltura_Client_BusinessProcessNotification_BusinessProcessCaseService($client);
 	}
 
@@ -64,7 +58,6 @@ class Kaltura_Client_BusinessProcessNotification_Plugin extends Kaltura_Client_P
 	public function getServices()
 	{
 		$services = array(
-			'businessProcessServer' => $this->businessProcessServer,
 			'businessProcessCase' => $this->businessProcessCase,
 		);
 		return $services;

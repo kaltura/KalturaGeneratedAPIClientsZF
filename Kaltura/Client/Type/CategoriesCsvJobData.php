@@ -31,37 +31,30 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_DailymotionDistribution_Plugin extends Kaltura_Client_Plugin
+class Kaltura_Client_Type_CategoriesCsvJobData extends Kaltura_Client_Type_MappedObjectsCsvJobData
 {
-	protected function __construct(Kaltura_Client_Client $client)
+	public function getKalturaObjectType()
 	{
-		parent::__construct($client);
+		return 'KalturaCategoriesCsvJobData';
 	}
-
+	
+	public function __construct(SimpleXMLElement $xml = null)
+	{
+		parent::__construct($xml);
+		
+		if(is_null($xml))
+			return;
+		
+		if(count($xml->filter) && !empty($xml->filter))
+			$this->filter = Kaltura_Client_ParseUtils::unmarshalObject($xml->filter, "KalturaCategoryFilter");
+	}
 	/**
-	 * @return Kaltura_Client_DailymotionDistribution_Plugin
+	 * The filter should return the list of categories that need to be specified in the csv.
+	 *
+	 * @var Kaltura_Client_Type_CategoryFilter
 	 */
-	public static function get(Kaltura_Client_Client $client)
-	{
-		return new Kaltura_Client_DailymotionDistribution_Plugin($client);
-	}
+	public $filter;
 
-	/**
-	 * @return array<Kaltura_Client_ServiceBase>
-	 */
-	public function getServices()
-	{
-		$services = array(
-		);
-		return $services;
-	}
 
-	/**
-	 * @return string
-	 */
-	public function getName()
-	{
-		return 'dailymotionDistribution';
-	}
 }
 
