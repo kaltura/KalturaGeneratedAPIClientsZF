@@ -137,6 +137,8 @@ class Kaltura_Client_Type_ReportInputFilter extends Kaltura_Client_Type_ReportIn
 			$this->virtualEventIdIn = (string)$xml->virtualEventIdIn;
 		if(count($xml->originIn))
 			$this->originIn = (string)$xml->originIn;
+		if(count($xml->uiConfIdIn))
+			$this->uiConfIdIn = (string)$xml->uiConfIdIn;
 	}
 	/**
 	 * Search keywords to filter objects
@@ -424,6 +426,13 @@ class Kaltura_Client_Type_ReportInputFilter extends Kaltura_Client_Type_ReportIn
 	 * @var string
 	 */
 	public $originIn = null;
+
+	/**
+	 * filter by ui conf id
+	 *
+	 * @var string
+	 */
+	public $uiConfIdIn = null;
 
 
 }
