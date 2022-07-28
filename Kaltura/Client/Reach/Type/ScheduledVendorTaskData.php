@@ -31,15 +31,51 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Reach_Enum_VendorServiceFeature extends Kaltura_Client_EnumBase
+class Kaltura_Client_Reach_Type_ScheduledVendorTaskData extends Kaltura_Client_Reach_Type_VendorTaskData
 {
-	const CAPTIONS = 1;
-	const TRANSLATION = 2;
-	const ALIGNMENT = 3;
-	const AUDIO_DESCRIPTION = 4;
-	const CHAPTERING = 5;
-	const INTELLIGENT_TAGGING = 6;
-	const DUBBING = 7;
-	const LIVE_CAPTION = 8;
+	public function getKalturaObjectType()
+	{
+		return 'KalturaScheduledVendorTaskData';
+	}
+	
+	public function __construct(SimpleXMLElement $xml = null)
+	{
+		parent::__construct($xml);
+		
+		if(is_null($xml))
+			return;
+		
+		if(count($xml->startDate))
+			$this->startDate = (int)$xml->startDate;
+		if(count($xml->endDate))
+			$this->endDate = (int)$xml->endDate;
+		if(count($xml->scheduledEventId))
+			$this->scheduledEventId = (int)$xml->scheduledEventId;
+	}
+	/**
+	 * 
+	 *
+	 * @var int
+	 * @insertonly
+	 */
+	public $startDate = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 * @insertonly
+	 */
+	public $endDate = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 * @insertonly
+	 */
+	public $scheduledEventId = null;
+
+
 }
 

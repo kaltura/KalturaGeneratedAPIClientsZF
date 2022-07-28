@@ -41,5 +41,6 @@ class Kaltura_Client_Reach_Enum_EntryVendorTaskStatus extends Kaltura_Client_Enu
 	const ERROR = 6;
 	const ABORTED = 7;
 	const PENDING_ENTRY_READY = 8;
+	const SCHEDULED = 9;
 }
 

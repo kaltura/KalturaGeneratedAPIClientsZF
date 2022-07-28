@@ -200,4 +200,25 @@ class Kaltura_Client_Schedule_ScheduleEventService extends Kaltura_Client_Servic
 		$this->client->validateObjectType($resultObject, "Kaltura_Client_Schedule_Type_ScheduleEvent");
 		return $resultObject;
 	}
+
+	/**
+	 * @return Kaltura_Client_Schedule_Type_LiveStreamScheduleEvent
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
+	 */
+	function updateLiveFeature($scheduledEventId, $featureName, Kaltura_Client_Schedule_Type_LiveFeature $liveFeature)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "scheduledEventId", $scheduledEventId);
+		$this->client->addParam($kparams, "featureName", $featureName);
+		$this->client->addParam($kparams, "liveFeature", $liveFeature->toParams());
+		$this->client->queueServiceActionCall("schedule_scheduleevent", "updateLiveFeature", "KalturaLiveStreamScheduleEvent", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultXml = $this->client->doQueue();
+		$resultXmlObject = new \SimpleXMLElement($resultXml);
+		$this->client->checkIfError($resultXmlObject->result);
+		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaLiveStreamScheduleEvent");
+		$this->client->validateObjectType($resultObject, "Kaltura_Client_Schedule_Type_LiveStreamScheduleEvent");
+		return $resultObject;
+	}
 }
