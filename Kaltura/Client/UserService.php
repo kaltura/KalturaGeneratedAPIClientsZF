@@ -354,7 +354,7 @@ class Kaltura_Client_UserService extends Kaltura_Client_ServiceBase
 	}
 
 	/**
-	 * @return 
+	 * @return Kaltura_Client_Type_User
 	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
 	function loginDataResetPassword($loginDataId, $newPassword)
@@ -362,12 +362,15 @@ class Kaltura_Client_UserService extends Kaltura_Client_ServiceBase
 		$kparams = array();
 		$this->client->addParam($kparams, "loginDataId", $loginDataId);
 		$this->client->addParam($kparams, "newPassword", $newPassword);
-		$this->client->queueServiceActionCall("user", "loginDataResetPassword", null, $kparams);
+		$this->client->queueServiceActionCall("user", "loginDataResetPassword", "KalturaUser", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
 		$resultXml = $this->client->doQueue();
 		$resultXmlObject = new \SimpleXMLElement($resultXml);
 		$this->client->checkIfError($resultXmlObject->result);
+		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaUser");
+		$this->client->validateObjectType($resultObject, "Kaltura_Client_Type_User");
+		return $resultObject;
 	}
 
 	/**
