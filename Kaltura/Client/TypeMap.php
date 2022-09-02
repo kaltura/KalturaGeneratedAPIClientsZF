@@ -886,6 +886,7 @@ class Kaltura_Client_TypeMap
 		'KalturaLiveReportExportParams' => 'Kaltura_Client_Type_LiveReportExportParams',
 		'KalturaLiveReportExportResponse' => 'Kaltura_Client_Type_LiveReportExportResponse',
 		'KalturaLiveReportInputFilter' => 'Kaltura_Client_Type_LiveReportInputFilter',
+		'KalturaLiveRestreamFeature' => 'Kaltura_Client_Schedule_Type_LiveRestreamFeature',
 		'KalturaLiveStats' => 'Kaltura_Client_Type_LiveStats',
 		'KalturaLiveStatsEvent' => 'Kaltura_Client_Type_LiveStatsEvent',
 		'KalturaLiveStatsListResponse' => 'Kaltura_Client_Type_LiveStatsListResponse',
