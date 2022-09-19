@@ -266,6 +266,8 @@ class Kaltura_Client_Type_Partner extends Kaltura_Client_ObjectBase
 			$this->allowedDomains = (string)$xml->allowedDomains;
 		if(count($xml->excludedAdminRoleName))
 			$this->excludedAdminRoleName = (string)$xml->excludedAdminRoleName;
+		if(count($xml->eventPlatformAllowedTemplates))
+			$this->eventPlatformAllowedTemplates = (string)$xml->eventPlatformAllowedTemplates;
 	}
 	/**
 	 * 
@@ -850,6 +852,13 @@ class Kaltura_Client_Type_Partner extends Kaltura_Client_ObjectBase
 	 * @readonly
 	 */
 	public $excludedAdminRoleName = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $eventPlatformAllowedTemplates = null;
 
 
 }
