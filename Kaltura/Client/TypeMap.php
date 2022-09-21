@@ -985,6 +985,7 @@ class Kaltura_Client_TypeMap
 		'KalturaMsnDistributionProvider' => 'Kaltura_Client_MsnDistribution_Type_MsnDistributionProvider',
 		'KalturaMsnDistributionProviderBaseFilter' => 'Kaltura_Client_MsnDistribution_Type_MsnDistributionProviderBaseFilter',
 		'KalturaMsnDistributionProviderFilter' => 'Kaltura_Client_MsnDistribution_Type_MsnDistributionProviderFilter',
+		'KalturaMultiLingualString' => 'Kaltura_Client_Type_MultiLingualString',
 		'KalturaNotificationJobData' => 'Kaltura_Client_Type_NotificationJobData',
 		'KalturaObject' => 'Kaltura_Client_Type_Object',
 		'KalturaObjectIdField' => 'Kaltura_Client_Type_ObjectIdField',

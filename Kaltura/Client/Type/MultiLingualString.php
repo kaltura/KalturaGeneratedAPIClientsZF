@@ -31,11 +31,11 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Type_RequestConfiguration extends Kaltura_Client_ObjectBase
+class Kaltura_Client_Type_MultiLingualString extends Kaltura_Client_ObjectBase
 {
 	public function getKalturaObjectType()
 	{
-		return 'KalturaRequestConfiguration';
+		return 'KalturaMultiLingualString';
 	}
 	
 	public function __construct(SimpleXMLElement $xml = null)
@@ -45,42 +45,24 @@ class Kaltura_Client_Type_RequestConfiguration extends Kaltura_Client_ObjectBase
 		if(is_null($xml))
 			return;
 		
-		if(count($xml->partnerId))
-			$this->partnerId = (int)$xml->partnerId;
-		if(count($xml->ks))
-			$this->ks = (string)$xml->ks;
 		if(count($xml->language))
 			$this->language = (string)$xml->language;
-		if(count($xml->responseProfile) && !empty($xml->responseProfile))
-			$this->responseProfile = Kaltura_Client_ParseUtils::unmarshalObject($xml->responseProfile, "KalturaBaseResponseProfile");
+		if(count($xml->value))
+			$this->value = (string)$xml->value;
 	}
 	/**
-	 * Impersonated partner id
-	 *
-	 * @var int
-	 */
-	public $partnerId = null;
-
-	/**
-	 * Kaltura API session
-	 *
-	 * @var string
-	 */
-	public $ks = null;
-
-	/**
-	 * language
+	 * The language of the value
 	 *
 	 * @var string
 	 */
 	public $language = null;
 
 	/**
-	 * Response profile - this attribute will be automatically unset after every API call.
+	 * Value
 	 *
-	 * @var Kaltura_Client_Type_BaseResponseProfile
+	 * @var string
 	 */
-	public $responseProfile;
+	public $value = null;
 
 
 }

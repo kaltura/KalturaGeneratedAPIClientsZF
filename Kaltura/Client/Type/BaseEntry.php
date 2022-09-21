@@ -49,8 +49,22 @@ class Kaltura_Client_Type_BaseEntry extends Kaltura_Client_ObjectBase
 			$this->id = (string)$xml->id;
 		if(count($xml->name))
 			$this->name = (string)$xml->name;
+		if(count($xml->multiLingual_name))
+		{
+			if(empty($xml->multiLingual_name))
+				$this->multiLingual_name = array();
+			else
+				$this->multiLingual_name = Kaltura_Client_ParseUtils::unmarshalArray($xml->multiLingual_name, "KalturaMultiLingualString");
+		}
 		if(count($xml->description))
 			$this->description = (string)$xml->description;
+		if(count($xml->multiLingual_description))
+		{
+			if(empty($xml->multiLingual_description))
+				$this->multiLingual_description = array();
+			else
+				$this->multiLingual_description = Kaltura_Client_ParseUtils::unmarshalArray($xml->multiLingual_description, "KalturaMultiLingualString");
+		}
 		if(count($xml->partnerId))
 			$this->partnerId = (int)$xml->partnerId;
 		if(count($xml->userId))
@@ -59,6 +73,13 @@ class Kaltura_Client_Type_BaseEntry extends Kaltura_Client_ObjectBase
 			$this->creatorId = (string)$xml->creatorId;
 		if(count($xml->tags))
 			$this->tags = (string)$xml->tags;
+		if(count($xml->multiLingual_tags))
+		{
+			if(empty($xml->multiLingual_tags))
+				$this->multiLingual_tags = array();
+			else
+				$this->multiLingual_tags = Kaltura_Client_ParseUtils::unmarshalArray($xml->multiLingual_tags, "KalturaMultiLingualString");
+		}
 		if(count($xml->adminTags))
 			$this->adminTags = (string)$xml->adminTags;
 		if(count($xml->categories))
@@ -168,11 +189,25 @@ class Kaltura_Client_Type_BaseEntry extends Kaltura_Client_ObjectBase
 	public $name = null;
 
 	/**
+	 * Entry name (Min 1 chars)
+	 *
+	 * @var array of KalturaMultiLingualString
+	 */
+	public $multiLingual_name;
+
+	/**
 	 * Entry description
 	 *
 	 * @var string
 	 */
 	public $description = null;
+
+	/**
+	 * Entry description
+	 *
+	 * @var array of KalturaMultiLingualString
+	 */
+	public $multiLingual_description;
 
 	/**
 	 * 
@@ -203,6 +238,13 @@ class Kaltura_Client_Type_BaseEntry extends Kaltura_Client_ObjectBase
 	 * @var string
 	 */
 	public $tags = null;
+
+	/**
+	 * Entry tags
+	 *
+	 * @var array of KalturaMultiLingualString
+	 */
+	public $multiLingual_tags;
 
 	/**
 	 * Entry admin tags can be updated only by administrators
