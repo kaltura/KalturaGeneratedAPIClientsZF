@@ -33,6 +33,8 @@
  */
 class Kaltura_Client_Enum_UserEntryExtendedStatus extends Kaltura_Client_EnumBase
 {
+	const SYNC_STATUS_ERROR = "quiz.SYNC_STATUS_ERROR";
+	const SYNC_STATUS_SUCCESS = "quiz.SYNC_STATUS_SUCCESS";
 	const PLAYBACK_COMPLETE = "viewHistory.PLAYBACK_COMPLETE";
 	const PLAYBACK_STARTED = "viewHistory.PLAYBACK_STARTED";
 	const VIEWED = "viewHistory.VIEWED";
