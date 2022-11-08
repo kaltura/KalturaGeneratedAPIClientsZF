@@ -253,6 +253,13 @@ class Kaltura_Client_Type_Partner extends Kaltura_Client_ObjectBase
 			$this->loginBlockPeriod = (int)$xml->loginBlockPeriod;
 		if(count($xml->numPrevPassToKeep))
 			$this->numPrevPassToKeep = (int)$xml->numPrevPassToKeep;
+		if(count($xml->allowDefaultPasswordRestrictions))
+		{
+			if(!empty($xml->allowDefaultPasswordRestrictions) && ((int) $xml->allowDefaultPasswordRestrictions === 1 || strtolower((string)$xml->allowDefaultPasswordRestrictions) === 'true'))
+				$this->allowDefaultPasswordRestrictions = true;
+			else
+				$this->allowDefaultPasswordRestrictions = false;
+		}
 		if(count($xml->twoFactorAuthenticationMode))
 			$this->twoFactorAuthenticationMode = (int)$xml->twoFactorAuthenticationMode;
 		if(count($xml->isSelfServe))
@@ -268,6 +275,8 @@ class Kaltura_Client_Type_Partner extends Kaltura_Client_ObjectBase
 			$this->excludedAdminRoleName = (string)$xml->excludedAdminRoleName;
 		if(count($xml->eventPlatformAllowedTemplates))
 			$this->eventPlatformAllowedTemplates = (string)$xml->eventPlatformAllowedTemplates;
+		if(count($xml->verticalClassificationId))
+			$this->verticalClassificationId = (int)$xml->verticalClassificationId;
 	}
 	/**
 	 * 
@@ -825,6 +834,14 @@ class Kaltura_Client_Type_Partner extends Kaltura_Client_ObjectBase
 	/**
 	 * 
 	 *
+	 * @var bool
+	 * @readonly
+	 */
+	public $allowDefaultPasswordRestrictions = null;
+
+	/**
+	 * 
+	 *
 	 * @var Kaltura_Client_Enum_TwoFactorAuthenticationMode
 	 * @readonly
 	 */
@@ -859,6 +876,14 @@ class Kaltura_Client_Type_Partner extends Kaltura_Client_ObjectBase
 	 * @var string
 	 */
 	public $eventPlatformAllowedTemplates = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 * @readonly
+	 */
+	public $verticalClassificationId = null;
 
 
 }
