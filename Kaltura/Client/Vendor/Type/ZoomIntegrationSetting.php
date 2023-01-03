@@ -63,8 +63,6 @@ class Kaltura_Client_Vendor_Type_ZoomIntegrationSetting extends Kaltura_Client_V
 			$this->enableZoomTranscription = (int)$xml->enableZoomTranscription;
 		if(count($xml->zoomAccountDescription))
 			$this->zoomAccountDescription = (string)$xml->zoomAccountDescription;
-		if(count($xml->enableMeetingUpload))
-			$this->enableMeetingUpload = (int)$xml->enableMeetingUpload;
 		if(count($xml->optOutGroupNames))
 			$this->optOutGroupNames = (string)$xml->optOutGroupNames;
 		if(count($xml->optInGroupNames))
@@ -134,13 +132,6 @@ class Kaltura_Client_Vendor_Type_ZoomIntegrationSetting extends Kaltura_Client_V
 	 * @var string
 	 */
 	public $zoomAccountDescription = null;
-
-	/**
-	 * 
-	 *
-	 * @var Kaltura_Client_Enum_NullableBoolean
-	 */
-	public $enableMeetingUpload = null;
 
 	/**
 	 * 

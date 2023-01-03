@@ -58,6 +58,13 @@ class Kaltura_Client_Type_User extends Kaltura_Client_Type_BaseUser
 			else
 				$this->isAdmin = false;
 		}
+		if(count($xml->isGuest))
+		{
+			if(!empty($xml->isGuest) && ((int) $xml->isGuest === 1 || strtolower((string)$xml->isGuest) === 'true'))
+				$this->isGuest = true;
+			else
+				$this->isGuest = false;
+		}
 		if(count($xml->roleIds))
 			$this->roleIds = (string)$xml->roleIds;
 		if(count($xml->roleNames))
@@ -101,6 +108,8 @@ class Kaltura_Client_Type_User extends Kaltura_Client_Type_BaseUser
 			else
 				$this->isSsoExcluded = false;
 		}
+		if(count($xml->externalId))
+			$this->externalId = (string)$xml->externalId;
 	}
 	/**
 	 * 
@@ -129,6 +138,14 @@ class Kaltura_Client_Type_User extends Kaltura_Client_Type_BaseUser
 	 * @var bool
 	 */
 	public $isAdmin = null;
+
+	/**
+	 * 
+	 *
+	 * @var bool
+	 * @insertonly
+	 */
+	public $isGuest = null;
 
 	/**
 	 * 
@@ -232,6 +249,14 @@ class Kaltura_Client_Type_User extends Kaltura_Client_Type_BaseUser
 	 * @var bool
 	 */
 	public $isSsoExcluded = null;
+
+	/**
+	 * This field should be sent instead of the id field whenever you want to work with hashed user ids
+	 *
+	 * @var string
+	 * @insertonly
+	 */
+	public $externalId = null;
 
 
 }

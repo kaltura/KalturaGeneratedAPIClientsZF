@@ -53,6 +53,8 @@ class Kaltura_Client_Schedule_Type_LiveCaptionFeature extends Kaltura_Client_Sch
 			$this->captionUrl = (string)$xml->captionUrl;
 		if(count($xml->captionToken))
 			$this->captionToken = (string)$xml->captionToken;
+		if(count($xml->inputDelay))
+			$this->inputDelay = (int)$xml->inputDelay;
 	}
 	/**
 	 * 
@@ -81,6 +83,13 @@ class Kaltura_Client_Schedule_Type_LiveCaptionFeature extends Kaltura_Client_Sch
 	 * @var string
 	 */
 	public $captionToken = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $inputDelay = null;
 
 
 }

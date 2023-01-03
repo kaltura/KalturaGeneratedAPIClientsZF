@@ -35,5 +35,6 @@ class Kaltura_Client_Enum_ResetPassLinkType extends Kaltura_Client_EnumBase
 {
 	const KMC = "1";
 	const KMS = "2";
+	const KME = "3";
 }
 

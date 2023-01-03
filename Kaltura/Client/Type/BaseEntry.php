@@ -48,7 +48,12 @@ class Kaltura_Client_Type_BaseEntry extends Kaltura_Client_ObjectBase
 		if(count($xml->id))
 			$this->id = (string)$xml->id;
 		if(count($xml->name))
-			$this->name = (string)$xml->name;
+		{
+			if(isset($xml->name->item) && count($xml->name->item))
+				$this->multiLingual_name = Kaltura_Client_ParseUtils::unmarshalArray($xml->name, '');
+			else
+				$this->name = (string)$xml->name;
+		}
 		if(count($xml->multiLingual_name))
 		{
 			if(empty($xml->multiLingual_name))
@@ -57,7 +62,12 @@ class Kaltura_Client_Type_BaseEntry extends Kaltura_Client_ObjectBase
 				$this->multiLingual_name = Kaltura_Client_ParseUtils::unmarshalArray($xml->multiLingual_name, "KalturaMultiLingualString");
 		}
 		if(count($xml->description))
-			$this->description = (string)$xml->description;
+		{
+			if(isset($xml->description->item) && count($xml->description->item))
+				$this->multiLingual_description = Kaltura_Client_ParseUtils::unmarshalArray($xml->description, '');
+			else
+				$this->description = (string)$xml->description;
+		}
 		if(count($xml->multiLingual_description))
 		{
 			if(empty($xml->multiLingual_description))
@@ -72,7 +82,12 @@ class Kaltura_Client_Type_BaseEntry extends Kaltura_Client_ObjectBase
 		if(count($xml->creatorId))
 			$this->creatorId = (string)$xml->creatorId;
 		if(count($xml->tags))
-			$this->tags = (string)$xml->tags;
+		{
+			if(isset($xml->tags->item) && count($xml->tags->item))
+				$this->multiLingual_tags = Kaltura_Client_ParseUtils::unmarshalArray($xml->tags, '');
+			else
+				$this->tags = (string)$xml->tags;
+		}
 		if(count($xml->multiLingual_tags))
 		{
 			if(empty($xml->multiLingual_tags))

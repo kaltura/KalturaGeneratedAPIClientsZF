@@ -67,6 +67,8 @@ abstract class Kaltura_Client_Vendor_Type_IntegrationSetting extends Kaltura_Cli
 			$this->updatedAt = (string)$xml->updatedAt;
 		if(count($xml->partnerId))
 			$this->partnerId = (int)$xml->partnerId;
+		if(count($xml->enableMeetingUpload))
+			$this->enableMeetingUpload = (int)$xml->enableMeetingUpload;
 	}
 	/**
 	 * 
@@ -150,6 +152,13 @@ abstract class Kaltura_Client_Vendor_Type_IntegrationSetting extends Kaltura_Cli
 	 * @readonly
 	 */
 	public $partnerId = null;
+
+	/**
+	 * 
+	 *
+	 * @var Kaltura_Client_Enum_NullableBoolean
+	 */
+	public $enableMeetingUpload = null;
 
 
 }

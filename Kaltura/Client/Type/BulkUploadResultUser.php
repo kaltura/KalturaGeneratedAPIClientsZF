@@ -73,6 +73,8 @@ class Kaltura_Client_Type_BulkUploadResultUser extends Kaltura_Client_Type_BulkU
 			$this->lastName = (string)$xml->lastName;
 		if(count($xml->group))
 			$this->group = (string)$xml->group;
+		if(count($xml->externalId))
+			$this->externalId = (string)$xml->externalId;
 	}
 	/**
 	 * 
@@ -171,6 +173,13 @@ class Kaltura_Client_Type_BulkUploadResultUser extends Kaltura_Client_Type_BulkU
 	 * @var string
 	 */
 	public $group = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $externalId = null;
 
 
 }
