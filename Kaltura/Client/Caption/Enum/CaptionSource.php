@@ -9,7 +9,7 @@
 // to do with audio, video, and animation what Wiki platforms allow them to do with
 // text.
 //
-// Copyright (C) 2006-2022  Kaltura Inc.
+// Copyright (C) 2006-2023  Kaltura Inc.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -35,5 +35,6 @@ class Kaltura_Client_Caption_Enum_CaptionSource extends Kaltura_Client_EnumBase
 {
 	const UNKNOWN = "0";
 	const ZOOM = "1";
+	const WEBEX = "2";
 }
 

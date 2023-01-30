@@ -9,7 +9,7 @@
 // to do with audio, video, and animation what Wiki platforms allow them to do with
 // text.
 //
-// Copyright (C) 2006-2022  Kaltura Inc.
+// Copyright (C) 2006-2023  Kaltura Inc.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -69,6 +69,8 @@ abstract class Kaltura_Client_Vendor_Type_IntegrationSetting extends Kaltura_Cli
 			$this->partnerId = (int)$xml->partnerId;
 		if(count($xml->enableMeetingUpload))
 			$this->enableMeetingUpload = (int)$xml->enableMeetingUpload;
+		if(count($xml->enableMeetingChat))
+			$this->enableMeetingChat = (int)$xml->enableMeetingChat;
 	}
 	/**
 	 * 
@@ -159,6 +161,13 @@ abstract class Kaltura_Client_Vendor_Type_IntegrationSetting extends Kaltura_Cli
 	 * @var Kaltura_Client_Enum_NullableBoolean
 	 */
 	public $enableMeetingUpload = null;
+
+	/**
+	 * 
+	 *
+	 * @var Kaltura_Client_Enum_NullableBoolean
+	 */
+	public $enableMeetingChat = null;
 
 
 }
