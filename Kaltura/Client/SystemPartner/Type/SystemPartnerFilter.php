@@ -49,6 +49,8 @@ class Kaltura_Client_SystemPartner_Type_SystemPartnerFilter extends Kaltura_Clie
 			$this->partnerParentIdEqual = (int)$xml->partnerParentIdEqual;
 		if(count($xml->partnerParentIdIn))
 			$this->partnerParentIdIn = (string)$xml->partnerParentIdIn;
+		if(count($xml->adminEmailEqual))
+			$this->adminEmailEqual = (string)$xml->adminEmailEqual;
 	}
 	/**
 	 * 
@@ -63,6 +65,13 @@ class Kaltura_Client_SystemPartner_Type_SystemPartnerFilter extends Kaltura_Clie
 	 * @var string
 	 */
 	public $partnerParentIdIn = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $adminEmailEqual = null;
 
 
 }

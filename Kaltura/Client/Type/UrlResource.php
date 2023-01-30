@@ -54,6 +54,13 @@ class Kaltura_Client_Type_UrlResource extends Kaltura_Client_Type_ContentResourc
 			else
 				$this->forceAsyncDownload = false;
 		}
+		if(count($xml->urlHeaders))
+		{
+			if(empty($xml->urlHeaders))
+				$this->urlHeaders = array();
+			else
+				$this->urlHeaders = Kaltura_Client_ParseUtils::unmarshalArray($xml->urlHeaders, "KalturaString");
+		}
 	}
 	/**
 	 * Remote URL, FTP, HTTP or HTTPS
@@ -68,6 +75,13 @@ class Kaltura_Client_Type_UrlResource extends Kaltura_Client_Type_ContentResourc
 	 * @var bool
 	 */
 	public $forceAsyncDownload = null;
+
+	/**
+	 * 
+	 *
+	 * @var array of KalturaString
+	 */
+	public $urlHeaders;
 
 
 }
