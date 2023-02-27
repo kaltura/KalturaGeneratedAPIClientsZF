@@ -37,6 +37,7 @@ class Kaltura_Client_Reach_Enum_CatalogItemLanguage extends Kaltura_Client_EnumB
 	const YUE = "Cantonese";
 	const CA = "Catalan";
 	const ZH = "Chinese";
+	const CS = "Czech";
 	const DA = "Danish";
 	const NL = "Dutch";
 	const EN = "English";

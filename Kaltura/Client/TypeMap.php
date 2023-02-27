@@ -1392,6 +1392,8 @@ class Kaltura_Client_TypeMap
 		'KalturaVendorDubbingCatalogItem' => 'Kaltura_Client_Reach_Type_VendorDubbingCatalogItem',
 		'KalturaVendorDubbingCatalogItemBaseFilter' => 'Kaltura_Client_Reach_Type_VendorDubbingCatalogItemBaseFilter',
 		'KalturaVendorDubbingCatalogItemFilter' => 'Kaltura_Client_Reach_Type_VendorDubbingCatalogItemFilter',
+		'KalturaVendorExtendedAudioDescriptionCatalogItem' => 'Kaltura_Client_Reach_Type_VendorExtendedAudioDescriptionCatalogItem',
+		'KalturaVendorExtendedAudioDescriptionCatalogItemFilter' => 'Kaltura_Client_Reach_Type_VendorExtendedAudioDescriptionCatalogItemFilter',
 		'KalturaVendorIntelligentTaggingCatalogItem' => 'Kaltura_Client_Reach_Type_VendorIntelligentTaggingCatalogItem',
 		'KalturaVendorLiveCaptionCatalogItem' => 'Kaltura_Client_Reach_Type_VendorLiveCaptionCatalogItem',
 		'KalturaVendorLiveCaptionCatalogItemFilter' => 'Kaltura_Client_Reach_Type_VendorLiveCaptionCatalogItemFilter',

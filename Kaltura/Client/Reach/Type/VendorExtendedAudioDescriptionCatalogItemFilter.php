@@ -31,10 +31,21 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Reach_Enum_VendorCatalogItemOutputFormat extends Kaltura_Client_EnumBase
+class Kaltura_Client_Reach_Type_VendorExtendedAudioDescriptionCatalogItemFilter extends Kaltura_Client_Reach_Type_VendorCaptionsCatalogItemBaseFilter
 {
-	const SRT = 1;
-	const DFXP = 2;
-	const VTT = 3;
+	public function getKalturaObjectType()
+	{
+		return 'KalturaVendorExtendedAudioDescriptionCatalogItemFilter';
+	}
+	
+	public function __construct(SimpleXMLElement $xml = null)
+	{
+		parent::__construct($xml);
+		
+		if(is_null($xml))
+			return;
+		
+	}
+
 }
 
