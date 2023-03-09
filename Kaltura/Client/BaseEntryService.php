@@ -444,6 +444,25 @@ class Kaltura_Client_BaseEntryService extends Kaltura_Client_ServiceBase
 	}
 
 	/**
+	 * @return Kaltura_Client_Type_BaseEntry
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
+	 */
+	function recycle($entryId)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "entryId", $entryId);
+		$this->client->queueServiceActionCall("baseentry", "recycle", "KalturaBaseEntry", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultXml = $this->client->doQueue();
+		$resultXmlObject = new \SimpleXMLElement($resultXml);
+		$this->client->checkIfError($resultXmlObject->result);
+		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaBaseEntry");
+		$this->client->validateObjectType($resultObject, "Kaltura_Client_Type_BaseEntry");
+		return $resultObject;
+	}
+
+	/**
 	 * @return 
 	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
@@ -457,6 +476,25 @@ class Kaltura_Client_BaseEntryService extends Kaltura_Client_ServiceBase
 		$resultXml = $this->client->doQueue();
 		$resultXmlObject = new \SimpleXMLElement($resultXml);
 		$this->client->checkIfError($resultXmlObject->result);
+	}
+
+	/**
+	 * @return Kaltura_Client_Type_BaseEntry
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
+	 */
+	function restoreRecycled($entryId)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "entryId", $entryId);
+		$this->client->queueServiceActionCall("baseentry", "restoreRecycled", "KalturaBaseEntry", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$resultXml = $this->client->doQueue();
+		$resultXmlObject = new \SimpleXMLElement($resultXml);
+		$this->client->checkIfError($resultXmlObject->result);
+		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaBaseEntry");
+		$this->client->validateObjectType($resultObject, "Kaltura_Client_Type_BaseEntry");
+		return $resultObject;
 	}
 
 	/**

@@ -33,6 +33,7 @@
  */
 class Kaltura_Client_Enum_EntryDisplayInSearchType extends Kaltura_Client_EnumBase
 {
+	const RECYCLED = -2;
 	const SYSTEM = -1;
 	const NONE = 0;
 	const PARTNER_ONLY = 1;

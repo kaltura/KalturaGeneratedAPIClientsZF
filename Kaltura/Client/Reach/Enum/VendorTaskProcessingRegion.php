@@ -35,5 +35,6 @@ class Kaltura_Client_Reach_Enum_VendorTaskProcessingRegion extends Kaltura_Clien
 {
 	const US = 1;
 	const EU = 2;
+	const CA = 3;
 }
 

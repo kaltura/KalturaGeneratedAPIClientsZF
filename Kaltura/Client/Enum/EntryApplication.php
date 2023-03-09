@@ -41,5 +41,6 @@ class Kaltura_Client_Enum_EntryApplication extends Kaltura_Client_EnumBase
 	const WEBCAST_APP = "5";
 	const PERSONAL_CAPTURE = "6";
 	const KALTURA_MEETING = "7";
+	const EP = "8";
 }
 
