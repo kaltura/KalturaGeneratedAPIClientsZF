@@ -38,17 +38,24 @@ abstract class Kaltura_Client_Type_Filter extends Kaltura_Client_ObjectBase
 		return 'KalturaFilter';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->orderBy))
+		if(!is_null($xml) && count($xml->orderBy))
 			$this->orderBy = (string)$xml->orderBy;
-		if(count($xml->advancedSearch) && !empty($xml->advancedSearch))
+		if(!is_null($jsonObject) && isset($jsonObject->orderBy))
+			$this->orderBy = (string)$jsonObject->orderBy;
+		if(!is_null($xml) && count($xml->advancedSearch) && !empty($xml->advancedSearch))
 			$this->advancedSearch = Kaltura_Client_ParseUtils::unmarshalObject($xml->advancedSearch, "KalturaSearchItem");
+		if(!is_null($jsonObject) && isset($jsonObject->advancedSearch) && !empty($jsonObject->advancedSearch))
+			$this->advancedSearch = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsonObject->advancedSearch, "KalturaSearchItem");
 	}
 	/**
 	 * 

@@ -53,12 +53,18 @@ class Kaltura_Client_ConversionProfileAssetParamsService extends Kaltura_Client_
 		$this->client->queueServiceActionCall("conversionprofileassetparams", "list", "KalturaConversionProfileAssetParamsListResponse", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaConversionProfileAssetParamsListResponse");
-		$this->client->validateObjectType($resultObject, "Kaltura_Client_Type_ConversionProfileAssetParamsListResponse");
-		return $resultObject;
+		$rawResult = $this->client->doQueue();
+		if ($this->client->getConfig()->format === Kaltura_Client_ClientBase::KALTURA_SERVICE_FORMAT_JSON) {
+			$jsObject = json_decode($rawResult);
+			$resultObject = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsObject);
+			return $resultObject;
+		} else {
+			$resultXmlObject = new \SimpleXMLElement($rawResult);
+			$this->client->checkIfError($resultXmlObject->result);
+			$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaConversionProfileAssetParamsListResponse");
+			$this->client->validateObjectType($resultObject, "Kaltura_Client_Type_ConversionProfileAssetParamsListResponse");
+		}
+			return $resultObject;
 	}
 
 	/**
@@ -74,11 +80,17 @@ class Kaltura_Client_ConversionProfileAssetParamsService extends Kaltura_Client_
 		$this->client->queueServiceActionCall("conversionprofileassetparams", "update", "KalturaConversionProfileAssetParams", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaConversionProfileAssetParams");
-		$this->client->validateObjectType($resultObject, "Kaltura_Client_Type_ConversionProfileAssetParams");
-		return $resultObject;
+		$rawResult = $this->client->doQueue();
+		if ($this->client->getConfig()->format === Kaltura_Client_ClientBase::KALTURA_SERVICE_FORMAT_JSON) {
+			$jsObject = json_decode($rawResult);
+			$resultObject = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsObject);
+			return $resultObject;
+		} else {
+			$resultXmlObject = new \SimpleXMLElement($rawResult);
+			$this->client->checkIfError($resultXmlObject->result);
+			$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaConversionProfileAssetParams");
+			$this->client->validateObjectType($resultObject, "Kaltura_Client_Type_ConversionProfileAssetParams");
+		}
+			return $resultObject;
 	}
 }

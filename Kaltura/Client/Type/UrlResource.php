@@ -38,28 +38,61 @@ class Kaltura_Client_Type_UrlResource extends Kaltura_Client_Type_ContentResourc
 		return 'KalturaUrlResource';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->url))
+		if(!is_null($xml) && count($xml->url))
 			$this->url = (string)$xml->url;
-		if(count($xml->forceAsyncDownload))
+		if(!is_null($jsonObject) && isset($jsonObject->url))
+			$this->url = (string)$jsonObject->url;
+		if(!is_null($xml) && count($xml->forceAsyncDownload))
 		{
 			if(!empty($xml->forceAsyncDownload) && ((int) $xml->forceAsyncDownload === 1 || strtolower((string)$xml->forceAsyncDownload) === 'true'))
 				$this->forceAsyncDownload = true;
 			else
 				$this->forceAsyncDownload = false;
 		}
-		if(count($xml->urlHeaders))
+		if(!is_null($jsonObject) && isset($jsonObject->forceAsyncDownload))
+		{
+			if(!empty($jsonObject->forceAsyncDownload) && ((int) $jsonObject->forceAsyncDownload === 1 || strtolower((string)$jsonObject->forceAsyncDownload) === 'true'))
+				$this->forceAsyncDownload = true;
+			else
+				$this->forceAsyncDownload = false;
+		}
+		if(!is_null($xml) && count($xml->urlHeaders))
 		{
 			if(empty($xml->urlHeaders))
 				$this->urlHeaders = array();
 			else
 				$this->urlHeaders = Kaltura_Client_ParseUtils::unmarshalArray($xml->urlHeaders, "KalturaString");
+		}
+		if(!is_null($jsonObject) && isset($jsonObject->urlHeaders))
+		{
+			if(empty($jsonObject->urlHeaders))
+				$this->urlHeaders = array();
+			else
+				$this->urlHeaders = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsonObject->urlHeaders, "KalturaString");
+		}
+		if(!is_null($xml) && count($xml->shouldRedirect))
+		{
+			if(!empty($xml->shouldRedirect) && ((int) $xml->shouldRedirect === 1 || strtolower((string)$xml->shouldRedirect) === 'true'))
+				$this->shouldRedirect = true;
+			else
+				$this->shouldRedirect = false;
+		}
+		if(!is_null($jsonObject) && isset($jsonObject->shouldRedirect))
+		{
+			if(!empty($jsonObject->shouldRedirect) && ((int) $jsonObject->shouldRedirect === 1 || strtolower((string)$jsonObject->shouldRedirect) === 'true'))
+				$this->shouldRedirect = true;
+			else
+				$this->shouldRedirect = false;
 		}
 	}
 	/**
@@ -82,6 +115,13 @@ class Kaltura_Client_Type_UrlResource extends Kaltura_Client_Type_ContentResourc
 	 * @var array of KalturaString
 	 */
 	public $urlHeaders;
+
+	/**
+	 * 
+	 *
+	 * @var bool
+	 */
+	public $shouldRedirect = null;
 
 
 }

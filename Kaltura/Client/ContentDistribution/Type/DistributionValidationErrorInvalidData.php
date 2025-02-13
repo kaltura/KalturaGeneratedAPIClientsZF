@@ -38,19 +38,28 @@ class Kaltura_Client_ContentDistribution_Type_DistributionValidationErrorInvalid
 		return 'KalturaDistributionValidationErrorInvalidData';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->fieldName))
+		if(!is_null($xml) && count($xml->fieldName))
 			$this->fieldName = (string)$xml->fieldName;
-		if(count($xml->validationErrorType))
+		if(!is_null($jsonObject) && isset($jsonObject->fieldName))
+			$this->fieldName = (string)$jsonObject->fieldName;
+		if(!is_null($xml) && count($xml->validationErrorType))
 			$this->validationErrorType = (int)$xml->validationErrorType;
-		if(count($xml->validationErrorParam))
+		if(!is_null($jsonObject) && isset($jsonObject->validationErrorType))
+			$this->validationErrorType = (int)$jsonObject->validationErrorType;
+		if(!is_null($xml) && count($xml->validationErrorParam))
 			$this->validationErrorParam = (string)$xml->validationErrorParam;
+		if(!is_null($jsonObject) && isset($jsonObject->validationErrorParam))
+			$this->validationErrorParam = (string)$jsonObject->validationErrorParam;
 	}
 	/**
 	 * 

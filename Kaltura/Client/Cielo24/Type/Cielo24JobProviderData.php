@@ -38,40 +38,70 @@ class Kaltura_Client_Cielo24_Type_Cielo24JobProviderData extends Kaltura_Client_
 		return 'KalturaCielo24JobProviderData';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->entryId))
+		if(!is_null($xml) && count($xml->entryId))
 			$this->entryId = (string)$xml->entryId;
-		if(count($xml->flavorAssetId))
+		if(!is_null($jsonObject) && isset($jsonObject->entryId))
+			$this->entryId = (string)$jsonObject->entryId;
+		if(!is_null($xml) && count($xml->flavorAssetId))
 			$this->flavorAssetId = (string)$xml->flavorAssetId;
-		if(count($xml->captionAssetFormats))
+		if(!is_null($jsonObject) && isset($jsonObject->flavorAssetId))
+			$this->flavorAssetId = (string)$jsonObject->flavorAssetId;
+		if(!is_null($xml) && count($xml->captionAssetFormats))
 			$this->captionAssetFormats = (string)$xml->captionAssetFormats;
-		if(count($xml->priority))
+		if(!is_null($jsonObject) && isset($jsonObject->captionAssetFormats))
+			$this->captionAssetFormats = (string)$jsonObject->captionAssetFormats;
+		if(!is_null($xml) && count($xml->priority))
 			$this->priority = (string)$xml->priority;
-		if(count($xml->fidelity))
+		if(!is_null($jsonObject) && isset($jsonObject->priority))
+			$this->priority = (string)$jsonObject->priority;
+		if(!is_null($xml) && count($xml->fidelity))
 			$this->fidelity = (string)$xml->fidelity;
-		if(count($xml->username))
+		if(!is_null($jsonObject) && isset($jsonObject->fidelity))
+			$this->fidelity = (string)$jsonObject->fidelity;
+		if(!is_null($xml) && count($xml->username))
 			$this->username = (string)$xml->username;
-		if(count($xml->password))
+		if(!is_null($jsonObject) && isset($jsonObject->username))
+			$this->username = (string)$jsonObject->username;
+		if(!is_null($xml) && count($xml->password))
 			$this->password = (string)$xml->password;
-		if(count($xml->baseUrl))
+		if(!is_null($jsonObject) && isset($jsonObject->password))
+			$this->password = (string)$jsonObject->password;
+		if(!is_null($xml) && count($xml->baseUrl))
 			$this->baseUrl = (string)$xml->baseUrl;
-		if(count($xml->spokenLanguage))
+		if(!is_null($jsonObject) && isset($jsonObject->baseUrl))
+			$this->baseUrl = (string)$jsonObject->baseUrl;
+		if(!is_null($xml) && count($xml->spokenLanguage))
 			$this->spokenLanguage = (string)$xml->spokenLanguage;
-		if(count($xml->replaceMediaContent))
+		if(!is_null($jsonObject) && isset($jsonObject->spokenLanguage))
+			$this->spokenLanguage = (string)$jsonObject->spokenLanguage;
+		if(!is_null($xml) && count($xml->replaceMediaContent))
 		{
 			if(!empty($xml->replaceMediaContent) && ((int) $xml->replaceMediaContent === 1 || strtolower((string)$xml->replaceMediaContent) === 'true'))
 				$this->replaceMediaContent = true;
 			else
 				$this->replaceMediaContent = false;
 		}
-		if(count($xml->additionalParameters))
+		if(!is_null($jsonObject) && isset($jsonObject->replaceMediaContent))
+		{
+			if(!empty($jsonObject->replaceMediaContent) && ((int) $jsonObject->replaceMediaContent === 1 || strtolower((string)$jsonObject->replaceMediaContent) === 'true'))
+				$this->replaceMediaContent = true;
+			else
+				$this->replaceMediaContent = false;
+		}
+		if(!is_null($xml) && count($xml->additionalParameters))
 			$this->additionalParameters = (string)$xml->additionalParameters;
+		if(!is_null($jsonObject) && isset($jsonObject->additionalParameters))
+			$this->additionalParameters = (string)$jsonObject->additionalParameters;
 	}
 	/**
 	 * Entry ID

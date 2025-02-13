@@ -38,37 +38,64 @@ abstract class Kaltura_Client_Type_WidgetBaseFilter extends Kaltura_Client_Type_
 		return 'KalturaWidgetBaseFilter';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->idEqual))
+		if(!is_null($xml) && count($xml->idEqual))
 			$this->idEqual = (string)$xml->idEqual;
-		if(count($xml->idIn))
+		if(!is_null($jsonObject) && isset($jsonObject->idEqual))
+			$this->idEqual = (string)$jsonObject->idEqual;
+		if(!is_null($xml) && count($xml->idIn))
 			$this->idIn = (string)$xml->idIn;
-		if(count($xml->sourceWidgetIdEqual))
+		if(!is_null($jsonObject) && isset($jsonObject->idIn))
+			$this->idIn = (string)$jsonObject->idIn;
+		if(!is_null($xml) && count($xml->sourceWidgetIdEqual))
 			$this->sourceWidgetIdEqual = (string)$xml->sourceWidgetIdEqual;
-		if(count($xml->rootWidgetIdEqual))
+		if(!is_null($jsonObject) && isset($jsonObject->sourceWidgetIdEqual))
+			$this->sourceWidgetIdEqual = (string)$jsonObject->sourceWidgetIdEqual;
+		if(!is_null($xml) && count($xml->rootWidgetIdEqual))
 			$this->rootWidgetIdEqual = (string)$xml->rootWidgetIdEqual;
-		if(count($xml->partnerIdEqual))
+		if(!is_null($jsonObject) && isset($jsonObject->rootWidgetIdEqual))
+			$this->rootWidgetIdEqual = (string)$jsonObject->rootWidgetIdEqual;
+		if(!is_null($xml) && count($xml->partnerIdEqual))
 			$this->partnerIdEqual = (int)$xml->partnerIdEqual;
-		if(count($xml->entryIdEqual))
+		if(!is_null($jsonObject) && isset($jsonObject->partnerIdEqual))
+			$this->partnerIdEqual = (int)$jsonObject->partnerIdEqual;
+		if(!is_null($xml) && count($xml->entryIdEqual))
 			$this->entryIdEqual = (string)$xml->entryIdEqual;
-		if(count($xml->uiConfIdEqual))
+		if(!is_null($jsonObject) && isset($jsonObject->entryIdEqual))
+			$this->entryIdEqual = (string)$jsonObject->entryIdEqual;
+		if(!is_null($xml) && count($xml->uiConfIdEqual))
 			$this->uiConfIdEqual = (int)$xml->uiConfIdEqual;
-		if(count($xml->createdAtGreaterThanOrEqual))
+		if(!is_null($jsonObject) && isset($jsonObject->uiConfIdEqual))
+			$this->uiConfIdEqual = (int)$jsonObject->uiConfIdEqual;
+		if(!is_null($xml) && count($xml->createdAtGreaterThanOrEqual))
 			$this->createdAtGreaterThanOrEqual = (int)$xml->createdAtGreaterThanOrEqual;
-		if(count($xml->createdAtLessThanOrEqual))
+		if(!is_null($jsonObject) && isset($jsonObject->createdAtGreaterThanOrEqual))
+			$this->createdAtGreaterThanOrEqual = (int)$jsonObject->createdAtGreaterThanOrEqual;
+		if(!is_null($xml) && count($xml->createdAtLessThanOrEqual))
 			$this->createdAtLessThanOrEqual = (int)$xml->createdAtLessThanOrEqual;
-		if(count($xml->updatedAtGreaterThanOrEqual))
+		if(!is_null($jsonObject) && isset($jsonObject->createdAtLessThanOrEqual))
+			$this->createdAtLessThanOrEqual = (int)$jsonObject->createdAtLessThanOrEqual;
+		if(!is_null($xml) && count($xml->updatedAtGreaterThanOrEqual))
 			$this->updatedAtGreaterThanOrEqual = (int)$xml->updatedAtGreaterThanOrEqual;
-		if(count($xml->updatedAtLessThanOrEqual))
+		if(!is_null($jsonObject) && isset($jsonObject->updatedAtGreaterThanOrEqual))
+			$this->updatedAtGreaterThanOrEqual = (int)$jsonObject->updatedAtGreaterThanOrEqual;
+		if(!is_null($xml) && count($xml->updatedAtLessThanOrEqual))
 			$this->updatedAtLessThanOrEqual = (int)$xml->updatedAtLessThanOrEqual;
-		if(count($xml->partnerDataLike))
+		if(!is_null($jsonObject) && isset($jsonObject->updatedAtLessThanOrEqual))
+			$this->updatedAtLessThanOrEqual = (int)$jsonObject->updatedAtLessThanOrEqual;
+		if(!is_null($xml) && count($xml->partnerDataLike))
 			$this->partnerDataLike = (string)$xml->partnerDataLike;
+		if(!is_null($jsonObject) && isset($jsonObject->partnerDataLike))
+			$this->partnerDataLike = (string)$jsonObject->partnerDataLike;
 	}
 	/**
 	 * 

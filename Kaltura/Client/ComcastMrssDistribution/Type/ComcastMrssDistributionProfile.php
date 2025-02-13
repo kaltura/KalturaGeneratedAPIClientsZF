@@ -38,53 +38,100 @@ class Kaltura_Client_ComcastMrssDistribution_Type_ComcastMrssDistributionProfile
 		return 'KalturaComcastMrssDistributionProfile';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->metadataProfileId))
+		if(!is_null($xml) && count($xml->metadataProfileId))
 			$this->metadataProfileId = (int)$xml->metadataProfileId;
-		if(count($xml->feedUrl))
+		if(!is_null($jsonObject) && isset($jsonObject->metadataProfileId))
+			$this->metadataProfileId = (int)$jsonObject->metadataProfileId;
+		if(!is_null($xml) && count($xml->feedUrl))
 			$this->feedUrl = (string)$xml->feedUrl;
-		if(count($xml->feedTitle))
+		if(!is_null($jsonObject) && isset($jsonObject->feedUrl))
+			$this->feedUrl = (string)$jsonObject->feedUrl;
+		if(!is_null($xml) && count($xml->feedTitle))
 			$this->feedTitle = (string)$xml->feedTitle;
-		if(count($xml->feedLink))
+		if(!is_null($jsonObject) && isset($jsonObject->feedTitle))
+			$this->feedTitle = (string)$jsonObject->feedTitle;
+		if(!is_null($xml) && count($xml->feedLink))
 			$this->feedLink = (string)$xml->feedLink;
-		if(count($xml->feedDescription))
+		if(!is_null($jsonObject) && isset($jsonObject->feedLink))
+			$this->feedLink = (string)$jsonObject->feedLink;
+		if(!is_null($xml) && count($xml->feedDescription))
 			$this->feedDescription = (string)$xml->feedDescription;
-		if(count($xml->feedLastBuildDate))
+		if(!is_null($jsonObject) && isset($jsonObject->feedDescription))
+			$this->feedDescription = (string)$jsonObject->feedDescription;
+		if(!is_null($xml) && count($xml->feedLastBuildDate))
 			$this->feedLastBuildDate = (string)$xml->feedLastBuildDate;
-		if(count($xml->itemLink))
+		if(!is_null($jsonObject) && isset($jsonObject->feedLastBuildDate))
+			$this->feedLastBuildDate = (string)$jsonObject->feedLastBuildDate;
+		if(!is_null($xml) && count($xml->itemLink))
 			$this->itemLink = (string)$xml->itemLink;
-		if(count($xml->cPlatformTvSeries))
+		if(!is_null($jsonObject) && isset($jsonObject->itemLink))
+			$this->itemLink = (string)$jsonObject->itemLink;
+		if(!is_null($xml) && count($xml->cPlatformTvSeries))
 		{
 			if(empty($xml->cPlatformTvSeries))
 				$this->cPlatformTvSeries = array();
 			else
 				$this->cPlatformTvSeries = Kaltura_Client_ParseUtils::unmarshalArray($xml->cPlatformTvSeries, "KalturaKeyValue");
 		}
-		if(count($xml->cPlatformTvSeriesField))
+		if(!is_null($jsonObject) && isset($jsonObject->cPlatformTvSeries))
+		{
+			if(empty($jsonObject->cPlatformTvSeries))
+				$this->cPlatformTvSeries = array();
+			else
+				$this->cPlatformTvSeries = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsonObject->cPlatformTvSeries, "KalturaKeyValue");
+		}
+		if(!is_null($xml) && count($xml->cPlatformTvSeriesField))
 			$this->cPlatformTvSeriesField = (string)$xml->cPlatformTvSeriesField;
-		if(count($xml->shouldIncludeCuePoints))
+		if(!is_null($jsonObject) && isset($jsonObject->cPlatformTvSeriesField))
+			$this->cPlatformTvSeriesField = (string)$jsonObject->cPlatformTvSeriesField;
+		if(!is_null($xml) && count($xml->shouldIncludeCuePoints))
 		{
 			if(!empty($xml->shouldIncludeCuePoints) && ((int) $xml->shouldIncludeCuePoints === 1 || strtolower((string)$xml->shouldIncludeCuePoints) === 'true'))
 				$this->shouldIncludeCuePoints = true;
 			else
 				$this->shouldIncludeCuePoints = false;
 		}
-		if(count($xml->shouldIncludeCaptions))
+		if(!is_null($jsonObject) && isset($jsonObject->shouldIncludeCuePoints))
+		{
+			if(!empty($jsonObject->shouldIncludeCuePoints) && ((int) $jsonObject->shouldIncludeCuePoints === 1 || strtolower((string)$jsonObject->shouldIncludeCuePoints) === 'true'))
+				$this->shouldIncludeCuePoints = true;
+			else
+				$this->shouldIncludeCuePoints = false;
+		}
+		if(!is_null($xml) && count($xml->shouldIncludeCaptions))
 		{
 			if(!empty($xml->shouldIncludeCaptions) && ((int) $xml->shouldIncludeCaptions === 1 || strtolower((string)$xml->shouldIncludeCaptions) === 'true'))
 				$this->shouldIncludeCaptions = true;
 			else
 				$this->shouldIncludeCaptions = false;
 		}
-		if(count($xml->shouldAddThumbExtension))
+		if(!is_null($jsonObject) && isset($jsonObject->shouldIncludeCaptions))
+		{
+			if(!empty($jsonObject->shouldIncludeCaptions) && ((int) $jsonObject->shouldIncludeCaptions === 1 || strtolower((string)$jsonObject->shouldIncludeCaptions) === 'true'))
+				$this->shouldIncludeCaptions = true;
+			else
+				$this->shouldIncludeCaptions = false;
+		}
+		if(!is_null($xml) && count($xml->shouldAddThumbExtension))
 		{
 			if(!empty($xml->shouldAddThumbExtension) && ((int) $xml->shouldAddThumbExtension === 1 || strtolower((string)$xml->shouldAddThumbExtension) === 'true'))
+				$this->shouldAddThumbExtension = true;
+			else
+				$this->shouldAddThumbExtension = false;
+		}
+		if(!is_null($jsonObject) && isset($jsonObject->shouldAddThumbExtension))
+		{
+			if(!empty($jsonObject->shouldAddThumbExtension) && ((int) $jsonObject->shouldAddThumbExtension === 1 || strtolower((string)$jsonObject->shouldAddThumbExtension) === 'true'))
 				$this->shouldAddThumbExtension = true;
 			else
 				$this->shouldAddThumbExtension = false;

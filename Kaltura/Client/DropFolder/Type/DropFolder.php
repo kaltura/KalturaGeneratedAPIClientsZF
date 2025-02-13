@@ -38,82 +38,158 @@ class Kaltura_Client_DropFolder_Type_DropFolder extends Kaltura_Client_ObjectBas
 		return 'KalturaDropFolder';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->id))
+		if(!is_null($xml) && count($xml->id))
 			$this->id = (int)$xml->id;
-		if(count($xml->partnerId))
+		if(!is_null($jsonObject) && isset($jsonObject->id))
+			$this->id = (int)$jsonObject->id;
+		if(!is_null($xml) && count($xml->partnerId))
 			$this->partnerId = (int)$xml->partnerId;
-		if(count($xml->name))
+		if(!is_null($jsonObject) && isset($jsonObject->partnerId))
+			$this->partnerId = (int)$jsonObject->partnerId;
+		if(!is_null($xml) && count($xml->name))
 			$this->name = (string)$xml->name;
-		if(count($xml->description))
+		if(!is_null($jsonObject) && isset($jsonObject->name))
+			$this->name = (string)$jsonObject->name;
+		if(!is_null($xml) && count($xml->description))
 			$this->description = (string)$xml->description;
-		if(count($xml->type))
+		if(!is_null($jsonObject) && isset($jsonObject->description))
+			$this->description = (string)$jsonObject->description;
+		if(!is_null($xml) && count($xml->type))
 			$this->type = (string)$xml->type;
-		if(count($xml->status))
+		if(!is_null($jsonObject) && isset($jsonObject->type))
+			$this->type = (string)$jsonObject->type;
+		if(!is_null($xml) && count($xml->status))
 			$this->status = (int)$xml->status;
-		if(count($xml->conversionProfileId))
+		if(!is_null($jsonObject) && isset($jsonObject->status))
+			$this->status = (int)$jsonObject->status;
+		if(!is_null($xml) && count($xml->conversionProfileId))
 			$this->conversionProfileId = (int)$xml->conversionProfileId;
-		if(count($xml->dc))
+		if(!is_null($jsonObject) && isset($jsonObject->conversionProfileId))
+			$this->conversionProfileId = (int)$jsonObject->conversionProfileId;
+		if(!is_null($xml) && count($xml->dc))
 			$this->dc = (int)$xml->dc;
-		if(count($xml->path))
+		if(!is_null($jsonObject) && isset($jsonObject->dc))
+			$this->dc = (int)$jsonObject->dc;
+		if(!is_null($xml) && count($xml->path))
 			$this->path = (string)$xml->path;
-		if(count($xml->fileSizeCheckInterval))
+		if(!is_null($jsonObject) && isset($jsonObject->path))
+			$this->path = (string)$jsonObject->path;
+		if(!is_null($xml) && count($xml->fileSizeCheckInterval))
 			$this->fileSizeCheckInterval = (int)$xml->fileSizeCheckInterval;
-		if(count($xml->fileDeletePolicy))
+		if(!is_null($jsonObject) && isset($jsonObject->fileSizeCheckInterval))
+			$this->fileSizeCheckInterval = (int)$jsonObject->fileSizeCheckInterval;
+		if(!is_null($xml) && count($xml->fileDeletePolicy))
 			$this->fileDeletePolicy = (int)$xml->fileDeletePolicy;
-		if(count($xml->fileDeleteRegex))
+		if(!is_null($jsonObject) && isset($jsonObject->fileDeletePolicy))
+			$this->fileDeletePolicy = (int)$jsonObject->fileDeletePolicy;
+		if(!is_null($xml) && count($xml->fileDeleteRegex))
 			$this->fileDeleteRegex = (string)$xml->fileDeleteRegex;
-		if(count($xml->autoFileDeleteDays))
+		if(!is_null($jsonObject) && isset($jsonObject->fileDeleteRegex))
+			$this->fileDeleteRegex = (string)$jsonObject->fileDeleteRegex;
+		if(!is_null($xml) && count($xml->autoFileDeleteDays))
 			$this->autoFileDeleteDays = (int)$xml->autoFileDeleteDays;
-		if(count($xml->fileHandlerType))
+		if(!is_null($jsonObject) && isset($jsonObject->autoFileDeleteDays))
+			$this->autoFileDeleteDays = (int)$jsonObject->autoFileDeleteDays;
+		if(!is_null($xml) && count($xml->fileHandlerType))
 			$this->fileHandlerType = (string)$xml->fileHandlerType;
-		if(count($xml->fileNamePatterns))
+		if(!is_null($jsonObject) && isset($jsonObject->fileHandlerType))
+			$this->fileHandlerType = (string)$jsonObject->fileHandlerType;
+		if(!is_null($xml) && count($xml->fileNamePatterns))
 			$this->fileNamePatterns = (string)$xml->fileNamePatterns;
-		if(count($xml->fileHandlerConfig) && !empty($xml->fileHandlerConfig))
+		if(!is_null($jsonObject) && isset($jsonObject->fileNamePatterns))
+			$this->fileNamePatterns = (string)$jsonObject->fileNamePatterns;
+		if(!is_null($xml) && count($xml->fileHandlerConfig) && !empty($xml->fileHandlerConfig))
 			$this->fileHandlerConfig = Kaltura_Client_ParseUtils::unmarshalObject($xml->fileHandlerConfig, "KalturaDropFolderFileHandlerConfig");
-		if(count($xml->tags))
+		if(!is_null($jsonObject) && isset($jsonObject->fileHandlerConfig) && !empty($jsonObject->fileHandlerConfig))
+			$this->fileHandlerConfig = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsonObject->fileHandlerConfig, "KalturaDropFolderFileHandlerConfig");
+		if(!is_null($xml) && count($xml->tags))
 			$this->tags = (string)$xml->tags;
-		if(count($xml->errorCode))
+		if(!is_null($jsonObject) && isset($jsonObject->tags))
+			$this->tags = (string)$jsonObject->tags;
+		if(!is_null($xml) && count($xml->errorCode))
 			$this->errorCode = (string)$xml->errorCode;
-		if(count($xml->errorDescription))
+		if(!is_null($jsonObject) && isset($jsonObject->errorCode))
+			$this->errorCode = (string)$jsonObject->errorCode;
+		if(!is_null($xml) && count($xml->errorDescription))
 			$this->errorDescription = (string)$xml->errorDescription;
-		if(count($xml->ignoreFileNamePatterns))
+		if(!is_null($jsonObject) && isset($jsonObject->errorDescription))
+			$this->errorDescription = (string)$jsonObject->errorDescription;
+		if(!is_null($xml) && count($xml->ignoreFileNamePatterns))
 			$this->ignoreFileNamePatterns = (string)$xml->ignoreFileNamePatterns;
-		if(count($xml->createdAt))
+		if(!is_null($jsonObject) && isset($jsonObject->ignoreFileNamePatterns))
+			$this->ignoreFileNamePatterns = (string)$jsonObject->ignoreFileNamePatterns;
+		if(!is_null($xml) && count($xml->createdAt))
 			$this->createdAt = (int)$xml->createdAt;
-		if(count($xml->updatedAt))
+		if(!is_null($jsonObject) && isset($jsonObject->createdAt))
+			$this->createdAt = (int)$jsonObject->createdAt;
+		if(!is_null($xml) && count($xml->updatedAt))
 			$this->updatedAt = (int)$xml->updatedAt;
-		if(count($xml->lastAccessedAt))
+		if(!is_null($jsonObject) && isset($jsonObject->updatedAt))
+			$this->updatedAt = (int)$jsonObject->updatedAt;
+		if(!is_null($xml) && count($xml->lastAccessedAt))
 			$this->lastAccessedAt = (int)$xml->lastAccessedAt;
-		if(count($xml->incremental))
+		if(!is_null($jsonObject) && isset($jsonObject->lastAccessedAt))
+			$this->lastAccessedAt = (int)$jsonObject->lastAccessedAt;
+		if(!is_null($xml) && count($xml->incremental))
 		{
 			if(!empty($xml->incremental) && ((int) $xml->incremental === 1 || strtolower((string)$xml->incremental) === 'true'))
 				$this->incremental = true;
 			else
 				$this->incremental = false;
 		}
-		if(count($xml->lastFileTimestamp))
+		if(!is_null($jsonObject) && isset($jsonObject->incremental))
+		{
+			if(!empty($jsonObject->incremental) && ((int) $jsonObject->incremental === 1 || strtolower((string)$jsonObject->incremental) === 'true'))
+				$this->incremental = true;
+			else
+				$this->incremental = false;
+		}
+		if(!is_null($xml) && count($xml->lastFileTimestamp))
 			$this->lastFileTimestamp = (int)$xml->lastFileTimestamp;
-		if(count($xml->metadataProfileId))
+		if(!is_null($jsonObject) && isset($jsonObject->lastFileTimestamp))
+			$this->lastFileTimestamp = (int)$jsonObject->lastFileTimestamp;
+		if(!is_null($xml) && count($xml->metadataProfileId))
 			$this->metadataProfileId = (int)$xml->metadataProfileId;
-		if(count($xml->categoriesMetadataFieldName))
+		if(!is_null($jsonObject) && isset($jsonObject->metadataProfileId))
+			$this->metadataProfileId = (int)$jsonObject->metadataProfileId;
+		if(!is_null($xml) && count($xml->categoriesMetadataFieldName))
 			$this->categoriesMetadataFieldName = (string)$xml->categoriesMetadataFieldName;
-		if(count($xml->enforceEntitlement))
+		if(!is_null($jsonObject) && isset($jsonObject->categoriesMetadataFieldName))
+			$this->categoriesMetadataFieldName = (string)$jsonObject->categoriesMetadataFieldName;
+		if(!is_null($xml) && count($xml->enforceEntitlement))
 		{
 			if(!empty($xml->enforceEntitlement) && ((int) $xml->enforceEntitlement === 1 || strtolower((string)$xml->enforceEntitlement) === 'true'))
 				$this->enforceEntitlement = true;
 			else
 				$this->enforceEntitlement = false;
 		}
-		if(count($xml->shouldValidateKS))
+		if(!is_null($jsonObject) && isset($jsonObject->enforceEntitlement))
+		{
+			if(!empty($jsonObject->enforceEntitlement) && ((int) $jsonObject->enforceEntitlement === 1 || strtolower((string)$jsonObject->enforceEntitlement) === 'true'))
+				$this->enforceEntitlement = true;
+			else
+				$this->enforceEntitlement = false;
+		}
+		if(!is_null($xml) && count($xml->shouldValidateKS))
 		{
 			if(!empty($xml->shouldValidateKS) && ((int) $xml->shouldValidateKS === 1 || strtolower((string)$xml->shouldValidateKS) === 'true'))
+				$this->shouldValidateKS = true;
+			else
+				$this->shouldValidateKS = false;
+		}
+		if(!is_null($jsonObject) && isset($jsonObject->shouldValidateKS))
+		{
+			if(!empty($jsonObject->shouldValidateKS) && ((int) $jsonObject->shouldValidateKS === 1 || strtolower((string)$jsonObject->shouldValidateKS) === 'true'))
 				$this->shouldValidateKS = true;
 			else
 				$this->shouldValidateKS = false;

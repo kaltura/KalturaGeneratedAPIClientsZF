@@ -38,43 +38,76 @@ class Kaltura_Client_Type_BulkUploadResultVendorCatalogItem extends Kaltura_Clie
 		return 'KalturaBulkUploadResultVendorCatalogItem';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->vendorCatalogItemId))
+		if(!is_null($xml) && count($xml->vendorCatalogItemId))
 			$this->vendorCatalogItemId = (int)$xml->vendorCatalogItemId;
-		if(count($xml->vendorPartnerId))
+		if(!is_null($jsonObject) && isset($jsonObject->vendorCatalogItemId))
+			$this->vendorCatalogItemId = (int)$jsonObject->vendorCatalogItemId;
+		if(!is_null($xml) && count($xml->vendorPartnerId))
 			$this->vendorPartnerId = (int)$xml->vendorPartnerId;
-		if(count($xml->name))
+		if(!is_null($jsonObject) && isset($jsonObject->vendorPartnerId))
+			$this->vendorPartnerId = (int)$jsonObject->vendorPartnerId;
+		if(!is_null($xml) && count($xml->name))
 			$this->name = (string)$xml->name;
-		if(count($xml->systemName))
+		if(!is_null($jsonObject) && isset($jsonObject->name))
+			$this->name = (string)$jsonObject->name;
+		if(!is_null($xml) && count($xml->systemName))
 			$this->systemName = (string)$xml->systemName;
-		if(count($xml->serviceFeature))
+		if(!is_null($jsonObject) && isset($jsonObject->systemName))
+			$this->systemName = (string)$jsonObject->systemName;
+		if(!is_null($xml) && count($xml->serviceFeature))
 			$this->serviceFeature = (int)$xml->serviceFeature;
-		if(count($xml->serviceType))
+		if(!is_null($jsonObject) && isset($jsonObject->serviceFeature))
+			$this->serviceFeature = (int)$jsonObject->serviceFeature;
+		if(!is_null($xml) && count($xml->serviceType))
 			$this->serviceType = (int)$xml->serviceType;
-		if(count($xml->turnAroundTime))
+		if(!is_null($jsonObject) && isset($jsonObject->serviceType))
+			$this->serviceType = (int)$jsonObject->serviceType;
+		if(!is_null($xml) && count($xml->turnAroundTime))
 			$this->turnAroundTime = (int)$xml->turnAroundTime;
-		if(count($xml->sourceLanguage))
+		if(!is_null($jsonObject) && isset($jsonObject->turnAroundTime))
+			$this->turnAroundTime = (int)$jsonObject->turnAroundTime;
+		if(!is_null($xml) && count($xml->sourceLanguage))
 			$this->sourceLanguage = (string)$xml->sourceLanguage;
-		if(count($xml->targetLanguage))
+		if(!is_null($jsonObject) && isset($jsonObject->sourceLanguage))
+			$this->sourceLanguage = (string)$jsonObject->sourceLanguage;
+		if(!is_null($xml) && count($xml->targetLanguage))
 			$this->targetLanguage = (string)$xml->targetLanguage;
-		if(count($xml->outputFormat))
+		if(!is_null($jsonObject) && isset($jsonObject->targetLanguage))
+			$this->targetLanguage = (string)$jsonObject->targetLanguage;
+		if(!is_null($xml) && count($xml->outputFormat))
 			$this->outputFormat = (int)$xml->outputFormat;
-		if(count($xml->enableSpeakerId))
+		if(!is_null($jsonObject) && isset($jsonObject->outputFormat))
+			$this->outputFormat = (int)$jsonObject->outputFormat;
+		if(!is_null($xml) && count($xml->enableSpeakerId))
 			$this->enableSpeakerId = (int)$xml->enableSpeakerId;
-		if(count($xml->fixedPriceAddons))
+		if(!is_null($jsonObject) && isset($jsonObject->enableSpeakerId))
+			$this->enableSpeakerId = (int)$jsonObject->enableSpeakerId;
+		if(!is_null($xml) && count($xml->fixedPriceAddons))
 			$this->fixedPriceAddons = (int)$xml->fixedPriceAddons;
-		if(count($xml->pricing) && !empty($xml->pricing))
+		if(!is_null($jsonObject) && isset($jsonObject->fixedPriceAddons))
+			$this->fixedPriceAddons = (int)$jsonObject->fixedPriceAddons;
+		if(!is_null($xml) && count($xml->pricing) && !empty($xml->pricing))
 			$this->pricing = Kaltura_Client_ParseUtils::unmarshalObject($xml->pricing, "KalturaVendorCatalogItemPricing");
-		if(count($xml->flavorParamsId))
+		if(!is_null($jsonObject) && isset($jsonObject->pricing) && !empty($jsonObject->pricing))
+			$this->pricing = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsonObject->pricing, "KalturaVendorCatalogItemPricing");
+		if(!is_null($xml) && count($xml->flavorParamsId))
 			$this->flavorParamsId = (int)$xml->flavorParamsId;
-		if(count($xml->clearAudioFlavorParamsId))
+		if(!is_null($jsonObject) && isset($jsonObject->flavorParamsId))
+			$this->flavorParamsId = (int)$jsonObject->flavorParamsId;
+		if(!is_null($xml) && count($xml->clearAudioFlavorParamsId))
 			$this->clearAudioFlavorParamsId = (int)$xml->clearAudioFlavorParamsId;
+		if(!is_null($jsonObject) && isset($jsonObject->clearAudioFlavorParamsId))
+			$this->clearAudioFlavorParamsId = (int)$jsonObject->clearAudioFlavorParamsId;
 	}
 	/**
 	 * 

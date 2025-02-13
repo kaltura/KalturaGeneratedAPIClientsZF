@@ -38,23 +38,36 @@ class Kaltura_Client_CaptionSearch_Type_CaptionAssetItem extends Kaltura_Client_
 		return 'KalturaCaptionAssetItem';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->asset) && !empty($xml->asset))
+		if(!is_null($xml) && count($xml->asset) && !empty($xml->asset))
 			$this->asset = Kaltura_Client_ParseUtils::unmarshalObject($xml->asset, "KalturaCaptionAsset");
-		if(count($xml->entry) && !empty($xml->entry))
+		if(!is_null($jsonObject) && isset($jsonObject->asset) && !empty($jsonObject->asset))
+			$this->asset = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsonObject->asset, "KalturaCaptionAsset");
+		if(!is_null($xml) && count($xml->entry) && !empty($xml->entry))
 			$this->entry = Kaltura_Client_ParseUtils::unmarshalObject($xml->entry, "KalturaBaseEntry");
-		if(count($xml->startTime))
+		if(!is_null($jsonObject) && isset($jsonObject->entry) && !empty($jsonObject->entry))
+			$this->entry = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsonObject->entry, "KalturaBaseEntry");
+		if(!is_null($xml) && count($xml->startTime))
 			$this->startTime = (int)$xml->startTime;
-		if(count($xml->endTime))
+		if(!is_null($jsonObject) && isset($jsonObject->startTime))
+			$this->startTime = (int)$jsonObject->startTime;
+		if(!is_null($xml) && count($xml->endTime))
 			$this->endTime = (int)$xml->endTime;
-		if(count($xml->content))
+		if(!is_null($jsonObject) && isset($jsonObject->endTime))
+			$this->endTime = (int)$jsonObject->endTime;
+		if(!is_null($xml) && count($xml->content))
 			$this->content = (string)$xml->content;
+		if(!is_null($jsonObject) && isset($jsonObject->content))
+			$this->content = (string)$jsonObject->content;
 	}
 	/**
 	 * The Caption Asset object

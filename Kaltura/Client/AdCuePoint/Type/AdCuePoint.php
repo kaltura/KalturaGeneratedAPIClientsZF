@@ -38,25 +38,40 @@ class Kaltura_Client_AdCuePoint_Type_AdCuePoint extends Kaltura_Client_CuePoint_
 		return 'KalturaAdCuePoint';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->protocolType))
+		if(!is_null($xml) && count($xml->protocolType))
 			$this->protocolType = (string)$xml->protocolType;
-		if(count($xml->sourceUrl))
+		if(!is_null($jsonObject) && isset($jsonObject->protocolType))
+			$this->protocolType = (string)$jsonObject->protocolType;
+		if(!is_null($xml) && count($xml->sourceUrl))
 			$this->sourceUrl = (string)$xml->sourceUrl;
-		if(count($xml->adType))
+		if(!is_null($jsonObject) && isset($jsonObject->sourceUrl))
+			$this->sourceUrl = (string)$jsonObject->sourceUrl;
+		if(!is_null($xml) && count($xml->adType))
 			$this->adType = (string)$xml->adType;
-		if(count($xml->title))
+		if(!is_null($jsonObject) && isset($jsonObject->adType))
+			$this->adType = (string)$jsonObject->adType;
+		if(!is_null($xml) && count($xml->title))
 			$this->title = (string)$xml->title;
-		if(count($xml->endTime))
+		if(!is_null($jsonObject) && isset($jsonObject->title))
+			$this->title = (string)$jsonObject->title;
+		if(!is_null($xml) && count($xml->endTime))
 			$this->endTime = (int)$xml->endTime;
-		if(count($xml->duration))
+		if(!is_null($jsonObject) && isset($jsonObject->endTime))
+			$this->endTime = (int)$jsonObject->endTime;
+		if(!is_null($xml) && count($xml->duration))
 			$this->duration = (int)$xml->duration;
+		if(!is_null($jsonObject) && isset($jsonObject->duration))
+			$this->duration = (int)$jsonObject->duration;
 	}
 	/**
 	 * 

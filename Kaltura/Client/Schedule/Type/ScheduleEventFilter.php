@@ -38,39 +38,68 @@ class Kaltura_Client_Schedule_Type_ScheduleEventFilter extends Kaltura_Client_Sc
 		return 'KalturaScheduleEventFilter';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->resourceIdsLike))
+		if(!is_null($xml) && count($xml->resourceIdsLike))
 			$this->resourceIdsLike = (string)$xml->resourceIdsLike;
-		if(count($xml->resourceIdsMultiLikeOr))
+		if(!is_null($jsonObject) && isset($jsonObject->resourceIdsLike))
+			$this->resourceIdsLike = (string)$jsonObject->resourceIdsLike;
+		if(!is_null($xml) && count($xml->resourceIdsMultiLikeOr))
 			$this->resourceIdsMultiLikeOr = (string)$xml->resourceIdsMultiLikeOr;
-		if(count($xml->resourceIdsMultiLikeAnd))
+		if(!is_null($jsonObject) && isset($jsonObject->resourceIdsMultiLikeOr))
+			$this->resourceIdsMultiLikeOr = (string)$jsonObject->resourceIdsMultiLikeOr;
+		if(!is_null($xml) && count($xml->resourceIdsMultiLikeAnd))
 			$this->resourceIdsMultiLikeAnd = (string)$xml->resourceIdsMultiLikeAnd;
-		if(count($xml->parentResourceIdsLike))
+		if(!is_null($jsonObject) && isset($jsonObject->resourceIdsMultiLikeAnd))
+			$this->resourceIdsMultiLikeAnd = (string)$jsonObject->resourceIdsMultiLikeAnd;
+		if(!is_null($xml) && count($xml->parentResourceIdsLike))
 			$this->parentResourceIdsLike = (string)$xml->parentResourceIdsLike;
-		if(count($xml->parentResourceIdsMultiLikeOr))
+		if(!is_null($jsonObject) && isset($jsonObject->parentResourceIdsLike))
+			$this->parentResourceIdsLike = (string)$jsonObject->parentResourceIdsLike;
+		if(!is_null($xml) && count($xml->parentResourceIdsMultiLikeOr))
 			$this->parentResourceIdsMultiLikeOr = (string)$xml->parentResourceIdsMultiLikeOr;
-		if(count($xml->parentResourceIdsMultiLikeAnd))
+		if(!is_null($jsonObject) && isset($jsonObject->parentResourceIdsMultiLikeOr))
+			$this->parentResourceIdsMultiLikeOr = (string)$jsonObject->parentResourceIdsMultiLikeOr;
+		if(!is_null($xml) && count($xml->parentResourceIdsMultiLikeAnd))
 			$this->parentResourceIdsMultiLikeAnd = (string)$xml->parentResourceIdsMultiLikeAnd;
-		if(count($xml->templateEntryCategoriesIdsMultiLikeAnd))
+		if(!is_null($jsonObject) && isset($jsonObject->parentResourceIdsMultiLikeAnd))
+			$this->parentResourceIdsMultiLikeAnd = (string)$jsonObject->parentResourceIdsMultiLikeAnd;
+		if(!is_null($xml) && count($xml->templateEntryCategoriesIdsMultiLikeAnd))
 			$this->templateEntryCategoriesIdsMultiLikeAnd = (string)$xml->templateEntryCategoriesIdsMultiLikeAnd;
-		if(count($xml->templateEntryCategoriesIdsMultiLikeOr))
+		if(!is_null($jsonObject) && isset($jsonObject->templateEntryCategoriesIdsMultiLikeAnd))
+			$this->templateEntryCategoriesIdsMultiLikeAnd = (string)$jsonObject->templateEntryCategoriesIdsMultiLikeAnd;
+		if(!is_null($xml) && count($xml->templateEntryCategoriesIdsMultiLikeOr))
 			$this->templateEntryCategoriesIdsMultiLikeOr = (string)$xml->templateEntryCategoriesIdsMultiLikeOr;
-		if(count($xml->resourceSystemNamesMultiLikeOr))
+		if(!is_null($jsonObject) && isset($jsonObject->templateEntryCategoriesIdsMultiLikeOr))
+			$this->templateEntryCategoriesIdsMultiLikeOr = (string)$jsonObject->templateEntryCategoriesIdsMultiLikeOr;
+		if(!is_null($xml) && count($xml->resourceSystemNamesMultiLikeOr))
 			$this->resourceSystemNamesMultiLikeOr = (string)$xml->resourceSystemNamesMultiLikeOr;
-		if(count($xml->templateEntryCategoriesIdsLike))
+		if(!is_null($jsonObject) && isset($jsonObject->resourceSystemNamesMultiLikeOr))
+			$this->resourceSystemNamesMultiLikeOr = (string)$jsonObject->resourceSystemNamesMultiLikeOr;
+		if(!is_null($xml) && count($xml->templateEntryCategoriesIdsLike))
 			$this->templateEntryCategoriesIdsLike = (string)$xml->templateEntryCategoriesIdsLike;
-		if(count($xml->resourceSystemNamesMultiLikeAnd))
+		if(!is_null($jsonObject) && isset($jsonObject->templateEntryCategoriesIdsLike))
+			$this->templateEntryCategoriesIdsLike = (string)$jsonObject->templateEntryCategoriesIdsLike;
+		if(!is_null($xml) && count($xml->resourceSystemNamesMultiLikeAnd))
 			$this->resourceSystemNamesMultiLikeAnd = (string)$xml->resourceSystemNamesMultiLikeAnd;
-		if(count($xml->resourceSystemNamesLike))
+		if(!is_null($jsonObject) && isset($jsonObject->resourceSystemNamesMultiLikeAnd))
+			$this->resourceSystemNamesMultiLikeAnd = (string)$jsonObject->resourceSystemNamesMultiLikeAnd;
+		if(!is_null($xml) && count($xml->resourceSystemNamesLike))
 			$this->resourceSystemNamesLike = (string)$xml->resourceSystemNamesLike;
-		if(count($xml->resourceIdEqual))
+		if(!is_null($jsonObject) && isset($jsonObject->resourceSystemNamesLike))
+			$this->resourceSystemNamesLike = (string)$jsonObject->resourceSystemNamesLike;
+		if(!is_null($xml) && count($xml->resourceIdEqual))
 			$this->resourceIdEqual = (string)$xml->resourceIdEqual;
+		if(!is_null($jsonObject) && isset($jsonObject->resourceIdEqual))
+			$this->resourceIdEqual = (string)$jsonObject->resourceIdEqual;
 	}
 	/**
 	 * 

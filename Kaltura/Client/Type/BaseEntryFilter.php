@@ -38,29 +38,48 @@ class Kaltura_Client_Type_BaseEntryFilter extends Kaltura_Client_Type_BaseEntryB
 		return 'KalturaBaseEntryFilter';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->freeText))
+		if(!is_null($xml) && count($xml->freeText))
 			$this->freeText = (string)$xml->freeText;
-		if(count($xml->excludedFreeTextGroups))
+		if(!is_null($jsonObject) && isset($jsonObject->freeText))
+			$this->freeText = (string)$jsonObject->freeText;
+		if(!is_null($xml) && count($xml->excludedFreeTextGroups))
 			$this->excludedFreeTextGroups = (string)$xml->excludedFreeTextGroups;
-		if(count($xml->descriptionLike))
+		if(!is_null($jsonObject) && isset($jsonObject->excludedFreeTextGroups))
+			$this->excludedFreeTextGroups = (string)$jsonObject->excludedFreeTextGroups;
+		if(!is_null($xml) && count($xml->descriptionLike))
 			$this->descriptionLike = (string)$xml->descriptionLike;
-		if(count($xml->isRoot))
+		if(!is_null($jsonObject) && isset($jsonObject->descriptionLike))
+			$this->descriptionLike = (string)$jsonObject->descriptionLike;
+		if(!is_null($xml) && count($xml->isRoot))
 			$this->isRoot = (int)$xml->isRoot;
-		if(count($xml->categoriesFullNameIn))
+		if(!is_null($jsonObject) && isset($jsonObject->isRoot))
+			$this->isRoot = (int)$jsonObject->isRoot;
+		if(!is_null($xml) && count($xml->categoriesFullNameIn))
 			$this->categoriesFullNameIn = (string)$xml->categoriesFullNameIn;
-		if(count($xml->categoryAncestorIdIn))
+		if(!is_null($jsonObject) && isset($jsonObject->categoriesFullNameIn))
+			$this->categoriesFullNameIn = (string)$jsonObject->categoriesFullNameIn;
+		if(!is_null($xml) && count($xml->categoryAncestorIdIn))
 			$this->categoryAncestorIdIn = (string)$xml->categoryAncestorIdIn;
-		if(count($xml->redirectFromEntryId))
+		if(!is_null($jsonObject) && isset($jsonObject->categoryAncestorIdIn))
+			$this->categoryAncestorIdIn = (string)$jsonObject->categoryAncestorIdIn;
+		if(!is_null($xml) && count($xml->redirectFromEntryId))
 			$this->redirectFromEntryId = (string)$xml->redirectFromEntryId;
-		if(count($xml->conversionProfileIdEqual))
+		if(!is_null($jsonObject) && isset($jsonObject->redirectFromEntryId))
+			$this->redirectFromEntryId = (string)$jsonObject->redirectFromEntryId;
+		if(!is_null($xml) && count($xml->conversionProfileIdEqual))
 			$this->conversionProfileIdEqual = (int)$xml->conversionProfileIdEqual;
+		if(!is_null($jsonObject) && isset($jsonObject->conversionProfileIdEqual))
+			$this->conversionProfileIdEqual = (int)$jsonObject->conversionProfileIdEqual;
 	}
 	/**
 	 * 

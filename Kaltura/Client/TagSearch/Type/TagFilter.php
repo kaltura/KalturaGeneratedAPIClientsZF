@@ -38,23 +38,40 @@ class Kaltura_Client_TagSearch_Type_TagFilter extends Kaltura_Client_Type_Filter
 		return 'KalturaTagFilter';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->objectTypeEqual))
+		if(!is_null($xml) && count($xml->objectTypeEqual))
 			$this->objectTypeEqual = (string)$xml->objectTypeEqual;
-		if(count($xml->tagEqual))
+		if(!is_null($jsonObject) && isset($jsonObject->objectTypeEqual))
+			$this->objectTypeEqual = (string)$jsonObject->objectTypeEqual;
+		if(!is_null($xml) && count($xml->objectTypeIn))
+			$this->objectTypeIn = (string)$xml->objectTypeIn;
+		if(!is_null($jsonObject) && isset($jsonObject->objectTypeIn))
+			$this->objectTypeIn = (string)$jsonObject->objectTypeIn;
+		if(!is_null($xml) && count($xml->tagEqual))
 			$this->tagEqual = (string)$xml->tagEqual;
-		if(count($xml->tagStartsWith))
+		if(!is_null($jsonObject) && isset($jsonObject->tagEqual))
+			$this->tagEqual = (string)$jsonObject->tagEqual;
+		if(!is_null($xml) && count($xml->tagStartsWith))
 			$this->tagStartsWith = (string)$xml->tagStartsWith;
-		if(count($xml->instanceCountEqual))
+		if(!is_null($jsonObject) && isset($jsonObject->tagStartsWith))
+			$this->tagStartsWith = (string)$jsonObject->tagStartsWith;
+		if(!is_null($xml) && count($xml->instanceCountEqual))
 			$this->instanceCountEqual = (int)$xml->instanceCountEqual;
-		if(count($xml->instanceCountIn))
+		if(!is_null($jsonObject) && isset($jsonObject->instanceCountEqual))
+			$this->instanceCountEqual = (int)$jsonObject->instanceCountEqual;
+		if(!is_null($xml) && count($xml->instanceCountIn))
 			$this->instanceCountIn = (int)$xml->instanceCountIn;
+		if(!is_null($jsonObject) && isset($jsonObject->instanceCountIn))
+			$this->instanceCountIn = (int)$jsonObject->instanceCountIn;
 	}
 	/**
 	 * 
@@ -62,6 +79,13 @@ class Kaltura_Client_TagSearch_Type_TagFilter extends Kaltura_Client_Type_Filter
 	 * @var Kaltura_Client_Enum_TaggedObjectType
 	 */
 	public $objectTypeEqual = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $objectTypeIn = null;
 
 	/**
 	 * 

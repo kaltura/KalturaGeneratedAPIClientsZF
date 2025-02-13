@@ -45,6 +45,7 @@ class Kaltura_Client_EventNotification_Enum_EventNotificationEventObjectType ext
 	const DROP_FOLDER_FILE = "dropFolderEventNotifications.DropFolderFile";
 	const METADATA = "metadataEventNotifications.Metadata";
 	const TRANSCRIPT_ASSET = "transcriptAssetEventNotifications.TranscriptAsset";
+	const VIRTUAL_EVENT = "virtualEventEventNotifications.VirtualEvent";
 	const ENTRY = "1";
 	const CATEGORY = "2";
 	const ASSET = "3";

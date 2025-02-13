@@ -38,19 +38,28 @@ class Kaltura_Client_ScheduledTaskMetadata_Type_ExecuteMetadataXsltObjectTask ex
 		return 'KalturaExecuteMetadataXsltObjectTask';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->metadataProfileId))
+		if(!is_null($xml) && count($xml->metadataProfileId))
 			$this->metadataProfileId = (int)$xml->metadataProfileId;
-		if(count($xml->metadataObjectType))
+		if(!is_null($jsonObject) && isset($jsonObject->metadataProfileId))
+			$this->metadataProfileId = (int)$jsonObject->metadataProfileId;
+		if(!is_null($xml) && count($xml->metadataObjectType))
 			$this->metadataObjectType = (string)$xml->metadataObjectType;
-		if(count($xml->xslt))
+		if(!is_null($jsonObject) && isset($jsonObject->metadataObjectType))
+			$this->metadataObjectType = (string)$jsonObject->metadataObjectType;
+		if(!is_null($xml) && count($xml->xslt))
 			$this->xslt = (string)$xml->xslt;
+		if(!is_null($jsonObject) && isset($jsonObject->xslt))
+			$this->xslt = (string)$jsonObject->xslt;
 	}
 	/**
 	 * Metadata profile id to lookup the metadata object

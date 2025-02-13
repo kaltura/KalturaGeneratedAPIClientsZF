@@ -38,18 +38,30 @@ class Kaltura_Client_Type_AccessControlLimitFlavorsAction extends Kaltura_Client
 		return 'KalturaAccessControlLimitFlavorsAction';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->flavorParamsIds))
+		if(!is_null($xml) && count($xml->flavorParamsIds))
 			$this->flavorParamsIds = (string)$xml->flavorParamsIds;
-		if(count($xml->isBlockedList))
+		if(!is_null($jsonObject) && isset($jsonObject->flavorParamsIds))
+			$this->flavorParamsIds = (string)$jsonObject->flavorParamsIds;
+		if(!is_null($xml) && count($xml->isBlockedList))
 		{
 			if(!empty($xml->isBlockedList) && ((int) $xml->isBlockedList === 1 || strtolower((string)$xml->isBlockedList) === 'true'))
+				$this->isBlockedList = true;
+			else
+				$this->isBlockedList = false;
+		}
+		if(!is_null($jsonObject) && isset($jsonObject->isBlockedList))
+		{
+			if(!empty($jsonObject->isBlockedList) && ((int) $jsonObject->isBlockedList === 1 || strtolower((string)$jsonObject->isBlockedList) === 'true'))
 				$this->isBlockedList = true;
 			else
 				$this->isBlockedList = false;

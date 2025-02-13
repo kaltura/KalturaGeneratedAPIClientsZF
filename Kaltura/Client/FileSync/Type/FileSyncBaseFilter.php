@@ -38,71 +38,132 @@ abstract class Kaltura_Client_FileSync_Type_FileSyncBaseFilter extends Kaltura_C
 		return 'KalturaFileSyncBaseFilter';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->partnerIdEqual))
+		if(!is_null($xml) && count($xml->partnerIdEqual))
 			$this->partnerIdEqual = (int)$xml->partnerIdEqual;
-		if(count($xml->fileObjectTypeEqual))
+		if(!is_null($jsonObject) && isset($jsonObject->partnerIdEqual))
+			$this->partnerIdEqual = (int)$jsonObject->partnerIdEqual;
+		if(!is_null($xml) && count($xml->fileObjectTypeEqual))
 			$this->fileObjectTypeEqual = (string)$xml->fileObjectTypeEqual;
-		if(count($xml->fileObjectTypeIn))
+		if(!is_null($jsonObject) && isset($jsonObject->fileObjectTypeEqual))
+			$this->fileObjectTypeEqual = (string)$jsonObject->fileObjectTypeEqual;
+		if(!is_null($xml) && count($xml->fileObjectTypeIn))
 			$this->fileObjectTypeIn = (string)$xml->fileObjectTypeIn;
-		if(count($xml->objectIdEqual))
+		if(!is_null($jsonObject) && isset($jsonObject->fileObjectTypeIn))
+			$this->fileObjectTypeIn = (string)$jsonObject->fileObjectTypeIn;
+		if(!is_null($xml) && count($xml->objectIdEqual))
 			$this->objectIdEqual = (string)$xml->objectIdEqual;
-		if(count($xml->objectIdIn))
+		if(!is_null($jsonObject) && isset($jsonObject->objectIdEqual))
+			$this->objectIdEqual = (string)$jsonObject->objectIdEqual;
+		if(!is_null($xml) && count($xml->objectIdIn))
 			$this->objectIdIn = (string)$xml->objectIdIn;
-		if(count($xml->versionEqual))
+		if(!is_null($jsonObject) && isset($jsonObject->objectIdIn))
+			$this->objectIdIn = (string)$jsonObject->objectIdIn;
+		if(!is_null($xml) && count($xml->versionEqual))
 			$this->versionEqual = (string)$xml->versionEqual;
-		if(count($xml->versionIn))
+		if(!is_null($jsonObject) && isset($jsonObject->versionEqual))
+			$this->versionEqual = (string)$jsonObject->versionEqual;
+		if(!is_null($xml) && count($xml->versionIn))
 			$this->versionIn = (string)$xml->versionIn;
-		if(count($xml->objectSubTypeEqual))
+		if(!is_null($jsonObject) && isset($jsonObject->versionIn))
+			$this->versionIn = (string)$jsonObject->versionIn;
+		if(!is_null($xml) && count($xml->objectSubTypeEqual))
 			$this->objectSubTypeEqual = (int)$xml->objectSubTypeEqual;
-		if(count($xml->objectSubTypeIn))
+		if(!is_null($jsonObject) && isset($jsonObject->objectSubTypeEqual))
+			$this->objectSubTypeEqual = (int)$jsonObject->objectSubTypeEqual;
+		if(!is_null($xml) && count($xml->objectSubTypeIn))
 			$this->objectSubTypeIn = (string)$xml->objectSubTypeIn;
-		if(count($xml->dcEqual))
+		if(!is_null($jsonObject) && isset($jsonObject->objectSubTypeIn))
+			$this->objectSubTypeIn = (string)$jsonObject->objectSubTypeIn;
+		if(!is_null($xml) && count($xml->dcEqual))
 			$this->dcEqual = (string)$xml->dcEqual;
-		if(count($xml->dcIn))
+		if(!is_null($jsonObject) && isset($jsonObject->dcEqual))
+			$this->dcEqual = (string)$jsonObject->dcEqual;
+		if(!is_null($xml) && count($xml->dcIn))
 			$this->dcIn = (string)$xml->dcIn;
-		if(count($xml->originalEqual))
+		if(!is_null($jsonObject) && isset($jsonObject->dcIn))
+			$this->dcIn = (string)$jsonObject->dcIn;
+		if(!is_null($xml) && count($xml->originalEqual))
 			$this->originalEqual = (int)$xml->originalEqual;
-		if(count($xml->createdAtGreaterThanOrEqual))
+		if(!is_null($jsonObject) && isset($jsonObject->originalEqual))
+			$this->originalEqual = (int)$jsonObject->originalEqual;
+		if(!is_null($xml) && count($xml->createdAtGreaterThanOrEqual))
 			$this->createdAtGreaterThanOrEqual = (int)$xml->createdAtGreaterThanOrEqual;
-		if(count($xml->createdAtLessThanOrEqual))
+		if(!is_null($jsonObject) && isset($jsonObject->createdAtGreaterThanOrEqual))
+			$this->createdAtGreaterThanOrEqual = (int)$jsonObject->createdAtGreaterThanOrEqual;
+		if(!is_null($xml) && count($xml->createdAtLessThanOrEqual))
 			$this->createdAtLessThanOrEqual = (int)$xml->createdAtLessThanOrEqual;
-		if(count($xml->updatedAtGreaterThanOrEqual))
+		if(!is_null($jsonObject) && isset($jsonObject->createdAtLessThanOrEqual))
+			$this->createdAtLessThanOrEqual = (int)$jsonObject->createdAtLessThanOrEqual;
+		if(!is_null($xml) && count($xml->updatedAtGreaterThanOrEqual))
 			$this->updatedAtGreaterThanOrEqual = (int)$xml->updatedAtGreaterThanOrEqual;
-		if(count($xml->updatedAtLessThanOrEqual))
+		if(!is_null($jsonObject) && isset($jsonObject->updatedAtGreaterThanOrEqual))
+			$this->updatedAtGreaterThanOrEqual = (int)$jsonObject->updatedAtGreaterThanOrEqual;
+		if(!is_null($xml) && count($xml->updatedAtLessThanOrEqual))
 			$this->updatedAtLessThanOrEqual = (int)$xml->updatedAtLessThanOrEqual;
-		if(count($xml->readyAtGreaterThanOrEqual))
+		if(!is_null($jsonObject) && isset($jsonObject->updatedAtLessThanOrEqual))
+			$this->updatedAtLessThanOrEqual = (int)$jsonObject->updatedAtLessThanOrEqual;
+		if(!is_null($xml) && count($xml->readyAtGreaterThanOrEqual))
 			$this->readyAtGreaterThanOrEqual = (int)$xml->readyAtGreaterThanOrEqual;
-		if(count($xml->readyAtLessThanOrEqual))
+		if(!is_null($jsonObject) && isset($jsonObject->readyAtGreaterThanOrEqual))
+			$this->readyAtGreaterThanOrEqual = (int)$jsonObject->readyAtGreaterThanOrEqual;
+		if(!is_null($xml) && count($xml->readyAtLessThanOrEqual))
 			$this->readyAtLessThanOrEqual = (int)$xml->readyAtLessThanOrEqual;
-		if(count($xml->syncTimeGreaterThanOrEqual))
+		if(!is_null($jsonObject) && isset($jsonObject->readyAtLessThanOrEqual))
+			$this->readyAtLessThanOrEqual = (int)$jsonObject->readyAtLessThanOrEqual;
+		if(!is_null($xml) && count($xml->syncTimeGreaterThanOrEqual))
 			$this->syncTimeGreaterThanOrEqual = (int)$xml->syncTimeGreaterThanOrEqual;
-		if(count($xml->syncTimeLessThanOrEqual))
+		if(!is_null($jsonObject) && isset($jsonObject->syncTimeGreaterThanOrEqual))
+			$this->syncTimeGreaterThanOrEqual = (int)$jsonObject->syncTimeGreaterThanOrEqual;
+		if(!is_null($xml) && count($xml->syncTimeLessThanOrEqual))
 			$this->syncTimeLessThanOrEqual = (int)$xml->syncTimeLessThanOrEqual;
-		if(count($xml->statusEqual))
+		if(!is_null($jsonObject) && isset($jsonObject->syncTimeLessThanOrEqual))
+			$this->syncTimeLessThanOrEqual = (int)$jsonObject->syncTimeLessThanOrEqual;
+		if(!is_null($xml) && count($xml->statusEqual))
 			$this->statusEqual = (int)$xml->statusEqual;
-		if(count($xml->statusIn))
+		if(!is_null($jsonObject) && isset($jsonObject->statusEqual))
+			$this->statusEqual = (int)$jsonObject->statusEqual;
+		if(!is_null($xml) && count($xml->statusIn))
 			$this->statusIn = (string)$xml->statusIn;
-		if(count($xml->fileTypeEqual))
+		if(!is_null($jsonObject) && isset($jsonObject->statusIn))
+			$this->statusIn = (string)$jsonObject->statusIn;
+		if(!is_null($xml) && count($xml->fileTypeEqual))
 			$this->fileTypeEqual = (int)$xml->fileTypeEqual;
-		if(count($xml->fileTypeIn))
+		if(!is_null($jsonObject) && isset($jsonObject->fileTypeEqual))
+			$this->fileTypeEqual = (int)$jsonObject->fileTypeEqual;
+		if(!is_null($xml) && count($xml->fileTypeIn))
 			$this->fileTypeIn = (string)$xml->fileTypeIn;
-		if(count($xml->linkedIdEqual))
+		if(!is_null($jsonObject) && isset($jsonObject->fileTypeIn))
+			$this->fileTypeIn = (string)$jsonObject->fileTypeIn;
+		if(!is_null($xml) && count($xml->linkedIdEqual))
 			$this->linkedIdEqual = (int)$xml->linkedIdEqual;
-		if(count($xml->linkCountGreaterThanOrEqual))
+		if(!is_null($jsonObject) && isset($jsonObject->linkedIdEqual))
+			$this->linkedIdEqual = (int)$jsonObject->linkedIdEqual;
+		if(!is_null($xml) && count($xml->linkCountGreaterThanOrEqual))
 			$this->linkCountGreaterThanOrEqual = (int)$xml->linkCountGreaterThanOrEqual;
-		if(count($xml->linkCountLessThanOrEqual))
+		if(!is_null($jsonObject) && isset($jsonObject->linkCountGreaterThanOrEqual))
+			$this->linkCountGreaterThanOrEqual = (int)$jsonObject->linkCountGreaterThanOrEqual;
+		if(!is_null($xml) && count($xml->linkCountLessThanOrEqual))
 			$this->linkCountLessThanOrEqual = (int)$xml->linkCountLessThanOrEqual;
-		if(count($xml->fileSizeGreaterThanOrEqual))
+		if(!is_null($jsonObject) && isset($jsonObject->linkCountLessThanOrEqual))
+			$this->linkCountLessThanOrEqual = (int)$jsonObject->linkCountLessThanOrEqual;
+		if(!is_null($xml) && count($xml->fileSizeGreaterThanOrEqual))
 			$this->fileSizeGreaterThanOrEqual = (float)$xml->fileSizeGreaterThanOrEqual;
-		if(count($xml->fileSizeLessThanOrEqual))
+		if(!is_null($jsonObject) && isset($jsonObject->fileSizeGreaterThanOrEqual))
+			$this->fileSizeGreaterThanOrEqual = (float)$jsonObject->fileSizeGreaterThanOrEqual;
+		if(!is_null($xml) && count($xml->fileSizeLessThanOrEqual))
 			$this->fileSizeLessThanOrEqual = (float)$xml->fileSizeLessThanOrEqual;
+		if(!is_null($jsonObject) && isset($jsonObject->fileSizeLessThanOrEqual))
+			$this->fileSizeLessThanOrEqual = (float)$jsonObject->fileSizeLessThanOrEqual;
 	}
 	/**
 	 * 

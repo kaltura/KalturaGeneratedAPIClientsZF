@@ -38,31 +38,52 @@ abstract class Kaltura_Client_AdCuePoint_Type_AdCuePointBaseFilter extends Kaltu
 		return 'KalturaAdCuePointBaseFilter';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->protocolTypeEqual))
+		if(!is_null($xml) && count($xml->protocolTypeEqual))
 			$this->protocolTypeEqual = (string)$xml->protocolTypeEqual;
-		if(count($xml->protocolTypeIn))
+		if(!is_null($jsonObject) && isset($jsonObject->protocolTypeEqual))
+			$this->protocolTypeEqual = (string)$jsonObject->protocolTypeEqual;
+		if(!is_null($xml) && count($xml->protocolTypeIn))
 			$this->protocolTypeIn = (string)$xml->protocolTypeIn;
-		if(count($xml->titleLike))
+		if(!is_null($jsonObject) && isset($jsonObject->protocolTypeIn))
+			$this->protocolTypeIn = (string)$jsonObject->protocolTypeIn;
+		if(!is_null($xml) && count($xml->titleLike))
 			$this->titleLike = (string)$xml->titleLike;
-		if(count($xml->titleMultiLikeOr))
+		if(!is_null($jsonObject) && isset($jsonObject->titleLike))
+			$this->titleLike = (string)$jsonObject->titleLike;
+		if(!is_null($xml) && count($xml->titleMultiLikeOr))
 			$this->titleMultiLikeOr = (string)$xml->titleMultiLikeOr;
-		if(count($xml->titleMultiLikeAnd))
+		if(!is_null($jsonObject) && isset($jsonObject->titleMultiLikeOr))
+			$this->titleMultiLikeOr = (string)$jsonObject->titleMultiLikeOr;
+		if(!is_null($xml) && count($xml->titleMultiLikeAnd))
 			$this->titleMultiLikeAnd = (string)$xml->titleMultiLikeAnd;
-		if(count($xml->endTimeGreaterThanOrEqual))
+		if(!is_null($jsonObject) && isset($jsonObject->titleMultiLikeAnd))
+			$this->titleMultiLikeAnd = (string)$jsonObject->titleMultiLikeAnd;
+		if(!is_null($xml) && count($xml->endTimeGreaterThanOrEqual))
 			$this->endTimeGreaterThanOrEqual = (int)$xml->endTimeGreaterThanOrEqual;
-		if(count($xml->endTimeLessThanOrEqual))
+		if(!is_null($jsonObject) && isset($jsonObject->endTimeGreaterThanOrEqual))
+			$this->endTimeGreaterThanOrEqual = (int)$jsonObject->endTimeGreaterThanOrEqual;
+		if(!is_null($xml) && count($xml->endTimeLessThanOrEqual))
 			$this->endTimeLessThanOrEqual = (int)$xml->endTimeLessThanOrEqual;
-		if(count($xml->durationGreaterThanOrEqual))
+		if(!is_null($jsonObject) && isset($jsonObject->endTimeLessThanOrEqual))
+			$this->endTimeLessThanOrEqual = (int)$jsonObject->endTimeLessThanOrEqual;
+		if(!is_null($xml) && count($xml->durationGreaterThanOrEqual))
 			$this->durationGreaterThanOrEqual = (int)$xml->durationGreaterThanOrEqual;
-		if(count($xml->durationLessThanOrEqual))
+		if(!is_null($jsonObject) && isset($jsonObject->durationGreaterThanOrEqual))
+			$this->durationGreaterThanOrEqual = (int)$jsonObject->durationGreaterThanOrEqual;
+		if(!is_null($xml) && count($xml->durationLessThanOrEqual))
 			$this->durationLessThanOrEqual = (int)$xml->durationLessThanOrEqual;
+		if(!is_null($jsonObject) && isset($jsonObject->durationLessThanOrEqual))
+			$this->durationLessThanOrEqual = (int)$jsonObject->durationLessThanOrEqual;
 	}
 	/**
 	 * 

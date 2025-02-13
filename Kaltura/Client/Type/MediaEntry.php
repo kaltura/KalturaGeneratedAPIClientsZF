@@ -38,43 +38,77 @@ class Kaltura_Client_Type_MediaEntry extends Kaltura_Client_Type_PlayableEntry
 		return 'KalturaMediaEntry';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->mediaType))
+		if(!is_null($xml) && count($xml->mediaType))
 			$this->mediaType = (int)$xml->mediaType;
-		if(count($xml->conversionQuality))
+		if(!is_null($jsonObject) && isset($jsonObject->mediaType))
+			$this->mediaType = (int)$jsonObject->mediaType;
+		if(!is_null($xml) && count($xml->conversionQuality))
 			$this->conversionQuality = (string)$xml->conversionQuality;
-		if(count($xml->sourceType))
+		if(!is_null($jsonObject) && isset($jsonObject->conversionQuality))
+			$this->conversionQuality = (string)$jsonObject->conversionQuality;
+		if(!is_null($xml) && count($xml->sourceType))
 			$this->sourceType = (string)$xml->sourceType;
-		if(count($xml->sourceVersion))
+		if(!is_null($jsonObject) && isset($jsonObject->sourceType))
+			$this->sourceType = (string)$jsonObject->sourceType;
+		if(!is_null($xml) && count($xml->sourceVersion))
 			$this->sourceVersion = (string)$xml->sourceVersion;
-		if(count($xml->searchProviderType))
+		if(!is_null($jsonObject) && isset($jsonObject->sourceVersion))
+			$this->sourceVersion = (string)$jsonObject->sourceVersion;
+		if(!is_null($xml) && count($xml->searchProviderType))
 			$this->searchProviderType = (int)$xml->searchProviderType;
-		if(count($xml->searchProviderId))
+		if(!is_null($jsonObject) && isset($jsonObject->searchProviderType))
+			$this->searchProviderType = (int)$jsonObject->searchProviderType;
+		if(!is_null($xml) && count($xml->searchProviderId))
 			$this->searchProviderId = (string)$xml->searchProviderId;
-		if(count($xml->creditUserName))
+		if(!is_null($jsonObject) && isset($jsonObject->searchProviderId))
+			$this->searchProviderId = (string)$jsonObject->searchProviderId;
+		if(!is_null($xml) && count($xml->creditUserName))
 			$this->creditUserName = (string)$xml->creditUserName;
-		if(count($xml->creditUrl))
+		if(!is_null($jsonObject) && isset($jsonObject->creditUserName))
+			$this->creditUserName = (string)$jsonObject->creditUserName;
+		if(!is_null($xml) && count($xml->creditUrl))
 			$this->creditUrl = (string)$xml->creditUrl;
-		if(count($xml->mediaDate))
+		if(!is_null($jsonObject) && isset($jsonObject->creditUrl))
+			$this->creditUrl = (string)$jsonObject->creditUrl;
+		if(!is_null($xml) && count($xml->mediaDate))
 			$this->mediaDate = (int)$xml->mediaDate;
-		if(count($xml->dataUrl))
+		if(!is_null($jsonObject) && isset($jsonObject->mediaDate))
+			$this->mediaDate = (int)$jsonObject->mediaDate;
+		if(!is_null($xml) && count($xml->dataUrl))
 			$this->dataUrl = (string)$xml->dataUrl;
-		if(count($xml->flavorParamsIds))
+		if(!is_null($jsonObject) && isset($jsonObject->dataUrl))
+			$this->dataUrl = (string)$jsonObject->dataUrl;
+		if(!is_null($xml) && count($xml->flavorParamsIds))
 			$this->flavorParamsIds = (string)$xml->flavorParamsIds;
-		if(count($xml->isTrimDisabled))
+		if(!is_null($jsonObject) && isset($jsonObject->flavorParamsIds))
+			$this->flavorParamsIds = (string)$jsonObject->flavorParamsIds;
+		if(!is_null($xml) && count($xml->isTrimDisabled))
 			$this->isTrimDisabled = (int)$xml->isTrimDisabled;
-		if(count($xml->streams))
+		if(!is_null($jsonObject) && isset($jsonObject->isTrimDisabled))
+			$this->isTrimDisabled = (int)$jsonObject->isTrimDisabled;
+		if(!is_null($xml) && count($xml->streams))
 		{
 			if(empty($xml->streams))
 				$this->streams = array();
 			else
 				$this->streams = Kaltura_Client_ParseUtils::unmarshalArray($xml->streams, "KalturaStreamContainer");
+		}
+		if(!is_null($jsonObject) && isset($jsonObject->streams))
+		{
+			if(empty($jsonObject->streams))
+				$this->streams = array();
+			else
+				$this->streams = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsonObject->streams, "KalturaStreamContainer");
 		}
 	}
 	/**

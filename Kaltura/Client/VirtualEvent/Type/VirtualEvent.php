@@ -38,43 +38,84 @@ class Kaltura_Client_VirtualEvent_Type_VirtualEvent extends Kaltura_Client_Objec
 		return 'KalturaVirtualEvent';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->id))
+		if(!is_null($xml) && count($xml->id))
 			$this->id = (int)$xml->id;
-		if(count($xml->partnerId))
+		if(!is_null($jsonObject) && isset($jsonObject->id))
+			$this->id = (int)$jsonObject->id;
+		if(!is_null($xml) && count($xml->partnerId))
 			$this->partnerId = (int)$xml->partnerId;
-		if(count($xml->name))
+		if(!is_null($jsonObject) && isset($jsonObject->partnerId))
+			$this->partnerId = (int)$jsonObject->partnerId;
+		if(!is_null($xml) && count($xml->name))
 			$this->name = (string)$xml->name;
-		if(count($xml->description))
+		if(!is_null($jsonObject) && isset($jsonObject->name))
+			$this->name = (string)$jsonObject->name;
+		if(!is_null($xml) && count($xml->description))
 			$this->description = (string)$xml->description;
-		if(count($xml->status))
+		if(!is_null($jsonObject) && isset($jsonObject->description))
+			$this->description = (string)$jsonObject->description;
+		if(!is_null($xml) && count($xml->status))
 			$this->status = (int)$xml->status;
-		if(count($xml->tags))
+		if(!is_null($jsonObject) && isset($jsonObject->status))
+			$this->status = (int)$jsonObject->status;
+		if(!is_null($xml) && count($xml->tags))
 			$this->tags = (string)$xml->tags;
-		if(count($xml->attendeesGroupIds))
+		if(!is_null($jsonObject) && isset($jsonObject->tags))
+			$this->tags = (string)$jsonObject->tags;
+		if(!is_null($xml) && count($xml->attendeesGroupIds))
 			$this->attendeesGroupIds = (string)$xml->attendeesGroupIds;
-		if(count($xml->adminsGroupIds))
+		if(!is_null($jsonObject) && isset($jsonObject->attendeesGroupIds))
+			$this->attendeesGroupIds = (string)$jsonObject->attendeesGroupIds;
+		if(!is_null($xml) && count($xml->adminsGroupIds))
 			$this->adminsGroupIds = (string)$xml->adminsGroupIds;
-		if(count($xml->registrationScheduleEventId))
+		if(!is_null($jsonObject) && isset($jsonObject->adminsGroupIds))
+			$this->adminsGroupIds = (string)$jsonObject->adminsGroupIds;
+		if(!is_null($xml) && count($xml->registrationScheduleEventId))
 			$this->registrationScheduleEventId = (int)$xml->registrationScheduleEventId;
-		if(count($xml->agendaScheduleEventId))
+		if(!is_null($jsonObject) && isset($jsonObject->registrationScheduleEventId))
+			$this->registrationScheduleEventId = (int)$jsonObject->registrationScheduleEventId;
+		if(!is_null($xml) && count($xml->agendaScheduleEventId))
 			$this->agendaScheduleEventId = (int)$xml->agendaScheduleEventId;
-		if(count($xml->mainEventScheduleEventId))
+		if(!is_null($jsonObject) && isset($jsonObject->agendaScheduleEventId))
+			$this->agendaScheduleEventId = (int)$jsonObject->agendaScheduleEventId;
+		if(!is_null($xml) && count($xml->mainEventScheduleEventId))
 			$this->mainEventScheduleEventId = (int)$xml->mainEventScheduleEventId;
-		if(count($xml->createdAt))
+		if(!is_null($jsonObject) && isset($jsonObject->mainEventScheduleEventId))
+			$this->mainEventScheduleEventId = (int)$jsonObject->mainEventScheduleEventId;
+		if(!is_null($xml) && count($xml->createdAt))
 			$this->createdAt = (int)$xml->createdAt;
-		if(count($xml->updatedAt))
+		if(!is_null($jsonObject) && isset($jsonObject->createdAt))
+			$this->createdAt = (int)$jsonObject->createdAt;
+		if(!is_null($xml) && count($xml->updatedAt))
 			$this->updatedAt = (int)$xml->updatedAt;
-		if(count($xml->deletionDueDate))
+		if(!is_null($jsonObject) && isset($jsonObject->updatedAt))
+			$this->updatedAt = (int)$jsonObject->updatedAt;
+		if(!is_null($xml) && count($xml->deletionDueDate))
 			$this->deletionDueDate = (int)$xml->deletionDueDate;
-		if(count($xml->registrationFormSchema))
+		if(!is_null($jsonObject) && isset($jsonObject->deletionDueDate))
+			$this->deletionDueDate = (int)$jsonObject->deletionDueDate;
+		if(!is_null($xml) && count($xml->registrationFormSchema))
 			$this->registrationFormSchema = (string)$xml->registrationFormSchema;
+		if(!is_null($jsonObject) && isset($jsonObject->registrationFormSchema))
+			$this->registrationFormSchema = (string)$jsonObject->registrationFormSchema;
+		if(!is_null($xml) && count($xml->eventUrl))
+			$this->eventUrl = (string)$xml->eventUrl;
+		if(!is_null($jsonObject) && isset($jsonObject->eventUrl))
+			$this->eventUrl = (string)$jsonObject->eventUrl;
+		if(!is_null($xml) && count($xml->webhookRegistrationToken))
+			$this->webhookRegistrationToken = (string)$xml->webhookRegistrationToken;
+		if(!is_null($jsonObject) && isset($jsonObject->webhookRegistrationToken))
+			$this->webhookRegistrationToken = (string)$jsonObject->webhookRegistrationToken;
 	}
 	/**
 	 * 
@@ -185,6 +226,20 @@ class Kaltura_Client_VirtualEvent_Type_VirtualEvent extends Kaltura_Client_Objec
 	 * @var string
 	 */
 	public $registrationFormSchema = null;
+
+	/**
+	 * The Virtual Event Url
+	 *
+	 * @var string
+	 */
+	public $eventUrl = null;
+
+	/**
+	 * The Virtual Event WebHook registration token
+	 *
+	 * @var string
+	 */
+	public $webhookRegistrationToken = null;
 
 
 }

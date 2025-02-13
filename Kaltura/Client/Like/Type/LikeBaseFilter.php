@@ -38,23 +38,36 @@ abstract class Kaltura_Client_Like_Type_LikeBaseFilter extends Kaltura_Client_Ty
 		return 'KalturaLikeBaseFilter';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->entryIdEqual))
+		if(!is_null($xml) && count($xml->entryIdEqual))
 			$this->entryIdEqual = (string)$xml->entryIdEqual;
-		if(count($xml->entryIdIn))
+		if(!is_null($jsonObject) && isset($jsonObject->entryIdEqual))
+			$this->entryIdEqual = (string)$jsonObject->entryIdEqual;
+		if(!is_null($xml) && count($xml->entryIdIn))
 			$this->entryIdIn = (string)$xml->entryIdIn;
-		if(count($xml->userIdEqual))
+		if(!is_null($jsonObject) && isset($jsonObject->entryIdIn))
+			$this->entryIdIn = (string)$jsonObject->entryIdIn;
+		if(!is_null($xml) && count($xml->userIdEqual))
 			$this->userIdEqual = (string)$xml->userIdEqual;
-		if(count($xml->createdAtGreaterThanOrEqual))
+		if(!is_null($jsonObject) && isset($jsonObject->userIdEqual))
+			$this->userIdEqual = (string)$jsonObject->userIdEqual;
+		if(!is_null($xml) && count($xml->createdAtGreaterThanOrEqual))
 			$this->createdAtGreaterThanOrEqual = (int)$xml->createdAtGreaterThanOrEqual;
-		if(count($xml->createdAtLessThanOrEqual))
+		if(!is_null($jsonObject) && isset($jsonObject->createdAtGreaterThanOrEqual))
+			$this->createdAtGreaterThanOrEqual = (int)$jsonObject->createdAtGreaterThanOrEqual;
+		if(!is_null($xml) && count($xml->createdAtLessThanOrEqual))
 			$this->createdAtLessThanOrEqual = (int)$xml->createdAtLessThanOrEqual;
+		if(!is_null($jsonObject) && isset($jsonObject->createdAtLessThanOrEqual))
+			$this->createdAtLessThanOrEqual = (int)$jsonObject->createdAtLessThanOrEqual;
 	}
 	/**
 	 * 

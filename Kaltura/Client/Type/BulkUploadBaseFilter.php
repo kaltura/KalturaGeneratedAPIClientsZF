@@ -38,27 +38,44 @@ abstract class Kaltura_Client_Type_BulkUploadBaseFilter extends Kaltura_Client_T
 		return 'KalturaBulkUploadBaseFilter';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->uploadedOnGreaterThanOrEqual))
+		if(!is_null($xml) && count($xml->uploadedOnGreaterThanOrEqual))
 			$this->uploadedOnGreaterThanOrEqual = (int)$xml->uploadedOnGreaterThanOrEqual;
-		if(count($xml->uploadedOnLessThanOrEqual))
+		if(!is_null($jsonObject) && isset($jsonObject->uploadedOnGreaterThanOrEqual))
+			$this->uploadedOnGreaterThanOrEqual = (int)$jsonObject->uploadedOnGreaterThanOrEqual;
+		if(!is_null($xml) && count($xml->uploadedOnLessThanOrEqual))
 			$this->uploadedOnLessThanOrEqual = (int)$xml->uploadedOnLessThanOrEqual;
-		if(count($xml->uploadedOnEqual))
+		if(!is_null($jsonObject) && isset($jsonObject->uploadedOnLessThanOrEqual))
+			$this->uploadedOnLessThanOrEqual = (int)$jsonObject->uploadedOnLessThanOrEqual;
+		if(!is_null($xml) && count($xml->uploadedOnEqual))
 			$this->uploadedOnEqual = (int)$xml->uploadedOnEqual;
-		if(count($xml->statusIn))
+		if(!is_null($jsonObject) && isset($jsonObject->uploadedOnEqual))
+			$this->uploadedOnEqual = (int)$jsonObject->uploadedOnEqual;
+		if(!is_null($xml) && count($xml->statusIn))
 			$this->statusIn = (string)$xml->statusIn;
-		if(count($xml->statusEqual))
+		if(!is_null($jsonObject) && isset($jsonObject->statusIn))
+			$this->statusIn = (string)$jsonObject->statusIn;
+		if(!is_null($xml) && count($xml->statusEqual))
 			$this->statusEqual = (int)$xml->statusEqual;
-		if(count($xml->bulkUploadObjectTypeEqual))
+		if(!is_null($jsonObject) && isset($jsonObject->statusEqual))
+			$this->statusEqual = (int)$jsonObject->statusEqual;
+		if(!is_null($xml) && count($xml->bulkUploadObjectTypeEqual))
 			$this->bulkUploadObjectTypeEqual = (string)$xml->bulkUploadObjectTypeEqual;
-		if(count($xml->bulkUploadObjectTypeIn))
+		if(!is_null($jsonObject) && isset($jsonObject->bulkUploadObjectTypeEqual))
+			$this->bulkUploadObjectTypeEqual = (string)$jsonObject->bulkUploadObjectTypeEqual;
+		if(!is_null($xml) && count($xml->bulkUploadObjectTypeIn))
 			$this->bulkUploadObjectTypeIn = (string)$xml->bulkUploadObjectTypeIn;
+		if(!is_null($jsonObject) && isset($jsonObject->bulkUploadObjectTypeIn))
+			$this->bulkUploadObjectTypeIn = (string)$jsonObject->bulkUploadObjectTypeIn;
 	}
 	/**
 	 * 

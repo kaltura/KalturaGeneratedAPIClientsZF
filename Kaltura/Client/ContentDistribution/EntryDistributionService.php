@@ -50,12 +50,18 @@ class Kaltura_Client_ContentDistribution_EntryDistributionService extends Kaltur
 		$this->client->queueServiceActionCall("contentdistribution_entrydistribution", "add", "KalturaEntryDistribution", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaEntryDistribution");
-		$this->client->validateObjectType($resultObject, "Kaltura_Client_ContentDistribution_Type_EntryDistribution");
-		return $resultObject;
+		$rawResult = $this->client->doQueue();
+		if ($this->client->getConfig()->format === Kaltura_Client_ClientBase::KALTURA_SERVICE_FORMAT_JSON) {
+			$jsObject = json_decode($rawResult);
+			$resultObject = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsObject);
+			return $resultObject;
+		} else {
+			$resultXmlObject = new \SimpleXMLElement($rawResult);
+			$this->client->checkIfError($resultXmlObject->result);
+			$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaEntryDistribution");
+			$this->client->validateObjectType($resultObject, "Kaltura_Client_ContentDistribution_Type_EntryDistribution");
+		}
+			return $resultObject;
 	}
 
 	/**
@@ -69,9 +75,15 @@ class Kaltura_Client_ContentDistribution_EntryDistributionService extends Kaltur
 		$this->client->queueServiceActionCall("contentdistribution_entrydistribution", "delete", null, $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
+		$rawResult = $this->client->doQueue();
+		if ($this->client->getConfig()->format === Kaltura_Client_ClientBase::KALTURA_SERVICE_FORMAT_JSON) {
+			$jsObject = json_decode($rawResult);
+			$resultObject = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsObject);
+			return $resultObject;
+		} else {
+			$resultXmlObject = new \SimpleXMLElement($rawResult);
+			$this->client->checkIfError($resultXmlObject->result);
+		}
 	}
 
 	/**
@@ -85,12 +97,18 @@ class Kaltura_Client_ContentDistribution_EntryDistributionService extends Kaltur
 		$this->client->queueServiceActionCall("contentdistribution_entrydistribution", "get", "KalturaEntryDistribution", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaEntryDistribution");
-		$this->client->validateObjectType($resultObject, "Kaltura_Client_ContentDistribution_Type_EntryDistribution");
-		return $resultObject;
+		$rawResult = $this->client->doQueue();
+		if ($this->client->getConfig()->format === Kaltura_Client_ClientBase::KALTURA_SERVICE_FORMAT_JSON) {
+			$jsObject = json_decode($rawResult);
+			$resultObject = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsObject);
+			return $resultObject;
+		} else {
+			$resultXmlObject = new \SimpleXMLElement($rawResult);
+			$this->client->checkIfError($resultXmlObject->result);
+			$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaEntryDistribution");
+			$this->client->validateObjectType($resultObject, "Kaltura_Client_ContentDistribution_Type_EntryDistribution");
+		}
+			return $resultObject;
 	}
 
 	/**
@@ -107,12 +125,18 @@ class Kaltura_Client_ContentDistribution_EntryDistributionService extends Kaltur
 		$this->client->queueServiceActionCall("contentdistribution_entrydistribution", "list", "KalturaEntryDistributionListResponse", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaEntryDistributionListResponse");
-		$this->client->validateObjectType($resultObject, "Kaltura_Client_ContentDistribution_Type_EntryDistributionListResponse");
-		return $resultObject;
+		$rawResult = $this->client->doQueue();
+		if ($this->client->getConfig()->format === Kaltura_Client_ClientBase::KALTURA_SERVICE_FORMAT_JSON) {
+			$jsObject = json_decode($rawResult);
+			$resultObject = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsObject);
+			return $resultObject;
+		} else {
+			$resultXmlObject = new \SimpleXMLElement($rawResult);
+			$this->client->checkIfError($resultXmlObject->result);
+			$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaEntryDistributionListResponse");
+			$this->client->validateObjectType($resultObject, "Kaltura_Client_ContentDistribution_Type_EntryDistributionListResponse");
+		}
+			return $resultObject;
 	}
 
 	/**
@@ -126,12 +150,18 @@ class Kaltura_Client_ContentDistribution_EntryDistributionService extends Kaltur
 		$this->client->queueServiceActionCall("contentdistribution_entrydistribution", "retrySubmit", "KalturaEntryDistribution", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaEntryDistribution");
-		$this->client->validateObjectType($resultObject, "Kaltura_Client_ContentDistribution_Type_EntryDistribution");
-		return $resultObject;
+		$rawResult = $this->client->doQueue();
+		if ($this->client->getConfig()->format === Kaltura_Client_ClientBase::KALTURA_SERVICE_FORMAT_JSON) {
+			$jsObject = json_decode($rawResult);
+			$resultObject = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsObject);
+			return $resultObject;
+		} else {
+			$resultXmlObject = new \SimpleXMLElement($rawResult);
+			$this->client->checkIfError($resultXmlObject->result);
+			$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaEntryDistribution");
+			$this->client->validateObjectType($resultObject, "Kaltura_Client_ContentDistribution_Type_EntryDistribution");
+		}
+			return $resultObject;
 	}
 
 	/**
@@ -148,7 +178,7 @@ class Kaltura_Client_ContentDistribution_EntryDistributionService extends Kaltur
 		$this->client->addParam($kparams, "actionType", $actionType);
 		$this->client->queueServiceActionCall('contentdistribution_entrydistribution', 'serveReturnedData', null, $kparams);
 		$resultObject = $this->client->getServeUrl();
-		return $resultObject;
+			return $resultObject;
 	}
 
 	/**
@@ -165,7 +195,7 @@ class Kaltura_Client_ContentDistribution_EntryDistributionService extends Kaltur
 		$this->client->addParam($kparams, "actionType", $actionType);
 		$this->client->queueServiceActionCall('contentdistribution_entrydistribution', 'serveSentData', null, $kparams);
 		$resultObject = $this->client->getServeUrl();
-		return $resultObject;
+			return $resultObject;
 	}
 
 	/**
@@ -180,12 +210,18 @@ class Kaltura_Client_ContentDistribution_EntryDistributionService extends Kaltur
 		$this->client->queueServiceActionCall("contentdistribution_entrydistribution", "submitAdd", "KalturaEntryDistribution", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaEntryDistribution");
-		$this->client->validateObjectType($resultObject, "Kaltura_Client_ContentDistribution_Type_EntryDistribution");
-		return $resultObject;
+		$rawResult = $this->client->doQueue();
+		if ($this->client->getConfig()->format === Kaltura_Client_ClientBase::KALTURA_SERVICE_FORMAT_JSON) {
+			$jsObject = json_decode($rawResult);
+			$resultObject = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsObject);
+			return $resultObject;
+		} else {
+			$resultXmlObject = new \SimpleXMLElement($rawResult);
+			$this->client->checkIfError($resultXmlObject->result);
+			$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaEntryDistribution");
+			$this->client->validateObjectType($resultObject, "Kaltura_Client_ContentDistribution_Type_EntryDistribution");
+		}
+			return $resultObject;
 	}
 
 	/**
@@ -199,12 +235,18 @@ class Kaltura_Client_ContentDistribution_EntryDistributionService extends Kaltur
 		$this->client->queueServiceActionCall("contentdistribution_entrydistribution", "submitDelete", "KalturaEntryDistribution", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaEntryDistribution");
-		$this->client->validateObjectType($resultObject, "Kaltura_Client_ContentDistribution_Type_EntryDistribution");
-		return $resultObject;
+		$rawResult = $this->client->doQueue();
+		if ($this->client->getConfig()->format === Kaltura_Client_ClientBase::KALTURA_SERVICE_FORMAT_JSON) {
+			$jsObject = json_decode($rawResult);
+			$resultObject = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsObject);
+			return $resultObject;
+		} else {
+			$resultXmlObject = new \SimpleXMLElement($rawResult);
+			$this->client->checkIfError($resultXmlObject->result);
+			$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaEntryDistribution");
+			$this->client->validateObjectType($resultObject, "Kaltura_Client_ContentDistribution_Type_EntryDistribution");
+		}
+			return $resultObject;
 	}
 
 	/**
@@ -218,12 +260,18 @@ class Kaltura_Client_ContentDistribution_EntryDistributionService extends Kaltur
 		$this->client->queueServiceActionCall("contentdistribution_entrydistribution", "submitFetchReport", "KalturaEntryDistribution", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaEntryDistribution");
-		$this->client->validateObjectType($resultObject, "Kaltura_Client_ContentDistribution_Type_EntryDistribution");
-		return $resultObject;
+		$rawResult = $this->client->doQueue();
+		if ($this->client->getConfig()->format === Kaltura_Client_ClientBase::KALTURA_SERVICE_FORMAT_JSON) {
+			$jsObject = json_decode($rawResult);
+			$resultObject = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsObject);
+			return $resultObject;
+		} else {
+			$resultXmlObject = new \SimpleXMLElement($rawResult);
+			$this->client->checkIfError($resultXmlObject->result);
+			$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaEntryDistribution");
+			$this->client->validateObjectType($resultObject, "Kaltura_Client_ContentDistribution_Type_EntryDistribution");
+		}
+			return $resultObject;
 	}
 
 	/**
@@ -237,12 +285,18 @@ class Kaltura_Client_ContentDistribution_EntryDistributionService extends Kaltur
 		$this->client->queueServiceActionCall("contentdistribution_entrydistribution", "submitUpdate", "KalturaEntryDistribution", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaEntryDistribution");
-		$this->client->validateObjectType($resultObject, "Kaltura_Client_ContentDistribution_Type_EntryDistribution");
-		return $resultObject;
+		$rawResult = $this->client->doQueue();
+		if ($this->client->getConfig()->format === Kaltura_Client_ClientBase::KALTURA_SERVICE_FORMAT_JSON) {
+			$jsObject = json_decode($rawResult);
+			$resultObject = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsObject);
+			return $resultObject;
+		} else {
+			$resultXmlObject = new \SimpleXMLElement($rawResult);
+			$this->client->checkIfError($resultXmlObject->result);
+			$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaEntryDistribution");
+			$this->client->validateObjectType($resultObject, "Kaltura_Client_ContentDistribution_Type_EntryDistribution");
+		}
+			return $resultObject;
 	}
 
 	/**
@@ -257,12 +311,18 @@ class Kaltura_Client_ContentDistribution_EntryDistributionService extends Kaltur
 		$this->client->queueServiceActionCall("contentdistribution_entrydistribution", "update", "KalturaEntryDistribution", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaEntryDistribution");
-		$this->client->validateObjectType($resultObject, "Kaltura_Client_ContentDistribution_Type_EntryDistribution");
-		return $resultObject;
+		$rawResult = $this->client->doQueue();
+		if ($this->client->getConfig()->format === Kaltura_Client_ClientBase::KALTURA_SERVICE_FORMAT_JSON) {
+			$jsObject = json_decode($rawResult);
+			$resultObject = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsObject);
+			return $resultObject;
+		} else {
+			$resultXmlObject = new \SimpleXMLElement($rawResult);
+			$this->client->checkIfError($resultXmlObject->result);
+			$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaEntryDistribution");
+			$this->client->validateObjectType($resultObject, "Kaltura_Client_ContentDistribution_Type_EntryDistribution");
+		}
+			return $resultObject;
 	}
 
 	/**
@@ -276,11 +336,17 @@ class Kaltura_Client_ContentDistribution_EntryDistributionService extends Kaltur
 		$this->client->queueServiceActionCall("contentdistribution_entrydistribution", "validate", "KalturaEntryDistribution", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaEntryDistribution");
-		$this->client->validateObjectType($resultObject, "Kaltura_Client_ContentDistribution_Type_EntryDistribution");
-		return $resultObject;
+		$rawResult = $this->client->doQueue();
+		if ($this->client->getConfig()->format === Kaltura_Client_ClientBase::KALTURA_SERVICE_FORMAT_JSON) {
+			$jsObject = json_decode($rawResult);
+			$resultObject = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsObject);
+			return $resultObject;
+		} else {
+			$resultXmlObject = new \SimpleXMLElement($rawResult);
+			$this->client->checkIfError($resultXmlObject->result);
+			$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaEntryDistribution");
+			$this->client->validateObjectType($resultObject, "Kaltura_Client_ContentDistribution_Type_EntryDistribution");
+		}
+			return $resultObject;
 	}
 }

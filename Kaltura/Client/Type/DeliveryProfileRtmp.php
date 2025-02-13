@@ -38,22 +38,34 @@ class Kaltura_Client_Type_DeliveryProfileRtmp extends Kaltura_Client_Type_Delive
 		return 'KalturaDeliveryProfileRtmp';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->enforceRtmpe))
+		if(!is_null($xml) && count($xml->enforceRtmpe))
 		{
 			if(!empty($xml->enforceRtmpe) && ((int) $xml->enforceRtmpe === 1 || strtolower((string)$xml->enforceRtmpe) === 'true'))
 				$this->enforceRtmpe = true;
 			else
 				$this->enforceRtmpe = false;
 		}
-		if(count($xml->prefix))
+		if(!is_null($jsonObject) && isset($jsonObject->enforceRtmpe))
+		{
+			if(!empty($jsonObject->enforceRtmpe) && ((int) $jsonObject->enforceRtmpe === 1 || strtolower((string)$jsonObject->enforceRtmpe) === 'true'))
+				$this->enforceRtmpe = true;
+			else
+				$this->enforceRtmpe = false;
+		}
+		if(!is_null($xml) && count($xml->prefix))
 			$this->prefix = (string)$xml->prefix;
+		if(!is_null($jsonObject) && isset($jsonObject->prefix))
+			$this->prefix = (string)$jsonObject->prefix;
 	}
 	/**
 	 * enforceRtmpe

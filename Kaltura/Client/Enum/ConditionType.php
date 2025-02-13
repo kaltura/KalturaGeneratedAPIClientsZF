@@ -33,6 +33,7 @@
  */
 class Kaltura_Client_Enum_ConditionType extends Kaltura_Client_EnumBase
 {
+	const ABC_WATERMARK = "abcScreenersWatermarkAccessControl.abcWatermark";
 	const EVENT_NOTIFICATION_FIELD = "eventNotification.BooleanField";
 	const EVENT_NOTIFICATION_OBJECT_CHANGED = "eventNotification.ObjectChanged";
 	const METADATA_FIELD_CHANGED = "metadata.FieldChanged";

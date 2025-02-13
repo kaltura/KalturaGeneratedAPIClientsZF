@@ -38,107 +38,232 @@ class Kaltura_Client_Type_ReportInputFilter extends Kaltura_Client_Type_ReportIn
 		return 'KalturaReportInputFilter';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->keywords))
+		if(!is_null($xml) && count($xml->keywords))
 			$this->keywords = (string)$xml->keywords;
-		if(count($xml->searchInTags))
+		if(!is_null($jsonObject) && isset($jsonObject->keywords))
+			$this->keywords = (string)$jsonObject->keywords;
+		if(!is_null($xml) && count($xml->searchInTags))
 		{
 			if(!empty($xml->searchInTags) && ((int) $xml->searchInTags === 1 || strtolower((string)$xml->searchInTags) === 'true'))
 				$this->searchInTags = true;
 			else
 				$this->searchInTags = false;
 		}
-		if(count($xml->searchInAdminTags))
+		if(!is_null($jsonObject) && isset($jsonObject->searchInTags))
+		{
+			if(!empty($jsonObject->searchInTags) && ((int) $jsonObject->searchInTags === 1 || strtolower((string)$jsonObject->searchInTags) === 'true'))
+				$this->searchInTags = true;
+			else
+				$this->searchInTags = false;
+		}
+		if(!is_null($xml) && count($xml->searchInAdminTags))
 		{
 			if(!empty($xml->searchInAdminTags) && ((int) $xml->searchInAdminTags === 1 || strtolower((string)$xml->searchInAdminTags) === 'true'))
 				$this->searchInAdminTags = true;
 			else
 				$this->searchInAdminTags = false;
 		}
-		if(count($xml->categories))
+		if(!is_null($jsonObject) && isset($jsonObject->searchInAdminTags))
+		{
+			if(!empty($jsonObject->searchInAdminTags) && ((int) $jsonObject->searchInAdminTags === 1 || strtolower((string)$jsonObject->searchInAdminTags) === 'true'))
+				$this->searchInAdminTags = true;
+			else
+				$this->searchInAdminTags = false;
+		}
+		if(!is_null($xml) && count($xml->categories))
 			$this->categories = (string)$xml->categories;
-		if(count($xml->categoriesIdsIn))
+		if(!is_null($jsonObject) && isset($jsonObject->categories))
+			$this->categories = (string)$jsonObject->categories;
+		if(!is_null($xml) && count($xml->categoriesIdsIn))
 			$this->categoriesIdsIn = (string)$xml->categoriesIdsIn;
-		if(count($xml->customVar1In))
+		if(!is_null($jsonObject) && isset($jsonObject->categoriesIdsIn))
+			$this->categoriesIdsIn = (string)$jsonObject->categoriesIdsIn;
+		if(!is_null($xml) && count($xml->customVar1In))
 			$this->customVar1In = (string)$xml->customVar1In;
-		if(count($xml->customVar2In))
+		if(!is_null($jsonObject) && isset($jsonObject->customVar1In))
+			$this->customVar1In = (string)$jsonObject->customVar1In;
+		if(!is_null($xml) && count($xml->customVar2In))
 			$this->customVar2In = (string)$xml->customVar2In;
-		if(count($xml->customVar3In))
+		if(!is_null($jsonObject) && isset($jsonObject->customVar2In))
+			$this->customVar2In = (string)$jsonObject->customVar2In;
+		if(!is_null($xml) && count($xml->customVar3In))
 			$this->customVar3In = (string)$xml->customVar3In;
-		if(count($xml->deviceIn))
+		if(!is_null($jsonObject) && isset($jsonObject->customVar3In))
+			$this->customVar3In = (string)$jsonObject->customVar3In;
+		if(!is_null($xml) && count($xml->deviceIn))
 			$this->deviceIn = (string)$xml->deviceIn;
-		if(count($xml->countryIn))
+		if(!is_null($jsonObject) && isset($jsonObject->deviceIn))
+			$this->deviceIn = (string)$jsonObject->deviceIn;
+		if(!is_null($xml) && count($xml->countryIn))
 			$this->countryIn = (string)$xml->countryIn;
-		if(count($xml->regionIn))
+		if(!is_null($jsonObject) && isset($jsonObject->countryIn))
+			$this->countryIn = (string)$jsonObject->countryIn;
+		if(!is_null($xml) && count($xml->regionIn))
 			$this->regionIn = (string)$xml->regionIn;
-		if(count($xml->citiesIn))
+		if(!is_null($jsonObject) && isset($jsonObject->regionIn))
+			$this->regionIn = (string)$jsonObject->regionIn;
+		if(!is_null($xml) && count($xml->citiesIn))
 			$this->citiesIn = (string)$xml->citiesIn;
-		if(count($xml->operatingSystemFamilyIn))
+		if(!is_null($jsonObject) && isset($jsonObject->citiesIn))
+			$this->citiesIn = (string)$jsonObject->citiesIn;
+		if(!is_null($xml) && count($xml->operatingSystemFamilyIn))
 			$this->operatingSystemFamilyIn = (string)$xml->operatingSystemFamilyIn;
-		if(count($xml->operatingSystemIn))
+		if(!is_null($jsonObject) && isset($jsonObject->operatingSystemFamilyIn))
+			$this->operatingSystemFamilyIn = (string)$jsonObject->operatingSystemFamilyIn;
+		if(!is_null($xml) && count($xml->operatingSystemIn))
 			$this->operatingSystemIn = (string)$xml->operatingSystemIn;
-		if(count($xml->browserFamilyIn))
+		if(!is_null($jsonObject) && isset($jsonObject->operatingSystemIn))
+			$this->operatingSystemIn = (string)$jsonObject->operatingSystemIn;
+		if(!is_null($xml) && count($xml->browserFamilyIn))
 			$this->browserFamilyIn = (string)$xml->browserFamilyIn;
-		if(count($xml->browserIn))
+		if(!is_null($jsonObject) && isset($jsonObject->browserFamilyIn))
+			$this->browserFamilyIn = (string)$jsonObject->browserFamilyIn;
+		if(!is_null($xml) && count($xml->browserIn))
 			$this->browserIn = (string)$xml->browserIn;
-		if(count($xml->timeZoneOffset))
+		if(!is_null($jsonObject) && isset($jsonObject->browserIn))
+			$this->browserIn = (string)$jsonObject->browserIn;
+		if(!is_null($xml) && count($xml->timeZoneOffset))
 			$this->timeZoneOffset = (int)$xml->timeZoneOffset;
-		if(count($xml->interval))
+		if(!is_null($jsonObject) && isset($jsonObject->timeZoneOffset))
+			$this->timeZoneOffset = (int)$jsonObject->timeZoneOffset;
+		if(!is_null($xml) && count($xml->interval))
 			$this->interval = (string)$xml->interval;
-		if(count($xml->mediaTypeIn))
+		if(!is_null($jsonObject) && isset($jsonObject->interval))
+			$this->interval = (string)$jsonObject->interval;
+		if(!is_null($xml) && count($xml->mediaTypeIn))
 			$this->mediaTypeIn = (string)$xml->mediaTypeIn;
-		if(count($xml->sourceTypeIn))
+		if(!is_null($jsonObject) && isset($jsonObject->mediaTypeIn))
+			$this->mediaTypeIn = (string)$jsonObject->mediaTypeIn;
+		if(!is_null($xml) && count($xml->sourceTypeIn))
 			$this->sourceTypeIn = (string)$xml->sourceTypeIn;
-		if(count($xml->ownerIdsIn))
+		if(!is_null($jsonObject) && isset($jsonObject->sourceTypeIn))
+			$this->sourceTypeIn = (string)$jsonObject->sourceTypeIn;
+		if(!is_null($xml) && count($xml->ownerIdsIn))
 			$this->ownerIdsIn = (string)$xml->ownerIdsIn;
-		if(count($xml->entryOperator) && !empty($xml->entryOperator))
+		if(!is_null($jsonObject) && isset($jsonObject->ownerIdsIn))
+			$this->ownerIdsIn = (string)$jsonObject->ownerIdsIn;
+		if(!is_null($xml) && count($xml->entryOperator) && !empty($xml->entryOperator))
 			$this->entryOperator = Kaltura_Client_ParseUtils::unmarshalObject($xml->entryOperator, "KalturaESearchEntryOperator");
-		if(count($xml->entryCreatedAtGreaterThanOrEqual))
+		if(!is_null($jsonObject) && isset($jsonObject->entryOperator) && !empty($jsonObject->entryOperator))
+			$this->entryOperator = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsonObject->entryOperator, "KalturaESearchEntryOperator");
+		if(!is_null($xml) && count($xml->entryCreatedAtGreaterThanOrEqual))
 			$this->entryCreatedAtGreaterThanOrEqual = (int)$xml->entryCreatedAtGreaterThanOrEqual;
-		if(count($xml->entryCreatedAtLessThanOrEqual))
+		if(!is_null($jsonObject) && isset($jsonObject->entryCreatedAtGreaterThanOrEqual))
+			$this->entryCreatedAtGreaterThanOrEqual = (int)$jsonObject->entryCreatedAtGreaterThanOrEqual;
+		if(!is_null($xml) && count($xml->entryCreatedAtLessThanOrEqual))
 			$this->entryCreatedAtLessThanOrEqual = (int)$xml->entryCreatedAtLessThanOrEqual;
-		if(count($xml->entryIdIn))
+		if(!is_null($jsonObject) && isset($jsonObject->entryCreatedAtLessThanOrEqual))
+			$this->entryCreatedAtLessThanOrEqual = (int)$jsonObject->entryCreatedAtLessThanOrEqual;
+		if(!is_null($xml) && count($xml->entryIdIn))
 			$this->entryIdIn = (string)$xml->entryIdIn;
-		if(count($xml->playbackTypeIn))
+		if(!is_null($jsonObject) && isset($jsonObject->entryIdIn))
+			$this->entryIdIn = (string)$jsonObject->entryIdIn;
+		if(!is_null($xml) && count($xml->playbackTypeIn))
 			$this->playbackTypeIn = (string)$xml->playbackTypeIn;
-		if(count($xml->playbackContextIdsIn))
+		if(!is_null($jsonObject) && isset($jsonObject->playbackTypeIn))
+			$this->playbackTypeIn = (string)$jsonObject->playbackTypeIn;
+		if(!is_null($xml) && count($xml->playbackContextIdsIn))
 			$this->playbackContextIdsIn = (string)$xml->playbackContextIdsIn;
-		if(count($xml->rootEntryIdIn))
+		if(!is_null($jsonObject) && isset($jsonObject->playbackContextIdsIn))
+			$this->playbackContextIdsIn = (string)$jsonObject->playbackContextIdsIn;
+		if(!is_null($xml) && count($xml->rootEntryIdIn))
 			$this->rootEntryIdIn = (string)$xml->rootEntryIdIn;
-		if(count($xml->errorCodeIn))
+		if(!is_null($jsonObject) && isset($jsonObject->rootEntryIdIn))
+			$this->rootEntryIdIn = (string)$jsonObject->rootEntryIdIn;
+		if(!is_null($xml) && count($xml->errorCodeIn))
 			$this->errorCodeIn = (string)$xml->errorCodeIn;
-		if(count($xml->playerVersionIn))
+		if(!is_null($jsonObject) && isset($jsonObject->errorCodeIn))
+			$this->errorCodeIn = (string)$jsonObject->errorCodeIn;
+		if(!is_null($xml) && count($xml->playerVersionIn))
 			$this->playerVersionIn = (string)$xml->playerVersionIn;
-		if(count($xml->ispIn))
+		if(!is_null($jsonObject) && isset($jsonObject->playerVersionIn))
+			$this->playerVersionIn = (string)$jsonObject->playerVersionIn;
+		if(!is_null($xml) && count($xml->ispIn))
 			$this->ispIn = (string)$xml->ispIn;
-		if(count($xml->applicationVersionIn))
+		if(!is_null($jsonObject) && isset($jsonObject->ispIn))
+			$this->ispIn = (string)$jsonObject->ispIn;
+		if(!is_null($xml) && count($xml->applicationVersionIn))
 			$this->applicationVersionIn = (string)$xml->applicationVersionIn;
-		if(count($xml->nodeIdsIn))
+		if(!is_null($jsonObject) && isset($jsonObject->applicationVersionIn))
+			$this->applicationVersionIn = (string)$jsonObject->applicationVersionIn;
+		if(!is_null($xml) && count($xml->nodeIdsIn))
 			$this->nodeIdsIn = (string)$xml->nodeIdsIn;
-		if(count($xml->categoriesAncestorIdIn))
+		if(!is_null($jsonObject) && isset($jsonObject->nodeIdsIn))
+			$this->nodeIdsIn = (string)$jsonObject->nodeIdsIn;
+		if(!is_null($xml) && count($xml->categoriesAncestorIdIn))
 			$this->categoriesAncestorIdIn = (string)$xml->categoriesAncestorIdIn;
-		if(count($xml->hotspotIdIn))
+		if(!is_null($jsonObject) && isset($jsonObject->categoriesAncestorIdIn))
+			$this->categoriesAncestorIdIn = (string)$jsonObject->categoriesAncestorIdIn;
+		if(!is_null($xml) && count($xml->hotspotIdIn))
 			$this->hotspotIdIn = (string)$xml->hotspotIdIn;
-		if(count($xml->crmIdIn))
+		if(!is_null($jsonObject) && isset($jsonObject->hotspotIdIn))
+			$this->hotspotIdIn = (string)$jsonObject->hotspotIdIn;
+		if(!is_null($xml) && count($xml->crmIdIn))
 			$this->crmIdIn = (string)$xml->crmIdIn;
-		if(count($xml->playlistIdIn))
+		if(!is_null($jsonObject) && isset($jsonObject->crmIdIn))
+			$this->crmIdIn = (string)$jsonObject->crmIdIn;
+		if(!is_null($xml) && count($xml->playlistIdIn))
 			$this->playlistIdIn = (string)$xml->playlistIdIn;
-		if(count($xml->domainIn))
+		if(!is_null($jsonObject) && isset($jsonObject->playlistIdIn))
+			$this->playlistIdIn = (string)$jsonObject->playlistIdIn;
+		if(!is_null($xml) && count($xml->domainIn))
 			$this->domainIn = (string)$xml->domainIn;
-		if(count($xml->canonicalUrlIn))
+		if(!is_null($jsonObject) && isset($jsonObject->domainIn))
+			$this->domainIn = (string)$jsonObject->domainIn;
+		if(!is_null($xml) && count($xml->canonicalUrlIn))
 			$this->canonicalUrlIn = (string)$xml->canonicalUrlIn;
-		if(count($xml->virtualEventIdIn))
+		if(!is_null($jsonObject) && isset($jsonObject->canonicalUrlIn))
+			$this->canonicalUrlIn = (string)$jsonObject->canonicalUrlIn;
+		if(!is_null($xml) && count($xml->virtualEventIdIn))
 			$this->virtualEventIdIn = (string)$xml->virtualEventIdIn;
-		if(count($xml->originIn))
+		if(!is_null($jsonObject) && isset($jsonObject->virtualEventIdIn))
+			$this->virtualEventIdIn = (string)$jsonObject->virtualEventIdIn;
+		if(!is_null($xml) && count($xml->originIn))
 			$this->originIn = (string)$xml->originIn;
-		if(count($xml->uiConfIdIn))
+		if(!is_null($jsonObject) && isset($jsonObject->originIn))
+			$this->originIn = (string)$jsonObject->originIn;
+		if(!is_null($xml) && count($xml->uiConfIdIn))
 			$this->uiConfIdIn = (string)$xml->uiConfIdIn;
+		if(!is_null($jsonObject) && isset($jsonObject->uiConfIdIn))
+			$this->uiConfIdIn = (string)$jsonObject->uiConfIdIn;
+		if(!is_null($xml) && count($xml->cuePointIdIn))
+			$this->cuePointIdIn = (string)$xml->cuePointIdIn;
+		if(!is_null($jsonObject) && isset($jsonObject->cuePointIdIn))
+			$this->cuePointIdIn = (string)$jsonObject->cuePointIdIn;
+		if(!is_null($xml) && count($xml->contextIdIn))
+			$this->contextIdIn = (string)$xml->contextIdIn;
+		if(!is_null($jsonObject) && isset($jsonObject->contextIdIn))
+			$this->contextIdIn = (string)$jsonObject->contextIdIn;
+		if(!is_null($xml) && count($xml->roleIn))
+			$this->roleIn = (string)$xml->roleIn;
+		if(!is_null($jsonObject) && isset($jsonObject->roleIn))
+			$this->roleIn = (string)$jsonObject->roleIn;
+		if(!is_null($xml) && count($xml->industryIn))
+			$this->industryIn = (string)$xml->industryIn;
+		if(!is_null($jsonObject) && isset($jsonObject->industryIn))
+			$this->industryIn = (string)$jsonObject->industryIn;
+		if(!is_null($xml) && count($xml->playbackModeIn))
+			$this->playbackModeIn = (string)$xml->playbackModeIn;
+		if(!is_null($jsonObject) && isset($jsonObject->playbackModeIn))
+			$this->playbackModeIn = (string)$jsonObject->playbackModeIn;
+		if(!is_null($xml) && count($xml->companyIn))
+			$this->companyIn = (string)$xml->companyIn;
+		if(!is_null($jsonObject) && isset($jsonObject->companyIn))
+			$this->companyIn = (string)$jsonObject->companyIn;
+		if(!is_null($xml) && count($xml->eventSessionContextIdIn))
+			$this->eventSessionContextIdIn = (string)$xml->eventSessionContextIdIn;
+		if(!is_null($jsonObject) && isset($jsonObject->eventSessionContextIdIn))
+			$this->eventSessionContextIdIn = (string)$jsonObject->eventSessionContextIdIn;
 	}
 	/**
 	 * Search keywords to filter objects
@@ -433,6 +558,55 @@ class Kaltura_Client_Type_ReportInputFilter extends Kaltura_Client_Type_ReportIn
 	 * @var string
 	 */
 	public $uiConfIdIn = null;
+
+	/**
+	 * filter by cue point id
+	 *
+	 * @var string
+	 */
+	public $cuePointIdIn = null;
+
+	/**
+	 * filter by context ids
+	 *
+	 * @var string
+	 */
+	public $contextIdIn = null;
+
+	/**
+	 * filter by user role
+	 *
+	 * @var string
+	 */
+	public $roleIn = null;
+
+	/**
+	 * filter by industry
+	 *
+	 * @var string
+	 */
+	public $industryIn = null;
+
+	/**
+	 * filter by playback mode
+	 *
+	 * @var string
+	 */
+	public $playbackModeIn = null;
+
+	/**
+	 * filter by company
+	 *
+	 * @var string
+	 */
+	public $companyIn = null;
+
+	/**
+	 * filter by event session context id
+	 *
+	 * @var string
+	 */
+	public $eventSessionContextIdIn = null;
 
 
 }

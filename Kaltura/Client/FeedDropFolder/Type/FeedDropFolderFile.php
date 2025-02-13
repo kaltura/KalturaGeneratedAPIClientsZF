@@ -38,17 +38,24 @@ class Kaltura_Client_FeedDropFolder_Type_FeedDropFolderFile extends Kaltura_Clie
 		return 'KalturaFeedDropFolderFile';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->hash))
+		if(!is_null($xml) && count($xml->hash))
 			$this->hash = (string)$xml->hash;
-		if(count($xml->feedXmlPath))
+		if(!is_null($jsonObject) && isset($jsonObject->hash))
+			$this->hash = (string)$jsonObject->hash;
+		if(!is_null($xml) && count($xml->feedXmlPath))
 			$this->feedXmlPath = (string)$xml->feedXmlPath;
+		if(!is_null($jsonObject) && isset($jsonObject->feedXmlPath))
+			$this->feedXmlPath = (string)$jsonObject->feedXmlPath;
 	}
 	/**
 	 * MD5 or Sha1 encrypted string

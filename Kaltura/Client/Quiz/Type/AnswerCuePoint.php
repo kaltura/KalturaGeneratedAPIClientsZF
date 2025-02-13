@@ -38,34 +38,58 @@ class Kaltura_Client_Quiz_Type_AnswerCuePoint extends Kaltura_Client_CuePoint_Ty
 		return 'KalturaAnswerCuePoint';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->parentId))
+		if(!is_null($xml) && count($xml->parentId))
 			$this->parentId = (string)$xml->parentId;
-		if(count($xml->quizUserEntryId))
+		if(!is_null($jsonObject) && isset($jsonObject->parentId))
+			$this->parentId = (string)$jsonObject->parentId;
+		if(!is_null($xml) && count($xml->quizUserEntryId))
 			$this->quizUserEntryId = (string)$xml->quizUserEntryId;
-		if(count($xml->answerKey))
+		if(!is_null($jsonObject) && isset($jsonObject->quizUserEntryId))
+			$this->quizUserEntryId = (string)$jsonObject->quizUserEntryId;
+		if(!is_null($xml) && count($xml->answerKey))
 			$this->answerKey = (string)$xml->answerKey;
-		if(count($xml->openAnswer))
+		if(!is_null($jsonObject) && isset($jsonObject->answerKey))
+			$this->answerKey = (string)$jsonObject->answerKey;
+		if(!is_null($xml) && count($xml->openAnswer))
 			$this->openAnswer = (string)$xml->openAnswer;
-		if(count($xml->isCorrect))
+		if(!is_null($jsonObject) && isset($jsonObject->openAnswer))
+			$this->openAnswer = (string)$jsonObject->openAnswer;
+		if(!is_null($xml) && count($xml->isCorrect))
 			$this->isCorrect = (int)$xml->isCorrect;
-		if(count($xml->correctAnswerKeys))
+		if(!is_null($jsonObject) && isset($jsonObject->isCorrect))
+			$this->isCorrect = (int)$jsonObject->isCorrect;
+		if(!is_null($xml) && count($xml->correctAnswerKeys))
 		{
 			if(empty($xml->correctAnswerKeys))
 				$this->correctAnswerKeys = array();
 			else
 				$this->correctAnswerKeys = Kaltura_Client_ParseUtils::unmarshalArray($xml->correctAnswerKeys, "KalturaString");
 		}
-		if(count($xml->explanation))
+		if(!is_null($jsonObject) && isset($jsonObject->correctAnswerKeys))
+		{
+			if(empty($jsonObject->correctAnswerKeys))
+				$this->correctAnswerKeys = array();
+			else
+				$this->correctAnswerKeys = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsonObject->correctAnswerKeys, "KalturaString");
+		}
+		if(!is_null($xml) && count($xml->explanation))
 			$this->explanation = (string)$xml->explanation;
-		if(count($xml->feedback))
+		if(!is_null($jsonObject) && isset($jsonObject->explanation))
+			$this->explanation = (string)$jsonObject->explanation;
+		if(!is_null($xml) && count($xml->feedback))
 			$this->feedback = (string)$xml->feedback;
+		if(!is_null($jsonObject) && isset($jsonObject->feedback))
+			$this->feedback = (string)$jsonObject->feedback;
 	}
 	/**
 	 * 

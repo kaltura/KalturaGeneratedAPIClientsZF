@@ -38,61 +38,112 @@ class Kaltura_Client_HuluDistribution_Type_HuluDistributionProfile extends Kaltu
 		return 'KalturaHuluDistributionProfile';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->sftpHost))
+		if(!is_null($xml) && count($xml->sftpHost))
 			$this->sftpHost = (string)$xml->sftpHost;
-		if(count($xml->sftpLogin))
+		if(!is_null($jsonObject) && isset($jsonObject->sftpHost))
+			$this->sftpHost = (string)$jsonObject->sftpHost;
+		if(!is_null($xml) && count($xml->sftpLogin))
 			$this->sftpLogin = (string)$xml->sftpLogin;
-		if(count($xml->sftpPass))
+		if(!is_null($jsonObject) && isset($jsonObject->sftpLogin))
+			$this->sftpLogin = (string)$jsonObject->sftpLogin;
+		if(!is_null($xml) && count($xml->sftpPass))
 			$this->sftpPass = (string)$xml->sftpPass;
-		if(count($xml->seriesChannel))
+		if(!is_null($jsonObject) && isset($jsonObject->sftpPass))
+			$this->sftpPass = (string)$jsonObject->sftpPass;
+		if(!is_null($xml) && count($xml->seriesChannel))
 			$this->seriesChannel = (string)$xml->seriesChannel;
-		if(count($xml->seriesPrimaryCategory))
+		if(!is_null($jsonObject) && isset($jsonObject->seriesChannel))
+			$this->seriesChannel = (string)$jsonObject->seriesChannel;
+		if(!is_null($xml) && count($xml->seriesPrimaryCategory))
 			$this->seriesPrimaryCategory = (string)$xml->seriesPrimaryCategory;
-		if(count($xml->seriesAdditionalCategories))
+		if(!is_null($jsonObject) && isset($jsonObject->seriesPrimaryCategory))
+			$this->seriesPrimaryCategory = (string)$jsonObject->seriesPrimaryCategory;
+		if(!is_null($xml) && count($xml->seriesAdditionalCategories))
 		{
 			if(empty($xml->seriesAdditionalCategories))
 				$this->seriesAdditionalCategories = array();
 			else
 				$this->seriesAdditionalCategories = Kaltura_Client_ParseUtils::unmarshalArray($xml->seriesAdditionalCategories, "KalturaString");
 		}
-		if(count($xml->seasonNumber))
+		if(!is_null($jsonObject) && isset($jsonObject->seriesAdditionalCategories))
+		{
+			if(empty($jsonObject->seriesAdditionalCategories))
+				$this->seriesAdditionalCategories = array();
+			else
+				$this->seriesAdditionalCategories = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsonObject->seriesAdditionalCategories, "KalturaString");
+		}
+		if(!is_null($xml) && count($xml->seasonNumber))
 			$this->seasonNumber = (string)$xml->seasonNumber;
-		if(count($xml->seasonSynopsis))
+		if(!is_null($jsonObject) && isset($jsonObject->seasonNumber))
+			$this->seasonNumber = (string)$jsonObject->seasonNumber;
+		if(!is_null($xml) && count($xml->seasonSynopsis))
 			$this->seasonSynopsis = (string)$xml->seasonSynopsis;
-		if(count($xml->seasonTuneInInformation))
+		if(!is_null($jsonObject) && isset($jsonObject->seasonSynopsis))
+			$this->seasonSynopsis = (string)$jsonObject->seasonSynopsis;
+		if(!is_null($xml) && count($xml->seasonTuneInInformation))
 			$this->seasonTuneInInformation = (string)$xml->seasonTuneInInformation;
-		if(count($xml->videoMediaType))
+		if(!is_null($jsonObject) && isset($jsonObject->seasonTuneInInformation))
+			$this->seasonTuneInInformation = (string)$jsonObject->seasonTuneInInformation;
+		if(!is_null($xml) && count($xml->videoMediaType))
 			$this->videoMediaType = (string)$xml->videoMediaType;
-		if(count($xml->disableEpisodeNumberCustomValidation))
+		if(!is_null($jsonObject) && isset($jsonObject->videoMediaType))
+			$this->videoMediaType = (string)$jsonObject->videoMediaType;
+		if(!is_null($xml) && count($xml->disableEpisodeNumberCustomValidation))
 		{
 			if(!empty($xml->disableEpisodeNumberCustomValidation) && ((int) $xml->disableEpisodeNumberCustomValidation === 1 || strtolower((string)$xml->disableEpisodeNumberCustomValidation) === 'true'))
 				$this->disableEpisodeNumberCustomValidation = true;
 			else
 				$this->disableEpisodeNumberCustomValidation = false;
 		}
-		if(count($xml->protocol))
+		if(!is_null($jsonObject) && isset($jsonObject->disableEpisodeNumberCustomValidation))
+		{
+			if(!empty($jsonObject->disableEpisodeNumberCustomValidation) && ((int) $jsonObject->disableEpisodeNumberCustomValidation === 1 || strtolower((string)$jsonObject->disableEpisodeNumberCustomValidation) === 'true'))
+				$this->disableEpisodeNumberCustomValidation = true;
+			else
+				$this->disableEpisodeNumberCustomValidation = false;
+		}
+		if(!is_null($xml) && count($xml->protocol))
 			$this->protocol = (int)$xml->protocol;
-		if(count($xml->asperaHost))
+		if(!is_null($jsonObject) && isset($jsonObject->protocol))
+			$this->protocol = (int)$jsonObject->protocol;
+		if(!is_null($xml) && count($xml->asperaHost))
 			$this->asperaHost = (string)$xml->asperaHost;
-		if(count($xml->asperaLogin))
+		if(!is_null($jsonObject) && isset($jsonObject->asperaHost))
+			$this->asperaHost = (string)$jsonObject->asperaHost;
+		if(!is_null($xml) && count($xml->asperaLogin))
 			$this->asperaLogin = (string)$xml->asperaLogin;
-		if(count($xml->asperaPass))
+		if(!is_null($jsonObject) && isset($jsonObject->asperaLogin))
+			$this->asperaLogin = (string)$jsonObject->asperaLogin;
+		if(!is_null($xml) && count($xml->asperaPass))
 			$this->asperaPass = (string)$xml->asperaPass;
-		if(count($xml->port))
+		if(!is_null($jsonObject) && isset($jsonObject->asperaPass))
+			$this->asperaPass = (string)$jsonObject->asperaPass;
+		if(!is_null($xml) && count($xml->port))
 			$this->port = (int)$xml->port;
-		if(count($xml->passphrase))
+		if(!is_null($jsonObject) && isset($jsonObject->port))
+			$this->port = (int)$jsonObject->port;
+		if(!is_null($xml) && count($xml->passphrase))
 			$this->passphrase = (string)$xml->passphrase;
-		if(count($xml->asperaPublicKey))
+		if(!is_null($jsonObject) && isset($jsonObject->passphrase))
+			$this->passphrase = (string)$jsonObject->passphrase;
+		if(!is_null($xml) && count($xml->asperaPublicKey))
 			$this->asperaPublicKey = (string)$xml->asperaPublicKey;
-		if(count($xml->asperaPrivateKey))
+		if(!is_null($jsonObject) && isset($jsonObject->asperaPublicKey))
+			$this->asperaPublicKey = (string)$jsonObject->asperaPublicKey;
+		if(!is_null($xml) && count($xml->asperaPrivateKey))
 			$this->asperaPrivateKey = (string)$xml->asperaPrivateKey;
+		if(!is_null($jsonObject) && isset($jsonObject->asperaPrivateKey))
+			$this->asperaPrivateKey = (string)$jsonObject->asperaPrivateKey;
 	}
 	/**
 	 * 

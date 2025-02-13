@@ -346,6 +346,12 @@ class Kaltura_Client_Client extends Kaltura_Client_ClientBase
 	public $uploadToken = null;
 
 	/**
+	 * Manage application based roles for user
+	 * @var Kaltura_Client_UserAppRoleService
+	 */
+	public $userAppRole = null;
+
+	/**
 	 * 
 	 * @var Kaltura_Client_UserEntryService
 	 */
@@ -379,8 +385,8 @@ class Kaltura_Client_Client extends Kaltura_Client_ClientBase
 	{
 		parent::__construct($config);
 		
-		$this->setClientTag('php5:23-03-23');
-		$this->setApiVersion('19.4.0');
+		$this->setClientTag('php5:25-02-05');
+		$this->setApiVersion('21.9.0');
 		
 		$this->accessControlProfile = new Kaltura_Client_AccessControlProfileService($this);
 		$this->accessControl = new Kaltura_Client_AccessControlService($this);
@@ -433,6 +439,7 @@ class Kaltura_Client_Client extends Kaltura_Client_ClientBase
 		$this->uiConf = new Kaltura_Client_UiConfService($this);
 		$this->upload = new Kaltura_Client_UploadService($this);
 		$this->uploadToken = new Kaltura_Client_UploadTokenService($this);
+		$this->userAppRole = new Kaltura_Client_UserAppRoleService($this);
 		$this->userEntry = new Kaltura_Client_UserEntryService($this);
 		$this->userRole = new Kaltura_Client_UserRoleService($this);
 		$this->user = new Kaltura_Client_UserService($this);

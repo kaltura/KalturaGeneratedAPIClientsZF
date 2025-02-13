@@ -38,17 +38,24 @@ class Kaltura_Client_Type_IpAddressRestriction extends Kaltura_Client_Type_BaseR
 		return 'KalturaIpAddressRestriction';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->ipAddressRestrictionType))
+		if(!is_null($xml) && count($xml->ipAddressRestrictionType))
 			$this->ipAddressRestrictionType = (int)$xml->ipAddressRestrictionType;
-		if(count($xml->ipAddressList))
+		if(!is_null($jsonObject) && isset($jsonObject->ipAddressRestrictionType))
+			$this->ipAddressRestrictionType = (int)$jsonObject->ipAddressRestrictionType;
+		if(!is_null($xml) && count($xml->ipAddressList))
 			$this->ipAddressList = (string)$xml->ipAddressList;
+		if(!is_null($jsonObject) && isset($jsonObject->ipAddressList))
+			$this->ipAddressList = (string)$jsonObject->ipAddressList;
 	}
 	/**
 	 * Ip address restriction type (Allow or deny)

@@ -38,28 +38,47 @@ class Kaltura_Client_QuickPlayDistribution_Type_QuickPlayDistributionJobProvider
 		return 'KalturaQuickPlayDistributionJobProviderData';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->xml))
+		if(!is_null($xml) && count($xml->xml))
 			$this->xml = (string)$xml->xml;
-		if(count($xml->videoFilePaths))
+		if(!is_null($jsonObject) && isset($jsonObject->xml))
+			$this->xml = (string)$jsonObject->xml;
+		if(!is_null($xml) && count($xml->videoFilePaths))
 		{
 			if(empty($xml->videoFilePaths))
 				$this->videoFilePaths = array();
 			else
 				$this->videoFilePaths = Kaltura_Client_ParseUtils::unmarshalArray($xml->videoFilePaths, "KalturaString");
 		}
-		if(count($xml->thumbnailFilePaths))
+		if(!is_null($jsonObject) && isset($jsonObject->videoFilePaths))
+		{
+			if(empty($jsonObject->videoFilePaths))
+				$this->videoFilePaths = array();
+			else
+				$this->videoFilePaths = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsonObject->videoFilePaths, "KalturaString");
+		}
+		if(!is_null($xml) && count($xml->thumbnailFilePaths))
 		{
 			if(empty($xml->thumbnailFilePaths))
 				$this->thumbnailFilePaths = array();
 			else
 				$this->thumbnailFilePaths = Kaltura_Client_ParseUtils::unmarshalArray($xml->thumbnailFilePaths, "KalturaString");
+		}
+		if(!is_null($jsonObject) && isset($jsonObject->thumbnailFilePaths))
+		{
+			if(empty($jsonObject->thumbnailFilePaths))
+				$this->thumbnailFilePaths = array();
+			else
+				$this->thumbnailFilePaths = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsonObject->thumbnailFilePaths, "KalturaString");
 		}
 	}
 	/**

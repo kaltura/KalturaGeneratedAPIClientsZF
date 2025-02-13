@@ -38,19 +38,28 @@ class Kaltura_Client_Type_SourceFileSyncDescriptor extends Kaltura_Client_Type_F
 		return 'KalturaSourceFileSyncDescriptor';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->actualFileSyncLocalPath))
+		if(!is_null($xml) && count($xml->actualFileSyncLocalPath))
 			$this->actualFileSyncLocalPath = (string)$xml->actualFileSyncLocalPath;
-		if(count($xml->assetId))
+		if(!is_null($jsonObject) && isset($jsonObject->actualFileSyncLocalPath))
+			$this->actualFileSyncLocalPath = (string)$jsonObject->actualFileSyncLocalPath;
+		if(!is_null($xml) && count($xml->assetId))
 			$this->assetId = (string)$xml->assetId;
-		if(count($xml->assetParamsId))
+		if(!is_null($jsonObject) && isset($jsonObject->assetId))
+			$this->assetId = (string)$jsonObject->assetId;
+		if(!is_null($xml) && count($xml->assetParamsId))
 			$this->assetParamsId = (int)$xml->assetParamsId;
+		if(!is_null($jsonObject) && isset($jsonObject->assetParamsId))
+			$this->assetParamsId = (int)$jsonObject->assetParamsId;
 	}
 	/**
 	 * The translated path as used by the scheduler

@@ -38,79 +38,148 @@ class Kaltura_Client_FileSync_Type_FileSync extends Kaltura_Client_ObjectBase
 		return 'KalturaFileSync';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->id))
+		if(!is_null($xml) && count($xml->id))
 			$this->id = (string)$xml->id;
-		if(count($xml->partnerId))
+		if(!is_null($jsonObject) && isset($jsonObject->id))
+			$this->id = (string)$jsonObject->id;
+		if(!is_null($xml) && count($xml->partnerId))
 			$this->partnerId = (int)$xml->partnerId;
-		if(count($xml->fileObjectType))
+		if(!is_null($jsonObject) && isset($jsonObject->partnerId))
+			$this->partnerId = (int)$jsonObject->partnerId;
+		if(!is_null($xml) && count($xml->fileObjectType))
 			$this->fileObjectType = (string)$xml->fileObjectType;
-		if(count($xml->objectId))
+		if(!is_null($jsonObject) && isset($jsonObject->fileObjectType))
+			$this->fileObjectType = (string)$jsonObject->fileObjectType;
+		if(!is_null($xml) && count($xml->objectId))
 			$this->objectId = (string)$xml->objectId;
-		if(count($xml->version))
+		if(!is_null($jsonObject) && isset($jsonObject->objectId))
+			$this->objectId = (string)$jsonObject->objectId;
+		if(!is_null($xml) && count($xml->version))
 			$this->version = (string)$xml->version;
-		if(count($xml->objectSubType))
+		if(!is_null($jsonObject) && isset($jsonObject->version))
+			$this->version = (string)$jsonObject->version;
+		if(!is_null($xml) && count($xml->objectSubType))
 			$this->objectSubType = (int)$xml->objectSubType;
-		if(count($xml->dc))
+		if(!is_null($jsonObject) && isset($jsonObject->objectSubType))
+			$this->objectSubType = (int)$jsonObject->objectSubType;
+		if(!is_null($xml) && count($xml->dc))
 			$this->dc = (string)$xml->dc;
-		if(count($xml->original))
+		if(!is_null($jsonObject) && isset($jsonObject->dc))
+			$this->dc = (string)$jsonObject->dc;
+		if(!is_null($xml) && count($xml->original))
 			$this->original = (int)$xml->original;
-		if(count($xml->createdAt))
+		if(!is_null($jsonObject) && isset($jsonObject->original))
+			$this->original = (int)$jsonObject->original;
+		if(!is_null($xml) && count($xml->createdAt))
 			$this->createdAt = (int)$xml->createdAt;
-		if(count($xml->updatedAt))
+		if(!is_null($jsonObject) && isset($jsonObject->createdAt))
+			$this->createdAt = (int)$jsonObject->createdAt;
+		if(!is_null($xml) && count($xml->updatedAt))
 			$this->updatedAt = (int)$xml->updatedAt;
-		if(count($xml->readyAt))
+		if(!is_null($jsonObject) && isset($jsonObject->updatedAt))
+			$this->updatedAt = (int)$jsonObject->updatedAt;
+		if(!is_null($xml) && count($xml->readyAt))
 			$this->readyAt = (int)$xml->readyAt;
-		if(count($xml->syncTime))
+		if(!is_null($jsonObject) && isset($jsonObject->readyAt))
+			$this->readyAt = (int)$jsonObject->readyAt;
+		if(!is_null($xml) && count($xml->syncTime))
 			$this->syncTime = (int)$xml->syncTime;
-		if(count($xml->status))
+		if(!is_null($jsonObject) && isset($jsonObject->syncTime))
+			$this->syncTime = (int)$jsonObject->syncTime;
+		if(!is_null($xml) && count($xml->status))
 			$this->status = (int)$xml->status;
-		if(count($xml->fileType))
+		if(!is_null($jsonObject) && isset($jsonObject->status))
+			$this->status = (int)$jsonObject->status;
+		if(!is_null($xml) && count($xml->fileType))
 			$this->fileType = (int)$xml->fileType;
-		if(count($xml->linkedId))
+		if(!is_null($jsonObject) && isset($jsonObject->fileType))
+			$this->fileType = (int)$jsonObject->fileType;
+		if(!is_null($xml) && count($xml->linkedId))
 			$this->linkedId = (int)$xml->linkedId;
-		if(count($xml->linkCount))
+		if(!is_null($jsonObject) && isset($jsonObject->linkedId))
+			$this->linkedId = (int)$jsonObject->linkedId;
+		if(!is_null($xml) && count($xml->linkCount))
 			$this->linkCount = (int)$xml->linkCount;
-		if(count($xml->fileRoot))
+		if(!is_null($jsonObject) && isset($jsonObject->linkCount))
+			$this->linkCount = (int)$jsonObject->linkCount;
+		if(!is_null($xml) && count($xml->fileRoot))
 			$this->fileRoot = (string)$xml->fileRoot;
-		if(count($xml->filePath))
+		if(!is_null($jsonObject) && isset($jsonObject->fileRoot))
+			$this->fileRoot = (string)$jsonObject->fileRoot;
+		if(!is_null($xml) && count($xml->filePath))
 			$this->filePath = (string)$xml->filePath;
-		if(count($xml->fileSize))
+		if(!is_null($jsonObject) && isset($jsonObject->filePath))
+			$this->filePath = (string)$jsonObject->filePath;
+		if(!is_null($xml) && count($xml->fileSize))
 			$this->fileSize = (float)$xml->fileSize;
-		if(count($xml->fileUrl))
+		if(!is_null($jsonObject) && isset($jsonObject->fileSize))
+			$this->fileSize = (float)$jsonObject->fileSize;
+		if(!is_null($xml) && count($xml->fileUrl))
 			$this->fileUrl = (string)$xml->fileUrl;
-		if(count($xml->fileContent))
+		if(!is_null($jsonObject) && isset($jsonObject->fileUrl))
+			$this->fileUrl = (string)$jsonObject->fileUrl;
+		if(!is_null($xml) && count($xml->fileContent))
 			$this->fileContent = (string)$xml->fileContent;
-		if(count($xml->fileDiscSize))
+		if(!is_null($jsonObject) && isset($jsonObject->fileContent))
+			$this->fileContent = (string)$jsonObject->fileContent;
+		if(!is_null($xml) && count($xml->fileDiscSize))
 			$this->fileDiscSize = (float)$xml->fileDiscSize;
-		if(count($xml->isCurrentDc))
+		if(!is_null($jsonObject) && isset($jsonObject->fileDiscSize))
+			$this->fileDiscSize = (float)$jsonObject->fileDiscSize;
+		if(!is_null($xml) && count($xml->isCurrentDc))
 		{
 			if(!empty($xml->isCurrentDc) && ((int) $xml->isCurrentDc === 1 || strtolower((string)$xml->isCurrentDc) === 'true'))
 				$this->isCurrentDc = true;
 			else
 				$this->isCurrentDc = false;
 		}
-		if(count($xml->isDir))
+		if(!is_null($jsonObject) && isset($jsonObject->isCurrentDc))
+		{
+			if(!empty($jsonObject->isCurrentDc) && ((int) $jsonObject->isCurrentDc === 1 || strtolower((string)$jsonObject->isCurrentDc) === 'true'))
+				$this->isCurrentDc = true;
+			else
+				$this->isCurrentDc = false;
+		}
+		if(!is_null($xml) && count($xml->isDir))
 		{
 			if(!empty($xml->isDir) && ((int) $xml->isDir === 1 || strtolower((string)$xml->isDir) === 'true'))
 				$this->isDir = true;
 			else
 				$this->isDir = false;
 		}
-		if(count($xml->originalId))
+		if(!is_null($jsonObject) && isset($jsonObject->isDir))
+		{
+			if(!empty($jsonObject->isDir) && ((int) $jsonObject->isDir === 1 || strtolower((string)$jsonObject->isDir) === 'true'))
+				$this->isDir = true;
+			else
+				$this->isDir = false;
+		}
+		if(!is_null($xml) && count($xml->originalId))
 			$this->originalId = (int)$xml->originalId;
-		if(count($xml->srcPath))
+		if(!is_null($jsonObject) && isset($jsonObject->originalId))
+			$this->originalId = (int)$jsonObject->originalId;
+		if(!is_null($xml) && count($xml->srcPath))
 			$this->srcPath = (string)$xml->srcPath;
-		if(count($xml->srcEncKey))
+		if(!is_null($jsonObject) && isset($jsonObject->srcPath))
+			$this->srcPath = (string)$jsonObject->srcPath;
+		if(!is_null($xml) && count($xml->srcEncKey))
 			$this->srcEncKey = (string)$xml->srcEncKey;
-		if(count($xml->storageClass))
+		if(!is_null($jsonObject) && isset($jsonObject->srcEncKey))
+			$this->srcEncKey = (string)$jsonObject->srcEncKey;
+		if(!is_null($xml) && count($xml->storageClass))
 			$this->storageClass = (string)$xml->storageClass;
+		if(!is_null($jsonObject) && isset($jsonObject->storageClass))
+			$this->storageClass = (string)$jsonObject->storageClass;
 	}
 	/**
 	 * 

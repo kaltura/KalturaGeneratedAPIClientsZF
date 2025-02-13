@@ -38,31 +38,52 @@ abstract class Kaltura_Client_Drm_Type_DrmProfileBaseFilter extends Kaltura_Clie
 		return 'KalturaDrmProfileBaseFilter';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->idEqual))
+		if(!is_null($xml) && count($xml->idEqual))
 			$this->idEqual = (int)$xml->idEqual;
-		if(count($xml->idIn))
+		if(!is_null($jsonObject) && isset($jsonObject->idEqual))
+			$this->idEqual = (int)$jsonObject->idEqual;
+		if(!is_null($xml) && count($xml->idIn))
 			$this->idIn = (string)$xml->idIn;
-		if(count($xml->partnerIdEqual))
+		if(!is_null($jsonObject) && isset($jsonObject->idIn))
+			$this->idIn = (string)$jsonObject->idIn;
+		if(!is_null($xml) && count($xml->partnerIdEqual))
 			$this->partnerIdEqual = (int)$xml->partnerIdEqual;
-		if(count($xml->partnerIdIn))
+		if(!is_null($jsonObject) && isset($jsonObject->partnerIdEqual))
+			$this->partnerIdEqual = (int)$jsonObject->partnerIdEqual;
+		if(!is_null($xml) && count($xml->partnerIdIn))
 			$this->partnerIdIn = (string)$xml->partnerIdIn;
-		if(count($xml->nameLike))
+		if(!is_null($jsonObject) && isset($jsonObject->partnerIdIn))
+			$this->partnerIdIn = (string)$jsonObject->partnerIdIn;
+		if(!is_null($xml) && count($xml->nameLike))
 			$this->nameLike = (string)$xml->nameLike;
-		if(count($xml->providerEqual))
+		if(!is_null($jsonObject) && isset($jsonObject->nameLike))
+			$this->nameLike = (string)$jsonObject->nameLike;
+		if(!is_null($xml) && count($xml->providerEqual))
 			$this->providerEqual = (string)$xml->providerEqual;
-		if(count($xml->providerIn))
+		if(!is_null($jsonObject) && isset($jsonObject->providerEqual))
+			$this->providerEqual = (string)$jsonObject->providerEqual;
+		if(!is_null($xml) && count($xml->providerIn))
 			$this->providerIn = (string)$xml->providerIn;
-		if(count($xml->statusEqual))
+		if(!is_null($jsonObject) && isset($jsonObject->providerIn))
+			$this->providerIn = (string)$jsonObject->providerIn;
+		if(!is_null($xml) && count($xml->statusEqual))
 			$this->statusEqual = (int)$xml->statusEqual;
-		if(count($xml->statusIn))
+		if(!is_null($jsonObject) && isset($jsonObject->statusEqual))
+			$this->statusEqual = (int)$jsonObject->statusEqual;
+		if(!is_null($xml) && count($xml->statusIn))
 			$this->statusIn = (string)$xml->statusIn;
+		if(!is_null($jsonObject) && isset($jsonObject->statusIn))
+			$this->statusIn = (string)$jsonObject->statusIn;
 	}
 	/**
 	 * 

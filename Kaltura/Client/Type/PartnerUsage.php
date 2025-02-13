@@ -38,25 +38,40 @@ class Kaltura_Client_Type_PartnerUsage extends Kaltura_Client_ObjectBase
 		return 'KalturaPartnerUsage';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->hostingGB))
+		if(!is_null($xml) && count($xml->hostingGB))
 			$this->hostingGB = (float)$xml->hostingGB;
-		if(count($xml->Percent))
+		if(!is_null($jsonObject) && isset($jsonObject->hostingGB))
+			$this->hostingGB = (float)$jsonObject->hostingGB;
+		if(!is_null($xml) && count($xml->Percent))
 			$this->Percent = (float)$xml->Percent;
-		if(count($xml->packageBW))
+		if(!is_null($jsonObject) && isset($jsonObject->Percent))
+			$this->Percent = (float)$jsonObject->Percent;
+		if(!is_null($xml) && count($xml->packageBW))
 			$this->packageBW = (int)$xml->packageBW;
-		if(count($xml->usageGB))
+		if(!is_null($jsonObject) && isset($jsonObject->packageBW))
+			$this->packageBW = (int)$jsonObject->packageBW;
+		if(!is_null($xml) && count($xml->usageGB))
 			$this->usageGB = (float)$xml->usageGB;
-		if(count($xml->reachedLimitDate))
+		if(!is_null($jsonObject) && isset($jsonObject->usageGB))
+			$this->usageGB = (float)$jsonObject->usageGB;
+		if(!is_null($xml) && count($xml->reachedLimitDate))
 			$this->reachedLimitDate = (int)$xml->reachedLimitDate;
-		if(count($xml->usageGraph))
+		if(!is_null($jsonObject) && isset($jsonObject->reachedLimitDate))
+			$this->reachedLimitDate = (int)$jsonObject->reachedLimitDate;
+		if(!is_null($xml) && count($xml->usageGraph))
 			$this->usageGraph = (string)$xml->usageGraph;
+		if(!is_null($jsonObject) && isset($jsonObject->usageGraph))
+			$this->usageGraph = (string)$jsonObject->usageGraph;
 	}
 	/**
 	 * Partner total hosting in GB on the disk

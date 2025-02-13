@@ -38,43 +38,76 @@ class Kaltura_Client_Type_Asset extends Kaltura_Client_ObjectBase
 		return 'KalturaAsset';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->id))
+		if(!is_null($xml) && count($xml->id))
 			$this->id = (string)$xml->id;
-		if(count($xml->entryId))
+		if(!is_null($jsonObject) && isset($jsonObject->id))
+			$this->id = (string)$jsonObject->id;
+		if(!is_null($xml) && count($xml->entryId))
 			$this->entryId = (string)$xml->entryId;
-		if(count($xml->partnerId))
+		if(!is_null($jsonObject) && isset($jsonObject->entryId))
+			$this->entryId = (string)$jsonObject->entryId;
+		if(!is_null($xml) && count($xml->partnerId))
 			$this->partnerId = (int)$xml->partnerId;
-		if(count($xml->version))
+		if(!is_null($jsonObject) && isset($jsonObject->partnerId))
+			$this->partnerId = (int)$jsonObject->partnerId;
+		if(!is_null($xml) && count($xml->version))
 			$this->version = (int)$xml->version;
-		if(count($xml->size))
+		if(!is_null($jsonObject) && isset($jsonObject->version))
+			$this->version = (int)$jsonObject->version;
+		if(!is_null($xml) && count($xml->size))
 			$this->size = (int)$xml->size;
-		if(count($xml->tags))
+		if(!is_null($jsonObject) && isset($jsonObject->size))
+			$this->size = (int)$jsonObject->size;
+		if(!is_null($xml) && count($xml->tags))
 			$this->tags = (string)$xml->tags;
-		if(count($xml->fileExt))
+		if(!is_null($jsonObject) && isset($jsonObject->tags))
+			$this->tags = (string)$jsonObject->tags;
+		if(!is_null($xml) && count($xml->fileExt))
 			$this->fileExt = (string)$xml->fileExt;
-		if(count($xml->createdAt))
+		if(!is_null($jsonObject) && isset($jsonObject->fileExt))
+			$this->fileExt = (string)$jsonObject->fileExt;
+		if(!is_null($xml) && count($xml->createdAt))
 			$this->createdAt = (int)$xml->createdAt;
-		if(count($xml->updatedAt))
+		if(!is_null($jsonObject) && isset($jsonObject->createdAt))
+			$this->createdAt = (int)$jsonObject->createdAt;
+		if(!is_null($xml) && count($xml->updatedAt))
 			$this->updatedAt = (int)$xml->updatedAt;
-		if(count($xml->deletedAt))
+		if(!is_null($jsonObject) && isset($jsonObject->updatedAt))
+			$this->updatedAt = (int)$jsonObject->updatedAt;
+		if(!is_null($xml) && count($xml->deletedAt))
 			$this->deletedAt = (int)$xml->deletedAt;
-		if(count($xml->description))
+		if(!is_null($jsonObject) && isset($jsonObject->deletedAt))
+			$this->deletedAt = (int)$jsonObject->deletedAt;
+		if(!is_null($xml) && count($xml->description))
 			$this->description = (string)$xml->description;
-		if(count($xml->partnerData))
+		if(!is_null($jsonObject) && isset($jsonObject->description))
+			$this->description = (string)$jsonObject->description;
+		if(!is_null($xml) && count($xml->partnerData))
 			$this->partnerData = (string)$xml->partnerData;
-		if(count($xml->partnerDescription))
+		if(!is_null($jsonObject) && isset($jsonObject->partnerData))
+			$this->partnerData = (string)$jsonObject->partnerData;
+		if(!is_null($xml) && count($xml->partnerDescription))
 			$this->partnerDescription = (string)$xml->partnerDescription;
-		if(count($xml->actualSourceAssetParamsIds))
+		if(!is_null($jsonObject) && isset($jsonObject->partnerDescription))
+			$this->partnerDescription = (string)$jsonObject->partnerDescription;
+		if(!is_null($xml) && count($xml->actualSourceAssetParamsIds))
 			$this->actualSourceAssetParamsIds = (string)$xml->actualSourceAssetParamsIds;
-		if(count($xml->sizeInBytes))
+		if(!is_null($jsonObject) && isset($jsonObject->actualSourceAssetParamsIds))
+			$this->actualSourceAssetParamsIds = (string)$jsonObject->actualSourceAssetParamsIds;
+		if(!is_null($xml) && count($xml->sizeInBytes))
 			$this->sizeInBytes = (string)$xml->sizeInBytes;
+		if(!is_null($jsonObject) && isset($jsonObject->sizeInBytes))
+			$this->sizeInBytes = (string)$jsonObject->sizeInBytes;
 	}
 	/**
 	 * The ID of the Flavor Asset

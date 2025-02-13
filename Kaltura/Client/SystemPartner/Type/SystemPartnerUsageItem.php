@@ -38,55 +38,100 @@ class Kaltura_Client_SystemPartner_Type_SystemPartnerUsageItem extends Kaltura_C
 		return 'KalturaSystemPartnerUsageItem';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->partnerId))
+		if(!is_null($xml) && count($xml->partnerId))
 			$this->partnerId = (int)$xml->partnerId;
-		if(count($xml->partnerName))
+		if(!is_null($jsonObject) && isset($jsonObject->partnerId))
+			$this->partnerId = (int)$jsonObject->partnerId;
+		if(!is_null($xml) && count($xml->partnerName))
 			$this->partnerName = (string)$xml->partnerName;
-		if(count($xml->partnerStatus))
+		if(!is_null($jsonObject) && isset($jsonObject->partnerName))
+			$this->partnerName = (string)$jsonObject->partnerName;
+		if(!is_null($xml) && count($xml->partnerStatus))
 			$this->partnerStatus = (int)$xml->partnerStatus;
-		if(count($xml->partnerPackage))
+		if(!is_null($jsonObject) && isset($jsonObject->partnerStatus))
+			$this->partnerStatus = (int)$jsonObject->partnerStatus;
+		if(!is_null($xml) && count($xml->partnerPackage))
 			$this->partnerPackage = (int)$xml->partnerPackage;
-		if(count($xml->partnerCreatedAt))
+		if(!is_null($jsonObject) && isset($jsonObject->partnerPackage))
+			$this->partnerPackage = (int)$jsonObject->partnerPackage;
+		if(!is_null($xml) && count($xml->partnerCreatedAt))
 			$this->partnerCreatedAt = (int)$xml->partnerCreatedAt;
-		if(count($xml->views))
+		if(!is_null($jsonObject) && isset($jsonObject->partnerCreatedAt))
+			$this->partnerCreatedAt = (int)$jsonObject->partnerCreatedAt;
+		if(!is_null($xml) && count($xml->views))
 			$this->views = (int)$xml->views;
-		if(count($xml->plays))
+		if(!is_null($jsonObject) && isset($jsonObject->views))
+			$this->views = (int)$jsonObject->views;
+		if(!is_null($xml) && count($xml->plays))
 			$this->plays = (int)$xml->plays;
-		if(count($xml->entriesCount))
+		if(!is_null($jsonObject) && isset($jsonObject->plays))
+			$this->plays = (int)$jsonObject->plays;
+		if(!is_null($xml) && count($xml->entriesCount))
 			$this->entriesCount = (int)$xml->entriesCount;
-		if(count($xml->totalEntriesCount))
+		if(!is_null($jsonObject) && isset($jsonObject->entriesCount))
+			$this->entriesCount = (int)$jsonObject->entriesCount;
+		if(!is_null($xml) && count($xml->totalEntriesCount))
 			$this->totalEntriesCount = (int)$xml->totalEntriesCount;
-		if(count($xml->videoEntriesCount))
+		if(!is_null($jsonObject) && isset($jsonObject->totalEntriesCount))
+			$this->totalEntriesCount = (int)$jsonObject->totalEntriesCount;
+		if(!is_null($xml) && count($xml->videoEntriesCount))
 			$this->videoEntriesCount = (int)$xml->videoEntriesCount;
-		if(count($xml->imageEntriesCount))
+		if(!is_null($jsonObject) && isset($jsonObject->videoEntriesCount))
+			$this->videoEntriesCount = (int)$jsonObject->videoEntriesCount;
+		if(!is_null($xml) && count($xml->imageEntriesCount))
 			$this->imageEntriesCount = (int)$xml->imageEntriesCount;
-		if(count($xml->audioEntriesCount))
+		if(!is_null($jsonObject) && isset($jsonObject->imageEntriesCount))
+			$this->imageEntriesCount = (int)$jsonObject->imageEntriesCount;
+		if(!is_null($xml) && count($xml->audioEntriesCount))
 			$this->audioEntriesCount = (int)$xml->audioEntriesCount;
-		if(count($xml->mixEntriesCount))
+		if(!is_null($jsonObject) && isset($jsonObject->audioEntriesCount))
+			$this->audioEntriesCount = (int)$jsonObject->audioEntriesCount;
+		if(!is_null($xml) && count($xml->mixEntriesCount))
 			$this->mixEntriesCount = (int)$xml->mixEntriesCount;
-		if(count($xml->bandwidth))
+		if(!is_null($jsonObject) && isset($jsonObject->mixEntriesCount))
+			$this->mixEntriesCount = (int)$jsonObject->mixEntriesCount;
+		if(!is_null($xml) && count($xml->bandwidth))
 			$this->bandwidth = (float)$xml->bandwidth;
-		if(count($xml->totalStorage))
+		if(!is_null($jsonObject) && isset($jsonObject->bandwidth))
+			$this->bandwidth = (float)$jsonObject->bandwidth;
+		if(!is_null($xml) && count($xml->totalStorage))
 			$this->totalStorage = (float)$xml->totalStorage;
-		if(count($xml->storage))
+		if(!is_null($jsonObject) && isset($jsonObject->totalStorage))
+			$this->totalStorage = (float)$jsonObject->totalStorage;
+		if(!is_null($xml) && count($xml->storage))
 			$this->storage = (float)$xml->storage;
-		if(count($xml->peakStorage))
+		if(!is_null($jsonObject) && isset($jsonObject->storage))
+			$this->storage = (float)$jsonObject->storage;
+		if(!is_null($xml) && count($xml->peakStorage))
 			$this->peakStorage = (float)$xml->peakStorage;
-		if(count($xml->avgStorage))
+		if(!is_null($jsonObject) && isset($jsonObject->peakStorage))
+			$this->peakStorage = (float)$jsonObject->peakStorage;
+		if(!is_null($xml) && count($xml->avgStorage))
 			$this->avgStorage = (float)$xml->avgStorage;
-		if(count($xml->combinedBandwidthStorage))
+		if(!is_null($jsonObject) && isset($jsonObject->avgStorage))
+			$this->avgStorage = (float)$jsonObject->avgStorage;
+		if(!is_null($xml) && count($xml->combinedBandwidthStorage))
 			$this->combinedBandwidthStorage = (float)$xml->combinedBandwidthStorage;
-		if(count($xml->deletedStorage))
+		if(!is_null($jsonObject) && isset($jsonObject->combinedBandwidthStorage))
+			$this->combinedBandwidthStorage = (float)$jsonObject->combinedBandwidthStorage;
+		if(!is_null($xml) && count($xml->deletedStorage))
 			$this->deletedStorage = (float)$xml->deletedStorage;
-		if(count($xml->transcodingUsage))
+		if(!is_null($jsonObject) && isset($jsonObject->deletedStorage))
+			$this->deletedStorage = (float)$jsonObject->deletedStorage;
+		if(!is_null($xml) && count($xml->transcodingUsage))
 			$this->transcodingUsage = (float)$xml->transcodingUsage;
+		if(!is_null($jsonObject) && isset($jsonObject->transcodingUsage))
+			$this->transcodingUsage = (float)$jsonObject->transcodingUsage;
 	}
 	/**
 	 * Partner ID

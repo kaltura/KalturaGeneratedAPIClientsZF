@@ -38,21 +38,36 @@ class Kaltura_Client_ViewHistory_Type_ViewHistoryUserEntry extends Kaltura_Clien
 		return 'KalturaViewHistoryUserEntry';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->playbackContext))
+		if(!is_null($xml) && count($xml->playbackContext))
 			$this->playbackContext = (string)$xml->playbackContext;
-		if(count($xml->lastTimeReached))
+		if(!is_null($jsonObject) && isset($jsonObject->playbackContext))
+			$this->playbackContext = (string)$jsonObject->playbackContext;
+		if(!is_null($xml) && count($xml->lastTimeReached))
 			$this->lastTimeReached = (int)$xml->lastTimeReached;
-		if(count($xml->lastUpdateTime))
+		if(!is_null($jsonObject) && isset($jsonObject->lastTimeReached))
+			$this->lastTimeReached = (int)$jsonObject->lastTimeReached;
+		if(!is_null($xml) && count($xml->lastUpdateTime))
 			$this->lastUpdateTime = (int)$xml->lastUpdateTime;
-		if(count($xml->playlistLastEntryId))
+		if(!is_null($jsonObject) && isset($jsonObject->lastUpdateTime))
+			$this->lastUpdateTime = (int)$jsonObject->lastUpdateTime;
+		if(!is_null($xml) && count($xml->playlistLastEntryId))
 			$this->playlistLastEntryId = (string)$xml->playlistLastEntryId;
+		if(!is_null($jsonObject) && isset($jsonObject->playlistLastEntryId))
+			$this->playlistLastEntryId = (string)$jsonObject->playlistLastEntryId;
+		if(!is_null($xml) && count($xml->extendedStatus))
+			$this->extendedStatus = (string)$xml->extendedStatus;
+		if(!is_null($jsonObject) && isset($jsonObject->extendedStatus))
+			$this->extendedStatus = (string)$jsonObject->extendedStatus;
 	}
 	/**
 	 * Playback context
@@ -81,6 +96,13 @@ class Kaltura_Client_ViewHistory_Type_ViewHistoryUserEntry extends Kaltura_Clien
 	 * @var string
 	 */
 	public $playlistLastEntryId = null;
+
+	/**
+	 * 
+	 *
+	 * @var Kaltura_Client_Enum_UserEntryExtendedStatus
+	 */
+	public $extendedStatus = null;
 
 
 }

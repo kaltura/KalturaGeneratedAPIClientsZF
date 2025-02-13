@@ -38,38 +38,66 @@ class Kaltura_Client_WebexDropFolder_Type_WebexDropFolder extends Kaltura_Client
 		return 'KalturaWebexDropFolder';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->webexUserId))
+		if(!is_null($xml) && count($xml->webexUserId))
 			$this->webexUserId = (string)$xml->webexUserId;
-		if(count($xml->webexPassword))
+		if(!is_null($jsonObject) && isset($jsonObject->webexUserId))
+			$this->webexUserId = (string)$jsonObject->webexUserId;
+		if(!is_null($xml) && count($xml->webexPassword))
 			$this->webexPassword = (string)$xml->webexPassword;
-		if(count($xml->webexSiteId))
+		if(!is_null($jsonObject) && isset($jsonObject->webexPassword))
+			$this->webexPassword = (string)$jsonObject->webexPassword;
+		if(!is_null($xml) && count($xml->webexSiteId))
 			$this->webexSiteId = (int)$xml->webexSiteId;
-		if(count($xml->webexPartnerId))
+		if(!is_null($jsonObject) && isset($jsonObject->webexSiteId))
+			$this->webexSiteId = (int)$jsonObject->webexSiteId;
+		if(!is_null($xml) && count($xml->webexPartnerId))
 			$this->webexPartnerId = (string)$xml->webexPartnerId;
-		if(count($xml->webexServiceUrl))
+		if(!is_null($jsonObject) && isset($jsonObject->webexPartnerId))
+			$this->webexPartnerId = (string)$jsonObject->webexPartnerId;
+		if(!is_null($xml) && count($xml->webexServiceUrl))
 			$this->webexServiceUrl = (string)$xml->webexServiceUrl;
-		if(count($xml->webexHostIdMetadataFieldName))
+		if(!is_null($jsonObject) && isset($jsonObject->webexServiceUrl))
+			$this->webexServiceUrl = (string)$jsonObject->webexServiceUrl;
+		if(!is_null($xml) && count($xml->webexHostIdMetadataFieldName))
 			$this->webexHostIdMetadataFieldName = (string)$xml->webexHostIdMetadataFieldName;
-		if(count($xml->deleteFromRecycleBin))
+		if(!is_null($jsonObject) && isset($jsonObject->webexHostIdMetadataFieldName))
+			$this->webexHostIdMetadataFieldName = (string)$jsonObject->webexHostIdMetadataFieldName;
+		if(!is_null($xml) && count($xml->deleteFromRecycleBin))
 		{
 			if(!empty($xml->deleteFromRecycleBin) && ((int) $xml->deleteFromRecycleBin === 1 || strtolower((string)$xml->deleteFromRecycleBin) === 'true'))
 				$this->deleteFromRecycleBin = true;
 			else
 				$this->deleteFromRecycleBin = false;
 		}
-		if(count($xml->webexServiceType))
+		if(!is_null($jsonObject) && isset($jsonObject->deleteFromRecycleBin))
+		{
+			if(!empty($jsonObject->deleteFromRecycleBin) && ((int) $jsonObject->deleteFromRecycleBin === 1 || strtolower((string)$jsonObject->deleteFromRecycleBin) === 'true'))
+				$this->deleteFromRecycleBin = true;
+			else
+				$this->deleteFromRecycleBin = false;
+		}
+		if(!is_null($xml) && count($xml->webexServiceType))
 			$this->webexServiceType = (string)$xml->webexServiceType;
-		if(count($xml->webexSiteName))
+		if(!is_null($jsonObject) && isset($jsonObject->webexServiceType))
+			$this->webexServiceType = (string)$jsonObject->webexServiceType;
+		if(!is_null($xml) && count($xml->webexSiteName))
 			$this->webexSiteName = (string)$xml->webexSiteName;
-		if(count($xml->deleteFromTimestamp))
+		if(!is_null($jsonObject) && isset($jsonObject->webexSiteName))
+			$this->webexSiteName = (string)$jsonObject->webexSiteName;
+		if(!is_null($xml) && count($xml->deleteFromTimestamp))
 			$this->deleteFromTimestamp = (int)$xml->deleteFromTimestamp;
+		if(!is_null($jsonObject) && isset($jsonObject->deleteFromTimestamp))
+			$this->deleteFromTimestamp = (int)$jsonObject->deleteFromTimestamp;
 	}
 	/**
 	 * 

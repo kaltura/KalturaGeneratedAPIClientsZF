@@ -38,21 +38,32 @@ class Kaltura_Client_Type_LiveReportExportParams extends Kaltura_Client_ObjectBa
 		return 'KalturaLiveReportExportParams';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->entryIds))
+		if(!is_null($xml) && count($xml->entryIds))
 			$this->entryIds = (string)$xml->entryIds;
-		if(count($xml->recpientEmail))
+		if(!is_null($jsonObject) && isset($jsonObject->entryIds))
+			$this->entryIds = (string)$jsonObject->entryIds;
+		if(!is_null($xml) && count($xml->recpientEmail))
 			$this->recpientEmail = (string)$xml->recpientEmail;
-		if(count($xml->timeZoneOffset))
+		if(!is_null($jsonObject) && isset($jsonObject->recpientEmail))
+			$this->recpientEmail = (string)$jsonObject->recpientEmail;
+		if(!is_null($xml) && count($xml->timeZoneOffset))
 			$this->timeZoneOffset = (int)$xml->timeZoneOffset;
-		if(count($xml->applicationUrlTemplate))
+		if(!is_null($jsonObject) && isset($jsonObject->timeZoneOffset))
+			$this->timeZoneOffset = (int)$jsonObject->timeZoneOffset;
+		if(!is_null($xml) && count($xml->applicationUrlTemplate))
 			$this->applicationUrlTemplate = (string)$xml->applicationUrlTemplate;
+		if(!is_null($jsonObject) && isset($jsonObject->applicationUrlTemplate))
+			$this->applicationUrlTemplate = (string)$jsonObject->applicationUrlTemplate;
 	}
 	/**
 	 * 

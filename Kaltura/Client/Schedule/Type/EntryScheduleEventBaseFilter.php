@@ -38,27 +38,44 @@ abstract class Kaltura_Client_Schedule_Type_EntryScheduleEventBaseFilter extends
 		return 'KalturaEntryScheduleEventBaseFilter';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->templateEntryIdEqual))
+		if(!is_null($xml) && count($xml->templateEntryIdEqual))
 			$this->templateEntryIdEqual = (string)$xml->templateEntryIdEqual;
-		if(count($xml->entryIdsLike))
+		if(!is_null($jsonObject) && isset($jsonObject->templateEntryIdEqual))
+			$this->templateEntryIdEqual = (string)$jsonObject->templateEntryIdEqual;
+		if(!is_null($xml) && count($xml->entryIdsLike))
 			$this->entryIdsLike = (string)$xml->entryIdsLike;
-		if(count($xml->entryIdsMultiLikeOr))
+		if(!is_null($jsonObject) && isset($jsonObject->entryIdsLike))
+			$this->entryIdsLike = (string)$jsonObject->entryIdsLike;
+		if(!is_null($xml) && count($xml->entryIdsMultiLikeOr))
 			$this->entryIdsMultiLikeOr = (string)$xml->entryIdsMultiLikeOr;
-		if(count($xml->entryIdsMultiLikeAnd))
+		if(!is_null($jsonObject) && isset($jsonObject->entryIdsMultiLikeOr))
+			$this->entryIdsMultiLikeOr = (string)$jsonObject->entryIdsMultiLikeOr;
+		if(!is_null($xml) && count($xml->entryIdsMultiLikeAnd))
 			$this->entryIdsMultiLikeAnd = (string)$xml->entryIdsMultiLikeAnd;
-		if(count($xml->categoryIdsLike))
+		if(!is_null($jsonObject) && isset($jsonObject->entryIdsMultiLikeAnd))
+			$this->entryIdsMultiLikeAnd = (string)$jsonObject->entryIdsMultiLikeAnd;
+		if(!is_null($xml) && count($xml->categoryIdsLike))
 			$this->categoryIdsLike = (string)$xml->categoryIdsLike;
-		if(count($xml->categoryIdsMultiLikeOr))
+		if(!is_null($jsonObject) && isset($jsonObject->categoryIdsLike))
+			$this->categoryIdsLike = (string)$jsonObject->categoryIdsLike;
+		if(!is_null($xml) && count($xml->categoryIdsMultiLikeOr))
 			$this->categoryIdsMultiLikeOr = (string)$xml->categoryIdsMultiLikeOr;
-		if(count($xml->categoryIdsMultiLikeAnd))
+		if(!is_null($jsonObject) && isset($jsonObject->categoryIdsMultiLikeOr))
+			$this->categoryIdsMultiLikeOr = (string)$jsonObject->categoryIdsMultiLikeOr;
+		if(!is_null($xml) && count($xml->categoryIdsMultiLikeAnd))
 			$this->categoryIdsMultiLikeAnd = (string)$xml->categoryIdsMultiLikeAnd;
+		if(!is_null($jsonObject) && isset($jsonObject->categoryIdsMultiLikeAnd))
+			$this->categoryIdsMultiLikeAnd = (string)$jsonObject->categoryIdsMultiLikeAnd;
 	}
 	/**
 	 * 

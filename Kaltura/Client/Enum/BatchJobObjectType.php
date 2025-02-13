@@ -42,5 +42,6 @@ class Kaltura_Client_Enum_BatchJobObjectType extends Kaltura_Client_EnumBase
 	const CATEGORY = "2";
 	const FILE_SYNC = "3";
 	const ASSET = "4";
+	const USER = "5";
 }
 

@@ -38,75 +38,140 @@ class Kaltura_Client_Reach_Type_ReachProfile extends Kaltura_Client_ObjectBase
 		return 'KalturaReachProfile';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->id))
+		if(!is_null($xml) && count($xml->id))
 			$this->id = (int)$xml->id;
-		if(count($xml->name))
+		if(!is_null($jsonObject) && isset($jsonObject->id))
+			$this->id = (int)$jsonObject->id;
+		if(!is_null($xml) && count($xml->name))
 			$this->name = (string)$xml->name;
-		if(count($xml->partnerId))
+		if(!is_null($jsonObject) && isset($jsonObject->name))
+			$this->name = (string)$jsonObject->name;
+		if(!is_null($xml) && count($xml->partnerId))
 			$this->partnerId = (int)$xml->partnerId;
-		if(count($xml->createdAt))
+		if(!is_null($jsonObject) && isset($jsonObject->partnerId))
+			$this->partnerId = (int)$jsonObject->partnerId;
+		if(!is_null($xml) && count($xml->createdAt))
 			$this->createdAt = (int)$xml->createdAt;
-		if(count($xml->updatedAt))
+		if(!is_null($jsonObject) && isset($jsonObject->createdAt))
+			$this->createdAt = (int)$jsonObject->createdAt;
+		if(!is_null($xml) && count($xml->updatedAt))
 			$this->updatedAt = (int)$xml->updatedAt;
-		if(count($xml->status))
+		if(!is_null($jsonObject) && isset($jsonObject->updatedAt))
+			$this->updatedAt = (int)$jsonObject->updatedAt;
+		if(!is_null($xml) && count($xml->status))
 			$this->status = (int)$xml->status;
-		if(count($xml->profileType))
+		if(!is_null($jsonObject) && isset($jsonObject->status))
+			$this->status = (int)$jsonObject->status;
+		if(!is_null($xml) && count($xml->profileType))
 			$this->profileType = (int)$xml->profileType;
-		if(count($xml->defaultOutputFormat))
+		if(!is_null($jsonObject) && isset($jsonObject->profileType))
+			$this->profileType = (int)$jsonObject->profileType;
+		if(!is_null($xml) && count($xml->defaultOutputFormat))
 			$this->defaultOutputFormat = (int)$xml->defaultOutputFormat;
-		if(count($xml->enableMachineModeration))
+		if(!is_null($jsonObject) && isset($jsonObject->defaultOutputFormat))
+			$this->defaultOutputFormat = (int)$jsonObject->defaultOutputFormat;
+		if(!is_null($xml) && count($xml->enableMachineModeration))
 			$this->enableMachineModeration = (int)$xml->enableMachineModeration;
-		if(count($xml->enableHumanModeration))
+		if(!is_null($jsonObject) && isset($jsonObject->enableMachineModeration))
+			$this->enableMachineModeration = (int)$jsonObject->enableMachineModeration;
+		if(!is_null($xml) && count($xml->enableHumanModeration))
 			$this->enableHumanModeration = (int)$xml->enableHumanModeration;
-		if(count($xml->autoDisplayMachineCaptionsOnPlayer))
+		if(!is_null($jsonObject) && isset($jsonObject->enableHumanModeration))
+			$this->enableHumanModeration = (int)$jsonObject->enableHumanModeration;
+		if(!is_null($xml) && count($xml->autoDisplayMachineCaptionsOnPlayer))
 			$this->autoDisplayMachineCaptionsOnPlayer = (int)$xml->autoDisplayMachineCaptionsOnPlayer;
-		if(count($xml->autoDisplayHumanCaptionsOnPlayer))
+		if(!is_null($jsonObject) && isset($jsonObject->autoDisplayMachineCaptionsOnPlayer))
+			$this->autoDisplayMachineCaptionsOnPlayer = (int)$jsonObject->autoDisplayMachineCaptionsOnPlayer;
+		if(!is_null($xml) && count($xml->autoDisplayHumanCaptionsOnPlayer))
 			$this->autoDisplayHumanCaptionsOnPlayer = (int)$xml->autoDisplayHumanCaptionsOnPlayer;
-		if(count($xml->enableMetadataExtraction))
+		if(!is_null($jsonObject) && isset($jsonObject->autoDisplayHumanCaptionsOnPlayer))
+			$this->autoDisplayHumanCaptionsOnPlayer = (int)$jsonObject->autoDisplayHumanCaptionsOnPlayer;
+		if(!is_null($xml) && count($xml->enableMetadataExtraction))
 			$this->enableMetadataExtraction = (int)$xml->enableMetadataExtraction;
-		if(count($xml->enableSpeakerChangeIndication))
+		if(!is_null($jsonObject) && isset($jsonObject->enableMetadataExtraction))
+			$this->enableMetadataExtraction = (int)$jsonObject->enableMetadataExtraction;
+		if(!is_null($xml) && count($xml->enableSpeakerChangeIndication))
 			$this->enableSpeakerChangeIndication = (int)$xml->enableSpeakerChangeIndication;
-		if(count($xml->enableAudioTags))
+		if(!is_null($jsonObject) && isset($jsonObject->enableSpeakerChangeIndication))
+			$this->enableSpeakerChangeIndication = (int)$jsonObject->enableSpeakerChangeIndication;
+		if(!is_null($xml) && count($xml->enableAudioTags))
 			$this->enableAudioTags = (int)$xml->enableAudioTags;
-		if(count($xml->enableProfanityRemoval))
+		if(!is_null($jsonObject) && isset($jsonObject->enableAudioTags))
+			$this->enableAudioTags = (int)$jsonObject->enableAudioTags;
+		if(!is_null($xml) && count($xml->enableProfanityRemoval))
 			$this->enableProfanityRemoval = (int)$xml->enableProfanityRemoval;
-		if(count($xml->maxCharactersPerCaptionLine))
+		if(!is_null($jsonObject) && isset($jsonObject->enableProfanityRemoval))
+			$this->enableProfanityRemoval = (int)$jsonObject->enableProfanityRemoval;
+		if(!is_null($xml) && count($xml->maxCharactersPerCaptionLine))
 			$this->maxCharactersPerCaptionLine = (int)$xml->maxCharactersPerCaptionLine;
-		if(count($xml->labelAdditionForMachineServiceType))
+		if(!is_null($jsonObject) && isset($jsonObject->maxCharactersPerCaptionLine))
+			$this->maxCharactersPerCaptionLine = (int)$jsonObject->maxCharactersPerCaptionLine;
+		if(!is_null($xml) && count($xml->labelAdditionForMachineServiceType))
 			$this->labelAdditionForMachineServiceType = (string)$xml->labelAdditionForMachineServiceType;
-		if(count($xml->labelAdditionForHumanServiceType))
+		if(!is_null($jsonObject) && isset($jsonObject->labelAdditionForMachineServiceType))
+			$this->labelAdditionForMachineServiceType = (string)$jsonObject->labelAdditionForMachineServiceType;
+		if(!is_null($xml) && count($xml->labelAdditionForHumanServiceType))
 			$this->labelAdditionForHumanServiceType = (string)$xml->labelAdditionForHumanServiceType;
-		if(count($xml->contentDeletionPolicy))
+		if(!is_null($jsonObject) && isset($jsonObject->labelAdditionForHumanServiceType))
+			$this->labelAdditionForHumanServiceType = (string)$jsonObject->labelAdditionForHumanServiceType;
+		if(!is_null($xml) && count($xml->contentDeletionPolicy))
 			$this->contentDeletionPolicy = (int)$xml->contentDeletionPolicy;
-		if(count($xml->rules))
+		if(!is_null($jsonObject) && isset($jsonObject->contentDeletionPolicy))
+			$this->contentDeletionPolicy = (int)$jsonObject->contentDeletionPolicy;
+		if(!is_null($xml) && count($xml->rules))
 		{
 			if(empty($xml->rules))
 				$this->rules = array();
 			else
 				$this->rules = Kaltura_Client_ParseUtils::unmarshalArray($xml->rules, "KalturaRule");
 		}
-		if(count($xml->credit) && !empty($xml->credit))
+		if(!is_null($jsonObject) && isset($jsonObject->rules))
+		{
+			if(empty($jsonObject->rules))
+				$this->rules = array();
+			else
+				$this->rules = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsonObject->rules, "KalturaRule");
+		}
+		if(!is_null($xml) && count($xml->credit) && !empty($xml->credit))
 			$this->credit = Kaltura_Client_ParseUtils::unmarshalObject($xml->credit, "KalturaBaseVendorCredit");
-		if(count($xml->usedCredit))
+		if(!is_null($jsonObject) && isset($jsonObject->credit) && !empty($jsonObject->credit))
+			$this->credit = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsonObject->credit, "KalturaBaseVendorCredit");
+		if(!is_null($xml) && count($xml->usedCredit))
 			$this->usedCredit = (float)$xml->usedCredit;
-		if(count($xml->dictionaries))
+		if(!is_null($jsonObject) && isset($jsonObject->usedCredit))
+			$this->usedCredit = (float)$jsonObject->usedCredit;
+		if(!is_null($xml) && count($xml->dictionaries))
 		{
 			if(empty($xml->dictionaries))
 				$this->dictionaries = array();
 			else
 				$this->dictionaries = Kaltura_Client_ParseUtils::unmarshalArray($xml->dictionaries, "KalturaDictionary");
 		}
-		if(count($xml->flavorParamsIds))
+		if(!is_null($jsonObject) && isset($jsonObject->dictionaries))
+		{
+			if(empty($jsonObject->dictionaries))
+				$this->dictionaries = array();
+			else
+				$this->dictionaries = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsonObject->dictionaries, "KalturaDictionary");
+		}
+		if(!is_null($xml) && count($xml->flavorParamsIds))
 			$this->flavorParamsIds = (string)$xml->flavorParamsIds;
-		if(count($xml->vendorTaskProcessingRegion))
+		if(!is_null($jsonObject) && isset($jsonObject->flavorParamsIds))
+			$this->flavorParamsIds = (string)$jsonObject->flavorParamsIds;
+		if(!is_null($xml) && count($xml->vendorTaskProcessingRegion))
 			$this->vendorTaskProcessingRegion = (int)$xml->vendorTaskProcessingRegion;
+		if(!is_null($jsonObject) && isset($jsonObject->vendorTaskProcessingRegion))
+			$this->vendorTaskProcessingRegion = (int)$jsonObject->vendorTaskProcessingRegion;
 	}
 	/**
 	 * 

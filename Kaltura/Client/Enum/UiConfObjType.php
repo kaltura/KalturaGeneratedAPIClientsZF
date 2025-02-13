@@ -54,5 +54,7 @@ class Kaltura_Client_Enum_UiConfObjType extends Kaltura_Client_EnumBase
 	const KSR = 19;
 	const KUPLOAD = 20;
 	const WEBCASTING = 21;
+	const SAP = 22;
+	const REELS = 23;
 }
 

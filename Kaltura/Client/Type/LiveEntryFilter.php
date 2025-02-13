@@ -38,19 +38,28 @@ class Kaltura_Client_Type_LiveEntryFilter extends Kaltura_Client_Type_LiveEntryB
 		return 'KalturaLiveEntryFilter';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->isLive))
+		if(!is_null($xml) && count($xml->isLive))
 			$this->isLive = (int)$xml->isLive;
-		if(count($xml->isRecordedEntryIdEmpty))
+		if(!is_null($jsonObject) && isset($jsonObject->isLive))
+			$this->isLive = (int)$jsonObject->isLive;
+		if(!is_null($xml) && count($xml->isRecordedEntryIdEmpty))
 			$this->isRecordedEntryIdEmpty = (int)$xml->isRecordedEntryIdEmpty;
-		if(count($xml->hasMediaServerHostname))
+		if(!is_null($jsonObject) && isset($jsonObject->isRecordedEntryIdEmpty))
+			$this->isRecordedEntryIdEmpty = (int)$jsonObject->isRecordedEntryIdEmpty;
+		if(!is_null($xml) && count($xml->hasMediaServerHostname))
 			$this->hasMediaServerHostname = (string)$xml->hasMediaServerHostname;
+		if(!is_null($jsonObject) && isset($jsonObject->hasMediaServerHostname))
+			$this->hasMediaServerHostname = (string)$jsonObject->hasMediaServerHostname;
 	}
 	/**
 	 * 

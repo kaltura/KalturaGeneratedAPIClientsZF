@@ -38,39 +38,68 @@ abstract class Kaltura_Client_Type_BaseUserBaseFilter extends Kaltura_Client_Typ
 		return 'KalturaBaseUserBaseFilter';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->partnerIdEqual))
+		if(!is_null($xml) && count($xml->partnerIdEqual))
 			$this->partnerIdEqual = (int)$xml->partnerIdEqual;
-		if(count($xml->screenNameLike))
+		if(!is_null($jsonObject) && isset($jsonObject->partnerIdEqual))
+			$this->partnerIdEqual = (int)$jsonObject->partnerIdEqual;
+		if(!is_null($xml) && count($xml->screenNameLike))
 			$this->screenNameLike = (string)$xml->screenNameLike;
-		if(count($xml->screenNameStartsWith))
+		if(!is_null($jsonObject) && isset($jsonObject->screenNameLike))
+			$this->screenNameLike = (string)$jsonObject->screenNameLike;
+		if(!is_null($xml) && count($xml->screenNameStartsWith))
 			$this->screenNameStartsWith = (string)$xml->screenNameStartsWith;
-		if(count($xml->emailLike))
+		if(!is_null($jsonObject) && isset($jsonObject->screenNameStartsWith))
+			$this->screenNameStartsWith = (string)$jsonObject->screenNameStartsWith;
+		if(!is_null($xml) && count($xml->emailLike))
 			$this->emailLike = (string)$xml->emailLike;
-		if(count($xml->emailStartsWith))
+		if(!is_null($jsonObject) && isset($jsonObject->emailLike))
+			$this->emailLike = (string)$jsonObject->emailLike;
+		if(!is_null($xml) && count($xml->emailStartsWith))
 			$this->emailStartsWith = (string)$xml->emailStartsWith;
-		if(count($xml->tagsMultiLikeOr))
+		if(!is_null($jsonObject) && isset($jsonObject->emailStartsWith))
+			$this->emailStartsWith = (string)$jsonObject->emailStartsWith;
+		if(!is_null($xml) && count($xml->tagsMultiLikeOr))
 			$this->tagsMultiLikeOr = (string)$xml->tagsMultiLikeOr;
-		if(count($xml->tagsMultiLikeAnd))
+		if(!is_null($jsonObject) && isset($jsonObject->tagsMultiLikeOr))
+			$this->tagsMultiLikeOr = (string)$jsonObject->tagsMultiLikeOr;
+		if(!is_null($xml) && count($xml->tagsMultiLikeAnd))
 			$this->tagsMultiLikeAnd = (string)$xml->tagsMultiLikeAnd;
-		if(count($xml->statusEqual))
+		if(!is_null($jsonObject) && isset($jsonObject->tagsMultiLikeAnd))
+			$this->tagsMultiLikeAnd = (string)$jsonObject->tagsMultiLikeAnd;
+		if(!is_null($xml) && count($xml->statusEqual))
 			$this->statusEqual = (int)$xml->statusEqual;
-		if(count($xml->statusIn))
+		if(!is_null($jsonObject) && isset($jsonObject->statusEqual))
+			$this->statusEqual = (int)$jsonObject->statusEqual;
+		if(!is_null($xml) && count($xml->statusIn))
 			$this->statusIn = (string)$xml->statusIn;
-		if(count($xml->createdAtGreaterThanOrEqual))
+		if(!is_null($jsonObject) && isset($jsonObject->statusIn))
+			$this->statusIn = (string)$jsonObject->statusIn;
+		if(!is_null($xml) && count($xml->createdAtGreaterThanOrEqual))
 			$this->createdAtGreaterThanOrEqual = (int)$xml->createdAtGreaterThanOrEqual;
-		if(count($xml->createdAtLessThanOrEqual))
+		if(!is_null($jsonObject) && isset($jsonObject->createdAtGreaterThanOrEqual))
+			$this->createdAtGreaterThanOrEqual = (int)$jsonObject->createdAtGreaterThanOrEqual;
+		if(!is_null($xml) && count($xml->createdAtLessThanOrEqual))
 			$this->createdAtLessThanOrEqual = (int)$xml->createdAtLessThanOrEqual;
-		if(count($xml->updatedAtGreaterThanOrEqual))
+		if(!is_null($jsonObject) && isset($jsonObject->createdAtLessThanOrEqual))
+			$this->createdAtLessThanOrEqual = (int)$jsonObject->createdAtLessThanOrEqual;
+		if(!is_null($xml) && count($xml->updatedAtGreaterThanOrEqual))
 			$this->updatedAtGreaterThanOrEqual = (int)$xml->updatedAtGreaterThanOrEqual;
-		if(count($xml->updatedAtLessThanOrEqual))
+		if(!is_null($jsonObject) && isset($jsonObject->updatedAtGreaterThanOrEqual))
+			$this->updatedAtGreaterThanOrEqual = (int)$jsonObject->updatedAtGreaterThanOrEqual;
+		if(!is_null($xml) && count($xml->updatedAtLessThanOrEqual))
 			$this->updatedAtLessThanOrEqual = (int)$xml->updatedAtLessThanOrEqual;
+		if(!is_null($jsonObject) && isset($jsonObject->updatedAtLessThanOrEqual))
+			$this->updatedAtLessThanOrEqual = (int)$jsonObject->updatedAtLessThanOrEqual;
 	}
 	/**
 	 * 

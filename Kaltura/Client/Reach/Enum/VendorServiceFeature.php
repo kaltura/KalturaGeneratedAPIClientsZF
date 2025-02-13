@@ -42,5 +42,10 @@ class Kaltura_Client_Reach_Enum_VendorServiceFeature extends Kaltura_Client_Enum
 	const DUBBING = 7;
 	const LIVE_CAPTION = 8;
 	const EXTENDED_AUDIO_DESCRIPTION = 9;
+	const CLIPS = 10;
+	const LIVE_TRANSLATION = 11;
+	const QUIZ = 12;
+	const SUMMARY = 13;
+	const VIDEO_ANALYSIS = 14;
 }
 

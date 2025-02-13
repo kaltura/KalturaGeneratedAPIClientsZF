@@ -38,67 +38,124 @@ class Kaltura_Client_Type_StatsEvent extends Kaltura_Client_ObjectBase
 		return 'KalturaStatsEvent';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->clientVer))
+		if(!is_null($xml) && count($xml->clientVer))
 			$this->clientVer = (string)$xml->clientVer;
-		if(count($xml->eventType))
+		if(!is_null($jsonObject) && isset($jsonObject->clientVer))
+			$this->clientVer = (string)$jsonObject->clientVer;
+		if(!is_null($xml) && count($xml->eventType))
 			$this->eventType = (int)$xml->eventType;
-		if(count($xml->eventTimestamp))
+		if(!is_null($jsonObject) && isset($jsonObject->eventType))
+			$this->eventType = (int)$jsonObject->eventType;
+		if(!is_null($xml) && count($xml->eventTimestamp))
 			$this->eventTimestamp = (float)$xml->eventTimestamp;
-		if(count($xml->sessionId))
+		if(!is_null($jsonObject) && isset($jsonObject->eventTimestamp))
+			$this->eventTimestamp = (float)$jsonObject->eventTimestamp;
+		if(!is_null($xml) && count($xml->sessionId))
 			$this->sessionId = (string)$xml->sessionId;
-		if(count($xml->partnerId))
+		if(!is_null($jsonObject) && isset($jsonObject->sessionId))
+			$this->sessionId = (string)$jsonObject->sessionId;
+		if(!is_null($xml) && count($xml->partnerId))
 			$this->partnerId = (int)$xml->partnerId;
-		if(count($xml->entryId))
+		if(!is_null($jsonObject) && isset($jsonObject->partnerId))
+			$this->partnerId = (int)$jsonObject->partnerId;
+		if(!is_null($xml) && count($xml->entryId))
 			$this->entryId = (string)$xml->entryId;
-		if(count($xml->uniqueViewer))
+		if(!is_null($jsonObject) && isset($jsonObject->entryId))
+			$this->entryId = (string)$jsonObject->entryId;
+		if(!is_null($xml) && count($xml->uniqueViewer))
 			$this->uniqueViewer = (string)$xml->uniqueViewer;
-		if(count($xml->widgetId))
+		if(!is_null($jsonObject) && isset($jsonObject->uniqueViewer))
+			$this->uniqueViewer = (string)$jsonObject->uniqueViewer;
+		if(!is_null($xml) && count($xml->widgetId))
 			$this->widgetId = (string)$xml->widgetId;
-		if(count($xml->uiconfId))
+		if(!is_null($jsonObject) && isset($jsonObject->widgetId))
+			$this->widgetId = (string)$jsonObject->widgetId;
+		if(!is_null($xml) && count($xml->uiconfId))
 			$this->uiconfId = (int)$xml->uiconfId;
-		if(count($xml->userId))
+		if(!is_null($jsonObject) && isset($jsonObject->uiconfId))
+			$this->uiconfId = (int)$jsonObject->uiconfId;
+		if(!is_null($xml) && count($xml->userId))
 			$this->userId = (string)$xml->userId;
-		if(count($xml->currentPoint))
+		if(!is_null($jsonObject) && isset($jsonObject->userId))
+			$this->userId = (string)$jsonObject->userId;
+		if(!is_null($xml) && count($xml->currentPoint))
 			$this->currentPoint = (int)$xml->currentPoint;
-		if(count($xml->duration))
+		if(!is_null($jsonObject) && isset($jsonObject->currentPoint))
+			$this->currentPoint = (int)$jsonObject->currentPoint;
+		if(!is_null($xml) && count($xml->duration))
 			$this->duration = (int)$xml->duration;
-		if(count($xml->userIp))
+		if(!is_null($jsonObject) && isset($jsonObject->duration))
+			$this->duration = (int)$jsonObject->duration;
+		if(!is_null($xml) && count($xml->userIp))
 			$this->userIp = (string)$xml->userIp;
-		if(count($xml->processDuration))
+		if(!is_null($jsonObject) && isset($jsonObject->userIp))
+			$this->userIp = (string)$jsonObject->userIp;
+		if(!is_null($xml) && count($xml->processDuration))
 			$this->processDuration = (int)$xml->processDuration;
-		if(count($xml->controlId))
+		if(!is_null($jsonObject) && isset($jsonObject->processDuration))
+			$this->processDuration = (int)$jsonObject->processDuration;
+		if(!is_null($xml) && count($xml->controlId))
 			$this->controlId = (string)$xml->controlId;
-		if(count($xml->seek))
+		if(!is_null($jsonObject) && isset($jsonObject->controlId))
+			$this->controlId = (string)$jsonObject->controlId;
+		if(!is_null($xml) && count($xml->seek))
 		{
 			if(!empty($xml->seek) && ((int) $xml->seek === 1 || strtolower((string)$xml->seek) === 'true'))
 				$this->seek = true;
 			else
 				$this->seek = false;
 		}
-		if(count($xml->newPoint))
+		if(!is_null($jsonObject) && isset($jsonObject->seek))
+		{
+			if(!empty($jsonObject->seek) && ((int) $jsonObject->seek === 1 || strtolower((string)$jsonObject->seek) === 'true'))
+				$this->seek = true;
+			else
+				$this->seek = false;
+		}
+		if(!is_null($xml) && count($xml->newPoint))
 			$this->newPoint = (int)$xml->newPoint;
-		if(count($xml->referrer))
+		if(!is_null($jsonObject) && isset($jsonObject->newPoint))
+			$this->newPoint = (int)$jsonObject->newPoint;
+		if(!is_null($xml) && count($xml->referrer))
 			$this->referrer = (string)$xml->referrer;
-		if(count($xml->isFirstInSession))
+		if(!is_null($jsonObject) && isset($jsonObject->referrer))
+			$this->referrer = (string)$jsonObject->referrer;
+		if(!is_null($xml) && count($xml->isFirstInSession))
 		{
 			if(!empty($xml->isFirstInSession) && ((int) $xml->isFirstInSession === 1 || strtolower((string)$xml->isFirstInSession) === 'true'))
 				$this->isFirstInSession = true;
 			else
 				$this->isFirstInSession = false;
 		}
-		if(count($xml->applicationId))
+		if(!is_null($jsonObject) && isset($jsonObject->isFirstInSession))
+		{
+			if(!empty($jsonObject->isFirstInSession) && ((int) $jsonObject->isFirstInSession === 1 || strtolower((string)$jsonObject->isFirstInSession) === 'true'))
+				$this->isFirstInSession = true;
+			else
+				$this->isFirstInSession = false;
+		}
+		if(!is_null($xml) && count($xml->applicationId))
 			$this->applicationId = (string)$xml->applicationId;
-		if(count($xml->contextId))
+		if(!is_null($jsonObject) && isset($jsonObject->applicationId))
+			$this->applicationId = (string)$jsonObject->applicationId;
+		if(!is_null($xml) && count($xml->contextId))
 			$this->contextId = (int)$xml->contextId;
-		if(count($xml->featureType))
+		if(!is_null($jsonObject) && isset($jsonObject->contextId))
+			$this->contextId = (int)$jsonObject->contextId;
+		if(!is_null($xml) && count($xml->featureType))
 			$this->featureType = (int)$xml->featureType;
+		if(!is_null($jsonObject) && isset($jsonObject->featureType))
+			$this->featureType = (int)$jsonObject->featureType;
 	}
 	/**
 	 * 

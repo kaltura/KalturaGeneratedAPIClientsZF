@@ -38,93 +38,176 @@ abstract class Kaltura_Client_Type_CategoryBaseFilter extends Kaltura_Client_Typ
 		return 'KalturaCategoryBaseFilter';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->idEqual))
+		if(!is_null($xml) && count($xml->idEqual))
 			$this->idEqual = (int)$xml->idEqual;
-		if(count($xml->idIn))
+		if(!is_null($jsonObject) && isset($jsonObject->idEqual))
+			$this->idEqual = (int)$jsonObject->idEqual;
+		if(!is_null($xml) && count($xml->idIn))
 			$this->idIn = (string)$xml->idIn;
-		if(count($xml->idNotIn))
+		if(!is_null($jsonObject) && isset($jsonObject->idIn))
+			$this->idIn = (string)$jsonObject->idIn;
+		if(!is_null($xml) && count($xml->idNotIn))
 			$this->idNotIn = (string)$xml->idNotIn;
-		if(count($xml->parentIdEqual))
+		if(!is_null($jsonObject) && isset($jsonObject->idNotIn))
+			$this->idNotIn = (string)$jsonObject->idNotIn;
+		if(!is_null($xml) && count($xml->parentIdEqual))
 			$this->parentIdEqual = (int)$xml->parentIdEqual;
-		if(count($xml->parentIdIn))
+		if(!is_null($jsonObject) && isset($jsonObject->parentIdEqual))
+			$this->parentIdEqual = (int)$jsonObject->parentIdEqual;
+		if(!is_null($xml) && count($xml->parentIdIn))
 			$this->parentIdIn = (string)$xml->parentIdIn;
-		if(count($xml->depthEqual))
+		if(!is_null($jsonObject) && isset($jsonObject->parentIdIn))
+			$this->parentIdIn = (string)$jsonObject->parentIdIn;
+		if(!is_null($xml) && count($xml->depthEqual))
 			$this->depthEqual = (int)$xml->depthEqual;
-		if(count($xml->fullNameEqual))
+		if(!is_null($jsonObject) && isset($jsonObject->depthEqual))
+			$this->depthEqual = (int)$jsonObject->depthEqual;
+		if(!is_null($xml) && count($xml->fullNameEqual))
 			$this->fullNameEqual = (string)$xml->fullNameEqual;
-		if(count($xml->fullNameStartsWith))
+		if(!is_null($jsonObject) && isset($jsonObject->fullNameEqual))
+			$this->fullNameEqual = (string)$jsonObject->fullNameEqual;
+		if(!is_null($xml) && count($xml->fullNameStartsWith))
 			$this->fullNameStartsWith = (string)$xml->fullNameStartsWith;
-		if(count($xml->fullNameIn))
+		if(!is_null($jsonObject) && isset($jsonObject->fullNameStartsWith))
+			$this->fullNameStartsWith = (string)$jsonObject->fullNameStartsWith;
+		if(!is_null($xml) && count($xml->fullNameIn))
 			$this->fullNameIn = (string)$xml->fullNameIn;
-		if(count($xml->fullIdsEqual))
+		if(!is_null($jsonObject) && isset($jsonObject->fullNameIn))
+			$this->fullNameIn = (string)$jsonObject->fullNameIn;
+		if(!is_null($xml) && count($xml->fullIdsEqual))
 			$this->fullIdsEqual = (string)$xml->fullIdsEqual;
-		if(count($xml->fullIdsStartsWith))
+		if(!is_null($jsonObject) && isset($jsonObject->fullIdsEqual))
+			$this->fullIdsEqual = (string)$jsonObject->fullIdsEqual;
+		if(!is_null($xml) && count($xml->fullIdsStartsWith))
 			$this->fullIdsStartsWith = (string)$xml->fullIdsStartsWith;
-		if(count($xml->fullIdsMatchOr))
+		if(!is_null($jsonObject) && isset($jsonObject->fullIdsStartsWith))
+			$this->fullIdsStartsWith = (string)$jsonObject->fullIdsStartsWith;
+		if(!is_null($xml) && count($xml->fullIdsMatchOr))
 			$this->fullIdsMatchOr = (string)$xml->fullIdsMatchOr;
-		if(count($xml->createdAtGreaterThanOrEqual))
+		if(!is_null($jsonObject) && isset($jsonObject->fullIdsMatchOr))
+			$this->fullIdsMatchOr = (string)$jsonObject->fullIdsMatchOr;
+		if(!is_null($xml) && count($xml->createdAtGreaterThanOrEqual))
 			$this->createdAtGreaterThanOrEqual = (int)$xml->createdAtGreaterThanOrEqual;
-		if(count($xml->createdAtLessThanOrEqual))
+		if(!is_null($jsonObject) && isset($jsonObject->createdAtGreaterThanOrEqual))
+			$this->createdAtGreaterThanOrEqual = (int)$jsonObject->createdAtGreaterThanOrEqual;
+		if(!is_null($xml) && count($xml->createdAtLessThanOrEqual))
 			$this->createdAtLessThanOrEqual = (int)$xml->createdAtLessThanOrEqual;
-		if(count($xml->updatedAtGreaterThanOrEqual))
+		if(!is_null($jsonObject) && isset($jsonObject->createdAtLessThanOrEqual))
+			$this->createdAtLessThanOrEqual = (int)$jsonObject->createdAtLessThanOrEqual;
+		if(!is_null($xml) && count($xml->updatedAtGreaterThanOrEqual))
 			$this->updatedAtGreaterThanOrEqual = (int)$xml->updatedAtGreaterThanOrEqual;
-		if(count($xml->updatedAtLessThanOrEqual))
+		if(!is_null($jsonObject) && isset($jsonObject->updatedAtGreaterThanOrEqual))
+			$this->updatedAtGreaterThanOrEqual = (int)$jsonObject->updatedAtGreaterThanOrEqual;
+		if(!is_null($xml) && count($xml->updatedAtLessThanOrEqual))
 			$this->updatedAtLessThanOrEqual = (int)$xml->updatedAtLessThanOrEqual;
-		if(count($xml->tagsLike))
+		if(!is_null($jsonObject) && isset($jsonObject->updatedAtLessThanOrEqual))
+			$this->updatedAtLessThanOrEqual = (int)$jsonObject->updatedAtLessThanOrEqual;
+		if(!is_null($xml) && count($xml->tagsLike))
 			$this->tagsLike = (string)$xml->tagsLike;
-		if(count($xml->tagsMultiLikeOr))
+		if(!is_null($jsonObject) && isset($jsonObject->tagsLike))
+			$this->tagsLike = (string)$jsonObject->tagsLike;
+		if(!is_null($xml) && count($xml->tagsMultiLikeOr))
 			$this->tagsMultiLikeOr = (string)$xml->tagsMultiLikeOr;
-		if(count($xml->tagsMultiLikeAnd))
+		if(!is_null($jsonObject) && isset($jsonObject->tagsMultiLikeOr))
+			$this->tagsMultiLikeOr = (string)$jsonObject->tagsMultiLikeOr;
+		if(!is_null($xml) && count($xml->tagsMultiLikeAnd))
 			$this->tagsMultiLikeAnd = (string)$xml->tagsMultiLikeAnd;
-		if(count($xml->appearInListEqual))
+		if(!is_null($jsonObject) && isset($jsonObject->tagsMultiLikeAnd))
+			$this->tagsMultiLikeAnd = (string)$jsonObject->tagsMultiLikeAnd;
+		if(!is_null($xml) && count($xml->appearInListEqual))
 			$this->appearInListEqual = (int)$xml->appearInListEqual;
-		if(count($xml->privacyEqual))
+		if(!is_null($jsonObject) && isset($jsonObject->appearInListEqual))
+			$this->appearInListEqual = (int)$jsonObject->appearInListEqual;
+		if(!is_null($xml) && count($xml->privacyEqual))
 			$this->privacyEqual = (int)$xml->privacyEqual;
-		if(count($xml->privacyIn))
+		if(!is_null($jsonObject) && isset($jsonObject->privacyEqual))
+			$this->privacyEqual = (int)$jsonObject->privacyEqual;
+		if(!is_null($xml) && count($xml->privacyIn))
 			$this->privacyIn = (string)$xml->privacyIn;
-		if(count($xml->inheritanceTypeEqual))
+		if(!is_null($jsonObject) && isset($jsonObject->privacyIn))
+			$this->privacyIn = (string)$jsonObject->privacyIn;
+		if(!is_null($xml) && count($xml->inheritanceTypeEqual))
 			$this->inheritanceTypeEqual = (int)$xml->inheritanceTypeEqual;
-		if(count($xml->inheritanceTypeIn))
+		if(!is_null($jsonObject) && isset($jsonObject->inheritanceTypeEqual))
+			$this->inheritanceTypeEqual = (int)$jsonObject->inheritanceTypeEqual;
+		if(!is_null($xml) && count($xml->inheritanceTypeIn))
 			$this->inheritanceTypeIn = (string)$xml->inheritanceTypeIn;
-		if(count($xml->referenceIdEqual))
+		if(!is_null($jsonObject) && isset($jsonObject->inheritanceTypeIn))
+			$this->inheritanceTypeIn = (string)$jsonObject->inheritanceTypeIn;
+		if(!is_null($xml) && count($xml->referenceIdEqual))
 			$this->referenceIdEqual = (string)$xml->referenceIdEqual;
-		if(count($xml->referenceIdEmpty))
+		if(!is_null($jsonObject) && isset($jsonObject->referenceIdEqual))
+			$this->referenceIdEqual = (string)$jsonObject->referenceIdEqual;
+		if(!is_null($xml) && count($xml->referenceIdEmpty))
 			$this->referenceIdEmpty = (int)$xml->referenceIdEmpty;
-		if(count($xml->contributionPolicyEqual))
+		if(!is_null($jsonObject) && isset($jsonObject->referenceIdEmpty))
+			$this->referenceIdEmpty = (int)$jsonObject->referenceIdEmpty;
+		if(!is_null($xml) && count($xml->contributionPolicyEqual))
 			$this->contributionPolicyEqual = (int)$xml->contributionPolicyEqual;
-		if(count($xml->membersCountGreaterThanOrEqual))
+		if(!is_null($jsonObject) && isset($jsonObject->contributionPolicyEqual))
+			$this->contributionPolicyEqual = (int)$jsonObject->contributionPolicyEqual;
+		if(!is_null($xml) && count($xml->membersCountGreaterThanOrEqual))
 			$this->membersCountGreaterThanOrEqual = (int)$xml->membersCountGreaterThanOrEqual;
-		if(count($xml->membersCountLessThanOrEqual))
+		if(!is_null($jsonObject) && isset($jsonObject->membersCountGreaterThanOrEqual))
+			$this->membersCountGreaterThanOrEqual = (int)$jsonObject->membersCountGreaterThanOrEqual;
+		if(!is_null($xml) && count($xml->membersCountLessThanOrEqual))
 			$this->membersCountLessThanOrEqual = (int)$xml->membersCountLessThanOrEqual;
-		if(count($xml->pendingMembersCountGreaterThanOrEqual))
+		if(!is_null($jsonObject) && isset($jsonObject->membersCountLessThanOrEqual))
+			$this->membersCountLessThanOrEqual = (int)$jsonObject->membersCountLessThanOrEqual;
+		if(!is_null($xml) && count($xml->pendingMembersCountGreaterThanOrEqual))
 			$this->pendingMembersCountGreaterThanOrEqual = (int)$xml->pendingMembersCountGreaterThanOrEqual;
-		if(count($xml->pendingMembersCountLessThanOrEqual))
+		if(!is_null($jsonObject) && isset($jsonObject->pendingMembersCountGreaterThanOrEqual))
+			$this->pendingMembersCountGreaterThanOrEqual = (int)$jsonObject->pendingMembersCountGreaterThanOrEqual;
+		if(!is_null($xml) && count($xml->pendingMembersCountLessThanOrEqual))
 			$this->pendingMembersCountLessThanOrEqual = (int)$xml->pendingMembersCountLessThanOrEqual;
-		if(count($xml->privacyContextEqual))
+		if(!is_null($jsonObject) && isset($jsonObject->pendingMembersCountLessThanOrEqual))
+			$this->pendingMembersCountLessThanOrEqual = (int)$jsonObject->pendingMembersCountLessThanOrEqual;
+		if(!is_null($xml) && count($xml->privacyContextEqual))
 			$this->privacyContextEqual = (string)$xml->privacyContextEqual;
-		if(count($xml->statusEqual))
+		if(!is_null($jsonObject) && isset($jsonObject->privacyContextEqual))
+			$this->privacyContextEqual = (string)$jsonObject->privacyContextEqual;
+		if(!is_null($xml) && count($xml->statusEqual))
 			$this->statusEqual = (int)$xml->statusEqual;
-		if(count($xml->statusIn))
+		if(!is_null($jsonObject) && isset($jsonObject->statusEqual))
+			$this->statusEqual = (int)$jsonObject->statusEqual;
+		if(!is_null($xml) && count($xml->statusIn))
 			$this->statusIn = (string)$xml->statusIn;
-		if(count($xml->inheritedParentIdEqual))
+		if(!is_null($jsonObject) && isset($jsonObject->statusIn))
+			$this->statusIn = (string)$jsonObject->statusIn;
+		if(!is_null($xml) && count($xml->inheritedParentIdEqual))
 			$this->inheritedParentIdEqual = (int)$xml->inheritedParentIdEqual;
-		if(count($xml->inheritedParentIdIn))
+		if(!is_null($jsonObject) && isset($jsonObject->inheritedParentIdEqual))
+			$this->inheritedParentIdEqual = (int)$jsonObject->inheritedParentIdEqual;
+		if(!is_null($xml) && count($xml->inheritedParentIdIn))
 			$this->inheritedParentIdIn = (string)$xml->inheritedParentIdIn;
-		if(count($xml->partnerSortValueGreaterThanOrEqual))
+		if(!is_null($jsonObject) && isset($jsonObject->inheritedParentIdIn))
+			$this->inheritedParentIdIn = (string)$jsonObject->inheritedParentIdIn;
+		if(!is_null($xml) && count($xml->partnerSortValueGreaterThanOrEqual))
 			$this->partnerSortValueGreaterThanOrEqual = (int)$xml->partnerSortValueGreaterThanOrEqual;
-		if(count($xml->partnerSortValueLessThanOrEqual))
+		if(!is_null($jsonObject) && isset($jsonObject->partnerSortValueGreaterThanOrEqual))
+			$this->partnerSortValueGreaterThanOrEqual = (int)$jsonObject->partnerSortValueGreaterThanOrEqual;
+		if(!is_null($xml) && count($xml->partnerSortValueLessThanOrEqual))
 			$this->partnerSortValueLessThanOrEqual = (int)$xml->partnerSortValueLessThanOrEqual;
-		if(count($xml->aggregationCategoriesMultiLikeOr))
+		if(!is_null($jsonObject) && isset($jsonObject->partnerSortValueLessThanOrEqual))
+			$this->partnerSortValueLessThanOrEqual = (int)$jsonObject->partnerSortValueLessThanOrEqual;
+		if(!is_null($xml) && count($xml->aggregationCategoriesMultiLikeOr))
 			$this->aggregationCategoriesMultiLikeOr = (string)$xml->aggregationCategoriesMultiLikeOr;
-		if(count($xml->aggregationCategoriesMultiLikeAnd))
+		if(!is_null($jsonObject) && isset($jsonObject->aggregationCategoriesMultiLikeOr))
+			$this->aggregationCategoriesMultiLikeOr = (string)$jsonObject->aggregationCategoriesMultiLikeOr;
+		if(!is_null($xml) && count($xml->aggregationCategoriesMultiLikeAnd))
 			$this->aggregationCategoriesMultiLikeAnd = (string)$xml->aggregationCategoriesMultiLikeAnd;
+		if(!is_null($jsonObject) && isset($jsonObject->aggregationCategoriesMultiLikeAnd))
+			$this->aggregationCategoriesMultiLikeAnd = (string)$jsonObject->aggregationCategoriesMultiLikeAnd;
 	}
 	/**
 	 * 

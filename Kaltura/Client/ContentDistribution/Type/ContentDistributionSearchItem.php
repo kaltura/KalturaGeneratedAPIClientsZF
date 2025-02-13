@@ -38,37 +38,64 @@ class Kaltura_Client_ContentDistribution_Type_ContentDistributionSearchItem exte
 		return 'KalturaContentDistributionSearchItem';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->noDistributionProfiles))
+		if(!is_null($xml) && count($xml->noDistributionProfiles))
 		{
 			if(!empty($xml->noDistributionProfiles) && ((int) $xml->noDistributionProfiles === 1 || strtolower((string)$xml->noDistributionProfiles) === 'true'))
 				$this->noDistributionProfiles = true;
 			else
 				$this->noDistributionProfiles = false;
 		}
-		if(count($xml->distributionProfileId))
+		if(!is_null($jsonObject) && isset($jsonObject->noDistributionProfiles))
+		{
+			if(!empty($jsonObject->noDistributionProfiles) && ((int) $jsonObject->noDistributionProfiles === 1 || strtolower((string)$jsonObject->noDistributionProfiles) === 'true'))
+				$this->noDistributionProfiles = true;
+			else
+				$this->noDistributionProfiles = false;
+		}
+		if(!is_null($xml) && count($xml->distributionProfileId))
 			$this->distributionProfileId = (int)$xml->distributionProfileId;
-		if(count($xml->distributionSunStatus))
+		if(!is_null($jsonObject) && isset($jsonObject->distributionProfileId))
+			$this->distributionProfileId = (int)$jsonObject->distributionProfileId;
+		if(!is_null($xml) && count($xml->distributionSunStatus))
 			$this->distributionSunStatus = (int)$xml->distributionSunStatus;
-		if(count($xml->entryDistributionFlag))
+		if(!is_null($jsonObject) && isset($jsonObject->distributionSunStatus))
+			$this->distributionSunStatus = (int)$jsonObject->distributionSunStatus;
+		if(!is_null($xml) && count($xml->entryDistributionFlag))
 			$this->entryDistributionFlag = (int)$xml->entryDistributionFlag;
-		if(count($xml->entryDistributionStatus))
+		if(!is_null($jsonObject) && isset($jsonObject->entryDistributionFlag))
+			$this->entryDistributionFlag = (int)$jsonObject->entryDistributionFlag;
+		if(!is_null($xml) && count($xml->entryDistributionStatus))
 			$this->entryDistributionStatus = (int)$xml->entryDistributionStatus;
-		if(count($xml->hasEntryDistributionValidationErrors))
+		if(!is_null($jsonObject) && isset($jsonObject->entryDistributionStatus))
+			$this->entryDistributionStatus = (int)$jsonObject->entryDistributionStatus;
+		if(!is_null($xml) && count($xml->hasEntryDistributionValidationErrors))
 		{
 			if(!empty($xml->hasEntryDistributionValidationErrors) && ((int) $xml->hasEntryDistributionValidationErrors === 1 || strtolower((string)$xml->hasEntryDistributionValidationErrors) === 'true'))
 				$this->hasEntryDistributionValidationErrors = true;
 			else
 				$this->hasEntryDistributionValidationErrors = false;
 		}
-		if(count($xml->entryDistributionValidationErrors))
+		if(!is_null($jsonObject) && isset($jsonObject->hasEntryDistributionValidationErrors))
+		{
+			if(!empty($jsonObject->hasEntryDistributionValidationErrors) && ((int) $jsonObject->hasEntryDistributionValidationErrors === 1 || strtolower((string)$jsonObject->hasEntryDistributionValidationErrors) === 'true'))
+				$this->hasEntryDistributionValidationErrors = true;
+			else
+				$this->hasEntryDistributionValidationErrors = false;
+		}
+		if(!is_null($xml) && count($xml->entryDistributionValidationErrors))
 			$this->entryDistributionValidationErrors = (string)$xml->entryDistributionValidationErrors;
+		if(!is_null($jsonObject) && isset($jsonObject->entryDistributionValidationErrors))
+			$this->entryDistributionValidationErrors = (string)$jsonObject->entryDistributionValidationErrors;
 	}
 	/**
 	 * 

@@ -38,25 +38,41 @@ class Kaltura_Client_Drm_Type_DrmLicenseAccessDetails extends Kaltura_Client_Obj
 		return 'KalturaDrmLicenseAccessDetails';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->policy))
+		if(!is_null($xml) && count($xml->policy))
 			$this->policy = (string)$xml->policy;
-		if(count($xml->duration))
+		if(!is_null($jsonObject) && isset($jsonObject->policy))
+			$this->policy = (string)$jsonObject->policy;
+		if(!is_null($xml) && count($xml->duration))
 			$this->duration = (int)$xml->duration;
-		if(count($xml->absolute_duration))
+		if(!is_null($jsonObject) && isset($jsonObject->duration))
+			$this->duration = (int)$jsonObject->duration;
+		if(!is_null($xml) && count($xml->absolute_duration))
 			$this->absolute_duration = (int)$xml->absolute_duration;
-		if(count($xml->licenseParams))
+		if(!is_null($jsonObject) && isset($jsonObject->absolute_duration))
+			$this->absolute_duration = (int)$jsonObject->absolute_duration;
+		if(!is_null($xml) && count($xml->licenseParams))
 		{
 			if(empty($xml->licenseParams))
 				$this->licenseParams = array();
 			else
 				$this->licenseParams = Kaltura_Client_ParseUtils::unmarshalArray($xml->licenseParams, "KalturaKeyValue");
+		}
+		if(!is_null($jsonObject) && isset($jsonObject->licenseParams))
+		{
+			if(empty($jsonObject->licenseParams))
+				$this->licenseParams = array();
+			else
+				$this->licenseParams = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsonObject->licenseParams, "KalturaKeyValue");
 		}
 	}
 	/**

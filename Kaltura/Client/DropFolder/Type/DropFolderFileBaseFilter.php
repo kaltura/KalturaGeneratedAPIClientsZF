@@ -38,67 +38,124 @@ abstract class Kaltura_Client_DropFolder_Type_DropFolderFileBaseFilter extends K
 		return 'KalturaDropFolderFileBaseFilter';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->idEqual))
+		if(!is_null($xml) && count($xml->idEqual))
 			$this->idEqual = (int)$xml->idEqual;
-		if(count($xml->idIn))
+		if(!is_null($jsonObject) && isset($jsonObject->idEqual))
+			$this->idEqual = (int)$jsonObject->idEqual;
+		if(!is_null($xml) && count($xml->idIn))
 			$this->idIn = (string)$xml->idIn;
-		if(count($xml->partnerIdEqual))
+		if(!is_null($jsonObject) && isset($jsonObject->idIn))
+			$this->idIn = (string)$jsonObject->idIn;
+		if(!is_null($xml) && count($xml->partnerIdEqual))
 			$this->partnerIdEqual = (int)$xml->partnerIdEqual;
-		if(count($xml->partnerIdIn))
+		if(!is_null($jsonObject) && isset($jsonObject->partnerIdEqual))
+			$this->partnerIdEqual = (int)$jsonObject->partnerIdEqual;
+		if(!is_null($xml) && count($xml->partnerIdIn))
 			$this->partnerIdIn = (string)$xml->partnerIdIn;
-		if(count($xml->dropFolderIdEqual))
+		if(!is_null($jsonObject) && isset($jsonObject->partnerIdIn))
+			$this->partnerIdIn = (string)$jsonObject->partnerIdIn;
+		if(!is_null($xml) && count($xml->dropFolderIdEqual))
 			$this->dropFolderIdEqual = (int)$xml->dropFolderIdEqual;
-		if(count($xml->dropFolderIdIn))
+		if(!is_null($jsonObject) && isset($jsonObject->dropFolderIdEqual))
+			$this->dropFolderIdEqual = (int)$jsonObject->dropFolderIdEqual;
+		if(!is_null($xml) && count($xml->dropFolderIdIn))
 			$this->dropFolderIdIn = (string)$xml->dropFolderIdIn;
-		if(count($xml->fileNameEqual))
+		if(!is_null($jsonObject) && isset($jsonObject->dropFolderIdIn))
+			$this->dropFolderIdIn = (string)$jsonObject->dropFolderIdIn;
+		if(!is_null($xml) && count($xml->fileNameEqual))
 			$this->fileNameEqual = (string)$xml->fileNameEqual;
-		if(count($xml->fileNameIn))
+		if(!is_null($jsonObject) && isset($jsonObject->fileNameEqual))
+			$this->fileNameEqual = (string)$jsonObject->fileNameEqual;
+		if(!is_null($xml) && count($xml->fileNameIn))
 			$this->fileNameIn = (string)$xml->fileNameIn;
-		if(count($xml->fileNameLike))
+		if(!is_null($jsonObject) && isset($jsonObject->fileNameIn))
+			$this->fileNameIn = (string)$jsonObject->fileNameIn;
+		if(!is_null($xml) && count($xml->fileNameLike))
 			$this->fileNameLike = (string)$xml->fileNameLike;
-		if(count($xml->statusEqual))
+		if(!is_null($jsonObject) && isset($jsonObject->fileNameLike))
+			$this->fileNameLike = (string)$jsonObject->fileNameLike;
+		if(!is_null($xml) && count($xml->statusEqual))
 			$this->statusEqual = (int)$xml->statusEqual;
-		if(count($xml->statusIn))
+		if(!is_null($jsonObject) && isset($jsonObject->statusEqual))
+			$this->statusEqual = (int)$jsonObject->statusEqual;
+		if(!is_null($xml) && count($xml->statusIn))
 			$this->statusIn = (string)$xml->statusIn;
-		if(count($xml->statusNotIn))
+		if(!is_null($jsonObject) && isset($jsonObject->statusIn))
+			$this->statusIn = (string)$jsonObject->statusIn;
+		if(!is_null($xml) && count($xml->statusNotIn))
 			$this->statusNotIn = (string)$xml->statusNotIn;
-		if(count($xml->parsedSlugEqual))
+		if(!is_null($jsonObject) && isset($jsonObject->statusNotIn))
+			$this->statusNotIn = (string)$jsonObject->statusNotIn;
+		if(!is_null($xml) && count($xml->parsedSlugEqual))
 			$this->parsedSlugEqual = (string)$xml->parsedSlugEqual;
-		if(count($xml->parsedSlugIn))
+		if(!is_null($jsonObject) && isset($jsonObject->parsedSlugEqual))
+			$this->parsedSlugEqual = (string)$jsonObject->parsedSlugEqual;
+		if(!is_null($xml) && count($xml->parsedSlugIn))
 			$this->parsedSlugIn = (string)$xml->parsedSlugIn;
-		if(count($xml->parsedSlugLike))
+		if(!is_null($jsonObject) && isset($jsonObject->parsedSlugIn))
+			$this->parsedSlugIn = (string)$jsonObject->parsedSlugIn;
+		if(!is_null($xml) && count($xml->parsedSlugLike))
 			$this->parsedSlugLike = (string)$xml->parsedSlugLike;
-		if(count($xml->parsedFlavorEqual))
+		if(!is_null($jsonObject) && isset($jsonObject->parsedSlugLike))
+			$this->parsedSlugLike = (string)$jsonObject->parsedSlugLike;
+		if(!is_null($xml) && count($xml->parsedFlavorEqual))
 			$this->parsedFlavorEqual = (string)$xml->parsedFlavorEqual;
-		if(count($xml->parsedFlavorIn))
+		if(!is_null($jsonObject) && isset($jsonObject->parsedFlavorEqual))
+			$this->parsedFlavorEqual = (string)$jsonObject->parsedFlavorEqual;
+		if(!is_null($xml) && count($xml->parsedFlavorIn))
 			$this->parsedFlavorIn = (string)$xml->parsedFlavorIn;
-		if(count($xml->parsedFlavorLike))
+		if(!is_null($jsonObject) && isset($jsonObject->parsedFlavorIn))
+			$this->parsedFlavorIn = (string)$jsonObject->parsedFlavorIn;
+		if(!is_null($xml) && count($xml->parsedFlavorLike))
 			$this->parsedFlavorLike = (string)$xml->parsedFlavorLike;
-		if(count($xml->leadDropFolderFileIdEqual))
+		if(!is_null($jsonObject) && isset($jsonObject->parsedFlavorLike))
+			$this->parsedFlavorLike = (string)$jsonObject->parsedFlavorLike;
+		if(!is_null($xml) && count($xml->leadDropFolderFileIdEqual))
 			$this->leadDropFolderFileIdEqual = (int)$xml->leadDropFolderFileIdEqual;
-		if(count($xml->deletedDropFolderFileIdEqual))
+		if(!is_null($jsonObject) && isset($jsonObject->leadDropFolderFileIdEqual))
+			$this->leadDropFolderFileIdEqual = (int)$jsonObject->leadDropFolderFileIdEqual;
+		if(!is_null($xml) && count($xml->deletedDropFolderFileIdEqual))
 			$this->deletedDropFolderFileIdEqual = (int)$xml->deletedDropFolderFileIdEqual;
-		if(count($xml->entryIdEqual))
+		if(!is_null($jsonObject) && isset($jsonObject->deletedDropFolderFileIdEqual))
+			$this->deletedDropFolderFileIdEqual = (int)$jsonObject->deletedDropFolderFileIdEqual;
+		if(!is_null($xml) && count($xml->entryIdEqual))
 			$this->entryIdEqual = (string)$xml->entryIdEqual;
-		if(count($xml->errorCodeEqual))
+		if(!is_null($jsonObject) && isset($jsonObject->entryIdEqual))
+			$this->entryIdEqual = (string)$jsonObject->entryIdEqual;
+		if(!is_null($xml) && count($xml->errorCodeEqual))
 			$this->errorCodeEqual = (string)$xml->errorCodeEqual;
-		if(count($xml->errorCodeIn))
+		if(!is_null($jsonObject) && isset($jsonObject->errorCodeEqual))
+			$this->errorCodeEqual = (string)$jsonObject->errorCodeEqual;
+		if(!is_null($xml) && count($xml->errorCodeIn))
 			$this->errorCodeIn = (string)$xml->errorCodeIn;
-		if(count($xml->createdAtGreaterThanOrEqual))
+		if(!is_null($jsonObject) && isset($jsonObject->errorCodeIn))
+			$this->errorCodeIn = (string)$jsonObject->errorCodeIn;
+		if(!is_null($xml) && count($xml->createdAtGreaterThanOrEqual))
 			$this->createdAtGreaterThanOrEqual = (int)$xml->createdAtGreaterThanOrEqual;
-		if(count($xml->createdAtLessThanOrEqual))
+		if(!is_null($jsonObject) && isset($jsonObject->createdAtGreaterThanOrEqual))
+			$this->createdAtGreaterThanOrEqual = (int)$jsonObject->createdAtGreaterThanOrEqual;
+		if(!is_null($xml) && count($xml->createdAtLessThanOrEqual))
 			$this->createdAtLessThanOrEqual = (int)$xml->createdAtLessThanOrEqual;
-		if(count($xml->updatedAtGreaterThanOrEqual))
+		if(!is_null($jsonObject) && isset($jsonObject->createdAtLessThanOrEqual))
+			$this->createdAtLessThanOrEqual = (int)$jsonObject->createdAtLessThanOrEqual;
+		if(!is_null($xml) && count($xml->updatedAtGreaterThanOrEqual))
 			$this->updatedAtGreaterThanOrEqual = (int)$xml->updatedAtGreaterThanOrEqual;
-		if(count($xml->updatedAtLessThanOrEqual))
+		if(!is_null($jsonObject) && isset($jsonObject->updatedAtGreaterThanOrEqual))
+			$this->updatedAtGreaterThanOrEqual = (int)$jsonObject->updatedAtGreaterThanOrEqual;
+		if(!is_null($xml) && count($xml->updatedAtLessThanOrEqual))
 			$this->updatedAtLessThanOrEqual = (int)$xml->updatedAtLessThanOrEqual;
+		if(!is_null($jsonObject) && isset($jsonObject->updatedAtLessThanOrEqual))
+			$this->updatedAtLessThanOrEqual = (int)$jsonObject->updatedAtLessThanOrEqual;
 	}
 	/**
 	 * 

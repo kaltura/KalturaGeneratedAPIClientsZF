@@ -50,12 +50,18 @@ class Kaltura_Client_Schedule_ScheduleEventResourceService extends Kaltura_Clien
 		$this->client->queueServiceActionCall("schedule_scheduleeventresource", "add", "KalturaScheduleEventResource", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaScheduleEventResource");
-		$this->client->validateObjectType($resultObject, "Kaltura_Client_Schedule_Type_ScheduleEventResource");
-		return $resultObject;
+		$rawResult = $this->client->doQueue();
+		if ($this->client->getConfig()->format === Kaltura_Client_ClientBase::KALTURA_SERVICE_FORMAT_JSON) {
+			$jsObject = json_decode($rawResult);
+			$resultObject = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsObject);
+			return $resultObject;
+		} else {
+			$resultXmlObject = new \SimpleXMLElement($rawResult);
+			$this->client->checkIfError($resultXmlObject->result);
+			$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaScheduleEventResource");
+			$this->client->validateObjectType($resultObject, "Kaltura_Client_Schedule_Type_ScheduleEventResource");
+		}
+			return $resultObject;
 	}
 
 	/**
@@ -70,9 +76,15 @@ class Kaltura_Client_Schedule_ScheduleEventResourceService extends Kaltura_Clien
 		$this->client->queueServiceActionCall("schedule_scheduleeventresource", "delete", null, $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
+		$rawResult = $this->client->doQueue();
+		if ($this->client->getConfig()->format === Kaltura_Client_ClientBase::KALTURA_SERVICE_FORMAT_JSON) {
+			$jsObject = json_decode($rawResult);
+			$resultObject = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsObject);
+			return $resultObject;
+		} else {
+			$resultXmlObject = new \SimpleXMLElement($rawResult);
+			$this->client->checkIfError($resultXmlObject->result);
+		}
 	}
 
 	/**
@@ -87,12 +99,18 @@ class Kaltura_Client_Schedule_ScheduleEventResourceService extends Kaltura_Clien
 		$this->client->queueServiceActionCall("schedule_scheduleeventresource", "get", "KalturaScheduleEventResource", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaScheduleEventResource");
-		$this->client->validateObjectType($resultObject, "Kaltura_Client_Schedule_Type_ScheduleEventResource");
-		return $resultObject;
+		$rawResult = $this->client->doQueue();
+		if ($this->client->getConfig()->format === Kaltura_Client_ClientBase::KALTURA_SERVICE_FORMAT_JSON) {
+			$jsObject = json_decode($rawResult);
+			$resultObject = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsObject);
+			return $resultObject;
+		} else {
+			$resultXmlObject = new \SimpleXMLElement($rawResult);
+			$this->client->checkIfError($resultXmlObject->result);
+			$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaScheduleEventResource");
+			$this->client->validateObjectType($resultObject, "Kaltura_Client_Schedule_Type_ScheduleEventResource");
+		}
+			return $resultObject;
 	}
 
 	/**
@@ -110,12 +128,18 @@ class Kaltura_Client_Schedule_ScheduleEventResourceService extends Kaltura_Clien
 		$this->client->queueServiceActionCall("schedule_scheduleeventresource", "list", "KalturaScheduleEventResourceListResponse", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaScheduleEventResourceListResponse");
-		$this->client->validateObjectType($resultObject, "Kaltura_Client_Schedule_Type_ScheduleEventResourceListResponse");
-		return $resultObject;
+		$rawResult = $this->client->doQueue();
+		if ($this->client->getConfig()->format === Kaltura_Client_ClientBase::KALTURA_SERVICE_FORMAT_JSON) {
+			$jsObject = json_decode($rawResult);
+			$resultObject = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsObject);
+			return $resultObject;
+		} else {
+			$resultXmlObject = new \SimpleXMLElement($rawResult);
+			$this->client->checkIfError($resultXmlObject->result);
+			$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaScheduleEventResourceListResponse");
+			$this->client->validateObjectType($resultObject, "Kaltura_Client_Schedule_Type_ScheduleEventResourceListResponse");
+		}
+			return $resultObject;
 	}
 
 	/**
@@ -131,11 +155,17 @@ class Kaltura_Client_Schedule_ScheduleEventResourceService extends Kaltura_Clien
 		$this->client->queueServiceActionCall("schedule_scheduleeventresource", "update", "KalturaScheduleEventResource", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaScheduleEventResource");
-		$this->client->validateObjectType($resultObject, "Kaltura_Client_Schedule_Type_ScheduleEventResource");
-		return $resultObject;
+		$rawResult = $this->client->doQueue();
+		if ($this->client->getConfig()->format === Kaltura_Client_ClientBase::KALTURA_SERVICE_FORMAT_JSON) {
+			$jsObject = json_decode($rawResult);
+			$resultObject = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsObject);
+			return $resultObject;
+		} else {
+			$resultXmlObject = new \SimpleXMLElement($rawResult);
+			$this->client->checkIfError($resultXmlObject->result);
+			$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaScheduleEventResource");
+			$this->client->validateObjectType($resultObject, "Kaltura_Client_Schedule_Type_ScheduleEventResource");
+		}
+			return $resultObject;
 	}
 }

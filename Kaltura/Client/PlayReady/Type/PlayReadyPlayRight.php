@@ -38,45 +38,81 @@ class Kaltura_Client_PlayReady_Type_PlayReadyPlayRight extends Kaltura_Client_Pl
 		return 'KalturaPlayReadyPlayRight';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->analogVideoOPL))
+		if(!is_null($xml) && count($xml->analogVideoOPL))
 			$this->analogVideoOPL = (int)$xml->analogVideoOPL;
-		if(count($xml->analogVideoOutputProtectionList))
+		if(!is_null($jsonObject) && isset($jsonObject->analogVideoOPL))
+			$this->analogVideoOPL = (int)$jsonObject->analogVideoOPL;
+		if(!is_null($xml) && count($xml->analogVideoOutputProtectionList))
 		{
 			if(empty($xml->analogVideoOutputProtectionList))
 				$this->analogVideoOutputProtectionList = array();
 			else
 				$this->analogVideoOutputProtectionList = Kaltura_Client_ParseUtils::unmarshalArray($xml->analogVideoOutputProtectionList, "KalturaPlayReadyAnalogVideoOPIdHolder");
 		}
-		if(count($xml->compressedDigitalAudioOPL))
+		if(!is_null($jsonObject) && isset($jsonObject->analogVideoOutputProtectionList))
+		{
+			if(empty($jsonObject->analogVideoOutputProtectionList))
+				$this->analogVideoOutputProtectionList = array();
+			else
+				$this->analogVideoOutputProtectionList = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsonObject->analogVideoOutputProtectionList, "KalturaPlayReadyAnalogVideoOPIdHolder");
+		}
+		if(!is_null($xml) && count($xml->compressedDigitalAudioOPL))
 			$this->compressedDigitalAudioOPL = (int)$xml->compressedDigitalAudioOPL;
-		if(count($xml->compressedDigitalVideoOPL))
+		if(!is_null($jsonObject) && isset($jsonObject->compressedDigitalAudioOPL))
+			$this->compressedDigitalAudioOPL = (int)$jsonObject->compressedDigitalAudioOPL;
+		if(!is_null($xml) && count($xml->compressedDigitalVideoOPL))
 			$this->compressedDigitalVideoOPL = (int)$xml->compressedDigitalVideoOPL;
-		if(count($xml->digitalAudioOutputProtectionList))
+		if(!is_null($jsonObject) && isset($jsonObject->compressedDigitalVideoOPL))
+			$this->compressedDigitalVideoOPL = (int)$jsonObject->compressedDigitalVideoOPL;
+		if(!is_null($xml) && count($xml->digitalAudioOutputProtectionList))
 		{
 			if(empty($xml->digitalAudioOutputProtectionList))
 				$this->digitalAudioOutputProtectionList = array();
 			else
 				$this->digitalAudioOutputProtectionList = Kaltura_Client_ParseUtils::unmarshalArray($xml->digitalAudioOutputProtectionList, "KalturaPlayReadyDigitalAudioOPIdHolder");
 		}
-		if(count($xml->uncompressedDigitalAudioOPL))
+		if(!is_null($jsonObject) && isset($jsonObject->digitalAudioOutputProtectionList))
+		{
+			if(empty($jsonObject->digitalAudioOutputProtectionList))
+				$this->digitalAudioOutputProtectionList = array();
+			else
+				$this->digitalAudioOutputProtectionList = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsonObject->digitalAudioOutputProtectionList, "KalturaPlayReadyDigitalAudioOPIdHolder");
+		}
+		if(!is_null($xml) && count($xml->uncompressedDigitalAudioOPL))
 			$this->uncompressedDigitalAudioOPL = (int)$xml->uncompressedDigitalAudioOPL;
-		if(count($xml->uncompressedDigitalVideoOPL))
+		if(!is_null($jsonObject) && isset($jsonObject->uncompressedDigitalAudioOPL))
+			$this->uncompressedDigitalAudioOPL = (int)$jsonObject->uncompressedDigitalAudioOPL;
+		if(!is_null($xml) && count($xml->uncompressedDigitalVideoOPL))
 			$this->uncompressedDigitalVideoOPL = (int)$xml->uncompressedDigitalVideoOPL;
-		if(count($xml->firstPlayExpiration))
+		if(!is_null($jsonObject) && isset($jsonObject->uncompressedDigitalVideoOPL))
+			$this->uncompressedDigitalVideoOPL = (int)$jsonObject->uncompressedDigitalVideoOPL;
+		if(!is_null($xml) && count($xml->firstPlayExpiration))
 			$this->firstPlayExpiration = (int)$xml->firstPlayExpiration;
-		if(count($xml->playEnablers))
+		if(!is_null($jsonObject) && isset($jsonObject->firstPlayExpiration))
+			$this->firstPlayExpiration = (int)$jsonObject->firstPlayExpiration;
+		if(!is_null($xml) && count($xml->playEnablers))
 		{
 			if(empty($xml->playEnablers))
 				$this->playEnablers = array();
 			else
 				$this->playEnablers = Kaltura_Client_ParseUtils::unmarshalArray($xml->playEnablers, "KalturaPlayReadyPlayEnablerHolder");
+		}
+		if(!is_null($jsonObject) && isset($jsonObject->playEnablers))
+		{
+			if(empty($jsonObject->playEnablers))
+				$this->playEnablers = array();
+			else
+				$this->playEnablers = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsonObject->playEnablers, "KalturaPlayReadyPlayEnablerHolder");
 		}
 	}
 	/**

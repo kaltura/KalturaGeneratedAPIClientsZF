@@ -38,27 +38,44 @@ class Kaltura_Client_TagSearch_Type_Tag extends Kaltura_Client_ObjectBase
 		return 'KalturaTag';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->id))
+		if(!is_null($xml) && count($xml->id))
 			$this->id = (int)$xml->id;
-		if(count($xml->tag))
+		if(!is_null($jsonObject) && isset($jsonObject->id))
+			$this->id = (int)$jsonObject->id;
+		if(!is_null($xml) && count($xml->tag))
 			$this->tag = (string)$xml->tag;
-		if(count($xml->taggedObjectType))
+		if(!is_null($jsonObject) && isset($jsonObject->tag))
+			$this->tag = (string)$jsonObject->tag;
+		if(!is_null($xml) && count($xml->taggedObjectType))
 			$this->taggedObjectType = (string)$xml->taggedObjectType;
-		if(count($xml->partnerId))
+		if(!is_null($jsonObject) && isset($jsonObject->taggedObjectType))
+			$this->taggedObjectType = (string)$jsonObject->taggedObjectType;
+		if(!is_null($xml) && count($xml->partnerId))
 			$this->partnerId = (int)$xml->partnerId;
-		if(count($xml->instanceCount))
+		if(!is_null($jsonObject) && isset($jsonObject->partnerId))
+			$this->partnerId = (int)$jsonObject->partnerId;
+		if(!is_null($xml) && count($xml->instanceCount))
 			$this->instanceCount = (int)$xml->instanceCount;
-		if(count($xml->createdAt))
+		if(!is_null($jsonObject) && isset($jsonObject->instanceCount))
+			$this->instanceCount = (int)$jsonObject->instanceCount;
+		if(!is_null($xml) && count($xml->createdAt))
 			$this->createdAt = (int)$xml->createdAt;
-		if(count($xml->updatedAt))
+		if(!is_null($jsonObject) && isset($jsonObject->createdAt))
+			$this->createdAt = (int)$jsonObject->createdAt;
+		if(!is_null($xml) && count($xml->updatedAt))
 			$this->updatedAt = (int)$xml->updatedAt;
+		if(!is_null($jsonObject) && isset($jsonObject->updatedAt))
+			$this->updatedAt = (int)$jsonObject->updatedAt;
 	}
 	/**
 	 * 

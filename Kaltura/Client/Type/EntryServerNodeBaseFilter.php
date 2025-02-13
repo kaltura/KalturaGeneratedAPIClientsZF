@@ -38,41 +38,72 @@ abstract class Kaltura_Client_Type_EntryServerNodeBaseFilter extends Kaltura_Cli
 		return 'KalturaEntryServerNodeBaseFilter';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->entryIdEqual))
+		if(!is_null($xml) && count($xml->entryIdEqual))
 			$this->entryIdEqual = (string)$xml->entryIdEqual;
-		if(count($xml->entryIdIn))
+		if(!is_null($jsonObject) && isset($jsonObject->entryIdEqual))
+			$this->entryIdEqual = (string)$jsonObject->entryIdEqual;
+		if(!is_null($xml) && count($xml->entryIdIn))
 			$this->entryIdIn = (string)$xml->entryIdIn;
-		if(count($xml->serverNodeIdEqual))
+		if(!is_null($jsonObject) && isset($jsonObject->entryIdIn))
+			$this->entryIdIn = (string)$jsonObject->entryIdIn;
+		if(!is_null($xml) && count($xml->serverNodeIdEqual))
 			$this->serverNodeIdEqual = (int)$xml->serverNodeIdEqual;
-		if(count($xml->serverNodeIdIn))
+		if(!is_null($jsonObject) && isset($jsonObject->serverNodeIdEqual))
+			$this->serverNodeIdEqual = (int)$jsonObject->serverNodeIdEqual;
+		if(!is_null($xml) && count($xml->serverNodeIdIn))
 			$this->serverNodeIdIn = (string)$xml->serverNodeIdIn;
-		if(count($xml->serverNodeIdNotIn))
+		if(!is_null($jsonObject) && isset($jsonObject->serverNodeIdIn))
+			$this->serverNodeIdIn = (string)$jsonObject->serverNodeIdIn;
+		if(!is_null($xml) && count($xml->serverNodeIdNotIn))
 			$this->serverNodeIdNotIn = (string)$xml->serverNodeIdNotIn;
-		if(count($xml->createdAtLessThanOrEqual))
+		if(!is_null($jsonObject) && isset($jsonObject->serverNodeIdNotIn))
+			$this->serverNodeIdNotIn = (string)$jsonObject->serverNodeIdNotIn;
+		if(!is_null($xml) && count($xml->createdAtLessThanOrEqual))
 			$this->createdAtLessThanOrEqual = (int)$xml->createdAtLessThanOrEqual;
-		if(count($xml->createdAtGreaterThanOrEqual))
+		if(!is_null($jsonObject) && isset($jsonObject->createdAtLessThanOrEqual))
+			$this->createdAtLessThanOrEqual = (int)$jsonObject->createdAtLessThanOrEqual;
+		if(!is_null($xml) && count($xml->createdAtGreaterThanOrEqual))
 			$this->createdAtGreaterThanOrEqual = (int)$xml->createdAtGreaterThanOrEqual;
-		if(count($xml->updatedAtGreaterThanOrEqual))
+		if(!is_null($jsonObject) && isset($jsonObject->createdAtGreaterThanOrEqual))
+			$this->createdAtGreaterThanOrEqual = (int)$jsonObject->createdAtGreaterThanOrEqual;
+		if(!is_null($xml) && count($xml->updatedAtGreaterThanOrEqual))
 			$this->updatedAtGreaterThanOrEqual = (int)$xml->updatedAtGreaterThanOrEqual;
-		if(count($xml->updatedAtLessThanOrEqual))
+		if(!is_null($jsonObject) && isset($jsonObject->updatedAtGreaterThanOrEqual))
+			$this->updatedAtGreaterThanOrEqual = (int)$jsonObject->updatedAtGreaterThanOrEqual;
+		if(!is_null($xml) && count($xml->updatedAtLessThanOrEqual))
 			$this->updatedAtLessThanOrEqual = (int)$xml->updatedAtLessThanOrEqual;
-		if(count($xml->statusEqual))
+		if(!is_null($jsonObject) && isset($jsonObject->updatedAtLessThanOrEqual))
+			$this->updatedAtLessThanOrEqual = (int)$jsonObject->updatedAtLessThanOrEqual;
+		if(!is_null($xml) && count($xml->statusEqual))
 			$this->statusEqual = (int)$xml->statusEqual;
-		if(count($xml->statusIn))
+		if(!is_null($jsonObject) && isset($jsonObject->statusEqual))
+			$this->statusEqual = (int)$jsonObject->statusEqual;
+		if(!is_null($xml) && count($xml->statusIn))
 			$this->statusIn = (string)$xml->statusIn;
-		if(count($xml->serverTypeEqual))
+		if(!is_null($jsonObject) && isset($jsonObject->statusIn))
+			$this->statusIn = (string)$jsonObject->statusIn;
+		if(!is_null($xml) && count($xml->serverTypeEqual))
 			$this->serverTypeEqual = (string)$xml->serverTypeEqual;
-		if(count($xml->serverTypeIn))
+		if(!is_null($jsonObject) && isset($jsonObject->serverTypeEqual))
+			$this->serverTypeEqual = (string)$jsonObject->serverTypeEqual;
+		if(!is_null($xml) && count($xml->serverTypeIn))
 			$this->serverTypeIn = (string)$xml->serverTypeIn;
-		if(count($xml->serverTypeNotIn))
+		if(!is_null($jsonObject) && isset($jsonObject->serverTypeIn))
+			$this->serverTypeIn = (string)$jsonObject->serverTypeIn;
+		if(!is_null($xml) && count($xml->serverTypeNotIn))
 			$this->serverTypeNotIn = (string)$xml->serverTypeNotIn;
+		if(!is_null($jsonObject) && isset($jsonObject->serverTypeNotIn))
+			$this->serverTypeNotIn = (string)$jsonObject->serverTypeNotIn;
 	}
 	/**
 	 * 

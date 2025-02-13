@@ -38,27 +38,45 @@ class Kaltura_Client_PlayReady_Type_PlayReadyPolicy extends Kaltura_Client_Drm_T
 		return 'KalturaPlayReadyPolicy';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->gracePeriod))
+		if(!is_null($xml) && count($xml->gracePeriod))
 			$this->gracePeriod = (int)$xml->gracePeriod;
-		if(count($xml->licenseRemovalPolicy))
+		if(!is_null($jsonObject) && isset($jsonObject->gracePeriod))
+			$this->gracePeriod = (int)$jsonObject->gracePeriod;
+		if(!is_null($xml) && count($xml->licenseRemovalPolicy))
 			$this->licenseRemovalPolicy = (int)$xml->licenseRemovalPolicy;
-		if(count($xml->licenseRemovalDuration))
+		if(!is_null($jsonObject) && isset($jsonObject->licenseRemovalPolicy))
+			$this->licenseRemovalPolicy = (int)$jsonObject->licenseRemovalPolicy;
+		if(!is_null($xml) && count($xml->licenseRemovalDuration))
 			$this->licenseRemovalDuration = (int)$xml->licenseRemovalDuration;
-		if(count($xml->minSecurityLevel))
+		if(!is_null($jsonObject) && isset($jsonObject->licenseRemovalDuration))
+			$this->licenseRemovalDuration = (int)$jsonObject->licenseRemovalDuration;
+		if(!is_null($xml) && count($xml->minSecurityLevel))
 			$this->minSecurityLevel = (int)$xml->minSecurityLevel;
-		if(count($xml->rights))
+		if(!is_null($jsonObject) && isset($jsonObject->minSecurityLevel))
+			$this->minSecurityLevel = (int)$jsonObject->minSecurityLevel;
+		if(!is_null($xml) && count($xml->rights))
 		{
 			if(empty($xml->rights))
 				$this->rights = array();
 			else
 				$this->rights = Kaltura_Client_ParseUtils::unmarshalArray($xml->rights, "KalturaPlayReadyRight");
+		}
+		if(!is_null($jsonObject) && isset($jsonObject->rights))
+		{
+			if(empty($jsonObject->rights))
+				$this->rights = array();
+			else
+				$this->rights = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsonObject->rights, "KalturaPlayReadyRight");
 		}
 	}
 	/**

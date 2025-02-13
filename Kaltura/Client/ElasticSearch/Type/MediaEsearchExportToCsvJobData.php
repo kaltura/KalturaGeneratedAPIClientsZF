@@ -38,21 +38,33 @@ class Kaltura_Client_ElasticSearch_Type_MediaEsearchExportToCsvJobData extends K
 		return 'KalturaMediaEsearchExportToCsvJobData';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->searchParams) && !empty($xml->searchParams))
+		if(!is_null($xml) && count($xml->searchParams) && !empty($xml->searchParams))
 			$this->searchParams = Kaltura_Client_ParseUtils::unmarshalObject($xml->searchParams, "KalturaESearchEntryParams");
-		if(count($xml->options))
+		if(!is_null($jsonObject) && isset($jsonObject->searchParams) && !empty($jsonObject->searchParams))
+			$this->searchParams = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsonObject->searchParams, "KalturaESearchEntryParams");
+		if(!is_null($xml) && count($xml->options))
 		{
 			if(empty($xml->options))
 				$this->options = array();
 			else
 				$this->options = Kaltura_Client_ParseUtils::unmarshalArray($xml->options, "KalturaExportToCsvOptions");
+		}
+		if(!is_null($jsonObject) && isset($jsonObject->options))
+		{
+			if(empty($jsonObject->options))
+				$this->options = array();
+			else
+				$this->options = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsonObject->options, "KalturaExportToCsvOptions");
 		}
 	}
 	/**

@@ -38,33 +38,56 @@ abstract class Kaltura_Client_Annotation_Type_AnnotationBaseFilter extends Kaltu
 		return 'KalturaAnnotationBaseFilter';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->parentIdEqual))
+		if(!is_null($xml) && count($xml->parentIdEqual))
 			$this->parentIdEqual = (string)$xml->parentIdEqual;
-		if(count($xml->parentIdIn))
+		if(!is_null($jsonObject) && isset($jsonObject->parentIdEqual))
+			$this->parentIdEqual = (string)$jsonObject->parentIdEqual;
+		if(!is_null($xml) && count($xml->parentIdIn))
 			$this->parentIdIn = (string)$xml->parentIdIn;
-		if(count($xml->textLike))
+		if(!is_null($jsonObject) && isset($jsonObject->parentIdIn))
+			$this->parentIdIn = (string)$jsonObject->parentIdIn;
+		if(!is_null($xml) && count($xml->textLike))
 			$this->textLike = (string)$xml->textLike;
-		if(count($xml->textMultiLikeOr))
+		if(!is_null($jsonObject) && isset($jsonObject->textLike))
+			$this->textLike = (string)$jsonObject->textLike;
+		if(!is_null($xml) && count($xml->textMultiLikeOr))
 			$this->textMultiLikeOr = (string)$xml->textMultiLikeOr;
-		if(count($xml->textMultiLikeAnd))
+		if(!is_null($jsonObject) && isset($jsonObject->textMultiLikeOr))
+			$this->textMultiLikeOr = (string)$jsonObject->textMultiLikeOr;
+		if(!is_null($xml) && count($xml->textMultiLikeAnd))
 			$this->textMultiLikeAnd = (string)$xml->textMultiLikeAnd;
-		if(count($xml->endTimeGreaterThanOrEqual))
+		if(!is_null($jsonObject) && isset($jsonObject->textMultiLikeAnd))
+			$this->textMultiLikeAnd = (string)$jsonObject->textMultiLikeAnd;
+		if(!is_null($xml) && count($xml->endTimeGreaterThanOrEqual))
 			$this->endTimeGreaterThanOrEqual = (int)$xml->endTimeGreaterThanOrEqual;
-		if(count($xml->endTimeLessThanOrEqual))
+		if(!is_null($jsonObject) && isset($jsonObject->endTimeGreaterThanOrEqual))
+			$this->endTimeGreaterThanOrEqual = (int)$jsonObject->endTimeGreaterThanOrEqual;
+		if(!is_null($xml) && count($xml->endTimeLessThanOrEqual))
 			$this->endTimeLessThanOrEqual = (int)$xml->endTimeLessThanOrEqual;
-		if(count($xml->durationGreaterThanOrEqual))
+		if(!is_null($jsonObject) && isset($jsonObject->endTimeLessThanOrEqual))
+			$this->endTimeLessThanOrEqual = (int)$jsonObject->endTimeLessThanOrEqual;
+		if(!is_null($xml) && count($xml->durationGreaterThanOrEqual))
 			$this->durationGreaterThanOrEqual = (int)$xml->durationGreaterThanOrEqual;
-		if(count($xml->durationLessThanOrEqual))
+		if(!is_null($jsonObject) && isset($jsonObject->durationGreaterThanOrEqual))
+			$this->durationGreaterThanOrEqual = (int)$jsonObject->durationGreaterThanOrEqual;
+		if(!is_null($xml) && count($xml->durationLessThanOrEqual))
 			$this->durationLessThanOrEqual = (int)$xml->durationLessThanOrEqual;
-		if(count($xml->isPublicEqual))
+		if(!is_null($jsonObject) && isset($jsonObject->durationLessThanOrEqual))
+			$this->durationLessThanOrEqual = (int)$jsonObject->durationLessThanOrEqual;
+		if(!is_null($xml) && count($xml->isPublicEqual))
 			$this->isPublicEqual = (int)$xml->isPublicEqual;
+		if(!is_null($jsonObject) && isset($jsonObject->isPublicEqual))
+			$this->isPublicEqual = (int)$jsonObject->isPublicEqual;
 	}
 	/**
 	 * 

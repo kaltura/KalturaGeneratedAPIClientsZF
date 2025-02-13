@@ -38,17 +38,24 @@ class Kaltura_Client_Type_GeoTimeLiveStats extends Kaltura_Client_Type_EntryLive
 		return 'KalturaGeoTimeLiveStats';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->city) && !empty($xml->city))
+		if(!is_null($xml) && count($xml->city) && !empty($xml->city))
 			$this->city = Kaltura_Client_ParseUtils::unmarshalObject($xml->city, "KalturaCoordinate");
-		if(count($xml->country) && !empty($xml->country))
+		if(!is_null($jsonObject) && isset($jsonObject->city) && !empty($jsonObject->city))
+			$this->city = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsonObject->city, "KalturaCoordinate");
+		if(!is_null($xml) && count($xml->country) && !empty($xml->country))
 			$this->country = Kaltura_Client_ParseUtils::unmarshalObject($xml->country, "KalturaCoordinate");
+		if(!is_null($jsonObject) && isset($jsonObject->country) && !empty($jsonObject->country))
+			$this->country = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsonObject->country, "KalturaCoordinate");
 	}
 	/**
 	 * 

@@ -38,25 +38,40 @@ class Kaltura_Client_DropFolder_Type_DropFolderContentProcessorJobData extends K
 		return 'KalturaDropFolderContentProcessorJobData';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->dropFolderId))
+		if(!is_null($xml) && count($xml->dropFolderId))
 			$this->dropFolderId = (int)$xml->dropFolderId;
-		if(count($xml->dropFolderFileIds))
+		if(!is_null($jsonObject) && isset($jsonObject->dropFolderId))
+			$this->dropFolderId = (int)$jsonObject->dropFolderId;
+		if(!is_null($xml) && count($xml->dropFolderFileIds))
 			$this->dropFolderFileIds = (string)$xml->dropFolderFileIds;
-		if(count($xml->parsedSlug))
+		if(!is_null($jsonObject) && isset($jsonObject->dropFolderFileIds))
+			$this->dropFolderFileIds = (string)$jsonObject->dropFolderFileIds;
+		if(!is_null($xml) && count($xml->parsedSlug))
 			$this->parsedSlug = (string)$xml->parsedSlug;
-		if(count($xml->contentMatchPolicy))
+		if(!is_null($jsonObject) && isset($jsonObject->parsedSlug))
+			$this->parsedSlug = (string)$jsonObject->parsedSlug;
+		if(!is_null($xml) && count($xml->contentMatchPolicy))
 			$this->contentMatchPolicy = (int)$xml->contentMatchPolicy;
-		if(count($xml->conversionProfileId))
+		if(!is_null($jsonObject) && isset($jsonObject->contentMatchPolicy))
+			$this->contentMatchPolicy = (int)$jsonObject->contentMatchPolicy;
+		if(!is_null($xml) && count($xml->conversionProfileId))
 			$this->conversionProfileId = (int)$xml->conversionProfileId;
-		if(count($xml->parsedUserId))
+		if(!is_null($jsonObject) && isset($jsonObject->conversionProfileId))
+			$this->conversionProfileId = (int)$jsonObject->conversionProfileId;
+		if(!is_null($xml) && count($xml->parsedUserId))
 			$this->parsedUserId = (string)$xml->parsedUserId;
+		if(!is_null($jsonObject) && isset($jsonObject->parsedUserId))
+			$this->parsedUserId = (string)$jsonObject->parsedUserId;
 	}
 	/**
 	 * 

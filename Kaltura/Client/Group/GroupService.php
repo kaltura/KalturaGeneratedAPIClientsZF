@@ -50,12 +50,18 @@ class Kaltura_Client_Group_GroupService extends Kaltura_Client_ServiceBase
 		$this->client->queueServiceActionCall("group_group", "add", "KalturaGroup", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaGroup");
-		$this->client->validateObjectType($resultObject, "Kaltura_Client_Group_Type_Group");
-		return $resultObject;
+		$rawResult = $this->client->doQueue();
+		if ($this->client->getConfig()->format === Kaltura_Client_ClientBase::KALTURA_SERVICE_FORMAT_JSON) {
+			$jsObject = json_decode($rawResult);
+			$resultObject = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsObject);
+			return $resultObject;
+		} else {
+			$resultXmlObject = new \SimpleXMLElement($rawResult);
+			$this->client->checkIfError($resultXmlObject->result);
+			$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaGroup");
+			$this->client->validateObjectType($resultObject, "Kaltura_Client_Group_Type_Group");
+		}
+			return $resultObject;
 	}
 
 	/**
@@ -71,12 +77,18 @@ class Kaltura_Client_Group_GroupService extends Kaltura_Client_ServiceBase
 		$this->client->queueServiceActionCall("group_group", "clone", "KalturaGroup", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaGroup");
-		$this->client->validateObjectType($resultObject, "Kaltura_Client_Group_Type_Group");
-		return $resultObject;
+		$rawResult = $this->client->doQueue();
+		if ($this->client->getConfig()->format === Kaltura_Client_ClientBase::KALTURA_SERVICE_FORMAT_JSON) {
+			$jsObject = json_decode($rawResult);
+			$resultObject = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsObject);
+			return $resultObject;
+		} else {
+			$resultXmlObject = new \SimpleXMLElement($rawResult);
+			$this->client->checkIfError($resultXmlObject->result);
+			$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaGroup");
+			$this->client->validateObjectType($resultObject, "Kaltura_Client_Group_Type_Group");
+		}
+			return $resultObject;
 	}
 
 	/**
@@ -90,12 +102,18 @@ class Kaltura_Client_Group_GroupService extends Kaltura_Client_ServiceBase
 		$this->client->queueServiceActionCall("group_group", "delete", "KalturaGroup", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaGroup");
-		$this->client->validateObjectType($resultObject, "Kaltura_Client_Group_Type_Group");
-		return $resultObject;
+		$rawResult = $this->client->doQueue();
+		if ($this->client->getConfig()->format === Kaltura_Client_ClientBase::KALTURA_SERVICE_FORMAT_JSON) {
+			$jsObject = json_decode($rawResult);
+			$resultObject = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsObject);
+			return $resultObject;
+		} else {
+			$resultXmlObject = new \SimpleXMLElement($rawResult);
+			$this->client->checkIfError($resultXmlObject->result);
+			$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaGroup");
+			$this->client->validateObjectType($resultObject, "Kaltura_Client_Group_Type_Group");
+		}
+			return $resultObject;
 	}
 
 	/**
@@ -109,12 +127,18 @@ class Kaltura_Client_Group_GroupService extends Kaltura_Client_ServiceBase
 		$this->client->queueServiceActionCall("group_group", "get", "KalturaGroup", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaGroup");
-		$this->client->validateObjectType($resultObject, "Kaltura_Client_Group_Type_Group");
-		return $resultObject;
+		$rawResult = $this->client->doQueue();
+		if ($this->client->getConfig()->format === Kaltura_Client_ClientBase::KALTURA_SERVICE_FORMAT_JSON) {
+			$jsObject = json_decode($rawResult);
+			$resultObject = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsObject);
+			return $resultObject;
+		} else {
+			$resultXmlObject = new \SimpleXMLElement($rawResult);
+			$this->client->checkIfError($resultXmlObject->result);
+			$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaGroup");
+			$this->client->validateObjectType($resultObject, "Kaltura_Client_Group_Type_Group");
+		}
+			return $resultObject;
 	}
 
 	/**
@@ -131,12 +155,18 @@ class Kaltura_Client_Group_GroupService extends Kaltura_Client_ServiceBase
 		$this->client->queueServiceActionCall("group_group", "list", "KalturaGroupListResponse", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaGroupListResponse");
-		$this->client->validateObjectType($resultObject, "Kaltura_Client_Group_Type_GroupListResponse");
-		return $resultObject;
+		$rawResult = $this->client->doQueue();
+		if ($this->client->getConfig()->format === Kaltura_Client_ClientBase::KALTURA_SERVICE_FORMAT_JSON) {
+			$jsObject = json_decode($rawResult);
+			$resultObject = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsObject);
+			return $resultObject;
+		} else {
+			$resultXmlObject = new \SimpleXMLElement($rawResult);
+			$this->client->checkIfError($resultXmlObject->result);
+			$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaGroupListResponse");
+			$this->client->validateObjectType($resultObject, "Kaltura_Client_Group_Type_GroupListResponse");
+		}
+			return $resultObject;
 	}
 
 	/**
@@ -151,11 +181,17 @@ class Kaltura_Client_Group_GroupService extends Kaltura_Client_ServiceBase
 		$this->client->queueServiceActionCall("group_group", "update", "KalturaGroup", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaGroup");
-		$this->client->validateObjectType($resultObject, "Kaltura_Client_Group_Type_Group");
-		return $resultObject;
+		$rawResult = $this->client->doQueue();
+		if ($this->client->getConfig()->format === Kaltura_Client_ClientBase::KALTURA_SERVICE_FORMAT_JSON) {
+			$jsObject = json_decode($rawResult);
+			$resultObject = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsObject);
+			return $resultObject;
+		} else {
+			$resultXmlObject = new \SimpleXMLElement($rawResult);
+			$this->client->checkIfError($resultXmlObject->result);
+			$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaGroup");
+			$this->client->validateObjectType($resultObject, "Kaltura_Client_Group_Type_Group");
+		}
+			return $resultObject;
 	}
 }

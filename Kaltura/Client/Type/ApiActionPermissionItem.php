@@ -38,17 +38,24 @@ class Kaltura_Client_Type_ApiActionPermissionItem extends Kaltura_Client_Type_Pe
 		return 'KalturaApiActionPermissionItem';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->service))
+		if(!is_null($xml) && count($xml->service))
 			$this->service = (string)$xml->service;
-		if(count($xml->action))
+		if(!is_null($jsonObject) && isset($jsonObject->service))
+			$this->service = (string)$jsonObject->service;
+		if(!is_null($xml) && count($xml->action))
 			$this->action = (string)$xml->action;
+		if(!is_null($jsonObject) && isset($jsonObject->action))
+			$this->action = (string)$jsonObject->action;
 	}
 	/**
 	 * 

@@ -38,19 +38,28 @@ class Kaltura_Client_DailymotionDistribution_Type_DailymotionDistributionProfile
 		return 'KalturaDailymotionDistributionProfile';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->user))
+		if(!is_null($xml) && count($xml->user))
 			$this->user = (string)$xml->user;
-		if(count($xml->password))
+		if(!is_null($jsonObject) && isset($jsonObject->user))
+			$this->user = (string)$jsonObject->user;
+		if(!is_null($xml) && count($xml->password))
 			$this->password = (string)$xml->password;
-		if(count($xml->geoBlockingMapping))
+		if(!is_null($jsonObject) && isset($jsonObject->password))
+			$this->password = (string)$jsonObject->password;
+		if(!is_null($xml) && count($xml->geoBlockingMapping))
 			$this->geoBlockingMapping = (int)$xml->geoBlockingMapping;
+		if(!is_null($jsonObject) && isset($jsonObject->geoBlockingMapping))
+			$this->geoBlockingMapping = (int)$jsonObject->geoBlockingMapping;
 	}
 	/**
 	 * 

@@ -38,28 +38,46 @@ class Kaltura_Client_Audit_Type_AuditTrailFileSyncCreateInfo extends Kaltura_Cli
 		return 'KalturaAuditTrailFileSyncCreateInfo';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->version))
+		if(!is_null($xml) && count($xml->version))
 			$this->version = (string)$xml->version;
-		if(count($xml->objectSubType))
+		if(!is_null($jsonObject) && isset($jsonObject->version))
+			$this->version = (string)$jsonObject->version;
+		if(!is_null($xml) && count($xml->objectSubType))
 			$this->objectSubType = (int)$xml->objectSubType;
-		if(count($xml->dc))
+		if(!is_null($jsonObject) && isset($jsonObject->objectSubType))
+			$this->objectSubType = (int)$jsonObject->objectSubType;
+		if(!is_null($xml) && count($xml->dc))
 			$this->dc = (int)$xml->dc;
-		if(count($xml->original))
+		if(!is_null($jsonObject) && isset($jsonObject->dc))
+			$this->dc = (int)$jsonObject->dc;
+		if(!is_null($xml) && count($xml->original))
 		{
 			if(!empty($xml->original) && ((int) $xml->original === 1 || strtolower((string)$xml->original) === 'true'))
 				$this->original = true;
 			else
 				$this->original = false;
 		}
-		if(count($xml->fileType))
+		if(!is_null($jsonObject) && isset($jsonObject->original))
+		{
+			if(!empty($jsonObject->original) && ((int) $jsonObject->original === 1 || strtolower((string)$jsonObject->original) === 'true'))
+				$this->original = true;
+			else
+				$this->original = false;
+		}
+		if(!is_null($xml) && count($xml->fileType))
 			$this->fileType = (int)$xml->fileType;
+		if(!is_null($jsonObject) && isset($jsonObject->fileType))
+			$this->fileType = (int)$jsonObject->fileType;
 	}
 	/**
 	 * 

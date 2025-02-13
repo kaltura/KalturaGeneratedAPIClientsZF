@@ -38,25 +38,40 @@ class Kaltura_Client_Type_CategoryEntry extends Kaltura_Client_ObjectBase
 		return 'KalturaCategoryEntry';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->categoryId))
+		if(!is_null($xml) && count($xml->categoryId))
 			$this->categoryId = (int)$xml->categoryId;
-		if(count($xml->entryId))
+		if(!is_null($jsonObject) && isset($jsonObject->categoryId))
+			$this->categoryId = (int)$jsonObject->categoryId;
+		if(!is_null($xml) && count($xml->entryId))
 			$this->entryId = (string)$xml->entryId;
-		if(count($xml->createdAt))
+		if(!is_null($jsonObject) && isset($jsonObject->entryId))
+			$this->entryId = (string)$jsonObject->entryId;
+		if(!is_null($xml) && count($xml->createdAt))
 			$this->createdAt = (int)$xml->createdAt;
-		if(count($xml->categoryFullIds))
+		if(!is_null($jsonObject) && isset($jsonObject->createdAt))
+			$this->createdAt = (int)$jsonObject->createdAt;
+		if(!is_null($xml) && count($xml->categoryFullIds))
 			$this->categoryFullIds = (string)$xml->categoryFullIds;
-		if(count($xml->status))
+		if(!is_null($jsonObject) && isset($jsonObject->categoryFullIds))
+			$this->categoryFullIds = (string)$jsonObject->categoryFullIds;
+		if(!is_null($xml) && count($xml->status))
 			$this->status = (int)$xml->status;
-		if(count($xml->creatorUserId))
+		if(!is_null($jsonObject) && isset($jsonObject->status))
+			$this->status = (int)$jsonObject->status;
+		if(!is_null($xml) && count($xml->creatorUserId))
 			$this->creatorUserId = (string)$xml->creatorUserId;
+		if(!is_null($jsonObject) && isset($jsonObject->creatorUserId))
+			$this->creatorUserId = (string)$jsonObject->creatorUserId;
 	}
 	/**
 	 * 

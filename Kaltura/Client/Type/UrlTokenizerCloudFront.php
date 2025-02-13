@@ -38,17 +38,24 @@ class Kaltura_Client_Type_UrlTokenizerCloudFront extends Kaltura_Client_Type_Url
 		return 'KalturaUrlTokenizerCloudFront';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->keyPairId))
+		if(!is_null($xml) && count($xml->keyPairId))
 			$this->keyPairId = (string)$xml->keyPairId;
-		if(count($xml->rootDir))
+		if(!is_null($jsonObject) && isset($jsonObject->keyPairId))
+			$this->keyPairId = (string)$jsonObject->keyPairId;
+		if(!is_null($xml) && count($xml->rootDir))
 			$this->rootDir = (string)$xml->rootDir;
+		if(!is_null($jsonObject) && isset($jsonObject->rootDir))
+			$this->rootDir = (string)$jsonObject->rootDir;
 	}
 	/**
 	 * 

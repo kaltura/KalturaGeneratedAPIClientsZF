@@ -38,19 +38,28 @@ abstract class Kaltura_Client_Quiz_Type_QuestionCuePointBaseFilter extends Kaltu
 		return 'KalturaQuestionCuePointBaseFilter';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->questionLike))
+		if(!is_null($xml) && count($xml->questionLike))
 			$this->questionLike = (string)$xml->questionLike;
-		if(count($xml->questionMultiLikeOr))
+		if(!is_null($jsonObject) && isset($jsonObject->questionLike))
+			$this->questionLike = (string)$jsonObject->questionLike;
+		if(!is_null($xml) && count($xml->questionMultiLikeOr))
 			$this->questionMultiLikeOr = (string)$xml->questionMultiLikeOr;
-		if(count($xml->questionMultiLikeAnd))
+		if(!is_null($jsonObject) && isset($jsonObject->questionMultiLikeOr))
+			$this->questionMultiLikeOr = (string)$jsonObject->questionMultiLikeOr;
+		if(!is_null($xml) && count($xml->questionMultiLikeAnd))
 			$this->questionMultiLikeAnd = (string)$xml->questionMultiLikeAnd;
+		if(!is_null($jsonObject) && isset($jsonObject->questionMultiLikeAnd))
+			$this->questionMultiLikeAnd = (string)$jsonObject->questionMultiLikeAnd;
 	}
 	/**
 	 * 

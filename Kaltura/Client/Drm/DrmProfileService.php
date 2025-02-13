@@ -50,12 +50,18 @@ class Kaltura_Client_Drm_DrmProfileService extends Kaltura_Client_ServiceBase
 		$this->client->queueServiceActionCall("drm_drmprofile", "add", "KalturaDrmProfile", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaDrmProfile");
-		$this->client->validateObjectType($resultObject, "Kaltura_Client_Drm_Type_DrmProfile");
-		return $resultObject;
+		$rawResult = $this->client->doQueue();
+		if ($this->client->getConfig()->format === Kaltura_Client_ClientBase::KALTURA_SERVICE_FORMAT_JSON) {
+			$jsObject = json_decode($rawResult);
+			$resultObject = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsObject);
+			return $resultObject;
+		} else {
+			$resultXmlObject = new \SimpleXMLElement($rawResult);
+			$this->client->checkIfError($resultXmlObject->result);
+			$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaDrmProfile");
+			$this->client->validateObjectType($resultObject, "Kaltura_Client_Drm_Type_DrmProfile");
+		}
+			return $resultObject;
 	}
 
 	/**
@@ -69,12 +75,18 @@ class Kaltura_Client_Drm_DrmProfileService extends Kaltura_Client_ServiceBase
 		$this->client->queueServiceActionCall("drm_drmprofile", "delete", "KalturaDrmProfile", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaDrmProfile");
-		$this->client->validateObjectType($resultObject, "Kaltura_Client_Drm_Type_DrmProfile");
-		return $resultObject;
+		$rawResult = $this->client->doQueue();
+		if ($this->client->getConfig()->format === Kaltura_Client_ClientBase::KALTURA_SERVICE_FORMAT_JSON) {
+			$jsObject = json_decode($rawResult);
+			$resultObject = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsObject);
+			return $resultObject;
+		} else {
+			$resultXmlObject = new \SimpleXMLElement($rawResult);
+			$this->client->checkIfError($resultXmlObject->result);
+			$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaDrmProfile");
+			$this->client->validateObjectType($resultObject, "Kaltura_Client_Drm_Type_DrmProfile");
+		}
+			return $resultObject;
 	}
 
 	/**
@@ -88,12 +100,18 @@ class Kaltura_Client_Drm_DrmProfileService extends Kaltura_Client_ServiceBase
 		$this->client->queueServiceActionCall("drm_drmprofile", "get", "KalturaDrmProfile", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaDrmProfile");
-		$this->client->validateObjectType($resultObject, "Kaltura_Client_Drm_Type_DrmProfile");
-		return $resultObject;
+		$rawResult = $this->client->doQueue();
+		if ($this->client->getConfig()->format === Kaltura_Client_ClientBase::KALTURA_SERVICE_FORMAT_JSON) {
+			$jsObject = json_decode($rawResult);
+			$resultObject = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsObject);
+			return $resultObject;
+		} else {
+			$resultXmlObject = new \SimpleXMLElement($rawResult);
+			$this->client->checkIfError($resultXmlObject->result);
+			$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaDrmProfile");
+			$this->client->validateObjectType($resultObject, "Kaltura_Client_Drm_Type_DrmProfile");
+		}
+			return $resultObject;
 	}
 
 	/**
@@ -107,12 +125,18 @@ class Kaltura_Client_Drm_DrmProfileService extends Kaltura_Client_ServiceBase
 		$this->client->queueServiceActionCall("drm_drmprofile", "getByProvider", "KalturaDrmProfile", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaDrmProfile");
-		$this->client->validateObjectType($resultObject, "Kaltura_Client_Drm_Type_DrmProfile");
-		return $resultObject;
+		$rawResult = $this->client->doQueue();
+		if ($this->client->getConfig()->format === Kaltura_Client_ClientBase::KALTURA_SERVICE_FORMAT_JSON) {
+			$jsObject = json_decode($rawResult);
+			$resultObject = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsObject);
+			return $resultObject;
+		} else {
+			$resultXmlObject = new \SimpleXMLElement($rawResult);
+			$this->client->checkIfError($resultXmlObject->result);
+			$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaDrmProfile");
+			$this->client->validateObjectType($resultObject, "Kaltura_Client_Drm_Type_DrmProfile");
+		}
+			return $resultObject;
 	}
 
 	/**
@@ -129,12 +153,18 @@ class Kaltura_Client_Drm_DrmProfileService extends Kaltura_Client_ServiceBase
 		$this->client->queueServiceActionCall("drm_drmprofile", "list", "KalturaDrmProfileListResponse", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaDrmProfileListResponse");
-		$this->client->validateObjectType($resultObject, "Kaltura_Client_Drm_Type_DrmProfileListResponse");
-		return $resultObject;
+		$rawResult = $this->client->doQueue();
+		if ($this->client->getConfig()->format === Kaltura_Client_ClientBase::KALTURA_SERVICE_FORMAT_JSON) {
+			$jsObject = json_decode($rawResult);
+			$resultObject = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsObject);
+			return $resultObject;
+		} else {
+			$resultXmlObject = new \SimpleXMLElement($rawResult);
+			$this->client->checkIfError($resultXmlObject->result);
+			$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaDrmProfileListResponse");
+			$this->client->validateObjectType($resultObject, "Kaltura_Client_Drm_Type_DrmProfileListResponse");
+		}
+			return $resultObject;
 	}
 
 	/**
@@ -149,11 +179,17 @@ class Kaltura_Client_Drm_DrmProfileService extends Kaltura_Client_ServiceBase
 		$this->client->queueServiceActionCall("drm_drmprofile", "update", "KalturaDrmProfile", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaDrmProfile");
-		$this->client->validateObjectType($resultObject, "Kaltura_Client_Drm_Type_DrmProfile");
-		return $resultObject;
+		$rawResult = $this->client->doQueue();
+		if ($this->client->getConfig()->format === Kaltura_Client_ClientBase::KALTURA_SERVICE_FORMAT_JSON) {
+			$jsObject = json_decode($rawResult);
+			$resultObject = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsObject);
+			return $resultObject;
+		} else {
+			$resultXmlObject = new \SimpleXMLElement($rawResult);
+			$this->client->checkIfError($resultXmlObject->result);
+			$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaDrmProfile");
+			$this->client->validateObjectType($resultObject, "Kaltura_Client_Drm_Type_DrmProfile");
+		}
+			return $resultObject;
 	}
 }

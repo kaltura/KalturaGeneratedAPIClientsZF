@@ -38,46 +38,82 @@ abstract class Kaltura_Client_ContentDistribution_Type_DistributionProvider exte
 		return 'KalturaDistributionProvider';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->type))
+		if(!is_null($xml) && count($xml->type))
 			$this->type = (string)$xml->type;
-		if(count($xml->name))
+		if(!is_null($jsonObject) && isset($jsonObject->type))
+			$this->type = (string)$jsonObject->type;
+		if(!is_null($xml) && count($xml->name))
 			$this->name = (string)$xml->name;
-		if(count($xml->scheduleUpdateEnabled))
+		if(!is_null($jsonObject) && isset($jsonObject->name))
+			$this->name = (string)$jsonObject->name;
+		if(!is_null($xml) && count($xml->scheduleUpdateEnabled))
 		{
 			if(!empty($xml->scheduleUpdateEnabled) && ((int) $xml->scheduleUpdateEnabled === 1 || strtolower((string)$xml->scheduleUpdateEnabled) === 'true'))
 				$this->scheduleUpdateEnabled = true;
 			else
 				$this->scheduleUpdateEnabled = false;
 		}
-		if(count($xml->availabilityUpdateEnabled))
+		if(!is_null($jsonObject) && isset($jsonObject->scheduleUpdateEnabled))
+		{
+			if(!empty($jsonObject->scheduleUpdateEnabled) && ((int) $jsonObject->scheduleUpdateEnabled === 1 || strtolower((string)$jsonObject->scheduleUpdateEnabled) === 'true'))
+				$this->scheduleUpdateEnabled = true;
+			else
+				$this->scheduleUpdateEnabled = false;
+		}
+		if(!is_null($xml) && count($xml->availabilityUpdateEnabled))
 		{
 			if(!empty($xml->availabilityUpdateEnabled) && ((int) $xml->availabilityUpdateEnabled === 1 || strtolower((string)$xml->availabilityUpdateEnabled) === 'true'))
 				$this->availabilityUpdateEnabled = true;
 			else
 				$this->availabilityUpdateEnabled = false;
 		}
-		if(count($xml->deleteInsteadUpdate))
+		if(!is_null($jsonObject) && isset($jsonObject->availabilityUpdateEnabled))
+		{
+			if(!empty($jsonObject->availabilityUpdateEnabled) && ((int) $jsonObject->availabilityUpdateEnabled === 1 || strtolower((string)$jsonObject->availabilityUpdateEnabled) === 'true'))
+				$this->availabilityUpdateEnabled = true;
+			else
+				$this->availabilityUpdateEnabled = false;
+		}
+		if(!is_null($xml) && count($xml->deleteInsteadUpdate))
 		{
 			if(!empty($xml->deleteInsteadUpdate) && ((int) $xml->deleteInsteadUpdate === 1 || strtolower((string)$xml->deleteInsteadUpdate) === 'true'))
 				$this->deleteInsteadUpdate = true;
 			else
 				$this->deleteInsteadUpdate = false;
 		}
-		if(count($xml->intervalBeforeSunrise))
+		if(!is_null($jsonObject) && isset($jsonObject->deleteInsteadUpdate))
+		{
+			if(!empty($jsonObject->deleteInsteadUpdate) && ((int) $jsonObject->deleteInsteadUpdate === 1 || strtolower((string)$jsonObject->deleteInsteadUpdate) === 'true'))
+				$this->deleteInsteadUpdate = true;
+			else
+				$this->deleteInsteadUpdate = false;
+		}
+		if(!is_null($xml) && count($xml->intervalBeforeSunrise))
 			$this->intervalBeforeSunrise = (int)$xml->intervalBeforeSunrise;
-		if(count($xml->intervalBeforeSunset))
+		if(!is_null($jsonObject) && isset($jsonObject->intervalBeforeSunrise))
+			$this->intervalBeforeSunrise = (int)$jsonObject->intervalBeforeSunrise;
+		if(!is_null($xml) && count($xml->intervalBeforeSunset))
 			$this->intervalBeforeSunset = (int)$xml->intervalBeforeSunset;
-		if(count($xml->updateRequiredEntryFields))
+		if(!is_null($jsonObject) && isset($jsonObject->intervalBeforeSunset))
+			$this->intervalBeforeSunset = (int)$jsonObject->intervalBeforeSunset;
+		if(!is_null($xml) && count($xml->updateRequiredEntryFields))
 			$this->updateRequiredEntryFields = (string)$xml->updateRequiredEntryFields;
-		if(count($xml->updateRequiredMetadataXPaths))
+		if(!is_null($jsonObject) && isset($jsonObject->updateRequiredEntryFields))
+			$this->updateRequiredEntryFields = (string)$jsonObject->updateRequiredEntryFields;
+		if(!is_null($xml) && count($xml->updateRequiredMetadataXPaths))
 			$this->updateRequiredMetadataXPaths = (string)$xml->updateRequiredMetadataXPaths;
+		if(!is_null($jsonObject) && isset($jsonObject->updateRequiredMetadataXPaths))
+			$this->updateRequiredMetadataXPaths = (string)$jsonObject->updateRequiredMetadataXPaths;
 	}
 	/**
 	 * 

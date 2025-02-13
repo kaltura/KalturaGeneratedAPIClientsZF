@@ -50,12 +50,18 @@ class Kaltura_Client_EntryServerNodeService extends Kaltura_Client_ServiceBase
 		$this->client->queueServiceActionCall("entryservernode", "get", "KalturaEntryServerNode", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaEntryServerNode");
-		$this->client->validateObjectType($resultObject, "Kaltura_Client_Type_EntryServerNode");
-		return $resultObject;
+		$rawResult = $this->client->doQueue();
+		if ($this->client->getConfig()->format === Kaltura_Client_ClientBase::KALTURA_SERVICE_FORMAT_JSON) {
+			$jsObject = json_decode($rawResult);
+			$resultObject = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsObject);
+			return $resultObject;
+		} else {
+			$resultXmlObject = new \SimpleXMLElement($rawResult);
+			$this->client->checkIfError($resultXmlObject->result);
+			$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaEntryServerNode");
+			$this->client->validateObjectType($resultObject, "Kaltura_Client_Type_EntryServerNode");
+		}
+			return $resultObject;
 	}
 
 	/**
@@ -72,12 +78,18 @@ class Kaltura_Client_EntryServerNodeService extends Kaltura_Client_ServiceBase
 		$this->client->queueServiceActionCall("entryservernode", "list", "KalturaEntryServerNodeListResponse", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaEntryServerNodeListResponse");
-		$this->client->validateObjectType($resultObject, "Kaltura_Client_Type_EntryServerNodeListResponse");
-		return $resultObject;
+		$rawResult = $this->client->doQueue();
+		if ($this->client->getConfig()->format === Kaltura_Client_ClientBase::KALTURA_SERVICE_FORMAT_JSON) {
+			$jsObject = json_decode($rawResult);
+			$resultObject = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsObject);
+			return $resultObject;
+		} else {
+			$resultXmlObject = new \SimpleXMLElement($rawResult);
+			$this->client->checkIfError($resultXmlObject->result);
+			$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaEntryServerNodeListResponse");
+			$this->client->validateObjectType($resultObject, "Kaltura_Client_Type_EntryServerNodeListResponse");
+		}
+			return $resultObject;
 	}
 
 	/**
@@ -92,12 +104,18 @@ class Kaltura_Client_EntryServerNodeService extends Kaltura_Client_ServiceBase
 		$this->client->queueServiceActionCall("entryservernode", "update", "KalturaEntryServerNode", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaEntryServerNode");
-		$this->client->validateObjectType($resultObject, "Kaltura_Client_Type_EntryServerNode");
-		return $resultObject;
+		$rawResult = $this->client->doQueue();
+		if ($this->client->getConfig()->format === Kaltura_Client_ClientBase::KALTURA_SERVICE_FORMAT_JSON) {
+			$jsObject = json_decode($rawResult);
+			$resultObject = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsObject);
+			return $resultObject;
+		} else {
+			$resultXmlObject = new \SimpleXMLElement($rawResult);
+			$this->client->checkIfError($resultXmlObject->result);
+			$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaEntryServerNode");
+			$this->client->validateObjectType($resultObject, "Kaltura_Client_Type_EntryServerNode");
+		}
+			return $resultObject;
 	}
 
 	/**
@@ -112,12 +130,18 @@ class Kaltura_Client_EntryServerNodeService extends Kaltura_Client_ServiceBase
 		$this->client->queueServiceActionCall("entryservernode", "updateStatus", "KalturaEntryServerNode", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaEntryServerNode");
-		$this->client->validateObjectType($resultObject, "Kaltura_Client_Type_EntryServerNode");
-		return $resultObject;
+		$rawResult = $this->client->doQueue();
+		if ($this->client->getConfig()->format === Kaltura_Client_ClientBase::KALTURA_SERVICE_FORMAT_JSON) {
+			$jsObject = json_decode($rawResult);
+			$resultObject = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsObject);
+			return $resultObject;
+		} else {
+			$resultXmlObject = new \SimpleXMLElement($rawResult);
+			$this->client->checkIfError($resultXmlObject->result);
+			$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaEntryServerNode");
+			$this->client->validateObjectType($resultObject, "Kaltura_Client_Type_EntryServerNode");
+		}
+			return $resultObject;
 	}
 
 	/**
@@ -131,8 +155,14 @@ class Kaltura_Client_EntryServerNodeService extends Kaltura_Client_ServiceBase
 		$this->client->queueServiceActionCall("entryservernode", "validateRegisteredEntryServerNode", null, $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
+		$rawResult = $this->client->doQueue();
+		if ($this->client->getConfig()->format === Kaltura_Client_ClientBase::KALTURA_SERVICE_FORMAT_JSON) {
+			$jsObject = json_decode($rawResult);
+			$resultObject = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsObject);
+			return $resultObject;
+		} else {
+			$resultXmlObject = new \SimpleXMLElement($rawResult);
+			$this->client->checkIfError($resultXmlObject->result);
+		}
 	}
 }

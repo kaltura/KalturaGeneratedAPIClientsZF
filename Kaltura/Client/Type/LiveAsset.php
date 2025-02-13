@@ -38,17 +38,24 @@ class Kaltura_Client_Type_LiveAsset extends Kaltura_Client_Type_FlavorAsset
 		return 'KalturaLiveAsset';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->multicastIP))
+		if(!is_null($xml) && count($xml->multicastIP))
 			$this->multicastIP = (string)$xml->multicastIP;
-		if(count($xml->multicastPort))
+		if(!is_null($jsonObject) && isset($jsonObject->multicastIP))
+			$this->multicastIP = (string)$jsonObject->multicastIP;
+		if(!is_null($xml) && count($xml->multicastPort))
 			$this->multicastPort = (int)$xml->multicastPort;
+		if(!is_null($jsonObject) && isset($jsonObject->multicastPort))
+			$this->multicastPort = (int)$jsonObject->multicastPort;
 	}
 	/**
 	 * 

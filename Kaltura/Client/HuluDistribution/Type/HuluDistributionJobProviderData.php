@@ -38,32 +38,55 @@ class Kaltura_Client_HuluDistribution_Type_HuluDistributionJobProviderData exten
 		return 'KalturaHuluDistributionJobProviderData';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->videoAssetFilePath))
+		if(!is_null($xml) && count($xml->videoAssetFilePath))
 			$this->videoAssetFilePath = (string)$xml->videoAssetFilePath;
-		if(count($xml->thumbAssetFilePath))
+		if(!is_null($jsonObject) && isset($jsonObject->videoAssetFilePath))
+			$this->videoAssetFilePath = (string)$jsonObject->videoAssetFilePath;
+		if(!is_null($xml) && count($xml->thumbAssetFilePath))
 			$this->thumbAssetFilePath = (string)$xml->thumbAssetFilePath;
-		if(count($xml->cuePoints))
+		if(!is_null($jsonObject) && isset($jsonObject->thumbAssetFilePath))
+			$this->thumbAssetFilePath = (string)$jsonObject->thumbAssetFilePath;
+		if(!is_null($xml) && count($xml->cuePoints))
 		{
 			if(empty($xml->cuePoints))
 				$this->cuePoints = array();
 			else
 				$this->cuePoints = Kaltura_Client_ParseUtils::unmarshalArray($xml->cuePoints, "KalturaCuePoint");
 		}
-		if(count($xml->fileBaseName))
+		if(!is_null($jsonObject) && isset($jsonObject->cuePoints))
+		{
+			if(empty($jsonObject->cuePoints))
+				$this->cuePoints = array();
+			else
+				$this->cuePoints = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsonObject->cuePoints, "KalturaCuePoint");
+		}
+		if(!is_null($xml) && count($xml->fileBaseName))
 			$this->fileBaseName = (string)$xml->fileBaseName;
-		if(count($xml->captionLocalPaths))
+		if(!is_null($jsonObject) && isset($jsonObject->fileBaseName))
+			$this->fileBaseName = (string)$jsonObject->fileBaseName;
+		if(!is_null($xml) && count($xml->captionLocalPaths))
 		{
 			if(empty($xml->captionLocalPaths))
 				$this->captionLocalPaths = array();
 			else
 				$this->captionLocalPaths = Kaltura_Client_ParseUtils::unmarshalArray($xml->captionLocalPaths, "KalturaString");
+		}
+		if(!is_null($jsonObject) && isset($jsonObject->captionLocalPaths))
+		{
+			if(empty($jsonObject->captionLocalPaths))
+				$this->captionLocalPaths = array();
+			else
+				$this->captionLocalPaths = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsonObject->captionLocalPaths, "KalturaString");
 		}
 	}
 	/**

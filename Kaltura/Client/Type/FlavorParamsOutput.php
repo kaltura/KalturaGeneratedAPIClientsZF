@@ -38,25 +38,40 @@ class Kaltura_Client_Type_FlavorParamsOutput extends Kaltura_Client_Type_FlavorP
 		return 'KalturaFlavorParamsOutput';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->flavorParamsId))
+		if(!is_null($xml) && count($xml->flavorParamsId))
 			$this->flavorParamsId = (int)$xml->flavorParamsId;
-		if(count($xml->commandLinesStr))
+		if(!is_null($jsonObject) && isset($jsonObject->flavorParamsId))
+			$this->flavorParamsId = (int)$jsonObject->flavorParamsId;
+		if(!is_null($xml) && count($xml->commandLinesStr))
 			$this->commandLinesStr = (string)$xml->commandLinesStr;
-		if(count($xml->flavorParamsVersion))
+		if(!is_null($jsonObject) && isset($jsonObject->commandLinesStr))
+			$this->commandLinesStr = (string)$jsonObject->commandLinesStr;
+		if(!is_null($xml) && count($xml->flavorParamsVersion))
 			$this->flavorParamsVersion = (string)$xml->flavorParamsVersion;
-		if(count($xml->flavorAssetId))
+		if(!is_null($jsonObject) && isset($jsonObject->flavorParamsVersion))
+			$this->flavorParamsVersion = (string)$jsonObject->flavorParamsVersion;
+		if(!is_null($xml) && count($xml->flavorAssetId))
 			$this->flavorAssetId = (string)$xml->flavorAssetId;
-		if(count($xml->flavorAssetVersion))
+		if(!is_null($jsonObject) && isset($jsonObject->flavorAssetId))
+			$this->flavorAssetId = (string)$jsonObject->flavorAssetId;
+		if(!is_null($xml) && count($xml->flavorAssetVersion))
 			$this->flavorAssetVersion = (string)$xml->flavorAssetVersion;
-		if(count($xml->readyBehavior))
+		if(!is_null($jsonObject) && isset($jsonObject->flavorAssetVersion))
+			$this->flavorAssetVersion = (string)$jsonObject->flavorAssetVersion;
+		if(!is_null($xml) && count($xml->readyBehavior))
 			$this->readyBehavior = (int)$xml->readyBehavior;
+		if(!is_null($jsonObject) && isset($jsonObject->readyBehavior))
+			$this->readyBehavior = (int)$jsonObject->readyBehavior;
 	}
 	/**
 	 * 

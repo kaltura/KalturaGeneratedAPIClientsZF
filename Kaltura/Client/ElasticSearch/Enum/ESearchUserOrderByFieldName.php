@@ -34,6 +34,7 @@
 class Kaltura_Client_ElasticSearch_Enum_ESearchUserOrderByFieldName extends Kaltura_Client_EnumBase
 {
 	const CREATED_AT = "created_at";
+	const FULL_NAME = "full_name";
 	const USER_ID = "puser_id";
 	const SCREEN_NAME = "screen_name";
 	const UPDATED_AT = "updated_at";

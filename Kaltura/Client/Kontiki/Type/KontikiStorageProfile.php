@@ -38,15 +38,20 @@ class Kaltura_Client_Kontiki_Type_KontikiStorageProfile extends Kaltura_Client_T
 		return 'KalturaKontikiStorageProfile';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->serviceToken))
+		if(!is_null($xml) && count($xml->serviceToken))
 			$this->serviceToken = (string)$xml->serviceToken;
+		if(!is_null($jsonObject) && isset($jsonObject->serviceToken))
+			$this->serviceToken = (string)$jsonObject->serviceToken;
 	}
 	/**
 	 * 

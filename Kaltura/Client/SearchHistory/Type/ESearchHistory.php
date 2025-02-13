@@ -38,19 +38,28 @@ class Kaltura_Client_SearchHistory_Type_ESearchHistory extends Kaltura_Client_Ob
 		return 'KalturaESearchHistory';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->searchTerm))
+		if(!is_null($xml) && count($xml->searchTerm))
 			$this->searchTerm = (string)$xml->searchTerm;
-		if(count($xml->searchedObject))
+		if(!is_null($jsonObject) && isset($jsonObject->searchTerm))
+			$this->searchTerm = (string)$jsonObject->searchTerm;
+		if(!is_null($xml) && count($xml->searchedObject))
 			$this->searchedObject = (string)$xml->searchedObject;
-		if(count($xml->timestamp))
+		if(!is_null($jsonObject) && isset($jsonObject->searchedObject))
+			$this->searchedObject = (string)$jsonObject->searchedObject;
+		if(!is_null($xml) && count($xml->timestamp))
 			$this->timestamp = (int)$xml->timestamp;
+		if(!is_null($jsonObject) && isset($jsonObject->timestamp))
+			$this->timestamp = (int)$jsonObject->timestamp;
 	}
 	/**
 	 * 

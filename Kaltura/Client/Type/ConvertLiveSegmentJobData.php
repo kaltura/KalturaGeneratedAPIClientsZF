@@ -38,29 +38,48 @@ class Kaltura_Client_Type_ConvertLiveSegmentJobData extends Kaltura_Client_Type_
 		return 'KalturaConvertLiveSegmentJobData';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->entryId))
+		if(!is_null($xml) && count($xml->entryId))
 			$this->entryId = (string)$xml->entryId;
-		if(count($xml->assetId))
+		if(!is_null($jsonObject) && isset($jsonObject->entryId))
+			$this->entryId = (string)$jsonObject->entryId;
+		if(!is_null($xml) && count($xml->assetId))
 			$this->assetId = (string)$xml->assetId;
-		if(count($xml->mediaServerIndex))
+		if(!is_null($jsonObject) && isset($jsonObject->assetId))
+			$this->assetId = (string)$jsonObject->assetId;
+		if(!is_null($xml) && count($xml->mediaServerIndex))
 			$this->mediaServerIndex = (string)$xml->mediaServerIndex;
-		if(count($xml->fileIndex))
+		if(!is_null($jsonObject) && isset($jsonObject->mediaServerIndex))
+			$this->mediaServerIndex = (string)$jsonObject->mediaServerIndex;
+		if(!is_null($xml) && count($xml->fileIndex))
 			$this->fileIndex = (int)$xml->fileIndex;
-		if(count($xml->srcFilePath))
+		if(!is_null($jsonObject) && isset($jsonObject->fileIndex))
+			$this->fileIndex = (int)$jsonObject->fileIndex;
+		if(!is_null($xml) && count($xml->srcFilePath))
 			$this->srcFilePath = (string)$xml->srcFilePath;
-		if(count($xml->destFilePath))
+		if(!is_null($jsonObject) && isset($jsonObject->srcFilePath))
+			$this->srcFilePath = (string)$jsonObject->srcFilePath;
+		if(!is_null($xml) && count($xml->destFilePath))
 			$this->destFilePath = (string)$xml->destFilePath;
-		if(count($xml->endTime))
+		if(!is_null($jsonObject) && isset($jsonObject->destFilePath))
+			$this->destFilePath = (string)$jsonObject->destFilePath;
+		if(!is_null($xml) && count($xml->endTime))
 			$this->endTime = (float)$xml->endTime;
-		if(count($xml->destDataFilePath))
+		if(!is_null($jsonObject) && isset($jsonObject->endTime))
+			$this->endTime = (float)$jsonObject->endTime;
+		if(!is_null($xml) && count($xml->destDataFilePath))
 			$this->destDataFilePath = (string)$xml->destDataFilePath;
+		if(!is_null($jsonObject) && isset($jsonObject->destDataFilePath))
+			$this->destDataFilePath = (string)$jsonObject->destDataFilePath;
 	}
 	/**
 	 * Live stream entry id

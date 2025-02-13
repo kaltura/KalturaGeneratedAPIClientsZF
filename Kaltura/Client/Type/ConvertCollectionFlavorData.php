@@ -38,27 +38,44 @@ class Kaltura_Client_Type_ConvertCollectionFlavorData extends Kaltura_Client_Obj
 		return 'KalturaConvertCollectionFlavorData';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->flavorAssetId))
+		if(!is_null($xml) && count($xml->flavorAssetId))
 			$this->flavorAssetId = (string)$xml->flavorAssetId;
-		if(count($xml->flavorParamsOutputId))
+		if(!is_null($jsonObject) && isset($jsonObject->flavorAssetId))
+			$this->flavorAssetId = (string)$jsonObject->flavorAssetId;
+		if(!is_null($xml) && count($xml->flavorParamsOutputId))
 			$this->flavorParamsOutputId = (int)$xml->flavorParamsOutputId;
-		if(count($xml->readyBehavior))
+		if(!is_null($jsonObject) && isset($jsonObject->flavorParamsOutputId))
+			$this->flavorParamsOutputId = (int)$jsonObject->flavorParamsOutputId;
+		if(!is_null($xml) && count($xml->readyBehavior))
 			$this->readyBehavior = (int)$xml->readyBehavior;
-		if(count($xml->videoBitrate))
+		if(!is_null($jsonObject) && isset($jsonObject->readyBehavior))
+			$this->readyBehavior = (int)$jsonObject->readyBehavior;
+		if(!is_null($xml) && count($xml->videoBitrate))
 			$this->videoBitrate = (int)$xml->videoBitrate;
-		if(count($xml->audioBitrate))
+		if(!is_null($jsonObject) && isset($jsonObject->videoBitrate))
+			$this->videoBitrate = (int)$jsonObject->videoBitrate;
+		if(!is_null($xml) && count($xml->audioBitrate))
 			$this->audioBitrate = (int)$xml->audioBitrate;
-		if(count($xml->destFileSyncLocalPath))
+		if(!is_null($jsonObject) && isset($jsonObject->audioBitrate))
+			$this->audioBitrate = (int)$jsonObject->audioBitrate;
+		if(!is_null($xml) && count($xml->destFileSyncLocalPath))
 			$this->destFileSyncLocalPath = (string)$xml->destFileSyncLocalPath;
-		if(count($xml->destFileSyncRemoteUrl))
+		if(!is_null($jsonObject) && isset($jsonObject->destFileSyncLocalPath))
+			$this->destFileSyncLocalPath = (string)$jsonObject->destFileSyncLocalPath;
+		if(!is_null($xml) && count($xml->destFileSyncRemoteUrl))
 			$this->destFileSyncRemoteUrl = (string)$xml->destFileSyncRemoteUrl;
+		if(!is_null($jsonObject) && isset($jsonObject->destFileSyncRemoteUrl))
+			$this->destFileSyncRemoteUrl = (string)$jsonObject->destFileSyncRemoteUrl;
 	}
 	/**
 	 * 

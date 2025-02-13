@@ -38,21 +38,32 @@ class Kaltura_Client_Transcript_Type_TranscriptAsset extends Kaltura_Client_Atta
 		return 'KalturaTranscriptAsset';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->accuracy))
+		if(!is_null($xml) && count($xml->accuracy))
 			$this->accuracy = (float)$xml->accuracy;
-		if(count($xml->humanVerified))
+		if(!is_null($jsonObject) && isset($jsonObject->accuracy))
+			$this->accuracy = (float)$jsonObject->accuracy;
+		if(!is_null($xml) && count($xml->humanVerified))
 			$this->humanVerified = (int)$xml->humanVerified;
-		if(count($xml->language))
+		if(!is_null($jsonObject) && isset($jsonObject->humanVerified))
+			$this->humanVerified = (int)$jsonObject->humanVerified;
+		if(!is_null($xml) && count($xml->language))
 			$this->language = (string)$xml->language;
-		if(count($xml->providerType))
+		if(!is_null($jsonObject) && isset($jsonObject->language))
+			$this->language = (string)$jsonObject->language;
+		if(!is_null($xml) && count($xml->providerType))
 			$this->providerType = (string)$xml->providerType;
+		if(!is_null($jsonObject) && isset($jsonObject->providerType))
+			$this->providerType = (string)$jsonObject->providerType;
 	}
 	/**
 	 * The accuracy of the transcript - values between 0 and 1

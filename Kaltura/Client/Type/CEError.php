@@ -38,33 +38,56 @@ class Kaltura_Client_Type_CEError extends Kaltura_Client_ObjectBase
 		return 'KalturaCEError';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->id))
+		if(!is_null($xml) && count($xml->id))
 			$this->id = (string)$xml->id;
-		if(count($xml->partnerId))
+		if(!is_null($jsonObject) && isset($jsonObject->id))
+			$this->id = (string)$jsonObject->id;
+		if(!is_null($xml) && count($xml->partnerId))
 			$this->partnerId = (int)$xml->partnerId;
-		if(count($xml->browser))
+		if(!is_null($jsonObject) && isset($jsonObject->partnerId))
+			$this->partnerId = (int)$jsonObject->partnerId;
+		if(!is_null($xml) && count($xml->browser))
 			$this->browser = (string)$xml->browser;
-		if(count($xml->serverIp))
+		if(!is_null($jsonObject) && isset($jsonObject->browser))
+			$this->browser = (string)$jsonObject->browser;
+		if(!is_null($xml) && count($xml->serverIp))
 			$this->serverIp = (string)$xml->serverIp;
-		if(count($xml->serverOs))
+		if(!is_null($jsonObject) && isset($jsonObject->serverIp))
+			$this->serverIp = (string)$jsonObject->serverIp;
+		if(!is_null($xml) && count($xml->serverOs))
 			$this->serverOs = (string)$xml->serverOs;
-		if(count($xml->phpVersion))
+		if(!is_null($jsonObject) && isset($jsonObject->serverOs))
+			$this->serverOs = (string)$jsonObject->serverOs;
+		if(!is_null($xml) && count($xml->phpVersion))
 			$this->phpVersion = (string)$xml->phpVersion;
-		if(count($xml->ceAdminEmail))
+		if(!is_null($jsonObject) && isset($jsonObject->phpVersion))
+			$this->phpVersion = (string)$jsonObject->phpVersion;
+		if(!is_null($xml) && count($xml->ceAdminEmail))
 			$this->ceAdminEmail = (string)$xml->ceAdminEmail;
-		if(count($xml->type))
+		if(!is_null($jsonObject) && isset($jsonObject->ceAdminEmail))
+			$this->ceAdminEmail = (string)$jsonObject->ceAdminEmail;
+		if(!is_null($xml) && count($xml->type))
 			$this->type = (string)$xml->type;
-		if(count($xml->description))
+		if(!is_null($jsonObject) && isset($jsonObject->type))
+			$this->type = (string)$jsonObject->type;
+		if(!is_null($xml) && count($xml->description))
 			$this->description = (string)$xml->description;
-		if(count($xml->data))
+		if(!is_null($jsonObject) && isset($jsonObject->description))
+			$this->description = (string)$jsonObject->description;
+		if(!is_null($xml) && count($xml->data))
 			$this->data = (string)$xml->data;
+		if(!is_null($jsonObject) && isset($jsonObject->data))
+			$this->data = (string)$jsonObject->data;
 	}
 	/**
 	 * 

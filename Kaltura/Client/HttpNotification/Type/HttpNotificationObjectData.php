@@ -38,32 +38,55 @@ class Kaltura_Client_HttpNotification_Type_HttpNotificationObjectData extends Ka
 		return 'KalturaHttpNotificationObjectData';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->apiObjectType))
+		if(!is_null($xml) && count($xml->apiObjectType))
 			$this->apiObjectType = (string)$xml->apiObjectType;
-		if(count($xml->format))
+		if(!is_null($jsonObject) && isset($jsonObject->apiObjectType))
+			$this->apiObjectType = (string)$jsonObject->apiObjectType;
+		if(!is_null($xml) && count($xml->format))
 			$this->format = (int)$xml->format;
-		if(count($xml->ignoreNull))
+		if(!is_null($jsonObject) && isset($jsonObject->format))
+			$this->format = (int)$jsonObject->format;
+		if(!is_null($xml) && count($xml->ignoreNull))
 		{
 			if(!empty($xml->ignoreNull) && ((int) $xml->ignoreNull === 1 || strtolower((string)$xml->ignoreNull) === 'true'))
 				$this->ignoreNull = true;
 			else
 				$this->ignoreNull = false;
 		}
-		if(count($xml->code))
+		if(!is_null($jsonObject) && isset($jsonObject->ignoreNull))
+		{
+			if(!empty($jsonObject->ignoreNull) && ((int) $jsonObject->ignoreNull === 1 || strtolower((string)$jsonObject->ignoreNull) === 'true'))
+				$this->ignoreNull = true;
+			else
+				$this->ignoreNull = false;
+		}
+		if(!is_null($xml) && count($xml->code))
 			$this->code = (string)$xml->code;
-		if(count($xml->dataStringReplacements))
+		if(!is_null($jsonObject) && isset($jsonObject->code))
+			$this->code = (string)$jsonObject->code;
+		if(!is_null($xml) && count($xml->dataStringReplacements))
 		{
 			if(empty($xml->dataStringReplacements))
 				$this->dataStringReplacements = array();
 			else
 				$this->dataStringReplacements = Kaltura_Client_ParseUtils::unmarshalArray($xml->dataStringReplacements, "KalturaKeyValue");
+		}
+		if(!is_null($jsonObject) && isset($jsonObject->dataStringReplacements))
+		{
+			if(empty($jsonObject->dataStringReplacements))
+				$this->dataStringReplacements = array();
+			else
+				$this->dataStringReplacements = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsonObject->dataStringReplacements, "KalturaKeyValue");
 		}
 	}
 	/**

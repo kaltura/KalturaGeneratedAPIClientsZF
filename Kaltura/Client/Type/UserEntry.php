@@ -38,31 +38,48 @@ abstract class Kaltura_Client_Type_UserEntry extends Kaltura_Client_ObjectBase
 		return 'KalturaUserEntry';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->id))
+		if(!is_null($xml) && count($xml->id))
 			$this->id = (string)$xml->id;
-		if(count($xml->entryId))
+		if(!is_null($jsonObject) && isset($jsonObject->id))
+			$this->id = (string)$jsonObject->id;
+		if(!is_null($xml) && count($xml->entryId))
 			$this->entryId = (string)$xml->entryId;
-		if(count($xml->userId))
+		if(!is_null($jsonObject) && isset($jsonObject->entryId))
+			$this->entryId = (string)$jsonObject->entryId;
+		if(!is_null($xml) && count($xml->userId))
 			$this->userId = (string)$xml->userId;
-		if(count($xml->partnerId))
+		if(!is_null($jsonObject) && isset($jsonObject->userId))
+			$this->userId = (string)$jsonObject->userId;
+		if(!is_null($xml) && count($xml->partnerId))
 			$this->partnerId = (int)$xml->partnerId;
-		if(count($xml->status))
+		if(!is_null($jsonObject) && isset($jsonObject->partnerId))
+			$this->partnerId = (int)$jsonObject->partnerId;
+		if(!is_null($xml) && count($xml->status))
 			$this->status = (string)$xml->status;
-		if(count($xml->createdAt))
+		if(!is_null($jsonObject) && isset($jsonObject->status))
+			$this->status = (string)$jsonObject->status;
+		if(!is_null($xml) && count($xml->createdAt))
 			$this->createdAt = (int)$xml->createdAt;
-		if(count($xml->updatedAt))
+		if(!is_null($jsonObject) && isset($jsonObject->createdAt))
+			$this->createdAt = (int)$jsonObject->createdAt;
+		if(!is_null($xml) && count($xml->updatedAt))
 			$this->updatedAt = (int)$xml->updatedAt;
-		if(count($xml->type))
+		if(!is_null($jsonObject) && isset($jsonObject->updatedAt))
+			$this->updatedAt = (int)$jsonObject->updatedAt;
+		if(!is_null($xml) && count($xml->type))
 			$this->type = (string)$xml->type;
-		if(count($xml->extendedStatus))
-			$this->extendedStatus = (string)$xml->extendedStatus;
+		if(!is_null($jsonObject) && isset($jsonObject->type))
+			$this->type = (string)$jsonObject->type;
 	}
 	/**
 	 * unique auto-generated identifier
@@ -127,13 +144,6 @@ abstract class Kaltura_Client_Type_UserEntry extends Kaltura_Client_ObjectBase
 	 * @readonly
 	 */
 	public $type = null;
-
-	/**
-	 * 
-	 *
-	 * @var Kaltura_Client_Enum_UserEntryExtendedStatus
-	 */
-	public $extendedStatus = null;
 
 
 }

@@ -35,5 +35,6 @@ class Kaltura_Client_ScheduledTask_Enum_ObjectFilterEngineType extends Kaltura_C
 {
 	const ENTRY = "1";
 	const ENTRY_VENDOR_TASK = "2";
+	const RECYCLE_BIN_CLEANUP = "3";
 }
 

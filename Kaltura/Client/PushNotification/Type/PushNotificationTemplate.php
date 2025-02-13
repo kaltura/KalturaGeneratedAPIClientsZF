@@ -38,33 +38,56 @@ class Kaltura_Client_PushNotification_Type_PushNotificationTemplate extends Kalt
 		return 'KalturaPushNotificationTemplate';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->queueNameParameters))
+		if(!is_null($xml) && count($xml->queueNameParameters))
 		{
 			if(empty($xml->queueNameParameters))
 				$this->queueNameParameters = array();
 			else
 				$this->queueNameParameters = Kaltura_Client_ParseUtils::unmarshalArray($xml->queueNameParameters, "KalturaPushEventNotificationParameter");
 		}
-		if(count($xml->queueKeyParameters))
+		if(!is_null($jsonObject) && isset($jsonObject->queueNameParameters))
+		{
+			if(empty($jsonObject->queueNameParameters))
+				$this->queueNameParameters = array();
+			else
+				$this->queueNameParameters = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsonObject->queueNameParameters, "KalturaPushEventNotificationParameter");
+		}
+		if(!is_null($xml) && count($xml->queueKeyParameters))
 		{
 			if(empty($xml->queueKeyParameters))
 				$this->queueKeyParameters = array();
 			else
 				$this->queueKeyParameters = Kaltura_Client_ParseUtils::unmarshalArray($xml->queueKeyParameters, "KalturaPushEventNotificationParameter");
 		}
-		if(count($xml->apiObjectType))
+		if(!is_null($jsonObject) && isset($jsonObject->queueKeyParameters))
+		{
+			if(empty($jsonObject->queueKeyParameters))
+				$this->queueKeyParameters = array();
+			else
+				$this->queueKeyParameters = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsonObject->queueKeyParameters, "KalturaPushEventNotificationParameter");
+		}
+		if(!is_null($xml) && count($xml->apiObjectType))
 			$this->apiObjectType = (string)$xml->apiObjectType;
-		if(count($xml->objectFormat))
+		if(!is_null($jsonObject) && isset($jsonObject->apiObjectType))
+			$this->apiObjectType = (string)$jsonObject->apiObjectType;
+		if(!is_null($xml) && count($xml->objectFormat))
 			$this->objectFormat = (int)$xml->objectFormat;
-		if(count($xml->responseProfileId))
+		if(!is_null($jsonObject) && isset($jsonObject->objectFormat))
+			$this->objectFormat = (int)$jsonObject->objectFormat;
+		if(!is_null($xml) && count($xml->responseProfileId))
 			$this->responseProfileId = (int)$xml->responseProfileId;
+		if(!is_null($jsonObject) && isset($jsonObject->responseProfileId))
+			$this->responseProfileId = (int)$jsonObject->responseProfileId;
 	}
 	/**
 	 * Define the content dynamic parameters

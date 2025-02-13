@@ -50,12 +50,18 @@ class Kaltura_Client_EventNotification_EventNotificationTemplateService extends 
 		$this->client->queueServiceActionCall("eventnotification_eventnotificationtemplate", "add", "KalturaEventNotificationTemplate", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaEventNotificationTemplate");
-		$this->client->validateObjectType($resultObject, "Kaltura_Client_EventNotification_Type_EventNotificationTemplate");
-		return $resultObject;
+		$rawResult = $this->client->doQueue();
+		if ($this->client->getConfig()->format === Kaltura_Client_ClientBase::KALTURA_SERVICE_FORMAT_JSON) {
+			$jsObject = json_decode($rawResult);
+			$resultObject = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsObject);
+			return $resultObject;
+		} else {
+			$resultXmlObject = new \SimpleXMLElement($rawResult);
+			$this->client->checkIfError($resultXmlObject->result);
+			$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaEventNotificationTemplate");
+			$this->client->validateObjectType($resultObject, "Kaltura_Client_EventNotification_Type_EventNotificationTemplate");
+		}
+			return $resultObject;
 	}
 
 	/**
@@ -71,12 +77,18 @@ class Kaltura_Client_EventNotification_EventNotificationTemplateService extends 
 		$this->client->queueServiceActionCall("eventnotification_eventnotificationtemplate", "clone", "KalturaEventNotificationTemplate", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaEventNotificationTemplate");
-		$this->client->validateObjectType($resultObject, "Kaltura_Client_EventNotification_Type_EventNotificationTemplate");
-		return $resultObject;
+		$rawResult = $this->client->doQueue();
+		if ($this->client->getConfig()->format === Kaltura_Client_ClientBase::KALTURA_SERVICE_FORMAT_JSON) {
+			$jsObject = json_decode($rawResult);
+			$resultObject = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsObject);
+			return $resultObject;
+		} else {
+			$resultXmlObject = new \SimpleXMLElement($rawResult);
+			$this->client->checkIfError($resultXmlObject->result);
+			$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaEventNotificationTemplate");
+			$this->client->validateObjectType($resultObject, "Kaltura_Client_EventNotification_Type_EventNotificationTemplate");
+		}
+			return $resultObject;
 	}
 
 	/**
@@ -90,9 +102,15 @@ class Kaltura_Client_EventNotification_EventNotificationTemplateService extends 
 		$this->client->queueServiceActionCall("eventnotification_eventnotificationtemplate", "delete", null, $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
+		$rawResult = $this->client->doQueue();
+		if ($this->client->getConfig()->format === Kaltura_Client_ClientBase::KALTURA_SERVICE_FORMAT_JSON) {
+			$jsObject = json_decode($rawResult);
+			$resultObject = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsObject);
+			return $resultObject;
+		} else {
+			$resultXmlObject = new \SimpleXMLElement($rawResult);
+			$this->client->checkIfError($resultXmlObject->result);
+		}
 	}
 
 	/**
@@ -107,11 +125,17 @@ class Kaltura_Client_EventNotification_EventNotificationTemplateService extends 
 		$this->client->queueServiceActionCall("eventnotification_eventnotificationtemplate", "dispatch", null, $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = (int)Kaltura_Client_ParseUtils::unmarshalSimpleType($resultXmlObject->result);
-		return $resultObject;
+		$rawResult = $this->client->doQueue();
+		if ($this->client->getConfig()->format === Kaltura_Client_ClientBase::KALTURA_SERVICE_FORMAT_JSON) {
+			$jsObject = json_decode($rawResult);
+			$resultObject = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsObject);
+			return $resultObject;
+		} else {
+			$resultXmlObject = new \SimpleXMLElement($rawResult);
+			$this->client->checkIfError($resultXmlObject->result);
+			$resultObject = (int)Kaltura_Client_ParseUtils::unmarshalSimpleType($resultXmlObject->result);
+		}
+			return $resultObject;
 	}
 
 	/**
@@ -125,12 +149,18 @@ class Kaltura_Client_EventNotification_EventNotificationTemplateService extends 
 		$this->client->queueServiceActionCall("eventnotification_eventnotificationtemplate", "get", "KalturaEventNotificationTemplate", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaEventNotificationTemplate");
-		$this->client->validateObjectType($resultObject, "Kaltura_Client_EventNotification_Type_EventNotificationTemplate");
-		return $resultObject;
+		$rawResult = $this->client->doQueue();
+		if ($this->client->getConfig()->format === Kaltura_Client_ClientBase::KALTURA_SERVICE_FORMAT_JSON) {
+			$jsObject = json_decode($rawResult);
+			$resultObject = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsObject);
+			return $resultObject;
+		} else {
+			$resultXmlObject = new \SimpleXMLElement($rawResult);
+			$this->client->checkIfError($resultXmlObject->result);
+			$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaEventNotificationTemplate");
+			$this->client->validateObjectType($resultObject, "Kaltura_Client_EventNotification_Type_EventNotificationTemplate");
+		}
+			return $resultObject;
 	}
 
 	/**
@@ -147,12 +177,18 @@ class Kaltura_Client_EventNotification_EventNotificationTemplateService extends 
 		$this->client->queueServiceActionCall("eventnotification_eventnotificationtemplate", "list", "KalturaEventNotificationTemplateListResponse", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaEventNotificationTemplateListResponse");
-		$this->client->validateObjectType($resultObject, "Kaltura_Client_EventNotification_Type_EventNotificationTemplateListResponse");
-		return $resultObject;
+		$rawResult = $this->client->doQueue();
+		if ($this->client->getConfig()->format === Kaltura_Client_ClientBase::KALTURA_SERVICE_FORMAT_JSON) {
+			$jsObject = json_decode($rawResult);
+			$resultObject = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsObject);
+			return $resultObject;
+		} else {
+			$resultXmlObject = new \SimpleXMLElement($rawResult);
+			$this->client->checkIfError($resultXmlObject->result);
+			$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaEventNotificationTemplateListResponse");
+			$this->client->validateObjectType($resultObject, "Kaltura_Client_EventNotification_Type_EventNotificationTemplateListResponse");
+		}
+			return $resultObject;
 	}
 
 	/**
@@ -169,12 +205,18 @@ class Kaltura_Client_EventNotification_EventNotificationTemplateService extends 
 		$this->client->queueServiceActionCall("eventnotification_eventnotificationtemplate", "listByPartner", "KalturaEventNotificationTemplateListResponse", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaEventNotificationTemplateListResponse");
-		$this->client->validateObjectType($resultObject, "Kaltura_Client_EventNotification_Type_EventNotificationTemplateListResponse");
-		return $resultObject;
+		$rawResult = $this->client->doQueue();
+		if ($this->client->getConfig()->format === Kaltura_Client_ClientBase::KALTURA_SERVICE_FORMAT_JSON) {
+			$jsObject = json_decode($rawResult);
+			$resultObject = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsObject);
+			return $resultObject;
+		} else {
+			$resultXmlObject = new \SimpleXMLElement($rawResult);
+			$this->client->checkIfError($resultXmlObject->result);
+			$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaEventNotificationTemplateListResponse");
+			$this->client->validateObjectType($resultObject, "Kaltura_Client_EventNotification_Type_EventNotificationTemplateListResponse");
+		}
+			return $resultObject;
 	}
 
 	/**
@@ -191,12 +233,18 @@ class Kaltura_Client_EventNotification_EventNotificationTemplateService extends 
 		$this->client->queueServiceActionCall("eventnotification_eventnotificationtemplate", "listTemplates", "KalturaEventNotificationTemplateListResponse", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaEventNotificationTemplateListResponse");
-		$this->client->validateObjectType($resultObject, "Kaltura_Client_EventNotification_Type_EventNotificationTemplateListResponse");
-		return $resultObject;
+		$rawResult = $this->client->doQueue();
+		if ($this->client->getConfig()->format === Kaltura_Client_ClientBase::KALTURA_SERVICE_FORMAT_JSON) {
+			$jsObject = json_decode($rawResult);
+			$resultObject = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsObject);
+			return $resultObject;
+		} else {
+			$resultXmlObject = new \SimpleXMLElement($rawResult);
+			$this->client->checkIfError($resultXmlObject->result);
+			$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaEventNotificationTemplateListResponse");
+			$this->client->validateObjectType($resultObject, "Kaltura_Client_EventNotification_Type_EventNotificationTemplateListResponse");
+		}
+			return $resultObject;
 	}
 
 	/**
@@ -211,12 +259,18 @@ class Kaltura_Client_EventNotification_EventNotificationTemplateService extends 
 		$this->client->queueServiceActionCall("eventnotification_eventnotificationtemplate", "register", "KalturaPushNotificationData", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaPushNotificationData");
-		$this->client->validateObjectType($resultObject, "Kaltura_Client_PushNotification_Type_PushNotificationData");
-		return $resultObject;
+		$rawResult = $this->client->doQueue();
+		if ($this->client->getConfig()->format === Kaltura_Client_ClientBase::KALTURA_SERVICE_FORMAT_JSON) {
+			$jsObject = json_decode($rawResult);
+			$resultObject = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsObject);
+			return $resultObject;
+		} else {
+			$resultXmlObject = new \SimpleXMLElement($rawResult);
+			$this->client->checkIfError($resultXmlObject->result);
+			$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaPushNotificationData");
+			$this->client->validateObjectType($resultObject, "Kaltura_Client_PushNotification_Type_PushNotificationData");
+		}
+			return $resultObject;
 	}
 
 	/**
@@ -232,9 +286,15 @@ class Kaltura_Client_EventNotification_EventNotificationTemplateService extends 
 		$this->client->queueServiceActionCall("eventnotification_eventnotificationtemplate", "sendCommand", null, $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
+		$rawResult = $this->client->doQueue();
+		if ($this->client->getConfig()->format === Kaltura_Client_ClientBase::KALTURA_SERVICE_FORMAT_JSON) {
+			$jsObject = json_decode($rawResult);
+			$resultObject = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsObject);
+			return $resultObject;
+		} else {
+			$resultXmlObject = new \SimpleXMLElement($rawResult);
+			$this->client->checkIfError($resultXmlObject->result);
+		}
 	}
 
 	/**
@@ -249,12 +309,18 @@ class Kaltura_Client_EventNotification_EventNotificationTemplateService extends 
 		$this->client->queueServiceActionCall("eventnotification_eventnotificationtemplate", "update", "KalturaEventNotificationTemplate", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaEventNotificationTemplate");
-		$this->client->validateObjectType($resultObject, "Kaltura_Client_EventNotification_Type_EventNotificationTemplate");
-		return $resultObject;
+		$rawResult = $this->client->doQueue();
+		if ($this->client->getConfig()->format === Kaltura_Client_ClientBase::KALTURA_SERVICE_FORMAT_JSON) {
+			$jsObject = json_decode($rawResult);
+			$resultObject = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsObject);
+			return $resultObject;
+		} else {
+			$resultXmlObject = new \SimpleXMLElement($rawResult);
+			$this->client->checkIfError($resultXmlObject->result);
+			$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaEventNotificationTemplate");
+			$this->client->validateObjectType($resultObject, "Kaltura_Client_EventNotification_Type_EventNotificationTemplate");
+		}
+			return $resultObject;
 	}
 
 	/**
@@ -269,11 +335,17 @@ class Kaltura_Client_EventNotification_EventNotificationTemplateService extends 
 		$this->client->queueServiceActionCall("eventnotification_eventnotificationtemplate", "updateStatus", "KalturaEventNotificationTemplate", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaEventNotificationTemplate");
-		$this->client->validateObjectType($resultObject, "Kaltura_Client_EventNotification_Type_EventNotificationTemplate");
-		return $resultObject;
+		$rawResult = $this->client->doQueue();
+		if ($this->client->getConfig()->format === Kaltura_Client_ClientBase::KALTURA_SERVICE_FORMAT_JSON) {
+			$jsObject = json_decode($rawResult);
+			$resultObject = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsObject);
+			return $resultObject;
+		} else {
+			$resultXmlObject = new \SimpleXMLElement($rawResult);
+			$this->client->checkIfError($resultXmlObject->result);
+			$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaEventNotificationTemplate");
+			$this->client->validateObjectType($resultObject, "Kaltura_Client_EventNotification_Type_EventNotificationTemplate");
+		}
+			return $resultObject;
 	}
 }

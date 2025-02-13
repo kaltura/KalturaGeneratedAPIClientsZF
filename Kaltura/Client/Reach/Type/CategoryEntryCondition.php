@@ -38,21 +38,32 @@ class Kaltura_Client_Reach_Type_CategoryEntryCondition extends Kaltura_Client_Ty
 		return 'KalturaCategoryEntryCondition';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->categoryId))
+		if(!is_null($xml) && count($xml->categoryId))
 			$this->categoryId = (int)$xml->categoryId;
-		if(count($xml->categoryIds))
+		if(!is_null($jsonObject) && isset($jsonObject->categoryId))
+			$this->categoryId = (int)$jsonObject->categoryId;
+		if(!is_null($xml) && count($xml->categoryIds))
 			$this->categoryIds = (string)$xml->categoryIds;
-		if(count($xml->categoryUserPermission))
+		if(!is_null($jsonObject) && isset($jsonObject->categoryIds))
+			$this->categoryIds = (string)$jsonObject->categoryIds;
+		if(!is_null($xml) && count($xml->categoryUserPermission))
 			$this->categoryUserPermission = (int)$xml->categoryUserPermission;
-		if(count($xml->comparison))
+		if(!is_null($jsonObject) && isset($jsonObject->categoryUserPermission))
+			$this->categoryUserPermission = (int)$jsonObject->categoryUserPermission;
+		if(!is_null($xml) && count($xml->comparison))
 			$this->comparison = (string)$xml->comparison;
+		if(!is_null($jsonObject) && isset($jsonObject->comparison))
+			$this->comparison = (string)$jsonObject->comparison;
 	}
 	/**
 	 * Category id to check condition for

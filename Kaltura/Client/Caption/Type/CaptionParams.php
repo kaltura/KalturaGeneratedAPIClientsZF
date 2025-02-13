@@ -38,23 +38,36 @@ class Kaltura_Client_Caption_Type_CaptionParams extends Kaltura_Client_Type_Asse
 		return 'KalturaCaptionParams';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->language))
+		if(!is_null($xml) && count($xml->language))
 			$this->language = (string)$xml->language;
-		if(count($xml->isDefault))
+		if(!is_null($jsonObject) && isset($jsonObject->language))
+			$this->language = (string)$jsonObject->language;
+		if(!is_null($xml) && count($xml->isDefault))
 			$this->isDefault = (int)$xml->isDefault;
-		if(count($xml->label))
+		if(!is_null($jsonObject) && isset($jsonObject->isDefault))
+			$this->isDefault = (int)$jsonObject->isDefault;
+		if(!is_null($xml) && count($xml->label))
 			$this->label = (string)$xml->label;
-		if(count($xml->format))
+		if(!is_null($jsonObject) && isset($jsonObject->label))
+			$this->label = (string)$jsonObject->label;
+		if(!is_null($xml) && count($xml->format))
 			$this->format = (string)$xml->format;
-		if(count($xml->sourceParamsId))
+		if(!is_null($jsonObject) && isset($jsonObject->format))
+			$this->format = (string)$jsonObject->format;
+		if(!is_null($xml) && count($xml->sourceParamsId))
 			$this->sourceParamsId = (int)$xml->sourceParamsId;
+		if(!is_null($jsonObject) && isset($jsonObject->sourceParamsId))
+			$this->sourceParamsId = (int)$jsonObject->sourceParamsId;
 	}
 	/**
 	 * The language of the caption content

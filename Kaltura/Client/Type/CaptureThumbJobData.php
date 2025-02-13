@@ -38,31 +38,52 @@ class Kaltura_Client_Type_CaptureThumbJobData extends Kaltura_Client_Type_JobDat
 		return 'KalturaCaptureThumbJobData';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->fileContainer) && !empty($xml->fileContainer))
+		if(!is_null($xml) && count($xml->fileContainer) && !empty($xml->fileContainer))
 			$this->fileContainer = Kaltura_Client_ParseUtils::unmarshalObject($xml->fileContainer, "KalturaFileContainer");
-		if(count($xml->actualSrcFileSyncLocalPath))
+		if(!is_null($jsonObject) && isset($jsonObject->fileContainer) && !empty($jsonObject->fileContainer))
+			$this->fileContainer = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsonObject->fileContainer, "KalturaFileContainer");
+		if(!is_null($xml) && count($xml->actualSrcFileSyncLocalPath))
 			$this->actualSrcFileSyncLocalPath = (string)$xml->actualSrcFileSyncLocalPath;
-		if(count($xml->srcFileSyncRemoteUrl))
+		if(!is_null($jsonObject) && isset($jsonObject->actualSrcFileSyncLocalPath))
+			$this->actualSrcFileSyncLocalPath = (string)$jsonObject->actualSrcFileSyncLocalPath;
+		if(!is_null($xml) && count($xml->srcFileSyncRemoteUrl))
 			$this->srcFileSyncRemoteUrl = (string)$xml->srcFileSyncRemoteUrl;
-		if(count($xml->thumbParamsOutputId))
+		if(!is_null($jsonObject) && isset($jsonObject->srcFileSyncRemoteUrl))
+			$this->srcFileSyncRemoteUrl = (string)$jsonObject->srcFileSyncRemoteUrl;
+		if(!is_null($xml) && count($xml->thumbParamsOutputId))
 			$this->thumbParamsOutputId = (int)$xml->thumbParamsOutputId;
-		if(count($xml->thumbAssetId))
+		if(!is_null($jsonObject) && isset($jsonObject->thumbParamsOutputId))
+			$this->thumbParamsOutputId = (int)$jsonObject->thumbParamsOutputId;
+		if(!is_null($xml) && count($xml->thumbAssetId))
 			$this->thumbAssetId = (string)$xml->thumbAssetId;
-		if(count($xml->srcAssetId))
+		if(!is_null($jsonObject) && isset($jsonObject->thumbAssetId))
+			$this->thumbAssetId = (string)$jsonObject->thumbAssetId;
+		if(!is_null($xml) && count($xml->srcAssetId))
 			$this->srcAssetId = (string)$xml->srcAssetId;
-		if(count($xml->srcAssetEncryptionKey))
+		if(!is_null($jsonObject) && isset($jsonObject->srcAssetId))
+			$this->srcAssetId = (string)$jsonObject->srcAssetId;
+		if(!is_null($xml) && count($xml->srcAssetEncryptionKey))
 			$this->srcAssetEncryptionKey = (string)$xml->srcAssetEncryptionKey;
-		if(count($xml->srcAssetType))
+		if(!is_null($jsonObject) && isset($jsonObject->srcAssetEncryptionKey))
+			$this->srcAssetEncryptionKey = (string)$jsonObject->srcAssetEncryptionKey;
+		if(!is_null($xml) && count($xml->srcAssetType))
 			$this->srcAssetType = (string)$xml->srcAssetType;
-		if(count($xml->thumbPath))
+		if(!is_null($jsonObject) && isset($jsonObject->srcAssetType))
+			$this->srcAssetType = (string)$jsonObject->srcAssetType;
+		if(!is_null($xml) && count($xml->thumbPath))
 			$this->thumbPath = (string)$xml->thumbPath;
+		if(!is_null($jsonObject) && isset($jsonObject->thumbPath))
+			$this->thumbPath = (string)$jsonObject->thumbPath;
 	}
 	/**
 	 * 

@@ -38,34 +38,58 @@ class Kaltura_Client_ContentDistribution_Type_GenericDistributionProfileAction e
 		return 'KalturaGenericDistributionProfileAction';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->protocol))
+		if(!is_null($xml) && count($xml->protocol))
 			$this->protocol = (int)$xml->protocol;
-		if(count($xml->serverUrl))
+		if(!is_null($jsonObject) && isset($jsonObject->protocol))
+			$this->protocol = (int)$jsonObject->protocol;
+		if(!is_null($xml) && count($xml->serverUrl))
 			$this->serverUrl = (string)$xml->serverUrl;
-		if(count($xml->serverPath))
+		if(!is_null($jsonObject) && isset($jsonObject->serverUrl))
+			$this->serverUrl = (string)$jsonObject->serverUrl;
+		if(!is_null($xml) && count($xml->serverPath))
 			$this->serverPath = (string)$xml->serverPath;
-		if(count($xml->username))
+		if(!is_null($jsonObject) && isset($jsonObject->serverPath))
+			$this->serverPath = (string)$jsonObject->serverPath;
+		if(!is_null($xml) && count($xml->username))
 			$this->username = (string)$xml->username;
-		if(count($xml->password))
+		if(!is_null($jsonObject) && isset($jsonObject->username))
+			$this->username = (string)$jsonObject->username;
+		if(!is_null($xml) && count($xml->password))
 			$this->password = (string)$xml->password;
-		if(count($xml->ftpPassiveMode))
+		if(!is_null($jsonObject) && isset($jsonObject->password))
+			$this->password = (string)$jsonObject->password;
+		if(!is_null($xml) && count($xml->ftpPassiveMode))
 		{
 			if(!empty($xml->ftpPassiveMode) && ((int) $xml->ftpPassiveMode === 1 || strtolower((string)$xml->ftpPassiveMode) === 'true'))
 				$this->ftpPassiveMode = true;
 			else
 				$this->ftpPassiveMode = false;
 		}
-		if(count($xml->httpFieldName))
+		if(!is_null($jsonObject) && isset($jsonObject->ftpPassiveMode))
+		{
+			if(!empty($jsonObject->ftpPassiveMode) && ((int) $jsonObject->ftpPassiveMode === 1 || strtolower((string)$jsonObject->ftpPassiveMode) === 'true'))
+				$this->ftpPassiveMode = true;
+			else
+				$this->ftpPassiveMode = false;
+		}
+		if(!is_null($xml) && count($xml->httpFieldName))
 			$this->httpFieldName = (string)$xml->httpFieldName;
-		if(count($xml->httpFileName))
+		if(!is_null($jsonObject) && isset($jsonObject->httpFieldName))
+			$this->httpFieldName = (string)$jsonObject->httpFieldName;
+		if(!is_null($xml) && count($xml->httpFileName))
 			$this->httpFileName = (string)$xml->httpFileName;
+		if(!is_null($jsonObject) && isset($jsonObject->httpFileName))
+			$this->httpFileName = (string)$jsonObject->httpFileName;
 	}
 	/**
 	 * 

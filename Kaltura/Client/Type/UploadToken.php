@@ -38,39 +38,68 @@ class Kaltura_Client_Type_UploadToken extends Kaltura_Client_ObjectBase
 		return 'KalturaUploadToken';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->id))
+		if(!is_null($xml) && count($xml->id))
 			$this->id = (string)$xml->id;
-		if(count($xml->partnerId))
+		if(!is_null($jsonObject) && isset($jsonObject->id))
+			$this->id = (string)$jsonObject->id;
+		if(!is_null($xml) && count($xml->partnerId))
 			$this->partnerId = (int)$xml->partnerId;
-		if(count($xml->userId))
+		if(!is_null($jsonObject) && isset($jsonObject->partnerId))
+			$this->partnerId = (int)$jsonObject->partnerId;
+		if(!is_null($xml) && count($xml->userId))
 			$this->userId = (string)$xml->userId;
-		if(count($xml->status))
+		if(!is_null($jsonObject) && isset($jsonObject->userId))
+			$this->userId = (string)$jsonObject->userId;
+		if(!is_null($xml) && count($xml->status))
 			$this->status = (int)$xml->status;
-		if(count($xml->fileName))
+		if(!is_null($jsonObject) && isset($jsonObject->status))
+			$this->status = (int)$jsonObject->status;
+		if(!is_null($xml) && count($xml->fileName))
 			$this->fileName = (string)$xml->fileName;
-		if(count($xml->fileSize))
+		if(!is_null($jsonObject) && isset($jsonObject->fileName))
+			$this->fileName = (string)$jsonObject->fileName;
+		if(!is_null($xml) && count($xml->fileSize))
 			$this->fileSize = (float)$xml->fileSize;
-		if(count($xml->uploadedFileSize))
+		if(!is_null($jsonObject) && isset($jsonObject->fileSize))
+			$this->fileSize = (float)$jsonObject->fileSize;
+		if(!is_null($xml) && count($xml->uploadedFileSize))
 			$this->uploadedFileSize = (float)$xml->uploadedFileSize;
-		if(count($xml->createdAt))
+		if(!is_null($jsonObject) && isset($jsonObject->uploadedFileSize))
+			$this->uploadedFileSize = (float)$jsonObject->uploadedFileSize;
+		if(!is_null($xml) && count($xml->createdAt))
 			$this->createdAt = (int)$xml->createdAt;
-		if(count($xml->updatedAt))
+		if(!is_null($jsonObject) && isset($jsonObject->createdAt))
+			$this->createdAt = (int)$jsonObject->createdAt;
+		if(!is_null($xml) && count($xml->updatedAt))
 			$this->updatedAt = (int)$xml->updatedAt;
-		if(count($xml->uploadUrl))
+		if(!is_null($jsonObject) && isset($jsonObject->updatedAt))
+			$this->updatedAt = (int)$jsonObject->updatedAt;
+		if(!is_null($xml) && count($xml->uploadUrl))
 			$this->uploadUrl = (string)$xml->uploadUrl;
-		if(count($xml->autoFinalize))
+		if(!is_null($jsonObject) && isset($jsonObject->uploadUrl))
+			$this->uploadUrl = (string)$jsonObject->uploadUrl;
+		if(!is_null($xml) && count($xml->autoFinalize))
 			$this->autoFinalize = (int)$xml->autoFinalize;
-		if(count($xml->attachedObjectType))
+		if(!is_null($jsonObject) && isset($jsonObject->autoFinalize))
+			$this->autoFinalize = (int)$jsonObject->autoFinalize;
+		if(!is_null($xml) && count($xml->attachedObjectType))
 			$this->attachedObjectType = (string)$xml->attachedObjectType;
-		if(count($xml->attachedObjectId))
+		if(!is_null($jsonObject) && isset($jsonObject->attachedObjectType))
+			$this->attachedObjectType = (string)$jsonObject->attachedObjectType;
+		if(!is_null($xml) && count($xml->attachedObjectId))
 			$this->attachedObjectId = (string)$xml->attachedObjectId;
+		if(!is_null($jsonObject) && isset($jsonObject->attachedObjectId))
+			$this->attachedObjectId = (string)$jsonObject->attachedObjectId;
 	}
 	/**
 	 * Upload token unique ID

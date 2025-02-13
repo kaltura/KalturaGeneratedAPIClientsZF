@@ -38,23 +38,37 @@ class Kaltura_Client_FacebookDistribution_Type_FacebookDistributionJobProviderDa
 		return 'KalturaFacebookDistributionJobProviderData';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->videoAssetFilePath))
+		if(!is_null($xml) && count($xml->videoAssetFilePath))
 			$this->videoAssetFilePath = (string)$xml->videoAssetFilePath;
-		if(count($xml->thumbAssetId))
+		if(!is_null($jsonObject) && isset($jsonObject->videoAssetFilePath))
+			$this->videoAssetFilePath = (string)$jsonObject->videoAssetFilePath;
+		if(!is_null($xml) && count($xml->thumbAssetId))
 			$this->thumbAssetId = (string)$xml->thumbAssetId;
-		if(count($xml->captionsInfo))
+		if(!is_null($jsonObject) && isset($jsonObject->thumbAssetId))
+			$this->thumbAssetId = (string)$jsonObject->thumbAssetId;
+		if(!is_null($xml) && count($xml->captionsInfo))
 		{
 			if(empty($xml->captionsInfo))
 				$this->captionsInfo = array();
 			else
 				$this->captionsInfo = Kaltura_Client_ParseUtils::unmarshalArray($xml->captionsInfo, "KalturaFacebookCaptionDistributionInfo");
+		}
+		if(!is_null($jsonObject) && isset($jsonObject->captionsInfo))
+		{
+			if(empty($jsonObject->captionsInfo))
+				$this->captionsInfo = array();
+			else
+				$this->captionsInfo = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsonObject->captionsInfo, "KalturaFacebookCaptionDistributionInfo");
 		}
 	}
 	/**

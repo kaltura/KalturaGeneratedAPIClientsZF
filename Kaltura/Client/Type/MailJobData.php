@@ -38,52 +38,94 @@ class Kaltura_Client_Type_MailJobData extends Kaltura_Client_Type_JobData
 		return 'KalturaMailJobData';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->mailType))
+		if(!is_null($xml) && count($xml->mailType))
 			$this->mailType = (string)$xml->mailType;
-		if(count($xml->mailPriority))
+		if(!is_null($jsonObject) && isset($jsonObject->mailType))
+			$this->mailType = (string)$jsonObject->mailType;
+		if(!is_null($xml) && count($xml->mailPriority))
 			$this->mailPriority = (int)$xml->mailPriority;
-		if(count($xml->status))
+		if(!is_null($jsonObject) && isset($jsonObject->mailPriority))
+			$this->mailPriority = (int)$jsonObject->mailPriority;
+		if(!is_null($xml) && count($xml->status))
 			$this->status = (int)$xml->status;
-		if(count($xml->recipientName))
+		if(!is_null($jsonObject) && isset($jsonObject->status))
+			$this->status = (int)$jsonObject->status;
+		if(!is_null($xml) && count($xml->recipientName))
 			$this->recipientName = (string)$xml->recipientName;
-		if(count($xml->recipientEmail))
+		if(!is_null($jsonObject) && isset($jsonObject->recipientName))
+			$this->recipientName = (string)$jsonObject->recipientName;
+		if(!is_null($xml) && count($xml->recipientEmail))
 			$this->recipientEmail = (string)$xml->recipientEmail;
-		if(count($xml->recipientId))
+		if(!is_null($jsonObject) && isset($jsonObject->recipientEmail))
+			$this->recipientEmail = (string)$jsonObject->recipientEmail;
+		if(!is_null($xml) && count($xml->recipientId))
 			$this->recipientId = (int)$xml->recipientId;
-		if(count($xml->fromName))
+		if(!is_null($jsonObject) && isset($jsonObject->recipientId))
+			$this->recipientId = (int)$jsonObject->recipientId;
+		if(!is_null($xml) && count($xml->fromName))
 			$this->fromName = (string)$xml->fromName;
-		if(count($xml->fromEmail))
+		if(!is_null($jsonObject) && isset($jsonObject->fromName))
+			$this->fromName = (string)$jsonObject->fromName;
+		if(!is_null($xml) && count($xml->fromEmail))
 			$this->fromEmail = (string)$xml->fromEmail;
-		if(count($xml->bodyParams))
+		if(!is_null($jsonObject) && isset($jsonObject->fromEmail))
+			$this->fromEmail = (string)$jsonObject->fromEmail;
+		if(!is_null($xml) && count($xml->bodyParams))
 			$this->bodyParams = (string)$xml->bodyParams;
-		if(count($xml->subjectParams))
+		if(!is_null($jsonObject) && isset($jsonObject->bodyParams))
+			$this->bodyParams = (string)$jsonObject->bodyParams;
+		if(!is_null($xml) && count($xml->subjectParams))
 			$this->subjectParams = (string)$xml->subjectParams;
-		if(count($xml->dynamicEmailContents) && !empty($xml->dynamicEmailContents))
+		if(!is_null($jsonObject) && isset($jsonObject->subjectParams))
+			$this->subjectParams = (string)$jsonObject->subjectParams;
+		if(!is_null($xml) && count($xml->dynamicEmailContents) && !empty($xml->dynamicEmailContents))
 			$this->dynamicEmailContents = Kaltura_Client_ParseUtils::unmarshalObject($xml->dynamicEmailContents, "KalturaDynamicEmailContents");
-		if(count($xml->templatePath))
+		if(!is_null($jsonObject) && isset($jsonObject->dynamicEmailContents) && !empty($jsonObject->dynamicEmailContents))
+			$this->dynamicEmailContents = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsonObject->dynamicEmailContents, "KalturaDynamicEmailContents");
+		if(!is_null($xml) && count($xml->templatePath))
 			$this->templatePath = (string)$xml->templatePath;
-		if(count($xml->language))
+		if(!is_null($jsonObject) && isset($jsonObject->templatePath))
+			$this->templatePath = (string)$jsonObject->templatePath;
+		if(!is_null($xml) && count($xml->language))
 			$this->language = (string)$xml->language;
-		if(count($xml->campaignId))
+		if(!is_null($jsonObject) && isset($jsonObject->language))
+			$this->language = (string)$jsonObject->language;
+		if(!is_null($xml) && count($xml->campaignId))
 			$this->campaignId = (int)$xml->campaignId;
-		if(count($xml->minSendDate))
+		if(!is_null($jsonObject) && isset($jsonObject->campaignId))
+			$this->campaignId = (int)$jsonObject->campaignId;
+		if(!is_null($xml) && count($xml->minSendDate))
 			$this->minSendDate = (int)$xml->minSendDate;
-		if(count($xml->isHtml))
+		if(!is_null($jsonObject) && isset($jsonObject->minSendDate))
+			$this->minSendDate = (int)$jsonObject->minSendDate;
+		if(!is_null($xml) && count($xml->isHtml))
 		{
 			if(!empty($xml->isHtml) && ((int) $xml->isHtml === 1 || strtolower((string)$xml->isHtml) === 'true'))
 				$this->isHtml = true;
 			else
 				$this->isHtml = false;
 		}
-		if(count($xml->separator))
+		if(!is_null($jsonObject) && isset($jsonObject->isHtml))
+		{
+			if(!empty($jsonObject->isHtml) && ((int) $jsonObject->isHtml === 1 || strtolower((string)$jsonObject->isHtml) === 'true'))
+				$this->isHtml = true;
+			else
+				$this->isHtml = false;
+		}
+		if(!is_null($xml) && count($xml->separator))
 			$this->separator = (string)$xml->separator;
+		if(!is_null($jsonObject) && isset($jsonObject->separator))
+			$this->separator = (string)$jsonObject->separator;
 	}
 	/**
 	 * 

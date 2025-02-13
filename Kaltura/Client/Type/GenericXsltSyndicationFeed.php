@@ -38,21 +38,33 @@ class Kaltura_Client_Type_GenericXsltSyndicationFeed extends Kaltura_Client_Type
 		return 'KalturaGenericXsltSyndicationFeed';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->xslt))
+		if(!is_null($xml) && count($xml->xslt))
 			$this->xslt = (string)$xml->xslt;
-		if(count($xml->itemXpathsToExtend))
+		if(!is_null($jsonObject) && isset($jsonObject->xslt))
+			$this->xslt = (string)$jsonObject->xslt;
+		if(!is_null($xml) && count($xml->itemXpathsToExtend))
 		{
 			if(empty($xml->itemXpathsToExtend))
 				$this->itemXpathsToExtend = array();
 			else
 				$this->itemXpathsToExtend = Kaltura_Client_ParseUtils::unmarshalArray($xml->itemXpathsToExtend, "KalturaExtendingItemMrssParameter");
+		}
+		if(!is_null($jsonObject) && isset($jsonObject->itemXpathsToExtend))
+		{
+			if(empty($jsonObject->itemXpathsToExtend))
+				$this->itemXpathsToExtend = array();
+			else
+				$this->itemXpathsToExtend = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsonObject->itemXpathsToExtend, "KalturaExtendingItemMrssParameter");
 		}
 	}
 	/**

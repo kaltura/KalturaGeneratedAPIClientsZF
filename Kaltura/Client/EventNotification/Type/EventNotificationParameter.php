@@ -38,19 +38,28 @@ class Kaltura_Client_EventNotification_Type_EventNotificationParameter extends K
 		return 'KalturaEventNotificationParameter';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->key))
+		if(!is_null($xml) && count($xml->key))
 			$this->key = (string)$xml->key;
-		if(count($xml->description))
+		if(!is_null($jsonObject) && isset($jsonObject->key))
+			$this->key = (string)$jsonObject->key;
+		if(!is_null($xml) && count($xml->description))
 			$this->description = (string)$xml->description;
-		if(count($xml->value) && !empty($xml->value))
+		if(!is_null($jsonObject) && isset($jsonObject->description))
+			$this->description = (string)$jsonObject->description;
+		if(!is_null($xml) && count($xml->value) && !empty($xml->value))
 			$this->value = Kaltura_Client_ParseUtils::unmarshalObject($xml->value, "KalturaStringValue");
+		if(!is_null($jsonObject) && isset($jsonObject->value) && !empty($jsonObject->value))
+			$this->value = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsonObject->value, "KalturaStringValue");
 	}
 	/**
 	 * The key in the subject and body to be replaced with the dynamic value

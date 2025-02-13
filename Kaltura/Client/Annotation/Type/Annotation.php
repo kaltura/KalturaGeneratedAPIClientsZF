@@ -38,31 +38,52 @@ class Kaltura_Client_Annotation_Type_Annotation extends Kaltura_Client_CuePoint_
 		return 'KalturaAnnotation';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->parentId))
+		if(!is_null($xml) && count($xml->parentId))
 			$this->parentId = (string)$xml->parentId;
-		if(count($xml->text))
+		if(!is_null($jsonObject) && isset($jsonObject->parentId))
+			$this->parentId = (string)$jsonObject->parentId;
+		if(!is_null($xml) && count($xml->text))
 			$this->text = (string)$xml->text;
-		if(count($xml->endTime))
+		if(!is_null($jsonObject) && isset($jsonObject->text))
+			$this->text = (string)$jsonObject->text;
+		if(!is_null($xml) && count($xml->endTime))
 			$this->endTime = (int)$xml->endTime;
-		if(count($xml->duration))
+		if(!is_null($jsonObject) && isset($jsonObject->endTime))
+			$this->endTime = (int)$jsonObject->endTime;
+		if(!is_null($xml) && count($xml->duration))
 			$this->duration = (int)$xml->duration;
-		if(count($xml->depth))
+		if(!is_null($jsonObject) && isset($jsonObject->duration))
+			$this->duration = (int)$jsonObject->duration;
+		if(!is_null($xml) && count($xml->depth))
 			$this->depth = (int)$xml->depth;
-		if(count($xml->childrenCount))
+		if(!is_null($jsonObject) && isset($jsonObject->depth))
+			$this->depth = (int)$jsonObject->depth;
+		if(!is_null($xml) && count($xml->childrenCount))
 			$this->childrenCount = (int)$xml->childrenCount;
-		if(count($xml->directChildrenCount))
+		if(!is_null($jsonObject) && isset($jsonObject->childrenCount))
+			$this->childrenCount = (int)$jsonObject->childrenCount;
+		if(!is_null($xml) && count($xml->directChildrenCount))
 			$this->directChildrenCount = (int)$xml->directChildrenCount;
-		if(count($xml->isPublic))
+		if(!is_null($jsonObject) && isset($jsonObject->directChildrenCount))
+			$this->directChildrenCount = (int)$jsonObject->directChildrenCount;
+		if(!is_null($xml) && count($xml->isPublic))
 			$this->isPublic = (int)$xml->isPublic;
-		if(count($xml->searchableOnEntry))
+		if(!is_null($jsonObject) && isset($jsonObject->isPublic))
+			$this->isPublic = (int)$jsonObject->isPublic;
+		if(!is_null($xml) && count($xml->searchableOnEntry))
 			$this->searchableOnEntry = (int)$xml->searchableOnEntry;
+		if(!is_null($jsonObject) && isset($jsonObject->searchableOnEntry))
+			$this->searchableOnEntry = (int)$jsonObject->searchableOnEntry;
 	}
 	/**
 	 * 

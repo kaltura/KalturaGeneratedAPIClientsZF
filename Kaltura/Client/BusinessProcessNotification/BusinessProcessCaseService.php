@@ -52,9 +52,15 @@ class Kaltura_Client_BusinessProcessNotification_BusinessProcessCaseService exte
 		$this->client->queueServiceActionCall("businessprocessnotification_businessprocesscase", "abort", null, $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
+		$rawResult = $this->client->doQueue();
+		if ($this->client->getConfig()->format === Kaltura_Client_ClientBase::KALTURA_SERVICE_FORMAT_JSON) {
+			$jsObject = json_decode($rawResult);
+			$resultObject = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsObject);
+			return $resultObject;
+		} else {
+			$resultXmlObject = new \SimpleXMLElement($rawResult);
+			$this->client->checkIfError($resultXmlObject->result);
+		}
 	}
 
 	/**
@@ -69,14 +75,20 @@ class Kaltura_Client_BusinessProcessNotification_BusinessProcessCaseService exte
 		$this->client->queueServiceActionCall("businessprocessnotification_businessprocesscase", "list", "KalturaBusinessProcessCase", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = Kaltura_Client_ParseUtils::unmarshalArray($resultXmlObject->result, "KalturaBusinessProcessCase");
-		foreach($resultObject as $resultObjectItem){
-			$this->client->validateObjectType($resultObjectItem, "Kaltura_Client_BusinessProcessNotification_Type_BusinessProcessCase");
+		$rawResult = $this->client->doQueue();
+		if ($this->client->getConfig()->format === Kaltura_Client_ClientBase::KALTURA_SERVICE_FORMAT_JSON) {
+			$jsObject = json_decode($rawResult);
+			$resultObject = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsObject);
+			return $resultObject;
+		} else {
+			$resultXmlObject = new \SimpleXMLElement($rawResult);
+			$this->client->checkIfError($resultXmlObject->result);
+			$resultObject = Kaltura_Client_ParseUtils::unmarshalArray($resultXmlObject->result, "KalturaBusinessProcessCase");
+			foreach($resultObject as $resultObjectItem){
+				$this->client->validateObjectType($resultObjectItem, "Kaltura_Client_BusinessProcessNotification_Type_BusinessProcessCase");
+			}
 		}
-		return $resultObject;
+			return $resultObject;
 	}
 
 	/**
@@ -94,6 +106,6 @@ class Kaltura_Client_BusinessProcessNotification_BusinessProcessCaseService exte
 		$this->client->addParam($kparams, "businessProcessStartNotificationTemplateId", $businessProcessStartNotificationTemplateId);
 		$this->client->queueServiceActionCall('businessprocessnotification_businessprocesscase', 'serveDiagram', null, $kparams);
 		$resultObject = $this->client->getServeUrl();
-		return $resultObject;
+			return $resultObject;
 	}
 }

@@ -50,12 +50,18 @@ class Kaltura_Client_ScheduledTask_ScheduledTaskProfileService extends Kaltura_C
 		$this->client->queueServiceActionCall("scheduledtask_scheduledtaskprofile", "add", "KalturaScheduledTaskProfile", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaScheduledTaskProfile");
-		$this->client->validateObjectType($resultObject, "Kaltura_Client_ScheduledTask_Type_ScheduledTaskProfile");
-		return $resultObject;
+		$rawResult = $this->client->doQueue();
+		if ($this->client->getConfig()->format === Kaltura_Client_ClientBase::KALTURA_SERVICE_FORMAT_JSON) {
+			$jsObject = json_decode($rawResult);
+			$resultObject = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsObject);
+			return $resultObject;
+		} else {
+			$resultXmlObject = new \SimpleXMLElement($rawResult);
+			$this->client->checkIfError($resultXmlObject->result);
+			$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaScheduledTaskProfile");
+			$this->client->validateObjectType($resultObject, "Kaltura_Client_ScheduledTask_Type_ScheduledTaskProfile");
+		}
+			return $resultObject;
 	}
 
 	/**
@@ -69,9 +75,15 @@ class Kaltura_Client_ScheduledTask_ScheduledTaskProfileService extends Kaltura_C
 		$this->client->queueServiceActionCall("scheduledtask_scheduledtaskprofile", "delete", null, $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
+		$rawResult = $this->client->doQueue();
+		if ($this->client->getConfig()->format === Kaltura_Client_ClientBase::KALTURA_SERVICE_FORMAT_JSON) {
+			$jsObject = json_decode($rawResult);
+			$resultObject = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsObject);
+			return $resultObject;
+		} else {
+			$resultXmlObject = new \SimpleXMLElement($rawResult);
+			$this->client->checkIfError($resultXmlObject->result);
+		}
 	}
 
 	/**
@@ -85,12 +97,18 @@ class Kaltura_Client_ScheduledTask_ScheduledTaskProfileService extends Kaltura_C
 		$this->client->queueServiceActionCall("scheduledtask_scheduledtaskprofile", "get", "KalturaScheduledTaskProfile", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaScheduledTaskProfile");
-		$this->client->validateObjectType($resultObject, "Kaltura_Client_ScheduledTask_Type_ScheduledTaskProfile");
-		return $resultObject;
+		$rawResult = $this->client->doQueue();
+		if ($this->client->getConfig()->format === Kaltura_Client_ClientBase::KALTURA_SERVICE_FORMAT_JSON) {
+			$jsObject = json_decode($rawResult);
+			$resultObject = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsObject);
+			return $resultObject;
+		} else {
+			$resultXmlObject = new \SimpleXMLElement($rawResult);
+			$this->client->checkIfError($resultXmlObject->result);
+			$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaScheduledTaskProfile");
+			$this->client->validateObjectType($resultObject, "Kaltura_Client_ScheduledTask_Type_ScheduledTaskProfile");
+		}
+			return $resultObject;
 	}
 
 	/**
@@ -104,12 +122,18 @@ class Kaltura_Client_ScheduledTask_ScheduledTaskProfileService extends Kaltura_C
 		$this->client->queueServiceActionCall("scheduledtask_scheduledtaskprofile", "getDryRunResults", "KalturaObjectListResponse", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaObjectListResponse");
-		$this->client->validateObjectType($resultObject, "Kaltura_Client_Type_ObjectListResponse");
-		return $resultObject;
+		$rawResult = $this->client->doQueue();
+		if ($this->client->getConfig()->format === Kaltura_Client_ClientBase::KALTURA_SERVICE_FORMAT_JSON) {
+			$jsObject = json_decode($rawResult);
+			$resultObject = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsObject);
+			return $resultObject;
+		} else {
+			$resultXmlObject = new \SimpleXMLElement($rawResult);
+			$this->client->checkIfError($resultXmlObject->result);
+			$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaObjectListResponse");
+			$this->client->validateObjectType($resultObject, "Kaltura_Client_Type_ObjectListResponse");
+		}
+			return $resultObject;
 	}
 
 	/**
@@ -126,12 +150,18 @@ class Kaltura_Client_ScheduledTask_ScheduledTaskProfileService extends Kaltura_C
 		$this->client->queueServiceActionCall("scheduledtask_scheduledtaskprofile", "list", "KalturaScheduledTaskProfileListResponse", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaScheduledTaskProfileListResponse");
-		$this->client->validateObjectType($resultObject, "Kaltura_Client_ScheduledTask_Type_ScheduledTaskProfileListResponse");
-		return $resultObject;
+		$rawResult = $this->client->doQueue();
+		if ($this->client->getConfig()->format === Kaltura_Client_ClientBase::KALTURA_SERVICE_FORMAT_JSON) {
+			$jsObject = json_decode($rawResult);
+			$resultObject = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsObject);
+			return $resultObject;
+		} else {
+			$resultXmlObject = new \SimpleXMLElement($rawResult);
+			$this->client->checkIfError($resultXmlObject->result);
+			$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaScheduledTaskProfileListResponse");
+			$this->client->validateObjectType($resultObject, "Kaltura_Client_ScheduledTask_Type_ScheduledTaskProfileListResponse");
+		}
+			return $resultObject;
 	}
 
 	/**
@@ -146,11 +176,17 @@ class Kaltura_Client_ScheduledTask_ScheduledTaskProfileService extends Kaltura_C
 		$this->client->queueServiceActionCall("scheduledtask_scheduledtaskprofile", "requestDryRun", null, $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = (int)Kaltura_Client_ParseUtils::unmarshalSimpleType($resultXmlObject->result);
-		return $resultObject;
+		$rawResult = $this->client->doQueue();
+		if ($this->client->getConfig()->format === Kaltura_Client_ClientBase::KALTURA_SERVICE_FORMAT_JSON) {
+			$jsObject = json_decode($rawResult);
+			$resultObject = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsObject);
+			return $resultObject;
+		} else {
+			$resultXmlObject = new \SimpleXMLElement($rawResult);
+			$this->client->checkIfError($resultXmlObject->result);
+			$resultObject = (int)Kaltura_Client_ParseUtils::unmarshalSimpleType($resultXmlObject->result);
+		}
+			return $resultObject;
 	}
 
 	/**
@@ -166,7 +202,7 @@ class Kaltura_Client_ScheduledTask_ScheduledTaskProfileService extends Kaltura_C
 		$this->client->addParam($kparams, "requestId", $requestId);
 		$this->client->queueServiceActionCall('scheduledtask_scheduledtaskprofile', 'serveDryRunResults', null, $kparams);
 		$resultObject = $this->client->getServeUrl();
-		return $resultObject;
+			return $resultObject;
 	}
 
 	/**
@@ -181,11 +217,17 @@ class Kaltura_Client_ScheduledTask_ScheduledTaskProfileService extends Kaltura_C
 		$this->client->queueServiceActionCall("scheduledtask_scheduledtaskprofile", "update", "KalturaScheduledTaskProfile", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaScheduledTaskProfile");
-		$this->client->validateObjectType($resultObject, "Kaltura_Client_ScheduledTask_Type_ScheduledTaskProfile");
-		return $resultObject;
+		$rawResult = $this->client->doQueue();
+		if ($this->client->getConfig()->format === Kaltura_Client_ClientBase::KALTURA_SERVICE_FORMAT_JSON) {
+			$jsObject = json_decode($rawResult);
+			$resultObject = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsObject);
+			return $resultObject;
+		} else {
+			$resultXmlObject = new \SimpleXMLElement($rawResult);
+			$this->client->checkIfError($resultXmlObject->result);
+			$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaScheduledTaskProfile");
+			$this->client->validateObjectType($resultObject, "Kaltura_Client_ScheduledTask_Type_ScheduledTaskProfile");
+		}
+			return $resultObject;
 	}
 }

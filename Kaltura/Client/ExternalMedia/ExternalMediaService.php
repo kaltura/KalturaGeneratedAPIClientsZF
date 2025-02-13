@@ -50,12 +50,18 @@ class Kaltura_Client_ExternalMedia_ExternalMediaService extends Kaltura_Client_S
 		$this->client->queueServiceActionCall("externalmedia_externalmedia", "add", "KalturaExternalMediaEntry", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaExternalMediaEntry");
-		$this->client->validateObjectType($resultObject, "Kaltura_Client_ExternalMedia_Type_ExternalMediaEntry");
-		return $resultObject;
+		$rawResult = $this->client->doQueue();
+		if ($this->client->getConfig()->format === Kaltura_Client_ClientBase::KALTURA_SERVICE_FORMAT_JSON) {
+			$jsObject = json_decode($rawResult);
+			$resultObject = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsObject);
+			return $resultObject;
+		} else {
+			$resultXmlObject = new \SimpleXMLElement($rawResult);
+			$this->client->checkIfError($resultXmlObject->result);
+			$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaExternalMediaEntry");
+			$this->client->validateObjectType($resultObject, "Kaltura_Client_ExternalMedia_Type_ExternalMediaEntry");
+		}
+			return $resultObject;
 	}
 
 	/**
@@ -70,11 +76,17 @@ class Kaltura_Client_ExternalMedia_ExternalMediaService extends Kaltura_Client_S
 		$this->client->queueServiceActionCall("externalmedia_externalmedia", "count", null, $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = (int)Kaltura_Client_ParseUtils::unmarshalSimpleType($resultXmlObject->result);
-		return $resultObject;
+		$rawResult = $this->client->doQueue();
+		if ($this->client->getConfig()->format === Kaltura_Client_ClientBase::KALTURA_SERVICE_FORMAT_JSON) {
+			$jsObject = json_decode($rawResult);
+			$resultObject = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsObject);
+			return $resultObject;
+		} else {
+			$resultXmlObject = new \SimpleXMLElement($rawResult);
+			$this->client->checkIfError($resultXmlObject->result);
+			$resultObject = (int)Kaltura_Client_ParseUtils::unmarshalSimpleType($resultXmlObject->result);
+		}
+			return $resultObject;
 	}
 
 	/**
@@ -88,9 +100,15 @@ class Kaltura_Client_ExternalMedia_ExternalMediaService extends Kaltura_Client_S
 		$this->client->queueServiceActionCall("externalmedia_externalmedia", "delete", null, $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
+		$rawResult = $this->client->doQueue();
+		if ($this->client->getConfig()->format === Kaltura_Client_ClientBase::KALTURA_SERVICE_FORMAT_JSON) {
+			$jsObject = json_decode($rawResult);
+			$resultObject = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsObject);
+			return $resultObject;
+		} else {
+			$resultXmlObject = new \SimpleXMLElement($rawResult);
+			$this->client->checkIfError($resultXmlObject->result);
+		}
 	}
 
 	/**
@@ -104,12 +122,18 @@ class Kaltura_Client_ExternalMedia_ExternalMediaService extends Kaltura_Client_S
 		$this->client->queueServiceActionCall("externalmedia_externalmedia", "get", "KalturaExternalMediaEntry", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaExternalMediaEntry");
-		$this->client->validateObjectType($resultObject, "Kaltura_Client_ExternalMedia_Type_ExternalMediaEntry");
-		return $resultObject;
+		$rawResult = $this->client->doQueue();
+		if ($this->client->getConfig()->format === Kaltura_Client_ClientBase::KALTURA_SERVICE_FORMAT_JSON) {
+			$jsObject = json_decode($rawResult);
+			$resultObject = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsObject);
+			return $resultObject;
+		} else {
+			$resultXmlObject = new \SimpleXMLElement($rawResult);
+			$this->client->checkIfError($resultXmlObject->result);
+			$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaExternalMediaEntry");
+			$this->client->validateObjectType($resultObject, "Kaltura_Client_ExternalMedia_Type_ExternalMediaEntry");
+		}
+			return $resultObject;
 	}
 
 	/**
@@ -126,12 +150,18 @@ class Kaltura_Client_ExternalMedia_ExternalMediaService extends Kaltura_Client_S
 		$this->client->queueServiceActionCall("externalmedia_externalmedia", "list", "KalturaExternalMediaEntryListResponse", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaExternalMediaEntryListResponse");
-		$this->client->validateObjectType($resultObject, "Kaltura_Client_ExternalMedia_Type_ExternalMediaEntryListResponse");
-		return $resultObject;
+		$rawResult = $this->client->doQueue();
+		if ($this->client->getConfig()->format === Kaltura_Client_ClientBase::KALTURA_SERVICE_FORMAT_JSON) {
+			$jsObject = json_decode($rawResult);
+			$resultObject = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsObject);
+			return $resultObject;
+		} else {
+			$resultXmlObject = new \SimpleXMLElement($rawResult);
+			$this->client->checkIfError($resultXmlObject->result);
+			$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaExternalMediaEntryListResponse");
+			$this->client->validateObjectType($resultObject, "Kaltura_Client_ExternalMedia_Type_ExternalMediaEntryListResponse");
+		}
+			return $resultObject;
 	}
 
 	/**
@@ -146,11 +176,17 @@ class Kaltura_Client_ExternalMedia_ExternalMediaService extends Kaltura_Client_S
 		$this->client->queueServiceActionCall("externalmedia_externalmedia", "update", "KalturaExternalMediaEntry", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaExternalMediaEntry");
-		$this->client->validateObjectType($resultObject, "Kaltura_Client_ExternalMedia_Type_ExternalMediaEntry");
-		return $resultObject;
+		$rawResult = $this->client->doQueue();
+		if ($this->client->getConfig()->format === Kaltura_Client_ClientBase::KALTURA_SERVICE_FORMAT_JSON) {
+			$jsObject = json_decode($rawResult);
+			$resultObject = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsObject);
+			return $resultObject;
+		} else {
+			$resultXmlObject = new \SimpleXMLElement($rawResult);
+			$this->client->checkIfError($resultXmlObject->result);
+			$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaExternalMediaEntry");
+			$this->client->validateObjectType($resultObject, "Kaltura_Client_ExternalMedia_Type_ExternalMediaEntry");
+		}
+			return $resultObject;
 	}
 }

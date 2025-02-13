@@ -52,12 +52,18 @@ class Kaltura_Client_Metadata_MetadataProfileService extends Kaltura_Client_Serv
 		$this->client->queueServiceActionCall("metadata_metadataprofile", "add", "KalturaMetadataProfile", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaMetadataProfile");
-		$this->client->validateObjectType($resultObject, "Kaltura_Client_Metadata_Type_MetadataProfile");
-		return $resultObject;
+		$rawResult = $this->client->doQueue();
+		if ($this->client->getConfig()->format === Kaltura_Client_ClientBase::KALTURA_SERVICE_FORMAT_JSON) {
+			$jsObject = json_decode($rawResult);
+			$resultObject = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsObject);
+			return $resultObject;
+		} else {
+			$resultXmlObject = new \SimpleXMLElement($rawResult);
+			$this->client->checkIfError($resultXmlObject->result);
+			$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaMetadataProfile");
+			$this->client->validateObjectType($resultObject, "Kaltura_Client_Metadata_Type_MetadataProfile");
+		}
+			return $resultObject;
 	}
 
 	/**
@@ -74,12 +80,18 @@ class Kaltura_Client_Metadata_MetadataProfileService extends Kaltura_Client_Serv
 		$this->client->queueServiceActionCall("metadata_metadataprofile", "addFromFile",  "KalturaMetadataProfile", $kparams, $kfiles);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaMetadataProfile");
-		$this->client->validateObjectType($resultObject, "Kaltura_Client_Metadata_Type_MetadataProfile");
-		return $resultObject;
+		$rawResult = $this->client->doQueue();
+		if ($this->client->getConfig()->format === Kaltura_Client_ClientBase::KALTURA_SERVICE_FORMAT_JSON) {
+			$jsObject = json_decode($rawResult);
+			$resultObject = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsObject);
+			return $resultObject;
+		} else {
+			$resultXmlObject = new \SimpleXMLElement($rawResult);
+			$this->client->checkIfError($resultXmlObject->result);
+			$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaMetadataProfile");
+			$this->client->validateObjectType($resultObject, "Kaltura_Client_Metadata_Type_MetadataProfile");
+		}
+			return $resultObject;
 	}
 
 	/**
@@ -93,9 +105,15 @@ class Kaltura_Client_Metadata_MetadataProfileService extends Kaltura_Client_Serv
 		$this->client->queueServiceActionCall("metadata_metadataprofile", "delete", null, $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
+		$rawResult = $this->client->doQueue();
+		if ($this->client->getConfig()->format === Kaltura_Client_ClientBase::KALTURA_SERVICE_FORMAT_JSON) {
+			$jsObject = json_decode($rawResult);
+			$resultObject = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsObject);
+			return $resultObject;
+		} else {
+			$resultXmlObject = new \SimpleXMLElement($rawResult);
+			$this->client->checkIfError($resultXmlObject->result);
+		}
 	}
 
 	/**
@@ -109,12 +127,18 @@ class Kaltura_Client_Metadata_MetadataProfileService extends Kaltura_Client_Serv
 		$this->client->queueServiceActionCall("metadata_metadataprofile", "get", "KalturaMetadataProfile", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaMetadataProfile");
-		$this->client->validateObjectType($resultObject, "Kaltura_Client_Metadata_Type_MetadataProfile");
-		return $resultObject;
+		$rawResult = $this->client->doQueue();
+		if ($this->client->getConfig()->format === Kaltura_Client_ClientBase::KALTURA_SERVICE_FORMAT_JSON) {
+			$jsObject = json_decode($rawResult);
+			$resultObject = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsObject);
+			return $resultObject;
+		} else {
+			$resultXmlObject = new \SimpleXMLElement($rawResult);
+			$this->client->checkIfError($resultXmlObject->result);
+			$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaMetadataProfile");
+			$this->client->validateObjectType($resultObject, "Kaltura_Client_Metadata_Type_MetadataProfile");
+		}
+			return $resultObject;
 	}
 
 	/**
@@ -131,12 +155,18 @@ class Kaltura_Client_Metadata_MetadataProfileService extends Kaltura_Client_Serv
 		$this->client->queueServiceActionCall("metadata_metadataprofile", "list", "KalturaMetadataProfileListResponse", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaMetadataProfileListResponse");
-		$this->client->validateObjectType($resultObject, "Kaltura_Client_Metadata_Type_MetadataProfileListResponse");
-		return $resultObject;
+		$rawResult = $this->client->doQueue();
+		if ($this->client->getConfig()->format === Kaltura_Client_ClientBase::KALTURA_SERVICE_FORMAT_JSON) {
+			$jsObject = json_decode($rawResult);
+			$resultObject = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsObject);
+			return $resultObject;
+		} else {
+			$resultXmlObject = new \SimpleXMLElement($rawResult);
+			$this->client->checkIfError($resultXmlObject->result);
+			$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaMetadataProfileListResponse");
+			$this->client->validateObjectType($resultObject, "Kaltura_Client_Metadata_Type_MetadataProfileListResponse");
+		}
+			return $resultObject;
 	}
 
 	/**
@@ -150,12 +180,18 @@ class Kaltura_Client_Metadata_MetadataProfileService extends Kaltura_Client_Serv
 		$this->client->queueServiceActionCall("metadata_metadataprofile", "listFields", "KalturaMetadataProfileFieldListResponse", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaMetadataProfileFieldListResponse");
-		$this->client->validateObjectType($resultObject, "Kaltura_Client_Metadata_Type_MetadataProfileFieldListResponse");
-		return $resultObject;
+		$rawResult = $this->client->doQueue();
+		if ($this->client->getConfig()->format === Kaltura_Client_ClientBase::KALTURA_SERVICE_FORMAT_JSON) {
+			$jsObject = json_decode($rawResult);
+			$resultObject = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsObject);
+			return $resultObject;
+		} else {
+			$resultXmlObject = new \SimpleXMLElement($rawResult);
+			$this->client->checkIfError($resultXmlObject->result);
+			$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaMetadataProfileFieldListResponse");
+			$this->client->validateObjectType($resultObject, "Kaltura_Client_Metadata_Type_MetadataProfileFieldListResponse");
+		}
+			return $resultObject;
 	}
 
 	/**
@@ -170,12 +206,18 @@ class Kaltura_Client_Metadata_MetadataProfileService extends Kaltura_Client_Serv
 		$this->client->queueServiceActionCall("metadata_metadataprofile", "revert", "KalturaMetadataProfile", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaMetadataProfile");
-		$this->client->validateObjectType($resultObject, "Kaltura_Client_Metadata_Type_MetadataProfile");
-		return $resultObject;
+		$rawResult = $this->client->doQueue();
+		if ($this->client->getConfig()->format === Kaltura_Client_ClientBase::KALTURA_SERVICE_FORMAT_JSON) {
+			$jsObject = json_decode($rawResult);
+			$resultObject = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsObject);
+			return $resultObject;
+		} else {
+			$resultXmlObject = new \SimpleXMLElement($rawResult);
+			$this->client->checkIfError($resultXmlObject->result);
+			$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaMetadataProfile");
+			$this->client->validateObjectType($resultObject, "Kaltura_Client_Metadata_Type_MetadataProfile");
+		}
+			return $resultObject;
 	}
 
 	/**
@@ -191,7 +233,7 @@ class Kaltura_Client_Metadata_MetadataProfileService extends Kaltura_Client_Serv
 		$this->client->addParam($kparams, "id", $id);
 		$this->client->queueServiceActionCall('metadata_metadataprofile', 'serve', null, $kparams);
 		$resultObject = $this->client->getServeUrl();
-		return $resultObject;
+			return $resultObject;
 	}
 
 	/**
@@ -207,7 +249,7 @@ class Kaltura_Client_Metadata_MetadataProfileService extends Kaltura_Client_Serv
 		$this->client->addParam($kparams, "id", $id);
 		$this->client->queueServiceActionCall('metadata_metadataprofile', 'serveView', null, $kparams);
 		$resultObject = $this->client->getServeUrl();
-		return $resultObject;
+			return $resultObject;
 	}
 
 	/**
@@ -224,12 +266,18 @@ class Kaltura_Client_Metadata_MetadataProfileService extends Kaltura_Client_Serv
 		$this->client->queueServiceActionCall("metadata_metadataprofile", "update", "KalturaMetadataProfile", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaMetadataProfile");
-		$this->client->validateObjectType($resultObject, "Kaltura_Client_Metadata_Type_MetadataProfile");
-		return $resultObject;
+		$rawResult = $this->client->doQueue();
+		if ($this->client->getConfig()->format === Kaltura_Client_ClientBase::KALTURA_SERVICE_FORMAT_JSON) {
+			$jsObject = json_decode($rawResult);
+			$resultObject = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsObject);
+			return $resultObject;
+		} else {
+			$resultXmlObject = new \SimpleXMLElement($rawResult);
+			$this->client->checkIfError($resultXmlObject->result);
+			$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaMetadataProfile");
+			$this->client->validateObjectType($resultObject, "Kaltura_Client_Metadata_Type_MetadataProfile");
+		}
+			return $resultObject;
 	}
 
 	/**
@@ -245,12 +293,18 @@ class Kaltura_Client_Metadata_MetadataProfileService extends Kaltura_Client_Serv
 		$this->client->queueServiceActionCall("metadata_metadataprofile", "updateDefinitionFromFile",  "KalturaMetadataProfile", $kparams, $kfiles);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaMetadataProfile");
-		$this->client->validateObjectType($resultObject, "Kaltura_Client_Metadata_Type_MetadataProfile");
-		return $resultObject;
+		$rawResult = $this->client->doQueue();
+		if ($this->client->getConfig()->format === Kaltura_Client_ClientBase::KALTURA_SERVICE_FORMAT_JSON) {
+			$jsObject = json_decode($rawResult);
+			$resultObject = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsObject);
+			return $resultObject;
+		} else {
+			$resultXmlObject = new \SimpleXMLElement($rawResult);
+			$this->client->checkIfError($resultXmlObject->result);
+			$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaMetadataProfile");
+			$this->client->validateObjectType($resultObject, "Kaltura_Client_Metadata_Type_MetadataProfile");
+		}
+			return $resultObject;
 	}
 
 	/**
@@ -266,12 +320,18 @@ class Kaltura_Client_Metadata_MetadataProfileService extends Kaltura_Client_Serv
 		$this->client->queueServiceActionCall("metadata_metadataprofile", "updateTransformationFromFile",  "KalturaMetadataProfile", $kparams, $kfiles);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaMetadataProfile");
-		$this->client->validateObjectType($resultObject, "Kaltura_Client_Metadata_Type_MetadataProfile");
-		return $resultObject;
+		$rawResult = $this->client->doQueue();
+		if ($this->client->getConfig()->format === Kaltura_Client_ClientBase::KALTURA_SERVICE_FORMAT_JSON) {
+			$jsObject = json_decode($rawResult);
+			$resultObject = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsObject);
+			return $resultObject;
+		} else {
+			$resultXmlObject = new \SimpleXMLElement($rawResult);
+			$this->client->checkIfError($resultXmlObject->result);
+			$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaMetadataProfile");
+			$this->client->validateObjectType($resultObject, "Kaltura_Client_Metadata_Type_MetadataProfile");
+		}
+			return $resultObject;
 	}
 
 	/**
@@ -287,11 +347,17 @@ class Kaltura_Client_Metadata_MetadataProfileService extends Kaltura_Client_Serv
 		$this->client->queueServiceActionCall("metadata_metadataprofile", "updateViewsFromFile",  "KalturaMetadataProfile", $kparams, $kfiles);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaMetadataProfile");
-		$this->client->validateObjectType($resultObject, "Kaltura_Client_Metadata_Type_MetadataProfile");
-		return $resultObject;
+		$rawResult = $this->client->doQueue();
+		if ($this->client->getConfig()->format === Kaltura_Client_ClientBase::KALTURA_SERVICE_FORMAT_JSON) {
+			$jsObject = json_decode($rawResult);
+			$resultObject = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsObject);
+			return $resultObject;
+		} else {
+			$resultXmlObject = new \SimpleXMLElement($rawResult);
+			$this->client->checkIfError($resultXmlObject->result);
+			$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaMetadataProfile");
+			$this->client->validateObjectType($resultObject, "Kaltura_Client_Metadata_Type_MetadataProfile");
+		}
+			return $resultObject;
 	}
 }

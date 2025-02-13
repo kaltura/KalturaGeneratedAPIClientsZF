@@ -38,29 +38,48 @@ abstract class Kaltura_Client_ThumbCuePoint_Type_ThumbCuePointBaseFilter extends
 		return 'KalturaThumbCuePointBaseFilter';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->descriptionLike))
+		if(!is_null($xml) && count($xml->descriptionLike))
 			$this->descriptionLike = (string)$xml->descriptionLike;
-		if(count($xml->descriptionMultiLikeOr))
+		if(!is_null($jsonObject) && isset($jsonObject->descriptionLike))
+			$this->descriptionLike = (string)$jsonObject->descriptionLike;
+		if(!is_null($xml) && count($xml->descriptionMultiLikeOr))
 			$this->descriptionMultiLikeOr = (string)$xml->descriptionMultiLikeOr;
-		if(count($xml->descriptionMultiLikeAnd))
+		if(!is_null($jsonObject) && isset($jsonObject->descriptionMultiLikeOr))
+			$this->descriptionMultiLikeOr = (string)$jsonObject->descriptionMultiLikeOr;
+		if(!is_null($xml) && count($xml->descriptionMultiLikeAnd))
 			$this->descriptionMultiLikeAnd = (string)$xml->descriptionMultiLikeAnd;
-		if(count($xml->titleLike))
+		if(!is_null($jsonObject) && isset($jsonObject->descriptionMultiLikeAnd))
+			$this->descriptionMultiLikeAnd = (string)$jsonObject->descriptionMultiLikeAnd;
+		if(!is_null($xml) && count($xml->titleLike))
 			$this->titleLike = (string)$xml->titleLike;
-		if(count($xml->titleMultiLikeOr))
+		if(!is_null($jsonObject) && isset($jsonObject->titleLike))
+			$this->titleLike = (string)$jsonObject->titleLike;
+		if(!is_null($xml) && count($xml->titleMultiLikeOr))
 			$this->titleMultiLikeOr = (string)$xml->titleMultiLikeOr;
-		if(count($xml->titleMultiLikeAnd))
+		if(!is_null($jsonObject) && isset($jsonObject->titleMultiLikeOr))
+			$this->titleMultiLikeOr = (string)$jsonObject->titleMultiLikeOr;
+		if(!is_null($xml) && count($xml->titleMultiLikeAnd))
 			$this->titleMultiLikeAnd = (string)$xml->titleMultiLikeAnd;
-		if(count($xml->subTypeEqual))
+		if(!is_null($jsonObject) && isset($jsonObject->titleMultiLikeAnd))
+			$this->titleMultiLikeAnd = (string)$jsonObject->titleMultiLikeAnd;
+		if(!is_null($xml) && count($xml->subTypeEqual))
 			$this->subTypeEqual = (int)$xml->subTypeEqual;
-		if(count($xml->subTypeIn))
+		if(!is_null($jsonObject) && isset($jsonObject->subTypeEqual))
+			$this->subTypeEqual = (int)$jsonObject->subTypeEqual;
+		if(!is_null($xml) && count($xml->subTypeIn))
 			$this->subTypeIn = (string)$xml->subTypeIn;
+		if(!is_null($jsonObject) && isset($jsonObject->subTypeIn))
+			$this->subTypeIn = (string)$jsonObject->subTypeIn;
 	}
 	/**
 	 * 

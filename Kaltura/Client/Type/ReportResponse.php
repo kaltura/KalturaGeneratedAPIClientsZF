@@ -38,21 +38,33 @@ class Kaltura_Client_Type_ReportResponse extends Kaltura_Client_ObjectBase
 		return 'KalturaReportResponse';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->columns))
+		if(!is_null($xml) && count($xml->columns))
 			$this->columns = (string)$xml->columns;
-		if(count($xml->results))
+		if(!is_null($jsonObject) && isset($jsonObject->columns))
+			$this->columns = (string)$jsonObject->columns;
+		if(!is_null($xml) && count($xml->results))
 		{
 			if(empty($xml->results))
 				$this->results = array();
 			else
 				$this->results = Kaltura_Client_ParseUtils::unmarshalArray($xml->results, "KalturaString");
+		}
+		if(!is_null($jsonObject) && isset($jsonObject->results))
+		{
+			if(empty($jsonObject->results))
+				$this->results = array();
+			else
+				$this->results = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsonObject->results, "KalturaString");
 		}
 	}
 	/**

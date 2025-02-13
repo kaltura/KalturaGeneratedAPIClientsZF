@@ -38,17 +38,24 @@ class Kaltura_Client_DropFolder_Type_DropFolderContentFileHandlerConfig extends 
 		return 'KalturaDropFolderContentFileHandlerConfig';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->contentMatchPolicy))
+		if(!is_null($xml) && count($xml->contentMatchPolicy))
 			$this->contentMatchPolicy = (int)$xml->contentMatchPolicy;
-		if(count($xml->slugRegex))
+		if(!is_null($jsonObject) && isset($jsonObject->contentMatchPolicy))
+			$this->contentMatchPolicy = (int)$jsonObject->contentMatchPolicy;
+		if(!is_null($xml) && count($xml->slugRegex))
 			$this->slugRegex = (string)$xml->slugRegex;
+		if(!is_null($jsonObject) && isset($jsonObject->slugRegex))
+			$this->slugRegex = (string)$jsonObject->slugRegex;
 	}
 	/**
 	 * 

@@ -33,11 +33,13 @@
  */
 class Kaltura_Client_EventNotification_Enum_EventNotificationTemplateType extends Kaltura_Client_EnumBase
 {
+	const BOOLEAN = "booleanNotification.Boolean";
 	const BPM_ABORT = "businessProcessNotification.BusinessProcessAbort";
 	const BPM_SIGNAL = "businessProcessNotification.BusinessProcessSignal";
 	const BPM_START = "businessProcessNotification.BusinessProcessStart";
 	const EMAIL = "emailNotification.Email";
 	const HTTP = "httpNotification.Http";
+	const KAFKA = "kafkaNotification.Kafka";
 	const PUSH = "pushNotification.Push";
 }
 

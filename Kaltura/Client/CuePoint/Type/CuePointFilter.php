@@ -38,19 +38,28 @@ class Kaltura_Client_CuePoint_Type_CuePointFilter extends Kaltura_Client_CuePoin
 		return 'KalturaCuePointFilter';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->freeText))
+		if(!is_null($xml) && count($xml->freeText))
 			$this->freeText = (string)$xml->freeText;
-		if(count($xml->userIdEqualCurrent))
+		if(!is_null($jsonObject) && isset($jsonObject->freeText))
+			$this->freeText = (string)$jsonObject->freeText;
+		if(!is_null($xml) && count($xml->userIdEqualCurrent))
 			$this->userIdEqualCurrent = (int)$xml->userIdEqualCurrent;
-		if(count($xml->userIdCurrent))
+		if(!is_null($jsonObject) && isset($jsonObject->userIdEqualCurrent))
+			$this->userIdEqualCurrent = (int)$jsonObject->userIdEqualCurrent;
+		if(!is_null($xml) && count($xml->userIdCurrent))
 			$this->userIdCurrent = (int)$xml->userIdCurrent;
+		if(!is_null($jsonObject) && isset($jsonObject->userIdCurrent))
+			$this->userIdCurrent = (int)$jsonObject->userIdCurrent;
 	}
 	/**
 	 * 

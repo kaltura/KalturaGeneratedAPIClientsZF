@@ -38,22 +38,34 @@ class Kaltura_Client_Type_IpAddressCondition extends Kaltura_Client_Type_MatchCo
 		return 'KalturaIpAddressCondition';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->acceptInternalIps))
+		if(!is_null($xml) && count($xml->acceptInternalIps))
 		{
 			if(!empty($xml->acceptInternalIps) && ((int) $xml->acceptInternalIps === 1 || strtolower((string)$xml->acceptInternalIps) === 'true'))
 				$this->acceptInternalIps = true;
 			else
 				$this->acceptInternalIps = false;
 		}
-		if(count($xml->httpHeader))
+		if(!is_null($jsonObject) && isset($jsonObject->acceptInternalIps))
+		{
+			if(!empty($jsonObject->acceptInternalIps) && ((int) $jsonObject->acceptInternalIps === 1 || strtolower((string)$jsonObject->acceptInternalIps) === 'true'))
+				$this->acceptInternalIps = true;
+			else
+				$this->acceptInternalIps = false;
+		}
+		if(!is_null($xml) && count($xml->httpHeader))
 			$this->httpHeader = (string)$xml->httpHeader;
+		if(!is_null($jsonObject) && isset($jsonObject->httpHeader))
+			$this->httpHeader = (string)$jsonObject->httpHeader;
 	}
 	/**
 	 * allow internal ips

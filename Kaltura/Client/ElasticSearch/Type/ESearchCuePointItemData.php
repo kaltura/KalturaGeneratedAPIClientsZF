@@ -38,49 +38,88 @@ class Kaltura_Client_ElasticSearch_Type_ESearchCuePointItemData extends Kaltura_
 		return 'KalturaESearchCuePointItemData';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->cuePointType))
+		if(!is_null($xml) && count($xml->cuePointType))
 			$this->cuePointType = (string)$xml->cuePointType;
-		if(count($xml->id))
+		if(!is_null($jsonObject) && isset($jsonObject->cuePointType))
+			$this->cuePointType = (string)$jsonObject->cuePointType;
+		if(!is_null($xml) && count($xml->id))
 			$this->id = (string)$xml->id;
-		if(count($xml->name))
+		if(!is_null($jsonObject) && isset($jsonObject->id))
+			$this->id = (string)$jsonObject->id;
+		if(!is_null($xml) && count($xml->name))
 			$this->name = (string)$xml->name;
-		if(count($xml->text))
+		if(!is_null($jsonObject) && isset($jsonObject->name))
+			$this->name = (string)$jsonObject->name;
+		if(!is_null($xml) && count($xml->text))
 			$this->text = (string)$xml->text;
-		if(count($xml->tags))
+		if(!is_null($jsonObject) && isset($jsonObject->text))
+			$this->text = (string)$jsonObject->text;
+		if(!is_null($xml) && count($xml->tags))
 		{
 			if(empty($xml->tags))
 				$this->tags = array();
 			else
 				$this->tags = Kaltura_Client_ParseUtils::unmarshalArray($xml->tags, "KalturaString");
 		}
-		if(count($xml->startTime))
+		if(!is_null($jsonObject) && isset($jsonObject->tags))
+		{
+			if(empty($jsonObject->tags))
+				$this->tags = array();
+			else
+				$this->tags = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsonObject->tags, "KalturaString");
+		}
+		if(!is_null($xml) && count($xml->startTime))
 			$this->startTime = (string)$xml->startTime;
-		if(count($xml->endTime))
+		if(!is_null($jsonObject) && isset($jsonObject->startTime))
+			$this->startTime = (string)$jsonObject->startTime;
+		if(!is_null($xml) && count($xml->endTime))
 			$this->endTime = (string)$xml->endTime;
-		if(count($xml->subType))
+		if(!is_null($jsonObject) && isset($jsonObject->endTime))
+			$this->endTime = (string)$jsonObject->endTime;
+		if(!is_null($xml) && count($xml->subType))
 			$this->subType = (string)$xml->subType;
-		if(count($xml->question))
+		if(!is_null($jsonObject) && isset($jsonObject->subType))
+			$this->subType = (string)$jsonObject->subType;
+		if(!is_null($xml) && count($xml->question))
 			$this->question = (string)$xml->question;
-		if(count($xml->answers))
+		if(!is_null($jsonObject) && isset($jsonObject->question))
+			$this->question = (string)$jsonObject->question;
+		if(!is_null($xml) && count($xml->answers))
 		{
 			if(empty($xml->answers))
 				$this->answers = array();
 			else
 				$this->answers = Kaltura_Client_ParseUtils::unmarshalArray($xml->answers, "KalturaString");
 		}
-		if(count($xml->hint))
+		if(!is_null($jsonObject) && isset($jsonObject->answers))
+		{
+			if(empty($jsonObject->answers))
+				$this->answers = array();
+			else
+				$this->answers = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsonObject->answers, "KalturaString");
+		}
+		if(!is_null($xml) && count($xml->hint))
 			$this->hint = (string)$xml->hint;
-		if(count($xml->explanation))
+		if(!is_null($jsonObject) && isset($jsonObject->hint))
+			$this->hint = (string)$jsonObject->hint;
+		if(!is_null($xml) && count($xml->explanation))
 			$this->explanation = (string)$xml->explanation;
-		if(count($xml->assetId))
+		if(!is_null($jsonObject) && isset($jsonObject->explanation))
+			$this->explanation = (string)$jsonObject->explanation;
+		if(!is_null($xml) && count($xml->assetId))
 			$this->assetId = (string)$xml->assetId;
+		if(!is_null($jsonObject) && isset($jsonObject->assetId))
+			$this->assetId = (string)$jsonObject->assetId;
 	}
 	/**
 	 * 

@@ -38,56 +38,102 @@ abstract class Kaltura_Client_CuePoint_Type_CuePoint extends Kaltura_Client_Obje
 		return 'KalturaCuePoint';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->id))
+		if(!is_null($xml) && count($xml->id))
 			$this->id = (string)$xml->id;
-		if(count($xml->intId))
+		if(!is_null($jsonObject) && isset($jsonObject->id))
+			$this->id = (string)$jsonObject->id;
+		if(!is_null($xml) && count($xml->intId))
 			$this->intId = (string)$xml->intId;
-		if(count($xml->cuePointType))
+		if(!is_null($jsonObject) && isset($jsonObject->intId))
+			$this->intId = (string)$jsonObject->intId;
+		if(!is_null($xml) && count($xml->cuePointType))
 			$this->cuePointType = (string)$xml->cuePointType;
-		if(count($xml->status))
+		if(!is_null($jsonObject) && isset($jsonObject->cuePointType))
+			$this->cuePointType = (string)$jsonObject->cuePointType;
+		if(!is_null($xml) && count($xml->status))
 			$this->status = (int)$xml->status;
-		if(count($xml->entryId))
+		if(!is_null($jsonObject) && isset($jsonObject->status))
+			$this->status = (int)$jsonObject->status;
+		if(!is_null($xml) && count($xml->entryId))
 			$this->entryId = (string)$xml->entryId;
-		if(count($xml->partnerId))
+		if(!is_null($jsonObject) && isset($jsonObject->entryId))
+			$this->entryId = (string)$jsonObject->entryId;
+		if(!is_null($xml) && count($xml->partnerId))
 			$this->partnerId = (int)$xml->partnerId;
-		if(count($xml->createdAt))
+		if(!is_null($jsonObject) && isset($jsonObject->partnerId))
+			$this->partnerId = (int)$jsonObject->partnerId;
+		if(!is_null($xml) && count($xml->createdAt))
 			$this->createdAt = (int)$xml->createdAt;
-		if(count($xml->updatedAt))
+		if(!is_null($jsonObject) && isset($jsonObject->createdAt))
+			$this->createdAt = (int)$jsonObject->createdAt;
+		if(!is_null($xml) && count($xml->updatedAt))
 			$this->updatedAt = (int)$xml->updatedAt;
-		if(count($xml->triggeredAt))
+		if(!is_null($jsonObject) && isset($jsonObject->updatedAt))
+			$this->updatedAt = (int)$jsonObject->updatedAt;
+		if(!is_null($xml) && count($xml->triggeredAt))
 			$this->triggeredAt = (int)$xml->triggeredAt;
-		if(count($xml->tags))
+		if(!is_null($jsonObject) && isset($jsonObject->triggeredAt))
+			$this->triggeredAt = (int)$jsonObject->triggeredAt;
+		if(!is_null($xml) && count($xml->tags))
 			$this->tags = (string)$xml->tags;
-		if(count($xml->startTime))
+		if(!is_null($jsonObject) && isset($jsonObject->tags))
+			$this->tags = (string)$jsonObject->tags;
+		if(!is_null($xml) && count($xml->startTime))
 			$this->startTime = (int)$xml->startTime;
-		if(count($xml->userId))
+		if(!is_null($jsonObject) && isset($jsonObject->startTime))
+			$this->startTime = (int)$jsonObject->startTime;
+		if(!is_null($xml) && count($xml->userId))
 			$this->userId = (string)$xml->userId;
-		if(count($xml->partnerData))
+		if(!is_null($jsonObject) && isset($jsonObject->userId))
+			$this->userId = (string)$jsonObject->userId;
+		if(!is_null($xml) && count($xml->partnerData))
 			$this->partnerData = (string)$xml->partnerData;
-		if(count($xml->partnerSortValue))
+		if(!is_null($jsonObject) && isset($jsonObject->partnerData))
+			$this->partnerData = (string)$jsonObject->partnerData;
+		if(!is_null($xml) && count($xml->partnerSortValue))
 			$this->partnerSortValue = (int)$xml->partnerSortValue;
-		if(count($xml->forceStop))
+		if(!is_null($jsonObject) && isset($jsonObject->partnerSortValue))
+			$this->partnerSortValue = (int)$jsonObject->partnerSortValue;
+		if(!is_null($xml) && count($xml->forceStop))
 			$this->forceStop = (int)$xml->forceStop;
-		if(count($xml->thumbOffset))
+		if(!is_null($jsonObject) && isset($jsonObject->forceStop))
+			$this->forceStop = (int)$jsonObject->forceStop;
+		if(!is_null($xml) && count($xml->thumbOffset))
 			$this->thumbOffset = (int)$xml->thumbOffset;
-		if(count($xml->systemName))
+		if(!is_null($jsonObject) && isset($jsonObject->thumbOffset))
+			$this->thumbOffset = (int)$jsonObject->thumbOffset;
+		if(!is_null($xml) && count($xml->systemName))
 			$this->systemName = (string)$xml->systemName;
-		if(count($xml->isMomentary))
+		if(!is_null($jsonObject) && isset($jsonObject->systemName))
+			$this->systemName = (string)$jsonObject->systemName;
+		if(!is_null($xml) && count($xml->isMomentary))
 		{
 			if(!empty($xml->isMomentary) && ((int) $xml->isMomentary === 1 || strtolower((string)$xml->isMomentary) === 'true'))
 				$this->isMomentary = true;
 			else
 				$this->isMomentary = false;
 		}
-		if(count($xml->copiedFrom))
+		if(!is_null($jsonObject) && isset($jsonObject->isMomentary))
+		{
+			if(!empty($jsonObject->isMomentary) && ((int) $jsonObject->isMomentary === 1 || strtolower((string)$jsonObject->isMomentary) === 'true'))
+				$this->isMomentary = true;
+			else
+				$this->isMomentary = false;
+		}
+		if(!is_null($xml) && count($xml->copiedFrom))
 			$this->copiedFrom = (string)$xml->copiedFrom;
+		if(!is_null($jsonObject) && isset($jsonObject->copiedFrom))
+			$this->copiedFrom = (string)$jsonObject->copiedFrom;
 	}
 	/**
 	 * 

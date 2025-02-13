@@ -38,21 +38,33 @@ class Kaltura_Client_ContentDistribution_Type_AssetDistributionRule extends Kalt
 		return 'KalturaAssetDistributionRule';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->validationError))
+		if(!is_null($xml) && count($xml->validationError))
 			$this->validationError = (string)$xml->validationError;
-		if(count($xml->assetDistributionConditions))
+		if(!is_null($jsonObject) && isset($jsonObject->validationError))
+			$this->validationError = (string)$jsonObject->validationError;
+		if(!is_null($xml) && count($xml->assetDistributionConditions))
 		{
 			if(empty($xml->assetDistributionConditions))
 				$this->assetDistributionConditions = array();
 			else
 				$this->assetDistributionConditions = Kaltura_Client_ParseUtils::unmarshalArray($xml->assetDistributionConditions, "KalturaAssetDistributionCondition");
+		}
+		if(!is_null($jsonObject) && isset($jsonObject->assetDistributionConditions))
+		{
+			if(empty($jsonObject->assetDistributionConditions))
+				$this->assetDistributionConditions = array();
+			else
+				$this->assetDistributionConditions = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsonObject->assetDistributionConditions, "KalturaAssetDistributionCondition");
 		}
 	}
 	/**

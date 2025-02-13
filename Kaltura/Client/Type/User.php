@@ -38,78 +38,146 @@ class Kaltura_Client_Type_User extends Kaltura_Client_Type_BaseUser
 		return 'KalturaUser';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->type))
+		if(!is_null($xml) && count($xml->type))
 			$this->type = (int)$xml->type;
-		if(count($xml->dateOfBirth))
+		if(!is_null($jsonObject) && isset($jsonObject->type))
+			$this->type = (int)$jsonObject->type;
+		if(!is_null($xml) && count($xml->dateOfBirth))
 			$this->dateOfBirth = (int)$xml->dateOfBirth;
-		if(count($xml->gender))
+		if(!is_null($jsonObject) && isset($jsonObject->dateOfBirth))
+			$this->dateOfBirth = (int)$jsonObject->dateOfBirth;
+		if(!is_null($xml) && count($xml->gender))
 			$this->gender = (int)$xml->gender;
-		if(count($xml->isAdmin))
+		if(!is_null($jsonObject) && isset($jsonObject->gender))
+			$this->gender = (int)$jsonObject->gender;
+		if(!is_null($xml) && count($xml->isAdmin))
 		{
 			if(!empty($xml->isAdmin) && ((int) $xml->isAdmin === 1 || strtolower((string)$xml->isAdmin) === 'true'))
 				$this->isAdmin = true;
 			else
 				$this->isAdmin = false;
 		}
-		if(count($xml->isGuest))
+		if(!is_null($jsonObject) && isset($jsonObject->isAdmin))
+		{
+			if(!empty($jsonObject->isAdmin) && ((int) $jsonObject->isAdmin === 1 || strtolower((string)$jsonObject->isAdmin) === 'true'))
+				$this->isAdmin = true;
+			else
+				$this->isAdmin = false;
+		}
+		if(!is_null($xml) && count($xml->isGuest))
 		{
 			if(!empty($xml->isGuest) && ((int) $xml->isGuest === 1 || strtolower((string)$xml->isGuest) === 'true'))
 				$this->isGuest = true;
 			else
 				$this->isGuest = false;
 		}
-		if(count($xml->roleIds))
+		if(!is_null($jsonObject) && isset($jsonObject->isGuest))
+		{
+			if(!empty($jsonObject->isGuest) && ((int) $jsonObject->isGuest === 1 || strtolower((string)$jsonObject->isGuest) === 'true'))
+				$this->isGuest = true;
+			else
+				$this->isGuest = false;
+		}
+		if(!is_null($xml) && count($xml->roleIds))
 			$this->roleIds = (string)$xml->roleIds;
-		if(count($xml->roleNames))
+		if(!is_null($jsonObject) && isset($jsonObject->roleIds))
+			$this->roleIds = (string)$jsonObject->roleIds;
+		if(!is_null($xml) && count($xml->roleNames))
 			$this->roleNames = (string)$xml->roleNames;
-		if(count($xml->isAccountOwner))
+		if(!is_null($jsonObject) && isset($jsonObject->roleNames))
+			$this->roleNames = (string)$jsonObject->roleNames;
+		if(!is_null($xml) && count($xml->isAccountOwner))
 		{
 			if(!empty($xml->isAccountOwner) && ((int) $xml->isAccountOwner === 1 || strtolower((string)$xml->isAccountOwner) === 'true'))
 				$this->isAccountOwner = true;
 			else
 				$this->isAccountOwner = false;
 		}
-		if(count($xml->password))
+		if(!is_null($jsonObject) && isset($jsonObject->isAccountOwner))
+		{
+			if(!empty($jsonObject->isAccountOwner) && ((int) $jsonObject->isAccountOwner === 1 || strtolower((string)$jsonObject->isAccountOwner) === 'true'))
+				$this->isAccountOwner = true;
+			else
+				$this->isAccountOwner = false;
+		}
+		if(!is_null($xml) && count($xml->password))
 			$this->password = (string)$xml->password;
-		if(count($xml->firstName))
+		if(!is_null($jsonObject) && isset($jsonObject->password))
+			$this->password = (string)$jsonObject->password;
+		if(!is_null($xml) && count($xml->firstName))
 			$this->firstName = (string)$xml->firstName;
-		if(count($xml->lastName))
+		if(!is_null($jsonObject) && isset($jsonObject->firstName))
+			$this->firstName = (string)$jsonObject->firstName;
+		if(!is_null($xml) && count($xml->lastName))
 			$this->lastName = (string)$xml->lastName;
-		if(count($xml->loginEnabled))
+		if(!is_null($jsonObject) && isset($jsonObject->lastName))
+			$this->lastName = (string)$jsonObject->lastName;
+		if(!is_null($xml) && count($xml->loginEnabled))
 		{
 			if(!empty($xml->loginEnabled) && ((int) $xml->loginEnabled === 1 || strtolower((string)$xml->loginEnabled) === 'true'))
 				$this->loginEnabled = true;
 			else
 				$this->loginEnabled = false;
 		}
-		if(count($xml->registrationInfo))
+		if(!is_null($jsonObject) && isset($jsonObject->loginEnabled))
+		{
+			if(!empty($jsonObject->loginEnabled) && ((int) $jsonObject->loginEnabled === 1 || strtolower((string)$jsonObject->loginEnabled) === 'true'))
+				$this->loginEnabled = true;
+			else
+				$this->loginEnabled = false;
+		}
+		if(!is_null($xml) && count($xml->registrationInfo))
 			$this->registrationInfo = (string)$xml->registrationInfo;
-		if(count($xml->attendanceInfo))
+		if(!is_null($jsonObject) && isset($jsonObject->registrationInfo))
+			$this->registrationInfo = (string)$jsonObject->registrationInfo;
+		if(!is_null($xml) && count($xml->attendanceInfo))
 			$this->attendanceInfo = (string)$xml->attendanceInfo;
-		if(count($xml->title))
+		if(!is_null($jsonObject) && isset($jsonObject->attendanceInfo))
+			$this->attendanceInfo = (string)$jsonObject->attendanceInfo;
+		if(!is_null($xml) && count($xml->title))
 			$this->title = (string)$xml->title;
-		if(count($xml->company))
+		if(!is_null($jsonObject) && isset($jsonObject->title))
+			$this->title = (string)$jsonObject->title;
+		if(!is_null($xml) && count($xml->company))
 			$this->company = (string)$xml->company;
-		if(count($xml->ksPrivileges))
+		if(!is_null($jsonObject) && isset($jsonObject->company))
+			$this->company = (string)$jsonObject->company;
+		if(!is_null($xml) && count($xml->ksPrivileges))
 			$this->ksPrivileges = (string)$xml->ksPrivileges;
-		if(count($xml->encryptedSeed))
+		if(!is_null($jsonObject) && isset($jsonObject->ksPrivileges))
+			$this->ksPrivileges = (string)$jsonObject->ksPrivileges;
+		if(!is_null($xml) && count($xml->encryptedSeed))
 			$this->encryptedSeed = (string)$xml->encryptedSeed;
-		if(count($xml->isSsoExcluded))
+		if(!is_null($jsonObject) && isset($jsonObject->encryptedSeed))
+			$this->encryptedSeed = (string)$jsonObject->encryptedSeed;
+		if(!is_null($xml) && count($xml->isSsoExcluded))
 		{
 			if(!empty($xml->isSsoExcluded) && ((int) $xml->isSsoExcluded === 1 || strtolower((string)$xml->isSsoExcluded) === 'true'))
 				$this->isSsoExcluded = true;
 			else
 				$this->isSsoExcluded = false;
 		}
-		if(count($xml->externalId))
+		if(!is_null($jsonObject) && isset($jsonObject->isSsoExcluded))
+		{
+			if(!empty($jsonObject->isSsoExcluded) && ((int) $jsonObject->isSsoExcluded === 1 || strtolower((string)$jsonObject->isSsoExcluded) === 'true'))
+				$this->isSsoExcluded = true;
+			else
+				$this->isSsoExcluded = false;
+		}
+		if(!is_null($xml) && count($xml->externalId))
 			$this->externalId = (string)$xml->externalId;
+		if(!is_null($jsonObject) && isset($jsonObject->externalId))
+			$this->externalId = (string)$jsonObject->externalId;
 	}
 	/**
 	 * 

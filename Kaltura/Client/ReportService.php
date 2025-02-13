@@ -55,12 +55,18 @@ class Kaltura_Client_ReportService extends Kaltura_Client_ServiceBase
 		$this->client->queueServiceActionCall("report", "execute", "KalturaReportResponse", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaReportResponse");
-		$this->client->validateObjectType($resultObject, "Kaltura_Client_Type_ReportResponse");
-		return $resultObject;
+		$rawResult = $this->client->doQueue();
+		if ($this->client->getConfig()->format === Kaltura_Client_ClientBase::KALTURA_SERVICE_FORMAT_JSON) {
+			$jsObject = json_decode($rawResult);
+			$resultObject = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsObject);
+			return $resultObject;
+		} else {
+			$resultXmlObject = new \SimpleXMLElement($rawResult);
+			$this->client->checkIfError($resultXmlObject->result);
+			$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaReportResponse");
+			$this->client->validateObjectType($resultObject, "Kaltura_Client_Type_ReportResponse");
+		}
+			return $resultObject;
 	}
 
 	/**
@@ -74,12 +80,18 @@ class Kaltura_Client_ReportService extends Kaltura_Client_ServiceBase
 		$this->client->queueServiceActionCall("report", "exportToCsv", "KalturaReportExportResponse", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaReportExportResponse");
-		$this->client->validateObjectType($resultObject, "Kaltura_Client_Type_ReportExportResponse");
-		return $resultObject;
+		$rawResult = $this->client->doQueue();
+		if ($this->client->getConfig()->format === Kaltura_Client_ClientBase::KALTURA_SERVICE_FORMAT_JSON) {
+			$jsObject = json_decode($rawResult);
+			$resultObject = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsObject);
+			return $resultObject;
+		} else {
+			$resultXmlObject = new \SimpleXMLElement($rawResult);
+			$this->client->checkIfError($resultXmlObject->result);
+			$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaReportExportResponse");
+			$this->client->validateObjectType($resultObject, "Kaltura_Client_Type_ReportExportResponse");
+		}
+			return $resultObject;
 	}
 
 	/**
@@ -97,14 +109,20 @@ class Kaltura_Client_ReportService extends Kaltura_Client_ServiceBase
 		$this->client->queueServiceActionCall("report", "getBaseTotal", "KalturaReportBaseTotal", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = Kaltura_Client_ParseUtils::unmarshalArray($resultXmlObject->result, "KalturaReportBaseTotal");
-		foreach($resultObject as $resultObjectItem){
-			$this->client->validateObjectType($resultObjectItem, "Kaltura_Client_Type_ReportBaseTotal");
+		$rawResult = $this->client->doQueue();
+		if ($this->client->getConfig()->format === Kaltura_Client_ClientBase::KALTURA_SERVICE_FORMAT_JSON) {
+			$jsObject = json_decode($rawResult);
+			$resultObject = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsObject);
+			return $resultObject;
+		} else {
+			$resultXmlObject = new \SimpleXMLElement($rawResult);
+			$this->client->checkIfError($resultXmlObject->result);
+			$resultObject = Kaltura_Client_ParseUtils::unmarshalArray($resultXmlObject->result, "KalturaReportBaseTotal");
+			foreach($resultObject as $resultObjectItem){
+				$this->client->validateObjectType($resultObjectItem, "Kaltura_Client_Type_ReportBaseTotal");
+			}
 		}
-		return $resultObject;
+			return $resultObject;
 	}
 
 	/**
@@ -126,7 +144,7 @@ class Kaltura_Client_ReportService extends Kaltura_Client_ServiceBase
 		$this->client->addParam($kparams, "excludedFields", $excludedFields);
 		$this->client->queueServiceActionCall('report', 'getCsv', null, $kparams);
 		$resultObject = $this->client->getServeUrl();
-		return $resultObject;
+			return $resultObject;
 	}
 
 	/**
@@ -144,7 +162,7 @@ class Kaltura_Client_ReportService extends Kaltura_Client_ServiceBase
 		$this->client->addParam($kparams, "excludedFields", $excludedFields);
 		$this->client->queueServiceActionCall('report', 'getCsvFromStringParams', null, $kparams);
 		$resultObject = $this->client->getServeUrl();
-		return $resultObject;
+			return $resultObject;
 	}
 
 	/**
@@ -163,14 +181,20 @@ class Kaltura_Client_ReportService extends Kaltura_Client_ServiceBase
 		$this->client->queueServiceActionCall("report", "getGraphs", "KalturaReportGraph", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = Kaltura_Client_ParseUtils::unmarshalArray($resultXmlObject->result, "KalturaReportGraph");
-		foreach($resultObject as $resultObjectItem){
-			$this->client->validateObjectType($resultObjectItem, "Kaltura_Client_Type_ReportGraph");
+		$rawResult = $this->client->doQueue();
+		if ($this->client->getConfig()->format === Kaltura_Client_ClientBase::KALTURA_SERVICE_FORMAT_JSON) {
+			$jsObject = json_decode($rawResult);
+			$resultObject = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsObject);
+			return $resultObject;
+		} else {
+			$resultXmlObject = new \SimpleXMLElement($rawResult);
+			$this->client->checkIfError($resultXmlObject->result);
+			$resultObject = Kaltura_Client_ParseUtils::unmarshalArray($resultXmlObject->result, "KalturaReportGraph");
+			foreach($resultObject as $resultObjectItem){
+				$this->client->validateObjectType($resultObjectItem, "Kaltura_Client_Type_ReportGraph");
+			}
 		}
-		return $resultObject;
+			return $resultObject;
 	}
 
 	/**
@@ -190,12 +214,18 @@ class Kaltura_Client_ReportService extends Kaltura_Client_ServiceBase
 		$this->client->queueServiceActionCall("report", "getTable", "KalturaReportTable", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaReportTable");
-		$this->client->validateObjectType($resultObject, "Kaltura_Client_Type_ReportTable");
-		return $resultObject;
+		$rawResult = $this->client->doQueue();
+		if ($this->client->getConfig()->format === Kaltura_Client_ClientBase::KALTURA_SERVICE_FORMAT_JSON) {
+			$jsObject = json_decode($rawResult);
+			$resultObject = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsObject);
+			return $resultObject;
+		} else {
+			$resultXmlObject = new \SimpleXMLElement($rawResult);
+			$this->client->checkIfError($resultXmlObject->result);
+			$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaReportTable");
+			$this->client->validateObjectType($resultObject, "Kaltura_Client_Type_ReportTable");
+		}
+			return $resultObject;
 	}
 
 	/**
@@ -213,12 +243,18 @@ class Kaltura_Client_ReportService extends Kaltura_Client_ServiceBase
 		$this->client->queueServiceActionCall("report", "getTotal", "KalturaReportTotal", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaReportTotal");
-		$this->client->validateObjectType($resultObject, "Kaltura_Client_Type_ReportTotal");
-		return $resultObject;
+		$rawResult = $this->client->doQueue();
+		if ($this->client->getConfig()->format === Kaltura_Client_ClientBase::KALTURA_SERVICE_FORMAT_JSON) {
+			$jsObject = json_decode($rawResult);
+			$resultObject = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsObject);
+			return $resultObject;
+		} else {
+			$resultXmlObject = new \SimpleXMLElement($rawResult);
+			$this->client->checkIfError($resultXmlObject->result);
+			$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaReportTotal");
+			$this->client->validateObjectType($resultObject, "Kaltura_Client_Type_ReportTotal");
+		}
+			return $resultObject;
 	}
 
 	/**
@@ -243,11 +279,17 @@ class Kaltura_Client_ReportService extends Kaltura_Client_ServiceBase
 		$this->client->queueServiceActionCall("report", "getUrlForReportAsCsv", null, $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = (string)Kaltura_Client_ParseUtils::unmarshalSimpleType($resultXmlObject->result);
-		return $resultObject;
+		$rawResult = $this->client->doQueue();
+		if ($this->client->getConfig()->format === Kaltura_Client_ClientBase::KALTURA_SERVICE_FORMAT_JSON) {
+			$jsObject = json_decode($rawResult);
+			$resultObject = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsObject);
+			return $resultObject;
+		} else {
+			$resultXmlObject = new \SimpleXMLElement($rawResult);
+			$this->client->checkIfError($resultXmlObject->result);
+			$resultObject = (string)Kaltura_Client_ParseUtils::unmarshalSimpleType($resultXmlObject->result);
+		}
+			return $resultObject;
 	}
 
 	/**
@@ -261,10 +303,16 @@ class Kaltura_Client_ReportService extends Kaltura_Client_ServiceBase
 		$this->client->queueServiceActionCall("report", "serve", null, $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = (string)Kaltura_Client_ParseUtils::unmarshalSimpleType($resultXmlObject->result);
-		return $resultObject;
+		$rawResult = $this->client->doQueue();
+		if ($this->client->getConfig()->format === Kaltura_Client_ClientBase::KALTURA_SERVICE_FORMAT_JSON) {
+			$jsObject = json_decode($rawResult);
+			$resultObject = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsObject);
+			return $resultObject;
+		} else {
+			$resultXmlObject = new \SimpleXMLElement($rawResult);
+			$this->client->checkIfError($resultXmlObject->result);
+			$resultObject = (string)Kaltura_Client_ParseUtils::unmarshalSimpleType($resultXmlObject->result);
+		}
+			return $resultObject;
 	}
 }

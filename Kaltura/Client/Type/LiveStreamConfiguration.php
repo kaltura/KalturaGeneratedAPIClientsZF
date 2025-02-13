@@ -38,23 +38,36 @@ class Kaltura_Client_Type_LiveStreamConfiguration extends Kaltura_Client_ObjectB
 		return 'KalturaLiveStreamConfiguration';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->protocol))
+		if(!is_null($xml) && count($xml->protocol))
 			$this->protocol = (string)$xml->protocol;
-		if(count($xml->url))
+		if(!is_null($jsonObject) && isset($jsonObject->protocol))
+			$this->protocol = (string)$jsonObject->protocol;
+		if(!is_null($xml) && count($xml->url))
 			$this->url = (string)$xml->url;
-		if(count($xml->publishUrl))
+		if(!is_null($jsonObject) && isset($jsonObject->url))
+			$this->url = (string)$jsonObject->url;
+		if(!is_null($xml) && count($xml->publishUrl))
 			$this->publishUrl = (string)$xml->publishUrl;
-		if(count($xml->backupUrl))
+		if(!is_null($jsonObject) && isset($jsonObject->publishUrl))
+			$this->publishUrl = (string)$jsonObject->publishUrl;
+		if(!is_null($xml) && count($xml->backupUrl))
 			$this->backupUrl = (string)$xml->backupUrl;
-		if(count($xml->streamName))
+		if(!is_null($jsonObject) && isset($jsonObject->backupUrl))
+			$this->backupUrl = (string)$jsonObject->backupUrl;
+		if(!is_null($xml) && count($xml->streamName))
 			$this->streamName = (string)$xml->streamName;
+		if(!is_null($jsonObject) && isset($jsonObject->streamName))
+			$this->streamName = (string)$jsonObject->streamName;
 	}
 	/**
 	 * 

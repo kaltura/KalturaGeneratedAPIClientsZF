@@ -38,15 +38,20 @@ class Kaltura_Client_Reach_Type_TimeRangeVendorCredit extends Kaltura_Client_Rea
 		return 'KalturaTimeRangeVendorCredit';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->toDate))
+		if(!is_null($xml) && count($xml->toDate))
 			$this->toDate = (int)$xml->toDate;
+		if(!is_null($jsonObject) && isset($jsonObject->toDate))
+			$this->toDate = (int)$jsonObject->toDate;
 	}
 	/**
 	 * 

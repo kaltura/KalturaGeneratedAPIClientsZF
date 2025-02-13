@@ -38,63 +38,116 @@ abstract class Kaltura_Client_Type_LiveEntry extends Kaltura_Client_Type_MediaEn
 		return 'KalturaLiveEntry';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->offlineMessage))
+		if(!is_null($xml) && count($xml->offlineMessage))
 			$this->offlineMessage = (string)$xml->offlineMessage;
-		if(count($xml->recordStatus))
+		if(!is_null($jsonObject) && isset($jsonObject->offlineMessage))
+			$this->offlineMessage = (string)$jsonObject->offlineMessage;
+		if(!is_null($xml) && count($xml->recordStatus))
 			$this->recordStatus = (int)$xml->recordStatus;
-		if(count($xml->dvrStatus))
+		if(!is_null($jsonObject) && isset($jsonObject->recordStatus))
+			$this->recordStatus = (int)$jsonObject->recordStatus;
+		if(!is_null($xml) && count($xml->dvrStatus))
 			$this->dvrStatus = (int)$xml->dvrStatus;
-		if(count($xml->dvrWindow))
+		if(!is_null($jsonObject) && isset($jsonObject->dvrStatus))
+			$this->dvrStatus = (int)$jsonObject->dvrStatus;
+		if(!is_null($xml) && count($xml->dvrWindow))
 			$this->dvrWindow = (int)$xml->dvrWindow;
-		if(count($xml->lastElapsedRecordingTime))
+		if(!is_null($jsonObject) && isset($jsonObject->dvrWindow))
+			$this->dvrWindow = (int)$jsonObject->dvrWindow;
+		if(!is_null($xml) && count($xml->lastElapsedRecordingTime))
 			$this->lastElapsedRecordingTime = (int)$xml->lastElapsedRecordingTime;
-		if(count($xml->liveStreamConfigurations))
+		if(!is_null($jsonObject) && isset($jsonObject->lastElapsedRecordingTime))
+			$this->lastElapsedRecordingTime = (int)$jsonObject->lastElapsedRecordingTime;
+		if(!is_null($xml) && count($xml->liveStreamConfigurations))
 		{
 			if(empty($xml->liveStreamConfigurations))
 				$this->liveStreamConfigurations = array();
 			else
 				$this->liveStreamConfigurations = Kaltura_Client_ParseUtils::unmarshalArray($xml->liveStreamConfigurations, "KalturaLiveStreamConfiguration");
 		}
-		if(count($xml->recordedEntryId))
+		if(!is_null($jsonObject) && isset($jsonObject->liveStreamConfigurations))
+		{
+			if(empty($jsonObject->liveStreamConfigurations))
+				$this->liveStreamConfigurations = array();
+			else
+				$this->liveStreamConfigurations = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsonObject->liveStreamConfigurations, "KalturaLiveStreamConfiguration");
+		}
+		if(!is_null($xml) && count($xml->recordedEntryId))
 			$this->recordedEntryId = (string)$xml->recordedEntryId;
-		if(count($xml->pushPublishEnabled))
+		if(!is_null($jsonObject) && isset($jsonObject->recordedEntryId))
+			$this->recordedEntryId = (string)$jsonObject->recordedEntryId;
+		if(!is_null($xml) && count($xml->pushPublishEnabled))
 			$this->pushPublishEnabled = (int)$xml->pushPublishEnabled;
-		if(count($xml->publishConfigurations))
+		if(!is_null($jsonObject) && isset($jsonObject->pushPublishEnabled))
+			$this->pushPublishEnabled = (int)$jsonObject->pushPublishEnabled;
+		if(!is_null($xml) && count($xml->publishConfigurations))
 		{
 			if(empty($xml->publishConfigurations))
 				$this->publishConfigurations = array();
 			else
 				$this->publishConfigurations = Kaltura_Client_ParseUtils::unmarshalArray($xml->publishConfigurations, "KalturaLiveStreamPushPublishConfiguration");
 		}
-		if(count($xml->firstBroadcast))
+		if(!is_null($jsonObject) && isset($jsonObject->publishConfigurations))
+		{
+			if(empty($jsonObject->publishConfigurations))
+				$this->publishConfigurations = array();
+			else
+				$this->publishConfigurations = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsonObject->publishConfigurations, "KalturaLiveStreamPushPublishConfiguration");
+		}
+		if(!is_null($xml) && count($xml->firstBroadcast))
 			$this->firstBroadcast = (int)$xml->firstBroadcast;
-		if(count($xml->lastBroadcast))
+		if(!is_null($jsonObject) && isset($jsonObject->firstBroadcast))
+			$this->firstBroadcast = (int)$jsonObject->firstBroadcast;
+		if(!is_null($xml) && count($xml->lastBroadcast))
 			$this->lastBroadcast = (int)$xml->lastBroadcast;
-		if(count($xml->currentBroadcastStartTime))
+		if(!is_null($jsonObject) && isset($jsonObject->lastBroadcast))
+			$this->lastBroadcast = (int)$jsonObject->lastBroadcast;
+		if(!is_null($xml) && count($xml->currentBroadcastStartTime))
 			$this->currentBroadcastStartTime = (float)$xml->currentBroadcastStartTime;
-		if(count($xml->recordingOptions) && !empty($xml->recordingOptions))
+		if(!is_null($jsonObject) && isset($jsonObject->currentBroadcastStartTime))
+			$this->currentBroadcastStartTime = (float)$jsonObject->currentBroadcastStartTime;
+		if(!is_null($xml) && count($xml->recordingOptions) && !empty($xml->recordingOptions))
 			$this->recordingOptions = Kaltura_Client_ParseUtils::unmarshalObject($xml->recordingOptions, "KalturaLiveEntryRecordingOptions");
-		if(count($xml->liveStatus))
+		if(!is_null($jsonObject) && isset($jsonObject->recordingOptions) && !empty($jsonObject->recordingOptions))
+			$this->recordingOptions = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsonObject->recordingOptions, "KalturaLiveEntryRecordingOptions");
+		if(!is_null($xml) && count($xml->liveStatus))
 			$this->liveStatus = (int)$xml->liveStatus;
-		if(count($xml->segmentDuration))
+		if(!is_null($jsonObject) && isset($jsonObject->liveStatus))
+			$this->liveStatus = (int)$jsonObject->liveStatus;
+		if(!is_null($xml) && count($xml->segmentDuration))
 			$this->segmentDuration = (int)$xml->segmentDuration;
-		if(count($xml->explicitLive))
+		if(!is_null($jsonObject) && isset($jsonObject->segmentDuration))
+			$this->segmentDuration = (int)$jsonObject->segmentDuration;
+		if(!is_null($xml) && count($xml->explicitLive))
 			$this->explicitLive = (int)$xml->explicitLive;
-		if(count($xml->viewMode))
+		if(!is_null($jsonObject) && isset($jsonObject->explicitLive))
+			$this->explicitLive = (int)$jsonObject->explicitLive;
+		if(!is_null($xml) && count($xml->viewMode))
 			$this->viewMode = (int)$xml->viewMode;
-		if(count($xml->recordingStatus))
+		if(!is_null($jsonObject) && isset($jsonObject->viewMode))
+			$this->viewMode = (int)$jsonObject->viewMode;
+		if(!is_null($xml) && count($xml->recordingStatus))
 			$this->recordingStatus = (int)$xml->recordingStatus;
-		if(count($xml->lastBroadcastEndTime))
+		if(!is_null($jsonObject) && isset($jsonObject->recordingStatus))
+			$this->recordingStatus = (int)$jsonObject->recordingStatus;
+		if(!is_null($xml) && count($xml->lastBroadcastEndTime))
 			$this->lastBroadcastEndTime = (int)$xml->lastBroadcastEndTime;
-		if(count($xml->broadcastTime))
+		if(!is_null($jsonObject) && isset($jsonObject->lastBroadcastEndTime))
+			$this->lastBroadcastEndTime = (int)$jsonObject->lastBroadcastEndTime;
+		if(!is_null($xml) && count($xml->broadcastTime))
 			$this->broadcastTime = (int)$xml->broadcastTime;
+		if(!is_null($jsonObject) && isset($jsonObject->broadcastTime))
+			$this->broadcastTime = (int)$jsonObject->broadcastTime;
 	}
 	/**
 	 * The message to be presented when the stream is offline

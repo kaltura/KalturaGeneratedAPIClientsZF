@@ -38,21 +38,32 @@ abstract class Kaltura_Client_Reach_Type_VendorCaptionsCatalogItemBaseFilter ext
 		return 'KalturaVendorCaptionsCatalogItemBaseFilter';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->sourceLanguageEqual))
+		if(!is_null($xml) && count($xml->sourceLanguageEqual))
 			$this->sourceLanguageEqual = (string)$xml->sourceLanguageEqual;
-		if(count($xml->sourceLanguageIn))
+		if(!is_null($jsonObject) && isset($jsonObject->sourceLanguageEqual))
+			$this->sourceLanguageEqual = (string)$jsonObject->sourceLanguageEqual;
+		if(!is_null($xml) && count($xml->sourceLanguageIn))
 			$this->sourceLanguageIn = (string)$xml->sourceLanguageIn;
-		if(count($xml->outputFormatEqual))
+		if(!is_null($jsonObject) && isset($jsonObject->sourceLanguageIn))
+			$this->sourceLanguageIn = (string)$jsonObject->sourceLanguageIn;
+		if(!is_null($xml) && count($xml->outputFormatEqual))
 			$this->outputFormatEqual = (int)$xml->outputFormatEqual;
-		if(count($xml->outputFormatIn))
+		if(!is_null($jsonObject) && isset($jsonObject->outputFormatEqual))
+			$this->outputFormatEqual = (int)$jsonObject->outputFormatEqual;
+		if(!is_null($xml) && count($xml->outputFormatIn))
 			$this->outputFormatIn = (string)$xml->outputFormatIn;
+		if(!is_null($jsonObject) && isset($jsonObject->outputFormatIn))
+			$this->outputFormatIn = (string)$jsonObject->outputFormatIn;
 	}
 	/**
 	 * 

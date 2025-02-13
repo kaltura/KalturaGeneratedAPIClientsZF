@@ -38,47 +38,84 @@ class Kaltura_Client_ContentDistribution_Type_GenericDistributionProviderAction 
 		return 'KalturaGenericDistributionProviderAction';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->id))
+		if(!is_null($xml) && count($xml->id))
 			$this->id = (int)$xml->id;
-		if(count($xml->createdAt))
+		if(!is_null($jsonObject) && isset($jsonObject->id))
+			$this->id = (int)$jsonObject->id;
+		if(!is_null($xml) && count($xml->createdAt))
 			$this->createdAt = (int)$xml->createdAt;
-		if(count($xml->updatedAt))
+		if(!is_null($jsonObject) && isset($jsonObject->createdAt))
+			$this->createdAt = (int)$jsonObject->createdAt;
+		if(!is_null($xml) && count($xml->updatedAt))
 			$this->updatedAt = (int)$xml->updatedAt;
-		if(count($xml->genericDistributionProviderId))
+		if(!is_null($jsonObject) && isset($jsonObject->updatedAt))
+			$this->updatedAt = (int)$jsonObject->updatedAt;
+		if(!is_null($xml) && count($xml->genericDistributionProviderId))
 			$this->genericDistributionProviderId = (int)$xml->genericDistributionProviderId;
-		if(count($xml->action))
+		if(!is_null($jsonObject) && isset($jsonObject->genericDistributionProviderId))
+			$this->genericDistributionProviderId = (int)$jsonObject->genericDistributionProviderId;
+		if(!is_null($xml) && count($xml->action))
 			$this->action = (int)$xml->action;
-		if(count($xml->status))
+		if(!is_null($jsonObject) && isset($jsonObject->action))
+			$this->action = (int)$jsonObject->action;
+		if(!is_null($xml) && count($xml->status))
 			$this->status = (int)$xml->status;
-		if(count($xml->resultsParser))
+		if(!is_null($jsonObject) && isset($jsonObject->status))
+			$this->status = (int)$jsonObject->status;
+		if(!is_null($xml) && count($xml->resultsParser))
 			$this->resultsParser = (int)$xml->resultsParser;
-		if(count($xml->protocol))
+		if(!is_null($jsonObject) && isset($jsonObject->resultsParser))
+			$this->resultsParser = (int)$jsonObject->resultsParser;
+		if(!is_null($xml) && count($xml->protocol))
 			$this->protocol = (int)$xml->protocol;
-		if(count($xml->serverAddress))
+		if(!is_null($jsonObject) && isset($jsonObject->protocol))
+			$this->protocol = (int)$jsonObject->protocol;
+		if(!is_null($xml) && count($xml->serverAddress))
 			$this->serverAddress = (string)$xml->serverAddress;
-		if(count($xml->remotePath))
+		if(!is_null($jsonObject) && isset($jsonObject->serverAddress))
+			$this->serverAddress = (string)$jsonObject->serverAddress;
+		if(!is_null($xml) && count($xml->remotePath))
 			$this->remotePath = (string)$xml->remotePath;
-		if(count($xml->remoteUsername))
+		if(!is_null($jsonObject) && isset($jsonObject->remotePath))
+			$this->remotePath = (string)$jsonObject->remotePath;
+		if(!is_null($xml) && count($xml->remoteUsername))
 			$this->remoteUsername = (string)$xml->remoteUsername;
-		if(count($xml->remotePassword))
+		if(!is_null($jsonObject) && isset($jsonObject->remoteUsername))
+			$this->remoteUsername = (string)$jsonObject->remoteUsername;
+		if(!is_null($xml) && count($xml->remotePassword))
 			$this->remotePassword = (string)$xml->remotePassword;
-		if(count($xml->editableFields))
+		if(!is_null($jsonObject) && isset($jsonObject->remotePassword))
+			$this->remotePassword = (string)$jsonObject->remotePassword;
+		if(!is_null($xml) && count($xml->editableFields))
 			$this->editableFields = (string)$xml->editableFields;
-		if(count($xml->mandatoryFields))
+		if(!is_null($jsonObject) && isset($jsonObject->editableFields))
+			$this->editableFields = (string)$jsonObject->editableFields;
+		if(!is_null($xml) && count($xml->mandatoryFields))
 			$this->mandatoryFields = (string)$xml->mandatoryFields;
-		if(count($xml->mrssTransformer))
+		if(!is_null($jsonObject) && isset($jsonObject->mandatoryFields))
+			$this->mandatoryFields = (string)$jsonObject->mandatoryFields;
+		if(!is_null($xml) && count($xml->mrssTransformer))
 			$this->mrssTransformer = (string)$xml->mrssTransformer;
-		if(count($xml->mrssValidator))
+		if(!is_null($jsonObject) && isset($jsonObject->mrssTransformer))
+			$this->mrssTransformer = (string)$jsonObject->mrssTransformer;
+		if(!is_null($xml) && count($xml->mrssValidator))
 			$this->mrssValidator = (string)$xml->mrssValidator;
-		if(count($xml->resultsTransformer))
+		if(!is_null($jsonObject) && isset($jsonObject->mrssValidator))
+			$this->mrssValidator = (string)$jsonObject->mrssValidator;
+		if(!is_null($xml) && count($xml->resultsTransformer))
 			$this->resultsTransformer = (string)$xml->resultsTransformer;
+		if(!is_null($jsonObject) && isset($jsonObject->resultsTransformer))
+			$this->resultsTransformer = (string)$jsonObject->resultsTransformer;
 	}
 	/**
 	 * Auto generated

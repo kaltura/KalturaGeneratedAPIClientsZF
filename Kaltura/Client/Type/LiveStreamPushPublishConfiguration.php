@@ -38,19 +38,28 @@ class Kaltura_Client_Type_LiveStreamPushPublishConfiguration extends Kaltura_Cli
 		return 'KalturaLiveStreamPushPublishConfiguration';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->publishUrl))
+		if(!is_null($xml) && count($xml->publishUrl))
 			$this->publishUrl = (string)$xml->publishUrl;
-		if(count($xml->backupPublishUrl))
+		if(!is_null($jsonObject) && isset($jsonObject->publishUrl))
+			$this->publishUrl = (string)$jsonObject->publishUrl;
+		if(!is_null($xml) && count($xml->backupPublishUrl))
 			$this->backupPublishUrl = (string)$xml->backupPublishUrl;
-		if(count($xml->port))
+		if(!is_null($jsonObject) && isset($jsonObject->backupPublishUrl))
+			$this->backupPublishUrl = (string)$jsonObject->backupPublishUrl;
+		if(!is_null($xml) && count($xml->port))
 			$this->port = (string)$xml->port;
+		if(!is_null($jsonObject) && isset($jsonObject->port))
+			$this->port = (string)$jsonObject->port;
 	}
 	/**
 	 * 

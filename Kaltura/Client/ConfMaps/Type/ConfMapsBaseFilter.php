@@ -38,19 +38,28 @@ abstract class Kaltura_Client_ConfMaps_Type_ConfMapsBaseFilter extends Kaltura_C
 		return 'KalturaConfMapsBaseFilter';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->nameEqual))
+		if(!is_null($xml) && count($xml->nameEqual))
 			$this->nameEqual = (string)$xml->nameEqual;
-		if(count($xml->relatedHostEqual))
+		if(!is_null($jsonObject) && isset($jsonObject->nameEqual))
+			$this->nameEqual = (string)$jsonObject->nameEqual;
+		if(!is_null($xml) && count($xml->relatedHostEqual))
 			$this->relatedHostEqual = (string)$xml->relatedHostEqual;
-		if(count($xml->versionEqual))
+		if(!is_null($jsonObject) && isset($jsonObject->relatedHostEqual))
+			$this->relatedHostEqual = (string)$jsonObject->relatedHostEqual;
+		if(!is_null($xml) && count($xml->versionEqual))
 			$this->versionEqual = (int)$xml->versionEqual;
+		if(!is_null($jsonObject) && isset($jsonObject->versionEqual))
+			$this->versionEqual = (int)$jsonObject->versionEqual;
 	}
 	/**
 	 * 

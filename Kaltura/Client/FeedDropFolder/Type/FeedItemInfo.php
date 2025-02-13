@@ -38,31 +38,52 @@ class Kaltura_Client_FeedDropFolder_Type_FeedItemInfo extends Kaltura_Client_Obj
 		return 'KalturaFeedItemInfo';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->itemXPath))
+		if(!is_null($xml) && count($xml->itemXPath))
 			$this->itemXPath = (string)$xml->itemXPath;
-		if(count($xml->itemPublishDateXPath))
+		if(!is_null($jsonObject) && isset($jsonObject->itemXPath))
+			$this->itemXPath = (string)$jsonObject->itemXPath;
+		if(!is_null($xml) && count($xml->itemPublishDateXPath))
 			$this->itemPublishDateXPath = (string)$xml->itemPublishDateXPath;
-		if(count($xml->itemUniqueIdentifierXPath))
+		if(!is_null($jsonObject) && isset($jsonObject->itemPublishDateXPath))
+			$this->itemPublishDateXPath = (string)$jsonObject->itemPublishDateXPath;
+		if(!is_null($xml) && count($xml->itemUniqueIdentifierXPath))
 			$this->itemUniqueIdentifierXPath = (string)$xml->itemUniqueIdentifierXPath;
-		if(count($xml->itemContentFileSizeXPath))
+		if(!is_null($jsonObject) && isset($jsonObject->itemUniqueIdentifierXPath))
+			$this->itemUniqueIdentifierXPath = (string)$jsonObject->itemUniqueIdentifierXPath;
+		if(!is_null($xml) && count($xml->itemContentFileSizeXPath))
 			$this->itemContentFileSizeXPath = (string)$xml->itemContentFileSizeXPath;
-		if(count($xml->itemContentUrlXPath))
+		if(!is_null($jsonObject) && isset($jsonObject->itemContentFileSizeXPath))
+			$this->itemContentFileSizeXPath = (string)$jsonObject->itemContentFileSizeXPath;
+		if(!is_null($xml) && count($xml->itemContentUrlXPath))
 			$this->itemContentUrlXPath = (string)$xml->itemContentUrlXPath;
-		if(count($xml->itemContentBitrateXPath))
+		if(!is_null($jsonObject) && isset($jsonObject->itemContentUrlXPath))
+			$this->itemContentUrlXPath = (string)$jsonObject->itemContentUrlXPath;
+		if(!is_null($xml) && count($xml->itemContentBitrateXPath))
 			$this->itemContentBitrateXPath = (string)$xml->itemContentBitrateXPath;
-		if(count($xml->itemHashXPath))
+		if(!is_null($jsonObject) && isset($jsonObject->itemContentBitrateXPath))
+			$this->itemContentBitrateXPath = (string)$jsonObject->itemContentBitrateXPath;
+		if(!is_null($xml) && count($xml->itemHashXPath))
 			$this->itemHashXPath = (string)$xml->itemHashXPath;
-		if(count($xml->itemContentXpath))
+		if(!is_null($jsonObject) && isset($jsonObject->itemHashXPath))
+			$this->itemHashXPath = (string)$jsonObject->itemHashXPath;
+		if(!is_null($xml) && count($xml->itemContentXpath))
 			$this->itemContentXpath = (string)$xml->itemContentXpath;
-		if(count($xml->contentBitrateAttributeName))
+		if(!is_null($jsonObject) && isset($jsonObject->itemContentXpath))
+			$this->itemContentXpath = (string)$jsonObject->itemContentXpath;
+		if(!is_null($xml) && count($xml->contentBitrateAttributeName))
 			$this->contentBitrateAttributeName = (string)$xml->contentBitrateAttributeName;
+		if(!is_null($jsonObject) && isset($jsonObject->contentBitrateAttributeName))
+			$this->contentBitrateAttributeName = (string)$jsonObject->contentBitrateAttributeName;
 	}
 	/**
 	 * 

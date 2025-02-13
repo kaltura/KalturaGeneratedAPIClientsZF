@@ -38,17 +38,24 @@ abstract class Kaltura_Client_Rating_Type_RatingCountBaseFilter extends Kaltura_
 		return 'KalturaRatingCountBaseFilter';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->entryIdEqual))
+		if(!is_null($xml) && count($xml->entryIdEqual))
 			$this->entryIdEqual = (string)$xml->entryIdEqual;
-		if(count($xml->rankIn))
+		if(!is_null($jsonObject) && isset($jsonObject->entryIdEqual))
+			$this->entryIdEqual = (string)$jsonObject->entryIdEqual;
+		if(!is_null($xml) && count($xml->rankIn))
 			$this->rankIn = (string)$xml->rankIn;
+		if(!is_null($jsonObject) && isset($jsonObject->rankIn))
+			$this->rankIn = (string)$jsonObject->rankIn;
 	}
 	/**
 	 * 

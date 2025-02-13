@@ -38,29 +38,48 @@ class Kaltura_Client_Type_LiveStreamParams extends Kaltura_Client_ObjectBase
 		return 'KalturaLiveStreamParams';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->bitrate))
+		if(!is_null($xml) && count($xml->bitrate))
 			$this->bitrate = (int)$xml->bitrate;
-		if(count($xml->flavorId))
+		if(!is_null($jsonObject) && isset($jsonObject->bitrate))
+			$this->bitrate = (int)$jsonObject->bitrate;
+		if(!is_null($xml) && count($xml->flavorId))
 			$this->flavorId = (string)$xml->flavorId;
-		if(count($xml->width))
+		if(!is_null($jsonObject) && isset($jsonObject->flavorId))
+			$this->flavorId = (string)$jsonObject->flavorId;
+		if(!is_null($xml) && count($xml->width))
 			$this->width = (int)$xml->width;
-		if(count($xml->height))
+		if(!is_null($jsonObject) && isset($jsonObject->width))
+			$this->width = (int)$jsonObject->width;
+		if(!is_null($xml) && count($xml->height))
 			$this->height = (int)$xml->height;
-		if(count($xml->codec))
+		if(!is_null($jsonObject) && isset($jsonObject->height))
+			$this->height = (int)$jsonObject->height;
+		if(!is_null($xml) && count($xml->codec))
 			$this->codec = (string)$xml->codec;
-		if(count($xml->frameRate))
+		if(!is_null($jsonObject) && isset($jsonObject->codec))
+			$this->codec = (string)$jsonObject->codec;
+		if(!is_null($xml) && count($xml->frameRate))
 			$this->frameRate = (int)$xml->frameRate;
-		if(count($xml->keyFrameInterval))
+		if(!is_null($jsonObject) && isset($jsonObject->frameRate))
+			$this->frameRate = (int)$jsonObject->frameRate;
+		if(!is_null($xml) && count($xml->keyFrameInterval))
 			$this->keyFrameInterval = (float)$xml->keyFrameInterval;
-		if(count($xml->language))
+		if(!is_null($jsonObject) && isset($jsonObject->keyFrameInterval))
+			$this->keyFrameInterval = (float)$jsonObject->keyFrameInterval;
+		if(!is_null($xml) && count($xml->language))
 			$this->language = (string)$xml->language;
+		if(!is_null($jsonObject) && isset($jsonObject->language))
+			$this->language = (string)$jsonObject->language;
 	}
 	/**
 	 * Bit rate of the stream. (i.e. 900)

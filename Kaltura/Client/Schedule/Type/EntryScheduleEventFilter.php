@@ -38,19 +38,28 @@ class Kaltura_Client_Schedule_Type_EntryScheduleEventFilter extends Kaltura_Clie
 		return 'KalturaEntryScheduleEventFilter';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->parentCategoryIdsLike))
+		if(!is_null($xml) && count($xml->parentCategoryIdsLike))
 			$this->parentCategoryIdsLike = (string)$xml->parentCategoryIdsLike;
-		if(count($xml->parentCategoryIdsMultiLikeOr))
+		if(!is_null($jsonObject) && isset($jsonObject->parentCategoryIdsLike))
+			$this->parentCategoryIdsLike = (string)$jsonObject->parentCategoryIdsLike;
+		if(!is_null($xml) && count($xml->parentCategoryIdsMultiLikeOr))
 			$this->parentCategoryIdsMultiLikeOr = (string)$xml->parentCategoryIdsMultiLikeOr;
-		if(count($xml->parentCategoryIdsMultiLikeAnd))
+		if(!is_null($jsonObject) && isset($jsonObject->parentCategoryIdsMultiLikeOr))
+			$this->parentCategoryIdsMultiLikeOr = (string)$jsonObject->parentCategoryIdsMultiLikeOr;
+		if(!is_null($xml) && count($xml->parentCategoryIdsMultiLikeAnd))
 			$this->parentCategoryIdsMultiLikeAnd = (string)$xml->parentCategoryIdsMultiLikeAnd;
+		if(!is_null($jsonObject) && isset($jsonObject->parentCategoryIdsMultiLikeAnd))
+			$this->parentCategoryIdsMultiLikeAnd = (string)$jsonObject->parentCategoryIdsMultiLikeAnd;
 	}
 	/**
 	 * 

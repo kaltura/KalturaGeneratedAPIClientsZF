@@ -50,12 +50,18 @@ class Kaltura_Client_VirusScan_VirusScanProfileService extends Kaltura_Client_Se
 		$this->client->queueServiceActionCall("virusscan_virusscanprofile", "add", "KalturaVirusScanProfile", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaVirusScanProfile");
-		$this->client->validateObjectType($resultObject, "Kaltura_Client_VirusScan_Type_VirusScanProfile");
-		return $resultObject;
+		$rawResult = $this->client->doQueue();
+		if ($this->client->getConfig()->format === Kaltura_Client_ClientBase::KALTURA_SERVICE_FORMAT_JSON) {
+			$jsObject = json_decode($rawResult);
+			$resultObject = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsObject);
+			return $resultObject;
+		} else {
+			$resultXmlObject = new \SimpleXMLElement($rawResult);
+			$this->client->checkIfError($resultXmlObject->result);
+			$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaVirusScanProfile");
+			$this->client->validateObjectType($resultObject, "Kaltura_Client_VirusScan_Type_VirusScanProfile");
+		}
+			return $resultObject;
 	}
 
 	/**
@@ -69,12 +75,18 @@ class Kaltura_Client_VirusScan_VirusScanProfileService extends Kaltura_Client_Se
 		$this->client->queueServiceActionCall("virusscan_virusscanprofile", "delete", "KalturaVirusScanProfile", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaVirusScanProfile");
-		$this->client->validateObjectType($resultObject, "Kaltura_Client_VirusScan_Type_VirusScanProfile");
-		return $resultObject;
+		$rawResult = $this->client->doQueue();
+		if ($this->client->getConfig()->format === Kaltura_Client_ClientBase::KALTURA_SERVICE_FORMAT_JSON) {
+			$jsObject = json_decode($rawResult);
+			$resultObject = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsObject);
+			return $resultObject;
+		} else {
+			$resultXmlObject = new \SimpleXMLElement($rawResult);
+			$this->client->checkIfError($resultXmlObject->result);
+			$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaVirusScanProfile");
+			$this->client->validateObjectType($resultObject, "Kaltura_Client_VirusScan_Type_VirusScanProfile");
+		}
+			return $resultObject;
 	}
 
 	/**
@@ -88,12 +100,18 @@ class Kaltura_Client_VirusScan_VirusScanProfileService extends Kaltura_Client_Se
 		$this->client->queueServiceActionCall("virusscan_virusscanprofile", "get", "KalturaVirusScanProfile", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaVirusScanProfile");
-		$this->client->validateObjectType($resultObject, "Kaltura_Client_VirusScan_Type_VirusScanProfile");
-		return $resultObject;
+		$rawResult = $this->client->doQueue();
+		if ($this->client->getConfig()->format === Kaltura_Client_ClientBase::KALTURA_SERVICE_FORMAT_JSON) {
+			$jsObject = json_decode($rawResult);
+			$resultObject = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsObject);
+			return $resultObject;
+		} else {
+			$resultXmlObject = new \SimpleXMLElement($rawResult);
+			$this->client->checkIfError($resultXmlObject->result);
+			$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaVirusScanProfile");
+			$this->client->validateObjectType($resultObject, "Kaltura_Client_VirusScan_Type_VirusScanProfile");
+		}
+			return $resultObject;
 	}
 
 	/**
@@ -110,12 +128,18 @@ class Kaltura_Client_VirusScan_VirusScanProfileService extends Kaltura_Client_Se
 		$this->client->queueServiceActionCall("virusscan_virusscanprofile", "list", "KalturaVirusScanProfileListResponse", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaVirusScanProfileListResponse");
-		$this->client->validateObjectType($resultObject, "Kaltura_Client_VirusScan_Type_VirusScanProfileListResponse");
-		return $resultObject;
+		$rawResult = $this->client->doQueue();
+		if ($this->client->getConfig()->format === Kaltura_Client_ClientBase::KALTURA_SERVICE_FORMAT_JSON) {
+			$jsObject = json_decode($rawResult);
+			$resultObject = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsObject);
+			return $resultObject;
+		} else {
+			$resultXmlObject = new \SimpleXMLElement($rawResult);
+			$this->client->checkIfError($resultXmlObject->result);
+			$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaVirusScanProfileListResponse");
+			$this->client->validateObjectType($resultObject, "Kaltura_Client_VirusScan_Type_VirusScanProfileListResponse");
+		}
+			return $resultObject;
 	}
 
 	/**
@@ -130,11 +154,17 @@ class Kaltura_Client_VirusScan_VirusScanProfileService extends Kaltura_Client_Se
 		$this->client->queueServiceActionCall("virusscan_virusscanprofile", "scan", null, $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = (int)Kaltura_Client_ParseUtils::unmarshalSimpleType($resultXmlObject->result);
-		return $resultObject;
+		$rawResult = $this->client->doQueue();
+		if ($this->client->getConfig()->format === Kaltura_Client_ClientBase::KALTURA_SERVICE_FORMAT_JSON) {
+			$jsObject = json_decode($rawResult);
+			$resultObject = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsObject);
+			return $resultObject;
+		} else {
+			$resultXmlObject = new \SimpleXMLElement($rawResult);
+			$this->client->checkIfError($resultXmlObject->result);
+			$resultObject = (int)Kaltura_Client_ParseUtils::unmarshalSimpleType($resultXmlObject->result);
+		}
+			return $resultObject;
 	}
 
 	/**
@@ -149,11 +179,17 @@ class Kaltura_Client_VirusScan_VirusScanProfileService extends Kaltura_Client_Se
 		$this->client->queueServiceActionCall("virusscan_virusscanprofile", "update", "KalturaVirusScanProfile", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaVirusScanProfile");
-		$this->client->validateObjectType($resultObject, "Kaltura_Client_VirusScan_Type_VirusScanProfile");
-		return $resultObject;
+		$rawResult = $this->client->doQueue();
+		if ($this->client->getConfig()->format === Kaltura_Client_ClientBase::KALTURA_SERVICE_FORMAT_JSON) {
+			$jsObject = json_decode($rawResult);
+			$resultObject = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsObject);
+			return $resultObject;
+		} else {
+			$resultXmlObject = new \SimpleXMLElement($rawResult);
+			$this->client->checkIfError($resultXmlObject->result);
+			$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaVirusScanProfile");
+			$this->client->validateObjectType($resultObject, "Kaltura_Client_VirusScan_Type_VirusScanProfile");
+		}
+			return $resultObject;
 	}
 }

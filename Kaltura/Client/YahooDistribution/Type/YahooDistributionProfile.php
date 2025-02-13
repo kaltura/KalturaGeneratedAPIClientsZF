@@ -38,27 +38,44 @@ class Kaltura_Client_YahooDistribution_Type_YahooDistributionProfile extends Kal
 		return 'KalturaYahooDistributionProfile';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->ftpPath))
+		if(!is_null($xml) && count($xml->ftpPath))
 			$this->ftpPath = (string)$xml->ftpPath;
-		if(count($xml->ftpUsername))
+		if(!is_null($jsonObject) && isset($jsonObject->ftpPath))
+			$this->ftpPath = (string)$jsonObject->ftpPath;
+		if(!is_null($xml) && count($xml->ftpUsername))
 			$this->ftpUsername = (string)$xml->ftpUsername;
-		if(count($xml->ftpPassword))
+		if(!is_null($jsonObject) && isset($jsonObject->ftpUsername))
+			$this->ftpUsername = (string)$jsonObject->ftpUsername;
+		if(!is_null($xml) && count($xml->ftpPassword))
 			$this->ftpPassword = (string)$xml->ftpPassword;
-		if(count($xml->ftpHost))
+		if(!is_null($jsonObject) && isset($jsonObject->ftpPassword))
+			$this->ftpPassword = (string)$jsonObject->ftpPassword;
+		if(!is_null($xml) && count($xml->ftpHost))
 			$this->ftpHost = (string)$xml->ftpHost;
-		if(count($xml->contactTelephone))
+		if(!is_null($jsonObject) && isset($jsonObject->ftpHost))
+			$this->ftpHost = (string)$jsonObject->ftpHost;
+		if(!is_null($xml) && count($xml->contactTelephone))
 			$this->contactTelephone = (string)$xml->contactTelephone;
-		if(count($xml->contactEmail))
+		if(!is_null($jsonObject) && isset($jsonObject->contactTelephone))
+			$this->contactTelephone = (string)$jsonObject->contactTelephone;
+		if(!is_null($xml) && count($xml->contactEmail))
 			$this->contactEmail = (string)$xml->contactEmail;
-		if(count($xml->processFeed))
+		if(!is_null($jsonObject) && isset($jsonObject->contactEmail))
+			$this->contactEmail = (string)$jsonObject->contactEmail;
+		if(!is_null($xml) && count($xml->processFeed))
 			$this->processFeed = (int)$xml->processFeed;
+		if(!is_null($jsonObject) && isset($jsonObject->processFeed))
+			$this->processFeed = (int)$jsonObject->processFeed;
 	}
 	/**
 	 * 

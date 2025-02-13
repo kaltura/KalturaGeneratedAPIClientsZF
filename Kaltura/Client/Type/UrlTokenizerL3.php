@@ -38,17 +38,24 @@ class Kaltura_Client_Type_UrlTokenizerL3 extends Kaltura_Client_Type_UrlTokenize
 		return 'KalturaUrlTokenizerL3';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->gen))
+		if(!is_null($xml) && count($xml->gen))
 			$this->gen = (string)$xml->gen;
-		if(count($xml->paramName))
+		if(!is_null($jsonObject) && isset($jsonObject->gen))
+			$this->gen = (string)$jsonObject->gen;
+		if(!is_null($xml) && count($xml->paramName))
 			$this->paramName = (string)$xml->paramName;
+		if(!is_null($jsonObject) && isset($jsonObject->paramName))
+			$this->paramName = (string)$jsonObject->paramName;
 	}
 	/**
 	 * gen

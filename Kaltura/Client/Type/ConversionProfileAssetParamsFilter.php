@@ -38,17 +38,24 @@ class Kaltura_Client_Type_ConversionProfileAssetParamsFilter extends Kaltura_Cli
 		return 'KalturaConversionProfileAssetParamsFilter';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->conversionProfileIdFilter) && !empty($xml->conversionProfileIdFilter))
+		if(!is_null($xml) && count($xml->conversionProfileIdFilter) && !empty($xml->conversionProfileIdFilter))
 			$this->conversionProfileIdFilter = Kaltura_Client_ParseUtils::unmarshalObject($xml->conversionProfileIdFilter, "KalturaConversionProfileFilter");
-		if(count($xml->assetParamsIdFilter) && !empty($xml->assetParamsIdFilter))
+		if(!is_null($jsonObject) && isset($jsonObject->conversionProfileIdFilter) && !empty($jsonObject->conversionProfileIdFilter))
+			$this->conversionProfileIdFilter = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsonObject->conversionProfileIdFilter, "KalturaConversionProfileFilter");
+		if(!is_null($xml) && count($xml->assetParamsIdFilter) && !empty($xml->assetParamsIdFilter))
 			$this->assetParamsIdFilter = Kaltura_Client_ParseUtils::unmarshalObject($xml->assetParamsIdFilter, "KalturaAssetParamsFilter");
+		if(!is_null($jsonObject) && isset($jsonObject->assetParamsIdFilter) && !empty($jsonObject->assetParamsIdFilter))
+			$this->assetParamsIdFilter = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsonObject->assetParamsIdFilter, "KalturaAssetParamsFilter");
 	}
 	/**
 	 * 

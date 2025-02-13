@@ -38,25 +38,40 @@ class Kaltura_Client_Widevine_Type_WidevineProfile extends Kaltura_Client_Drm_Ty
 		return 'KalturaWidevineProfile';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->key))
+		if(!is_null($xml) && count($xml->key))
 			$this->key = (string)$xml->key;
-		if(count($xml->iv))
+		if(!is_null($jsonObject) && isset($jsonObject->key))
+			$this->key = (string)$jsonObject->key;
+		if(!is_null($xml) && count($xml->iv))
 			$this->iv = (string)$xml->iv;
-		if(count($xml->owner))
+		if(!is_null($jsonObject) && isset($jsonObject->iv))
+			$this->iv = (string)$jsonObject->iv;
+		if(!is_null($xml) && count($xml->owner))
 			$this->owner = (string)$xml->owner;
-		if(count($xml->portal))
+		if(!is_null($jsonObject) && isset($jsonObject->owner))
+			$this->owner = (string)$jsonObject->owner;
+		if(!is_null($xml) && count($xml->portal))
 			$this->portal = (string)$xml->portal;
-		if(count($xml->maxGop))
+		if(!is_null($jsonObject) && isset($jsonObject->portal))
+			$this->portal = (string)$jsonObject->portal;
+		if(!is_null($xml) && count($xml->maxGop))
 			$this->maxGop = (int)$xml->maxGop;
-		if(count($xml->regServerHost))
+		if(!is_null($jsonObject) && isset($jsonObject->maxGop))
+			$this->maxGop = (int)$jsonObject->maxGop;
+		if(!is_null($xml) && count($xml->regServerHost))
 			$this->regServerHost = (string)$xml->regServerHost;
+		if(!is_null($jsonObject) && isset($jsonObject->regServerHost))
+			$this->regServerHost = (string)$jsonObject->regServerHost;
 	}
 	/**
 	 * 

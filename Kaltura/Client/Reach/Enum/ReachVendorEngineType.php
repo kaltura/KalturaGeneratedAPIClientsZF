@@ -33,5 +33,7 @@
  */
 class Kaltura_Client_Reach_Enum_ReachVendorEngineType extends Kaltura_Client_EnumBase
 {
+	const OPEN_CALAIS = "OpenCalaisReachVendor.OPEN_CALAIS";
+	const HELLO_WORLD = "ReachInternal.HELLO_WORLD";
 }
 

@@ -38,16 +38,26 @@ class Kaltura_Client_Document_Type_PdfFlavorParamsOutput extends Kaltura_Client_
 		return 'KalturaPdfFlavorParamsOutput';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->readonly))
+		if(!is_null($xml) && count($xml->readonly))
 		{
 			if(!empty($xml->readonly) && ((int) $xml->readonly === 1 || strtolower((string)$xml->readonly) === 'true'))
+				$this->readonly = true;
+			else
+				$this->readonly = false;
+		}
+		if(!is_null($jsonObject) && isset($jsonObject->readonly))
+		{
+			if(!empty($jsonObject->readonly) && ((int) $jsonObject->readonly === 1 || strtolower((string)$jsonObject->readonly) === 'true'))
 				$this->readonly = true;
 			else
 				$this->readonly = false;

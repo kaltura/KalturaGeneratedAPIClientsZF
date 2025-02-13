@@ -111,6 +111,7 @@ class Kaltura_Client_Enum_Language extends Kaltura_Client_EnumBase
 	const BIN = "Bini";
 	const BPY = "Bishnupriya Manipuri";
 	const BI = "Bislama";
+	const BS = "Bosnian";
 	const BR = "Breton";
 	const BUG = "Buginese";
 	const BG = "Bulgarian";
@@ -175,6 +176,7 @@ class Kaltura_Client_Enum_Language extends Kaltura_Client_EnumBase
 	const EGL = "Emilian";
 	const EN = "English";
 	const EN_US = "English (American)";
+	const EN_AU = "English (Australian)";
 	const EN_GB = "English (British)";
 	const ENM = "English Middle (1100-1500)";
 	const MYV = "Erzya";
@@ -228,8 +230,8 @@ class Kaltura_Client_Enum_Language extends Kaltura_Client_EnumBase
 	const HNI = "Hani";
 	const HA = "Hausa";
 	const HAW = "Hawaiian";
-	const IW = "Hebrew";
 	const HE = "Hebrew";
+	const IW = "Hebrew";
 	const HEI = "Heiltsuk";
 	const HID = "Hidatsa";
 	const HIL = "Hiligaynon";
@@ -423,6 +425,7 @@ class Kaltura_Client_Enum_Language extends Kaltura_Client_EnumBase
 	const PS = "Pashto (Pushto)";
 	const PRP = "Persian";
 	const PRS = "Persian (Dari)";
+	const FA_IR = "Persian (Iran)";
 	const PFL = "Pfaelzisch";
 	const PCD = "Picard";
 	const PMS = "Piedmontese";
@@ -490,6 +493,7 @@ class Kaltura_Client_Enum_Language extends Kaltura_Client_EnumBase
 	const SID = "Sidamo";
 	const BLA = "Siksika";
 	const SZL = "Silesian";
+	const ZH_CN = "Simplified Chinese";
 	const SD = "Sindhi";
 	const SI = "Sinhalese";
 	const SS = "Siswati";
@@ -497,6 +501,7 @@ class Kaltura_Client_Enum_Language extends Kaltura_Client_EnumBase
 	const SCS = "Slavey North";
 	const XSL = "Slavey South";
 	const SK = "Slovak";
+	const SK_SK = "Slovakian";
 	const SL = "Slovenian";
 	const SO = "Somali";
 	const SNK = "Soninke";
@@ -552,6 +557,7 @@ class Kaltura_Client_Enum_Language extends Kaltura_Client_EnumBase
 	const TPI = "Tok Pisin";
 	const TO = "Tonga";
 	const TOG = "Tonga (Nyasa)";
+	const ZH_HK = "Traditional Chinese";
 	const DDO = "Tsez";
 	const TSI = "Tsimshian";
 	const TS = "Tsonga";
@@ -594,8 +600,8 @@ class Kaltura_Client_Enum_Language extends Kaltura_Client_EnumBase
 	const WYM = "Wymysorys";
 	const XH = "Xhosa";
 	const AME = "Yanesha";
-	const JI = "Yiddish";
 	const YI = "Yiddish";
+	const JI = "Yiddish";
 	const YO = "Yoruba";
 	const ZAI = "Zapotec Isthmus";
 	const DJE = "Zarma";

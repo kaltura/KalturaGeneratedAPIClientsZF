@@ -38,21 +38,33 @@ class Kaltura_Client_VarConsole_Type_PartnerUsageListResponse extends Kaltura_Cl
 		return 'KalturaPartnerUsageListResponse';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->total) && !empty($xml->total))
+		if(!is_null($xml) && count($xml->total) && !empty($xml->total))
 			$this->total = Kaltura_Client_ParseUtils::unmarshalObject($xml->total, "KalturaVarPartnerUsageItem");
-		if(count($xml->objects))
+		if(!is_null($jsonObject) && isset($jsonObject->total) && !empty($jsonObject->total))
+			$this->total = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsonObject->total, "KalturaVarPartnerUsageItem");
+		if(!is_null($xml) && count($xml->objects))
 		{
 			if(empty($xml->objects))
 				$this->objects = array();
 			else
 				$this->objects = Kaltura_Client_ParseUtils::unmarshalArray($xml->objects, "KalturaVarPartnerUsageItem");
+		}
+		if(!is_null($jsonObject) && isset($jsonObject->objects))
+		{
+			if(empty($jsonObject->objects))
+				$this->objects = array();
+			else
+				$this->objects = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsonObject->objects, "KalturaVarPartnerUsageItem");
 		}
 	}
 	/**

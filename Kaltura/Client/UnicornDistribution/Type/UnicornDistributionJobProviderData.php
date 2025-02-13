@@ -38,28 +38,46 @@ class Kaltura_Client_UnicornDistribution_Type_UnicornDistributionJobProviderData
 		return 'KalturaUnicornDistributionJobProviderData';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->catalogGuid))
+		if(!is_null($xml) && count($xml->catalogGuid))
 			$this->catalogGuid = (string)$xml->catalogGuid;
-		if(count($xml->title))
+		if(!is_null($jsonObject) && isset($jsonObject->catalogGuid))
+			$this->catalogGuid = (string)$jsonObject->catalogGuid;
+		if(!is_null($xml) && count($xml->title))
 			$this->title = (string)$xml->title;
-		if(count($xml->mediaChanged))
+		if(!is_null($jsonObject) && isset($jsonObject->title))
+			$this->title = (string)$jsonObject->title;
+		if(!is_null($xml) && count($xml->mediaChanged))
 		{
 			if(!empty($xml->mediaChanged) && ((int) $xml->mediaChanged === 1 || strtolower((string)$xml->mediaChanged) === 'true'))
 				$this->mediaChanged = true;
 			else
 				$this->mediaChanged = false;
 		}
-		if(count($xml->flavorAssetVersion))
+		if(!is_null($jsonObject) && isset($jsonObject->mediaChanged))
+		{
+			if(!empty($jsonObject->mediaChanged) && ((int) $jsonObject->mediaChanged === 1 || strtolower((string)$jsonObject->mediaChanged) === 'true'))
+				$this->mediaChanged = true;
+			else
+				$this->mediaChanged = false;
+		}
+		if(!is_null($xml) && count($xml->flavorAssetVersion))
 			$this->flavorAssetVersion = (string)$xml->flavorAssetVersion;
-		if(count($xml->notificationBaseUrl))
+		if(!is_null($jsonObject) && isset($jsonObject->flavorAssetVersion))
+			$this->flavorAssetVersion = (string)$jsonObject->flavorAssetVersion;
+		if(!is_null($xml) && count($xml->notificationBaseUrl))
 			$this->notificationBaseUrl = (string)$xml->notificationBaseUrl;
+		if(!is_null($jsonObject) && isset($jsonObject->notificationBaseUrl))
+			$this->notificationBaseUrl = (string)$jsonObject->notificationBaseUrl;
 	}
 	/**
 	 * The Catalog GUID the video is in or will be ingested into.

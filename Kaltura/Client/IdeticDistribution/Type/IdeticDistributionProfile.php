@@ -38,21 +38,32 @@ class Kaltura_Client_IdeticDistribution_Type_IdeticDistributionProfile extends K
 		return 'KalturaIdeticDistributionProfile';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->ftpPath))
+		if(!is_null($xml) && count($xml->ftpPath))
 			$this->ftpPath = (string)$xml->ftpPath;
-		if(count($xml->username))
+		if(!is_null($jsonObject) && isset($jsonObject->ftpPath))
+			$this->ftpPath = (string)$jsonObject->ftpPath;
+		if(!is_null($xml) && count($xml->username))
 			$this->username = (string)$xml->username;
-		if(count($xml->password))
+		if(!is_null($jsonObject) && isset($jsonObject->username))
+			$this->username = (string)$jsonObject->username;
+		if(!is_null($xml) && count($xml->password))
 			$this->password = (string)$xml->password;
-		if(count($xml->domain))
+		if(!is_null($jsonObject) && isset($jsonObject->password))
+			$this->password = (string)$jsonObject->password;
+		if(!is_null($xml) && count($xml->domain))
 			$this->domain = (string)$xml->domain;
+		if(!is_null($jsonObject) && isset($jsonObject->domain))
+			$this->domain = (string)$jsonObject->domain;
 	}
 	/**
 	 * 

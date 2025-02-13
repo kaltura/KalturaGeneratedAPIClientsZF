@@ -38,19 +38,28 @@ class Kaltura_Client_YahooDistribution_Type_YahooDistributionJobProviderData ext
 		return 'KalturaYahooDistributionJobProviderData';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->smallThumbPath))
+		if(!is_null($xml) && count($xml->smallThumbPath))
 			$this->smallThumbPath = (string)$xml->smallThumbPath;
-		if(count($xml->largeThumbPath))
+		if(!is_null($jsonObject) && isset($jsonObject->smallThumbPath))
+			$this->smallThumbPath = (string)$jsonObject->smallThumbPath;
+		if(!is_null($xml) && count($xml->largeThumbPath))
 			$this->largeThumbPath = (string)$xml->largeThumbPath;
-		if(count($xml->videoAssetFilePath))
+		if(!is_null($jsonObject) && isset($jsonObject->largeThumbPath))
+			$this->largeThumbPath = (string)$jsonObject->largeThumbPath;
+		if(!is_null($xml) && count($xml->videoAssetFilePath))
 			$this->videoAssetFilePath = (string)$xml->videoAssetFilePath;
+		if(!is_null($jsonObject) && isset($jsonObject->videoAssetFilePath))
+			$this->videoAssetFilePath = (string)$jsonObject->videoAssetFilePath;
 	}
 	/**
 	 * 

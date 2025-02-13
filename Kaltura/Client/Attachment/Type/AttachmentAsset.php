@@ -38,21 +38,32 @@ class Kaltura_Client_Attachment_Type_AttachmentAsset extends Kaltura_Client_Type
 		return 'KalturaAttachmentAsset';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->filename))
+		if(!is_null($xml) && count($xml->filename))
 			$this->filename = (string)$xml->filename;
-		if(count($xml->title))
+		if(!is_null($jsonObject) && isset($jsonObject->filename))
+			$this->filename = (string)$jsonObject->filename;
+		if(!is_null($xml) && count($xml->title))
 			$this->title = (string)$xml->title;
-		if(count($xml->format))
+		if(!is_null($jsonObject) && isset($jsonObject->title))
+			$this->title = (string)$jsonObject->title;
+		if(!is_null($xml) && count($xml->format))
 			$this->format = (string)$xml->format;
-		if(count($xml->status))
+		if(!is_null($jsonObject) && isset($jsonObject->format))
+			$this->format = (string)$jsonObject->format;
+		if(!is_null($xml) && count($xml->status))
 			$this->status = (int)$xml->status;
+		if(!is_null($jsonObject) && isset($jsonObject->status))
+			$this->status = (int)$jsonObject->status;
 	}
 	/**
 	 * The filename of the attachment asset content

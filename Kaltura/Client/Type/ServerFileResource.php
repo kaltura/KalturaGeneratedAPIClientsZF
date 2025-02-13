@@ -38,18 +38,30 @@ class Kaltura_Client_Type_ServerFileResource extends Kaltura_Client_Type_Generic
 		return 'KalturaServerFileResource';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->localFilePath))
+		if(!is_null($xml) && count($xml->localFilePath))
 			$this->localFilePath = (string)$xml->localFilePath;
-		if(count($xml->keepOriginalFile))
+		if(!is_null($jsonObject) && isset($jsonObject->localFilePath))
+			$this->localFilePath = (string)$jsonObject->localFilePath;
+		if(!is_null($xml) && count($xml->keepOriginalFile))
 		{
 			if(!empty($xml->keepOriginalFile) && ((int) $xml->keepOriginalFile === 1 || strtolower((string)$xml->keepOriginalFile) === 'true'))
+				$this->keepOriginalFile = true;
+			else
+				$this->keepOriginalFile = false;
+		}
+		if(!is_null($jsonObject) && isset($jsonObject->keepOriginalFile))
+		{
+			if(!empty($jsonObject->keepOriginalFile) && ((int) $jsonObject->keepOriginalFile === 1 || strtolower((string)$jsonObject->keepOriginalFile) === 'true'))
 				$this->keepOriginalFile = true;
 			else
 				$this->keepOriginalFile = false;

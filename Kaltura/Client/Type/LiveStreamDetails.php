@@ -38,28 +38,46 @@ class Kaltura_Client_Type_LiveStreamDetails extends Kaltura_Client_ObjectBase
 		return 'KalturaLiveStreamDetails';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->primaryStreamStatus))
+		if(!is_null($xml) && count($xml->primaryStreamStatus))
 			$this->primaryStreamStatus = (int)$xml->primaryStreamStatus;
-		if(count($xml->secondaryStreamStatus))
+		if(!is_null($jsonObject) && isset($jsonObject->primaryStreamStatus))
+			$this->primaryStreamStatus = (int)$jsonObject->primaryStreamStatus;
+		if(!is_null($xml) && count($xml->secondaryStreamStatus))
 			$this->secondaryStreamStatus = (int)$xml->secondaryStreamStatus;
-		if(count($xml->viewMode))
+		if(!is_null($jsonObject) && isset($jsonObject->secondaryStreamStatus))
+			$this->secondaryStreamStatus = (int)$jsonObject->secondaryStreamStatus;
+		if(!is_null($xml) && count($xml->viewMode))
 			$this->viewMode = (int)$xml->viewMode;
-		if(count($xml->wasBroadcast))
+		if(!is_null($jsonObject) && isset($jsonObject->viewMode))
+			$this->viewMode = (int)$jsonObject->viewMode;
+		if(!is_null($xml) && count($xml->wasBroadcast))
 		{
 			if(!empty($xml->wasBroadcast) && ((int) $xml->wasBroadcast === 1 || strtolower((string)$xml->wasBroadcast) === 'true'))
 				$this->wasBroadcast = true;
 			else
 				$this->wasBroadcast = false;
 		}
-		if(count($xml->broadcastStatus))
+		if(!is_null($jsonObject) && isset($jsonObject->wasBroadcast))
+		{
+			if(!empty($jsonObject->wasBroadcast) && ((int) $jsonObject->wasBroadcast === 1 || strtolower((string)$jsonObject->wasBroadcast) === 'true'))
+				$this->wasBroadcast = true;
+			else
+				$this->wasBroadcast = false;
+		}
+		if(!is_null($xml) && count($xml->broadcastStatus))
 			$this->broadcastStatus = (int)$xml->broadcastStatus;
+		if(!is_null($jsonObject) && isset($jsonObject->broadcastStatus))
+			$this->broadcastStatus = (int)$jsonObject->broadcastStatus;
 	}
 	/**
 	 * The status of the primary stream

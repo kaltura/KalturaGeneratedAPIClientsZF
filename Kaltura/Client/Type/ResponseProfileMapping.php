@@ -38,20 +38,34 @@ class Kaltura_Client_Type_ResponseProfileMapping extends Kaltura_Client_ObjectBa
 		return 'KalturaResponseProfileMapping';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->parentProperty))
+		if(!is_null($xml) && count($xml->parentProperty))
 			$this->parentProperty = (string)$xml->parentProperty;
-		if(count($xml->filterProperty))
+		if(!is_null($jsonObject) && isset($jsonObject->parentProperty))
+			$this->parentProperty = (string)$jsonObject->parentProperty;
+		if(!is_null($xml) && count($xml->filterProperty))
 			$this->filterProperty = (string)$xml->filterProperty;
-		if(count($xml->allowNull))
+		if(!is_null($jsonObject) && isset($jsonObject->filterProperty))
+			$this->filterProperty = (string)$jsonObject->filterProperty;
+		if(!is_null($xml) && count($xml->allowNull))
 		{
 			if(!empty($xml->allowNull) && ((int) $xml->allowNull === 1 || strtolower((string)$xml->allowNull) === 'true'))
+				$this->allowNull = true;
+			else
+				$this->allowNull = false;
+		}
+		if(!is_null($jsonObject) && isset($jsonObject->allowNull))
+		{
+			if(!empty($jsonObject->allowNull) && ((int) $jsonObject->allowNull === 1 || strtolower((string)$jsonObject->allowNull) === 'true'))
 				$this->allowNull = true;
 			else
 				$this->allowNull = false;

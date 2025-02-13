@@ -50,12 +50,18 @@ class Kaltura_Client_FlavorParamsOutputService extends Kaltura_Client_ServiceBas
 		$this->client->queueServiceActionCall("flavorparamsoutput", "get", "KalturaFlavorParamsOutput", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaFlavorParamsOutput");
-		$this->client->validateObjectType($resultObject, "Kaltura_Client_Type_FlavorParamsOutput");
-		return $resultObject;
+		$rawResult = $this->client->doQueue();
+		if ($this->client->getConfig()->format === Kaltura_Client_ClientBase::KALTURA_SERVICE_FORMAT_JSON) {
+			$jsObject = json_decode($rawResult);
+			$resultObject = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsObject);
+			return $resultObject;
+		} else {
+			$resultXmlObject = new \SimpleXMLElement($rawResult);
+			$this->client->checkIfError($resultXmlObject->result);
+			$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaFlavorParamsOutput");
+			$this->client->validateObjectType($resultObject, "Kaltura_Client_Type_FlavorParamsOutput");
+		}
+			return $resultObject;
 	}
 
 	/**
@@ -72,11 +78,17 @@ class Kaltura_Client_FlavorParamsOutputService extends Kaltura_Client_ServiceBas
 		$this->client->queueServiceActionCall("flavorparamsoutput", "list", "KalturaFlavorParamsOutputListResponse", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaFlavorParamsOutputListResponse");
-		$this->client->validateObjectType($resultObject, "Kaltura_Client_Type_FlavorParamsOutputListResponse");
-		return $resultObject;
+		$rawResult = $this->client->doQueue();
+		if ($this->client->getConfig()->format === Kaltura_Client_ClientBase::KALTURA_SERVICE_FORMAT_JSON) {
+			$jsObject = json_decode($rawResult);
+			$resultObject = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsObject);
+			return $resultObject;
+		} else {
+			$resultXmlObject = new \SimpleXMLElement($rawResult);
+			$this->client->checkIfError($resultXmlObject->result);
+			$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaFlavorParamsOutputListResponse");
+			$this->client->validateObjectType($resultObject, "Kaltura_Client_Type_FlavorParamsOutputListResponse");
+		}
+			return $resultObject;
 	}
 }

@@ -38,27 +38,44 @@ class Kaltura_Client_FacebookDistribution_Type_FacebookDistributionProfile exten
 		return 'KalturaFacebookDistributionProfile';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->apiAuthorizeUrl))
+		if(!is_null($xml) && count($xml->apiAuthorizeUrl))
 			$this->apiAuthorizeUrl = (string)$xml->apiAuthorizeUrl;
-		if(count($xml->pageId))
+		if(!is_null($jsonObject) && isset($jsonObject->apiAuthorizeUrl))
+			$this->apiAuthorizeUrl = (string)$jsonObject->apiAuthorizeUrl;
+		if(!is_null($xml) && count($xml->pageId))
 			$this->pageId = (string)$xml->pageId;
-		if(count($xml->pageAccessToken))
+		if(!is_null($jsonObject) && isset($jsonObject->pageId))
+			$this->pageId = (string)$jsonObject->pageId;
+		if(!is_null($xml) && count($xml->pageAccessToken))
 			$this->pageAccessToken = (string)$xml->pageAccessToken;
-		if(count($xml->userAccessToken))
+		if(!is_null($jsonObject) && isset($jsonObject->pageAccessToken))
+			$this->pageAccessToken = (string)$jsonObject->pageAccessToken;
+		if(!is_null($xml) && count($xml->userAccessToken))
 			$this->userAccessToken = (string)$xml->userAccessToken;
-		if(count($xml->state))
+		if(!is_null($jsonObject) && isset($jsonObject->userAccessToken))
+			$this->userAccessToken = (string)$jsonObject->userAccessToken;
+		if(!is_null($xml) && count($xml->state))
 			$this->state = (string)$xml->state;
-		if(count($xml->permissions))
+		if(!is_null($jsonObject) && isset($jsonObject->state))
+			$this->state = (string)$jsonObject->state;
+		if(!is_null($xml) && count($xml->permissions))
 			$this->permissions = (string)$xml->permissions;
-		if(count($xml->reRequestPermissions))
+		if(!is_null($jsonObject) && isset($jsonObject->permissions))
+			$this->permissions = (string)$jsonObject->permissions;
+		if(!is_null($xml) && count($xml->reRequestPermissions))
 			$this->reRequestPermissions = (int)$xml->reRequestPermissions;
+		if(!is_null($jsonObject) && isset($jsonObject->reRequestPermissions))
+			$this->reRequestPermissions = (int)$jsonObject->reRequestPermissions;
 	}
 	/**
 	 * 

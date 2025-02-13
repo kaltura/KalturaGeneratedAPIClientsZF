@@ -38,19 +38,28 @@ class Kaltura_Client_Type_UrlTokenizerLevel3 extends Kaltura_Client_Type_UrlToke
 		return 'KalturaUrlTokenizerLevel3';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->paramName))
+		if(!is_null($xml) && count($xml->paramName))
 			$this->paramName = (string)$xml->paramName;
-		if(count($xml->expiryName))
+		if(!is_null($jsonObject) && isset($jsonObject->paramName))
+			$this->paramName = (string)$jsonObject->paramName;
+		if(!is_null($xml) && count($xml->expiryName))
 			$this->expiryName = (string)$xml->expiryName;
-		if(count($xml->gen))
+		if(!is_null($jsonObject) && isset($jsonObject->expiryName))
+			$this->expiryName = (string)$jsonObject->expiryName;
+		if(!is_null($xml) && count($xml->gen))
 			$this->gen = (string)$xml->gen;
+		if(!is_null($jsonObject) && isset($jsonObject->gen))
+			$this->gen = (string)$jsonObject->gen;
 	}
 	/**
 	 * paramName

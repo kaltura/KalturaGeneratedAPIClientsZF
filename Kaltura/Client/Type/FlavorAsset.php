@@ -38,49 +38,88 @@ class Kaltura_Client_Type_FlavorAsset extends Kaltura_Client_Type_Asset
 		return 'KalturaFlavorAsset';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->flavorParamsId))
+		if(!is_null($xml) && count($xml->flavorParamsId))
 			$this->flavorParamsId = (int)$xml->flavorParamsId;
-		if(count($xml->width))
+		if(!is_null($jsonObject) && isset($jsonObject->flavorParamsId))
+			$this->flavorParamsId = (int)$jsonObject->flavorParamsId;
+		if(!is_null($xml) && count($xml->width))
 			$this->width = (int)$xml->width;
-		if(count($xml->height))
+		if(!is_null($jsonObject) && isset($jsonObject->width))
+			$this->width = (int)$jsonObject->width;
+		if(!is_null($xml) && count($xml->height))
 			$this->height = (int)$xml->height;
-		if(count($xml->bitrate))
+		if(!is_null($jsonObject) && isset($jsonObject->height))
+			$this->height = (int)$jsonObject->height;
+		if(!is_null($xml) && count($xml->bitrate))
 			$this->bitrate = (int)$xml->bitrate;
-		if(count($xml->frameRate))
+		if(!is_null($jsonObject) && isset($jsonObject->bitrate))
+			$this->bitrate = (int)$jsonObject->bitrate;
+		if(!is_null($xml) && count($xml->frameRate))
 			$this->frameRate = (float)$xml->frameRate;
-		if(count($xml->isOriginal))
+		if(!is_null($jsonObject) && isset($jsonObject->frameRate))
+			$this->frameRate = (float)$jsonObject->frameRate;
+		if(!is_null($xml) && count($xml->isOriginal))
 		{
 			if(!empty($xml->isOriginal) && ((int) $xml->isOriginal === 1 || strtolower((string)$xml->isOriginal) === 'true'))
 				$this->isOriginal = true;
 			else
 				$this->isOriginal = false;
 		}
-		if(count($xml->isWeb))
+		if(!is_null($jsonObject) && isset($jsonObject->isOriginal))
+		{
+			if(!empty($jsonObject->isOriginal) && ((int) $jsonObject->isOriginal === 1 || strtolower((string)$jsonObject->isOriginal) === 'true'))
+				$this->isOriginal = true;
+			else
+				$this->isOriginal = false;
+		}
+		if(!is_null($xml) && count($xml->isWeb))
 		{
 			if(!empty($xml->isWeb) && ((int) $xml->isWeb === 1 || strtolower((string)$xml->isWeb) === 'true'))
 				$this->isWeb = true;
 			else
 				$this->isWeb = false;
 		}
-		if(count($xml->containerFormat))
+		if(!is_null($jsonObject) && isset($jsonObject->isWeb))
+		{
+			if(!empty($jsonObject->isWeb) && ((int) $jsonObject->isWeb === 1 || strtolower((string)$jsonObject->isWeb) === 'true'))
+				$this->isWeb = true;
+			else
+				$this->isWeb = false;
+		}
+		if(!is_null($xml) && count($xml->containerFormat))
 			$this->containerFormat = (string)$xml->containerFormat;
-		if(count($xml->videoCodecId))
+		if(!is_null($jsonObject) && isset($jsonObject->containerFormat))
+			$this->containerFormat = (string)$jsonObject->containerFormat;
+		if(!is_null($xml) && count($xml->videoCodecId))
 			$this->videoCodecId = (string)$xml->videoCodecId;
-		if(count($xml->status))
+		if(!is_null($jsonObject) && isset($jsonObject->videoCodecId))
+			$this->videoCodecId = (string)$jsonObject->videoCodecId;
+		if(!is_null($xml) && count($xml->status))
 			$this->status = (int)$xml->status;
-		if(count($xml->language))
+		if(!is_null($jsonObject) && isset($jsonObject->status))
+			$this->status = (int)$jsonObject->status;
+		if(!is_null($xml) && count($xml->language))
 			$this->language = (string)$xml->language;
-		if(count($xml->label))
+		if(!is_null($jsonObject) && isset($jsonObject->language))
+			$this->language = (string)$jsonObject->language;
+		if(!is_null($xml) && count($xml->label))
 			$this->label = (string)$xml->label;
-		if(count($xml->isDefault))
+		if(!is_null($jsonObject) && isset($jsonObject->label))
+			$this->label = (string)$jsonObject->label;
+		if(!is_null($xml) && count($xml->isDefault))
 			$this->isDefault = (int)$xml->isDefault;
+		if(!is_null($jsonObject) && isset($jsonObject->isDefault))
+			$this->isDefault = (int)$jsonObject->isDefault;
 	}
 	/**
 	 * The Flavor Params used to create this Flavor Asset

@@ -50,12 +50,18 @@ class Kaltura_Client_Reach_ReachProfileService extends Kaltura_Client_ServiceBas
 		$this->client->queueServiceActionCall("reach_reachprofile", "add", "KalturaReachProfile", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaReachProfile");
-		$this->client->validateObjectType($resultObject, "Kaltura_Client_Reach_Type_ReachProfile");
-		return $resultObject;
+		$rawResult = $this->client->doQueue();
+		if ($this->client->getConfig()->format === Kaltura_Client_ClientBase::KALTURA_SERVICE_FORMAT_JSON) {
+			$jsObject = json_decode($rawResult);
+			$resultObject = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsObject);
+			return $resultObject;
+		} else {
+			$resultXmlObject = new \SimpleXMLElement($rawResult);
+			$this->client->checkIfError($resultXmlObject->result);
+			$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaReachProfile");
+			$this->client->validateObjectType($resultObject, "Kaltura_Client_Reach_Type_ReachProfile");
+		}
+			return $resultObject;
 	}
 
 	/**
@@ -69,9 +75,15 @@ class Kaltura_Client_Reach_ReachProfileService extends Kaltura_Client_ServiceBas
 		$this->client->queueServiceActionCall("reach_reachprofile", "delete", null, $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
+		$rawResult = $this->client->doQueue();
+		if ($this->client->getConfig()->format === Kaltura_Client_ClientBase::KALTURA_SERVICE_FORMAT_JSON) {
+			$jsObject = json_decode($rawResult);
+			$resultObject = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsObject);
+			return $resultObject;
+		} else {
+			$resultXmlObject = new \SimpleXMLElement($rawResult);
+			$this->client->checkIfError($resultXmlObject->result);
+		}
 	}
 
 	/**
@@ -85,12 +97,18 @@ class Kaltura_Client_Reach_ReachProfileService extends Kaltura_Client_ServiceBas
 		$this->client->queueServiceActionCall("reach_reachprofile", "get", "KalturaReachProfile", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaReachProfile");
-		$this->client->validateObjectType($resultObject, "Kaltura_Client_Reach_Type_ReachProfile");
-		return $resultObject;
+		$rawResult = $this->client->doQueue();
+		if ($this->client->getConfig()->format === Kaltura_Client_ClientBase::KALTURA_SERVICE_FORMAT_JSON) {
+			$jsObject = json_decode($rawResult);
+			$resultObject = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsObject);
+			return $resultObject;
+		} else {
+			$resultXmlObject = new \SimpleXMLElement($rawResult);
+			$this->client->checkIfError($resultXmlObject->result);
+			$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaReachProfile");
+			$this->client->validateObjectType($resultObject, "Kaltura_Client_Reach_Type_ReachProfile");
+		}
+			return $resultObject;
 	}
 
 	/**
@@ -107,12 +125,18 @@ class Kaltura_Client_Reach_ReachProfileService extends Kaltura_Client_ServiceBas
 		$this->client->queueServiceActionCall("reach_reachprofile", "list", "KalturaReachProfileListResponse", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaReachProfileListResponse");
-		$this->client->validateObjectType($resultObject, "Kaltura_Client_Reach_Type_ReachProfileListResponse");
-		return $resultObject;
+		$rawResult = $this->client->doQueue();
+		if ($this->client->getConfig()->format === Kaltura_Client_ClientBase::KALTURA_SERVICE_FORMAT_JSON) {
+			$jsObject = json_decode($rawResult);
+			$resultObject = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsObject);
+			return $resultObject;
+		} else {
+			$resultXmlObject = new \SimpleXMLElement($rawResult);
+			$this->client->checkIfError($resultXmlObject->result);
+			$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaReachProfileListResponse");
+			$this->client->validateObjectType($resultObject, "Kaltura_Client_Reach_Type_ReachProfileListResponse");
+		}
+			return $resultObject;
 	}
 
 	/**
@@ -126,12 +150,18 @@ class Kaltura_Client_Reach_ReachProfileService extends Kaltura_Client_ServiceBas
 		$this->client->queueServiceActionCall("reach_reachprofile", "syncCredit", "KalturaReachProfile", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaReachProfile");
-		$this->client->validateObjectType($resultObject, "Kaltura_Client_Reach_Type_ReachProfile");
-		return $resultObject;
+		$rawResult = $this->client->doQueue();
+		if ($this->client->getConfig()->format === Kaltura_Client_ClientBase::KALTURA_SERVICE_FORMAT_JSON) {
+			$jsObject = json_decode($rawResult);
+			$resultObject = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsObject);
+			return $resultObject;
+		} else {
+			$resultXmlObject = new \SimpleXMLElement($rawResult);
+			$this->client->checkIfError($resultXmlObject->result);
+			$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaReachProfile");
+			$this->client->validateObjectType($resultObject, "Kaltura_Client_Reach_Type_ReachProfile");
+		}
+			return $resultObject;
 	}
 
 	/**
@@ -146,12 +176,18 @@ class Kaltura_Client_Reach_ReachProfileService extends Kaltura_Client_ServiceBas
 		$this->client->queueServiceActionCall("reach_reachprofile", "update", "KalturaReachProfile", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaReachProfile");
-		$this->client->validateObjectType($resultObject, "Kaltura_Client_Reach_Type_ReachProfile");
-		return $resultObject;
+		$rawResult = $this->client->doQueue();
+		if ($this->client->getConfig()->format === Kaltura_Client_ClientBase::KALTURA_SERVICE_FORMAT_JSON) {
+			$jsObject = json_decode($rawResult);
+			$resultObject = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsObject);
+			return $resultObject;
+		} else {
+			$resultXmlObject = new \SimpleXMLElement($rawResult);
+			$this->client->checkIfError($resultXmlObject->result);
+			$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaReachProfile");
+			$this->client->validateObjectType($resultObject, "Kaltura_Client_Reach_Type_ReachProfile");
+		}
+			return $resultObject;
 	}
 
 	/**
@@ -166,11 +202,17 @@ class Kaltura_Client_Reach_ReachProfileService extends Kaltura_Client_ServiceBas
 		$this->client->queueServiceActionCall("reach_reachprofile", "updateStatus", "KalturaReachProfile", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaReachProfile");
-		$this->client->validateObjectType($resultObject, "Kaltura_Client_Reach_Type_ReachProfile");
-		return $resultObject;
+		$rawResult = $this->client->doQueue();
+		if ($this->client->getConfig()->format === Kaltura_Client_ClientBase::KALTURA_SERVICE_FORMAT_JSON) {
+			$jsObject = json_decode($rawResult);
+			$resultObject = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsObject);
+			return $resultObject;
+		} else {
+			$resultXmlObject = new \SimpleXMLElement($rawResult);
+			$this->client->checkIfError($resultXmlObject->result);
+			$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaReachProfile");
+			$this->client->validateObjectType($resultObject, "Kaltura_Client_Reach_Type_ReachProfile");
+		}
+			return $resultObject;
 	}
 }

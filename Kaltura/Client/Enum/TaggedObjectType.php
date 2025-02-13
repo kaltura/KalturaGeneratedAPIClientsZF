@@ -35,5 +35,6 @@ class Kaltura_Client_Enum_TaggedObjectType extends Kaltura_Client_EnumBase
 {
 	const ENTRY = "1";
 	const CATEGORY = "2";
+	const LIVESTREAMENTRY = "3";
 }
 

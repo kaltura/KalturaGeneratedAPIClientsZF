@@ -50,12 +50,18 @@ class Kaltura_Client_ShortLink_ShortLinkService extends Kaltura_Client_ServiceBa
 		$this->client->queueServiceActionCall("shortlink_shortlink", "add", "KalturaShortLink", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaShortLink");
-		$this->client->validateObjectType($resultObject, "Kaltura_Client_ShortLink_Type_ShortLink");
-		return $resultObject;
+		$rawResult = $this->client->doQueue();
+		if ($this->client->getConfig()->format === Kaltura_Client_ClientBase::KALTURA_SERVICE_FORMAT_JSON) {
+			$jsObject = json_decode($rawResult);
+			$resultObject = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsObject);
+			return $resultObject;
+		} else {
+			$resultXmlObject = new \SimpleXMLElement($rawResult);
+			$this->client->checkIfError($resultXmlObject->result);
+			$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaShortLink");
+			$this->client->validateObjectType($resultObject, "Kaltura_Client_ShortLink_Type_ShortLink");
+		}
+			return $resultObject;
 	}
 
 	/**
@@ -69,12 +75,18 @@ class Kaltura_Client_ShortLink_ShortLinkService extends Kaltura_Client_ServiceBa
 		$this->client->queueServiceActionCall("shortlink_shortlink", "delete", "KalturaShortLink", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaShortLink");
-		$this->client->validateObjectType($resultObject, "Kaltura_Client_ShortLink_Type_ShortLink");
-		return $resultObject;
+		$rawResult = $this->client->doQueue();
+		if ($this->client->getConfig()->format === Kaltura_Client_ClientBase::KALTURA_SERVICE_FORMAT_JSON) {
+			$jsObject = json_decode($rawResult);
+			$resultObject = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsObject);
+			return $resultObject;
+		} else {
+			$resultXmlObject = new \SimpleXMLElement($rawResult);
+			$this->client->checkIfError($resultXmlObject->result);
+			$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaShortLink");
+			$this->client->validateObjectType($resultObject, "Kaltura_Client_ShortLink_Type_ShortLink");
+		}
+			return $resultObject;
 	}
 
 	/**
@@ -88,12 +100,18 @@ class Kaltura_Client_ShortLink_ShortLinkService extends Kaltura_Client_ServiceBa
 		$this->client->queueServiceActionCall("shortlink_shortlink", "get", "KalturaShortLink", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaShortLink");
-		$this->client->validateObjectType($resultObject, "Kaltura_Client_ShortLink_Type_ShortLink");
-		return $resultObject;
+		$rawResult = $this->client->doQueue();
+		if ($this->client->getConfig()->format === Kaltura_Client_ClientBase::KALTURA_SERVICE_FORMAT_JSON) {
+			$jsObject = json_decode($rawResult);
+			$resultObject = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsObject);
+			return $resultObject;
+		} else {
+			$resultXmlObject = new \SimpleXMLElement($rawResult);
+			$this->client->checkIfError($resultXmlObject->result);
+			$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaShortLink");
+			$this->client->validateObjectType($resultObject, "Kaltura_Client_ShortLink_Type_ShortLink");
+		}
+			return $resultObject;
 	}
 
 	/**
@@ -110,7 +128,7 @@ class Kaltura_Client_ShortLink_ShortLinkService extends Kaltura_Client_ServiceBa
 		$this->client->addParam($kparams, "proxy", $proxy);
 		$this->client->queueServiceActionCall('shortlink_shortlink', 'goto', null, $kparams);
 		$resultObject = $this->client->getServeUrl();
-		return $resultObject;
+			return $resultObject;
 	}
 
 	/**
@@ -127,12 +145,18 @@ class Kaltura_Client_ShortLink_ShortLinkService extends Kaltura_Client_ServiceBa
 		$this->client->queueServiceActionCall("shortlink_shortlink", "list", "KalturaShortLinkListResponse", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaShortLinkListResponse");
-		$this->client->validateObjectType($resultObject, "Kaltura_Client_ShortLink_Type_ShortLinkListResponse");
-		return $resultObject;
+		$rawResult = $this->client->doQueue();
+		if ($this->client->getConfig()->format === Kaltura_Client_ClientBase::KALTURA_SERVICE_FORMAT_JSON) {
+			$jsObject = json_decode($rawResult);
+			$resultObject = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsObject);
+			return $resultObject;
+		} else {
+			$resultXmlObject = new \SimpleXMLElement($rawResult);
+			$this->client->checkIfError($resultXmlObject->result);
+			$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaShortLinkListResponse");
+			$this->client->validateObjectType($resultObject, "Kaltura_Client_ShortLink_Type_ShortLinkListResponse");
+		}
+			return $resultObject;
 	}
 
 	/**
@@ -147,11 +171,17 @@ class Kaltura_Client_ShortLink_ShortLinkService extends Kaltura_Client_ServiceBa
 		$this->client->queueServiceActionCall("shortlink_shortlink", "update", "KalturaShortLink", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaShortLink");
-		$this->client->validateObjectType($resultObject, "Kaltura_Client_ShortLink_Type_ShortLink");
-		return $resultObject;
+		$rawResult = $this->client->doQueue();
+		if ($this->client->getConfig()->format === Kaltura_Client_ClientBase::KALTURA_SERVICE_FORMAT_JSON) {
+			$jsObject = json_decode($rawResult);
+			$resultObject = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsObject);
+			return $resultObject;
+		} else {
+			$resultXmlObject = new \SimpleXMLElement($rawResult);
+			$this->client->checkIfError($resultXmlObject->result);
+			$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaShortLink");
+			$this->client->validateObjectType($resultObject, "Kaltura_Client_ShortLink_Type_ShortLink");
+		}
+			return $resultObject;
 	}
 }

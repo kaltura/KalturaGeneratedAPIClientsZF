@@ -38,19 +38,28 @@ class Kaltura_Client_Type_ApiParameterPermissionItem extends Kaltura_Client_Type
 		return 'KalturaApiParameterPermissionItem';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->object))
+		if(!is_null($xml) && count($xml->object))
 			$this->object = (string)$xml->object;
-		if(count($xml->parameter))
+		if(!is_null($jsonObject) && isset($jsonObject->object))
+			$this->object = (string)$jsonObject->object;
+		if(!is_null($xml) && count($xml->parameter))
 			$this->parameter = (string)$xml->parameter;
-		if(count($xml->action))
+		if(!is_null($jsonObject) && isset($jsonObject->parameter))
+			$this->parameter = (string)$jsonObject->parameter;
+		if(!is_null($xml) && count($xml->action))
 			$this->action = (string)$xml->action;
+		if(!is_null($jsonObject) && isset($jsonObject->action))
+			$this->action = (string)$jsonObject->action;
 	}
 	/**
 	 * 

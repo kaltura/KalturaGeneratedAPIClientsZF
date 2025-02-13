@@ -38,28 +38,50 @@ class Kaltura_Client_ScheduledTask_Type_MailNotificationObjectTask extends Kaltu
 		return 'KalturaMailNotificationObjectTask';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->mailTo))
+		if(!is_null($xml) && count($xml->mailTo))
 			$this->mailTo = (string)$xml->mailTo;
-		if(count($xml->sender))
+		if(!is_null($jsonObject) && isset($jsonObject->mailTo))
+			$this->mailTo = (string)$jsonObject->mailTo;
+		if(!is_null($xml) && count($xml->sender))
 			$this->sender = (string)$xml->sender;
-		if(count($xml->subject))
+		if(!is_null($jsonObject) && isset($jsonObject->sender))
+			$this->sender = (string)$jsonObject->sender;
+		if(!is_null($xml) && count($xml->subject))
 			$this->subject = (string)$xml->subject;
-		if(count($xml->message))
+		if(!is_null($jsonObject) && isset($jsonObject->subject))
+			$this->subject = (string)$jsonObject->subject;
+		if(!is_null($xml) && count($xml->message))
 			$this->message = (string)$xml->message;
-		if(count($xml->footer))
+		if(!is_null($jsonObject) && isset($jsonObject->message))
+			$this->message = (string)$jsonObject->message;
+		if(!is_null($xml) && count($xml->footer))
 			$this->footer = (string)$xml->footer;
-		if(count($xml->link))
+		if(!is_null($jsonObject) && isset($jsonObject->footer))
+			$this->footer = (string)$jsonObject->footer;
+		if(!is_null($xml) && count($xml->link))
 			$this->link = (string)$xml->link;
-		if(count($xml->sendToUsers))
+		if(!is_null($jsonObject) && isset($jsonObject->link))
+			$this->link = (string)$jsonObject->link;
+		if(!is_null($xml) && count($xml->sendToUsers))
 		{
 			if(!empty($xml->sendToUsers) && ((int) $xml->sendToUsers === 1 || strtolower((string)$xml->sendToUsers) === 'true'))
+				$this->sendToUsers = true;
+			else
+				$this->sendToUsers = false;
+		}
+		if(!is_null($jsonObject) && isset($jsonObject->sendToUsers))
+		{
+			if(!empty($jsonObject->sendToUsers) && ((int) $jsonObject->sendToUsers === 1 || strtolower((string)$jsonObject->sendToUsers) === 'true'))
 				$this->sendToUsers = true;
 			else
 				$this->sendToUsers = false;

@@ -38,21 +38,32 @@ abstract class Kaltura_Client_Type_FlavorParamsOutputBaseFilter extends Kaltura_
 		return 'KalturaFlavorParamsOutputBaseFilter';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->flavorParamsIdEqual))
+		if(!is_null($xml) && count($xml->flavorParamsIdEqual))
 			$this->flavorParamsIdEqual = (int)$xml->flavorParamsIdEqual;
-		if(count($xml->flavorParamsVersionEqual))
+		if(!is_null($jsonObject) && isset($jsonObject->flavorParamsIdEqual))
+			$this->flavorParamsIdEqual = (int)$jsonObject->flavorParamsIdEqual;
+		if(!is_null($xml) && count($xml->flavorParamsVersionEqual))
 			$this->flavorParamsVersionEqual = (string)$xml->flavorParamsVersionEqual;
-		if(count($xml->flavorAssetIdEqual))
+		if(!is_null($jsonObject) && isset($jsonObject->flavorParamsVersionEqual))
+			$this->flavorParamsVersionEqual = (string)$jsonObject->flavorParamsVersionEqual;
+		if(!is_null($xml) && count($xml->flavorAssetIdEqual))
 			$this->flavorAssetIdEqual = (string)$xml->flavorAssetIdEqual;
-		if(count($xml->flavorAssetVersionEqual))
+		if(!is_null($jsonObject) && isset($jsonObject->flavorAssetIdEqual))
+			$this->flavorAssetIdEqual = (string)$jsonObject->flavorAssetIdEqual;
+		if(!is_null($xml) && count($xml->flavorAssetVersionEqual))
 			$this->flavorAssetVersionEqual = (string)$xml->flavorAssetVersionEqual;
+		if(!is_null($jsonObject) && isset($jsonObject->flavorAssetVersionEqual))
+			$this->flavorAssetVersionEqual = (string)$jsonObject->flavorAssetVersionEqual;
 	}
 	/**
 	 * 

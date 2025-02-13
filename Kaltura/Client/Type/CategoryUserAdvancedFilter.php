@@ -38,21 +38,32 @@ class Kaltura_Client_Type_CategoryUserAdvancedFilter extends Kaltura_Client_Type
 		return 'KalturaCategoryUserAdvancedFilter';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->memberIdEq))
+		if(!is_null($xml) && count($xml->memberIdEq))
 			$this->memberIdEq = (string)$xml->memberIdEq;
-		if(count($xml->memberIdIn))
+		if(!is_null($jsonObject) && isset($jsonObject->memberIdEq))
+			$this->memberIdEq = (string)$jsonObject->memberIdEq;
+		if(!is_null($xml) && count($xml->memberIdIn))
 			$this->memberIdIn = (string)$xml->memberIdIn;
-		if(count($xml->memberPermissionsMatchOr))
+		if(!is_null($jsonObject) && isset($jsonObject->memberIdIn))
+			$this->memberIdIn = (string)$jsonObject->memberIdIn;
+		if(!is_null($xml) && count($xml->memberPermissionsMatchOr))
 			$this->memberPermissionsMatchOr = (string)$xml->memberPermissionsMatchOr;
-		if(count($xml->memberPermissionsMatchAnd))
+		if(!is_null($jsonObject) && isset($jsonObject->memberPermissionsMatchOr))
+			$this->memberPermissionsMatchOr = (string)$jsonObject->memberPermissionsMatchOr;
+		if(!is_null($xml) && count($xml->memberPermissionsMatchAnd))
 			$this->memberPermissionsMatchAnd = (string)$xml->memberPermissionsMatchAnd;
+		if(!is_null($jsonObject) && isset($jsonObject->memberPermissionsMatchAnd))
+			$this->memberPermissionsMatchAnd = (string)$jsonObject->memberPermissionsMatchAnd;
 	}
 	/**
 	 * 

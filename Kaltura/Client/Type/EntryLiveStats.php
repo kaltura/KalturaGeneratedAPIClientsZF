@@ -38,19 +38,28 @@ class Kaltura_Client_Type_EntryLiveStats extends Kaltura_Client_Type_LiveStats
 		return 'KalturaEntryLiveStats';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->entryId))
+		if(!is_null($xml) && count($xml->entryId))
 			$this->entryId = (string)$xml->entryId;
-		if(count($xml->peakAudience))
+		if(!is_null($jsonObject) && isset($jsonObject->entryId))
+			$this->entryId = (string)$jsonObject->entryId;
+		if(!is_null($xml) && count($xml->peakAudience))
 			$this->peakAudience = (int)$xml->peakAudience;
-		if(count($xml->peakDvrAudience))
+		if(!is_null($jsonObject) && isset($jsonObject->peakAudience))
+			$this->peakAudience = (int)$jsonObject->peakAudience;
+		if(!is_null($xml) && count($xml->peakDvrAudience))
 			$this->peakDvrAudience = (int)$xml->peakDvrAudience;
+		if(!is_null($jsonObject) && isset($jsonObject->peakDvrAudience))
+			$this->peakDvrAudience = (int)$jsonObject->peakDvrAudience;
 	}
 	/**
 	 * 

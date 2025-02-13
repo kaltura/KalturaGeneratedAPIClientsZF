@@ -51,12 +51,18 @@ class Kaltura_Client_Vendor_VendorIntegrationService extends Kaltura_Client_Serv
 		$this->client->queueServiceActionCall("vendor_vendorintegration", "add", "KalturaIntegrationSetting", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaIntegrationSetting");
-		$this->client->validateObjectType($resultObject, "Kaltura_Client_Vendor_Type_IntegrationSetting");
-		return $resultObject;
+		$rawResult = $this->client->doQueue();
+		if ($this->client->getConfig()->format === Kaltura_Client_ClientBase::KALTURA_SERVICE_FORMAT_JSON) {
+			$jsObject = json_decode($rawResult);
+			$resultObject = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsObject);
+			return $resultObject;
+		} else {
+			$resultXmlObject = new \SimpleXMLElement($rawResult);
+			$this->client->checkIfError($resultXmlObject->result);
+			$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaIntegrationSetting");
+			$this->client->validateObjectType($resultObject, "Kaltura_Client_Vendor_Type_IntegrationSetting");
+		}
+			return $resultObject;
 	}
 
 	/**
@@ -70,12 +76,18 @@ class Kaltura_Client_Vendor_VendorIntegrationService extends Kaltura_Client_Serv
 		$this->client->queueServiceActionCall("vendor_vendorintegration", "delete", "KalturaIntegrationSetting", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaIntegrationSetting");
-		$this->client->validateObjectType($resultObject, "Kaltura_Client_Vendor_Type_IntegrationSetting");
-		return $resultObject;
+		$rawResult = $this->client->doQueue();
+		if ($this->client->getConfig()->format === Kaltura_Client_ClientBase::KALTURA_SERVICE_FORMAT_JSON) {
+			$jsObject = json_decode($rawResult);
+			$resultObject = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsObject);
+			return $resultObject;
+		} else {
+			$resultXmlObject = new \SimpleXMLElement($rawResult);
+			$this->client->checkIfError($resultXmlObject->result);
+			$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaIntegrationSetting");
+			$this->client->validateObjectType($resultObject, "Kaltura_Client_Vendor_Type_IntegrationSetting");
+		}
+			return $resultObject;
 	}
 
 	/**
@@ -89,12 +101,18 @@ class Kaltura_Client_Vendor_VendorIntegrationService extends Kaltura_Client_Serv
 		$this->client->queueServiceActionCall("vendor_vendorintegration", "get", "KalturaIntegrationSetting", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaIntegrationSetting");
-		$this->client->validateObjectType($resultObject, "Kaltura_Client_Vendor_Type_IntegrationSetting");
-		return $resultObject;
+		$rawResult = $this->client->doQueue();
+		if ($this->client->getConfig()->format === Kaltura_Client_ClientBase::KALTURA_SERVICE_FORMAT_JSON) {
+			$jsObject = json_decode($rawResult);
+			$resultObject = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsObject);
+			return $resultObject;
+		} else {
+			$resultXmlObject = new \SimpleXMLElement($rawResult);
+			$this->client->checkIfError($resultXmlObject->result);
+			$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaIntegrationSetting");
+			$this->client->validateObjectType($resultObject, "Kaltura_Client_Vendor_Type_IntegrationSetting");
+		}
+			return $resultObject;
 	}
 
 	/**
@@ -109,12 +127,18 @@ class Kaltura_Client_Vendor_VendorIntegrationService extends Kaltura_Client_Serv
 		$this->client->queueServiceActionCall("vendor_vendorintegration", "update", "KalturaIntegrationSetting", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaIntegrationSetting");
-		$this->client->validateObjectType($resultObject, "Kaltura_Client_Vendor_Type_IntegrationSetting");
-		return $resultObject;
+		$rawResult = $this->client->doQueue();
+		if ($this->client->getConfig()->format === Kaltura_Client_ClientBase::KALTURA_SERVICE_FORMAT_JSON) {
+			$jsObject = json_decode($rawResult);
+			$resultObject = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsObject);
+			return $resultObject;
+		} else {
+			$resultXmlObject = new \SimpleXMLElement($rawResult);
+			$this->client->checkIfError($resultXmlObject->result);
+			$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaIntegrationSetting");
+			$this->client->validateObjectType($resultObject, "Kaltura_Client_Vendor_Type_IntegrationSetting");
+		}
+			return $resultObject;
 	}
 
 	/**
@@ -129,11 +153,17 @@ class Kaltura_Client_Vendor_VendorIntegrationService extends Kaltura_Client_Serv
 		$this->client->queueServiceActionCall("vendor_vendorintegration", "updateStatus", "KalturaIntegrationSetting", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaIntegrationSetting");
-		$this->client->validateObjectType($resultObject, "Kaltura_Client_Vendor_Type_IntegrationSetting");
-		return $resultObject;
+		$rawResult = $this->client->doQueue();
+		if ($this->client->getConfig()->format === Kaltura_Client_ClientBase::KALTURA_SERVICE_FORMAT_JSON) {
+			$jsObject = json_decode($rawResult);
+			$resultObject = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsObject);
+			return $resultObject;
+		} else {
+			$resultXmlObject = new \SimpleXMLElement($rawResult);
+			$this->client->checkIfError($resultXmlObject->result);
+			$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaIntegrationSetting");
+			$this->client->validateObjectType($resultObject, "Kaltura_Client_Vendor_Type_IntegrationSetting");
+		}
+			return $resultObject;
 	}
 }

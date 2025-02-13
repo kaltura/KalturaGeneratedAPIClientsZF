@@ -38,40 +38,70 @@ class Kaltura_Client_Type_ITunesSyndicationFeed extends Kaltura_Client_Type_Base
 		return 'KalturaITunesSyndicationFeed';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->feedDescription))
+		if(!is_null($xml) && count($xml->feedDescription))
 			$this->feedDescription = (string)$xml->feedDescription;
-		if(count($xml->language))
+		if(!is_null($jsonObject) && isset($jsonObject->feedDescription))
+			$this->feedDescription = (string)$jsonObject->feedDescription;
+		if(!is_null($xml) && count($xml->language))
 			$this->language = (string)$xml->language;
-		if(count($xml->feedLandingPage))
+		if(!is_null($jsonObject) && isset($jsonObject->language))
+			$this->language = (string)$jsonObject->language;
+		if(!is_null($xml) && count($xml->feedLandingPage))
 			$this->feedLandingPage = (string)$xml->feedLandingPage;
-		if(count($xml->ownerName))
+		if(!is_null($jsonObject) && isset($jsonObject->feedLandingPage))
+			$this->feedLandingPage = (string)$jsonObject->feedLandingPage;
+		if(!is_null($xml) && count($xml->ownerName))
 			$this->ownerName = (string)$xml->ownerName;
-		if(count($xml->ownerEmail))
+		if(!is_null($jsonObject) && isset($jsonObject->ownerName))
+			$this->ownerName = (string)$jsonObject->ownerName;
+		if(!is_null($xml) && count($xml->ownerEmail))
 			$this->ownerEmail = (string)$xml->ownerEmail;
-		if(count($xml->feedImageUrl))
+		if(!is_null($jsonObject) && isset($jsonObject->ownerEmail))
+			$this->ownerEmail = (string)$jsonObject->ownerEmail;
+		if(!is_null($xml) && count($xml->feedImageUrl))
 			$this->feedImageUrl = (string)$xml->feedImageUrl;
-		if(count($xml->category))
+		if(!is_null($jsonObject) && isset($jsonObject->feedImageUrl))
+			$this->feedImageUrl = (string)$jsonObject->feedImageUrl;
+		if(!is_null($xml) && count($xml->category))
 			$this->category = (string)$xml->category;
-		if(count($xml->adultContent))
+		if(!is_null($jsonObject) && isset($jsonObject->category))
+			$this->category = (string)$jsonObject->category;
+		if(!is_null($xml) && count($xml->adultContent))
 			$this->adultContent = (string)$xml->adultContent;
-		if(count($xml->feedAuthor))
+		if(!is_null($jsonObject) && isset($jsonObject->adultContent))
+			$this->adultContent = (string)$jsonObject->adultContent;
+		if(!is_null($xml) && count($xml->feedAuthor))
 			$this->feedAuthor = (string)$xml->feedAuthor;
-		if(count($xml->enforceFeedAuthor))
+		if(!is_null($jsonObject) && isset($jsonObject->feedAuthor))
+			$this->feedAuthor = (string)$jsonObject->feedAuthor;
+		if(!is_null($xml) && count($xml->enforceFeedAuthor))
 		{
 			if(!empty($xml->enforceFeedAuthor) && ((int) $xml->enforceFeedAuthor === 1 || strtolower((string)$xml->enforceFeedAuthor) === 'true'))
 				$this->enforceFeedAuthor = true;
 			else
 				$this->enforceFeedAuthor = false;
 		}
-		if(count($xml->enforceOrder))
+		if(!is_null($jsonObject) && isset($jsonObject->enforceFeedAuthor))
+		{
+			if(!empty($jsonObject->enforceFeedAuthor) && ((int) $jsonObject->enforceFeedAuthor === 1 || strtolower((string)$jsonObject->enforceFeedAuthor) === 'true'))
+				$this->enforceFeedAuthor = true;
+			else
+				$this->enforceFeedAuthor = false;
+		}
+		if(!is_null($xml) && count($xml->enforceOrder))
 			$this->enforceOrder = (int)$xml->enforceOrder;
+		if(!is_null($jsonObject) && isset($jsonObject->enforceOrder))
+			$this->enforceOrder = (int)$jsonObject->enforceOrder;
 	}
 	/**
 	 * feed description

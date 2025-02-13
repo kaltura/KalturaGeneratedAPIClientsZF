@@ -38,21 +38,32 @@ class Kaltura_Client_Type_FileSyncDescriptor extends Kaltura_Client_ObjectBase
 		return 'KalturaFileSyncDescriptor';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->fileSyncLocalPath))
+		if(!is_null($xml) && count($xml->fileSyncLocalPath))
 			$this->fileSyncLocalPath = (string)$xml->fileSyncLocalPath;
-		if(count($xml->fileEncryptionKey))
+		if(!is_null($jsonObject) && isset($jsonObject->fileSyncLocalPath))
+			$this->fileSyncLocalPath = (string)$jsonObject->fileSyncLocalPath;
+		if(!is_null($xml) && count($xml->fileEncryptionKey))
 			$this->fileEncryptionKey = (string)$xml->fileEncryptionKey;
-		if(count($xml->fileSyncRemoteUrl))
+		if(!is_null($jsonObject) && isset($jsonObject->fileEncryptionKey))
+			$this->fileEncryptionKey = (string)$jsonObject->fileEncryptionKey;
+		if(!is_null($xml) && count($xml->fileSyncRemoteUrl))
 			$this->fileSyncRemoteUrl = (string)$xml->fileSyncRemoteUrl;
-		if(count($xml->fileSyncObjectSubType))
+		if(!is_null($jsonObject) && isset($jsonObject->fileSyncRemoteUrl))
+			$this->fileSyncRemoteUrl = (string)$jsonObject->fileSyncRemoteUrl;
+		if(!is_null($xml) && count($xml->fileSyncObjectSubType))
 			$this->fileSyncObjectSubType = (int)$xml->fileSyncObjectSubType;
+		if(!is_null($jsonObject) && isset($jsonObject->fileSyncObjectSubType))
+			$this->fileSyncObjectSubType = (int)$jsonObject->fileSyncObjectSubType;
 	}
 	/**
 	 * 

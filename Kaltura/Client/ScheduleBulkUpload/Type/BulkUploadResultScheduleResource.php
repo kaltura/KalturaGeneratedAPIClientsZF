@@ -38,29 +38,48 @@ class Kaltura_Client_ScheduleBulkUpload_Type_BulkUploadResultScheduleResource ex
 		return 'KalturaBulkUploadResultScheduleResource';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->resourceId))
+		if(!is_null($xml) && count($xml->resourceId))
 			$this->resourceId = (string)$xml->resourceId;
-		if(count($xml->name))
+		if(!is_null($jsonObject) && isset($jsonObject->resourceId))
+			$this->resourceId = (string)$jsonObject->resourceId;
+		if(!is_null($xml) && count($xml->name))
 			$this->name = (string)$xml->name;
-		if(count($xml->type))
+		if(!is_null($jsonObject) && isset($jsonObject->name))
+			$this->name = (string)$jsonObject->name;
+		if(!is_null($xml) && count($xml->type))
 			$this->type = (string)$xml->type;
-		if(count($xml->systemName))
+		if(!is_null($jsonObject) && isset($jsonObject->type))
+			$this->type = (string)$jsonObject->type;
+		if(!is_null($xml) && count($xml->systemName))
 			$this->systemName = (string)$xml->systemName;
-		if(count($xml->description))
+		if(!is_null($jsonObject) && isset($jsonObject->systemName))
+			$this->systemName = (string)$jsonObject->systemName;
+		if(!is_null($xml) && count($xml->description))
 			$this->description = (string)$xml->description;
-		if(count($xml->tags))
+		if(!is_null($jsonObject) && isset($jsonObject->description))
+			$this->description = (string)$jsonObject->description;
+		if(!is_null($xml) && count($xml->tags))
 			$this->tags = (string)$xml->tags;
-		if(count($xml->parentType))
+		if(!is_null($jsonObject) && isset($jsonObject->tags))
+			$this->tags = (string)$jsonObject->tags;
+		if(!is_null($xml) && count($xml->parentType))
 			$this->parentType = (string)$xml->parentType;
-		if(count($xml->parentSystemName))
+		if(!is_null($jsonObject) && isset($jsonObject->parentType))
+			$this->parentType = (string)$jsonObject->parentType;
+		if(!is_null($xml) && count($xml->parentSystemName))
 			$this->parentSystemName = (string)$xml->parentSystemName;
+		if(!is_null($jsonObject) && isset($jsonObject->parentSystemName))
+			$this->parentSystemName = (string)$jsonObject->parentSystemName;
 	}
 	/**
 	 * 

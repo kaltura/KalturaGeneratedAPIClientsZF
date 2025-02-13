@@ -38,31 +38,52 @@ abstract class Kaltura_Client_Type_MappedObjectsCsvJobData extends Kaltura_Clien
 		return 'KalturaMappedObjectsCsvJobData';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->metadataProfileId))
+		if(!is_null($xml) && count($xml->metadataProfileId))
 			$this->metadataProfileId = (int)$xml->metadataProfileId;
-		if(count($xml->additionalFields))
+		if(!is_null($jsonObject) && isset($jsonObject->metadataProfileId))
+			$this->metadataProfileId = (int)$jsonObject->metadataProfileId;
+		if(!is_null($xml) && count($xml->additionalFields))
 		{
 			if(empty($xml->additionalFields))
 				$this->additionalFields = array();
 			else
 				$this->additionalFields = Kaltura_Client_ParseUtils::unmarshalArray($xml->additionalFields, "KalturaCsvAdditionalFieldInfo");
 		}
-		if(count($xml->mappedFields))
+		if(!is_null($jsonObject) && isset($jsonObject->additionalFields))
+		{
+			if(empty($jsonObject->additionalFields))
+				$this->additionalFields = array();
+			else
+				$this->additionalFields = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsonObject->additionalFields, "KalturaCsvAdditionalFieldInfo");
+		}
+		if(!is_null($xml) && count($xml->mappedFields))
 		{
 			if(empty($xml->mappedFields))
 				$this->mappedFields = array();
 			else
 				$this->mappedFields = Kaltura_Client_ParseUtils::unmarshalArray($xml->mappedFields, "KalturaKeyValue");
 		}
-		if(count($xml->options) && !empty($xml->options))
+		if(!is_null($jsonObject) && isset($jsonObject->mappedFields))
+		{
+			if(empty($jsonObject->mappedFields))
+				$this->mappedFields = array();
+			else
+				$this->mappedFields = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsonObject->mappedFields, "KalturaKeyValue");
+		}
+		if(!is_null($xml) && count($xml->options) && !empty($xml->options))
 			$this->options = Kaltura_Client_ParseUtils::unmarshalObject($xml->options, "KalturaExportToCsvOptions");
+		if(!is_null($jsonObject) && isset($jsonObject->options) && !empty($jsonObject->options))
+			$this->options = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsonObject->options, "KalturaExportToCsvOptions");
 	}
 	/**
 	 * The metadata profile we should look the xpath in

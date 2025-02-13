@@ -38,24 +38,38 @@ class Kaltura_Client_Type_MixEntry extends Kaltura_Client_Type_PlayableEntry
 		return 'KalturaMixEntry';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->hasRealThumbnail))
+		if(!is_null($xml) && count($xml->hasRealThumbnail))
 		{
 			if(!empty($xml->hasRealThumbnail) && ((int) $xml->hasRealThumbnail === 1 || strtolower((string)$xml->hasRealThumbnail) === 'true'))
 				$this->hasRealThumbnail = true;
 			else
 				$this->hasRealThumbnail = false;
 		}
-		if(count($xml->editorType))
+		if(!is_null($jsonObject) && isset($jsonObject->hasRealThumbnail))
+		{
+			if(!empty($jsonObject->hasRealThumbnail) && ((int) $jsonObject->hasRealThumbnail === 1 || strtolower((string)$jsonObject->hasRealThumbnail) === 'true'))
+				$this->hasRealThumbnail = true;
+			else
+				$this->hasRealThumbnail = false;
+		}
+		if(!is_null($xml) && count($xml->editorType))
 			$this->editorType = (int)$xml->editorType;
-		if(count($xml->dataContent))
+		if(!is_null($jsonObject) && isset($jsonObject->editorType))
+			$this->editorType = (int)$jsonObject->editorType;
+		if(!is_null($xml) && count($xml->dataContent))
 			$this->dataContent = (string)$xml->dataContent;
+		if(!is_null($jsonObject) && isset($jsonObject->dataContent))
+			$this->dataContent = (string)$jsonObject->dataContent;
 	}
 	/**
 	 * Indicates whether the user has submited a real thumbnail to the mix (Not the one that was generated automaticaly)

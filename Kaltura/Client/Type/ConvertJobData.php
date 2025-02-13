@@ -38,42 +38,74 @@ class Kaltura_Client_Type_ConvertJobData extends Kaltura_Client_Type_Convartable
 		return 'KalturaConvertJobData';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->destFileSyncLocalPath))
+		if(!is_null($xml) && count($xml->destFileSyncLocalPath))
 			$this->destFileSyncLocalPath = (string)$xml->destFileSyncLocalPath;
-		if(count($xml->destFileSyncRemoteUrl))
+		if(!is_null($jsonObject) && isset($jsonObject->destFileSyncLocalPath))
+			$this->destFileSyncLocalPath = (string)$jsonObject->destFileSyncLocalPath;
+		if(!is_null($xml) && count($xml->destFileSyncRemoteUrl))
 			$this->destFileSyncRemoteUrl = (string)$xml->destFileSyncRemoteUrl;
-		if(count($xml->logFileSyncLocalPath))
+		if(!is_null($jsonObject) && isset($jsonObject->destFileSyncRemoteUrl))
+			$this->destFileSyncRemoteUrl = (string)$jsonObject->destFileSyncRemoteUrl;
+		if(!is_null($xml) && count($xml->logFileSyncLocalPath))
 			$this->logFileSyncLocalPath = (string)$xml->logFileSyncLocalPath;
-		if(count($xml->logFileSyncRemoteUrl))
+		if(!is_null($jsonObject) && isset($jsonObject->logFileSyncLocalPath))
+			$this->logFileSyncLocalPath = (string)$jsonObject->logFileSyncLocalPath;
+		if(!is_null($xml) && count($xml->logFileSyncRemoteUrl))
 			$this->logFileSyncRemoteUrl = (string)$xml->logFileSyncRemoteUrl;
-		if(count($xml->flavorAssetId))
+		if(!is_null($jsonObject) && isset($jsonObject->logFileSyncRemoteUrl))
+			$this->logFileSyncRemoteUrl = (string)$jsonObject->logFileSyncRemoteUrl;
+		if(!is_null($xml) && count($xml->flavorAssetId))
 			$this->flavorAssetId = (string)$xml->flavorAssetId;
-		if(count($xml->remoteMediaId))
+		if(!is_null($jsonObject) && isset($jsonObject->flavorAssetId))
+			$this->flavorAssetId = (string)$jsonObject->flavorAssetId;
+		if(!is_null($xml) && count($xml->remoteMediaId))
 			$this->remoteMediaId = (string)$xml->remoteMediaId;
-		if(count($xml->customData))
+		if(!is_null($jsonObject) && isset($jsonObject->remoteMediaId))
+			$this->remoteMediaId = (string)$jsonObject->remoteMediaId;
+		if(!is_null($xml) && count($xml->customData))
 			$this->customData = (string)$xml->customData;
-		if(count($xml->extraDestFileSyncs))
+		if(!is_null($jsonObject) && isset($jsonObject->customData))
+			$this->customData = (string)$jsonObject->customData;
+		if(!is_null($xml) && count($xml->extraDestFileSyncs))
 		{
 			if(empty($xml->extraDestFileSyncs))
 				$this->extraDestFileSyncs = array();
 			else
 				$this->extraDestFileSyncs = Kaltura_Client_ParseUtils::unmarshalArray($xml->extraDestFileSyncs, "KalturaDestFileSyncDescriptor");
 		}
-		if(count($xml->engineMessage))
+		if(!is_null($jsonObject) && isset($jsonObject->extraDestFileSyncs))
+		{
+			if(empty($jsonObject->extraDestFileSyncs))
+				$this->extraDestFileSyncs = array();
+			else
+				$this->extraDestFileSyncs = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsonObject->extraDestFileSyncs, "KalturaDestFileSyncDescriptor");
+		}
+		if(!is_null($xml) && count($xml->engineMessage))
 			$this->engineMessage = (string)$xml->engineMessage;
-		if(count($xml->destFileSyncSharedPath))
+		if(!is_null($jsonObject) && isset($jsonObject->engineMessage))
+			$this->engineMessage = (string)$jsonObject->engineMessage;
+		if(!is_null($xml) && count($xml->destFileSyncSharedPath))
 			$this->destFileSyncSharedPath = (string)$xml->destFileSyncSharedPath;
-		if(count($xml->userCpu))
+		if(!is_null($jsonObject) && isset($jsonObject->destFileSyncSharedPath))
+			$this->destFileSyncSharedPath = (string)$jsonObject->destFileSyncSharedPath;
+		if(!is_null($xml) && count($xml->userCpu))
 			$this->userCpu = (int)$xml->userCpu;
-		if(count($xml->estimatedEffort))
+		if(!is_null($jsonObject) && isset($jsonObject->userCpu))
+			$this->userCpu = (int)$jsonObject->userCpu;
+		if(!is_null($xml) && count($xml->estimatedEffort))
 			$this->estimatedEffort = (int)$xml->estimatedEffort;
+		if(!is_null($jsonObject) && isset($jsonObject->estimatedEffort))
+			$this->estimatedEffort = (int)$jsonObject->estimatedEffort;
 	}
 	/**
 	 * 

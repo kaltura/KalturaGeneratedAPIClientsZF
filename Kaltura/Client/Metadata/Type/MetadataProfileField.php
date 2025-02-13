@@ -38,21 +38,32 @@ class Kaltura_Client_Metadata_Type_MetadataProfileField extends Kaltura_Client_O
 		return 'KalturaMetadataProfileField';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->id))
+		if(!is_null($xml) && count($xml->id))
 			$this->id = (int)$xml->id;
-		if(count($xml->xPath))
+		if(!is_null($jsonObject) && isset($jsonObject->id))
+			$this->id = (int)$jsonObject->id;
+		if(!is_null($xml) && count($xml->xPath))
 			$this->xPath = (string)$xml->xPath;
-		if(count($xml->key))
+		if(!is_null($jsonObject) && isset($jsonObject->xPath))
+			$this->xPath = (string)$jsonObject->xPath;
+		if(!is_null($xml) && count($xml->key))
 			$this->key = (string)$xml->key;
-		if(count($xml->label))
+		if(!is_null($jsonObject) && isset($jsonObject->key))
+			$this->key = (string)$jsonObject->key;
+		if(!is_null($xml) && count($xml->label))
 			$this->label = (string)$xml->label;
+		if(!is_null($jsonObject) && isset($jsonObject->label))
+			$this->label = (string)$jsonObject->label;
 	}
 	/**
 	 * 

@@ -38,26 +38,42 @@ class Kaltura_Client_Type_UiConfTypeInfo extends Kaltura_Client_ObjectBase
 		return 'KalturaUiConfTypeInfo';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->type))
+		if(!is_null($xml) && count($xml->type))
 			$this->type = (int)$xml->type;
-		if(count($xml->versions))
+		if(!is_null($jsonObject) && isset($jsonObject->type))
+			$this->type = (int)$jsonObject->type;
+		if(!is_null($xml) && count($xml->versions))
 		{
 			if(empty($xml->versions))
 				$this->versions = array();
 			else
 				$this->versions = Kaltura_Client_ParseUtils::unmarshalArray($xml->versions, "KalturaString");
 		}
-		if(count($xml->directory))
+		if(!is_null($jsonObject) && isset($jsonObject->versions))
+		{
+			if(empty($jsonObject->versions))
+				$this->versions = array();
+			else
+				$this->versions = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsonObject->versions, "KalturaString");
+		}
+		if(!is_null($xml) && count($xml->directory))
 			$this->directory = (string)$xml->directory;
-		if(count($xml->filename))
+		if(!is_null($jsonObject) && isset($jsonObject->directory))
+			$this->directory = (string)$jsonObject->directory;
+		if(!is_null($xml) && count($xml->filename))
 			$this->filename = (string)$xml->filename;
+		if(!is_null($jsonObject) && isset($jsonObject->filename))
+			$this->filename = (string)$jsonObject->filename;
 	}
 	/**
 	 * UiConf Type

@@ -38,98 +38,190 @@ class Kaltura_Client_Type_FlavorParams extends Kaltura_Client_Type_AssetParams
 		return 'KalturaFlavorParams';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->videoCodec))
+		if(!is_null($xml) && count($xml->videoCodec))
 			$this->videoCodec = (string)$xml->videoCodec;
-		if(count($xml->videoBitrate))
+		if(!is_null($jsonObject) && isset($jsonObject->videoCodec))
+			$this->videoCodec = (string)$jsonObject->videoCodec;
+		if(!is_null($xml) && count($xml->videoBitrate))
 			$this->videoBitrate = (int)$xml->videoBitrate;
-		if(count($xml->audioCodec))
+		if(!is_null($jsonObject) && isset($jsonObject->videoBitrate))
+			$this->videoBitrate = (int)$jsonObject->videoBitrate;
+		if(!is_null($xml) && count($xml->audioCodec))
 			$this->audioCodec = (string)$xml->audioCodec;
-		if(count($xml->audioBitrate))
+		if(!is_null($jsonObject) && isset($jsonObject->audioCodec))
+			$this->audioCodec = (string)$jsonObject->audioCodec;
+		if(!is_null($xml) && count($xml->audioBitrate))
 			$this->audioBitrate = (int)$xml->audioBitrate;
-		if(count($xml->audioChannels))
+		if(!is_null($jsonObject) && isset($jsonObject->audioBitrate))
+			$this->audioBitrate = (int)$jsonObject->audioBitrate;
+		if(!is_null($xml) && count($xml->audioChannels))
 			$this->audioChannels = (int)$xml->audioChannels;
-		if(count($xml->audioSampleRate))
+		if(!is_null($jsonObject) && isset($jsonObject->audioChannels))
+			$this->audioChannels = (int)$jsonObject->audioChannels;
+		if(!is_null($xml) && count($xml->audioSampleRate))
 			$this->audioSampleRate = (int)$xml->audioSampleRate;
-		if(count($xml->width))
+		if(!is_null($jsonObject) && isset($jsonObject->audioSampleRate))
+			$this->audioSampleRate = (int)$jsonObject->audioSampleRate;
+		if(!is_null($xml) && count($xml->width))
 			$this->width = (int)$xml->width;
-		if(count($xml->height))
+		if(!is_null($jsonObject) && isset($jsonObject->width))
+			$this->width = (int)$jsonObject->width;
+		if(!is_null($xml) && count($xml->height))
 			$this->height = (int)$xml->height;
-		if(count($xml->frameRate))
+		if(!is_null($jsonObject) && isset($jsonObject->height))
+			$this->height = (int)$jsonObject->height;
+		if(!is_null($xml) && count($xml->frameRate))
 			$this->frameRate = (float)$xml->frameRate;
-		if(count($xml->gopSize))
+		if(!is_null($jsonObject) && isset($jsonObject->frameRate))
+			$this->frameRate = (float)$jsonObject->frameRate;
+		if(!is_null($xml) && count($xml->gopSize))
 			$this->gopSize = (int)$xml->gopSize;
-		if(count($xml->conversionEngines))
+		if(!is_null($jsonObject) && isset($jsonObject->gopSize))
+			$this->gopSize = (int)$jsonObject->gopSize;
+		if(!is_null($xml) && count($xml->conversionEngines))
 			$this->conversionEngines = (string)$xml->conversionEngines;
-		if(count($xml->conversionEnginesExtraParams))
+		if(!is_null($jsonObject) && isset($jsonObject->conversionEngines))
+			$this->conversionEngines = (string)$jsonObject->conversionEngines;
+		if(!is_null($xml) && count($xml->conversionEnginesExtraParams))
 			$this->conversionEnginesExtraParams = (string)$xml->conversionEnginesExtraParams;
-		if(count($xml->twoPass))
+		if(!is_null($jsonObject) && isset($jsonObject->conversionEnginesExtraParams))
+			$this->conversionEnginesExtraParams = (string)$jsonObject->conversionEnginesExtraParams;
+		if(!is_null($xml) && count($xml->twoPass))
 		{
 			if(!empty($xml->twoPass) && ((int) $xml->twoPass === 1 || strtolower((string)$xml->twoPass) === 'true'))
 				$this->twoPass = true;
 			else
 				$this->twoPass = false;
 		}
-		if(count($xml->deinterlice))
+		if(!is_null($jsonObject) && isset($jsonObject->twoPass))
+		{
+			if(!empty($jsonObject->twoPass) && ((int) $jsonObject->twoPass === 1 || strtolower((string)$jsonObject->twoPass) === 'true'))
+				$this->twoPass = true;
+			else
+				$this->twoPass = false;
+		}
+		if(!is_null($xml) && count($xml->deinterlice))
 			$this->deinterlice = (int)$xml->deinterlice;
-		if(count($xml->rotate))
+		if(!is_null($jsonObject) && isset($jsonObject->deinterlice))
+			$this->deinterlice = (int)$jsonObject->deinterlice;
+		if(!is_null($xml) && count($xml->rotate))
 			$this->rotate = (int)$xml->rotate;
-		if(count($xml->operators))
+		if(!is_null($jsonObject) && isset($jsonObject->rotate))
+			$this->rotate = (int)$jsonObject->rotate;
+		if(!is_null($xml) && count($xml->operators))
 			$this->operators = (string)$xml->operators;
-		if(count($xml->engineVersion))
+		if(!is_null($jsonObject) && isset($jsonObject->operators))
+			$this->operators = (string)$jsonObject->operators;
+		if(!is_null($xml) && count($xml->engineVersion))
 			$this->engineVersion = (int)$xml->engineVersion;
-		if(count($xml->format))
+		if(!is_null($jsonObject) && isset($jsonObject->engineVersion))
+			$this->engineVersion = (int)$jsonObject->engineVersion;
+		if(!is_null($xml) && count($xml->format))
 			$this->format = (string)$xml->format;
-		if(count($xml->aspectRatioProcessingMode))
+		if(!is_null($jsonObject) && isset($jsonObject->format))
+			$this->format = (string)$jsonObject->format;
+		if(!is_null($xml) && count($xml->aspectRatioProcessingMode))
 			$this->aspectRatioProcessingMode = (int)$xml->aspectRatioProcessingMode;
-		if(count($xml->forceFrameToMultiplication16))
+		if(!is_null($jsonObject) && isset($jsonObject->aspectRatioProcessingMode))
+			$this->aspectRatioProcessingMode = (int)$jsonObject->aspectRatioProcessingMode;
+		if(!is_null($xml) && count($xml->forceFrameToMultiplication16))
 			$this->forceFrameToMultiplication16 = (int)$xml->forceFrameToMultiplication16;
-		if(count($xml->isGopInSec))
+		if(!is_null($jsonObject) && isset($jsonObject->forceFrameToMultiplication16))
+			$this->forceFrameToMultiplication16 = (int)$jsonObject->forceFrameToMultiplication16;
+		if(!is_null($xml) && count($xml->isGopInSec))
 			$this->isGopInSec = (int)$xml->isGopInSec;
-		if(count($xml->isAvoidVideoShrinkFramesizeToSource))
+		if(!is_null($jsonObject) && isset($jsonObject->isGopInSec))
+			$this->isGopInSec = (int)$jsonObject->isGopInSec;
+		if(!is_null($xml) && count($xml->isAvoidVideoShrinkFramesizeToSource))
 			$this->isAvoidVideoShrinkFramesizeToSource = (int)$xml->isAvoidVideoShrinkFramesizeToSource;
-		if(count($xml->isAvoidVideoShrinkBitrateToSource))
+		if(!is_null($jsonObject) && isset($jsonObject->isAvoidVideoShrinkFramesizeToSource))
+			$this->isAvoidVideoShrinkFramesizeToSource = (int)$jsonObject->isAvoidVideoShrinkFramesizeToSource;
+		if(!is_null($xml) && count($xml->isAvoidVideoShrinkBitrateToSource))
 			$this->isAvoidVideoShrinkBitrateToSource = (int)$xml->isAvoidVideoShrinkBitrateToSource;
-		if(count($xml->isVideoFrameRateForLowBrAppleHls))
+		if(!is_null($jsonObject) && isset($jsonObject->isAvoidVideoShrinkBitrateToSource))
+			$this->isAvoidVideoShrinkBitrateToSource = (int)$jsonObject->isAvoidVideoShrinkBitrateToSource;
+		if(!is_null($xml) && count($xml->isVideoFrameRateForLowBrAppleHls))
 			$this->isVideoFrameRateForLowBrAppleHls = (int)$xml->isVideoFrameRateForLowBrAppleHls;
-		if(count($xml->multiStream))
+		if(!is_null($jsonObject) && isset($jsonObject->isVideoFrameRateForLowBrAppleHls))
+			$this->isVideoFrameRateForLowBrAppleHls = (int)$jsonObject->isVideoFrameRateForLowBrAppleHls;
+		if(!is_null($xml) && count($xml->multiStream))
 			$this->multiStream = (string)$xml->multiStream;
-		if(count($xml->anamorphicPixels))
+		if(!is_null($jsonObject) && isset($jsonObject->multiStream))
+			$this->multiStream = (string)$jsonObject->multiStream;
+		if(!is_null($xml) && count($xml->anamorphicPixels))
 			$this->anamorphicPixels = (float)$xml->anamorphicPixels;
-		if(count($xml->isAvoidForcedKeyFrames))
+		if(!is_null($jsonObject) && isset($jsonObject->anamorphicPixels))
+			$this->anamorphicPixels = (float)$jsonObject->anamorphicPixels;
+		if(!is_null($xml) && count($xml->isAvoidForcedKeyFrames))
 			$this->isAvoidForcedKeyFrames = (int)$xml->isAvoidForcedKeyFrames;
-		if(count($xml->forcedKeyFramesMode))
+		if(!is_null($jsonObject) && isset($jsonObject->isAvoidForcedKeyFrames))
+			$this->isAvoidForcedKeyFrames = (int)$jsonObject->isAvoidForcedKeyFrames;
+		if(!is_null($xml) && count($xml->forcedKeyFramesMode))
 			$this->forcedKeyFramesMode = (int)$xml->forcedKeyFramesMode;
-		if(count($xml->isCropIMX))
+		if(!is_null($jsonObject) && isset($jsonObject->forcedKeyFramesMode))
+			$this->forcedKeyFramesMode = (int)$jsonObject->forcedKeyFramesMode;
+		if(!is_null($xml) && count($xml->isCropIMX))
 			$this->isCropIMX = (int)$xml->isCropIMX;
-		if(count($xml->optimizationPolicy))
+		if(!is_null($jsonObject) && isset($jsonObject->isCropIMX))
+			$this->isCropIMX = (int)$jsonObject->isCropIMX;
+		if(!is_null($xml) && count($xml->optimizationPolicy))
 			$this->optimizationPolicy = (int)$xml->optimizationPolicy;
-		if(count($xml->maxFrameRate))
+		if(!is_null($jsonObject) && isset($jsonObject->optimizationPolicy))
+			$this->optimizationPolicy = (int)$jsonObject->optimizationPolicy;
+		if(!is_null($xml) && count($xml->maxFrameRate))
 			$this->maxFrameRate = (int)$xml->maxFrameRate;
-		if(count($xml->videoConstantBitrate))
+		if(!is_null($jsonObject) && isset($jsonObject->maxFrameRate))
+			$this->maxFrameRate = (int)$jsonObject->maxFrameRate;
+		if(!is_null($xml) && count($xml->videoConstantBitrate))
 			$this->videoConstantBitrate = (int)$xml->videoConstantBitrate;
-		if(count($xml->videoBitrateTolerance))
+		if(!is_null($jsonObject) && isset($jsonObject->videoConstantBitrate))
+			$this->videoConstantBitrate = (int)$jsonObject->videoConstantBitrate;
+		if(!is_null($xml) && count($xml->videoBitrateTolerance))
 			$this->videoBitrateTolerance = (int)$xml->videoBitrateTolerance;
-		if(count($xml->watermarkData))
+		if(!is_null($jsonObject) && isset($jsonObject->videoBitrateTolerance))
+			$this->videoBitrateTolerance = (int)$jsonObject->videoBitrateTolerance;
+		if(!is_null($xml) && count($xml->watermarkData))
 			$this->watermarkData = (string)$xml->watermarkData;
-		if(count($xml->subtitlesData))
+		if(!is_null($jsonObject) && isset($jsonObject->watermarkData))
+			$this->watermarkData = (string)$jsonObject->watermarkData;
+		if(!is_null($xml) && count($xml->subtitlesData))
 			$this->subtitlesData = (string)$xml->subtitlesData;
-		if(count($xml->isEncrypted))
+		if(!is_null($jsonObject) && isset($jsonObject->subtitlesData))
+			$this->subtitlesData = (string)$jsonObject->subtitlesData;
+		if(!is_null($xml) && count($xml->cropData))
+			$this->cropData = (string)$xml->cropData;
+		if(!is_null($jsonObject) && isset($jsonObject->cropData))
+			$this->cropData = (string)$jsonObject->cropData;
+		if(!is_null($xml) && count($xml->isEncrypted))
 			$this->isEncrypted = (int)$xml->isEncrypted;
-		if(count($xml->contentAwareness))
+		if(!is_null($jsonObject) && isset($jsonObject->isEncrypted))
+			$this->isEncrypted = (int)$jsonObject->isEncrypted;
+		if(!is_null($xml) && count($xml->contentAwareness))
 			$this->contentAwareness = (float)$xml->contentAwareness;
-		if(count($xml->chunkedEncodeMode))
+		if(!is_null($jsonObject) && isset($jsonObject->contentAwareness))
+			$this->contentAwareness = (float)$jsonObject->contentAwareness;
+		if(!is_null($xml) && count($xml->chunkedEncodeMode))
 			$this->chunkedEncodeMode = (int)$xml->chunkedEncodeMode;
-		if(count($xml->clipOffset))
+		if(!is_null($jsonObject) && isset($jsonObject->chunkedEncodeMode))
+			$this->chunkedEncodeMode = (int)$jsonObject->chunkedEncodeMode;
+		if(!is_null($xml) && count($xml->clipOffset))
 			$this->clipOffset = (int)$xml->clipOffset;
-		if(count($xml->clipDuration))
+		if(!is_null($jsonObject) && isset($jsonObject->clipOffset))
+			$this->clipOffset = (int)$jsonObject->clipOffset;
+		if(!is_null($xml) && count($xml->clipDuration))
 			$this->clipDuration = (int)$xml->clipDuration;
+		if(!is_null($jsonObject) && isset($jsonObject->clipDuration))
+			$this->clipDuration = (int)$jsonObject->clipDuration;
 	}
 	/**
 	 * The video codec of the Flavor Params
@@ -375,6 +467,13 @@ class Kaltura_Client_Type_FlavorParams extends Kaltura_Client_Type_AssetParams
 	 * @var string
 	 */
 	public $subtitlesData = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $cropData = null;
 
 	/**
 	 * 

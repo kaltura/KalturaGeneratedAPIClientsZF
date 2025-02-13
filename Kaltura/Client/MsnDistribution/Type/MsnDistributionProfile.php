@@ -38,43 +38,76 @@ class Kaltura_Client_MsnDistribution_Type_MsnDistributionProfile extends Kaltura
 		return 'KalturaMsnDistributionProfile';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->username))
+		if(!is_null($xml) && count($xml->username))
 			$this->username = (string)$xml->username;
-		if(count($xml->password))
+		if(!is_null($jsonObject) && isset($jsonObject->username))
+			$this->username = (string)$jsonObject->username;
+		if(!is_null($xml) && count($xml->password))
 			$this->password = (string)$xml->password;
-		if(count($xml->domain))
+		if(!is_null($jsonObject) && isset($jsonObject->password))
+			$this->password = (string)$jsonObject->password;
+		if(!is_null($xml) && count($xml->domain))
 			$this->domain = (string)$xml->domain;
-		if(count($xml->csId))
+		if(!is_null($jsonObject) && isset($jsonObject->domain))
+			$this->domain = (string)$jsonObject->domain;
+		if(!is_null($xml) && count($xml->csId))
 			$this->csId = (string)$xml->csId;
-		if(count($xml->source))
+		if(!is_null($jsonObject) && isset($jsonObject->csId))
+			$this->csId = (string)$jsonObject->csId;
+		if(!is_null($xml) && count($xml->source))
 			$this->source = (string)$xml->source;
-		if(count($xml->sourceFriendlyName))
+		if(!is_null($jsonObject) && isset($jsonObject->source))
+			$this->source = (string)$jsonObject->source;
+		if(!is_null($xml) && count($xml->sourceFriendlyName))
 			$this->sourceFriendlyName = (string)$xml->sourceFriendlyName;
-		if(count($xml->pageGroup))
+		if(!is_null($jsonObject) && isset($jsonObject->sourceFriendlyName))
+			$this->sourceFriendlyName = (string)$jsonObject->sourceFriendlyName;
+		if(!is_null($xml) && count($xml->pageGroup))
 			$this->pageGroup = (string)$xml->pageGroup;
-		if(count($xml->sourceFlavorParamsId))
+		if(!is_null($jsonObject) && isset($jsonObject->pageGroup))
+			$this->pageGroup = (string)$jsonObject->pageGroup;
+		if(!is_null($xml) && count($xml->sourceFlavorParamsId))
 			$this->sourceFlavorParamsId = (int)$xml->sourceFlavorParamsId;
-		if(count($xml->wmvFlavorParamsId))
+		if(!is_null($jsonObject) && isset($jsonObject->sourceFlavorParamsId))
+			$this->sourceFlavorParamsId = (int)$jsonObject->sourceFlavorParamsId;
+		if(!is_null($xml) && count($xml->wmvFlavorParamsId))
 			$this->wmvFlavorParamsId = (int)$xml->wmvFlavorParamsId;
-		if(count($xml->flvFlavorParamsId))
+		if(!is_null($jsonObject) && isset($jsonObject->wmvFlavorParamsId))
+			$this->wmvFlavorParamsId = (int)$jsonObject->wmvFlavorParamsId;
+		if(!is_null($xml) && count($xml->flvFlavorParamsId))
 			$this->flvFlavorParamsId = (int)$xml->flvFlavorParamsId;
-		if(count($xml->slFlavorParamsId))
+		if(!is_null($jsonObject) && isset($jsonObject->flvFlavorParamsId))
+			$this->flvFlavorParamsId = (int)$jsonObject->flvFlavorParamsId;
+		if(!is_null($xml) && count($xml->slFlavorParamsId))
 			$this->slFlavorParamsId = (int)$xml->slFlavorParamsId;
-		if(count($xml->slHdFlavorParamsId))
+		if(!is_null($jsonObject) && isset($jsonObject->slFlavorParamsId))
+			$this->slFlavorParamsId = (int)$jsonObject->slFlavorParamsId;
+		if(!is_null($xml) && count($xml->slHdFlavorParamsId))
 			$this->slHdFlavorParamsId = (int)$xml->slHdFlavorParamsId;
-		if(count($xml->msnvideoCat))
+		if(!is_null($jsonObject) && isset($jsonObject->slHdFlavorParamsId))
+			$this->slHdFlavorParamsId = (int)$jsonObject->slHdFlavorParamsId;
+		if(!is_null($xml) && count($xml->msnvideoCat))
 			$this->msnvideoCat = (string)$xml->msnvideoCat;
-		if(count($xml->msnvideoTop))
+		if(!is_null($jsonObject) && isset($jsonObject->msnvideoCat))
+			$this->msnvideoCat = (string)$jsonObject->msnvideoCat;
+		if(!is_null($xml) && count($xml->msnvideoTop))
 			$this->msnvideoTop = (string)$xml->msnvideoTop;
-		if(count($xml->msnvideoTopCat))
+		if(!is_null($jsonObject) && isset($jsonObject->msnvideoTop))
+			$this->msnvideoTop = (string)$jsonObject->msnvideoTop;
+		if(!is_null($xml) && count($xml->msnvideoTopCat))
 			$this->msnvideoTopCat = (string)$xml->msnvideoTopCat;
+		if(!is_null($jsonObject) && isset($jsonObject->msnvideoTopCat))
+			$this->msnvideoTopCat = (string)$jsonObject->msnvideoTopCat;
 	}
 	/**
 	 * 

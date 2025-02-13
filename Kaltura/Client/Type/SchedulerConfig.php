@@ -38,41 +38,72 @@ class Kaltura_Client_Type_SchedulerConfig extends Kaltura_Client_ObjectBase
 		return 'KalturaSchedulerConfig';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->id))
+		if(!is_null($xml) && count($xml->id))
 			$this->id = (int)$xml->id;
-		if(count($xml->createdBy))
+		if(!is_null($jsonObject) && isset($jsonObject->id))
+			$this->id = (int)$jsonObject->id;
+		if(!is_null($xml) && count($xml->createdBy))
 			$this->createdBy = (string)$xml->createdBy;
-		if(count($xml->updatedBy))
+		if(!is_null($jsonObject) && isset($jsonObject->createdBy))
+			$this->createdBy = (string)$jsonObject->createdBy;
+		if(!is_null($xml) && count($xml->updatedBy))
 			$this->updatedBy = (string)$xml->updatedBy;
-		if(count($xml->commandId))
+		if(!is_null($jsonObject) && isset($jsonObject->updatedBy))
+			$this->updatedBy = (string)$jsonObject->updatedBy;
+		if(!is_null($xml) && count($xml->commandId))
 			$this->commandId = (string)$xml->commandId;
-		if(count($xml->commandStatus))
+		if(!is_null($jsonObject) && isset($jsonObject->commandId))
+			$this->commandId = (string)$jsonObject->commandId;
+		if(!is_null($xml) && count($xml->commandStatus))
 			$this->commandStatus = (string)$xml->commandStatus;
-		if(count($xml->schedulerId))
+		if(!is_null($jsonObject) && isset($jsonObject->commandStatus))
+			$this->commandStatus = (string)$jsonObject->commandStatus;
+		if(!is_null($xml) && count($xml->schedulerId))
 			$this->schedulerId = (int)$xml->schedulerId;
-		if(count($xml->schedulerConfiguredId))
+		if(!is_null($jsonObject) && isset($jsonObject->schedulerId))
+			$this->schedulerId = (int)$jsonObject->schedulerId;
+		if(!is_null($xml) && count($xml->schedulerConfiguredId))
 			$this->schedulerConfiguredId = (int)$xml->schedulerConfiguredId;
-		if(count($xml->schedulerName))
+		if(!is_null($jsonObject) && isset($jsonObject->schedulerConfiguredId))
+			$this->schedulerConfiguredId = (int)$jsonObject->schedulerConfiguredId;
+		if(!is_null($xml) && count($xml->schedulerName))
 			$this->schedulerName = (string)$xml->schedulerName;
-		if(count($xml->workerId))
+		if(!is_null($jsonObject) && isset($jsonObject->schedulerName))
+			$this->schedulerName = (string)$jsonObject->schedulerName;
+		if(!is_null($xml) && count($xml->workerId))
 			$this->workerId = (int)$xml->workerId;
-		if(count($xml->workerConfiguredId))
+		if(!is_null($jsonObject) && isset($jsonObject->workerId))
+			$this->workerId = (int)$jsonObject->workerId;
+		if(!is_null($xml) && count($xml->workerConfiguredId))
 			$this->workerConfiguredId = (int)$xml->workerConfiguredId;
-		if(count($xml->workerName))
+		if(!is_null($jsonObject) && isset($jsonObject->workerConfiguredId))
+			$this->workerConfiguredId = (int)$jsonObject->workerConfiguredId;
+		if(!is_null($xml) && count($xml->workerName))
 			$this->workerName = (string)$xml->workerName;
-		if(count($xml->variable))
+		if(!is_null($jsonObject) && isset($jsonObject->workerName))
+			$this->workerName = (string)$jsonObject->workerName;
+		if(!is_null($xml) && count($xml->variable))
 			$this->variable = (string)$xml->variable;
-		if(count($xml->variablePart))
+		if(!is_null($jsonObject) && isset($jsonObject->variable))
+			$this->variable = (string)$jsonObject->variable;
+		if(!is_null($xml) && count($xml->variablePart))
 			$this->variablePart = (string)$xml->variablePart;
-		if(count($xml->value))
+		if(!is_null($jsonObject) && isset($jsonObject->variablePart))
+			$this->variablePart = (string)$jsonObject->variablePart;
+		if(!is_null($xml) && count($xml->value))
 			$this->value = (string)$xml->value;
+		if(!is_null($jsonObject) && isset($jsonObject->value))
+			$this->value = (string)$jsonObject->value;
 	}
 	/**
 	 * The id of the Category

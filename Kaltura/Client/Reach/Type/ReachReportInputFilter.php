@@ -38,19 +38,28 @@ class Kaltura_Client_Reach_Type_ReachReportInputFilter extends Kaltura_Client_Ty
 		return 'KalturaReachReportInputFilter';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->serviceType))
+		if(!is_null($xml) && count($xml->serviceType))
 			$this->serviceType = (int)$xml->serviceType;
-		if(count($xml->serviceFeature))
+		if(!is_null($jsonObject) && isset($jsonObject->serviceType))
+			$this->serviceType = (int)$jsonObject->serviceType;
+		if(!is_null($xml) && count($xml->serviceFeature))
 			$this->serviceFeature = (int)$xml->serviceFeature;
-		if(count($xml->turnAroundTime))
+		if(!is_null($jsonObject) && isset($jsonObject->serviceFeature))
+			$this->serviceFeature = (int)$jsonObject->serviceFeature;
+		if(!is_null($xml) && count($xml->turnAroundTime))
 			$this->turnAroundTime = (int)$xml->turnAroundTime;
+		if(!is_null($jsonObject) && isset($jsonObject->turnAroundTime))
+			$this->turnAroundTime = (int)$jsonObject->turnAroundTime;
 	}
 	/**
 	 * 

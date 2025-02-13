@@ -38,21 +38,32 @@ class Kaltura_Client_Type_CategoryEntryAdvancedFilter extends Kaltura_Client_Typ
 		return 'KalturaCategoryEntryAdvancedFilter';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->categoriesMatchOr))
+		if(!is_null($xml) && count($xml->categoriesMatchOr))
 			$this->categoriesMatchOr = (string)$xml->categoriesMatchOr;
-		if(count($xml->categoryEntryStatusIn))
+		if(!is_null($jsonObject) && isset($jsonObject->categoriesMatchOr))
+			$this->categoriesMatchOr = (string)$jsonObject->categoriesMatchOr;
+		if(!is_null($xml) && count($xml->categoryEntryStatusIn))
 			$this->categoryEntryStatusIn = (string)$xml->categoryEntryStatusIn;
-		if(count($xml->orderBy))
+		if(!is_null($jsonObject) && isset($jsonObject->categoryEntryStatusIn))
+			$this->categoryEntryStatusIn = (string)$jsonObject->categoryEntryStatusIn;
+		if(!is_null($xml) && count($xml->orderBy))
 			$this->orderBy = (string)$xml->orderBy;
-		if(count($xml->categoryIdEqual))
+		if(!is_null($jsonObject) && isset($jsonObject->orderBy))
+			$this->orderBy = (string)$jsonObject->orderBy;
+		if(!is_null($xml) && count($xml->categoryIdEqual))
 			$this->categoryIdEqual = (int)$xml->categoryIdEqual;
+		if(!is_null($jsonObject) && isset($jsonObject->categoryIdEqual))
+			$this->categoryIdEqual = (int)$jsonObject->categoryIdEqual;
 	}
 	/**
 	 * 

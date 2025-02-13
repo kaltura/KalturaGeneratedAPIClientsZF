@@ -38,21 +38,32 @@ class Kaltura_Client_Type_RequestConfiguration extends Kaltura_Client_ObjectBase
 		return 'KalturaRequestConfiguration';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->partnerId))
+		if(!is_null($xml) && count($xml->partnerId))
 			$this->partnerId = (int)$xml->partnerId;
-		if(count($xml->ks))
+		if(!is_null($jsonObject) && isset($jsonObject->partnerId))
+			$this->partnerId = (int)$jsonObject->partnerId;
+		if(!is_null($xml) && count($xml->ks))
 			$this->ks = (string)$xml->ks;
-		if(count($xml->language))
+		if(!is_null($jsonObject) && isset($jsonObject->ks))
+			$this->ks = (string)$jsonObject->ks;
+		if(!is_null($xml) && count($xml->language))
 			$this->language = (string)$xml->language;
-		if(count($xml->responseProfile) && !empty($xml->responseProfile))
+		if(!is_null($jsonObject) && isset($jsonObject->language))
+			$this->language = (string)$jsonObject->language;
+		if(!is_null($xml) && count($xml->responseProfile) && !empty($xml->responseProfile))
 			$this->responseProfile = Kaltura_Client_ParseUtils::unmarshalObject($xml->responseProfile, "KalturaBaseResponseProfile");
+		if(!is_null($jsonObject) && isset($jsonObject->responseProfile) && !empty($jsonObject->responseProfile))
+			$this->responseProfile = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsonObject->responseProfile, "KalturaBaseResponseProfile");
 	}
 	/**
 	 * Impersonated partner id

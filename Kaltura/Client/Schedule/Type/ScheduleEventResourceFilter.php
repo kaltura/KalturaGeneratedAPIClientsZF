@@ -38,15 +38,20 @@ class Kaltura_Client_Schedule_Type_ScheduleEventResourceFilter extends Kaltura_C
 		return 'KalturaScheduleEventResourceFilter';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->eventIdOrItsParentIdEqual))
+		if(!is_null($xml) && count($xml->eventIdOrItsParentIdEqual))
 			$this->eventIdOrItsParentIdEqual = (int)$xml->eventIdOrItsParentIdEqual;
+		if(!is_null($jsonObject) && isset($jsonObject->eventIdOrItsParentIdEqual))
+			$this->eventIdOrItsParentIdEqual = (int)$jsonObject->eventIdOrItsParentIdEqual;
 	}
 	/**
 	 * Find event-resource objects that associated with the event, if none found, find by its parent event

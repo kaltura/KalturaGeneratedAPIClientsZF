@@ -38,47 +38,84 @@ class Kaltura_Client_ScheduleBulkUpload_Type_BulkUploadResultScheduleEvent exten
 		return 'KalturaBulkUploadResultScheduleEvent';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->referenceId))
+		if(!is_null($xml) && count($xml->referenceId))
 			$this->referenceId = (string)$xml->referenceId;
-		if(count($xml->templateEntryId))
+		if(!is_null($jsonObject) && isset($jsonObject->referenceId))
+			$this->referenceId = (string)$jsonObject->referenceId;
+		if(!is_null($xml) && count($xml->templateEntryId))
 			$this->templateEntryId = (string)$xml->templateEntryId;
-		if(count($xml->eventType))
+		if(!is_null($jsonObject) && isset($jsonObject->templateEntryId))
+			$this->templateEntryId = (string)$jsonObject->templateEntryId;
+		if(!is_null($xml) && count($xml->eventType))
 			$this->eventType = (int)$xml->eventType;
-		if(count($xml->title))
+		if(!is_null($jsonObject) && isset($jsonObject->eventType))
+			$this->eventType = (int)$jsonObject->eventType;
+		if(!is_null($xml) && count($xml->title))
 			$this->title = (string)$xml->title;
-		if(count($xml->description))
+		if(!is_null($jsonObject) && isset($jsonObject->title))
+			$this->title = (string)$jsonObject->title;
+		if(!is_null($xml) && count($xml->description))
 			$this->description = (string)$xml->description;
-		if(count($xml->tags))
+		if(!is_null($jsonObject) && isset($jsonObject->description))
+			$this->description = (string)$jsonObject->description;
+		if(!is_null($xml) && count($xml->tags))
 			$this->tags = (string)$xml->tags;
-		if(count($xml->categoryIds))
+		if(!is_null($jsonObject) && isset($jsonObject->tags))
+			$this->tags = (string)$jsonObject->tags;
+		if(!is_null($xml) && count($xml->categoryIds))
 			$this->categoryIds = (string)$xml->categoryIds;
-		if(count($xml->resourceId))
+		if(!is_null($jsonObject) && isset($jsonObject->categoryIds))
+			$this->categoryIds = (string)$jsonObject->categoryIds;
+		if(!is_null($xml) && count($xml->resourceId))
 			$this->resourceId = (string)$xml->resourceId;
-		if(count($xml->startTime))
+		if(!is_null($jsonObject) && isset($jsonObject->resourceId))
+			$this->resourceId = (string)$jsonObject->resourceId;
+		if(!is_null($xml) && count($xml->startTime))
 			$this->startTime = (int)$xml->startTime;
-		if(count($xml->duration))
+		if(!is_null($jsonObject) && isset($jsonObject->startTime))
+			$this->startTime = (int)$jsonObject->startTime;
+		if(!is_null($xml) && count($xml->duration))
 			$this->duration = (int)$xml->duration;
-		if(count($xml->endTime))
+		if(!is_null($jsonObject) && isset($jsonObject->duration))
+			$this->duration = (int)$jsonObject->duration;
+		if(!is_null($xml) && count($xml->endTime))
 			$this->endTime = (int)$xml->endTime;
-		if(count($xml->recurrence))
+		if(!is_null($jsonObject) && isset($jsonObject->endTime))
+			$this->endTime = (int)$jsonObject->endTime;
+		if(!is_null($xml) && count($xml->recurrence))
 			$this->recurrence = (string)$xml->recurrence;
-		if(count($xml->coEditors))
+		if(!is_null($jsonObject) && isset($jsonObject->recurrence))
+			$this->recurrence = (string)$jsonObject->recurrence;
+		if(!is_null($xml) && count($xml->coEditors))
 			$this->coEditors = (string)$xml->coEditors;
-		if(count($xml->coPublishers))
+		if(!is_null($jsonObject) && isset($jsonObject->coEditors))
+			$this->coEditors = (string)$jsonObject->coEditors;
+		if(!is_null($xml) && count($xml->coPublishers))
 			$this->coPublishers = (string)$xml->coPublishers;
-		if(count($xml->eventOrganizerId))
+		if(!is_null($jsonObject) && isset($jsonObject->coPublishers))
+			$this->coPublishers = (string)$jsonObject->coPublishers;
+		if(!is_null($xml) && count($xml->eventOrganizerId))
 			$this->eventOrganizerId = (string)$xml->eventOrganizerId;
-		if(count($xml->contentOwnerId))
+		if(!is_null($jsonObject) && isset($jsonObject->eventOrganizerId))
+			$this->eventOrganizerId = (string)$jsonObject->eventOrganizerId;
+		if(!is_null($xml) && count($xml->contentOwnerId))
 			$this->contentOwnerId = (string)$xml->contentOwnerId;
-		if(count($xml->templateEntryType))
+		if(!is_null($jsonObject) && isset($jsonObject->contentOwnerId))
+			$this->contentOwnerId = (string)$jsonObject->contentOwnerId;
+		if(!is_null($xml) && count($xml->templateEntryType))
 			$this->templateEntryType = (string)$xml->templateEntryType;
+		if(!is_null($jsonObject) && isset($jsonObject->templateEntryType))
+			$this->templateEntryType = (string)$jsonObject->templateEntryType;
 	}
 	/**
 	 * 

@@ -38,49 +38,88 @@ abstract class Kaltura_Client_Type_PartnerBaseFilter extends Kaltura_Client_Type
 		return 'KalturaPartnerBaseFilter';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->idEqual))
+		if(!is_null($xml) && count($xml->idEqual))
 			$this->idEqual = (int)$xml->idEqual;
-		if(count($xml->idIn))
+		if(!is_null($jsonObject) && isset($jsonObject->idEqual))
+			$this->idEqual = (int)$jsonObject->idEqual;
+		if(!is_null($xml) && count($xml->idIn))
 			$this->idIn = (string)$xml->idIn;
-		if(count($xml->idNotIn))
+		if(!is_null($jsonObject) && isset($jsonObject->idIn))
+			$this->idIn = (string)$jsonObject->idIn;
+		if(!is_null($xml) && count($xml->idNotIn))
 			$this->idNotIn = (string)$xml->idNotIn;
-		if(count($xml->nameLike))
+		if(!is_null($jsonObject) && isset($jsonObject->idNotIn))
+			$this->idNotIn = (string)$jsonObject->idNotIn;
+		if(!is_null($xml) && count($xml->nameLike))
 			$this->nameLike = (string)$xml->nameLike;
-		if(count($xml->nameMultiLikeOr))
+		if(!is_null($jsonObject) && isset($jsonObject->nameLike))
+			$this->nameLike = (string)$jsonObject->nameLike;
+		if(!is_null($xml) && count($xml->nameMultiLikeOr))
 			$this->nameMultiLikeOr = (string)$xml->nameMultiLikeOr;
-		if(count($xml->nameMultiLikeAnd))
+		if(!is_null($jsonObject) && isset($jsonObject->nameMultiLikeOr))
+			$this->nameMultiLikeOr = (string)$jsonObject->nameMultiLikeOr;
+		if(!is_null($xml) && count($xml->nameMultiLikeAnd))
 			$this->nameMultiLikeAnd = (string)$xml->nameMultiLikeAnd;
-		if(count($xml->nameEqual))
+		if(!is_null($jsonObject) && isset($jsonObject->nameMultiLikeAnd))
+			$this->nameMultiLikeAnd = (string)$jsonObject->nameMultiLikeAnd;
+		if(!is_null($xml) && count($xml->nameEqual))
 			$this->nameEqual = (string)$xml->nameEqual;
-		if(count($xml->statusEqual))
+		if(!is_null($jsonObject) && isset($jsonObject->nameEqual))
+			$this->nameEqual = (string)$jsonObject->nameEqual;
+		if(!is_null($xml) && count($xml->statusEqual))
 			$this->statusEqual = (int)$xml->statusEqual;
-		if(count($xml->statusIn))
+		if(!is_null($jsonObject) && isset($jsonObject->statusEqual))
+			$this->statusEqual = (int)$jsonObject->statusEqual;
+		if(!is_null($xml) && count($xml->statusIn))
 			$this->statusIn = (string)$xml->statusIn;
-		if(count($xml->partnerPackageEqual))
+		if(!is_null($jsonObject) && isset($jsonObject->statusIn))
+			$this->statusIn = (string)$jsonObject->statusIn;
+		if(!is_null($xml) && count($xml->partnerPackageEqual))
 			$this->partnerPackageEqual = (int)$xml->partnerPackageEqual;
-		if(count($xml->partnerPackageGreaterThanOrEqual))
+		if(!is_null($jsonObject) && isset($jsonObject->partnerPackageEqual))
+			$this->partnerPackageEqual = (int)$jsonObject->partnerPackageEqual;
+		if(!is_null($xml) && count($xml->partnerPackageGreaterThanOrEqual))
 			$this->partnerPackageGreaterThanOrEqual = (int)$xml->partnerPackageGreaterThanOrEqual;
-		if(count($xml->partnerPackageLessThanOrEqual))
+		if(!is_null($jsonObject) && isset($jsonObject->partnerPackageGreaterThanOrEqual))
+			$this->partnerPackageGreaterThanOrEqual = (int)$jsonObject->partnerPackageGreaterThanOrEqual;
+		if(!is_null($xml) && count($xml->partnerPackageLessThanOrEqual))
 			$this->partnerPackageLessThanOrEqual = (int)$xml->partnerPackageLessThanOrEqual;
-		if(count($xml->partnerPackageIn))
+		if(!is_null($jsonObject) && isset($jsonObject->partnerPackageLessThanOrEqual))
+			$this->partnerPackageLessThanOrEqual = (int)$jsonObject->partnerPackageLessThanOrEqual;
+		if(!is_null($xml) && count($xml->partnerPackageIn))
 			$this->partnerPackageIn = (string)$xml->partnerPackageIn;
-		if(count($xml->partnerGroupTypeEqual))
+		if(!is_null($jsonObject) && isset($jsonObject->partnerPackageIn))
+			$this->partnerPackageIn = (string)$jsonObject->partnerPackageIn;
+		if(!is_null($xml) && count($xml->partnerGroupTypeEqual))
 			$this->partnerGroupTypeEqual = (int)$xml->partnerGroupTypeEqual;
-		if(count($xml->partnerNameDescriptionWebsiteAdminNameAdminEmailLike))
+		if(!is_null($jsonObject) && isset($jsonObject->partnerGroupTypeEqual))
+			$this->partnerGroupTypeEqual = (int)$jsonObject->partnerGroupTypeEqual;
+		if(!is_null($xml) && count($xml->partnerNameDescriptionWebsiteAdminNameAdminEmailLike))
 			$this->partnerNameDescriptionWebsiteAdminNameAdminEmailLike = (string)$xml->partnerNameDescriptionWebsiteAdminNameAdminEmailLike;
-		if(count($xml->createdAtGreaterThanOrEqual))
+		if(!is_null($jsonObject) && isset($jsonObject->partnerNameDescriptionWebsiteAdminNameAdminEmailLike))
+			$this->partnerNameDescriptionWebsiteAdminNameAdminEmailLike = (string)$jsonObject->partnerNameDescriptionWebsiteAdminNameAdminEmailLike;
+		if(!is_null($xml) && count($xml->createdAtGreaterThanOrEqual))
 			$this->createdAtGreaterThanOrEqual = (int)$xml->createdAtGreaterThanOrEqual;
-		if(count($xml->idGreaterThan))
+		if(!is_null($jsonObject) && isset($jsonObject->createdAtGreaterThanOrEqual))
+			$this->createdAtGreaterThanOrEqual = (int)$jsonObject->createdAtGreaterThanOrEqual;
+		if(!is_null($xml) && count($xml->idGreaterThan))
 			$this->idGreaterThan = (int)$xml->idGreaterThan;
-		if(count($xml->monitorUsageEqual))
+		if(!is_null($jsonObject) && isset($jsonObject->idGreaterThan))
+			$this->idGreaterThan = (int)$jsonObject->idGreaterThan;
+		if(!is_null($xml) && count($xml->monitorUsageEqual))
 			$this->monitorUsageEqual = (int)$xml->monitorUsageEqual;
+		if(!is_null($jsonObject) && isset($jsonObject->monitorUsageEqual))
+			$this->monitorUsageEqual = (int)$jsonObject->monitorUsageEqual;
 	}
 	/**
 	 * 

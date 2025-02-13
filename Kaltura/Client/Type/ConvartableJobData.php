@@ -38,44 +38,79 @@ class Kaltura_Client_Type_ConvartableJobData extends Kaltura_Client_Type_JobData
 		return 'KalturaConvartableJobData';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->srcFileSyncLocalPath))
+		if(!is_null($xml) && count($xml->srcFileSyncLocalPath))
 			$this->srcFileSyncLocalPath = (string)$xml->srcFileSyncLocalPath;
-		if(count($xml->actualSrcFileSyncLocalPath))
+		if(!is_null($jsonObject) && isset($jsonObject->srcFileSyncLocalPath))
+			$this->srcFileSyncLocalPath = (string)$jsonObject->srcFileSyncLocalPath;
+		if(!is_null($xml) && count($xml->actualSrcFileSyncLocalPath))
 			$this->actualSrcFileSyncLocalPath = (string)$xml->actualSrcFileSyncLocalPath;
-		if(count($xml->srcFileSyncRemoteUrl))
+		if(!is_null($jsonObject) && isset($jsonObject->actualSrcFileSyncLocalPath))
+			$this->actualSrcFileSyncLocalPath = (string)$jsonObject->actualSrcFileSyncLocalPath;
+		if(!is_null($xml) && count($xml->srcFileSyncRemoteUrl))
 			$this->srcFileSyncRemoteUrl = (string)$xml->srcFileSyncRemoteUrl;
-		if(count($xml->srcFileSyncs))
+		if(!is_null($jsonObject) && isset($jsonObject->srcFileSyncRemoteUrl))
+			$this->srcFileSyncRemoteUrl = (string)$jsonObject->srcFileSyncRemoteUrl;
+		if(!is_null($xml) && count($xml->srcFileSyncs))
 		{
 			if(empty($xml->srcFileSyncs))
 				$this->srcFileSyncs = array();
 			else
 				$this->srcFileSyncs = Kaltura_Client_ParseUtils::unmarshalArray($xml->srcFileSyncs, "KalturaSourceFileSyncDescriptor");
 		}
-		if(count($xml->engineVersion))
+		if(!is_null($jsonObject) && isset($jsonObject->srcFileSyncs))
+		{
+			if(empty($jsonObject->srcFileSyncs))
+				$this->srcFileSyncs = array();
+			else
+				$this->srcFileSyncs = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsonObject->srcFileSyncs, "KalturaSourceFileSyncDescriptor");
+		}
+		if(!is_null($xml) && count($xml->engineVersion))
 			$this->engineVersion = (int)$xml->engineVersion;
-		if(count($xml->flavorParamsOutputId))
+		if(!is_null($jsonObject) && isset($jsonObject->engineVersion))
+			$this->engineVersion = (int)$jsonObject->engineVersion;
+		if(!is_null($xml) && count($xml->flavorParamsOutputId))
 			$this->flavorParamsOutputId = (int)$xml->flavorParamsOutputId;
-		if(count($xml->flavorParamsOutput) && !empty($xml->flavorParamsOutput))
+		if(!is_null($jsonObject) && isset($jsonObject->flavorParamsOutputId))
+			$this->flavorParamsOutputId = (int)$jsonObject->flavorParamsOutputId;
+		if(!is_null($xml) && count($xml->flavorParamsOutput) && !empty($xml->flavorParamsOutput))
 			$this->flavorParamsOutput = Kaltura_Client_ParseUtils::unmarshalObject($xml->flavorParamsOutput, "KalturaFlavorParamsOutput");
-		if(count($xml->mediaInfoId))
+		if(!is_null($jsonObject) && isset($jsonObject->flavorParamsOutput) && !empty($jsonObject->flavorParamsOutput))
+			$this->flavorParamsOutput = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsonObject->flavorParamsOutput, "KalturaFlavorParamsOutput");
+		if(!is_null($xml) && count($xml->mediaInfoId))
 			$this->mediaInfoId = (int)$xml->mediaInfoId;
-		if(count($xml->currentOperationSet))
+		if(!is_null($jsonObject) && isset($jsonObject->mediaInfoId))
+			$this->mediaInfoId = (int)$jsonObject->mediaInfoId;
+		if(!is_null($xml) && count($xml->currentOperationSet))
 			$this->currentOperationSet = (int)$xml->currentOperationSet;
-		if(count($xml->currentOperationIndex))
+		if(!is_null($jsonObject) && isset($jsonObject->currentOperationSet))
+			$this->currentOperationSet = (int)$jsonObject->currentOperationSet;
+		if(!is_null($xml) && count($xml->currentOperationIndex))
 			$this->currentOperationIndex = (int)$xml->currentOperationIndex;
-		if(count($xml->pluginData))
+		if(!is_null($jsonObject) && isset($jsonObject->currentOperationIndex))
+			$this->currentOperationIndex = (int)$jsonObject->currentOperationIndex;
+		if(!is_null($xml) && count($xml->pluginData))
 		{
 			if(empty($xml->pluginData))
 				$this->pluginData = array();
 			else
 				$this->pluginData = Kaltura_Client_ParseUtils::unmarshalArray($xml->pluginData, "KalturaKeyValue");
+		}
+		if(!is_null($jsonObject) && isset($jsonObject->pluginData))
+		{
+			if(empty($jsonObject->pluginData))
+				$this->pluginData = array();
+			else
+				$this->pluginData = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsonObject->pluginData, "KalturaKeyValue");
 		}
 	}
 	/**

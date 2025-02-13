@@ -38,15 +38,34 @@ class Kaltura_Client_Reach_Type_VendorTranslationCatalogItem extends Kaltura_Cli
 		return 'KalturaVendorTranslationCatalogItem';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->targetLanguage))
+		if(!is_null($xml) && count($xml->targetLanguage))
 			$this->targetLanguage = (string)$xml->targetLanguage;
+		if(!is_null($jsonObject) && isset($jsonObject->targetLanguage))
+			$this->targetLanguage = (string)$jsonObject->targetLanguage;
+		if(!is_null($xml) && count($xml->requireSource))
+		{
+			if(!empty($xml->requireSource) && ((int) $xml->requireSource === 1 || strtolower((string)$xml->requireSource) === 'true'))
+				$this->requireSource = true;
+			else
+				$this->requireSource = false;
+		}
+		if(!is_null($jsonObject) && isset($jsonObject->requireSource))
+		{
+			if(!empty($jsonObject->requireSource) && ((int) $jsonObject->requireSource === 1 || strtolower((string)$jsonObject->requireSource) === 'true'))
+				$this->requireSource = true;
+			else
+				$this->requireSource = false;
+		}
 	}
 	/**
 	 * 
@@ -54,6 +73,13 @@ class Kaltura_Client_Reach_Type_VendorTranslationCatalogItem extends Kaltura_Cli
 	 * @var Kaltura_Client_Reach_Enum_CatalogItemLanguage
 	 */
 	public $targetLanguage = null;
+
+	/**
+	 * 
+	 *
+	 * @var bool
+	 */
+	public $requireSource = null;
 
 
 }

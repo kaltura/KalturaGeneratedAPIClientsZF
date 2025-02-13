@@ -38,21 +38,32 @@ class Kaltura_Client_Widevine_Type_WidevineRepositorySyncJobData extends Kaltura
 		return 'KalturaWidevineRepositorySyncJobData';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->syncMode))
+		if(!is_null($xml) && count($xml->syncMode))
 			$this->syncMode = (int)$xml->syncMode;
-		if(count($xml->wvAssetIds))
+		if(!is_null($jsonObject) && isset($jsonObject->syncMode))
+			$this->syncMode = (int)$jsonObject->syncMode;
+		if(!is_null($xml) && count($xml->wvAssetIds))
 			$this->wvAssetIds = (string)$xml->wvAssetIds;
-		if(count($xml->modifiedAttributes))
+		if(!is_null($jsonObject) && isset($jsonObject->wvAssetIds))
+			$this->wvAssetIds = (string)$jsonObject->wvAssetIds;
+		if(!is_null($xml) && count($xml->modifiedAttributes))
 			$this->modifiedAttributes = (string)$xml->modifiedAttributes;
-		if(count($xml->monitorSyncCompletion))
+		if(!is_null($jsonObject) && isset($jsonObject->modifiedAttributes))
+			$this->modifiedAttributes = (string)$jsonObject->modifiedAttributes;
+		if(!is_null($xml) && count($xml->monitorSyncCompletion))
 			$this->monitorSyncCompletion = (int)$xml->monitorSyncCompletion;
+		if(!is_null($jsonObject) && isset($jsonObject->monitorSyncCompletion))
+			$this->monitorSyncCompletion = (int)$jsonObject->monitorSyncCompletion;
 	}
 	/**
 	 * 

@@ -38,15 +38,20 @@ class Kaltura_Client_ElasticSearch_Type_ESearchGroupParams extends Kaltura_Clien
 		return 'KalturaESearchGroupParams';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->searchOperator) && !empty($xml->searchOperator))
+		if(!is_null($xml) && count($xml->searchOperator) && !empty($xml->searchOperator))
 			$this->searchOperator = Kaltura_Client_ParseUtils::unmarshalObject($xml->searchOperator, "KalturaESearchGroupOperator");
+		if(!is_null($jsonObject) && isset($jsonObject->searchOperator) && !empty($jsonObject->searchOperator))
+			$this->searchOperator = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsonObject->searchOperator, "KalturaESearchGroupOperator");
 	}
 	/**
 	 * 

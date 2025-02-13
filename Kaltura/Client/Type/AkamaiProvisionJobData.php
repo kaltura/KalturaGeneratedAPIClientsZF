@@ -38,25 +38,40 @@ class Kaltura_Client_Type_AkamaiProvisionJobData extends Kaltura_Client_Type_Pro
 		return 'KalturaAkamaiProvisionJobData';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->wsdlUsername))
+		if(!is_null($xml) && count($xml->wsdlUsername))
 			$this->wsdlUsername = (string)$xml->wsdlUsername;
-		if(count($xml->wsdlPassword))
+		if(!is_null($jsonObject) && isset($jsonObject->wsdlUsername))
+			$this->wsdlUsername = (string)$jsonObject->wsdlUsername;
+		if(!is_null($xml) && count($xml->wsdlPassword))
 			$this->wsdlPassword = (string)$xml->wsdlPassword;
-		if(count($xml->cpcode))
+		if(!is_null($jsonObject) && isset($jsonObject->wsdlPassword))
+			$this->wsdlPassword = (string)$jsonObject->wsdlPassword;
+		if(!is_null($xml) && count($xml->cpcode))
 			$this->cpcode = (string)$xml->cpcode;
-		if(count($xml->emailId))
+		if(!is_null($jsonObject) && isset($jsonObject->cpcode))
+			$this->cpcode = (string)$jsonObject->cpcode;
+		if(!is_null($xml) && count($xml->emailId))
 			$this->emailId = (string)$xml->emailId;
-		if(count($xml->primaryContact))
+		if(!is_null($jsonObject) && isset($jsonObject->emailId))
+			$this->emailId = (string)$jsonObject->emailId;
+		if(!is_null($xml) && count($xml->primaryContact))
 			$this->primaryContact = (string)$xml->primaryContact;
-		if(count($xml->secondaryContact))
+		if(!is_null($jsonObject) && isset($jsonObject->primaryContact))
+			$this->primaryContact = (string)$jsonObject->primaryContact;
+		if(!is_null($xml) && count($xml->secondaryContact))
 			$this->secondaryContact = (string)$xml->secondaryContact;
+		if(!is_null($jsonObject) && isset($jsonObject->secondaryContact))
+			$this->secondaryContact = (string)$jsonObject->secondaryContact;
 	}
 	/**
 	 * 

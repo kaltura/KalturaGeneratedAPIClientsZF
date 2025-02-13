@@ -38,19 +38,28 @@ abstract class Kaltura_Client_Type_EdgeServerNodeBaseFilter extends Kaltura_Clie
 		return 'KalturaEdgeServerNodeBaseFilter';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->playbackDomainLike))
+		if(!is_null($xml) && count($xml->playbackDomainLike))
 			$this->playbackDomainLike = (string)$xml->playbackDomainLike;
-		if(count($xml->playbackDomainMultiLikeOr))
+		if(!is_null($jsonObject) && isset($jsonObject->playbackDomainLike))
+			$this->playbackDomainLike = (string)$jsonObject->playbackDomainLike;
+		if(!is_null($xml) && count($xml->playbackDomainMultiLikeOr))
 			$this->playbackDomainMultiLikeOr = (string)$xml->playbackDomainMultiLikeOr;
-		if(count($xml->playbackDomainMultiLikeAnd))
+		if(!is_null($jsonObject) && isset($jsonObject->playbackDomainMultiLikeOr))
+			$this->playbackDomainMultiLikeOr = (string)$jsonObject->playbackDomainMultiLikeOr;
+		if(!is_null($xml) && count($xml->playbackDomainMultiLikeAnd))
 			$this->playbackDomainMultiLikeAnd = (string)$xml->playbackDomainMultiLikeAnd;
+		if(!is_null($jsonObject) && isset($jsonObject->playbackDomainMultiLikeAnd))
+			$this->playbackDomainMultiLikeAnd = (string)$jsonObject->playbackDomainMultiLikeAnd;
 	}
 	/**
 	 * 

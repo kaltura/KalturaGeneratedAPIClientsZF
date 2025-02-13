@@ -38,25 +38,40 @@ class Kaltura_Client_FreewheelDistribution_Type_FreewheelDistributionProfile ext
 		return 'KalturaFreewheelDistributionProfile';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->apikey))
+		if(!is_null($xml) && count($xml->apikey))
 			$this->apikey = (string)$xml->apikey;
-		if(count($xml->email))
+		if(!is_null($jsonObject) && isset($jsonObject->apikey))
+			$this->apikey = (string)$jsonObject->apikey;
+		if(!is_null($xml) && count($xml->email))
 			$this->email = (string)$xml->email;
-		if(count($xml->sftpPass))
+		if(!is_null($jsonObject) && isset($jsonObject->email))
+			$this->email = (string)$jsonObject->email;
+		if(!is_null($xml) && count($xml->sftpPass))
 			$this->sftpPass = (string)$xml->sftpPass;
-		if(count($xml->sftpLogin))
+		if(!is_null($jsonObject) && isset($jsonObject->sftpPass))
+			$this->sftpPass = (string)$jsonObject->sftpPass;
+		if(!is_null($xml) && count($xml->sftpLogin))
 			$this->sftpLogin = (string)$xml->sftpLogin;
-		if(count($xml->accountId))
+		if(!is_null($jsonObject) && isset($jsonObject->sftpLogin))
+			$this->sftpLogin = (string)$jsonObject->sftpLogin;
+		if(!is_null($xml) && count($xml->accountId))
 			$this->accountId = (string)$xml->accountId;
-		if(count($xml->metadataProfileId))
+		if(!is_null($jsonObject) && isset($jsonObject->accountId))
+			$this->accountId = (string)$jsonObject->accountId;
+		if(!is_null($xml) && count($xml->metadataProfileId))
 			$this->metadataProfileId = (int)$xml->metadataProfileId;
+		if(!is_null($jsonObject) && isset($jsonObject->metadataProfileId))
+			$this->metadataProfileId = (int)$jsonObject->metadataProfileId;
 	}
 	/**
 	 * 

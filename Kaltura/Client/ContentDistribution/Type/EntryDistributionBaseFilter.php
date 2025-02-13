@@ -38,53 +38,96 @@ abstract class Kaltura_Client_ContentDistribution_Type_EntryDistributionBaseFilt
 		return 'KalturaEntryDistributionBaseFilter';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->idEqual))
+		if(!is_null($xml) && count($xml->idEqual))
 			$this->idEqual = (int)$xml->idEqual;
-		if(count($xml->idIn))
+		if(!is_null($jsonObject) && isset($jsonObject->idEqual))
+			$this->idEqual = (int)$jsonObject->idEqual;
+		if(!is_null($xml) && count($xml->idIn))
 			$this->idIn = (string)$xml->idIn;
-		if(count($xml->createdAtGreaterThanOrEqual))
+		if(!is_null($jsonObject) && isset($jsonObject->idIn))
+			$this->idIn = (string)$jsonObject->idIn;
+		if(!is_null($xml) && count($xml->createdAtGreaterThanOrEqual))
 			$this->createdAtGreaterThanOrEqual = (int)$xml->createdAtGreaterThanOrEqual;
-		if(count($xml->createdAtLessThanOrEqual))
+		if(!is_null($jsonObject) && isset($jsonObject->createdAtGreaterThanOrEqual))
+			$this->createdAtGreaterThanOrEqual = (int)$jsonObject->createdAtGreaterThanOrEqual;
+		if(!is_null($xml) && count($xml->createdAtLessThanOrEqual))
 			$this->createdAtLessThanOrEqual = (int)$xml->createdAtLessThanOrEqual;
-		if(count($xml->updatedAtGreaterThanOrEqual))
+		if(!is_null($jsonObject) && isset($jsonObject->createdAtLessThanOrEqual))
+			$this->createdAtLessThanOrEqual = (int)$jsonObject->createdAtLessThanOrEqual;
+		if(!is_null($xml) && count($xml->updatedAtGreaterThanOrEqual))
 			$this->updatedAtGreaterThanOrEqual = (int)$xml->updatedAtGreaterThanOrEqual;
-		if(count($xml->updatedAtLessThanOrEqual))
+		if(!is_null($jsonObject) && isset($jsonObject->updatedAtGreaterThanOrEqual))
+			$this->updatedAtGreaterThanOrEqual = (int)$jsonObject->updatedAtGreaterThanOrEqual;
+		if(!is_null($xml) && count($xml->updatedAtLessThanOrEqual))
 			$this->updatedAtLessThanOrEqual = (int)$xml->updatedAtLessThanOrEqual;
-		if(count($xml->submittedAtGreaterThanOrEqual))
+		if(!is_null($jsonObject) && isset($jsonObject->updatedAtLessThanOrEqual))
+			$this->updatedAtLessThanOrEqual = (int)$jsonObject->updatedAtLessThanOrEqual;
+		if(!is_null($xml) && count($xml->submittedAtGreaterThanOrEqual))
 			$this->submittedAtGreaterThanOrEqual = (int)$xml->submittedAtGreaterThanOrEqual;
-		if(count($xml->submittedAtLessThanOrEqual))
+		if(!is_null($jsonObject) && isset($jsonObject->submittedAtGreaterThanOrEqual))
+			$this->submittedAtGreaterThanOrEqual = (int)$jsonObject->submittedAtGreaterThanOrEqual;
+		if(!is_null($xml) && count($xml->submittedAtLessThanOrEqual))
 			$this->submittedAtLessThanOrEqual = (int)$xml->submittedAtLessThanOrEqual;
-		if(count($xml->entryIdEqual))
+		if(!is_null($jsonObject) && isset($jsonObject->submittedAtLessThanOrEqual))
+			$this->submittedAtLessThanOrEqual = (int)$jsonObject->submittedAtLessThanOrEqual;
+		if(!is_null($xml) && count($xml->entryIdEqual))
 			$this->entryIdEqual = (string)$xml->entryIdEqual;
-		if(count($xml->entryIdIn))
+		if(!is_null($jsonObject) && isset($jsonObject->entryIdEqual))
+			$this->entryIdEqual = (string)$jsonObject->entryIdEqual;
+		if(!is_null($xml) && count($xml->entryIdIn))
 			$this->entryIdIn = (string)$xml->entryIdIn;
-		if(count($xml->distributionProfileIdEqual))
+		if(!is_null($jsonObject) && isset($jsonObject->entryIdIn))
+			$this->entryIdIn = (string)$jsonObject->entryIdIn;
+		if(!is_null($xml) && count($xml->distributionProfileIdEqual))
 			$this->distributionProfileIdEqual = (int)$xml->distributionProfileIdEqual;
-		if(count($xml->distributionProfileIdIn))
+		if(!is_null($jsonObject) && isset($jsonObject->distributionProfileIdEqual))
+			$this->distributionProfileIdEqual = (int)$jsonObject->distributionProfileIdEqual;
+		if(!is_null($xml) && count($xml->distributionProfileIdIn))
 			$this->distributionProfileIdIn = (string)$xml->distributionProfileIdIn;
-		if(count($xml->statusEqual))
+		if(!is_null($jsonObject) && isset($jsonObject->distributionProfileIdIn))
+			$this->distributionProfileIdIn = (string)$jsonObject->distributionProfileIdIn;
+		if(!is_null($xml) && count($xml->statusEqual))
 			$this->statusEqual = (int)$xml->statusEqual;
-		if(count($xml->statusIn))
+		if(!is_null($jsonObject) && isset($jsonObject->statusEqual))
+			$this->statusEqual = (int)$jsonObject->statusEqual;
+		if(!is_null($xml) && count($xml->statusIn))
 			$this->statusIn = (string)$xml->statusIn;
-		if(count($xml->dirtyStatusEqual))
+		if(!is_null($jsonObject) && isset($jsonObject->statusIn))
+			$this->statusIn = (string)$jsonObject->statusIn;
+		if(!is_null($xml) && count($xml->dirtyStatusEqual))
 			$this->dirtyStatusEqual = (int)$xml->dirtyStatusEqual;
-		if(count($xml->dirtyStatusIn))
+		if(!is_null($jsonObject) && isset($jsonObject->dirtyStatusEqual))
+			$this->dirtyStatusEqual = (int)$jsonObject->dirtyStatusEqual;
+		if(!is_null($xml) && count($xml->dirtyStatusIn))
 			$this->dirtyStatusIn = (string)$xml->dirtyStatusIn;
-		if(count($xml->sunriseGreaterThanOrEqual))
+		if(!is_null($jsonObject) && isset($jsonObject->dirtyStatusIn))
+			$this->dirtyStatusIn = (string)$jsonObject->dirtyStatusIn;
+		if(!is_null($xml) && count($xml->sunriseGreaterThanOrEqual))
 			$this->sunriseGreaterThanOrEqual = (int)$xml->sunriseGreaterThanOrEqual;
-		if(count($xml->sunriseLessThanOrEqual))
+		if(!is_null($jsonObject) && isset($jsonObject->sunriseGreaterThanOrEqual))
+			$this->sunriseGreaterThanOrEqual = (int)$jsonObject->sunriseGreaterThanOrEqual;
+		if(!is_null($xml) && count($xml->sunriseLessThanOrEqual))
 			$this->sunriseLessThanOrEqual = (int)$xml->sunriseLessThanOrEqual;
-		if(count($xml->sunsetGreaterThanOrEqual))
+		if(!is_null($jsonObject) && isset($jsonObject->sunriseLessThanOrEqual))
+			$this->sunriseLessThanOrEqual = (int)$jsonObject->sunriseLessThanOrEqual;
+		if(!is_null($xml) && count($xml->sunsetGreaterThanOrEqual))
 			$this->sunsetGreaterThanOrEqual = (int)$xml->sunsetGreaterThanOrEqual;
-		if(count($xml->sunsetLessThanOrEqual))
+		if(!is_null($jsonObject) && isset($jsonObject->sunsetGreaterThanOrEqual))
+			$this->sunsetGreaterThanOrEqual = (int)$jsonObject->sunsetGreaterThanOrEqual;
+		if(!is_null($xml) && count($xml->sunsetLessThanOrEqual))
 			$this->sunsetLessThanOrEqual = (int)$xml->sunsetLessThanOrEqual;
+		if(!is_null($jsonObject) && isset($jsonObject->sunsetLessThanOrEqual))
+			$this->sunsetLessThanOrEqual = (int)$jsonObject->sunsetLessThanOrEqual;
 	}
 	/**
 	 * 

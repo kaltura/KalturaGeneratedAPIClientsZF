@@ -38,21 +38,32 @@ class Kaltura_Client_Type_UrlRecognizerAkamaiG2O extends Kaltura_Client_Type_Url
 		return 'KalturaUrlRecognizerAkamaiG2O';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->headerData))
+		if(!is_null($xml) && count($xml->headerData))
 			$this->headerData = (string)$xml->headerData;
-		if(count($xml->headerSign))
+		if(!is_null($jsonObject) && isset($jsonObject->headerData))
+			$this->headerData = (string)$jsonObject->headerData;
+		if(!is_null($xml) && count($xml->headerSign))
 			$this->headerSign = (string)$xml->headerSign;
-		if(count($xml->timeout))
+		if(!is_null($jsonObject) && isset($jsonObject->headerSign))
+			$this->headerSign = (string)$jsonObject->headerSign;
+		if(!is_null($xml) && count($xml->timeout))
 			$this->timeout = (int)$xml->timeout;
-		if(count($xml->salt))
+		if(!is_null($jsonObject) && isset($jsonObject->timeout))
+			$this->timeout = (int)$jsonObject->timeout;
+		if(!is_null($xml) && count($xml->salt))
 			$this->salt = (string)$xml->salt;
+		if(!is_null($jsonObject) && isset($jsonObject->salt))
+			$this->salt = (string)$jsonObject->salt;
 	}
 	/**
 	 * headerData

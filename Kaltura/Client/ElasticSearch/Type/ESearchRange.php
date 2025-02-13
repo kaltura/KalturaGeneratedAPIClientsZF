@@ -38,21 +38,32 @@ class Kaltura_Client_ElasticSearch_Type_ESearchRange extends Kaltura_Client_Obje
 		return 'KalturaESearchRange';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->greaterThanOrEqual))
+		if(!is_null($xml) && count($xml->greaterThanOrEqual))
 			$this->greaterThanOrEqual = (int)$xml->greaterThanOrEqual;
-		if(count($xml->lessThanOrEqual))
+		if(!is_null($jsonObject) && isset($jsonObject->greaterThanOrEqual))
+			$this->greaterThanOrEqual = (int)$jsonObject->greaterThanOrEqual;
+		if(!is_null($xml) && count($xml->lessThanOrEqual))
 			$this->lessThanOrEqual = (int)$xml->lessThanOrEqual;
-		if(count($xml->greaterThan))
+		if(!is_null($jsonObject) && isset($jsonObject->lessThanOrEqual))
+			$this->lessThanOrEqual = (int)$jsonObject->lessThanOrEqual;
+		if(!is_null($xml) && count($xml->greaterThan))
 			$this->greaterThan = (int)$xml->greaterThan;
-		if(count($xml->lessThan))
+		if(!is_null($jsonObject) && isset($jsonObject->greaterThan))
+			$this->greaterThan = (int)$jsonObject->greaterThan;
+		if(!is_null($xml) && count($xml->lessThan))
 			$this->lessThan = (int)$xml->lessThan;
+		if(!is_null($jsonObject) && isset($jsonObject->lessThan))
+			$this->lessThan = (int)$jsonObject->lessThan;
 	}
 	/**
 	 * 

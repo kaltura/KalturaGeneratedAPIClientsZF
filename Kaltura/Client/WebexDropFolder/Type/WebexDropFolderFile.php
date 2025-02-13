@@ -38,23 +38,36 @@ class Kaltura_Client_WebexDropFolder_Type_WebexDropFolderFile extends Kaltura_Cl
 		return 'KalturaWebexDropFolderFile';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->recordingId))
+		if(!is_null($xml) && count($xml->recordingId))
 			$this->recordingId = (int)$xml->recordingId;
-		if(count($xml->webexHostId))
+		if(!is_null($jsonObject) && isset($jsonObject->recordingId))
+			$this->recordingId = (int)$jsonObject->recordingId;
+		if(!is_null($xml) && count($xml->webexHostId))
 			$this->webexHostId = (string)$xml->webexHostId;
-		if(count($xml->description))
+		if(!is_null($jsonObject) && isset($jsonObject->webexHostId))
+			$this->webexHostId = (string)$jsonObject->webexHostId;
+		if(!is_null($xml) && count($xml->description))
 			$this->description = (string)$xml->description;
-		if(count($xml->confId))
+		if(!is_null($jsonObject) && isset($jsonObject->description))
+			$this->description = (string)$jsonObject->description;
+		if(!is_null($xml) && count($xml->confId))
 			$this->confId = (string)$xml->confId;
-		if(count($xml->contentUrl))
+		if(!is_null($jsonObject) && isset($jsonObject->confId))
+			$this->confId = (string)$jsonObject->confId;
+		if(!is_null($xml) && count($xml->contentUrl))
 			$this->contentUrl = (string)$xml->contentUrl;
+		if(!is_null($jsonObject) && isset($jsonObject->contentUrl))
+			$this->contentUrl = (string)$jsonObject->contentUrl;
 	}
 	/**
 	 * 

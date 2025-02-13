@@ -38,23 +38,36 @@ class Kaltura_Client_Type_LiveReportExportJobData extends Kaltura_Client_Type_Jo
 		return 'KalturaLiveReportExportJobData';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->timeReference))
+		if(!is_null($xml) && count($xml->timeReference))
 			$this->timeReference = (int)$xml->timeReference;
-		if(count($xml->timeZoneOffset))
+		if(!is_null($jsonObject) && isset($jsonObject->timeReference))
+			$this->timeReference = (int)$jsonObject->timeReference;
+		if(!is_null($xml) && count($xml->timeZoneOffset))
 			$this->timeZoneOffset = (int)$xml->timeZoneOffset;
-		if(count($xml->entryIds))
+		if(!is_null($jsonObject) && isset($jsonObject->timeZoneOffset))
+			$this->timeZoneOffset = (int)$jsonObject->timeZoneOffset;
+		if(!is_null($xml) && count($xml->entryIds))
 			$this->entryIds = (string)$xml->entryIds;
-		if(count($xml->outputPath))
+		if(!is_null($jsonObject) && isset($jsonObject->entryIds))
+			$this->entryIds = (string)$jsonObject->entryIds;
+		if(!is_null($xml) && count($xml->outputPath))
 			$this->outputPath = (string)$xml->outputPath;
-		if(count($xml->recipientEmail))
+		if(!is_null($jsonObject) && isset($jsonObject->outputPath))
+			$this->outputPath = (string)$jsonObject->outputPath;
+		if(!is_null($xml) && count($xml->recipientEmail))
 			$this->recipientEmail = (string)$xml->recipientEmail;
+		if(!is_null($jsonObject) && isset($jsonObject->recipientEmail))
+			$this->recipientEmail = (string)$jsonObject->recipientEmail;
 	}
 	/**
 	 * 

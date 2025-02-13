@@ -38,29 +38,49 @@ class Kaltura_Client_Type_PlaybackSource extends Kaltura_Client_ObjectBase
 		return 'KalturaPlaybackSource';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->deliveryProfileId))
+		if(!is_null($xml) && count($xml->deliveryProfileId))
 			$this->deliveryProfileId = (string)$xml->deliveryProfileId;
-		if(count($xml->format))
+		if(!is_null($jsonObject) && isset($jsonObject->deliveryProfileId))
+			$this->deliveryProfileId = (string)$jsonObject->deliveryProfileId;
+		if(!is_null($xml) && count($xml->format))
 			$this->format = (string)$xml->format;
-		if(count($xml->protocols))
+		if(!is_null($jsonObject) && isset($jsonObject->format))
+			$this->format = (string)$jsonObject->format;
+		if(!is_null($xml) && count($xml->protocols))
 			$this->protocols = (string)$xml->protocols;
-		if(count($xml->flavorIds))
+		if(!is_null($jsonObject) && isset($jsonObject->protocols))
+			$this->protocols = (string)$jsonObject->protocols;
+		if(!is_null($xml) && count($xml->flavorIds))
 			$this->flavorIds = (string)$xml->flavorIds;
-		if(count($xml->url))
+		if(!is_null($jsonObject) && isset($jsonObject->flavorIds))
+			$this->flavorIds = (string)$jsonObject->flavorIds;
+		if(!is_null($xml) && count($xml->url))
 			$this->url = (string)$xml->url;
-		if(count($xml->drm))
+		if(!is_null($jsonObject) && isset($jsonObject->url))
+			$this->url = (string)$jsonObject->url;
+		if(!is_null($xml) && count($xml->drm))
 		{
 			if(empty($xml->drm))
 				$this->drm = array();
 			else
 				$this->drm = Kaltura_Client_ParseUtils::unmarshalArray($xml->drm, "KalturaDrmPlaybackPluginData");
+		}
+		if(!is_null($jsonObject) && isset($jsonObject->drm))
+		{
+			if(empty($jsonObject->drm))
+				$this->drm = array();
+			else
+				$this->drm = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsonObject->drm, "KalturaDrmPlaybackPluginData");
 		}
 	}
 	/**

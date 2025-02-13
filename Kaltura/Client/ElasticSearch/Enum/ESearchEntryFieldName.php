@@ -35,6 +35,7 @@ class Kaltura_Client_ElasticSearch_Enum_ESearchEntryFieldName extends Kaltura_Cl
 {
 	const ACCESS_CONTROL_ID = "access_control_id";
 	const ADMIN_TAGS = "admin_tags";
+	const BROADCAST_ENTRY_ID = "broadcast_entry_id";
 	const CAPTIONS_CONTENT = "captions_content";
 	const CONVERSION_PROFILE_ID = "conversion_profile_id";
 	const CREATED_AT = "created_at";
@@ -63,8 +64,10 @@ class Kaltura_Client_ElasticSearch_Enum_ESearchEntryFieldName extends Kaltura_Cl
 	const PUSH_PUBLISH = "push_publish";
 	const RANK = "rank";
 	const RECORDED_ENTRY_ID = "recorded_entry_id";
+	const RECYCLED_AT = "recycled_at";
 	const REDIRECT_ENTRY_ID = "redirect_entry_id";
 	const REFERENCE_ID = "reference_id";
+	const ROOM_TYPE = "room_type";
 	const ROOT_ID = "root_id";
 	const SITE_URL = "site_url";
 	const SOURCE_TYPE = "source_type";

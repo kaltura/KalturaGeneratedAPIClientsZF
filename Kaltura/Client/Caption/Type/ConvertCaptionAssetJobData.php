@@ -38,23 +38,36 @@ class Kaltura_Client_Caption_Type_ConvertCaptionAssetJobData extends Kaltura_Cli
 		return 'KalturaConvertCaptionAssetJobData';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->captionAssetId))
+		if(!is_null($xml) && count($xml->captionAssetId))
 			$this->captionAssetId = (string)$xml->captionAssetId;
-		if(count($xml->fileLocation))
+		if(!is_null($jsonObject) && isset($jsonObject->captionAssetId))
+			$this->captionAssetId = (string)$jsonObject->captionAssetId;
+		if(!is_null($xml) && count($xml->fileLocation))
 			$this->fileLocation = (string)$xml->fileLocation;
-		if(count($xml->fileEncryptionKey))
+		if(!is_null($jsonObject) && isset($jsonObject->fileLocation))
+			$this->fileLocation = (string)$jsonObject->fileLocation;
+		if(!is_null($xml) && count($xml->fileEncryptionKey))
 			$this->fileEncryptionKey = (string)$xml->fileEncryptionKey;
-		if(count($xml->fromType))
+		if(!is_null($jsonObject) && isset($jsonObject->fileEncryptionKey))
+			$this->fileEncryptionKey = (string)$jsonObject->fileEncryptionKey;
+		if(!is_null($xml) && count($xml->fromType))
 			$this->fromType = (string)$xml->fromType;
-		if(count($xml->toType))
+		if(!is_null($jsonObject) && isset($jsonObject->fromType))
+			$this->fromType = (string)$jsonObject->fromType;
+		if(!is_null($xml) && count($xml->toType))
 			$this->toType = (string)$xml->toType;
+		if(!is_null($jsonObject) && isset($jsonObject->toType))
+			$this->toType = (string)$jsonObject->toType;
 	}
 	/**
 	 * 

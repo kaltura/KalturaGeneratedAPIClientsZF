@@ -38,42 +38,74 @@ class Kaltura_Client_YoutubeApiDistribution_Type_YoutubeApiDistributionProfile e
 		return 'KalturaYoutubeApiDistributionProfile';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->username))
+		if(!is_null($xml) && count($xml->username))
 			$this->username = (string)$xml->username;
-		if(count($xml->defaultCategory))
+		if(!is_null($jsonObject) && isset($jsonObject->username))
+			$this->username = (string)$jsonObject->username;
+		if(!is_null($xml) && count($xml->defaultCategory))
 			$this->defaultCategory = (int)$xml->defaultCategory;
-		if(count($xml->allowComments))
+		if(!is_null($jsonObject) && isset($jsonObject->defaultCategory))
+			$this->defaultCategory = (int)$jsonObject->defaultCategory;
+		if(!is_null($xml) && count($xml->allowComments))
 			$this->allowComments = (string)$xml->allowComments;
-		if(count($xml->allowEmbedding))
+		if(!is_null($jsonObject) && isset($jsonObject->allowComments))
+			$this->allowComments = (string)$jsonObject->allowComments;
+		if(!is_null($xml) && count($xml->allowEmbedding))
 			$this->allowEmbedding = (string)$xml->allowEmbedding;
-		if(count($xml->allowRatings))
+		if(!is_null($jsonObject) && isset($jsonObject->allowEmbedding))
+			$this->allowEmbedding = (string)$jsonObject->allowEmbedding;
+		if(!is_null($xml) && count($xml->allowRatings))
 			$this->allowRatings = (string)$xml->allowRatings;
-		if(count($xml->allowResponses))
+		if(!is_null($jsonObject) && isset($jsonObject->allowRatings))
+			$this->allowRatings = (string)$jsonObject->allowRatings;
+		if(!is_null($xml) && count($xml->allowResponses))
 			$this->allowResponses = (string)$xml->allowResponses;
-		if(count($xml->apiAuthorizeUrl))
+		if(!is_null($jsonObject) && isset($jsonObject->allowResponses))
+			$this->allowResponses = (string)$jsonObject->allowResponses;
+		if(!is_null($xml) && count($xml->apiAuthorizeUrl))
 			$this->apiAuthorizeUrl = (string)$xml->apiAuthorizeUrl;
-		if(count($xml->googleClientId))
+		if(!is_null($jsonObject) && isset($jsonObject->apiAuthorizeUrl))
+			$this->apiAuthorizeUrl = (string)$jsonObject->apiAuthorizeUrl;
+		if(!is_null($xml) && count($xml->googleClientId))
 			$this->googleClientId = (string)$xml->googleClientId;
-		if(count($xml->googleClientSecret))
+		if(!is_null($jsonObject) && isset($jsonObject->googleClientId))
+			$this->googleClientId = (string)$jsonObject->googleClientId;
+		if(!is_null($xml) && count($xml->googleClientSecret))
 			$this->googleClientSecret = (string)$xml->googleClientSecret;
-		if(count($xml->googleTokenData))
+		if(!is_null($jsonObject) && isset($jsonObject->googleClientSecret))
+			$this->googleClientSecret = (string)$jsonObject->googleClientSecret;
+		if(!is_null($xml) && count($xml->googleTokenData))
 			$this->googleTokenData = (string)$xml->googleTokenData;
-		if(count($xml->assumeSuccess))
+		if(!is_null($jsonObject) && isset($jsonObject->googleTokenData))
+			$this->googleTokenData = (string)$jsonObject->googleTokenData;
+		if(!is_null($xml) && count($xml->assumeSuccess))
 		{
 			if(!empty($xml->assumeSuccess) && ((int) $xml->assumeSuccess === 1 || strtolower((string)$xml->assumeSuccess) === 'true'))
 				$this->assumeSuccess = true;
 			else
 				$this->assumeSuccess = false;
 		}
-		if(count($xml->privacyStatus))
+		if(!is_null($jsonObject) && isset($jsonObject->assumeSuccess))
+		{
+			if(!empty($jsonObject->assumeSuccess) && ((int) $jsonObject->assumeSuccess === 1 || strtolower((string)$jsonObject->assumeSuccess) === 'true'))
+				$this->assumeSuccess = true;
+			else
+				$this->assumeSuccess = false;
+		}
+		if(!is_null($xml) && count($xml->privacyStatus))
 			$this->privacyStatus = (string)$xml->privacyStatus;
+		if(!is_null($jsonObject) && isset($jsonObject->privacyStatus))
+			$this->privacyStatus = (string)$jsonObject->privacyStatus;
 	}
 	/**
 	 * 

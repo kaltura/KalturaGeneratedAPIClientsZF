@@ -38,18 +38,30 @@ class Kaltura_Client_Type_ReportResponseOptions extends Kaltura_Client_ObjectBas
 		return 'KalturaReportResponseOptions';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->delimiter))
+		if(!is_null($xml) && count($xml->delimiter))
 			$this->delimiter = (string)$xml->delimiter;
-		if(count($xml->skipEmptyDates))
+		if(!is_null($jsonObject) && isset($jsonObject->delimiter))
+			$this->delimiter = (string)$jsonObject->delimiter;
+		if(!is_null($xml) && count($xml->skipEmptyDates))
 		{
 			if(!empty($xml->skipEmptyDates) && ((int) $xml->skipEmptyDates === 1 || strtolower((string)$xml->skipEmptyDates) === 'true'))
+				$this->skipEmptyDates = true;
+			else
+				$this->skipEmptyDates = false;
+		}
+		if(!is_null($jsonObject) && isset($jsonObject->skipEmptyDates))
+		{
+			if(!empty($jsonObject->skipEmptyDates) && ((int) $jsonObject->skipEmptyDates === 1 || strtolower((string)$jsonObject->skipEmptyDates) === 'true'))
 				$this->skipEmptyDates = true;
 			else
 				$this->skipEmptyDates = false;

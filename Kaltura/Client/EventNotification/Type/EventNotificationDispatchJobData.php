@@ -38,21 +38,33 @@ class Kaltura_Client_EventNotification_Type_EventNotificationDispatchJobData ext
 		return 'KalturaEventNotificationDispatchJobData';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->templateId))
+		if(!is_null($xml) && count($xml->templateId))
 			$this->templateId = (int)$xml->templateId;
-		if(count($xml->contentParameters))
+		if(!is_null($jsonObject) && isset($jsonObject->templateId))
+			$this->templateId = (int)$jsonObject->templateId;
+		if(!is_null($xml) && count($xml->contentParameters))
 		{
 			if(empty($xml->contentParameters))
 				$this->contentParameters = array();
 			else
 				$this->contentParameters = Kaltura_Client_ParseUtils::unmarshalArray($xml->contentParameters, "KalturaKeyValue");
+		}
+		if(!is_null($jsonObject) && isset($jsonObject->contentParameters))
+		{
+			if(empty($jsonObject->contentParameters))
+				$this->contentParameters = array();
+			else
+				$this->contentParameters = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsonObject->contentParameters, "KalturaKeyValue");
 		}
 	}
 	/**

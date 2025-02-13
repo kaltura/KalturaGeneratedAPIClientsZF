@@ -38,17 +38,24 @@ class Kaltura_Client_Type_UrlRecognizer extends Kaltura_Client_ObjectBase
 		return 'KalturaUrlRecognizer';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->hosts))
+		if(!is_null($xml) && count($xml->hosts))
 			$this->hosts = (string)$xml->hosts;
-		if(count($xml->uriPrefix))
+		if(!is_null($jsonObject) && isset($jsonObject->hosts))
+			$this->hosts = (string)$jsonObject->hosts;
+		if(!is_null($xml) && count($xml->uriPrefix))
 			$this->uriPrefix = (string)$xml->uriPrefix;
+		if(!is_null($jsonObject) && isset($jsonObject->uriPrefix))
+			$this->uriPrefix = (string)$jsonObject->uriPrefix;
 	}
 	/**
 	 * The hosts that are recognized

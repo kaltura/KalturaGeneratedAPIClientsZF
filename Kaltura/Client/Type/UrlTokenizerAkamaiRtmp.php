@@ -38,22 +38,38 @@ class Kaltura_Client_Type_UrlTokenizerAkamaiRtmp extends Kaltura_Client_Type_Url
 		return 'KalturaUrlTokenizerAkamaiRtmp';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->profile))
+		if(!is_null($xml) && count($xml->profile))
 			$this->profile = (string)$xml->profile;
-		if(count($xml->type))
+		if(!is_null($jsonObject) && isset($jsonObject->profile))
+			$this->profile = (string)$jsonObject->profile;
+		if(!is_null($xml) && count($xml->type))
 			$this->type = (string)$xml->type;
-		if(count($xml->aifp))
+		if(!is_null($jsonObject) && isset($jsonObject->type))
+			$this->type = (string)$jsonObject->type;
+		if(!is_null($xml) && count($xml->aifp))
 			$this->aifp = (string)$xml->aifp;
-		if(count($xml->usePrefix))
+		if(!is_null($jsonObject) && isset($jsonObject->aifp))
+			$this->aifp = (string)$jsonObject->aifp;
+		if(!is_null($xml) && count($xml->usePrefix))
 		{
 			if(!empty($xml->usePrefix) && ((int) $xml->usePrefix === 1 || strtolower((string)$xml->usePrefix) === 'true'))
+				$this->usePrefix = true;
+			else
+				$this->usePrefix = false;
+		}
+		if(!is_null($jsonObject) && isset($jsonObject->usePrefix))
+		{
+			if(!empty($jsonObject->usePrefix) && ((int) $jsonObject->usePrefix === 1 || strtolower((string)$jsonObject->usePrefix) === 'true'))
 				$this->usePrefix = true;
 			else
 				$this->usePrefix = false;

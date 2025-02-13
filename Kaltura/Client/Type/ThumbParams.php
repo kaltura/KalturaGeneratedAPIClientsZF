@@ -38,54 +38,98 @@ class Kaltura_Client_Type_ThumbParams extends Kaltura_Client_Type_AssetParams
 		return 'KalturaThumbParams';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->cropType))
+		if(!is_null($xml) && count($xml->cropType))
 			$this->cropType = (int)$xml->cropType;
-		if(count($xml->quality))
+		if(!is_null($jsonObject) && isset($jsonObject->cropType))
+			$this->cropType = (int)$jsonObject->cropType;
+		if(!is_null($xml) && count($xml->quality))
 			$this->quality = (int)$xml->quality;
-		if(count($xml->cropX))
+		if(!is_null($jsonObject) && isset($jsonObject->quality))
+			$this->quality = (int)$jsonObject->quality;
+		if(!is_null($xml) && count($xml->cropX))
 			$this->cropX = (int)$xml->cropX;
-		if(count($xml->cropY))
+		if(!is_null($jsonObject) && isset($jsonObject->cropX))
+			$this->cropX = (int)$jsonObject->cropX;
+		if(!is_null($xml) && count($xml->cropY))
 			$this->cropY = (int)$xml->cropY;
-		if(count($xml->cropWidth))
+		if(!is_null($jsonObject) && isset($jsonObject->cropY))
+			$this->cropY = (int)$jsonObject->cropY;
+		if(!is_null($xml) && count($xml->cropWidth))
 			$this->cropWidth = (int)$xml->cropWidth;
-		if(count($xml->cropHeight))
+		if(!is_null($jsonObject) && isset($jsonObject->cropWidth))
+			$this->cropWidth = (int)$jsonObject->cropWidth;
+		if(!is_null($xml) && count($xml->cropHeight))
 			$this->cropHeight = (int)$xml->cropHeight;
-		if(count($xml->videoOffset))
+		if(!is_null($jsonObject) && isset($jsonObject->cropHeight))
+			$this->cropHeight = (int)$jsonObject->cropHeight;
+		if(!is_null($xml) && count($xml->videoOffset))
 			$this->videoOffset = (float)$xml->videoOffset;
-		if(count($xml->width))
+		if(!is_null($jsonObject) && isset($jsonObject->videoOffset))
+			$this->videoOffset = (float)$jsonObject->videoOffset;
+		if(!is_null($xml) && count($xml->width))
 			$this->width = (int)$xml->width;
-		if(count($xml->height))
+		if(!is_null($jsonObject) && isset($jsonObject->width))
+			$this->width = (int)$jsonObject->width;
+		if(!is_null($xml) && count($xml->height))
 			$this->height = (int)$xml->height;
-		if(count($xml->scaleWidth))
+		if(!is_null($jsonObject) && isset($jsonObject->height))
+			$this->height = (int)$jsonObject->height;
+		if(!is_null($xml) && count($xml->scaleWidth))
 			$this->scaleWidth = (float)$xml->scaleWidth;
-		if(count($xml->scaleHeight))
+		if(!is_null($jsonObject) && isset($jsonObject->scaleWidth))
+			$this->scaleWidth = (float)$jsonObject->scaleWidth;
+		if(!is_null($xml) && count($xml->scaleHeight))
 			$this->scaleHeight = (float)$xml->scaleHeight;
-		if(count($xml->backgroundColor))
+		if(!is_null($jsonObject) && isset($jsonObject->scaleHeight))
+			$this->scaleHeight = (float)$jsonObject->scaleHeight;
+		if(!is_null($xml) && count($xml->backgroundColor))
 			$this->backgroundColor = (string)$xml->backgroundColor;
-		if(count($xml->sourceParamsId))
+		if(!is_null($jsonObject) && isset($jsonObject->backgroundColor))
+			$this->backgroundColor = (string)$jsonObject->backgroundColor;
+		if(!is_null($xml) && count($xml->sourceParamsId))
 			$this->sourceParamsId = (int)$xml->sourceParamsId;
-		if(count($xml->format))
+		if(!is_null($jsonObject) && isset($jsonObject->sourceParamsId))
+			$this->sourceParamsId = (int)$jsonObject->sourceParamsId;
+		if(!is_null($xml) && count($xml->format))
 			$this->format = (string)$xml->format;
-		if(count($xml->density))
+		if(!is_null($jsonObject) && isset($jsonObject->format))
+			$this->format = (string)$jsonObject->format;
+		if(!is_null($xml) && count($xml->density))
 			$this->density = (int)$xml->density;
-		if(count($xml->stripProfiles))
+		if(!is_null($jsonObject) && isset($jsonObject->density))
+			$this->density = (int)$jsonObject->density;
+		if(!is_null($xml) && count($xml->stripProfiles))
 		{
 			if(!empty($xml->stripProfiles) && ((int) $xml->stripProfiles === 1 || strtolower((string)$xml->stripProfiles) === 'true'))
 				$this->stripProfiles = true;
 			else
 				$this->stripProfiles = false;
 		}
-		if(count($xml->videoOffsetInPercentage))
+		if(!is_null($jsonObject) && isset($jsonObject->stripProfiles))
+		{
+			if(!empty($jsonObject->stripProfiles) && ((int) $jsonObject->stripProfiles === 1 || strtolower((string)$jsonObject->stripProfiles) === 'true'))
+				$this->stripProfiles = true;
+			else
+				$this->stripProfiles = false;
+		}
+		if(!is_null($xml) && count($xml->videoOffsetInPercentage))
 			$this->videoOffsetInPercentage = (int)$xml->videoOffsetInPercentage;
-		if(count($xml->interval))
+		if(!is_null($jsonObject) && isset($jsonObject->videoOffsetInPercentage))
+			$this->videoOffsetInPercentage = (int)$jsonObject->videoOffsetInPercentage;
+		if(!is_null($xml) && count($xml->interval))
 			$this->interval = (int)$xml->interval;
+		if(!is_null($jsonObject) && isset($jsonObject->interval))
+			$this->interval = (int)$jsonObject->interval;
 	}
 	/**
 	 * 

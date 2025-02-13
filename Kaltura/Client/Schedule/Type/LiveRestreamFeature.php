@@ -38,19 +38,32 @@ class Kaltura_Client_Schedule_Type_LiveRestreamFeature extends Kaltura_Client_Sc
 		return 'KalturaLiveRestreamFeature';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->primaryUrl))
+		if(!is_null($xml) && count($xml->primaryUrl))
 			$this->primaryUrl = (string)$xml->primaryUrl;
-		if(count($xml->secondaryUrl))
+		if(!is_null($jsonObject) && isset($jsonObject->primaryUrl))
+			$this->primaryUrl = (string)$jsonObject->primaryUrl;
+		if(!is_null($xml) && count($xml->secondaryUrl))
 			$this->secondaryUrl = (string)$xml->secondaryUrl;
-		if(count($xml->streamKey))
+		if(!is_null($jsonObject) && isset($jsonObject->secondaryUrl))
+			$this->secondaryUrl = (string)$jsonObject->secondaryUrl;
+		if(!is_null($xml) && count($xml->playbackUrl))
+			$this->playbackUrl = (string)$xml->playbackUrl;
+		if(!is_null($jsonObject) && isset($jsonObject->playbackUrl))
+			$this->playbackUrl = (string)$jsonObject->playbackUrl;
+		if(!is_null($xml) && count($xml->streamKey))
 			$this->streamKey = (string)$xml->streamKey;
+		if(!is_null($jsonObject) && isset($jsonObject->streamKey))
+			$this->streamKey = (string)$jsonObject->streamKey;
 	}
 	/**
 	 * 
@@ -65,6 +78,13 @@ class Kaltura_Client_Schedule_Type_LiveRestreamFeature extends Kaltura_Client_Sc
 	 * @var string
 	 */
 	public $secondaryUrl = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $playbackUrl = null;
 
 	/**
 	 * 

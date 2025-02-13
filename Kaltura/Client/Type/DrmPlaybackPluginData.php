@@ -38,17 +38,24 @@ class Kaltura_Client_Type_DrmPlaybackPluginData extends Kaltura_Client_Type_Plug
 		return 'KalturaDrmPlaybackPluginData';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->scheme))
+		if(!is_null($xml) && count($xml->scheme))
 			$this->scheme = (string)$xml->scheme;
-		if(count($xml->licenseURL))
+		if(!is_null($jsonObject) && isset($jsonObject->scheme))
+			$this->scheme = (string)$jsonObject->scheme;
+		if(!is_null($xml) && count($xml->licenseURL))
 			$this->licenseURL = (string)$xml->licenseURL;
+		if(!is_null($jsonObject) && isset($jsonObject->licenseURL))
+			$this->licenseURL = (string)$jsonObject->licenseURL;
 	}
 	/**
 	 * 

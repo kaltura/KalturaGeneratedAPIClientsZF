@@ -38,19 +38,28 @@ class Kaltura_Client_Reach_Type_ScheduledVendorTaskData extends Kaltura_Client_R
 		return 'KalturaScheduledVendorTaskData';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->startDate))
+		if(!is_null($xml) && count($xml->startDate))
 			$this->startDate = (int)$xml->startDate;
-		if(count($xml->endDate))
+		if(!is_null($jsonObject) && isset($jsonObject->startDate))
+			$this->startDate = (int)$jsonObject->startDate;
+		if(!is_null($xml) && count($xml->endDate))
 			$this->endDate = (int)$xml->endDate;
-		if(count($xml->scheduledEventId))
+		if(!is_null($jsonObject) && isset($jsonObject->endDate))
+			$this->endDate = (int)$jsonObject->endDate;
+		if(!is_null($xml) && count($xml->scheduledEventId))
 			$this->scheduledEventId = (int)$xml->scheduledEventId;
+		if(!is_null($jsonObject) && isset($jsonObject->scheduledEventId))
+			$this->scheduledEventId = (int)$jsonObject->scheduledEventId;
 	}
 	/**
 	 * 

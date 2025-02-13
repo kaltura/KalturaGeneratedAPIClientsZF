@@ -38,37 +38,65 @@ class Kaltura_Client_ContentDistribution_Type_DistributionJobData extends Kaltur
 		return 'KalturaDistributionJobData';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->distributionProfileId))
+		if(!is_null($xml) && count($xml->distributionProfileId))
 			$this->distributionProfileId = (int)$xml->distributionProfileId;
-		if(count($xml->distributionProfile) && !empty($xml->distributionProfile))
+		if(!is_null($jsonObject) && isset($jsonObject->distributionProfileId))
+			$this->distributionProfileId = (int)$jsonObject->distributionProfileId;
+		if(!is_null($xml) && count($xml->distributionProfile) && !empty($xml->distributionProfile))
 			$this->distributionProfile = Kaltura_Client_ParseUtils::unmarshalObject($xml->distributionProfile, "KalturaDistributionProfile");
-		if(count($xml->entryDistributionId))
+		if(!is_null($jsonObject) && isset($jsonObject->distributionProfile) && !empty($jsonObject->distributionProfile))
+			$this->distributionProfile = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsonObject->distributionProfile, "KalturaDistributionProfile");
+		if(!is_null($xml) && count($xml->entryDistributionId))
 			$this->entryDistributionId = (int)$xml->entryDistributionId;
-		if(count($xml->entryDistribution) && !empty($xml->entryDistribution))
+		if(!is_null($jsonObject) && isset($jsonObject->entryDistributionId))
+			$this->entryDistributionId = (int)$jsonObject->entryDistributionId;
+		if(!is_null($xml) && count($xml->entryDistribution) && !empty($xml->entryDistribution))
 			$this->entryDistribution = Kaltura_Client_ParseUtils::unmarshalObject($xml->entryDistribution, "KalturaEntryDistribution");
-		if(count($xml->remoteId))
+		if(!is_null($jsonObject) && isset($jsonObject->entryDistribution) && !empty($jsonObject->entryDistribution))
+			$this->entryDistribution = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsonObject->entryDistribution, "KalturaEntryDistribution");
+		if(!is_null($xml) && count($xml->remoteId))
 			$this->remoteId = (string)$xml->remoteId;
-		if(count($xml->providerType))
+		if(!is_null($jsonObject) && isset($jsonObject->remoteId))
+			$this->remoteId = (string)$jsonObject->remoteId;
+		if(!is_null($xml) && count($xml->providerType))
 			$this->providerType = (string)$xml->providerType;
-		if(count($xml->providerData) && !empty($xml->providerData))
+		if(!is_null($jsonObject) && isset($jsonObject->providerType))
+			$this->providerType = (string)$jsonObject->providerType;
+		if(!is_null($xml) && count($xml->providerData) && !empty($xml->providerData))
 			$this->providerData = Kaltura_Client_ParseUtils::unmarshalObject($xml->providerData, "KalturaDistributionJobProviderData");
-		if(count($xml->results))
+		if(!is_null($jsonObject) && isset($jsonObject->providerData) && !empty($jsonObject->providerData))
+			$this->providerData = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsonObject->providerData, "KalturaDistributionJobProviderData");
+		if(!is_null($xml) && count($xml->results))
 			$this->results = (string)$xml->results;
-		if(count($xml->sentData))
+		if(!is_null($jsonObject) && isset($jsonObject->results))
+			$this->results = (string)$jsonObject->results;
+		if(!is_null($xml) && count($xml->sentData))
 			$this->sentData = (string)$xml->sentData;
-		if(count($xml->mediaFiles))
+		if(!is_null($jsonObject) && isset($jsonObject->sentData))
+			$this->sentData = (string)$jsonObject->sentData;
+		if(!is_null($xml) && count($xml->mediaFiles))
 		{
 			if(empty($xml->mediaFiles))
 				$this->mediaFiles = array();
 			else
 				$this->mediaFiles = Kaltura_Client_ParseUtils::unmarshalArray($xml->mediaFiles, "KalturaDistributionRemoteMediaFile");
+		}
+		if(!is_null($jsonObject) && isset($jsonObject->mediaFiles))
+		{
+			if(empty($jsonObject->mediaFiles))
+				$this->mediaFiles = array();
+			else
+				$this->mediaFiles = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsonObject->mediaFiles, "KalturaDistributionRemoteMediaFile");
 		}
 	}
 	/**

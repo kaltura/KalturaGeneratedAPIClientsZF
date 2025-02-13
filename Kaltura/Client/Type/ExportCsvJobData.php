@@ -38,21 +38,32 @@ class Kaltura_Client_Type_ExportCsvJobData extends Kaltura_Client_Type_JobData
 		return 'KalturaExportCsvJobData';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->userName))
+		if(!is_null($xml) && count($xml->userName))
 			$this->userName = (string)$xml->userName;
-		if(count($xml->userMail))
+		if(!is_null($jsonObject) && isset($jsonObject->userName))
+			$this->userName = (string)$jsonObject->userName;
+		if(!is_null($xml) && count($xml->userMail))
 			$this->userMail = (string)$xml->userMail;
-		if(count($xml->outputPath))
+		if(!is_null($jsonObject) && isset($jsonObject->userMail))
+			$this->userMail = (string)$jsonObject->userMail;
+		if(!is_null($xml) && count($xml->outputPath))
 			$this->outputPath = (string)$xml->outputPath;
-		if(count($xml->sharedOutputPath))
+		if(!is_null($jsonObject) && isset($jsonObject->outputPath))
+			$this->outputPath = (string)$jsonObject->outputPath;
+		if(!is_null($xml) && count($xml->sharedOutputPath))
 			$this->sharedOutputPath = (string)$xml->sharedOutputPath;
+		if(!is_null($jsonObject) && isset($jsonObject->sharedOutputPath))
+			$this->sharedOutputPath = (string)$jsonObject->sharedOutputPath;
 	}
 	/**
 	 * The users name

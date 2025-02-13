@@ -38,35 +38,60 @@ class Kaltura_Client_Type_StatsKmcEvent extends Kaltura_Client_ObjectBase
 		return 'KalturaStatsKmcEvent';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->clientVer))
+		if(!is_null($xml) && count($xml->clientVer))
 			$this->clientVer = (string)$xml->clientVer;
-		if(count($xml->kmcEventActionPath))
+		if(!is_null($jsonObject) && isset($jsonObject->clientVer))
+			$this->clientVer = (string)$jsonObject->clientVer;
+		if(!is_null($xml) && count($xml->kmcEventActionPath))
 			$this->kmcEventActionPath = (string)$xml->kmcEventActionPath;
-		if(count($xml->kmcEventType))
+		if(!is_null($jsonObject) && isset($jsonObject->kmcEventActionPath))
+			$this->kmcEventActionPath = (string)$jsonObject->kmcEventActionPath;
+		if(!is_null($xml) && count($xml->kmcEventType))
 			$this->kmcEventType = (int)$xml->kmcEventType;
-		if(count($xml->eventTimestamp))
+		if(!is_null($jsonObject) && isset($jsonObject->kmcEventType))
+			$this->kmcEventType = (int)$jsonObject->kmcEventType;
+		if(!is_null($xml) && count($xml->eventTimestamp))
 			$this->eventTimestamp = (float)$xml->eventTimestamp;
-		if(count($xml->sessionId))
+		if(!is_null($jsonObject) && isset($jsonObject->eventTimestamp))
+			$this->eventTimestamp = (float)$jsonObject->eventTimestamp;
+		if(!is_null($xml) && count($xml->sessionId))
 			$this->sessionId = (string)$xml->sessionId;
-		if(count($xml->partnerId))
+		if(!is_null($jsonObject) && isset($jsonObject->sessionId))
+			$this->sessionId = (string)$jsonObject->sessionId;
+		if(!is_null($xml) && count($xml->partnerId))
 			$this->partnerId = (int)$xml->partnerId;
-		if(count($xml->entryId))
+		if(!is_null($jsonObject) && isset($jsonObject->partnerId))
+			$this->partnerId = (int)$jsonObject->partnerId;
+		if(!is_null($xml) && count($xml->entryId))
 			$this->entryId = (string)$xml->entryId;
-		if(count($xml->widgetId))
+		if(!is_null($jsonObject) && isset($jsonObject->entryId))
+			$this->entryId = (string)$jsonObject->entryId;
+		if(!is_null($xml) && count($xml->widgetId))
 			$this->widgetId = (string)$xml->widgetId;
-		if(count($xml->uiconfId))
+		if(!is_null($jsonObject) && isset($jsonObject->widgetId))
+			$this->widgetId = (string)$jsonObject->widgetId;
+		if(!is_null($xml) && count($xml->uiconfId))
 			$this->uiconfId = (int)$xml->uiconfId;
-		if(count($xml->userId))
+		if(!is_null($jsonObject) && isset($jsonObject->uiconfId))
+			$this->uiconfId = (int)$jsonObject->uiconfId;
+		if(!is_null($xml) && count($xml->userId))
 			$this->userId = (string)$xml->userId;
-		if(count($xml->userIp))
+		if(!is_null($jsonObject) && isset($jsonObject->userId))
+			$this->userId = (string)$jsonObject->userId;
+		if(!is_null($xml) && count($xml->userIp))
 			$this->userIp = (string)$xml->userIp;
+		if(!is_null($jsonObject) && isset($jsonObject->userIp))
+			$this->userIp = (string)$jsonObject->userIp;
 	}
 	/**
 	 * 

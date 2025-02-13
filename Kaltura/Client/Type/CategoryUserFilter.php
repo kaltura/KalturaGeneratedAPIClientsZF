@@ -38,24 +38,38 @@ class Kaltura_Client_Type_CategoryUserFilter extends Kaltura_Client_Type_Categor
 		return 'KalturaCategoryUserFilter';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->categoryDirectMembers))
+		if(!is_null($xml) && count($xml->categoryDirectMembers))
 		{
 			if(!empty($xml->categoryDirectMembers) && ((int) $xml->categoryDirectMembers === 1 || strtolower((string)$xml->categoryDirectMembers) === 'true'))
 				$this->categoryDirectMembers = true;
 			else
 				$this->categoryDirectMembers = false;
 		}
-		if(count($xml->freeText))
+		if(!is_null($jsonObject) && isset($jsonObject->categoryDirectMembers))
+		{
+			if(!empty($jsonObject->categoryDirectMembers) && ((int) $jsonObject->categoryDirectMembers === 1 || strtolower((string)$jsonObject->categoryDirectMembers) === 'true'))
+				$this->categoryDirectMembers = true;
+			else
+				$this->categoryDirectMembers = false;
+		}
+		if(!is_null($xml) && count($xml->freeText))
 			$this->freeText = (string)$xml->freeText;
-		if(count($xml->relatedGroupsByUserId))
+		if(!is_null($jsonObject) && isset($jsonObject->freeText))
+			$this->freeText = (string)$jsonObject->freeText;
+		if(!is_null($xml) && count($xml->relatedGroupsByUserId))
 			$this->relatedGroupsByUserId = (string)$xml->relatedGroupsByUserId;
+		if(!is_null($jsonObject) && isset($jsonObject->relatedGroupsByUserId))
+			$this->relatedGroupsByUserId = (string)$jsonObject->relatedGroupsByUserId;
 	}
 	/**
 	 * Return the list of categoryUser that are not inherited from parent category - only the direct categoryUsers.

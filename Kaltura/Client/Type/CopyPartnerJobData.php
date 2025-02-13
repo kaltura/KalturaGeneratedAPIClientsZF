@@ -38,17 +38,24 @@ class Kaltura_Client_Type_CopyPartnerJobData extends Kaltura_Client_Type_JobData
 		return 'KalturaCopyPartnerJobData';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->fromPartnerId))
+		if(!is_null($xml) && count($xml->fromPartnerId))
 			$this->fromPartnerId = (int)$xml->fromPartnerId;
-		if(count($xml->toPartnerId))
+		if(!is_null($jsonObject) && isset($jsonObject->fromPartnerId))
+			$this->fromPartnerId = (int)$jsonObject->fromPartnerId;
+		if(!is_null($xml) && count($xml->toPartnerId))
 			$this->toPartnerId = (int)$xml->toPartnerId;
+		if(!is_null($jsonObject) && isset($jsonObject->toPartnerId))
+			$this->toPartnerId = (int)$jsonObject->toPartnerId;
 	}
 	/**
 	 * Id of the partner to copy from

@@ -38,19 +38,28 @@ class Kaltura_Client_Interactivity_Type_InteractivityDataFilter extends Kaltura_
 		return 'KalturaInteractivityDataFilter';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->rootFilter) && !empty($xml->rootFilter))
+		if(!is_null($xml) && count($xml->rootFilter) && !empty($xml->rootFilter))
 			$this->rootFilter = Kaltura_Client_ParseUtils::unmarshalObject($xml->rootFilter, "KalturaInteractivityRootFilter");
-		if(count($xml->nodeFilter) && !empty($xml->nodeFilter))
+		if(!is_null($jsonObject) && isset($jsonObject->rootFilter) && !empty($jsonObject->rootFilter))
+			$this->rootFilter = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsonObject->rootFilter, "KalturaInteractivityRootFilter");
+		if(!is_null($xml) && count($xml->nodeFilter) && !empty($xml->nodeFilter))
 			$this->nodeFilter = Kaltura_Client_ParseUtils::unmarshalObject($xml->nodeFilter, "KalturaInteractivityNodeFilter");
-		if(count($xml->interactionFilter) && !empty($xml->interactionFilter))
+		if(!is_null($jsonObject) && isset($jsonObject->nodeFilter) && !empty($jsonObject->nodeFilter))
+			$this->nodeFilter = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsonObject->nodeFilter, "KalturaInteractivityNodeFilter");
+		if(!is_null($xml) && count($xml->interactionFilter) && !empty($xml->interactionFilter))
 			$this->interactionFilter = Kaltura_Client_ParseUtils::unmarshalObject($xml->interactionFilter, "KalturaInteractivityInteractionFilter");
+		if(!is_null($jsonObject) && isset($jsonObject->interactionFilter) && !empty($jsonObject->interactionFilter))
+			$this->interactionFilter = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsonObject->interactionFilter, "KalturaInteractivityInteractionFilter");
 	}
 	/**
 	 * 

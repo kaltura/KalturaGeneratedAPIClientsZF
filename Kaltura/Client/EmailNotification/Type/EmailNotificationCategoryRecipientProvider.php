@@ -38,19 +38,28 @@ class Kaltura_Client_EmailNotification_Type_EmailNotificationCategoryRecipientPr
 		return 'KalturaEmailNotificationCategoryRecipientProvider';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->categoryId) && !empty($xml->categoryId))
+		if(!is_null($xml) && count($xml->categoryId) && !empty($xml->categoryId))
 			$this->categoryId = Kaltura_Client_ParseUtils::unmarshalObject($xml->categoryId, "KalturaStringValue");
-		if(count($xml->categoryIds) && !empty($xml->categoryIds))
+		if(!is_null($jsonObject) && isset($jsonObject->categoryId) && !empty($jsonObject->categoryId))
+			$this->categoryId = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsonObject->categoryId, "KalturaStringValue");
+		if(!is_null($xml) && count($xml->categoryIds) && !empty($xml->categoryIds))
 			$this->categoryIds = Kaltura_Client_ParseUtils::unmarshalObject($xml->categoryIds, "KalturaStringValue");
-		if(count($xml->categoryUserFilter) && !empty($xml->categoryUserFilter))
+		if(!is_null($jsonObject) && isset($jsonObject->categoryIds) && !empty($jsonObject->categoryIds))
+			$this->categoryIds = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsonObject->categoryIds, "KalturaStringValue");
+		if(!is_null($xml) && count($xml->categoryUserFilter) && !empty($xml->categoryUserFilter))
 			$this->categoryUserFilter = Kaltura_Client_ParseUtils::unmarshalObject($xml->categoryUserFilter, "KalturaCategoryUserProviderFilter");
+		if(!is_null($jsonObject) && isset($jsonObject->categoryUserFilter) && !empty($jsonObject->categoryUserFilter))
+			$this->categoryUserFilter = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsonObject->categoryUserFilter, "KalturaCategoryUserProviderFilter");
 	}
 	/**
 	 * The ID of the category whose subscribers should receive the email notification.

@@ -38,21 +38,32 @@ class Kaltura_Client_Type_AccessControlModifyRequestHostRegexAction extends Kalt
 		return 'KalturaAccessControlModifyRequestHostRegexAction';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->pattern))
+		if(!is_null($xml) && count($xml->pattern))
 			$this->pattern = (string)$xml->pattern;
-		if(count($xml->replacement))
+		if(!is_null($jsonObject) && isset($jsonObject->pattern))
+			$this->pattern = (string)$jsonObject->pattern;
+		if(!is_null($xml) && count($xml->replacement))
 			$this->replacement = (string)$xml->replacement;
-		if(count($xml->replacmenServerNodeId))
+		if(!is_null($jsonObject) && isset($jsonObject->replacement))
+			$this->replacement = (string)$jsonObject->replacement;
+		if(!is_null($xml) && count($xml->replacmenServerNodeId))
 			$this->replacmenServerNodeId = (int)$xml->replacmenServerNodeId;
-		if(count($xml->checkAliveTimeoutMs))
+		if(!is_null($jsonObject) && isset($jsonObject->replacmenServerNodeId))
+			$this->replacmenServerNodeId = (int)$jsonObject->replacmenServerNodeId;
+		if(!is_null($xml) && count($xml->checkAliveTimeoutMs))
 			$this->checkAliveTimeoutMs = (int)$xml->checkAliveTimeoutMs;
+		if(!is_null($jsonObject) && isset($jsonObject->checkAliveTimeoutMs))
+			$this->checkAliveTimeoutMs = (int)$jsonObject->checkAliveTimeoutMs;
 	}
 	/**
 	 * Request host regex pattern

@@ -38,23 +38,64 @@ class Kaltura_Client_Type_ImportJobData extends Kaltura_Client_Type_JobData
 		return 'KalturaImportJobData';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->srcFileUrl))
+		if(!is_null($xml) && count($xml->srcFileUrl))
 			$this->srcFileUrl = (string)$xml->srcFileUrl;
-		if(count($xml->destFileLocalPath))
+		if(!is_null($jsonObject) && isset($jsonObject->srcFileUrl))
+			$this->srcFileUrl = (string)$jsonObject->srcFileUrl;
+		if(!is_null($xml) && count($xml->destFileLocalPath))
 			$this->destFileLocalPath = (string)$xml->destFileLocalPath;
-		if(count($xml->flavorAssetId))
+		if(!is_null($jsonObject) && isset($jsonObject->destFileLocalPath))
+			$this->destFileLocalPath = (string)$jsonObject->destFileLocalPath;
+		if(!is_null($xml) && count($xml->flavorAssetId))
 			$this->flavorAssetId = (string)$xml->flavorAssetId;
-		if(count($xml->fileSize))
+		if(!is_null($jsonObject) && isset($jsonObject->flavorAssetId))
+			$this->flavorAssetId = (string)$jsonObject->flavorAssetId;
+		if(!is_null($xml) && count($xml->fileSize))
 			$this->fileSize = (int)$xml->fileSize;
-		if(count($xml->destFileSharedPath))
+		if(!is_null($jsonObject) && isset($jsonObject->fileSize))
+			$this->fileSize = (int)$jsonObject->fileSize;
+		if(!is_null($xml) && count($xml->destFileSharedPath))
 			$this->destFileSharedPath = (string)$xml->destFileSharedPath;
+		if(!is_null($jsonObject) && isset($jsonObject->destFileSharedPath))
+			$this->destFileSharedPath = (string)$jsonObject->destFileSharedPath;
+		if(!is_null($xml) && count($xml->urlHeaders))
+		{
+			if(empty($xml->urlHeaders))
+				$this->urlHeaders = array();
+			else
+				$this->urlHeaders = Kaltura_Client_ParseUtils::unmarshalArray($xml->urlHeaders, "KalturaString");
+		}
+		if(!is_null($jsonObject) && isset($jsonObject->urlHeaders))
+		{
+			if(empty($jsonObject->urlHeaders))
+				$this->urlHeaders = array();
+			else
+				$this->urlHeaders = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsonObject->urlHeaders, "KalturaString");
+		}
+		if(!is_null($xml) && count($xml->shouldRedirect))
+		{
+			if(!empty($xml->shouldRedirect) && ((int) $xml->shouldRedirect === 1 || strtolower((string)$xml->shouldRedirect) === 'true'))
+				$this->shouldRedirect = true;
+			else
+				$this->shouldRedirect = false;
+		}
+		if(!is_null($jsonObject) && isset($jsonObject->shouldRedirect))
+		{
+			if(!empty($jsonObject->shouldRedirect) && ((int) $jsonObject->shouldRedirect === 1 || strtolower((string)$jsonObject->shouldRedirect) === 'true'))
+				$this->shouldRedirect = true;
+			else
+				$this->shouldRedirect = false;
+		}
 	}
 	/**
 	 * 
@@ -90,6 +131,20 @@ class Kaltura_Client_Type_ImportJobData extends Kaltura_Client_Type_JobData
 	 * @var string
 	 */
 	public $destFileSharedPath = null;
+
+	/**
+	 * 
+	 *
+	 * @var array of KalturaString
+	 */
+	public $urlHeaders;
+
+	/**
+	 * 
+	 *
+	 * @var bool
+	 */
+	public $shouldRedirect = null;
 
 
 }

@@ -38,21 +38,33 @@ class Kaltura_Client_ScheduledTask_Type_ModifyCategoriesObjectTask extends Kaltu
 		return 'KalturaModifyCategoriesObjectTask';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->addRemoveType))
+		if(!is_null($xml) && count($xml->addRemoveType))
 			$this->addRemoveType = (int)$xml->addRemoveType;
-		if(count($xml->categoryIds))
+		if(!is_null($jsonObject) && isset($jsonObject->addRemoveType))
+			$this->addRemoveType = (int)$jsonObject->addRemoveType;
+		if(!is_null($xml) && count($xml->categoryIds))
 		{
 			if(empty($xml->categoryIds))
 				$this->categoryIds = array();
 			else
 				$this->categoryIds = Kaltura_Client_ParseUtils::unmarshalArray($xml->categoryIds, "KalturaIntegerValue");
+		}
+		if(!is_null($jsonObject) && isset($jsonObject->categoryIds))
+		{
+			if(empty($jsonObject->categoryIds))
+				$this->categoryIds = array();
+			else
+				$this->categoryIds = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsonObject->categoryIds, "KalturaIntegerValue");
 		}
 	}
 	/**

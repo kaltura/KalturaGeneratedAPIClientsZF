@@ -50,12 +50,18 @@ class Kaltura_Client_Drm_DrmPolicyService extends Kaltura_Client_ServiceBase
 		$this->client->queueServiceActionCall("drm_drmpolicy", "add", "KalturaDrmPolicy", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaDrmPolicy");
-		$this->client->validateObjectType($resultObject, "Kaltura_Client_Drm_Type_DrmPolicy");
-		return $resultObject;
+		$rawResult = $this->client->doQueue();
+		if ($this->client->getConfig()->format === Kaltura_Client_ClientBase::KALTURA_SERVICE_FORMAT_JSON) {
+			$jsObject = json_decode($rawResult);
+			$resultObject = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsObject);
+			return $resultObject;
+		} else {
+			$resultXmlObject = new \SimpleXMLElement($rawResult);
+			$this->client->checkIfError($resultXmlObject->result);
+			$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaDrmPolicy");
+			$this->client->validateObjectType($resultObject, "Kaltura_Client_Drm_Type_DrmPolicy");
+		}
+			return $resultObject;
 	}
 
 	/**
@@ -69,12 +75,18 @@ class Kaltura_Client_Drm_DrmPolicyService extends Kaltura_Client_ServiceBase
 		$this->client->queueServiceActionCall("drm_drmpolicy", "delete", "KalturaDrmPolicy", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaDrmPolicy");
-		$this->client->validateObjectType($resultObject, "Kaltura_Client_Drm_Type_DrmPolicy");
-		return $resultObject;
+		$rawResult = $this->client->doQueue();
+		if ($this->client->getConfig()->format === Kaltura_Client_ClientBase::KALTURA_SERVICE_FORMAT_JSON) {
+			$jsObject = json_decode($rawResult);
+			$resultObject = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsObject);
+			return $resultObject;
+		} else {
+			$resultXmlObject = new \SimpleXMLElement($rawResult);
+			$this->client->checkIfError($resultXmlObject->result);
+			$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaDrmPolicy");
+			$this->client->validateObjectType($resultObject, "Kaltura_Client_Drm_Type_DrmPolicy");
+		}
+			return $resultObject;
 	}
 
 	/**
@@ -88,12 +100,18 @@ class Kaltura_Client_Drm_DrmPolicyService extends Kaltura_Client_ServiceBase
 		$this->client->queueServiceActionCall("drm_drmpolicy", "get", "KalturaDrmPolicy", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaDrmPolicy");
-		$this->client->validateObjectType($resultObject, "Kaltura_Client_Drm_Type_DrmPolicy");
-		return $resultObject;
+		$rawResult = $this->client->doQueue();
+		if ($this->client->getConfig()->format === Kaltura_Client_ClientBase::KALTURA_SERVICE_FORMAT_JSON) {
+			$jsObject = json_decode($rawResult);
+			$resultObject = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsObject);
+			return $resultObject;
+		} else {
+			$resultXmlObject = new \SimpleXMLElement($rawResult);
+			$this->client->checkIfError($resultXmlObject->result);
+			$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaDrmPolicy");
+			$this->client->validateObjectType($resultObject, "Kaltura_Client_Drm_Type_DrmPolicy");
+		}
+			return $resultObject;
 	}
 
 	/**
@@ -110,12 +128,18 @@ class Kaltura_Client_Drm_DrmPolicyService extends Kaltura_Client_ServiceBase
 		$this->client->queueServiceActionCall("drm_drmpolicy", "list", "KalturaDrmPolicyListResponse", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaDrmPolicyListResponse");
-		$this->client->validateObjectType($resultObject, "Kaltura_Client_Drm_Type_DrmPolicyListResponse");
-		return $resultObject;
+		$rawResult = $this->client->doQueue();
+		if ($this->client->getConfig()->format === Kaltura_Client_ClientBase::KALTURA_SERVICE_FORMAT_JSON) {
+			$jsObject = json_decode($rawResult);
+			$resultObject = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsObject);
+			return $resultObject;
+		} else {
+			$resultXmlObject = new \SimpleXMLElement($rawResult);
+			$this->client->checkIfError($resultXmlObject->result);
+			$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaDrmPolicyListResponse");
+			$this->client->validateObjectType($resultObject, "Kaltura_Client_Drm_Type_DrmPolicyListResponse");
+		}
+			return $resultObject;
 	}
 
 	/**
@@ -130,11 +154,17 @@ class Kaltura_Client_Drm_DrmPolicyService extends Kaltura_Client_ServiceBase
 		$this->client->queueServiceActionCall("drm_drmpolicy", "update", "KalturaDrmPolicy", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaDrmPolicy");
-		$this->client->validateObjectType($resultObject, "Kaltura_Client_Drm_Type_DrmPolicy");
-		return $resultObject;
+		$rawResult = $this->client->doQueue();
+		if ($this->client->getConfig()->format === Kaltura_Client_ClientBase::KALTURA_SERVICE_FORMAT_JSON) {
+			$jsObject = json_decode($rawResult);
+			$resultObject = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsObject);
+			return $resultObject;
+		} else {
+			$resultXmlObject = new \SimpleXMLElement($rawResult);
+			$this->client->checkIfError($resultXmlObject->result);
+			$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaDrmPolicy");
+			$this->client->validateObjectType($resultObject, "Kaltura_Client_Drm_Type_DrmPolicy");
+		}
+			return $resultObject;
 	}
 }

@@ -33,12 +33,14 @@
  */
 class Kaltura_Client_ElasticSearch_Enum_ESearchUserFieldName extends Kaltura_Client_EnumBase
 {
+	const CAPABILITIES = "capabilities";
 	const COMPANY = "company";
 	const COUNTRY = "country";
 	const CREATED_AT = "created_at";
 	const EMAIL = "email";
 	const EXTERNAL_ID = "external_id";
 	const FIRST_NAME = "first_name";
+	const FULL_NAME = "full_name";
 	const GROUP_IDS = "group_ids";
 	const IS_ADMIN = "is_admin";
 	const IS_HASHED = "is_hashed";

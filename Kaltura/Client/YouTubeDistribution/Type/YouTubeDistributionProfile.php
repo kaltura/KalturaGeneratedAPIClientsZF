@@ -38,131 +38,252 @@ class Kaltura_Client_YouTubeDistribution_Type_YouTubeDistributionProfile extends
 		return 'KalturaYouTubeDistributionProfile';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->feedSpecVersion))
+		if(!is_null($xml) && count($xml->feedSpecVersion))
 			$this->feedSpecVersion = (string)$xml->feedSpecVersion;
-		if(count($xml->username))
+		if(!is_null($jsonObject) && isset($jsonObject->feedSpecVersion))
+			$this->feedSpecVersion = (string)$jsonObject->feedSpecVersion;
+		if(!is_null($xml) && count($xml->username))
 			$this->username = (string)$xml->username;
-		if(count($xml->notificationEmail))
+		if(!is_null($jsonObject) && isset($jsonObject->username))
+			$this->username = (string)$jsonObject->username;
+		if(!is_null($xml) && count($xml->notificationEmail))
 			$this->notificationEmail = (string)$xml->notificationEmail;
-		if(count($xml->sftpHost))
+		if(!is_null($jsonObject) && isset($jsonObject->notificationEmail))
+			$this->notificationEmail = (string)$jsonObject->notificationEmail;
+		if(!is_null($xml) && count($xml->sftpHost))
 			$this->sftpHost = (string)$xml->sftpHost;
-		if(count($xml->sftpPort))
+		if(!is_null($jsonObject) && isset($jsonObject->sftpHost))
+			$this->sftpHost = (string)$jsonObject->sftpHost;
+		if(!is_null($xml) && count($xml->sftpPort))
 			$this->sftpPort = (int)$xml->sftpPort;
-		if(count($xml->sftpLogin))
+		if(!is_null($jsonObject) && isset($jsonObject->sftpPort))
+			$this->sftpPort = (int)$jsonObject->sftpPort;
+		if(!is_null($xml) && count($xml->sftpLogin))
 			$this->sftpLogin = (string)$xml->sftpLogin;
-		if(count($xml->sftpPublicKey))
+		if(!is_null($jsonObject) && isset($jsonObject->sftpLogin))
+			$this->sftpLogin = (string)$jsonObject->sftpLogin;
+		if(!is_null($xml) && count($xml->sftpPublicKey))
 			$this->sftpPublicKey = (string)$xml->sftpPublicKey;
-		if(count($xml->sftpPrivateKey))
+		if(!is_null($jsonObject) && isset($jsonObject->sftpPublicKey))
+			$this->sftpPublicKey = (string)$jsonObject->sftpPublicKey;
+		if(!is_null($xml) && count($xml->sftpPrivateKey))
 			$this->sftpPrivateKey = (string)$xml->sftpPrivateKey;
-		if(count($xml->sftpBaseDir))
+		if(!is_null($jsonObject) && isset($jsonObject->sftpPrivateKey))
+			$this->sftpPrivateKey = (string)$jsonObject->sftpPrivateKey;
+		if(!is_null($xml) && count($xml->sftpBaseDir))
 			$this->sftpBaseDir = (string)$xml->sftpBaseDir;
-		if(count($xml->ownerName))
+		if(!is_null($jsonObject) && isset($jsonObject->sftpBaseDir))
+			$this->sftpBaseDir = (string)$jsonObject->sftpBaseDir;
+		if(!is_null($xml) && count($xml->ownerName))
 			$this->ownerName = (string)$xml->ownerName;
-		if(count($xml->defaultCategory))
+		if(!is_null($jsonObject) && isset($jsonObject->ownerName))
+			$this->ownerName = (string)$jsonObject->ownerName;
+		if(!is_null($xml) && count($xml->defaultCategory))
 			$this->defaultCategory = (string)$xml->defaultCategory;
-		if(count($xml->allowComments))
+		if(!is_null($jsonObject) && isset($jsonObject->defaultCategory))
+			$this->defaultCategory = (string)$jsonObject->defaultCategory;
+		if(!is_null($xml) && count($xml->allowComments))
 			$this->allowComments = (string)$xml->allowComments;
-		if(count($xml->allowEmbedding))
+		if(!is_null($jsonObject) && isset($jsonObject->allowComments))
+			$this->allowComments = (string)$jsonObject->allowComments;
+		if(!is_null($xml) && count($xml->allowEmbedding))
 			$this->allowEmbedding = (string)$xml->allowEmbedding;
-		if(count($xml->allowRatings))
+		if(!is_null($jsonObject) && isset($jsonObject->allowEmbedding))
+			$this->allowEmbedding = (string)$jsonObject->allowEmbedding;
+		if(!is_null($xml) && count($xml->allowRatings))
 			$this->allowRatings = (string)$xml->allowRatings;
-		if(count($xml->allowResponses))
+		if(!is_null($jsonObject) && isset($jsonObject->allowRatings))
+			$this->allowRatings = (string)$jsonObject->allowRatings;
+		if(!is_null($xml) && count($xml->allowResponses))
 			$this->allowResponses = (string)$xml->allowResponses;
-		if(count($xml->commercialPolicy))
+		if(!is_null($jsonObject) && isset($jsonObject->allowResponses))
+			$this->allowResponses = (string)$jsonObject->allowResponses;
+		if(!is_null($xml) && count($xml->commercialPolicy))
 			$this->commercialPolicy = (string)$xml->commercialPolicy;
-		if(count($xml->ugcPolicy))
+		if(!is_null($jsonObject) && isset($jsonObject->commercialPolicy))
+			$this->commercialPolicy = (string)$jsonObject->commercialPolicy;
+		if(!is_null($xml) && count($xml->ugcPolicy))
 			$this->ugcPolicy = (string)$xml->ugcPolicy;
-		if(count($xml->target))
+		if(!is_null($jsonObject) && isset($jsonObject->ugcPolicy))
+			$this->ugcPolicy = (string)$jsonObject->ugcPolicy;
+		if(!is_null($xml) && count($xml->target))
 			$this->target = (string)$xml->target;
-		if(count($xml->adServerPartnerId))
+		if(!is_null($jsonObject) && isset($jsonObject->target))
+			$this->target = (string)$jsonObject->target;
+		if(!is_null($xml) && count($xml->adServerPartnerId))
 			$this->adServerPartnerId = (string)$xml->adServerPartnerId;
-		if(count($xml->enableAdServer))
+		if(!is_null($jsonObject) && isset($jsonObject->adServerPartnerId))
+			$this->adServerPartnerId = (string)$jsonObject->adServerPartnerId;
+		if(!is_null($xml) && count($xml->enableAdServer))
 		{
 			if(!empty($xml->enableAdServer) && ((int) $xml->enableAdServer === 1 || strtolower((string)$xml->enableAdServer) === 'true'))
 				$this->enableAdServer = true;
 			else
 				$this->enableAdServer = false;
 		}
-		if(count($xml->allowPreRollAds))
+		if(!is_null($jsonObject) && isset($jsonObject->enableAdServer))
+		{
+			if(!empty($jsonObject->enableAdServer) && ((int) $jsonObject->enableAdServer === 1 || strtolower((string)$jsonObject->enableAdServer) === 'true'))
+				$this->enableAdServer = true;
+			else
+				$this->enableAdServer = false;
+		}
+		if(!is_null($xml) && count($xml->allowPreRollAds))
 		{
 			if(!empty($xml->allowPreRollAds) && ((int) $xml->allowPreRollAds === 1 || strtolower((string)$xml->allowPreRollAds) === 'true'))
 				$this->allowPreRollAds = true;
 			else
 				$this->allowPreRollAds = false;
 		}
-		if(count($xml->allowPostRollAds))
+		if(!is_null($jsonObject) && isset($jsonObject->allowPreRollAds))
+		{
+			if(!empty($jsonObject->allowPreRollAds) && ((int) $jsonObject->allowPreRollAds === 1 || strtolower((string)$jsonObject->allowPreRollAds) === 'true'))
+				$this->allowPreRollAds = true;
+			else
+				$this->allowPreRollAds = false;
+		}
+		if(!is_null($xml) && count($xml->allowPostRollAds))
 		{
 			if(!empty($xml->allowPostRollAds) && ((int) $xml->allowPostRollAds === 1 || strtolower((string)$xml->allowPostRollAds) === 'true'))
 				$this->allowPostRollAds = true;
 			else
 				$this->allowPostRollAds = false;
 		}
-		if(count($xml->strict))
+		if(!is_null($jsonObject) && isset($jsonObject->allowPostRollAds))
+		{
+			if(!empty($jsonObject->allowPostRollAds) && ((int) $jsonObject->allowPostRollAds === 1 || strtolower((string)$jsonObject->allowPostRollAds) === 'true'))
+				$this->allowPostRollAds = true;
+			else
+				$this->allowPostRollAds = false;
+		}
+		if(!is_null($xml) && count($xml->strict))
 			$this->strict = (string)$xml->strict;
-		if(count($xml->overrideManualEdits))
+		if(!is_null($jsonObject) && isset($jsonObject->strict))
+			$this->strict = (string)$jsonObject->strict;
+		if(!is_null($xml) && count($xml->overrideManualEdits))
 			$this->overrideManualEdits = (string)$xml->overrideManualEdits;
-		if(count($xml->urgentReference))
+		if(!is_null($jsonObject) && isset($jsonObject->overrideManualEdits))
+			$this->overrideManualEdits = (string)$jsonObject->overrideManualEdits;
+		if(!is_null($xml) && count($xml->urgentReference))
 			$this->urgentReference = (string)$xml->urgentReference;
-		if(count($xml->allowSyndication))
+		if(!is_null($jsonObject) && isset($jsonObject->urgentReference))
+			$this->urgentReference = (string)$jsonObject->urgentReference;
+		if(!is_null($xml) && count($xml->allowSyndication))
 			$this->allowSyndication = (string)$xml->allowSyndication;
-		if(count($xml->hideViewCount))
+		if(!is_null($jsonObject) && isset($jsonObject->allowSyndication))
+			$this->allowSyndication = (string)$jsonObject->allowSyndication;
+		if(!is_null($xml) && count($xml->hideViewCount))
 			$this->hideViewCount = (string)$xml->hideViewCount;
-		if(count($xml->allowAdsenseForVideo))
+		if(!is_null($jsonObject) && isset($jsonObject->hideViewCount))
+			$this->hideViewCount = (string)$jsonObject->hideViewCount;
+		if(!is_null($xml) && count($xml->allowAdsenseForVideo))
 			$this->allowAdsenseForVideo = (string)$xml->allowAdsenseForVideo;
-		if(count($xml->allowInvideo))
+		if(!is_null($jsonObject) && isset($jsonObject->allowAdsenseForVideo))
+			$this->allowAdsenseForVideo = (string)$jsonObject->allowAdsenseForVideo;
+		if(!is_null($xml) && count($xml->allowInvideo))
 			$this->allowInvideo = (string)$xml->allowInvideo;
-		if(count($xml->allowMidRollAds))
+		if(!is_null($jsonObject) && isset($jsonObject->allowInvideo))
+			$this->allowInvideo = (string)$jsonObject->allowInvideo;
+		if(!is_null($xml) && count($xml->allowMidRollAds))
 		{
 			if(!empty($xml->allowMidRollAds) && ((int) $xml->allowMidRollAds === 1 || strtolower((string)$xml->allowMidRollAds) === 'true'))
 				$this->allowMidRollAds = true;
 			else
 				$this->allowMidRollAds = false;
 		}
-		if(count($xml->instreamStandard))
+		if(!is_null($jsonObject) && isset($jsonObject->allowMidRollAds))
+		{
+			if(!empty($jsonObject->allowMidRollAds) && ((int) $jsonObject->allowMidRollAds === 1 || strtolower((string)$jsonObject->allowMidRollAds) === 'true'))
+				$this->allowMidRollAds = true;
+			else
+				$this->allowMidRollAds = false;
+		}
+		if(!is_null($xml) && count($xml->instreamStandard))
 			$this->instreamStandard = (string)$xml->instreamStandard;
-		if(count($xml->instreamTrueview))
+		if(!is_null($jsonObject) && isset($jsonObject->instreamStandard))
+			$this->instreamStandard = (string)$jsonObject->instreamStandard;
+		if(!is_null($xml) && count($xml->instreamTrueview))
 			$this->instreamTrueview = (string)$xml->instreamTrueview;
-		if(count($xml->claimType))
+		if(!is_null($jsonObject) && isset($jsonObject->instreamTrueview))
+			$this->instreamTrueview = (string)$jsonObject->instreamTrueview;
+		if(!is_null($xml) && count($xml->claimType))
 			$this->claimType = (string)$xml->claimType;
-		if(count($xml->blockOutsideOwnership))
+		if(!is_null($jsonObject) && isset($jsonObject->claimType))
+			$this->claimType = (string)$jsonObject->claimType;
+		if(!is_null($xml) && count($xml->blockOutsideOwnership))
 			$this->blockOutsideOwnership = (string)$xml->blockOutsideOwnership;
-		if(count($xml->captionAutosync))
+		if(!is_null($jsonObject) && isset($jsonObject->blockOutsideOwnership))
+			$this->blockOutsideOwnership = (string)$jsonObject->blockOutsideOwnership;
+		if(!is_null($xml) && count($xml->captionAutosync))
 			$this->captionAutosync = (string)$xml->captionAutosync;
-		if(count($xml->deleteReference))
+		if(!is_null($jsonObject) && isset($jsonObject->captionAutosync))
+			$this->captionAutosync = (string)$jsonObject->captionAutosync;
+		if(!is_null($xml) && count($xml->deleteReference))
 		{
 			if(!empty($xml->deleteReference) && ((int) $xml->deleteReference === 1 || strtolower((string)$xml->deleteReference) === 'true'))
 				$this->deleteReference = true;
 			else
 				$this->deleteReference = false;
 		}
-		if(count($xml->releaseClaims))
+		if(!is_null($jsonObject) && isset($jsonObject->deleteReference))
+		{
+			if(!empty($jsonObject->deleteReference) && ((int) $jsonObject->deleteReference === 1 || strtolower((string)$jsonObject->deleteReference) === 'true'))
+				$this->deleteReference = true;
+			else
+				$this->deleteReference = false;
+		}
+		if(!is_null($xml) && count($xml->releaseClaims))
 		{
 			if(!empty($xml->releaseClaims) && ((int) $xml->releaseClaims === 1 || strtolower((string)$xml->releaseClaims) === 'true'))
 				$this->releaseClaims = true;
 			else
 				$this->releaseClaims = false;
 		}
-		if(count($xml->apiAuthorizeUrl))
+		if(!is_null($jsonObject) && isset($jsonObject->releaseClaims))
+		{
+			if(!empty($jsonObject->releaseClaims) && ((int) $jsonObject->releaseClaims === 1 || strtolower((string)$jsonObject->releaseClaims) === 'true'))
+				$this->releaseClaims = true;
+			else
+				$this->releaseClaims = false;
+		}
+		if(!is_null($xml) && count($xml->apiAuthorizeUrl))
 			$this->apiAuthorizeUrl = (string)$xml->apiAuthorizeUrl;
-		if(count($xml->privacyStatus))
+		if(!is_null($jsonObject) && isset($jsonObject->apiAuthorizeUrl))
+			$this->apiAuthorizeUrl = (string)$jsonObject->apiAuthorizeUrl;
+		if(!is_null($xml) && count($xml->privacyStatus))
 			$this->privacyStatus = (string)$xml->privacyStatus;
-		if(count($xml->enableContentId))
+		if(!is_null($jsonObject) && isset($jsonObject->privacyStatus))
+			$this->privacyStatus = (string)$jsonObject->privacyStatus;
+		if(!is_null($xml) && count($xml->enableContentId))
 			$this->enableContentId = (string)$xml->enableContentId;
-		if(count($xml->thirdPartyAds))
+		if(!is_null($jsonObject) && isset($jsonObject->enableContentId))
+			$this->enableContentId = (string)$jsonObject->enableContentId;
+		if(!is_null($xml) && count($xml->thirdPartyAds))
 			$this->thirdPartyAds = (string)$xml->thirdPartyAds;
-		if(count($xml->productListingAds))
+		if(!is_null($jsonObject) && isset($jsonObject->thirdPartyAds))
+			$this->thirdPartyAds = (string)$jsonObject->thirdPartyAds;
+		if(!is_null($xml) && count($xml->productListingAds))
 			$this->productListingAds = (string)$xml->productListingAds;
-		if(count($xml->domainWhitelist))
+		if(!is_null($jsonObject) && isset($jsonObject->productListingAds))
+			$this->productListingAds = (string)$jsonObject->productListingAds;
+		if(!is_null($xml) && count($xml->domainWhitelist))
 			$this->domainWhitelist = (string)$xml->domainWhitelist;
-		if(count($xml->notifySubscribers))
+		if(!is_null($jsonObject) && isset($jsonObject->domainWhitelist))
+			$this->domainWhitelist = (string)$jsonObject->domainWhitelist;
+		if(!is_null($xml) && count($xml->notifySubscribers))
 			$this->notifySubscribers = (string)$xml->notifySubscribers;
+		if(!is_null($jsonObject) && isset($jsonObject->notifySubscribers))
+			$this->notifySubscribers = (string)$jsonObject->notifySubscribers;
 	}
 	/**
 	 * 

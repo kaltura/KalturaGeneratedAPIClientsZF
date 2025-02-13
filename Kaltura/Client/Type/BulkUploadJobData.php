@@ -38,43 +38,76 @@ class Kaltura_Client_Type_BulkUploadJobData extends Kaltura_Client_Type_JobData
 		return 'KalturaBulkUploadJobData';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->userId))
+		if(!is_null($xml) && count($xml->userId))
 			$this->userId = (string)$xml->userId;
-		if(count($xml->uploadedBy))
+		if(!is_null($jsonObject) && isset($jsonObject->userId))
+			$this->userId = (string)$jsonObject->userId;
+		if(!is_null($xml) && count($xml->uploadedBy))
 			$this->uploadedBy = (string)$xml->uploadedBy;
-		if(count($xml->conversionProfileId))
+		if(!is_null($jsonObject) && isset($jsonObject->uploadedBy))
+			$this->uploadedBy = (string)$jsonObject->uploadedBy;
+		if(!is_null($xml) && count($xml->conversionProfileId))
 			$this->conversionProfileId = (int)$xml->conversionProfileId;
-		if(count($xml->resultsFileLocalPath))
+		if(!is_null($jsonObject) && isset($jsonObject->conversionProfileId))
+			$this->conversionProfileId = (int)$jsonObject->conversionProfileId;
+		if(!is_null($xml) && count($xml->resultsFileLocalPath))
 			$this->resultsFileLocalPath = (string)$xml->resultsFileLocalPath;
-		if(count($xml->resultsFileUrl))
+		if(!is_null($jsonObject) && isset($jsonObject->resultsFileLocalPath))
+			$this->resultsFileLocalPath = (string)$jsonObject->resultsFileLocalPath;
+		if(!is_null($xml) && count($xml->resultsFileUrl))
 			$this->resultsFileUrl = (string)$xml->resultsFileUrl;
-		if(count($xml->numOfEntries))
+		if(!is_null($jsonObject) && isset($jsonObject->resultsFileUrl))
+			$this->resultsFileUrl = (string)$jsonObject->resultsFileUrl;
+		if(!is_null($xml) && count($xml->numOfEntries))
 			$this->numOfEntries = (int)$xml->numOfEntries;
-		if(count($xml->numOfObjects))
+		if(!is_null($jsonObject) && isset($jsonObject->numOfEntries))
+			$this->numOfEntries = (int)$jsonObject->numOfEntries;
+		if(!is_null($xml) && count($xml->numOfObjects))
 			$this->numOfObjects = (int)$xml->numOfObjects;
-		if(count($xml->filePath))
+		if(!is_null($jsonObject) && isset($jsonObject->numOfObjects))
+			$this->numOfObjects = (int)$jsonObject->numOfObjects;
+		if(!is_null($xml) && count($xml->filePath))
 			$this->filePath = (string)$xml->filePath;
-		if(count($xml->bulkUploadObjectType))
+		if(!is_null($jsonObject) && isset($jsonObject->filePath))
+			$this->filePath = (string)$jsonObject->filePath;
+		if(!is_null($xml) && count($xml->bulkUploadObjectType))
 			$this->bulkUploadObjectType = (string)$xml->bulkUploadObjectType;
-		if(count($xml->fileName))
+		if(!is_null($jsonObject) && isset($jsonObject->bulkUploadObjectType))
+			$this->bulkUploadObjectType = (string)$jsonObject->bulkUploadObjectType;
+		if(!is_null($xml) && count($xml->fileName))
 			$this->fileName = (string)$xml->fileName;
-		if(count($xml->objectData) && !empty($xml->objectData))
+		if(!is_null($jsonObject) && isset($jsonObject->fileName))
+			$this->fileName = (string)$jsonObject->fileName;
+		if(!is_null($xml) && count($xml->objectData) && !empty($xml->objectData))
 			$this->objectData = Kaltura_Client_ParseUtils::unmarshalObject($xml->objectData, "KalturaBulkUploadObjectData");
-		if(count($xml->type))
+		if(!is_null($jsonObject) && isset($jsonObject->objectData) && !empty($jsonObject->objectData))
+			$this->objectData = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsonObject->objectData, "KalturaBulkUploadObjectData");
+		if(!is_null($xml) && count($xml->type))
 			$this->type = (string)$xml->type;
-		if(count($xml->emailRecipients))
+		if(!is_null($jsonObject) && isset($jsonObject->type))
+			$this->type = (string)$jsonObject->type;
+		if(!is_null($xml) && count($xml->emailRecipients))
 			$this->emailRecipients = (string)$xml->emailRecipients;
-		if(count($xml->numOfErrorObjects))
+		if(!is_null($jsonObject) && isset($jsonObject->emailRecipients))
+			$this->emailRecipients = (string)$jsonObject->emailRecipients;
+		if(!is_null($xml) && count($xml->numOfErrorObjects))
 			$this->numOfErrorObjects = (int)$xml->numOfErrorObjects;
-		if(count($xml->privileges))
+		if(!is_null($jsonObject) && isset($jsonObject->numOfErrorObjects))
+			$this->numOfErrorObjects = (int)$jsonObject->numOfErrorObjects;
+		if(!is_null($xml) && count($xml->privileges))
 			$this->privileges = (string)$xml->privileges;
+		if(!is_null($jsonObject) && isset($jsonObject->privileges))
+			$this->privileges = (string)$jsonObject->privileges;
 	}
 	/**
 	 * 

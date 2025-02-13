@@ -38,19 +38,28 @@ class Kaltura_Client_Type_DeliveryProfileGenericAppleHttp extends Kaltura_Client
 		return 'KalturaDeliveryProfileGenericAppleHttp';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->pattern))
+		if(!is_null($xml) && count($xml->pattern))
 			$this->pattern = (string)$xml->pattern;
-		if(count($xml->rendererClass))
+		if(!is_null($jsonObject) && isset($jsonObject->pattern))
+			$this->pattern = (string)$jsonObject->pattern;
+		if(!is_null($xml) && count($xml->rendererClass))
 			$this->rendererClass = (string)$xml->rendererClass;
-		if(count($xml->manifestRedirect))
+		if(!is_null($jsonObject) && isset($jsonObject->rendererClass))
+			$this->rendererClass = (string)$jsonObject->rendererClass;
+		if(!is_null($xml) && count($xml->manifestRedirect))
 			$this->manifestRedirect = (int)$xml->manifestRedirect;
+		if(!is_null($jsonObject) && isset($jsonObject->manifestRedirect))
+			$this->manifestRedirect = (int)$jsonObject->manifestRedirect;
 	}
 	/**
 	 * 

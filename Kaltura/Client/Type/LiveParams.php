@@ -38,15 +38,20 @@ class Kaltura_Client_Type_LiveParams extends Kaltura_Client_Type_FlavorParams
 		return 'KalturaLiveParams';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->streamSuffix))
+		if(!is_null($xml) && count($xml->streamSuffix))
 			$this->streamSuffix = (string)$xml->streamSuffix;
+		if(!is_null($jsonObject) && isset($jsonObject->streamSuffix))
+			$this->streamSuffix = (string)$jsonObject->streamSuffix;
 	}
 	/**
 	 * Suffix to be added to the stream name after the entry id {entry_id}_{stream_suffix}, e.g. for entry id 0_kjdu5jr6 and suffix 1, the stream name will be 0_kjdu5jr6_1

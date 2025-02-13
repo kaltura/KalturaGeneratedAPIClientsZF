@@ -38,27 +38,44 @@ class Kaltura_Client_Type_AmazonS3StorageExportJobData extends Kaltura_Client_Ty
 		return 'KalturaAmazonS3StorageExportJobData';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->filesPermissionInS3))
+		if(!is_null($xml) && count($xml->filesPermissionInS3))
 			$this->filesPermissionInS3 = (string)$xml->filesPermissionInS3;
-		if(count($xml->s3Region))
+		if(!is_null($jsonObject) && isset($jsonObject->filesPermissionInS3))
+			$this->filesPermissionInS3 = (string)$jsonObject->filesPermissionInS3;
+		if(!is_null($xml) && count($xml->s3Region))
 			$this->s3Region = (string)$xml->s3Region;
-		if(count($xml->sseType))
+		if(!is_null($jsonObject) && isset($jsonObject->s3Region))
+			$this->s3Region = (string)$jsonObject->s3Region;
+		if(!is_null($xml) && count($xml->sseType))
 			$this->sseType = (string)$xml->sseType;
-		if(count($xml->sseKmsKeyId))
+		if(!is_null($jsonObject) && isset($jsonObject->sseType))
+			$this->sseType = (string)$jsonObject->sseType;
+		if(!is_null($xml) && count($xml->sseKmsKeyId))
 			$this->sseKmsKeyId = (string)$xml->sseKmsKeyId;
-		if(count($xml->signatureType))
+		if(!is_null($jsonObject) && isset($jsonObject->sseKmsKeyId))
+			$this->sseKmsKeyId = (string)$jsonObject->sseKmsKeyId;
+		if(!is_null($xml) && count($xml->signatureType))
 			$this->signatureType = (string)$xml->signatureType;
-		if(count($xml->endPoint))
+		if(!is_null($jsonObject) && isset($jsonObject->signatureType))
+			$this->signatureType = (string)$jsonObject->signatureType;
+		if(!is_null($xml) && count($xml->endPoint))
 			$this->endPoint = (string)$xml->endPoint;
-		if(count($xml->storageClass))
+		if(!is_null($jsonObject) && isset($jsonObject->endPoint))
+			$this->endPoint = (string)$jsonObject->endPoint;
+		if(!is_null($xml) && count($xml->storageClass))
 			$this->storageClass = (string)$xml->storageClass;
+		if(!is_null($jsonObject) && isset($jsonObject->storageClass))
+			$this->storageClass = (string)$jsonObject->storageClass;
 	}
 	/**
 	 * 

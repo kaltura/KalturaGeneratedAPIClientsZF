@@ -38,36 +38,91 @@ class Kaltura_Client_Type_ConcatJobData extends Kaltura_Client_Type_JobData
 		return 'KalturaConcatJobData';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->srcFiles))
+		if(!is_null($xml) && count($xml->srcFiles))
 		{
 			if(empty($xml->srcFiles))
 				$this->srcFiles = array();
 			else
 				$this->srcFiles = Kaltura_Client_ParseUtils::unmarshalArray($xml->srcFiles, "KalturaString");
 		}
-		if(count($xml->destFilePath))
+		if(!is_null($jsonObject) && isset($jsonObject->srcFiles))
+		{
+			if(empty($jsonObject->srcFiles))
+				$this->srcFiles = array();
+			else
+				$this->srcFiles = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsonObject->srcFiles, "KalturaString");
+		}
+		if(!is_null($xml) && count($xml->destFilePath))
 			$this->destFilePath = (string)$xml->destFilePath;
-		if(count($xml->flavorAssetId))
+		if(!is_null($jsonObject) && isset($jsonObject->destFilePath))
+			$this->destFilePath = (string)$jsonObject->destFilePath;
+		if(!is_null($xml) && count($xml->flavorAssetId))
 			$this->flavorAssetId = (string)$xml->flavorAssetId;
-		if(count($xml->offset))
+		if(!is_null($jsonObject) && isset($jsonObject->flavorAssetId))
+			$this->flavorAssetId = (string)$jsonObject->flavorAssetId;
+		if(!is_null($xml) && count($xml->offset))
 			$this->offset = (float)$xml->offset;
-		if(count($xml->duration))
+		if(!is_null($jsonObject) && isset($jsonObject->offset))
+			$this->offset = (float)$jsonObject->offset;
+		if(!is_null($xml) && count($xml->duration))
 			$this->duration = (float)$xml->duration;
-		if(count($xml->concatenatedDuration))
+		if(!is_null($jsonObject) && isset($jsonObject->duration))
+			$this->duration = (float)$jsonObject->duration;
+		if(!is_null($xml) && count($xml->concatenatedDuration))
 			$this->concatenatedDuration = (float)$xml->concatenatedDuration;
-		if(count($xml->shouldSort))
+		if(!is_null($jsonObject) && isset($jsonObject->concatenatedDuration))
+			$this->concatenatedDuration = (float)$jsonObject->concatenatedDuration;
+		if(!is_null($xml) && count($xml->shouldSort))
 		{
 			if(!empty($xml->shouldSort) && ((int) $xml->shouldSort === 1 || strtolower((string)$xml->shouldSort) === 'true'))
 				$this->shouldSort = true;
 			else
 				$this->shouldSort = false;
+		}
+		if(!is_null($jsonObject) && isset($jsonObject->shouldSort))
+		{
+			if(!empty($jsonObject->shouldSort) && ((int) $jsonObject->shouldSort === 1 || strtolower((string)$jsonObject->shouldSort) === 'true'))
+				$this->shouldSort = true;
+			else
+				$this->shouldSort = false;
+		}
+		if(!is_null($xml) && count($xml->conversionCommands))
+		{
+			if(empty($xml->conversionCommands))
+				$this->conversionCommands = array();
+			else
+				$this->conversionCommands = Kaltura_Client_ParseUtils::unmarshalArray($xml->conversionCommands, "KalturaString");
+		}
+		if(!is_null($jsonObject) && isset($jsonObject->conversionCommands))
+		{
+			if(empty($jsonObject->conversionCommands))
+				$this->conversionCommands = array();
+			else
+				$this->conversionCommands = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsonObject->conversionCommands, "KalturaString");
+		}
+		if(!is_null($xml) && count($xml->multiSource))
+		{
+			if(!empty($xml->multiSource) && ((int) $xml->multiSource === 1 || strtolower((string)$xml->multiSource) === 'true'))
+				$this->multiSource = true;
+			else
+				$this->multiSource = false;
+		}
+		if(!is_null($jsonObject) && isset($jsonObject->multiSource))
+		{
+			if(!empty($jsonObject->multiSource) && ((int) $jsonObject->multiSource === 1 || strtolower((string)$jsonObject->multiSource) === 'true'))
+				$this->multiSource = true;
+			else
+				$this->multiSource = false;
 		}
 	}
 	/**
@@ -118,6 +173,20 @@ class Kaltura_Client_Type_ConcatJobData extends Kaltura_Client_Type_JobData
 	 * @var bool
 	 */
 	public $shouldSort = null;
+
+	/**
+	 * conversion commands to be applied to source files
+	 *
+	 * @var array of KalturaString
+	 */
+	public $conversionCommands;
+
+	/**
+	 * 
+	 *
+	 * @var bool
+	 */
+	public $multiSource = null;
 
 
 }

@@ -38,17 +38,24 @@ class Kaltura_Client_Reach_Type_VendorCatalogItemPricing extends Kaltura_Client_
 		return 'KalturaVendorCatalogItemPricing';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->pricePerUnit))
+		if(!is_null($xml) && count($xml->pricePerUnit))
 			$this->pricePerUnit = (float)$xml->pricePerUnit;
-		if(count($xml->priceFunction))
+		if(!is_null($jsonObject) && isset($jsonObject->pricePerUnit))
+			$this->pricePerUnit = (float)$jsonObject->pricePerUnit;
+		if(!is_null($xml) && count($xml->priceFunction))
 			$this->priceFunction = (string)$xml->priceFunction;
+		if(!is_null($jsonObject) && isset($jsonObject->priceFunction))
+			$this->priceFunction = (string)$jsonObject->priceFunction;
 	}
 	/**
 	 * 

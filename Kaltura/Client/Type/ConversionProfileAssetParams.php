@@ -38,39 +38,68 @@ class Kaltura_Client_Type_ConversionProfileAssetParams extends Kaltura_Client_Ob
 		return 'KalturaConversionProfileAssetParams';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->conversionProfileId))
+		if(!is_null($xml) && count($xml->conversionProfileId))
 			$this->conversionProfileId = (int)$xml->conversionProfileId;
-		if(count($xml->assetParamsId))
+		if(!is_null($jsonObject) && isset($jsonObject->conversionProfileId))
+			$this->conversionProfileId = (int)$jsonObject->conversionProfileId;
+		if(!is_null($xml) && count($xml->assetParamsId))
 			$this->assetParamsId = (int)$xml->assetParamsId;
-		if(count($xml->readyBehavior))
+		if(!is_null($jsonObject) && isset($jsonObject->assetParamsId))
+			$this->assetParamsId = (int)$jsonObject->assetParamsId;
+		if(!is_null($xml) && count($xml->readyBehavior))
 			$this->readyBehavior = (int)$xml->readyBehavior;
-		if(count($xml->origin))
+		if(!is_null($jsonObject) && isset($jsonObject->readyBehavior))
+			$this->readyBehavior = (int)$jsonObject->readyBehavior;
+		if(!is_null($xml) && count($xml->origin))
 			$this->origin = (int)$xml->origin;
-		if(count($xml->systemName))
+		if(!is_null($jsonObject) && isset($jsonObject->origin))
+			$this->origin = (int)$jsonObject->origin;
+		if(!is_null($xml) && count($xml->systemName))
 			$this->systemName = (string)$xml->systemName;
-		if(count($xml->forceNoneComplied))
+		if(!is_null($jsonObject) && isset($jsonObject->systemName))
+			$this->systemName = (string)$jsonObject->systemName;
+		if(!is_null($xml) && count($xml->forceNoneComplied))
 			$this->forceNoneComplied = (int)$xml->forceNoneComplied;
-		if(count($xml->deletePolicy))
+		if(!is_null($jsonObject) && isset($jsonObject->forceNoneComplied))
+			$this->forceNoneComplied = (int)$jsonObject->forceNoneComplied;
+		if(!is_null($xml) && count($xml->deletePolicy))
 			$this->deletePolicy = (int)$xml->deletePolicy;
-		if(count($xml->isEncrypted))
+		if(!is_null($jsonObject) && isset($jsonObject->deletePolicy))
+			$this->deletePolicy = (int)$jsonObject->deletePolicy;
+		if(!is_null($xml) && count($xml->isEncrypted))
 			$this->isEncrypted = (int)$xml->isEncrypted;
-		if(count($xml->contentAwareness))
+		if(!is_null($jsonObject) && isset($jsonObject->isEncrypted))
+			$this->isEncrypted = (int)$jsonObject->isEncrypted;
+		if(!is_null($xml) && count($xml->contentAwareness))
 			$this->contentAwareness = (float)$xml->contentAwareness;
-		if(count($xml->chunkedEncodeMode))
+		if(!is_null($jsonObject) && isset($jsonObject->contentAwareness))
+			$this->contentAwareness = (float)$jsonObject->contentAwareness;
+		if(!is_null($xml) && count($xml->chunkedEncodeMode))
 			$this->chunkedEncodeMode = (int)$xml->chunkedEncodeMode;
-		if(count($xml->twoPass))
+		if(!is_null($jsonObject) && isset($jsonObject->chunkedEncodeMode))
+			$this->chunkedEncodeMode = (int)$jsonObject->chunkedEncodeMode;
+		if(!is_null($xml) && count($xml->twoPass))
 			$this->twoPass = (int)$xml->twoPass;
-		if(count($xml->tags))
+		if(!is_null($jsonObject) && isset($jsonObject->twoPass))
+			$this->twoPass = (int)$jsonObject->twoPass;
+		if(!is_null($xml) && count($xml->tags))
 			$this->tags = (string)$xml->tags;
-		if(count($xml->overloadParams))
+		if(!is_null($jsonObject) && isset($jsonObject->tags))
+			$this->tags = (string)$jsonObject->tags;
+		if(!is_null($xml) && count($xml->overloadParams))
 			$this->overloadParams = (string)$xml->overloadParams;
+		if(!is_null($jsonObject) && isset($jsonObject->overloadParams))
+			$this->overloadParams = (string)$jsonObject->overloadParams;
 	}
 	/**
 	 * The id of the conversion profile

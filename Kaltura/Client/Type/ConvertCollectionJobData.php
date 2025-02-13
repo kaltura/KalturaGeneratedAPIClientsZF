@@ -38,31 +38,53 @@ class Kaltura_Client_Type_ConvertCollectionJobData extends Kaltura_Client_Type_C
 		return 'KalturaConvertCollectionJobData';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->destDirLocalPath))
+		if(!is_null($xml) && count($xml->destDirLocalPath))
 			$this->destDirLocalPath = (string)$xml->destDirLocalPath;
-		if(count($xml->destDirRemoteUrl))
+		if(!is_null($jsonObject) && isset($jsonObject->destDirLocalPath))
+			$this->destDirLocalPath = (string)$jsonObject->destDirLocalPath;
+		if(!is_null($xml) && count($xml->destDirRemoteUrl))
 			$this->destDirRemoteUrl = (string)$xml->destDirRemoteUrl;
-		if(count($xml->destFileName))
+		if(!is_null($jsonObject) && isset($jsonObject->destDirRemoteUrl))
+			$this->destDirRemoteUrl = (string)$jsonObject->destDirRemoteUrl;
+		if(!is_null($xml) && count($xml->destFileName))
 			$this->destFileName = (string)$xml->destFileName;
-		if(count($xml->inputXmlLocalPath))
+		if(!is_null($jsonObject) && isset($jsonObject->destFileName))
+			$this->destFileName = (string)$jsonObject->destFileName;
+		if(!is_null($xml) && count($xml->inputXmlLocalPath))
 			$this->inputXmlLocalPath = (string)$xml->inputXmlLocalPath;
-		if(count($xml->inputXmlRemoteUrl))
+		if(!is_null($jsonObject) && isset($jsonObject->inputXmlLocalPath))
+			$this->inputXmlLocalPath = (string)$jsonObject->inputXmlLocalPath;
+		if(!is_null($xml) && count($xml->inputXmlRemoteUrl))
 			$this->inputXmlRemoteUrl = (string)$xml->inputXmlRemoteUrl;
-		if(count($xml->commandLinesStr))
+		if(!is_null($jsonObject) && isset($jsonObject->inputXmlRemoteUrl))
+			$this->inputXmlRemoteUrl = (string)$jsonObject->inputXmlRemoteUrl;
+		if(!is_null($xml) && count($xml->commandLinesStr))
 			$this->commandLinesStr = (string)$xml->commandLinesStr;
-		if(count($xml->flavors))
+		if(!is_null($jsonObject) && isset($jsonObject->commandLinesStr))
+			$this->commandLinesStr = (string)$jsonObject->commandLinesStr;
+		if(!is_null($xml) && count($xml->flavors))
 		{
 			if(empty($xml->flavors))
 				$this->flavors = array();
 			else
 				$this->flavors = Kaltura_Client_ParseUtils::unmarshalArray($xml->flavors, "KalturaConvertCollectionFlavorData");
+		}
+		if(!is_null($jsonObject) && isset($jsonObject->flavors))
+		{
+			if(empty($jsonObject->flavors))
+				$this->flavors = array();
+			else
+				$this->flavors = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsonObject->flavors, "KalturaConvertCollectionFlavorData");
 		}
 	}
 	/**

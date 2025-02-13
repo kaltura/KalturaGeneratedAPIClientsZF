@@ -38,23 +38,36 @@ class Kaltura_Client_Type_UserEntryFilter extends Kaltura_Client_Type_UserEntryB
 		return 'KalturaUserEntryFilter';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->userIdEqualCurrent))
+		if(!is_null($xml) && count($xml->userIdEqualCurrent))
 			$this->userIdEqualCurrent = (int)$xml->userIdEqualCurrent;
-		if(count($xml->isAnonymous))
+		if(!is_null($jsonObject) && isset($jsonObject->userIdEqualCurrent))
+			$this->userIdEqualCurrent = (int)$jsonObject->userIdEqualCurrent;
+		if(!is_null($xml) && count($xml->isAnonymous))
 			$this->isAnonymous = (int)$xml->isAnonymous;
-		if(count($xml->privacyContextEqual))
+		if(!is_null($jsonObject) && isset($jsonObject->isAnonymous))
+			$this->isAnonymous = (int)$jsonObject->isAnonymous;
+		if(!is_null($xml) && count($xml->privacyContextEqual))
 			$this->privacyContextEqual = (string)$xml->privacyContextEqual;
-		if(count($xml->privacyContextIn))
+		if(!is_null($jsonObject) && isset($jsonObject->privacyContextEqual))
+			$this->privacyContextEqual = (string)$jsonObject->privacyContextEqual;
+		if(!is_null($xml) && count($xml->privacyContextIn))
 			$this->privacyContextIn = (string)$xml->privacyContextIn;
-		if(count($xml->partnerId))
+		if(!is_null($jsonObject) && isset($jsonObject->privacyContextIn))
+			$this->privacyContextIn = (string)$jsonObject->privacyContextIn;
+		if(!is_null($xml) && count($xml->partnerId))
 			$this->partnerId = (int)$xml->partnerId;
+		if(!is_null($jsonObject) && isset($jsonObject->partnerId))
+			$this->partnerId = (int)$jsonObject->partnerId;
 	}
 	/**
 	 * 

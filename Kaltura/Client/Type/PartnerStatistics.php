@@ -38,25 +38,40 @@ class Kaltura_Client_Type_PartnerStatistics extends Kaltura_Client_ObjectBase
 		return 'KalturaPartnerStatistics';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->packageBandwidthAndStorage))
+		if(!is_null($xml) && count($xml->packageBandwidthAndStorage))
 			$this->packageBandwidthAndStorage = (int)$xml->packageBandwidthAndStorage;
-		if(count($xml->hosting))
+		if(!is_null($jsonObject) && isset($jsonObject->packageBandwidthAndStorage))
+			$this->packageBandwidthAndStorage = (int)$jsonObject->packageBandwidthAndStorage;
+		if(!is_null($xml) && count($xml->hosting))
 			$this->hosting = (float)$xml->hosting;
-		if(count($xml->bandwidth))
+		if(!is_null($jsonObject) && isset($jsonObject->hosting))
+			$this->hosting = (float)$jsonObject->hosting;
+		if(!is_null($xml) && count($xml->bandwidth))
 			$this->bandwidth = (float)$xml->bandwidth;
-		if(count($xml->usage))
+		if(!is_null($jsonObject) && isset($jsonObject->bandwidth))
+			$this->bandwidth = (float)$jsonObject->bandwidth;
+		if(!is_null($xml) && count($xml->usage))
 			$this->usage = (int)$xml->usage;
-		if(count($xml->usagePercent))
+		if(!is_null($jsonObject) && isset($jsonObject->usage))
+			$this->usage = (int)$jsonObject->usage;
+		if(!is_null($xml) && count($xml->usagePercent))
 			$this->usagePercent = (float)$xml->usagePercent;
-		if(count($xml->reachedLimitDate))
+		if(!is_null($jsonObject) && isset($jsonObject->usagePercent))
+			$this->usagePercent = (float)$jsonObject->usagePercent;
+		if(!is_null($xml) && count($xml->reachedLimitDate))
 			$this->reachedLimitDate = (int)$xml->reachedLimitDate;
+		if(!is_null($jsonObject) && isset($jsonObject->reachedLimitDate))
+			$this->reachedLimitDate = (int)$jsonObject->reachedLimitDate;
 	}
 	/**
 	 * Package total allowed bandwidth and storage

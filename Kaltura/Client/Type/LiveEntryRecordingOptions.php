@@ -38,27 +38,44 @@ class Kaltura_Client_Type_LiveEntryRecordingOptions extends Kaltura_Client_Objec
 		return 'KalturaLiveEntryRecordingOptions';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->shouldCopyEntitlement))
+		if(!is_null($xml) && count($xml->shouldCopyEntitlement))
 			$this->shouldCopyEntitlement = (int)$xml->shouldCopyEntitlement;
-		if(count($xml->shouldCopyScheduling))
+		if(!is_null($jsonObject) && isset($jsonObject->shouldCopyEntitlement))
+			$this->shouldCopyEntitlement = (int)$jsonObject->shouldCopyEntitlement;
+		if(!is_null($xml) && count($xml->shouldCopyScheduling))
 			$this->shouldCopyScheduling = (int)$xml->shouldCopyScheduling;
-		if(count($xml->shouldCopyThumbnail))
+		if(!is_null($jsonObject) && isset($jsonObject->shouldCopyScheduling))
+			$this->shouldCopyScheduling = (int)$jsonObject->shouldCopyScheduling;
+		if(!is_null($xml) && count($xml->shouldCopyThumbnail))
 			$this->shouldCopyThumbnail = (int)$xml->shouldCopyThumbnail;
-		if(count($xml->shouldMakeHidden))
+		if(!is_null($jsonObject) && isset($jsonObject->shouldCopyThumbnail))
+			$this->shouldCopyThumbnail = (int)$jsonObject->shouldCopyThumbnail;
+		if(!is_null($xml) && count($xml->shouldMakeHidden))
 			$this->shouldMakeHidden = (int)$xml->shouldMakeHidden;
-		if(count($xml->shouldAutoArchive))
+		if(!is_null($jsonObject) && isset($jsonObject->shouldMakeHidden))
+			$this->shouldMakeHidden = (int)$jsonObject->shouldMakeHidden;
+		if(!is_null($xml) && count($xml->shouldAutoArchive))
 			$this->shouldAutoArchive = (int)$xml->shouldAutoArchive;
-		if(count($xml->nonDeletedCuePointsTags))
+		if(!is_null($jsonObject) && isset($jsonObject->shouldAutoArchive))
+			$this->shouldAutoArchive = (int)$jsonObject->shouldAutoArchive;
+		if(!is_null($xml) && count($xml->nonDeletedCuePointsTags))
 			$this->nonDeletedCuePointsTags = (string)$xml->nonDeletedCuePointsTags;
-		if(count($xml->archiveVodSuffixTimezone))
+		if(!is_null($jsonObject) && isset($jsonObject->nonDeletedCuePointsTags))
+			$this->nonDeletedCuePointsTags = (string)$jsonObject->nonDeletedCuePointsTags;
+		if(!is_null($xml) && count($xml->archiveVodSuffixTimezone))
 			$this->archiveVodSuffixTimezone = (string)$xml->archiveVodSuffixTimezone;
+		if(!is_null($jsonObject) && isset($jsonObject->archiveVodSuffixTimezone))
+			$this->archiveVodSuffixTimezone = (string)$jsonObject->archiveVodSuffixTimezone;
 	}
 	/**
 	 * 

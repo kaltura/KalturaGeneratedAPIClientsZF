@@ -38,35 +38,60 @@ abstract class Kaltura_Client_Type_CategoryEntryBaseFilter extends Kaltura_Clien
 		return 'KalturaCategoryEntryBaseFilter';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->categoryIdEqual))
+		if(!is_null($xml) && count($xml->categoryIdEqual))
 			$this->categoryIdEqual = (int)$xml->categoryIdEqual;
-		if(count($xml->categoryIdIn))
+		if(!is_null($jsonObject) && isset($jsonObject->categoryIdEqual))
+			$this->categoryIdEqual = (int)$jsonObject->categoryIdEqual;
+		if(!is_null($xml) && count($xml->categoryIdIn))
 			$this->categoryIdIn = (string)$xml->categoryIdIn;
-		if(count($xml->entryIdEqual))
+		if(!is_null($jsonObject) && isset($jsonObject->categoryIdIn))
+			$this->categoryIdIn = (string)$jsonObject->categoryIdIn;
+		if(!is_null($xml) && count($xml->entryIdEqual))
 			$this->entryIdEqual = (string)$xml->entryIdEqual;
-		if(count($xml->entryIdIn))
+		if(!is_null($jsonObject) && isset($jsonObject->entryIdEqual))
+			$this->entryIdEqual = (string)$jsonObject->entryIdEqual;
+		if(!is_null($xml) && count($xml->entryIdIn))
 			$this->entryIdIn = (string)$xml->entryIdIn;
-		if(count($xml->createdAtGreaterThanOrEqual))
+		if(!is_null($jsonObject) && isset($jsonObject->entryIdIn))
+			$this->entryIdIn = (string)$jsonObject->entryIdIn;
+		if(!is_null($xml) && count($xml->createdAtGreaterThanOrEqual))
 			$this->createdAtGreaterThanOrEqual = (int)$xml->createdAtGreaterThanOrEqual;
-		if(count($xml->createdAtLessThanOrEqual))
+		if(!is_null($jsonObject) && isset($jsonObject->createdAtGreaterThanOrEqual))
+			$this->createdAtGreaterThanOrEqual = (int)$jsonObject->createdAtGreaterThanOrEqual;
+		if(!is_null($xml) && count($xml->createdAtLessThanOrEqual))
 			$this->createdAtLessThanOrEqual = (int)$xml->createdAtLessThanOrEqual;
-		if(count($xml->categoryFullIdsStartsWith))
+		if(!is_null($jsonObject) && isset($jsonObject->createdAtLessThanOrEqual))
+			$this->createdAtLessThanOrEqual = (int)$jsonObject->createdAtLessThanOrEqual;
+		if(!is_null($xml) && count($xml->categoryFullIdsStartsWith))
 			$this->categoryFullIdsStartsWith = (string)$xml->categoryFullIdsStartsWith;
-		if(count($xml->statusEqual))
+		if(!is_null($jsonObject) && isset($jsonObject->categoryFullIdsStartsWith))
+			$this->categoryFullIdsStartsWith = (string)$jsonObject->categoryFullIdsStartsWith;
+		if(!is_null($xml) && count($xml->statusEqual))
 			$this->statusEqual = (int)$xml->statusEqual;
-		if(count($xml->statusIn))
+		if(!is_null($jsonObject) && isset($jsonObject->statusEqual))
+			$this->statusEqual = (int)$jsonObject->statusEqual;
+		if(!is_null($xml) && count($xml->statusIn))
 			$this->statusIn = (string)$xml->statusIn;
-		if(count($xml->creatorUserIdEqual))
+		if(!is_null($jsonObject) && isset($jsonObject->statusIn))
+			$this->statusIn = (string)$jsonObject->statusIn;
+		if(!is_null($xml) && count($xml->creatorUserIdEqual))
 			$this->creatorUserIdEqual = (string)$xml->creatorUserIdEqual;
-		if(count($xml->creatorUserIdIn))
+		if(!is_null($jsonObject) && isset($jsonObject->creatorUserIdEqual))
+			$this->creatorUserIdEqual = (string)$jsonObject->creatorUserIdEqual;
+		if(!is_null($xml) && count($xml->creatorUserIdIn))
 			$this->creatorUserIdIn = (string)$xml->creatorUserIdIn;
+		if(!is_null($jsonObject) && isset($jsonObject->creatorUserIdIn))
+			$this->creatorUserIdIn = (string)$jsonObject->creatorUserIdIn;
 	}
 	/**
 	 * 

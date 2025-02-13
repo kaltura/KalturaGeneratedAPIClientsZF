@@ -38,31 +38,44 @@ class Kaltura_Client_CrossKalturaDistribution_Type_CrossKalturaDistributionJobPr
 		return 'KalturaCrossKalturaDistributionJobProviderData';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->distributedFlavorAssets))
+		if(!is_null($xml) && count($xml->distributedFlavorAssets))
 			$this->distributedFlavorAssets = (string)$xml->distributedFlavorAssets;
-		if(count($xml->distributedThumbAssets))
+		if(!is_null($jsonObject) && isset($jsonObject->distributedFlavorAssets))
+			$this->distributedFlavorAssets = (string)$jsonObject->distributedFlavorAssets;
+		if(!is_null($xml) && count($xml->distributedThumbAssets))
 			$this->distributedThumbAssets = (string)$xml->distributedThumbAssets;
-		if(count($xml->distributedMetadata))
+		if(!is_null($jsonObject) && isset($jsonObject->distributedThumbAssets))
+			$this->distributedThumbAssets = (string)$jsonObject->distributedThumbAssets;
+		if(!is_null($xml) && count($xml->distributedMetadata))
 			$this->distributedMetadata = (string)$xml->distributedMetadata;
-		if(count($xml->distributedCaptionAssets))
+		if(!is_null($jsonObject) && isset($jsonObject->distributedMetadata))
+			$this->distributedMetadata = (string)$jsonObject->distributedMetadata;
+		if(!is_null($xml) && count($xml->distributedCaptionAssets))
 			$this->distributedCaptionAssets = (string)$xml->distributedCaptionAssets;
-		if(count($xml->distributedFileAssets))
-			$this->distributedFileAssets = (string)$xml->distributedFileAssets;
-		if(count($xml->distributedAttachmentAssets))
-			$this->distributedAttachmentAssets = (string)$xml->distributedAttachmentAssets;
-		if(count($xml->distributedCuePoints))
+		if(!is_null($jsonObject) && isset($jsonObject->distributedCaptionAssets))
+			$this->distributedCaptionAssets = (string)$jsonObject->distributedCaptionAssets;
+		if(!is_null($xml) && count($xml->distributedCuePoints))
 			$this->distributedCuePoints = (string)$xml->distributedCuePoints;
-		if(count($xml->distributedThumbCuePoints))
+		if(!is_null($jsonObject) && isset($jsonObject->distributedCuePoints))
+			$this->distributedCuePoints = (string)$jsonObject->distributedCuePoints;
+		if(!is_null($xml) && count($xml->distributedThumbCuePoints))
 			$this->distributedThumbCuePoints = (string)$xml->distributedThumbCuePoints;
-		if(count($xml->distributedTimedThumbAssets))
+		if(!is_null($jsonObject) && isset($jsonObject->distributedThumbCuePoints))
+			$this->distributedThumbCuePoints = (string)$jsonObject->distributedThumbCuePoints;
+		if(!is_null($xml) && count($xml->distributedTimedThumbAssets))
 			$this->distributedTimedThumbAssets = (string)$xml->distributedTimedThumbAssets;
+		if(!is_null($jsonObject) && isset($jsonObject->distributedTimedThumbAssets))
+			$this->distributedTimedThumbAssets = (string)$jsonObject->distributedTimedThumbAssets;
 	}
 	/**
 	 * Key-value array where the keys are IDs of distributed flavor assets in the source account and the values are the matching IDs in the target account
@@ -91,20 +104,6 @@ class Kaltura_Client_CrossKalturaDistribution_Type_CrossKalturaDistributionJobPr
 	 * @var string
 	 */
 	public $distributedCaptionAssets = null;
-
-	/**
-	 * Key-value array where the keys are IDs of distributed fileassets in the source account and the values are the matching IDs in the target account
-	 *
-	 * @var string
-	 */
-	public $distributedFileAssets = null;
-
-	/**
-	 * Key-value array where the keys are IDs of distributed caption assets in the source account and the values are the matching IDs in the target account
-	 *
-	 * @var string
-	 */
-	public $distributedAttachmentAssets = null;
 
 	/**
 	 * Key-value array where the keys are IDs of distributed cue points in the source account and the values are the matching IDs in the target account

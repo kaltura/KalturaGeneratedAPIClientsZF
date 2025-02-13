@@ -38,18 +38,30 @@ class Kaltura_Client_ScheduledTask_Type_ConvertEntryFlavorsObjectTask extends Ka
 		return 'KalturaConvertEntryFlavorsObjectTask';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->flavorParamsIds))
+		if(!is_null($xml) && count($xml->flavorParamsIds))
 			$this->flavorParamsIds = (string)$xml->flavorParamsIds;
-		if(count($xml->reconvert))
+		if(!is_null($jsonObject) && isset($jsonObject->flavorParamsIds))
+			$this->flavorParamsIds = (string)$jsonObject->flavorParamsIds;
+		if(!is_null($xml) && count($xml->reconvert))
 		{
 			if(!empty($xml->reconvert) && ((int) $xml->reconvert === 1 || strtolower((string)$xml->reconvert) === 'true'))
+				$this->reconvert = true;
+			else
+				$this->reconvert = false;
+		}
+		if(!is_null($jsonObject) && isset($jsonObject->reconvert))
+		{
+			if(!empty($jsonObject->reconvert) && ((int) $jsonObject->reconvert === 1 || strtolower((string)$jsonObject->reconvert) === 'true'))
 				$this->reconvert = true;
 			else
 				$this->reconvert = false;

@@ -38,26 +38,42 @@ class Kaltura_Client_BulkUploadCsv_Type_BulkUploadCsvJobData extends Kaltura_Cli
 		return 'KalturaBulkUploadCsvJobData';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->csvVersion))
+		if(!is_null($xml) && count($xml->csvVersion))
 			$this->csvVersion = (int)$xml->csvVersion;
-		if(count($xml->columns))
+		if(!is_null($jsonObject) && isset($jsonObject->csvVersion))
+			$this->csvVersion = (int)$jsonObject->csvVersion;
+		if(!is_null($xml) && count($xml->columns))
 		{
 			if(empty($xml->columns))
 				$this->columns = array();
 			else
 				$this->columns = Kaltura_Client_ParseUtils::unmarshalArray($xml->columns, "KalturaString");
 		}
-		if(count($xml->processObjectId))
+		if(!is_null($jsonObject) && isset($jsonObject->columns))
+		{
+			if(empty($jsonObject->columns))
+				$this->columns = array();
+			else
+				$this->columns = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsonObject->columns, "KalturaString");
+		}
+		if(!is_null($xml) && count($xml->processObjectId))
 			$this->processObjectId = (string)$xml->processObjectId;
-		if(count($xml->processObjectType))
+		if(!is_null($jsonObject) && isset($jsonObject->processObjectId))
+			$this->processObjectId = (string)$jsonObject->processObjectId;
+		if(!is_null($xml) && count($xml->processObjectType))
 			$this->processObjectType = (string)$xml->processObjectType;
+		if(!is_null($jsonObject) && isset($jsonObject->processObjectType))
+			$this->processObjectType = (string)$jsonObject->processObjectType;
 	}
 	/**
 	 * The version of the csv file

@@ -38,48 +38,86 @@ class Kaltura_Client_Type_Scheduler extends Kaltura_Client_ObjectBase
 		return 'KalturaScheduler';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->id))
+		if(!is_null($xml) && count($xml->id))
 			$this->id = (int)$xml->id;
-		if(count($xml->configuredId))
+		if(!is_null($jsonObject) && isset($jsonObject->id))
+			$this->id = (int)$jsonObject->id;
+		if(!is_null($xml) && count($xml->configuredId))
 			$this->configuredId = (int)$xml->configuredId;
-		if(count($xml->name))
+		if(!is_null($jsonObject) && isset($jsonObject->configuredId))
+			$this->configuredId = (int)$jsonObject->configuredId;
+		if(!is_null($xml) && count($xml->name))
 			$this->name = (string)$xml->name;
-		if(count($xml->host))
+		if(!is_null($jsonObject) && isset($jsonObject->name))
+			$this->name = (string)$jsonObject->name;
+		if(!is_null($xml) && count($xml->host))
 			$this->host = (string)$xml->host;
-		if(count($xml->statuses))
+		if(!is_null($jsonObject) && isset($jsonObject->host))
+			$this->host = (string)$jsonObject->host;
+		if(!is_null($xml) && count($xml->statuses))
 		{
 			if(empty($xml->statuses))
 				$this->statuses = array();
 			else
 				$this->statuses = Kaltura_Client_ParseUtils::unmarshalArray($xml->statuses, "KalturaSchedulerStatus");
 		}
-		if(count($xml->configs))
+		if(!is_null($jsonObject) && isset($jsonObject->statuses))
+		{
+			if(empty($jsonObject->statuses))
+				$this->statuses = array();
+			else
+				$this->statuses = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsonObject->statuses, "KalturaSchedulerStatus");
+		}
+		if(!is_null($xml) && count($xml->configs))
 		{
 			if(empty($xml->configs))
 				$this->configs = array();
 			else
 				$this->configs = Kaltura_Client_ParseUtils::unmarshalArray($xml->configs, "KalturaSchedulerConfig");
 		}
-		if(count($xml->workers))
+		if(!is_null($jsonObject) && isset($jsonObject->configs))
+		{
+			if(empty($jsonObject->configs))
+				$this->configs = array();
+			else
+				$this->configs = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsonObject->configs, "KalturaSchedulerConfig");
+		}
+		if(!is_null($xml) && count($xml->workers))
 		{
 			if(empty($xml->workers))
 				$this->workers = array();
 			else
 				$this->workers = Kaltura_Client_ParseUtils::unmarshalArray($xml->workers, "KalturaSchedulerWorker");
 		}
-		if(count($xml->createdAt))
+		if(!is_null($jsonObject) && isset($jsonObject->workers))
+		{
+			if(empty($jsonObject->workers))
+				$this->workers = array();
+			else
+				$this->workers = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsonObject->workers, "KalturaSchedulerWorker");
+		}
+		if(!is_null($xml) && count($xml->createdAt))
 			$this->createdAt = (int)$xml->createdAt;
-		if(count($xml->lastStatus))
+		if(!is_null($jsonObject) && isset($jsonObject->createdAt))
+			$this->createdAt = (int)$jsonObject->createdAt;
+		if(!is_null($xml) && count($xml->lastStatus))
 			$this->lastStatus = (int)$xml->lastStatus;
-		if(count($xml->lastStatusStr))
+		if(!is_null($jsonObject) && isset($jsonObject->lastStatus))
+			$this->lastStatus = (int)$jsonObject->lastStatus;
+		if(!is_null($xml) && count($xml->lastStatusStr))
 			$this->lastStatusStr = (string)$xml->lastStatusStr;
+		if(!is_null($jsonObject) && isset($jsonObject->lastStatusStr))
+			$this->lastStatusStr = (string)$jsonObject->lastStatusStr;
 	}
 	/**
 	 * The id of the Scheduler

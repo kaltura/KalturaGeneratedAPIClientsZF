@@ -38,25 +38,40 @@ class Kaltura_Client_ElasticSearch_Type_ESearchCaptionItemData extends Kaltura_C
 		return 'KalturaESearchCaptionItemData';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->line))
+		if(!is_null($xml) && count($xml->line))
 			$this->line = (string)$xml->line;
-		if(count($xml->startsAt))
+		if(!is_null($jsonObject) && isset($jsonObject->line))
+			$this->line = (string)$jsonObject->line;
+		if(!is_null($xml) && count($xml->startsAt))
 			$this->startsAt = (int)$xml->startsAt;
-		if(count($xml->endsAt))
+		if(!is_null($jsonObject) && isset($jsonObject->startsAt))
+			$this->startsAt = (int)$jsonObject->startsAt;
+		if(!is_null($xml) && count($xml->endsAt))
 			$this->endsAt = (int)$xml->endsAt;
-		if(count($xml->language))
+		if(!is_null($jsonObject) && isset($jsonObject->endsAt))
+			$this->endsAt = (int)$jsonObject->endsAt;
+		if(!is_null($xml) && count($xml->language))
 			$this->language = (string)$xml->language;
-		if(count($xml->captionAssetId))
+		if(!is_null($jsonObject) && isset($jsonObject->language))
+			$this->language = (string)$jsonObject->language;
+		if(!is_null($xml) && count($xml->captionAssetId))
 			$this->captionAssetId = (string)$xml->captionAssetId;
-		if(count($xml->label))
+		if(!is_null($jsonObject) && isset($jsonObject->captionAssetId))
+			$this->captionAssetId = (string)$jsonObject->captionAssetId;
+		if(!is_null($xml) && count($xml->label))
 			$this->label = (string)$xml->label;
+		if(!is_null($jsonObject) && isset($jsonObject->label))
+			$this->label = (string)$jsonObject->label;
 	}
 	/**
 	 * 

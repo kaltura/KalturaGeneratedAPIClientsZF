@@ -38,42 +38,78 @@ class Kaltura_Client_ScheduledTask_Type_ModifyEntryObjectTask extends Kaltura_Cl
 		return 'KalturaModifyEntryObjectTask';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->inputMetadataProfileId))
+		if(!is_null($xml) && count($xml->inputMetadataProfileId))
 			$this->inputMetadataProfileId = (int)$xml->inputMetadataProfileId;
-		if(count($xml->inputMetadata))
+		if(!is_null($jsonObject) && isset($jsonObject->inputMetadataProfileId))
+			$this->inputMetadataProfileId = (int)$jsonObject->inputMetadataProfileId;
+		if(!is_null($xml) && count($xml->inputMetadata))
 		{
 			if(empty($xml->inputMetadata))
 				$this->inputMetadata = array();
 			else
 				$this->inputMetadata = Kaltura_Client_ParseUtils::unmarshalArray($xml->inputMetadata, "KalturaKeyValue");
 		}
-		if(count($xml->outputMetadataProfileId))
+		if(!is_null($jsonObject) && isset($jsonObject->inputMetadata))
+		{
+			if(empty($jsonObject->inputMetadata))
+				$this->inputMetadata = array();
+			else
+				$this->inputMetadata = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsonObject->inputMetadata, "KalturaKeyValue");
+		}
+		if(!is_null($xml) && count($xml->outputMetadataProfileId))
 			$this->outputMetadataProfileId = (int)$xml->outputMetadataProfileId;
-		if(count($xml->outputMetadata))
+		if(!is_null($jsonObject) && isset($jsonObject->outputMetadataProfileId))
+			$this->outputMetadataProfileId = (int)$jsonObject->outputMetadataProfileId;
+		if(!is_null($xml) && count($xml->outputMetadata))
 		{
 			if(empty($xml->outputMetadata))
 				$this->outputMetadata = array();
 			else
 				$this->outputMetadata = Kaltura_Client_ParseUtils::unmarshalArray($xml->outputMetadata, "KalturaKeyValue");
 		}
-		if(count($xml->inputUserId))
+		if(!is_null($jsonObject) && isset($jsonObject->outputMetadata))
+		{
+			if(empty($jsonObject->outputMetadata))
+				$this->outputMetadata = array();
+			else
+				$this->outputMetadata = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsonObject->outputMetadata, "KalturaKeyValue");
+		}
+		if(!is_null($xml) && count($xml->inputUserId))
 			$this->inputUserId = (string)$xml->inputUserId;
-		if(count($xml->inputEntitledUsersEdit))
+		if(!is_null($jsonObject) && isset($jsonObject->inputUserId))
+			$this->inputUserId = (string)$jsonObject->inputUserId;
+		if(!is_null($xml) && count($xml->inputEntitledUsersEdit))
 			$this->inputEntitledUsersEdit = (string)$xml->inputEntitledUsersEdit;
-		if(count($xml->inputEntitledUsersPublish))
+		if(!is_null($jsonObject) && isset($jsonObject->inputEntitledUsersEdit))
+			$this->inputEntitledUsersEdit = (string)$jsonObject->inputEntitledUsersEdit;
+		if(!is_null($xml) && count($xml->inputEntitledUsersPublish))
 			$this->inputEntitledUsersPublish = (string)$xml->inputEntitledUsersPublish;
-		if(count($xml->inputEntitledUsersView))
+		if(!is_null($jsonObject) && isset($jsonObject->inputEntitledUsersPublish))
+			$this->inputEntitledUsersPublish = (string)$jsonObject->inputEntitledUsersPublish;
+		if(!is_null($xml) && count($xml->inputEntitledUsersView))
 			$this->inputEntitledUsersView = (string)$xml->inputEntitledUsersView;
-		if(count($xml->resetMediaRepurposingProcess))
+		if(!is_null($jsonObject) && isset($jsonObject->inputEntitledUsersView))
+			$this->inputEntitledUsersView = (string)$jsonObject->inputEntitledUsersView;
+		if(!is_null($xml) && count($xml->resetMediaRepurposingProcess))
 		{
 			if(!empty($xml->resetMediaRepurposingProcess) && ((int) $xml->resetMediaRepurposingProcess === 1 || strtolower((string)$xml->resetMediaRepurposingProcess) === 'true'))
+				$this->resetMediaRepurposingProcess = true;
+			else
+				$this->resetMediaRepurposingProcess = false;
+		}
+		if(!is_null($jsonObject) && isset($jsonObject->resetMediaRepurposingProcess))
+		{
+			if(!empty($jsonObject->resetMediaRepurposingProcess) && ((int) $jsonObject->resetMediaRepurposingProcess === 1 || strtolower((string)$jsonObject->resetMediaRepurposingProcess) === 'true'))
 				$this->resetMediaRepurposingProcess = true;
 			else
 				$this->resetMediaRepurposingProcess = false;

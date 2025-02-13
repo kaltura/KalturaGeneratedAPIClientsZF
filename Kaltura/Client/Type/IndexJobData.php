@@ -38,22 +38,38 @@ class Kaltura_Client_Type_IndexJobData extends Kaltura_Client_Type_JobData
 		return 'KalturaIndexJobData';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->filter) && !empty($xml->filter))
+		if(!is_null($xml) && count($xml->filter) && !empty($xml->filter))
 			$this->filter = Kaltura_Client_ParseUtils::unmarshalObject($xml->filter, "KalturaFilter");
-		if(count($xml->lastIndexId))
+		if(!is_null($jsonObject) && isset($jsonObject->filter) && !empty($jsonObject->filter))
+			$this->filter = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsonObject->filter, "KalturaFilter");
+		if(!is_null($xml) && count($xml->lastIndexId))
 			$this->lastIndexId = (int)$xml->lastIndexId;
-		if(count($xml->lastIndexDepth))
+		if(!is_null($jsonObject) && isset($jsonObject->lastIndexId))
+			$this->lastIndexId = (int)$jsonObject->lastIndexId;
+		if(!is_null($xml) && count($xml->lastIndexDepth))
 			$this->lastIndexDepth = (int)$xml->lastIndexDepth;
-		if(count($xml->shouldUpdate))
+		if(!is_null($jsonObject) && isset($jsonObject->lastIndexDepth))
+			$this->lastIndexDepth = (int)$jsonObject->lastIndexDepth;
+		if(!is_null($xml) && count($xml->shouldUpdate))
 		{
 			if(!empty($xml->shouldUpdate) && ((int) $xml->shouldUpdate === 1 || strtolower((string)$xml->shouldUpdate) === 'true'))
+				$this->shouldUpdate = true;
+			else
+				$this->shouldUpdate = false;
+		}
+		if(!is_null($jsonObject) && isset($jsonObject->shouldUpdate))
+		{
+			if(!empty($jsonObject->shouldUpdate) && ((int) $jsonObject->shouldUpdate === 1 || strtolower((string)$jsonObject->shouldUpdate) === 'true'))
 				$this->shouldUpdate = true;
 			else
 				$this->shouldUpdate = false;

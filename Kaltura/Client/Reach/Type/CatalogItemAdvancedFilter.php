@@ -38,29 +38,48 @@ class Kaltura_Client_Reach_Type_CatalogItemAdvancedFilter extends Kaltura_Client
 		return 'KalturaCatalogItemAdvancedFilter';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->serviceTypeEqual))
+		if(!is_null($xml) && count($xml->serviceTypeEqual))
 			$this->serviceTypeEqual = (int)$xml->serviceTypeEqual;
-		if(count($xml->serviceTypeIn))
+		if(!is_null($jsonObject) && isset($jsonObject->serviceTypeEqual))
+			$this->serviceTypeEqual = (int)$jsonObject->serviceTypeEqual;
+		if(!is_null($xml) && count($xml->serviceTypeIn))
 			$this->serviceTypeIn = (string)$xml->serviceTypeIn;
-		if(count($xml->serviceFeatureEqual))
+		if(!is_null($jsonObject) && isset($jsonObject->serviceTypeIn))
+			$this->serviceTypeIn = (string)$jsonObject->serviceTypeIn;
+		if(!is_null($xml) && count($xml->serviceFeatureEqual))
 			$this->serviceFeatureEqual = (int)$xml->serviceFeatureEqual;
-		if(count($xml->serviceFeatureIn))
+		if(!is_null($jsonObject) && isset($jsonObject->serviceFeatureEqual))
+			$this->serviceFeatureEqual = (int)$jsonObject->serviceFeatureEqual;
+		if(!is_null($xml) && count($xml->serviceFeatureIn))
 			$this->serviceFeatureIn = (string)$xml->serviceFeatureIn;
-		if(count($xml->turnAroundTimeEqual))
+		if(!is_null($jsonObject) && isset($jsonObject->serviceFeatureIn))
+			$this->serviceFeatureIn = (string)$jsonObject->serviceFeatureIn;
+		if(!is_null($xml) && count($xml->turnAroundTimeEqual))
 			$this->turnAroundTimeEqual = (int)$xml->turnAroundTimeEqual;
-		if(count($xml->turnAroundTimeIn))
+		if(!is_null($jsonObject) && isset($jsonObject->turnAroundTimeEqual))
+			$this->turnAroundTimeEqual = (int)$jsonObject->turnAroundTimeEqual;
+		if(!is_null($xml) && count($xml->turnAroundTimeIn))
 			$this->turnAroundTimeIn = (string)$xml->turnAroundTimeIn;
-		if(count($xml->sourceLanguageEqual))
+		if(!is_null($jsonObject) && isset($jsonObject->turnAroundTimeIn))
+			$this->turnAroundTimeIn = (string)$jsonObject->turnAroundTimeIn;
+		if(!is_null($xml) && count($xml->sourceLanguageEqual))
 			$this->sourceLanguageEqual = (string)$xml->sourceLanguageEqual;
-		if(count($xml->targetLanguageEqual))
+		if(!is_null($jsonObject) && isset($jsonObject->sourceLanguageEqual))
+			$this->sourceLanguageEqual = (string)$jsonObject->sourceLanguageEqual;
+		if(!is_null($xml) && count($xml->targetLanguageEqual))
 			$this->targetLanguageEqual = (string)$xml->targetLanguageEqual;
+		if(!is_null($jsonObject) && isset($jsonObject->targetLanguageEqual))
+			$this->targetLanguageEqual = (string)$jsonObject->targetLanguageEqual;
 	}
 	/**
 	 * 

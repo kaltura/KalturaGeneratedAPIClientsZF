@@ -38,19 +38,28 @@ class Kaltura_Client_Type_ConvertProfileJobData extends Kaltura_Client_Type_JobD
 		return 'KalturaConvertProfileJobData';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->inputFileSyncLocalPath))
+		if(!is_null($xml) && count($xml->inputFileSyncLocalPath))
 			$this->inputFileSyncLocalPath = (string)$xml->inputFileSyncLocalPath;
-		if(count($xml->thumbHeight))
+		if(!is_null($jsonObject) && isset($jsonObject->inputFileSyncLocalPath))
+			$this->inputFileSyncLocalPath = (string)$jsonObject->inputFileSyncLocalPath;
+		if(!is_null($xml) && count($xml->thumbHeight))
 			$this->thumbHeight = (int)$xml->thumbHeight;
-		if(count($xml->thumbBitrate))
+		if(!is_null($jsonObject) && isset($jsonObject->thumbHeight))
+			$this->thumbHeight = (int)$jsonObject->thumbHeight;
+		if(!is_null($xml) && count($xml->thumbBitrate))
 			$this->thumbBitrate = (int)$xml->thumbBitrate;
+		if(!is_null($jsonObject) && isset($jsonObject->thumbBitrate))
+			$this->thumbBitrate = (int)$jsonObject->thumbBitrate;
 	}
 	/**
 	 * 

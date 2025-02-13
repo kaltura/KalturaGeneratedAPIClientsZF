@@ -38,23 +38,40 @@ class Kaltura_Client_Type_DeliveryProfileLivePackagerHls extends Kaltura_Client_
 		return 'KalturaDeliveryProfileLivePackagerHls';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->disableExtraAttributes))
+		if(!is_null($xml) && count($xml->disableExtraAttributes))
 		{
 			if(!empty($xml->disableExtraAttributes) && ((int) $xml->disableExtraAttributes === 1 || strtolower((string)$xml->disableExtraAttributes) === 'true'))
 				$this->disableExtraAttributes = true;
 			else
 				$this->disableExtraAttributes = false;
 		}
-		if(count($xml->forceProxy))
+		if(!is_null($jsonObject) && isset($jsonObject->disableExtraAttributes))
+		{
+			if(!empty($jsonObject->disableExtraAttributes) && ((int) $jsonObject->disableExtraAttributes === 1 || strtolower((string)$jsonObject->disableExtraAttributes) === 'true'))
+				$this->disableExtraAttributes = true;
+			else
+				$this->disableExtraAttributes = false;
+		}
+		if(!is_null($xml) && count($xml->forceProxy))
 		{
 			if(!empty($xml->forceProxy) && ((int) $xml->forceProxy === 1 || strtolower((string)$xml->forceProxy) === 'true'))
+				$this->forceProxy = true;
+			else
+				$this->forceProxy = false;
+		}
+		if(!is_null($jsonObject) && isset($jsonObject->forceProxy))
+		{
+			if(!empty($jsonObject->forceProxy) && ((int) $jsonObject->forceProxy === 1 || strtolower((string)$jsonObject->forceProxy) === 'true'))
 				$this->forceProxy = true;
 			else
 				$this->forceProxy = false;

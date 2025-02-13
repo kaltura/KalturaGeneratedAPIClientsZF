@@ -38,82 +38,154 @@ abstract class Kaltura_Client_Type_BaseSyndicationFeed extends Kaltura_Client_Ob
 		return 'KalturaBaseSyndicationFeed';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->id))
+		if(!is_null($xml) && count($xml->id))
 			$this->id = (string)$xml->id;
-		if(count($xml->feedUrl))
+		if(!is_null($jsonObject) && isset($jsonObject->id))
+			$this->id = (string)$jsonObject->id;
+		if(!is_null($xml) && count($xml->feedUrl))
 			$this->feedUrl = (string)$xml->feedUrl;
-		if(count($xml->partnerId))
+		if(!is_null($jsonObject) && isset($jsonObject->feedUrl))
+			$this->feedUrl = (string)$jsonObject->feedUrl;
+		if(!is_null($xml) && count($xml->partnerId))
 			$this->partnerId = (int)$xml->partnerId;
-		if(count($xml->playlistId))
+		if(!is_null($jsonObject) && isset($jsonObject->partnerId))
+			$this->partnerId = (int)$jsonObject->partnerId;
+		if(!is_null($xml) && count($xml->playlistId))
 			$this->playlistId = (string)$xml->playlistId;
-		if(count($xml->name))
+		if(!is_null($jsonObject) && isset($jsonObject->playlistId))
+			$this->playlistId = (string)$jsonObject->playlistId;
+		if(!is_null($xml) && count($xml->name))
 			$this->name = (string)$xml->name;
-		if(count($xml->status))
+		if(!is_null($jsonObject) && isset($jsonObject->name))
+			$this->name = (string)$jsonObject->name;
+		if(!is_null($xml) && count($xml->status))
 			$this->status = (int)$xml->status;
-		if(count($xml->type))
+		if(!is_null($jsonObject) && isset($jsonObject->status))
+			$this->status = (int)$jsonObject->status;
+		if(!is_null($xml) && count($xml->type))
 			$this->type = (int)$xml->type;
-		if(count($xml->landingPage))
+		if(!is_null($jsonObject) && isset($jsonObject->type))
+			$this->type = (int)$jsonObject->type;
+		if(!is_null($xml) && count($xml->landingPage))
 			$this->landingPage = (string)$xml->landingPage;
-		if(count($xml->createdAt))
+		if(!is_null($jsonObject) && isset($jsonObject->landingPage))
+			$this->landingPage = (string)$jsonObject->landingPage;
+		if(!is_null($xml) && count($xml->createdAt))
 			$this->createdAt = (int)$xml->createdAt;
-		if(count($xml->allowEmbed))
+		if(!is_null($jsonObject) && isset($jsonObject->createdAt))
+			$this->createdAt = (int)$jsonObject->createdAt;
+		if(!is_null($xml) && count($xml->allowEmbed))
 		{
 			if(!empty($xml->allowEmbed) && ((int) $xml->allowEmbed === 1 || strtolower((string)$xml->allowEmbed) === 'true'))
 				$this->allowEmbed = true;
 			else
 				$this->allowEmbed = false;
 		}
-		if(count($xml->playerUiconfId))
+		if(!is_null($jsonObject) && isset($jsonObject->allowEmbed))
+		{
+			if(!empty($jsonObject->allowEmbed) && ((int) $jsonObject->allowEmbed === 1 || strtolower((string)$jsonObject->allowEmbed) === 'true'))
+				$this->allowEmbed = true;
+			else
+				$this->allowEmbed = false;
+		}
+		if(!is_null($xml) && count($xml->playerUiconfId))
 			$this->playerUiconfId = (int)$xml->playerUiconfId;
-		if(count($xml->flavorParamId))
+		if(!is_null($jsonObject) && isset($jsonObject->playerUiconfId))
+			$this->playerUiconfId = (int)$jsonObject->playerUiconfId;
+		if(!is_null($xml) && count($xml->flavorParamId))
 			$this->flavorParamId = (int)$xml->flavorParamId;
-		if(count($xml->transcodeExistingContent))
+		if(!is_null($jsonObject) && isset($jsonObject->flavorParamId))
+			$this->flavorParamId = (int)$jsonObject->flavorParamId;
+		if(!is_null($xml) && count($xml->transcodeExistingContent))
 		{
 			if(!empty($xml->transcodeExistingContent) && ((int) $xml->transcodeExistingContent === 1 || strtolower((string)$xml->transcodeExistingContent) === 'true'))
 				$this->transcodeExistingContent = true;
 			else
 				$this->transcodeExistingContent = false;
 		}
-		if(count($xml->addToDefaultConversionProfile))
+		if(!is_null($jsonObject) && isset($jsonObject->transcodeExistingContent))
+		{
+			if(!empty($jsonObject->transcodeExistingContent) && ((int) $jsonObject->transcodeExistingContent === 1 || strtolower((string)$jsonObject->transcodeExistingContent) === 'true'))
+				$this->transcodeExistingContent = true;
+			else
+				$this->transcodeExistingContent = false;
+		}
+		if(!is_null($xml) && count($xml->addToDefaultConversionProfile))
 		{
 			if(!empty($xml->addToDefaultConversionProfile) && ((int) $xml->addToDefaultConversionProfile === 1 || strtolower((string)$xml->addToDefaultConversionProfile) === 'true'))
 				$this->addToDefaultConversionProfile = true;
 			else
 				$this->addToDefaultConversionProfile = false;
 		}
-		if(count($xml->categories))
+		if(!is_null($jsonObject) && isset($jsonObject->addToDefaultConversionProfile))
+		{
+			if(!empty($jsonObject->addToDefaultConversionProfile) && ((int) $jsonObject->addToDefaultConversionProfile === 1 || strtolower((string)$jsonObject->addToDefaultConversionProfile) === 'true'))
+				$this->addToDefaultConversionProfile = true;
+			else
+				$this->addToDefaultConversionProfile = false;
+		}
+		if(!is_null($xml) && count($xml->categories))
 			$this->categories = (string)$xml->categories;
-		if(count($xml->storageId))
+		if(!is_null($jsonObject) && isset($jsonObject->categories))
+			$this->categories = (string)$jsonObject->categories;
+		if(!is_null($xml) && count($xml->storageId))
 			$this->storageId = (int)$xml->storageId;
-		if(count($xml->entriesOrderBy))
+		if(!is_null($jsonObject) && isset($jsonObject->storageId))
+			$this->storageId = (int)$jsonObject->storageId;
+		if(!is_null($xml) && count($xml->entriesOrderBy))
 			$this->entriesOrderBy = (string)$xml->entriesOrderBy;
-		if(count($xml->enforceEntitlement))
+		if(!is_null($jsonObject) && isset($jsonObject->entriesOrderBy))
+			$this->entriesOrderBy = (string)$jsonObject->entriesOrderBy;
+		if(!is_null($xml) && count($xml->enforceEntitlement))
 		{
 			if(!empty($xml->enforceEntitlement) && ((int) $xml->enforceEntitlement === 1 || strtolower((string)$xml->enforceEntitlement) === 'true'))
 				$this->enforceEntitlement = true;
 			else
 				$this->enforceEntitlement = false;
 		}
-		if(count($xml->privacyContext))
+		if(!is_null($jsonObject) && isset($jsonObject->enforceEntitlement))
+		{
+			if(!empty($jsonObject->enforceEntitlement) && ((int) $jsonObject->enforceEntitlement === 1 || strtolower((string)$jsonObject->enforceEntitlement) === 'true'))
+				$this->enforceEntitlement = true;
+			else
+				$this->enforceEntitlement = false;
+		}
+		if(!is_null($xml) && count($xml->privacyContext))
 			$this->privacyContext = (string)$xml->privacyContext;
-		if(count($xml->updatedAt))
+		if(!is_null($jsonObject) && isset($jsonObject->privacyContext))
+			$this->privacyContext = (string)$jsonObject->privacyContext;
+		if(!is_null($xml) && count($xml->updatedAt))
 			$this->updatedAt = (int)$xml->updatedAt;
-		if(count($xml->useCategoryEntries))
+		if(!is_null($jsonObject) && isset($jsonObject->updatedAt))
+			$this->updatedAt = (int)$jsonObject->updatedAt;
+		if(!is_null($xml) && count($xml->useCategoryEntries))
 		{
 			if(!empty($xml->useCategoryEntries) && ((int) $xml->useCategoryEntries === 1 || strtolower((string)$xml->useCategoryEntries) === 'true'))
 				$this->useCategoryEntries = true;
 			else
 				$this->useCategoryEntries = false;
 		}
-		if(count($xml->feedContentTypeHeader))
+		if(!is_null($jsonObject) && isset($jsonObject->useCategoryEntries))
+		{
+			if(!empty($jsonObject->useCategoryEntries) && ((int) $jsonObject->useCategoryEntries === 1 || strtolower((string)$jsonObject->useCategoryEntries) === 'true'))
+				$this->useCategoryEntries = true;
+			else
+				$this->useCategoryEntries = false;
+		}
+		if(!is_null($xml) && count($xml->feedContentTypeHeader))
 			$this->feedContentTypeHeader = (string)$xml->feedContentTypeHeader;
+		if(!is_null($jsonObject) && isset($jsonObject->feedContentTypeHeader))
+			$this->feedContentTypeHeader = (string)$jsonObject->feedContentTypeHeader;
 	}
 	/**
 	 * 

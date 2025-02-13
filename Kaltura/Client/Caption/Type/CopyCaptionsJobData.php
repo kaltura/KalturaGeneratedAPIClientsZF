@@ -38,25 +38,44 @@ class Kaltura_Client_Caption_Type_CopyCaptionsJobData extends Kaltura_Client_Typ
 		return 'KalturaCopyCaptionsJobData';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->entryId))
+		if(!is_null($xml) && count($xml->entryId))
 			$this->entryId = (string)$xml->entryId;
-		if(count($xml->clipsDescriptionArray))
+		if(!is_null($jsonObject) && isset($jsonObject->entryId))
+			$this->entryId = (string)$jsonObject->entryId;
+		if(!is_null($xml) && count($xml->clipsDescriptionArray))
 		{
 			if(empty($xml->clipsDescriptionArray))
 				$this->clipsDescriptionArray = array();
 			else
 				$this->clipsDescriptionArray = Kaltura_Client_ParseUtils::unmarshalArray($xml->clipsDescriptionArray, "KalturaClipDescription");
 		}
-		if(count($xml->fullCopy))
+		if(!is_null($jsonObject) && isset($jsonObject->clipsDescriptionArray))
+		{
+			if(empty($jsonObject->clipsDescriptionArray))
+				$this->clipsDescriptionArray = array();
+			else
+				$this->clipsDescriptionArray = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsonObject->clipsDescriptionArray, "KalturaClipDescription");
+		}
+		if(!is_null($xml) && count($xml->fullCopy))
 		{
 			if(!empty($xml->fullCopy) && ((int) $xml->fullCopy === 1 || strtolower((string)$xml->fullCopy) === 'true'))
+				$this->fullCopy = true;
+			else
+				$this->fullCopy = false;
+		}
+		if(!is_null($jsonObject) && isset($jsonObject->fullCopy))
+		{
+			if(!empty($jsonObject->fullCopy) && ((int) $jsonObject->fullCopy === 1 || strtolower((string)$jsonObject->fullCopy) === 'true'))
 				$this->fullCopy = true;
 			else
 				$this->fullCopy = false;

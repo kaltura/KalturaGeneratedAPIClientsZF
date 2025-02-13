@@ -38,47 +38,88 @@ class Kaltura_Client_ContentDistribution_Type_DistributionFieldConfig extends Ka
 		return 'KalturaDistributionFieldConfig';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->fieldName))
+		if(!is_null($xml) && count($xml->fieldName))
 			$this->fieldName = (string)$xml->fieldName;
-		if(count($xml->userFriendlyFieldName))
+		if(!is_null($jsonObject) && isset($jsonObject->fieldName))
+			$this->fieldName = (string)$jsonObject->fieldName;
+		if(!is_null($xml) && count($xml->userFriendlyFieldName))
 			$this->userFriendlyFieldName = (string)$xml->userFriendlyFieldName;
-		if(count($xml->entryMrssXslt))
+		if(!is_null($jsonObject) && isset($jsonObject->userFriendlyFieldName))
+			$this->userFriendlyFieldName = (string)$jsonObject->userFriendlyFieldName;
+		if(!is_null($xml) && count($xml->entryMrssXslt))
 			$this->entryMrssXslt = (string)$xml->entryMrssXslt;
-		if(count($xml->isRequired))
+		if(!is_null($jsonObject) && isset($jsonObject->entryMrssXslt))
+			$this->entryMrssXslt = (string)$jsonObject->entryMrssXslt;
+		if(!is_null($xml) && count($xml->isRequired))
 			$this->isRequired = (int)$xml->isRequired;
-		if(count($xml->type))
+		if(!is_null($jsonObject) && isset($jsonObject->isRequired))
+			$this->isRequired = (int)$jsonObject->isRequired;
+		if(!is_null($xml) && count($xml->type))
 			$this->type = (string)$xml->type;
-		if(count($xml->updateOnChange))
+		if(!is_null($jsonObject) && isset($jsonObject->type))
+			$this->type = (string)$jsonObject->type;
+		if(!is_null($xml) && count($xml->updateOnChange))
 		{
 			if(!empty($xml->updateOnChange) && ((int) $xml->updateOnChange === 1 || strtolower((string)$xml->updateOnChange) === 'true'))
 				$this->updateOnChange = true;
 			else
 				$this->updateOnChange = false;
 		}
-		if(count($xml->updateParams))
+		if(!is_null($jsonObject) && isset($jsonObject->updateOnChange))
+		{
+			if(!empty($jsonObject->updateOnChange) && ((int) $jsonObject->updateOnChange === 1 || strtolower((string)$jsonObject->updateOnChange) === 'true'))
+				$this->updateOnChange = true;
+			else
+				$this->updateOnChange = false;
+		}
+		if(!is_null($xml) && count($xml->updateParams))
 		{
 			if(empty($xml->updateParams))
 				$this->updateParams = array();
 			else
 				$this->updateParams = Kaltura_Client_ParseUtils::unmarshalArray($xml->updateParams, "KalturaString");
 		}
-		if(count($xml->isDefault))
+		if(!is_null($jsonObject) && isset($jsonObject->updateParams))
+		{
+			if(empty($jsonObject->updateParams))
+				$this->updateParams = array();
+			else
+				$this->updateParams = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsonObject->updateParams, "KalturaString");
+		}
+		if(!is_null($xml) && count($xml->isDefault))
 		{
 			if(!empty($xml->isDefault) && ((int) $xml->isDefault === 1 || strtolower((string)$xml->isDefault) === 'true'))
 				$this->isDefault = true;
 			else
 				$this->isDefault = false;
 		}
-		if(count($xml->triggerDeleteOnError))
+		if(!is_null($jsonObject) && isset($jsonObject->isDefault))
+		{
+			if(!empty($jsonObject->isDefault) && ((int) $jsonObject->isDefault === 1 || strtolower((string)$jsonObject->isDefault) === 'true'))
+				$this->isDefault = true;
+			else
+				$this->isDefault = false;
+		}
+		if(!is_null($xml) && count($xml->triggerDeleteOnError))
 		{
 			if(!empty($xml->triggerDeleteOnError) && ((int) $xml->triggerDeleteOnError === 1 || strtolower((string)$xml->triggerDeleteOnError) === 'true'))
+				$this->triggerDeleteOnError = true;
+			else
+				$this->triggerDeleteOnError = false;
+		}
+		if(!is_null($jsonObject) && isset($jsonObject->triggerDeleteOnError))
+		{
+			if(!empty($jsonObject->triggerDeleteOnError) && ((int) $jsonObject->triggerDeleteOnError === 1 || strtolower((string)$jsonObject->triggerDeleteOnError) === 'true'))
 				$this->triggerDeleteOnError = true;
 			else
 				$this->triggerDeleteOnError = false;

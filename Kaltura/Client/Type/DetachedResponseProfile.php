@@ -38,36 +38,63 @@ class Kaltura_Client_Type_DetachedResponseProfile extends Kaltura_Client_Type_Ba
 		return 'KalturaDetachedResponseProfile';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->name))
+		if(!is_null($xml) && count($xml->name))
 			$this->name = (string)$xml->name;
-		if(count($xml->type))
+		if(!is_null($jsonObject) && isset($jsonObject->name))
+			$this->name = (string)$jsonObject->name;
+		if(!is_null($xml) && count($xml->type))
 			$this->type = (int)$xml->type;
-		if(count($xml->fields))
+		if(!is_null($jsonObject) && isset($jsonObject->type))
+			$this->type = (int)$jsonObject->type;
+		if(!is_null($xml) && count($xml->fields))
 			$this->fields = (string)$xml->fields;
-		if(count($xml->filter) && !empty($xml->filter))
+		if(!is_null($jsonObject) && isset($jsonObject->fields))
+			$this->fields = (string)$jsonObject->fields;
+		if(!is_null($xml) && count($xml->filter) && !empty($xml->filter))
 			$this->filter = Kaltura_Client_ParseUtils::unmarshalObject($xml->filter, "KalturaRelatedFilter");
-		if(count($xml->pager) && !empty($xml->pager))
+		if(!is_null($jsonObject) && isset($jsonObject->filter) && !empty($jsonObject->filter))
+			$this->filter = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsonObject->filter, "KalturaRelatedFilter");
+		if(!is_null($xml) && count($xml->pager) && !empty($xml->pager))
 			$this->pager = Kaltura_Client_ParseUtils::unmarshalObject($xml->pager, "KalturaFilterPager");
-		if(count($xml->relatedProfiles))
+		if(!is_null($jsonObject) && isset($jsonObject->pager) && !empty($jsonObject->pager))
+			$this->pager = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsonObject->pager, "KalturaFilterPager");
+		if(!is_null($xml) && count($xml->relatedProfiles))
 		{
 			if(empty($xml->relatedProfiles))
 				$this->relatedProfiles = array();
 			else
 				$this->relatedProfiles = Kaltura_Client_ParseUtils::unmarshalArray($xml->relatedProfiles, "KalturaDetachedResponseProfile");
 		}
-		if(count($xml->mappings))
+		if(!is_null($jsonObject) && isset($jsonObject->relatedProfiles))
+		{
+			if(empty($jsonObject->relatedProfiles))
+				$this->relatedProfiles = array();
+			else
+				$this->relatedProfiles = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsonObject->relatedProfiles, "KalturaDetachedResponseProfile");
+		}
+		if(!is_null($xml) && count($xml->mappings))
 		{
 			if(empty($xml->mappings))
 				$this->mappings = array();
 			else
 				$this->mappings = Kaltura_Client_ParseUtils::unmarshalArray($xml->mappings, "KalturaResponseProfileMapping");
+		}
+		if(!is_null($jsonObject) && isset($jsonObject->mappings))
+		{
+			if(empty($jsonObject->mappings))
+				$this->mappings = array();
+			else
+				$this->mappings = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsonObject->mappings, "KalturaResponseProfileMapping");
 		}
 	}
 	/**

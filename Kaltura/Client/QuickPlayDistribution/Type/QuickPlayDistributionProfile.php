@@ -38,47 +38,84 @@ class Kaltura_Client_QuickPlayDistribution_Type_QuickPlayDistributionProfile ext
 		return 'KalturaQuickPlayDistributionProfile';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->sftpHost))
+		if(!is_null($xml) && count($xml->sftpHost))
 			$this->sftpHost = (string)$xml->sftpHost;
-		if(count($xml->sftpLogin))
+		if(!is_null($jsonObject) && isset($jsonObject->sftpHost))
+			$this->sftpHost = (string)$jsonObject->sftpHost;
+		if(!is_null($xml) && count($xml->sftpLogin))
 			$this->sftpLogin = (string)$xml->sftpLogin;
-		if(count($xml->sftpPass))
+		if(!is_null($jsonObject) && isset($jsonObject->sftpLogin))
+			$this->sftpLogin = (string)$jsonObject->sftpLogin;
+		if(!is_null($xml) && count($xml->sftpPass))
 			$this->sftpPass = (string)$xml->sftpPass;
-		if(count($xml->sftpBasePath))
+		if(!is_null($jsonObject) && isset($jsonObject->sftpPass))
+			$this->sftpPass = (string)$jsonObject->sftpPass;
+		if(!is_null($xml) && count($xml->sftpBasePath))
 			$this->sftpBasePath = (string)$xml->sftpBasePath;
-		if(count($xml->channelTitle))
+		if(!is_null($jsonObject) && isset($jsonObject->sftpBasePath))
+			$this->sftpBasePath = (string)$jsonObject->sftpBasePath;
+		if(!is_null($xml) && count($xml->channelTitle))
 			$this->channelTitle = (string)$xml->channelTitle;
-		if(count($xml->channelLink))
+		if(!is_null($jsonObject) && isset($jsonObject->channelTitle))
+			$this->channelTitle = (string)$jsonObject->channelTitle;
+		if(!is_null($xml) && count($xml->channelLink))
 			$this->channelLink = (string)$xml->channelLink;
-		if(count($xml->channelDescription))
+		if(!is_null($jsonObject) && isset($jsonObject->channelLink))
+			$this->channelLink = (string)$jsonObject->channelLink;
+		if(!is_null($xml) && count($xml->channelDescription))
 			$this->channelDescription = (string)$xml->channelDescription;
-		if(count($xml->channelManagingEditor))
+		if(!is_null($jsonObject) && isset($jsonObject->channelDescription))
+			$this->channelDescription = (string)$jsonObject->channelDescription;
+		if(!is_null($xml) && count($xml->channelManagingEditor))
 			$this->channelManagingEditor = (string)$xml->channelManagingEditor;
-		if(count($xml->channelLanguage))
+		if(!is_null($jsonObject) && isset($jsonObject->channelManagingEditor))
+			$this->channelManagingEditor = (string)$jsonObject->channelManagingEditor;
+		if(!is_null($xml) && count($xml->channelLanguage))
 			$this->channelLanguage = (string)$xml->channelLanguage;
-		if(count($xml->channelImageTitle))
+		if(!is_null($jsonObject) && isset($jsonObject->channelLanguage))
+			$this->channelLanguage = (string)$jsonObject->channelLanguage;
+		if(!is_null($xml) && count($xml->channelImageTitle))
 			$this->channelImageTitle = (string)$xml->channelImageTitle;
-		if(count($xml->channelImageWidth))
+		if(!is_null($jsonObject) && isset($jsonObject->channelImageTitle))
+			$this->channelImageTitle = (string)$jsonObject->channelImageTitle;
+		if(!is_null($xml) && count($xml->channelImageWidth))
 			$this->channelImageWidth = (string)$xml->channelImageWidth;
-		if(count($xml->channelImageHeight))
+		if(!is_null($jsonObject) && isset($jsonObject->channelImageWidth))
+			$this->channelImageWidth = (string)$jsonObject->channelImageWidth;
+		if(!is_null($xml) && count($xml->channelImageHeight))
 			$this->channelImageHeight = (string)$xml->channelImageHeight;
-		if(count($xml->channelImageLink))
+		if(!is_null($jsonObject) && isset($jsonObject->channelImageHeight))
+			$this->channelImageHeight = (string)$jsonObject->channelImageHeight;
+		if(!is_null($xml) && count($xml->channelImageLink))
 			$this->channelImageLink = (string)$xml->channelImageLink;
-		if(count($xml->channelImageUrl))
+		if(!is_null($jsonObject) && isset($jsonObject->channelImageLink))
+			$this->channelImageLink = (string)$jsonObject->channelImageLink;
+		if(!is_null($xml) && count($xml->channelImageUrl))
 			$this->channelImageUrl = (string)$xml->channelImageUrl;
-		if(count($xml->channelCopyright))
+		if(!is_null($jsonObject) && isset($jsonObject->channelImageUrl))
+			$this->channelImageUrl = (string)$jsonObject->channelImageUrl;
+		if(!is_null($xml) && count($xml->channelCopyright))
 			$this->channelCopyright = (string)$xml->channelCopyright;
-		if(count($xml->channelGenerator))
+		if(!is_null($jsonObject) && isset($jsonObject->channelCopyright))
+			$this->channelCopyright = (string)$jsonObject->channelCopyright;
+		if(!is_null($xml) && count($xml->channelGenerator))
 			$this->channelGenerator = (string)$xml->channelGenerator;
-		if(count($xml->channelRating))
+		if(!is_null($jsonObject) && isset($jsonObject->channelGenerator))
+			$this->channelGenerator = (string)$jsonObject->channelGenerator;
+		if(!is_null($xml) && count($xml->channelRating))
 			$this->channelRating = (string)$xml->channelRating;
+		if(!is_null($jsonObject) && isset($jsonObject->channelRating))
+			$this->channelRating = (string)$jsonObject->channelRating;
 	}
 	/**
 	 * 

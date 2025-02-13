@@ -51,12 +51,18 @@ class Kaltura_Client_Attachment_AttachmentAssetService extends Kaltura_Client_Se
 		$this->client->queueServiceActionCall("attachment_attachmentasset", "add", "KalturaAttachmentAsset", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaAttachmentAsset");
-		$this->client->validateObjectType($resultObject, "Kaltura_Client_Attachment_Type_AttachmentAsset");
-		return $resultObject;
+		$rawResult = $this->client->doQueue();
+		if ($this->client->getConfig()->format === Kaltura_Client_ClientBase::KALTURA_SERVICE_FORMAT_JSON) {
+			$jsObject = json_decode($rawResult);
+			$resultObject = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsObject);
+			return $resultObject;
+		} else {
+			$resultXmlObject = new \SimpleXMLElement($rawResult);
+			$this->client->checkIfError($resultXmlObject->result);
+			$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaAttachmentAsset");
+			$this->client->validateObjectType($resultObject, "Kaltura_Client_Attachment_Type_AttachmentAsset");
+		}
+			return $resultObject;
 	}
 
 	/**
@@ -70,9 +76,15 @@ class Kaltura_Client_Attachment_AttachmentAssetService extends Kaltura_Client_Se
 		$this->client->queueServiceActionCall("attachment_attachmentasset", "delete", null, $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
+		$rawResult = $this->client->doQueue();
+		if ($this->client->getConfig()->format === Kaltura_Client_ClientBase::KALTURA_SERVICE_FORMAT_JSON) {
+			$jsObject = json_decode($rawResult);
+			$resultObject = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsObject);
+			return $resultObject;
+		} else {
+			$resultXmlObject = new \SimpleXMLElement($rawResult);
+			$this->client->checkIfError($resultXmlObject->result);
+		}
 	}
 
 	/**
@@ -86,12 +98,18 @@ class Kaltura_Client_Attachment_AttachmentAssetService extends Kaltura_Client_Se
 		$this->client->queueServiceActionCall("attachment_attachmentasset", "get", "KalturaAttachmentAsset", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaAttachmentAsset");
-		$this->client->validateObjectType($resultObject, "Kaltura_Client_Attachment_Type_AttachmentAsset");
-		return $resultObject;
+		$rawResult = $this->client->doQueue();
+		if ($this->client->getConfig()->format === Kaltura_Client_ClientBase::KALTURA_SERVICE_FORMAT_JSON) {
+			$jsObject = json_decode($rawResult);
+			$resultObject = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsObject);
+			return $resultObject;
+		} else {
+			$resultXmlObject = new \SimpleXMLElement($rawResult);
+			$this->client->checkIfError($resultXmlObject->result);
+			$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaAttachmentAsset");
+			$this->client->validateObjectType($resultObject, "Kaltura_Client_Attachment_Type_AttachmentAsset");
+		}
+			return $resultObject;
 	}
 
 	/**
@@ -105,12 +123,18 @@ class Kaltura_Client_Attachment_AttachmentAssetService extends Kaltura_Client_Se
 		$this->client->queueServiceActionCall("attachment_attachmentasset", "getRemotePaths", "KalturaRemotePathListResponse", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaRemotePathListResponse");
-		$this->client->validateObjectType($resultObject, "Kaltura_Client_Type_RemotePathListResponse");
-		return $resultObject;
+		$rawResult = $this->client->doQueue();
+		if ($this->client->getConfig()->format === Kaltura_Client_ClientBase::KALTURA_SERVICE_FORMAT_JSON) {
+			$jsObject = json_decode($rawResult);
+			$resultObject = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsObject);
+			return $resultObject;
+		} else {
+			$resultXmlObject = new \SimpleXMLElement($rawResult);
+			$this->client->checkIfError($resultXmlObject->result);
+			$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaRemotePathListResponse");
+			$this->client->validateObjectType($resultObject, "Kaltura_Client_Type_RemotePathListResponse");
+		}
+			return $resultObject;
 	}
 
 	/**
@@ -125,11 +149,17 @@ class Kaltura_Client_Attachment_AttachmentAssetService extends Kaltura_Client_Se
 		$this->client->queueServiceActionCall("attachment_attachmentasset", "getUrl", null, $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = (string)Kaltura_Client_ParseUtils::unmarshalSimpleType($resultXmlObject->result);
-		return $resultObject;
+		$rawResult = $this->client->doQueue();
+		if ($this->client->getConfig()->format === Kaltura_Client_ClientBase::KALTURA_SERVICE_FORMAT_JSON) {
+			$jsObject = json_decode($rawResult);
+			$resultObject = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsObject);
+			return $resultObject;
+		} else {
+			$resultXmlObject = new \SimpleXMLElement($rawResult);
+			$this->client->checkIfError($resultXmlObject->result);
+			$resultObject = (string)Kaltura_Client_ParseUtils::unmarshalSimpleType($resultXmlObject->result);
+		}
+			return $resultObject;
 	}
 
 	/**
@@ -146,12 +176,18 @@ class Kaltura_Client_Attachment_AttachmentAssetService extends Kaltura_Client_Se
 		$this->client->queueServiceActionCall("attachment_attachmentasset", "list", "KalturaAttachmentAssetListResponse", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaAttachmentAssetListResponse");
-		$this->client->validateObjectType($resultObject, "Kaltura_Client_Attachment_Type_AttachmentAssetListResponse");
-		return $resultObject;
+		$rawResult = $this->client->doQueue();
+		if ($this->client->getConfig()->format === Kaltura_Client_ClientBase::KALTURA_SERVICE_FORMAT_JSON) {
+			$jsObject = json_decode($rawResult);
+			$resultObject = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsObject);
+			return $resultObject;
+		} else {
+			$resultXmlObject = new \SimpleXMLElement($rawResult);
+			$this->client->checkIfError($resultXmlObject->result);
+			$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaAttachmentAssetListResponse");
+			$this->client->validateObjectType($resultObject, "Kaltura_Client_Attachment_Type_AttachmentAssetListResponse");
+		}
+			return $resultObject;
 	}
 
 	/**
@@ -169,7 +205,7 @@ class Kaltura_Client_Attachment_AttachmentAssetService extends Kaltura_Client_Se
 			$this->client->addParam($kparams, "serveOptions", $serveOptions->toParams());
 		$this->client->queueServiceActionCall('attachment_attachmentasset', 'serve', null, $kparams);
 		$resultObject = $this->client->getServeUrl();
-		return $resultObject;
+			return $resultObject;
 	}
 
 	/**
@@ -184,12 +220,18 @@ class Kaltura_Client_Attachment_AttachmentAssetService extends Kaltura_Client_Se
 		$this->client->queueServiceActionCall("attachment_attachmentasset", "setContent", "KalturaAttachmentAsset", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaAttachmentAsset");
-		$this->client->validateObjectType($resultObject, "Kaltura_Client_Attachment_Type_AttachmentAsset");
-		return $resultObject;
+		$rawResult = $this->client->doQueue();
+		if ($this->client->getConfig()->format === Kaltura_Client_ClientBase::KALTURA_SERVICE_FORMAT_JSON) {
+			$jsObject = json_decode($rawResult);
+			$resultObject = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsObject);
+			return $resultObject;
+		} else {
+			$resultXmlObject = new \SimpleXMLElement($rawResult);
+			$this->client->checkIfError($resultXmlObject->result);
+			$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaAttachmentAsset");
+			$this->client->validateObjectType($resultObject, "Kaltura_Client_Attachment_Type_AttachmentAsset");
+		}
+			return $resultObject;
 	}
 
 	/**
@@ -204,11 +246,17 @@ class Kaltura_Client_Attachment_AttachmentAssetService extends Kaltura_Client_Se
 		$this->client->queueServiceActionCall("attachment_attachmentasset", "update", "KalturaAttachmentAsset", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaAttachmentAsset");
-		$this->client->validateObjectType($resultObject, "Kaltura_Client_Attachment_Type_AttachmentAsset");
-		return $resultObject;
+		$rawResult = $this->client->doQueue();
+		if ($this->client->getConfig()->format === Kaltura_Client_ClientBase::KALTURA_SERVICE_FORMAT_JSON) {
+			$jsObject = json_decode($rawResult);
+			$resultObject = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsObject);
+			return $resultObject;
+		} else {
+			$resultXmlObject = new \SimpleXMLElement($rawResult);
+			$this->client->checkIfError($resultXmlObject->result);
+			$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaAttachmentAsset");
+			$this->client->validateObjectType($resultObject, "Kaltura_Client_Attachment_Type_AttachmentAsset");
+		}
+			return $resultObject;
 	}
 }

@@ -38,17 +38,24 @@ class Kaltura_Client_ContentDistribution_Type_SyndicationDistributionProfile ext
 		return 'KalturaSyndicationDistributionProfile';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->xsl))
+		if(!is_null($xml) && count($xml->xsl))
 			$this->xsl = (string)$xml->xsl;
-		if(count($xml->feedId))
+		if(!is_null($jsonObject) && isset($jsonObject->xsl))
+			$this->xsl = (string)$jsonObject->xsl;
+		if(!is_null($xml) && count($xml->feedId))
 			$this->feedId = (string)$xml->feedId;
+		if(!is_null($jsonObject) && isset($jsonObject->feedId))
+			$this->feedId = (string)$jsonObject->feedId;
 	}
 	/**
 	 * 

@@ -38,19 +38,28 @@ class Kaltura_Client_Type_EntryCuePointSearchFilter extends Kaltura_Client_Type_
 		return 'KalturaEntryCuePointSearchFilter';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->cuePointsFreeText))
+		if(!is_null($xml) && count($xml->cuePointsFreeText))
 			$this->cuePointsFreeText = (string)$xml->cuePointsFreeText;
-		if(count($xml->cuePointTypeIn))
+		if(!is_null($jsonObject) && isset($jsonObject->cuePointsFreeText))
+			$this->cuePointsFreeText = (string)$jsonObject->cuePointsFreeText;
+		if(!is_null($xml) && count($xml->cuePointTypeIn))
 			$this->cuePointTypeIn = (string)$xml->cuePointTypeIn;
-		if(count($xml->cuePointSubTypeEqual))
+		if(!is_null($jsonObject) && isset($jsonObject->cuePointTypeIn))
+			$this->cuePointTypeIn = (string)$jsonObject->cuePointTypeIn;
+		if(!is_null($xml) && count($xml->cuePointSubTypeEqual))
 			$this->cuePointSubTypeEqual = (int)$xml->cuePointSubTypeEqual;
+		if(!is_null($jsonObject) && isset($jsonObject->cuePointSubTypeEqual))
+			$this->cuePointSubTypeEqual = (int)$jsonObject->cuePointSubTypeEqual;
 	}
 	/**
 	 * 

@@ -38,21 +38,32 @@ class Kaltura_Client_Type_QuizUserEntry extends Kaltura_Client_Type_UserEntry
 		return 'KalturaQuizUserEntry';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->score))
+		if(!is_null($xml) && count($xml->score))
 			$this->score = (float)$xml->score;
-		if(count($xml->calculatedScore))
+		if(!is_null($jsonObject) && isset($jsonObject->score))
+			$this->score = (float)$jsonObject->score;
+		if(!is_null($xml) && count($xml->calculatedScore))
 			$this->calculatedScore = (float)$xml->calculatedScore;
-		if(count($xml->feedback))
+		if(!is_null($jsonObject) && isset($jsonObject->calculatedScore))
+			$this->calculatedScore = (float)$jsonObject->calculatedScore;
+		if(!is_null($xml) && count($xml->feedback))
 			$this->feedback = (string)$xml->feedback;
-		if(count($xml->version))
+		if(!is_null($jsonObject) && isset($jsonObject->feedback))
+			$this->feedback = (string)$jsonObject->feedback;
+		if(!is_null($xml) && count($xml->version))
 			$this->version = (int)$xml->version;
+		if(!is_null($jsonObject) && isset($jsonObject->version))
+			$this->version = (int)$jsonObject->version;
 	}
 	/**
 	 * 

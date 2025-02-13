@@ -38,17 +38,24 @@ class Kaltura_Client_Beacon_Type_BeaconScheduledResourceSearchParams extends Kal
 		return 'KalturaBeaconScheduledResourceSearchParams';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->searchOperator) && !empty($xml->searchOperator))
+		if(!is_null($xml) && count($xml->searchOperator) && !empty($xml->searchOperator))
 			$this->searchOperator = Kaltura_Client_ParseUtils::unmarshalObject($xml->searchOperator, "KalturaBeaconScheduledResourceOperator");
-		if(count($xml->orderBy) && !empty($xml->orderBy))
+		if(!is_null($jsonObject) && isset($jsonObject->searchOperator) && !empty($jsonObject->searchOperator))
+			$this->searchOperator = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsonObject->searchOperator, "KalturaBeaconScheduledResourceOperator");
+		if(!is_null($xml) && count($xml->orderBy) && !empty($xml->orderBy))
 			$this->orderBy = Kaltura_Client_ParseUtils::unmarshalObject($xml->orderBy, "KalturaBeaconSearchScheduledResourceOrderBy");
+		if(!is_null($jsonObject) && isset($jsonObject->orderBy) && !empty($jsonObject->orderBy))
+			$this->orderBy = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsonObject->orderBy, "KalturaBeaconSearchScheduledResourceOrderBy");
 	}
 	/**
 	 * 

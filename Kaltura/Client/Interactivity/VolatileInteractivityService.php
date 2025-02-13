@@ -51,12 +51,18 @@ class Kaltura_Client_Interactivity_VolatileInteractivityService extends Kaltura_
 		$this->client->queueServiceActionCall("interactivity_volatileinteractivity", "add", "KalturaVolatileInteractivity", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaVolatileInteractivity");
-		$this->client->validateObjectType($resultObject, "Kaltura_Client_Interactivity_Type_VolatileInteractivity");
-		return $resultObject;
+		$rawResult = $this->client->doQueue();
+		if ($this->client->getConfig()->format === Kaltura_Client_ClientBase::KALTURA_SERVICE_FORMAT_JSON) {
+			$jsObject = json_decode($rawResult);
+			$resultObject = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsObject);
+			return $resultObject;
+		} else {
+			$resultXmlObject = new \SimpleXMLElement($rawResult);
+			$this->client->checkIfError($resultXmlObject->result);
+			$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaVolatileInteractivity");
+			$this->client->validateObjectType($resultObject, "Kaltura_Client_Interactivity_Type_VolatileInteractivity");
+		}
+			return $resultObject;
 	}
 
 	/**
@@ -70,9 +76,15 @@ class Kaltura_Client_Interactivity_VolatileInteractivityService extends Kaltura_
 		$this->client->queueServiceActionCall("interactivity_volatileinteractivity", "delete", null, $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
+		$rawResult = $this->client->doQueue();
+		if ($this->client->getConfig()->format === Kaltura_Client_ClientBase::KALTURA_SERVICE_FORMAT_JSON) {
+			$jsObject = json_decode($rawResult);
+			$resultObject = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsObject);
+			return $resultObject;
+		} else {
+			$resultXmlObject = new \SimpleXMLElement($rawResult);
+			$this->client->checkIfError($resultXmlObject->result);
+		}
 	}
 
 	/**
@@ -86,12 +98,18 @@ class Kaltura_Client_Interactivity_VolatileInteractivityService extends Kaltura_
 		$this->client->queueServiceActionCall("interactivity_volatileinteractivity", "get", "KalturaVolatileInteractivity", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaVolatileInteractivity");
-		$this->client->validateObjectType($resultObject, "Kaltura_Client_Interactivity_Type_VolatileInteractivity");
-		return $resultObject;
+		$rawResult = $this->client->doQueue();
+		if ($this->client->getConfig()->format === Kaltura_Client_ClientBase::KALTURA_SERVICE_FORMAT_JSON) {
+			$jsObject = json_decode($rawResult);
+			$resultObject = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsObject);
+			return $resultObject;
+		} else {
+			$resultXmlObject = new \SimpleXMLElement($rawResult);
+			$this->client->checkIfError($resultXmlObject->result);
+			$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaVolatileInteractivity");
+			$this->client->validateObjectType($resultObject, "Kaltura_Client_Interactivity_Type_VolatileInteractivity");
+		}
+			return $resultObject;
 	}
 
 	/**
@@ -107,11 +125,17 @@ class Kaltura_Client_Interactivity_VolatileInteractivityService extends Kaltura_
 		$this->client->queueServiceActionCall("interactivity_volatileinteractivity", "update", "KalturaVolatileInteractivity", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaVolatileInteractivity");
-		$this->client->validateObjectType($resultObject, "Kaltura_Client_Interactivity_Type_VolatileInteractivity");
-		return $resultObject;
+		$rawResult = $this->client->doQueue();
+		if ($this->client->getConfig()->format === Kaltura_Client_ClientBase::KALTURA_SERVICE_FORMAT_JSON) {
+			$jsObject = json_decode($rawResult);
+			$resultObject = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsObject);
+			return $resultObject;
+		} else {
+			$resultXmlObject = new \SimpleXMLElement($rawResult);
+			$this->client->checkIfError($resultXmlObject->result);
+			$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaVolatileInteractivity");
+			$this->client->validateObjectType($resultObject, "Kaltura_Client_Interactivity_Type_VolatileInteractivity");
+		}
+			return $resultObject;
 	}
 }

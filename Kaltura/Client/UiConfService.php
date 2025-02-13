@@ -50,12 +50,18 @@ class Kaltura_Client_UiConfService extends Kaltura_Client_ServiceBase
 		$this->client->queueServiceActionCall("uiconf", "add", "KalturaUiConf", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaUiConf");
-		$this->client->validateObjectType($resultObject, "Kaltura_Client_Type_UiConf");
-		return $resultObject;
+		$rawResult = $this->client->doQueue();
+		if ($this->client->getConfig()->format === Kaltura_Client_ClientBase::KALTURA_SERVICE_FORMAT_JSON) {
+			$jsObject = json_decode($rawResult);
+			$resultObject = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsObject);
+			return $resultObject;
+		} else {
+			$resultXmlObject = new \SimpleXMLElement($rawResult);
+			$this->client->checkIfError($resultXmlObject->result);
+			$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaUiConf");
+			$this->client->validateObjectType($resultObject, "Kaltura_Client_Type_UiConf");
+		}
+			return $resultObject;
 	}
 
 	/**
@@ -69,12 +75,18 @@ class Kaltura_Client_UiConfService extends Kaltura_Client_ServiceBase
 		$this->client->queueServiceActionCall("uiconf", "clone", "KalturaUiConf", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaUiConf");
-		$this->client->validateObjectType($resultObject, "Kaltura_Client_Type_UiConf");
-		return $resultObject;
+		$rawResult = $this->client->doQueue();
+		if ($this->client->getConfig()->format === Kaltura_Client_ClientBase::KALTURA_SERVICE_FORMAT_JSON) {
+			$jsObject = json_decode($rawResult);
+			$resultObject = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsObject);
+			return $resultObject;
+		} else {
+			$resultXmlObject = new \SimpleXMLElement($rawResult);
+			$this->client->checkIfError($resultXmlObject->result);
+			$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaUiConf");
+			$this->client->validateObjectType($resultObject, "Kaltura_Client_Type_UiConf");
+		}
+			return $resultObject;
 	}
 
 	/**
@@ -88,9 +100,15 @@ class Kaltura_Client_UiConfService extends Kaltura_Client_ServiceBase
 		$this->client->queueServiceActionCall("uiconf", "delete", null, $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
+		$rawResult = $this->client->doQueue();
+		if ($this->client->getConfig()->format === Kaltura_Client_ClientBase::KALTURA_SERVICE_FORMAT_JSON) {
+			$jsObject = json_decode($rawResult);
+			$resultObject = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsObject);
+			return $resultObject;
+		} else {
+			$resultXmlObject = new \SimpleXMLElement($rawResult);
+			$this->client->checkIfError($resultXmlObject->result);
+		}
 	}
 
 	/**
@@ -104,12 +122,18 @@ class Kaltura_Client_UiConfService extends Kaltura_Client_ServiceBase
 		$this->client->queueServiceActionCall("uiconf", "get", "KalturaUiConf", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaUiConf");
-		$this->client->validateObjectType($resultObject, "Kaltura_Client_Type_UiConf");
-		return $resultObject;
+		$rawResult = $this->client->doQueue();
+		if ($this->client->getConfig()->format === Kaltura_Client_ClientBase::KALTURA_SERVICE_FORMAT_JSON) {
+			$jsObject = json_decode($rawResult);
+			$resultObject = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsObject);
+			return $resultObject;
+		} else {
+			$resultXmlObject = new \SimpleXMLElement($rawResult);
+			$this->client->checkIfError($resultXmlObject->result);
+			$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaUiConf");
+			$this->client->validateObjectType($resultObject, "Kaltura_Client_Type_UiConf");
+		}
+			return $resultObject;
 	}
 
 	/**
@@ -122,14 +146,20 @@ class Kaltura_Client_UiConfService extends Kaltura_Client_ServiceBase
 		$this->client->queueServiceActionCall("uiconf", "getAvailableTypes", "KalturaUiConfTypeInfo", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = Kaltura_Client_ParseUtils::unmarshalArray($resultXmlObject->result, "KalturaUiConfTypeInfo");
-		foreach($resultObject as $resultObjectItem){
-			$this->client->validateObjectType($resultObjectItem, "Kaltura_Client_Type_UiConfTypeInfo");
+		$rawResult = $this->client->doQueue();
+		if ($this->client->getConfig()->format === Kaltura_Client_ClientBase::KALTURA_SERVICE_FORMAT_JSON) {
+			$jsObject = json_decode($rawResult);
+			$resultObject = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsObject);
+			return $resultObject;
+		} else {
+			$resultXmlObject = new \SimpleXMLElement($rawResult);
+			$this->client->checkIfError($resultXmlObject->result);
+			$resultObject = Kaltura_Client_ParseUtils::unmarshalArray($resultXmlObject->result, "KalturaUiConfTypeInfo");
+			foreach($resultObject as $resultObjectItem){
+				$this->client->validateObjectType($resultObjectItem, "Kaltura_Client_Type_UiConfTypeInfo");
+			}
 		}
-		return $resultObject;
+			return $resultObject;
 	}
 
 	/**
@@ -146,12 +176,18 @@ class Kaltura_Client_UiConfService extends Kaltura_Client_ServiceBase
 		$this->client->queueServiceActionCall("uiconf", "list", "KalturaUiConfListResponse", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaUiConfListResponse");
-		$this->client->validateObjectType($resultObject, "Kaltura_Client_Type_UiConfListResponse");
-		return $resultObject;
+		$rawResult = $this->client->doQueue();
+		if ($this->client->getConfig()->format === Kaltura_Client_ClientBase::KALTURA_SERVICE_FORMAT_JSON) {
+			$jsObject = json_decode($rawResult);
+			$resultObject = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsObject);
+			return $resultObject;
+		} else {
+			$resultXmlObject = new \SimpleXMLElement($rawResult);
+			$this->client->checkIfError($resultXmlObject->result);
+			$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaUiConfListResponse");
+			$this->client->validateObjectType($resultObject, "Kaltura_Client_Type_UiConfListResponse");
+		}
+			return $resultObject;
 	}
 
 	/**
@@ -168,12 +204,18 @@ class Kaltura_Client_UiConfService extends Kaltura_Client_ServiceBase
 		$this->client->queueServiceActionCall("uiconf", "listTemplates", "KalturaUiConfListResponse", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaUiConfListResponse");
-		$this->client->validateObjectType($resultObject, "Kaltura_Client_Type_UiConfListResponse");
-		return $resultObject;
+		$rawResult = $this->client->doQueue();
+		if ($this->client->getConfig()->format === Kaltura_Client_ClientBase::KALTURA_SERVICE_FORMAT_JSON) {
+			$jsObject = json_decode($rawResult);
+			$resultObject = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsObject);
+			return $resultObject;
+		} else {
+			$resultXmlObject = new \SimpleXMLElement($rawResult);
+			$this->client->checkIfError($resultXmlObject->result);
+			$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaUiConfListResponse");
+			$this->client->validateObjectType($resultObject, "Kaltura_Client_Type_UiConfListResponse");
+		}
+			return $resultObject;
 	}
 
 	/**
@@ -188,11 +230,17 @@ class Kaltura_Client_UiConfService extends Kaltura_Client_ServiceBase
 		$this->client->queueServiceActionCall("uiconf", "update", "KalturaUiConf", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaUiConf");
-		$this->client->validateObjectType($resultObject, "Kaltura_Client_Type_UiConf");
-		return $resultObject;
+		$rawResult = $this->client->doQueue();
+		if ($this->client->getConfig()->format === Kaltura_Client_ClientBase::KALTURA_SERVICE_FORMAT_JSON) {
+			$jsObject = json_decode($rawResult);
+			$resultObject = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsObject);
+			return $resultObject;
+		} else {
+			$resultXmlObject = new \SimpleXMLElement($rawResult);
+			$this->client->checkIfError($resultXmlObject->result);
+			$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaUiConf");
+			$this->client->validateObjectType($resultObject, "Kaltura_Client_Type_UiConf");
+		}
+			return $resultObject;
 	}
 }

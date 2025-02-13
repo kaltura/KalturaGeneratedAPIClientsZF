@@ -38,31 +38,52 @@ class Kaltura_Client_Type_NotificationJobData extends Kaltura_Client_Type_JobDat
 		return 'KalturaNotificationJobData';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->userId))
+		if(!is_null($xml) && count($xml->userId))
 			$this->userId = (string)$xml->userId;
-		if(count($xml->type))
+		if(!is_null($jsonObject) && isset($jsonObject->userId))
+			$this->userId = (string)$jsonObject->userId;
+		if(!is_null($xml) && count($xml->type))
 			$this->type = (int)$xml->type;
-		if(count($xml->typeAsString))
+		if(!is_null($jsonObject) && isset($jsonObject->type))
+			$this->type = (int)$jsonObject->type;
+		if(!is_null($xml) && count($xml->typeAsString))
 			$this->typeAsString = (string)$xml->typeAsString;
-		if(count($xml->objectId))
+		if(!is_null($jsonObject) && isset($jsonObject->typeAsString))
+			$this->typeAsString = (string)$jsonObject->typeAsString;
+		if(!is_null($xml) && count($xml->objectId))
 			$this->objectId = (string)$xml->objectId;
-		if(count($xml->status))
+		if(!is_null($jsonObject) && isset($jsonObject->objectId))
+			$this->objectId = (string)$jsonObject->objectId;
+		if(!is_null($xml) && count($xml->status))
 			$this->status = (int)$xml->status;
-		if(count($xml->data))
+		if(!is_null($jsonObject) && isset($jsonObject->status))
+			$this->status = (int)$jsonObject->status;
+		if(!is_null($xml) && count($xml->data))
 			$this->data = (string)$xml->data;
-		if(count($xml->numberOfAttempts))
+		if(!is_null($jsonObject) && isset($jsonObject->data))
+			$this->data = (string)$jsonObject->data;
+		if(!is_null($xml) && count($xml->numberOfAttempts))
 			$this->numberOfAttempts = (int)$xml->numberOfAttempts;
-		if(count($xml->notificationResult))
+		if(!is_null($jsonObject) && isset($jsonObject->numberOfAttempts))
+			$this->numberOfAttempts = (int)$jsonObject->numberOfAttempts;
+		if(!is_null($xml) && count($xml->notificationResult))
 			$this->notificationResult = (string)$xml->notificationResult;
-		if(count($xml->objType))
+		if(!is_null($jsonObject) && isset($jsonObject->notificationResult))
+			$this->notificationResult = (string)$jsonObject->notificationResult;
+		if(!is_null($xml) && count($xml->objType))
 			$this->objType = (int)$xml->objType;
+		if(!is_null($jsonObject) && isset($jsonObject->objType))
+			$this->objType = (int)$jsonObject->objType;
 	}
 	/**
 	 * 

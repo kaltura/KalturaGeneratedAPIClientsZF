@@ -38,21 +38,32 @@ class Kaltura_Client_PlayReady_Type_PlayReadyLicenseDetails extends Kaltura_Clie
 		return 'KalturaPlayReadyLicenseDetails';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->policy) && !empty($xml->policy))
+		if(!is_null($xml) && count($xml->policy) && !empty($xml->policy))
 			$this->policy = Kaltura_Client_ParseUtils::unmarshalObject($xml->policy, "KalturaPlayReadyPolicy");
-		if(count($xml->beginDate))
+		if(!is_null($jsonObject) && isset($jsonObject->policy) && !empty($jsonObject->policy))
+			$this->policy = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsonObject->policy, "KalturaPlayReadyPolicy");
+		if(!is_null($xml) && count($xml->beginDate))
 			$this->beginDate = (int)$xml->beginDate;
-		if(count($xml->expirationDate))
+		if(!is_null($jsonObject) && isset($jsonObject->beginDate))
+			$this->beginDate = (int)$jsonObject->beginDate;
+		if(!is_null($xml) && count($xml->expirationDate))
 			$this->expirationDate = (int)$xml->expirationDate;
-		if(count($xml->removalDate))
+		if(!is_null($jsonObject) && isset($jsonObject->expirationDate))
+			$this->expirationDate = (int)$jsonObject->expirationDate;
+		if(!is_null($xml) && count($xml->removalDate))
 			$this->removalDate = (int)$xml->removalDate;
+		if(!is_null($jsonObject) && isset($jsonObject->removalDate))
+			$this->removalDate = (int)$jsonObject->removalDate;
 	}
 	/**
 	 * PlayReady policy object

@@ -38,28 +38,50 @@ class Kaltura_Client_DoubleClickDistribution_Type_DoubleClickDistributionProfile
 		return 'KalturaDoubleClickDistributionProfile';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->channelTitle))
+		if(!is_null($xml) && count($xml->channelTitle))
 			$this->channelTitle = (string)$xml->channelTitle;
-		if(count($xml->channelLink))
+		if(!is_null($jsonObject) && isset($jsonObject->channelTitle))
+			$this->channelTitle = (string)$jsonObject->channelTitle;
+		if(!is_null($xml) && count($xml->channelLink))
 			$this->channelLink = (string)$xml->channelLink;
-		if(count($xml->channelDescription))
+		if(!is_null($jsonObject) && isset($jsonObject->channelLink))
+			$this->channelLink = (string)$jsonObject->channelLink;
+		if(!is_null($xml) && count($xml->channelDescription))
 			$this->channelDescription = (string)$xml->channelDescription;
-		if(count($xml->feedUrl))
+		if(!is_null($jsonObject) && isset($jsonObject->channelDescription))
+			$this->channelDescription = (string)$jsonObject->channelDescription;
+		if(!is_null($xml) && count($xml->feedUrl))
 			$this->feedUrl = (string)$xml->feedUrl;
-		if(count($xml->cuePointsProvider))
+		if(!is_null($jsonObject) && isset($jsonObject->feedUrl))
+			$this->feedUrl = (string)$jsonObject->feedUrl;
+		if(!is_null($xml) && count($xml->cuePointsProvider))
 			$this->cuePointsProvider = (string)$xml->cuePointsProvider;
-		if(count($xml->itemsPerPage))
+		if(!is_null($jsonObject) && isset($jsonObject->cuePointsProvider))
+			$this->cuePointsProvider = (string)$jsonObject->cuePointsProvider;
+		if(!is_null($xml) && count($xml->itemsPerPage))
 			$this->itemsPerPage = (string)$xml->itemsPerPage;
-		if(count($xml->ignoreSchedulingInFeed))
+		if(!is_null($jsonObject) && isset($jsonObject->itemsPerPage))
+			$this->itemsPerPage = (string)$jsonObject->itemsPerPage;
+		if(!is_null($xml) && count($xml->ignoreSchedulingInFeed))
 		{
 			if(!empty($xml->ignoreSchedulingInFeed) && ((int) $xml->ignoreSchedulingInFeed === 1 || strtolower((string)$xml->ignoreSchedulingInFeed) === 'true'))
+				$this->ignoreSchedulingInFeed = true;
+			else
+				$this->ignoreSchedulingInFeed = false;
+		}
+		if(!is_null($jsonObject) && isset($jsonObject->ignoreSchedulingInFeed))
+		{
+			if(!empty($jsonObject->ignoreSchedulingInFeed) && ((int) $jsonObject->ignoreSchedulingInFeed === 1 || strtolower((string)$jsonObject->ignoreSchedulingInFeed) === 'true'))
 				$this->ignoreSchedulingInFeed = true;
 			else
 				$this->ignoreSchedulingInFeed = false;

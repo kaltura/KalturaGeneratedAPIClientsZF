@@ -38,28 +38,46 @@ class Kaltura_Client_Type_ReportExportParams extends Kaltura_Client_ObjectBase
 		return 'KalturaReportExportParams';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->recipientEmail))
+		if(!is_null($xml) && count($xml->recipientEmail))
 			$this->recipientEmail = (string)$xml->recipientEmail;
-		if(count($xml->timeZoneOffset))
+		if(!is_null($jsonObject) && isset($jsonObject->recipientEmail))
+			$this->recipientEmail = (string)$jsonObject->recipientEmail;
+		if(!is_null($xml) && count($xml->timeZoneOffset))
 			$this->timeZoneOffset = (int)$xml->timeZoneOffset;
-		if(count($xml->reportItems))
+		if(!is_null($jsonObject) && isset($jsonObject->timeZoneOffset))
+			$this->timeZoneOffset = (int)$jsonObject->timeZoneOffset;
+		if(!is_null($xml) && count($xml->reportItems))
 		{
 			if(empty($xml->reportItems))
 				$this->reportItems = array();
 			else
 				$this->reportItems = Kaltura_Client_ParseUtils::unmarshalArray($xml->reportItems, "KalturaReportExportItem");
 		}
-		if(count($xml->reportsItemsGroup))
+		if(!is_null($jsonObject) && isset($jsonObject->reportItems))
+		{
+			if(empty($jsonObject->reportItems))
+				$this->reportItems = array();
+			else
+				$this->reportItems = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsonObject->reportItems, "KalturaReportExportItem");
+		}
+		if(!is_null($xml) && count($xml->reportsItemsGroup))
 			$this->reportsItemsGroup = (string)$xml->reportsItemsGroup;
-		if(count($xml->baseUrl))
+		if(!is_null($jsonObject) && isset($jsonObject->reportsItemsGroup))
+			$this->reportsItemsGroup = (string)$jsonObject->reportsItemsGroup;
+		if(!is_null($xml) && count($xml->baseUrl))
 			$this->baseUrl = (string)$xml->baseUrl;
+		if(!is_null($jsonObject) && isset($jsonObject->baseUrl))
+			$this->baseUrl = (string)$jsonObject->baseUrl;
 	}
 	/**
 	 * 

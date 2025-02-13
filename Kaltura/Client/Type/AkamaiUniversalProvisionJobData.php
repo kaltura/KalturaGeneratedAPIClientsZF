@@ -38,33 +38,56 @@ class Kaltura_Client_Type_AkamaiUniversalProvisionJobData extends Kaltura_Client
 		return 'KalturaAkamaiUniversalProvisionJobData';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->streamId))
+		if(!is_null($xml) && count($xml->streamId))
 			$this->streamId = (int)$xml->streamId;
-		if(count($xml->systemUserName))
+		if(!is_null($jsonObject) && isset($jsonObject->streamId))
+			$this->streamId = (int)$jsonObject->streamId;
+		if(!is_null($xml) && count($xml->systemUserName))
 			$this->systemUserName = (string)$xml->systemUserName;
-		if(count($xml->systemPassword))
+		if(!is_null($jsonObject) && isset($jsonObject->systemUserName))
+			$this->systemUserName = (string)$jsonObject->systemUserName;
+		if(!is_null($xml) && count($xml->systemPassword))
 			$this->systemPassword = (string)$xml->systemPassword;
-		if(count($xml->domainName))
+		if(!is_null($jsonObject) && isset($jsonObject->systemPassword))
+			$this->systemPassword = (string)$jsonObject->systemPassword;
+		if(!is_null($xml) && count($xml->domainName))
 			$this->domainName = (string)$xml->domainName;
-		if(count($xml->dvrEnabled))
+		if(!is_null($jsonObject) && isset($jsonObject->domainName))
+			$this->domainName = (string)$jsonObject->domainName;
+		if(!is_null($xml) && count($xml->dvrEnabled))
 			$this->dvrEnabled = (int)$xml->dvrEnabled;
-		if(count($xml->dvrWindow))
+		if(!is_null($jsonObject) && isset($jsonObject->dvrEnabled))
+			$this->dvrEnabled = (int)$jsonObject->dvrEnabled;
+		if(!is_null($xml) && count($xml->dvrWindow))
 			$this->dvrWindow = (int)$xml->dvrWindow;
-		if(count($xml->primaryContact))
+		if(!is_null($jsonObject) && isset($jsonObject->dvrWindow))
+			$this->dvrWindow = (int)$jsonObject->dvrWindow;
+		if(!is_null($xml) && count($xml->primaryContact))
 			$this->primaryContact = (string)$xml->primaryContact;
-		if(count($xml->secondaryContact))
+		if(!is_null($jsonObject) && isset($jsonObject->primaryContact))
+			$this->primaryContact = (string)$jsonObject->primaryContact;
+		if(!is_null($xml) && count($xml->secondaryContact))
 			$this->secondaryContact = (string)$xml->secondaryContact;
-		if(count($xml->streamType))
+		if(!is_null($jsonObject) && isset($jsonObject->secondaryContact))
+			$this->secondaryContact = (string)$jsonObject->secondaryContact;
+		if(!is_null($xml) && count($xml->streamType))
 			$this->streamType = (string)$xml->streamType;
-		if(count($xml->notificationEmail))
+		if(!is_null($jsonObject) && isset($jsonObject->streamType))
+			$this->streamType = (string)$jsonObject->streamType;
+		if(!is_null($xml) && count($xml->notificationEmail))
 			$this->notificationEmail = (string)$xml->notificationEmail;
+		if(!is_null($jsonObject) && isset($jsonObject->notificationEmail))
+			$this->notificationEmail = (string)$jsonObject->notificationEmail;
 	}
 	/**
 	 * 

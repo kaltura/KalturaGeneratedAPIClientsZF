@@ -38,45 +38,125 @@ class Kaltura_Client_Type_ClipConcatJobData extends Kaltura_Client_Type_JobData
 		return 'KalturaClipConcatJobData';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->partnerId))
+		if(!is_null($xml) && count($xml->destEntryId))
+			$this->destEntryId = (string)$xml->destEntryId;
+		if(!is_null($jsonObject) && isset($jsonObject->destEntryId))
+			$this->destEntryId = (string)$jsonObject->destEntryId;
+		if(!is_null($xml) && count($xml->tempEntryId))
+			$this->tempEntryId = (string)$xml->tempEntryId;
+		if(!is_null($jsonObject) && isset($jsonObject->tempEntryId))
+			$this->tempEntryId = (string)$jsonObject->tempEntryId;
+		if(!is_null($xml) && count($xml->sourceEntryId))
+			$this->sourceEntryId = (string)$xml->sourceEntryId;
+		if(!is_null($jsonObject) && isset($jsonObject->sourceEntryId))
+			$this->sourceEntryId = (string)$jsonObject->sourceEntryId;
+		if(!is_null($xml) && count($xml->importUrl))
+			$this->importUrl = (string)$xml->importUrl;
+		if(!is_null($jsonObject) && isset($jsonObject->importUrl))
+			$this->importUrl = (string)$jsonObject->importUrl;
+		if(!is_null($xml) && count($xml->partnerId))
 			$this->partnerId = (int)$xml->partnerId;
-		if(count($xml->priority))
+		if(!is_null($jsonObject) && isset($jsonObject->partnerId))
+			$this->partnerId = (int)$jsonObject->partnerId;
+		if(!is_null($xml) && count($xml->priority))
 			$this->priority = (int)$xml->priority;
-		if(count($xml->operationAttributes))
+		if(!is_null($jsonObject) && isset($jsonObject->priority))
+			$this->priority = (int)$jsonObject->priority;
+		if(!is_null($xml) && count($xml->operationAttributes))
 		{
 			if(empty($xml->operationAttributes))
 				$this->operationAttributes = array();
 			else
 				$this->operationAttributes = Kaltura_Client_ParseUtils::unmarshalArray($xml->operationAttributes, "KalturaOperationAttributes");
 		}
+		if(!is_null($jsonObject) && isset($jsonObject->operationAttributes))
+		{
+			if(empty($jsonObject->operationAttributes))
+				$this->operationAttributes = array();
+			else
+				$this->operationAttributes = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsonObject->operationAttributes, "KalturaOperationAttributes");
+		}
+		if(!is_null($xml) && count($xml->resourceOrder))
+			$this->resourceOrder = (int)$xml->resourceOrder;
+		if(!is_null($jsonObject) && isset($jsonObject->resourceOrder))
+			$this->resourceOrder = (int)$jsonObject->resourceOrder;
+		if(!is_null($xml) && count($xml->conversionParams))
+			$this->conversionParams = (string)$xml->conversionParams;
+		if(!is_null($jsonObject) && isset($jsonObject->conversionParams))
+			$this->conversionParams = (string)$jsonObject->conversionParams;
 	}
 	/**
-	 * $partnerId
+	 * 
+	 *
+	 * @var string
+	 */
+	public $destEntryId = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $tempEntryId = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $sourceEntryId = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $importUrl = null;
+
+	/**
+	 * 
 	 *
 	 * @var int
 	 */
 	public $partnerId = null;
 
 	/**
-	 * $priority
+	 * 
 	 *
 	 * @var int
 	 */
 	public $priority = null;
 
 	/**
-	 * clip operations
+	 * 
 	 *
 	 * @var array of KalturaOperationAttributes
 	 */
 	public $operationAttributes;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $resourceOrder = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $conversionParams = null;
 
 
 }

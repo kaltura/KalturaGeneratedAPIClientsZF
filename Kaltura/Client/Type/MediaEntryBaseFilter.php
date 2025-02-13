@@ -38,33 +38,56 @@ abstract class Kaltura_Client_Type_MediaEntryBaseFilter extends Kaltura_Client_T
 		return 'KalturaMediaEntryBaseFilter';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->mediaTypeEqual))
+		if(!is_null($xml) && count($xml->mediaTypeEqual))
 			$this->mediaTypeEqual = (int)$xml->mediaTypeEqual;
-		if(count($xml->mediaTypeIn))
+		if(!is_null($jsonObject) && isset($jsonObject->mediaTypeEqual))
+			$this->mediaTypeEqual = (int)$jsonObject->mediaTypeEqual;
+		if(!is_null($xml) && count($xml->mediaTypeIn))
 			$this->mediaTypeIn = (string)$xml->mediaTypeIn;
-		if(count($xml->sourceTypeEqual))
+		if(!is_null($jsonObject) && isset($jsonObject->mediaTypeIn))
+			$this->mediaTypeIn = (string)$jsonObject->mediaTypeIn;
+		if(!is_null($xml) && count($xml->sourceTypeEqual))
 			$this->sourceTypeEqual = (string)$xml->sourceTypeEqual;
-		if(count($xml->sourceTypeNotEqual))
+		if(!is_null($jsonObject) && isset($jsonObject->sourceTypeEqual))
+			$this->sourceTypeEqual = (string)$jsonObject->sourceTypeEqual;
+		if(!is_null($xml) && count($xml->sourceTypeNotEqual))
 			$this->sourceTypeNotEqual = (string)$xml->sourceTypeNotEqual;
-		if(count($xml->sourceTypeIn))
+		if(!is_null($jsonObject) && isset($jsonObject->sourceTypeNotEqual))
+			$this->sourceTypeNotEqual = (string)$jsonObject->sourceTypeNotEqual;
+		if(!is_null($xml) && count($xml->sourceTypeIn))
 			$this->sourceTypeIn = (string)$xml->sourceTypeIn;
-		if(count($xml->sourceTypeNotIn))
+		if(!is_null($jsonObject) && isset($jsonObject->sourceTypeIn))
+			$this->sourceTypeIn = (string)$jsonObject->sourceTypeIn;
+		if(!is_null($xml) && count($xml->sourceTypeNotIn))
 			$this->sourceTypeNotIn = (string)$xml->sourceTypeNotIn;
-		if(count($xml->mediaDateGreaterThanOrEqual))
+		if(!is_null($jsonObject) && isset($jsonObject->sourceTypeNotIn))
+			$this->sourceTypeNotIn = (string)$jsonObject->sourceTypeNotIn;
+		if(!is_null($xml) && count($xml->mediaDateGreaterThanOrEqual))
 			$this->mediaDateGreaterThanOrEqual = (int)$xml->mediaDateGreaterThanOrEqual;
-		if(count($xml->mediaDateLessThanOrEqual))
+		if(!is_null($jsonObject) && isset($jsonObject->mediaDateGreaterThanOrEqual))
+			$this->mediaDateGreaterThanOrEqual = (int)$jsonObject->mediaDateGreaterThanOrEqual;
+		if(!is_null($xml) && count($xml->mediaDateLessThanOrEqual))
 			$this->mediaDateLessThanOrEqual = (int)$xml->mediaDateLessThanOrEqual;
-		if(count($xml->flavorParamsIdsMatchOr))
+		if(!is_null($jsonObject) && isset($jsonObject->mediaDateLessThanOrEqual))
+			$this->mediaDateLessThanOrEqual = (int)$jsonObject->mediaDateLessThanOrEqual;
+		if(!is_null($xml) && count($xml->flavorParamsIdsMatchOr))
 			$this->flavorParamsIdsMatchOr = (string)$xml->flavorParamsIdsMatchOr;
-		if(count($xml->flavorParamsIdsMatchAnd))
+		if(!is_null($jsonObject) && isset($jsonObject->flavorParamsIdsMatchOr))
+			$this->flavorParamsIdsMatchOr = (string)$jsonObject->flavorParamsIdsMatchOr;
+		if(!is_null($xml) && count($xml->flavorParamsIdsMatchAnd))
 			$this->flavorParamsIdsMatchAnd = (string)$xml->flavorParamsIdsMatchAnd;
+		if(!is_null($jsonObject) && isset($jsonObject->flavorParamsIdsMatchAnd))
+			$this->flavorParamsIdsMatchAnd = (string)$jsonObject->flavorParamsIdsMatchAnd;
 	}
 	/**
 	 * 

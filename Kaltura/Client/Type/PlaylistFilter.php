@@ -38,17 +38,24 @@ class Kaltura_Client_Type_PlaylistFilter extends Kaltura_Client_Type_PlaylistBas
 		return 'KalturaPlaylistFilter';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->playListTypeEqual))
+		if(!is_null($xml) && count($xml->playListTypeEqual))
 			$this->playListTypeEqual = (int)$xml->playListTypeEqual;
-		if(count($xml->playListTypeIn))
+		if(!is_null($jsonObject) && isset($jsonObject->playListTypeEqual))
+			$this->playListTypeEqual = (int)$jsonObject->playListTypeEqual;
+		if(!is_null($xml) && count($xml->playListTypeIn))
 			$this->playListTypeIn = (string)$xml->playListTypeIn;
+		if(!is_null($jsonObject) && isset($jsonObject->playListTypeIn))
+			$this->playListTypeIn = (string)$jsonObject->playListTypeIn;
 	}
 	/**
 	 * 

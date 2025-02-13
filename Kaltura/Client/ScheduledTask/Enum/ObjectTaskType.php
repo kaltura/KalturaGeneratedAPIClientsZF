@@ -44,5 +44,6 @@ class Kaltura_Client_ScheduledTask_Enum_ObjectTaskType extends Kaltura_Client_En
 	const STORAGE_EXPORT = "6";
 	const MODIFY_ENTRY = "7";
 	const MAIL_NOTIFICATION = "8";
+	const RECYCLE_BIN_CLEANUP = "9";
 }
 

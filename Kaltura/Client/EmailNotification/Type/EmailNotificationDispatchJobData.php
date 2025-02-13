@@ -38,39 +38,69 @@ class Kaltura_Client_EmailNotification_Type_EmailNotificationDispatchJobData ext
 		return 'KalturaEmailNotificationDispatchJobData';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->fromEmail))
+		if(!is_null($xml) && count($xml->fromEmail))
 			$this->fromEmail = (string)$xml->fromEmail;
-		if(count($xml->fromName))
+		if(!is_null($jsonObject) && isset($jsonObject->fromEmail))
+			$this->fromEmail = (string)$jsonObject->fromEmail;
+		if(!is_null($xml) && count($xml->fromName))
 			$this->fromName = (string)$xml->fromName;
-		if(count($xml->to) && !empty($xml->to))
+		if(!is_null($jsonObject) && isset($jsonObject->fromName))
+			$this->fromName = (string)$jsonObject->fromName;
+		if(!is_null($xml) && count($xml->to) && !empty($xml->to))
 			$this->to = Kaltura_Client_ParseUtils::unmarshalObject($xml->to, "KalturaEmailNotificationRecipientJobData");
-		if(count($xml->cc) && !empty($xml->cc))
+		if(!is_null($jsonObject) && isset($jsonObject->to) && !empty($jsonObject->to))
+			$this->to = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsonObject->to, "KalturaEmailNotificationRecipientJobData");
+		if(!is_null($xml) && count($xml->cc) && !empty($xml->cc))
 			$this->cc = Kaltura_Client_ParseUtils::unmarshalObject($xml->cc, "KalturaEmailNotificationRecipientJobData");
-		if(count($xml->bcc) && !empty($xml->bcc))
+		if(!is_null($jsonObject) && isset($jsonObject->cc) && !empty($jsonObject->cc))
+			$this->cc = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsonObject->cc, "KalturaEmailNotificationRecipientJobData");
+		if(!is_null($xml) && count($xml->bcc) && !empty($xml->bcc))
 			$this->bcc = Kaltura_Client_ParseUtils::unmarshalObject($xml->bcc, "KalturaEmailNotificationRecipientJobData");
-		if(count($xml->replyTo) && !empty($xml->replyTo))
+		if(!is_null($jsonObject) && isset($jsonObject->bcc) && !empty($jsonObject->bcc))
+			$this->bcc = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsonObject->bcc, "KalturaEmailNotificationRecipientJobData");
+		if(!is_null($xml) && count($xml->replyTo) && !empty($xml->replyTo))
 			$this->replyTo = Kaltura_Client_ParseUtils::unmarshalObject($xml->replyTo, "KalturaEmailNotificationRecipientJobData");
-		if(count($xml->priority))
+		if(!is_null($jsonObject) && isset($jsonObject->replyTo) && !empty($jsonObject->replyTo))
+			$this->replyTo = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsonObject->replyTo, "KalturaEmailNotificationRecipientJobData");
+		if(!is_null($xml) && count($xml->priority))
 			$this->priority = (int)$xml->priority;
-		if(count($xml->confirmReadingTo))
+		if(!is_null($jsonObject) && isset($jsonObject->priority))
+			$this->priority = (int)$jsonObject->priority;
+		if(!is_null($xml) && count($xml->confirmReadingTo))
 			$this->confirmReadingTo = (string)$xml->confirmReadingTo;
-		if(count($xml->hostname))
+		if(!is_null($jsonObject) && isset($jsonObject->confirmReadingTo))
+			$this->confirmReadingTo = (string)$jsonObject->confirmReadingTo;
+		if(!is_null($xml) && count($xml->hostname))
 			$this->hostname = (string)$xml->hostname;
-		if(count($xml->messageID))
+		if(!is_null($jsonObject) && isset($jsonObject->hostname))
+			$this->hostname = (string)$jsonObject->hostname;
+		if(!is_null($xml) && count($xml->messageID))
 			$this->messageID = (string)$xml->messageID;
-		if(count($xml->customHeaders))
+		if(!is_null($jsonObject) && isset($jsonObject->messageID))
+			$this->messageID = (string)$jsonObject->messageID;
+		if(!is_null($xml) && count($xml->customHeaders))
 		{
 			if(empty($xml->customHeaders))
 				$this->customHeaders = array();
 			else
 				$this->customHeaders = Kaltura_Client_ParseUtils::unmarshalArray($xml->customHeaders, "KalturaKeyValue");
+		}
+		if(!is_null($jsonObject) && isset($jsonObject->customHeaders))
+		{
+			if(empty($jsonObject->customHeaders))
+				$this->customHeaders = array();
+			else
+				$this->customHeaders = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsonObject->customHeaders, "KalturaKeyValue");
 		}
 	}
 	/**

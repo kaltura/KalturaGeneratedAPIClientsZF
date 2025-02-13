@@ -38,21 +38,32 @@ class Kaltura_Client_Type_YahooSyndicationFeed extends Kaltura_Client_Type_BaseS
 		return 'KalturaYahooSyndicationFeed';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->category))
+		if(!is_null($xml) && count($xml->category))
 			$this->category = (string)$xml->category;
-		if(count($xml->adultContent))
+		if(!is_null($jsonObject) && isset($jsonObject->category))
+			$this->category = (string)$jsonObject->category;
+		if(!is_null($xml) && count($xml->adultContent))
 			$this->adultContent = (string)$xml->adultContent;
-		if(count($xml->feedDescription))
+		if(!is_null($jsonObject) && isset($jsonObject->adultContent))
+			$this->adultContent = (string)$jsonObject->adultContent;
+		if(!is_null($xml) && count($xml->feedDescription))
 			$this->feedDescription = (string)$xml->feedDescription;
-		if(count($xml->feedLandingPage))
+		if(!is_null($jsonObject) && isset($jsonObject->feedDescription))
+			$this->feedDescription = (string)$jsonObject->feedDescription;
+		if(!is_null($xml) && count($xml->feedLandingPage))
 			$this->feedLandingPage = (string)$xml->feedLandingPage;
+		if(!is_null($jsonObject) && isset($jsonObject->feedLandingPage))
+			$this->feedLandingPage = (string)$jsonObject->feedLandingPage;
 	}
 	/**
 	 * 

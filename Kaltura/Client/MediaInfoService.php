@@ -53,11 +53,17 @@ class Kaltura_Client_MediaInfoService extends Kaltura_Client_ServiceBase
 		$this->client->queueServiceActionCall("mediainfo", "list", "KalturaMediaInfoListResponse", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaMediaInfoListResponse");
-		$this->client->validateObjectType($resultObject, "Kaltura_Client_Type_MediaInfoListResponse");
-		return $resultObject;
+		$rawResult = $this->client->doQueue();
+		if ($this->client->getConfig()->format === Kaltura_Client_ClientBase::KALTURA_SERVICE_FORMAT_JSON) {
+			$jsObject = json_decode($rawResult);
+			$resultObject = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsObject);
+			return $resultObject;
+		} else {
+			$resultXmlObject = new \SimpleXMLElement($rawResult);
+			$this->client->checkIfError($resultXmlObject->result);
+			$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaMediaInfoListResponse");
+			$this->client->validateObjectType($resultObject, "Kaltura_Client_Type_MediaInfoListResponse");
+		}
+			return $resultObject;
 	}
 }

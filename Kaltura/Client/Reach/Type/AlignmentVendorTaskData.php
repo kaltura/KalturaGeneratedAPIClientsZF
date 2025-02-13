@@ -38,17 +38,24 @@ class Kaltura_Client_Reach_Type_AlignmentVendorTaskData extends Kaltura_Client_R
 		return 'KalturaAlignmentVendorTaskData';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->textTranscriptAssetId))
+		if(!is_null($xml) && count($xml->textTranscriptAssetId))
 			$this->textTranscriptAssetId = (string)$xml->textTranscriptAssetId;
-		if(count($xml->jsonTranscriptAssetId))
+		if(!is_null($jsonObject) && isset($jsonObject->textTranscriptAssetId))
+			$this->textTranscriptAssetId = (string)$jsonObject->textTranscriptAssetId;
+		if(!is_null($xml) && count($xml->jsonTranscriptAssetId))
 			$this->jsonTranscriptAssetId = (string)$xml->jsonTranscriptAssetId;
+		if(!is_null($jsonObject) && isset($jsonObject->jsonTranscriptAssetId))
+			$this->jsonTranscriptAssetId = (string)$jsonObject->jsonTranscriptAssetId;
 	}
 	/**
 	 * The id of the text transcript object the vendor should use while runing the alignment task

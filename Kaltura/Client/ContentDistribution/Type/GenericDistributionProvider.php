@@ -38,52 +38,94 @@ class Kaltura_Client_ContentDistribution_Type_GenericDistributionProvider extend
 		return 'KalturaGenericDistributionProvider';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->id))
+		if(!is_null($xml) && count($xml->id))
 			$this->id = (int)$xml->id;
-		if(count($xml->createdAt))
+		if(!is_null($jsonObject) && isset($jsonObject->id))
+			$this->id = (int)$jsonObject->id;
+		if(!is_null($xml) && count($xml->createdAt))
 			$this->createdAt = (int)$xml->createdAt;
-		if(count($xml->updatedAt))
+		if(!is_null($jsonObject) && isset($jsonObject->createdAt))
+			$this->createdAt = (int)$jsonObject->createdAt;
+		if(!is_null($xml) && count($xml->updatedAt))
 			$this->updatedAt = (int)$xml->updatedAt;
-		if(count($xml->partnerId))
+		if(!is_null($jsonObject) && isset($jsonObject->updatedAt))
+			$this->updatedAt = (int)$jsonObject->updatedAt;
+		if(!is_null($xml) && count($xml->partnerId))
 			$this->partnerId = (int)$xml->partnerId;
-		if(count($xml->isDefault))
+		if(!is_null($jsonObject) && isset($jsonObject->partnerId))
+			$this->partnerId = (int)$jsonObject->partnerId;
+		if(!is_null($xml) && count($xml->isDefault))
 		{
 			if(!empty($xml->isDefault) && ((int) $xml->isDefault === 1 || strtolower((string)$xml->isDefault) === 'true'))
 				$this->isDefault = true;
 			else
 				$this->isDefault = false;
 		}
-		if(count($xml->status))
+		if(!is_null($jsonObject) && isset($jsonObject->isDefault))
+		{
+			if(!empty($jsonObject->isDefault) && ((int) $jsonObject->isDefault === 1 || strtolower((string)$jsonObject->isDefault) === 'true'))
+				$this->isDefault = true;
+			else
+				$this->isDefault = false;
+		}
+		if(!is_null($xml) && count($xml->status))
 			$this->status = (int)$xml->status;
-		if(count($xml->optionalFlavorParamsIds))
+		if(!is_null($jsonObject) && isset($jsonObject->status))
+			$this->status = (int)$jsonObject->status;
+		if(!is_null($xml) && count($xml->optionalFlavorParamsIds))
 			$this->optionalFlavorParamsIds = (string)$xml->optionalFlavorParamsIds;
-		if(count($xml->requiredFlavorParamsIds))
+		if(!is_null($jsonObject) && isset($jsonObject->optionalFlavorParamsIds))
+			$this->optionalFlavorParamsIds = (string)$jsonObject->optionalFlavorParamsIds;
+		if(!is_null($xml) && count($xml->requiredFlavorParamsIds))
 			$this->requiredFlavorParamsIds = (string)$xml->requiredFlavorParamsIds;
-		if(count($xml->optionalThumbDimensions))
+		if(!is_null($jsonObject) && isset($jsonObject->requiredFlavorParamsIds))
+			$this->requiredFlavorParamsIds = (string)$jsonObject->requiredFlavorParamsIds;
+		if(!is_null($xml) && count($xml->optionalThumbDimensions))
 		{
 			if(empty($xml->optionalThumbDimensions))
 				$this->optionalThumbDimensions = array();
 			else
 				$this->optionalThumbDimensions = Kaltura_Client_ParseUtils::unmarshalArray($xml->optionalThumbDimensions, "KalturaDistributionThumbDimensions");
 		}
-		if(count($xml->requiredThumbDimensions))
+		if(!is_null($jsonObject) && isset($jsonObject->optionalThumbDimensions))
+		{
+			if(empty($jsonObject->optionalThumbDimensions))
+				$this->optionalThumbDimensions = array();
+			else
+				$this->optionalThumbDimensions = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsonObject->optionalThumbDimensions, "KalturaDistributionThumbDimensions");
+		}
+		if(!is_null($xml) && count($xml->requiredThumbDimensions))
 		{
 			if(empty($xml->requiredThumbDimensions))
 				$this->requiredThumbDimensions = array();
 			else
 				$this->requiredThumbDimensions = Kaltura_Client_ParseUtils::unmarshalArray($xml->requiredThumbDimensions, "KalturaDistributionThumbDimensions");
 		}
-		if(count($xml->editableFields))
+		if(!is_null($jsonObject) && isset($jsonObject->requiredThumbDimensions))
+		{
+			if(empty($jsonObject->requiredThumbDimensions))
+				$this->requiredThumbDimensions = array();
+			else
+				$this->requiredThumbDimensions = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsonObject->requiredThumbDimensions, "KalturaDistributionThumbDimensions");
+		}
+		if(!is_null($xml) && count($xml->editableFields))
 			$this->editableFields = (string)$xml->editableFields;
-		if(count($xml->mandatoryFields))
+		if(!is_null($jsonObject) && isset($jsonObject->editableFields))
+			$this->editableFields = (string)$jsonObject->editableFields;
+		if(!is_null($xml) && count($xml->mandatoryFields))
 			$this->mandatoryFields = (string)$xml->mandatoryFields;
+		if(!is_null($jsonObject) && isset($jsonObject->mandatoryFields))
+			$this->mandatoryFields = (string)$jsonObject->mandatoryFields;
 	}
 	/**
 	 * Auto generated

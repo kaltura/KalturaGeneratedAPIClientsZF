@@ -38,74 +38,138 @@ class Kaltura_Client_ContentDistribution_Type_EntryDistribution extends Kaltura_
 		return 'KalturaEntryDistribution';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->id))
+		if(!is_null($xml) && count($xml->id))
 			$this->id = (int)$xml->id;
-		if(count($xml->createdAt))
+		if(!is_null($jsonObject) && isset($jsonObject->id))
+			$this->id = (int)$jsonObject->id;
+		if(!is_null($xml) && count($xml->createdAt))
 			$this->createdAt = (int)$xml->createdAt;
-		if(count($xml->updatedAt))
+		if(!is_null($jsonObject) && isset($jsonObject->createdAt))
+			$this->createdAt = (int)$jsonObject->createdAt;
+		if(!is_null($xml) && count($xml->updatedAt))
 			$this->updatedAt = (int)$xml->updatedAt;
-		if(count($xml->submittedAt))
+		if(!is_null($jsonObject) && isset($jsonObject->updatedAt))
+			$this->updatedAt = (int)$jsonObject->updatedAt;
+		if(!is_null($xml) && count($xml->submittedAt))
 			$this->submittedAt = (int)$xml->submittedAt;
-		if(count($xml->entryId))
+		if(!is_null($jsonObject) && isset($jsonObject->submittedAt))
+			$this->submittedAt = (int)$jsonObject->submittedAt;
+		if(!is_null($xml) && count($xml->entryId))
 			$this->entryId = (string)$xml->entryId;
-		if(count($xml->partnerId))
+		if(!is_null($jsonObject) && isset($jsonObject->entryId))
+			$this->entryId = (string)$jsonObject->entryId;
+		if(!is_null($xml) && count($xml->partnerId))
 			$this->partnerId = (int)$xml->partnerId;
-		if(count($xml->distributionProfileId))
+		if(!is_null($jsonObject) && isset($jsonObject->partnerId))
+			$this->partnerId = (int)$jsonObject->partnerId;
+		if(!is_null($xml) && count($xml->distributionProfileId))
 			$this->distributionProfileId = (int)$xml->distributionProfileId;
-		if(count($xml->status))
+		if(!is_null($jsonObject) && isset($jsonObject->distributionProfileId))
+			$this->distributionProfileId = (int)$jsonObject->distributionProfileId;
+		if(!is_null($xml) && count($xml->status))
 			$this->status = (int)$xml->status;
-		if(count($xml->sunStatus))
+		if(!is_null($jsonObject) && isset($jsonObject->status))
+			$this->status = (int)$jsonObject->status;
+		if(!is_null($xml) && count($xml->sunStatus))
 			$this->sunStatus = (int)$xml->sunStatus;
-		if(count($xml->dirtyStatus))
+		if(!is_null($jsonObject) && isset($jsonObject->sunStatus))
+			$this->sunStatus = (int)$jsonObject->sunStatus;
+		if(!is_null($xml) && count($xml->dirtyStatus))
 			$this->dirtyStatus = (int)$xml->dirtyStatus;
-		if(count($xml->thumbAssetIds))
+		if(!is_null($jsonObject) && isset($jsonObject->dirtyStatus))
+			$this->dirtyStatus = (int)$jsonObject->dirtyStatus;
+		if(!is_null($xml) && count($xml->thumbAssetIds))
 			$this->thumbAssetIds = (string)$xml->thumbAssetIds;
-		if(count($xml->flavorAssetIds))
+		if(!is_null($jsonObject) && isset($jsonObject->thumbAssetIds))
+			$this->thumbAssetIds = (string)$jsonObject->thumbAssetIds;
+		if(!is_null($xml) && count($xml->flavorAssetIds))
 			$this->flavorAssetIds = (string)$xml->flavorAssetIds;
-		if(count($xml->assetIds))
+		if(!is_null($jsonObject) && isset($jsonObject->flavorAssetIds))
+			$this->flavorAssetIds = (string)$jsonObject->flavorAssetIds;
+		if(!is_null($xml) && count($xml->assetIds))
 			$this->assetIds = (string)$xml->assetIds;
-		if(count($xml->sunrise))
+		if(!is_null($jsonObject) && isset($jsonObject->assetIds))
+			$this->assetIds = (string)$jsonObject->assetIds;
+		if(!is_null($xml) && count($xml->sunrise))
 			$this->sunrise = (int)$xml->sunrise;
-		if(count($xml->sunset))
+		if(!is_null($jsonObject) && isset($jsonObject->sunrise))
+			$this->sunrise = (int)$jsonObject->sunrise;
+		if(!is_null($xml) && count($xml->sunset))
 			$this->sunset = (int)$xml->sunset;
-		if(count($xml->remoteId))
+		if(!is_null($jsonObject) && isset($jsonObject->sunset))
+			$this->sunset = (int)$jsonObject->sunset;
+		if(!is_null($xml) && count($xml->remoteId))
 			$this->remoteId = (string)$xml->remoteId;
-		if(count($xml->plays))
+		if(!is_null($jsonObject) && isset($jsonObject->remoteId))
+			$this->remoteId = (string)$jsonObject->remoteId;
+		if(!is_null($xml) && count($xml->plays))
 			$this->plays = (int)$xml->plays;
-		if(count($xml->views))
+		if(!is_null($jsonObject) && isset($jsonObject->plays))
+			$this->plays = (int)$jsonObject->plays;
+		if(!is_null($xml) && count($xml->views))
 			$this->views = (int)$xml->views;
-		if(count($xml->validationErrors))
+		if(!is_null($jsonObject) && isset($jsonObject->views))
+			$this->views = (int)$jsonObject->views;
+		if(!is_null($xml) && count($xml->validationErrors))
 		{
 			if(empty($xml->validationErrors))
 				$this->validationErrors = array();
 			else
 				$this->validationErrors = Kaltura_Client_ParseUtils::unmarshalArray($xml->validationErrors, "KalturaDistributionValidationError");
 		}
-		if(count($xml->errorType))
+		if(!is_null($jsonObject) && isset($jsonObject->validationErrors))
+		{
+			if(empty($jsonObject->validationErrors))
+				$this->validationErrors = array();
+			else
+				$this->validationErrors = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsonObject->validationErrors, "KalturaDistributionValidationError");
+		}
+		if(!is_null($xml) && count($xml->errorType))
 			$this->errorType = (int)$xml->errorType;
-		if(count($xml->errorNumber))
+		if(!is_null($jsonObject) && isset($jsonObject->errorType))
+			$this->errorType = (int)$jsonObject->errorType;
+		if(!is_null($xml) && count($xml->errorNumber))
 			$this->errorNumber = (int)$xml->errorNumber;
-		if(count($xml->errorDescription))
+		if(!is_null($jsonObject) && isset($jsonObject->errorNumber))
+			$this->errorNumber = (int)$jsonObject->errorNumber;
+		if(!is_null($xml) && count($xml->errorDescription))
 			$this->errorDescription = (string)$xml->errorDescription;
-		if(count($xml->hasSubmitResultsLog))
+		if(!is_null($jsonObject) && isset($jsonObject->errorDescription))
+			$this->errorDescription = (string)$jsonObject->errorDescription;
+		if(!is_null($xml) && count($xml->hasSubmitResultsLog))
 			$this->hasSubmitResultsLog = (int)$xml->hasSubmitResultsLog;
-		if(count($xml->hasSubmitSentDataLog))
+		if(!is_null($jsonObject) && isset($jsonObject->hasSubmitResultsLog))
+			$this->hasSubmitResultsLog = (int)$jsonObject->hasSubmitResultsLog;
+		if(!is_null($xml) && count($xml->hasSubmitSentDataLog))
 			$this->hasSubmitSentDataLog = (int)$xml->hasSubmitSentDataLog;
-		if(count($xml->hasUpdateResultsLog))
+		if(!is_null($jsonObject) && isset($jsonObject->hasSubmitSentDataLog))
+			$this->hasSubmitSentDataLog = (int)$jsonObject->hasSubmitSentDataLog;
+		if(!is_null($xml) && count($xml->hasUpdateResultsLog))
 			$this->hasUpdateResultsLog = (int)$xml->hasUpdateResultsLog;
-		if(count($xml->hasUpdateSentDataLog))
+		if(!is_null($jsonObject) && isset($jsonObject->hasUpdateResultsLog))
+			$this->hasUpdateResultsLog = (int)$jsonObject->hasUpdateResultsLog;
+		if(!is_null($xml) && count($xml->hasUpdateSentDataLog))
 			$this->hasUpdateSentDataLog = (int)$xml->hasUpdateSentDataLog;
-		if(count($xml->hasDeleteResultsLog))
+		if(!is_null($jsonObject) && isset($jsonObject->hasUpdateSentDataLog))
+			$this->hasUpdateSentDataLog = (int)$jsonObject->hasUpdateSentDataLog;
+		if(!is_null($xml) && count($xml->hasDeleteResultsLog))
 			$this->hasDeleteResultsLog = (int)$xml->hasDeleteResultsLog;
-		if(count($xml->hasDeleteSentDataLog))
+		if(!is_null($jsonObject) && isset($jsonObject->hasDeleteResultsLog))
+			$this->hasDeleteResultsLog = (int)$jsonObject->hasDeleteResultsLog;
+		if(!is_null($xml) && count($xml->hasDeleteSentDataLog))
 			$this->hasDeleteSentDataLog = (int)$xml->hasDeleteSentDataLog;
+		if(!is_null($jsonObject) && isset($jsonObject->hasDeleteSentDataLog))
+			$this->hasDeleteSentDataLog = (int)$jsonObject->hasDeleteSentDataLog;
 	}
 	/**
 	 * Auto generated unique id

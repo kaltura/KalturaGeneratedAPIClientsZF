@@ -38,21 +38,32 @@ class Kaltura_Client_Type_GenericSyndicationFeed extends Kaltura_Client_Type_Bas
 		return 'KalturaGenericSyndicationFeed';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->feedDescription))
+		if(!is_null($xml) && count($xml->feedDescription))
 			$this->feedDescription = (string)$xml->feedDescription;
-		if(count($xml->feedLandingPage))
+		if(!is_null($jsonObject) && isset($jsonObject->feedDescription))
+			$this->feedDescription = (string)$jsonObject->feedDescription;
+		if(!is_null($xml) && count($xml->feedLandingPage))
 			$this->feedLandingPage = (string)$xml->feedLandingPage;
-		if(count($xml->entryFilter) && !empty($xml->entryFilter))
+		if(!is_null($jsonObject) && isset($jsonObject->feedLandingPage))
+			$this->feedLandingPage = (string)$jsonObject->feedLandingPage;
+		if(!is_null($xml) && count($xml->entryFilter) && !empty($xml->entryFilter))
 			$this->entryFilter = Kaltura_Client_ParseUtils::unmarshalObject($xml->entryFilter, "KalturaBaseEntryFilter");
-		if(count($xml->pageSize))
+		if(!is_null($jsonObject) && isset($jsonObject->entryFilter) && !empty($jsonObject->entryFilter))
+			$this->entryFilter = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsonObject->entryFilter, "KalturaBaseEntryFilter");
+		if(!is_null($xml) && count($xml->pageSize))
 			$this->pageSize = (int)$xml->pageSize;
+		if(!is_null($jsonObject) && isset($jsonObject->pageSize))
+			$this->pageSize = (int)$jsonObject->pageSize;
 	}
 	/**
 	 * feed description

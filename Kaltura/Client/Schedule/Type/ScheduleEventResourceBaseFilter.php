@@ -38,29 +38,48 @@ abstract class Kaltura_Client_Schedule_Type_ScheduleEventResourceBaseFilter exte
 		return 'KalturaScheduleEventResourceBaseFilter';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->eventIdEqual))
+		if(!is_null($xml) && count($xml->eventIdEqual))
 			$this->eventIdEqual = (int)$xml->eventIdEqual;
-		if(count($xml->eventIdIn))
+		if(!is_null($jsonObject) && isset($jsonObject->eventIdEqual))
+			$this->eventIdEqual = (int)$jsonObject->eventIdEqual;
+		if(!is_null($xml) && count($xml->eventIdIn))
 			$this->eventIdIn = (string)$xml->eventIdIn;
-		if(count($xml->resourceIdEqual))
+		if(!is_null($jsonObject) && isset($jsonObject->eventIdIn))
+			$this->eventIdIn = (string)$jsonObject->eventIdIn;
+		if(!is_null($xml) && count($xml->resourceIdEqual))
 			$this->resourceIdEqual = (int)$xml->resourceIdEqual;
-		if(count($xml->resourceIdIn))
+		if(!is_null($jsonObject) && isset($jsonObject->resourceIdEqual))
+			$this->resourceIdEqual = (int)$jsonObject->resourceIdEqual;
+		if(!is_null($xml) && count($xml->resourceIdIn))
 			$this->resourceIdIn = (string)$xml->resourceIdIn;
-		if(count($xml->createdAtGreaterThanOrEqual))
+		if(!is_null($jsonObject) && isset($jsonObject->resourceIdIn))
+			$this->resourceIdIn = (string)$jsonObject->resourceIdIn;
+		if(!is_null($xml) && count($xml->createdAtGreaterThanOrEqual))
 			$this->createdAtGreaterThanOrEqual = (int)$xml->createdAtGreaterThanOrEqual;
-		if(count($xml->createdAtLessThanOrEqual))
+		if(!is_null($jsonObject) && isset($jsonObject->createdAtGreaterThanOrEqual))
+			$this->createdAtGreaterThanOrEqual = (int)$jsonObject->createdAtGreaterThanOrEqual;
+		if(!is_null($xml) && count($xml->createdAtLessThanOrEqual))
 			$this->createdAtLessThanOrEqual = (int)$xml->createdAtLessThanOrEqual;
-		if(count($xml->updatedAtGreaterThanOrEqual))
+		if(!is_null($jsonObject) && isset($jsonObject->createdAtLessThanOrEqual))
+			$this->createdAtLessThanOrEqual = (int)$jsonObject->createdAtLessThanOrEqual;
+		if(!is_null($xml) && count($xml->updatedAtGreaterThanOrEqual))
 			$this->updatedAtGreaterThanOrEqual = (int)$xml->updatedAtGreaterThanOrEqual;
-		if(count($xml->updatedAtLessThanOrEqual))
+		if(!is_null($jsonObject) && isset($jsonObject->updatedAtGreaterThanOrEqual))
+			$this->updatedAtGreaterThanOrEqual = (int)$jsonObject->updatedAtGreaterThanOrEqual;
+		if(!is_null($xml) && count($xml->updatedAtLessThanOrEqual))
 			$this->updatedAtLessThanOrEqual = (int)$xml->updatedAtLessThanOrEqual;
+		if(!is_null($jsonObject) && isset($jsonObject->updatedAtLessThanOrEqual))
+			$this->updatedAtLessThanOrEqual = (int)$jsonObject->updatedAtLessThanOrEqual;
 	}
 	/**
 	 * 

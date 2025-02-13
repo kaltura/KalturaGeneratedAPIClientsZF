@@ -38,54 +38,99 @@ class Kaltura_Client_Type_PlaybackContext extends Kaltura_Client_ObjectBase
 		return 'KalturaPlaybackContext';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->sources))
+		if(!is_null($xml) && count($xml->sources))
 		{
 			if(empty($xml->sources))
 				$this->sources = array();
 			else
 				$this->sources = Kaltura_Client_ParseUtils::unmarshalArray($xml->sources, "KalturaPlaybackSource");
 		}
-		if(count($xml->playbackCaptions))
+		if(!is_null($jsonObject) && isset($jsonObject->sources))
+		{
+			if(empty($jsonObject->sources))
+				$this->sources = array();
+			else
+				$this->sources = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsonObject->sources, "KalturaPlaybackSource");
+		}
+		if(!is_null($xml) && count($xml->playbackCaptions))
 		{
 			if(empty($xml->playbackCaptions))
 				$this->playbackCaptions = array();
 			else
 				$this->playbackCaptions = Kaltura_Client_ParseUtils::unmarshalArray($xml->playbackCaptions, "KalturaCaptionPlaybackPluginData");
 		}
-		if(count($xml->flavorAssets))
+		if(!is_null($jsonObject) && isset($jsonObject->playbackCaptions))
+		{
+			if(empty($jsonObject->playbackCaptions))
+				$this->playbackCaptions = array();
+			else
+				$this->playbackCaptions = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsonObject->playbackCaptions, "KalturaCaptionPlaybackPluginData");
+		}
+		if(!is_null($xml) && count($xml->flavorAssets))
 		{
 			if(empty($xml->flavorAssets))
 				$this->flavorAssets = array();
 			else
 				$this->flavorAssets = Kaltura_Client_ParseUtils::unmarshalArray($xml->flavorAssets, "KalturaFlavorAsset");
 		}
-		if(count($xml->actions))
+		if(!is_null($jsonObject) && isset($jsonObject->flavorAssets))
+		{
+			if(empty($jsonObject->flavorAssets))
+				$this->flavorAssets = array();
+			else
+				$this->flavorAssets = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsonObject->flavorAssets, "KalturaFlavorAsset");
+		}
+		if(!is_null($xml) && count($xml->actions))
 		{
 			if(empty($xml->actions))
 				$this->actions = array();
 			else
 				$this->actions = Kaltura_Client_ParseUtils::unmarshalArray($xml->actions, "KalturaRuleAction");
 		}
-		if(count($xml->messages))
+		if(!is_null($jsonObject) && isset($jsonObject->actions))
+		{
+			if(empty($jsonObject->actions))
+				$this->actions = array();
+			else
+				$this->actions = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsonObject->actions, "KalturaRuleAction");
+		}
+		if(!is_null($xml) && count($xml->messages))
 		{
 			if(empty($xml->messages))
 				$this->messages = array();
 			else
 				$this->messages = Kaltura_Client_ParseUtils::unmarshalArray($xml->messages, "KalturaAccessControlMessage");
 		}
-		if(count($xml->bumperData))
+		if(!is_null($jsonObject) && isset($jsonObject->messages))
+		{
+			if(empty($jsonObject->messages))
+				$this->messages = array();
+			else
+				$this->messages = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsonObject->messages, "KalturaAccessControlMessage");
+		}
+		if(!is_null($xml) && count($xml->bumperData))
 		{
 			if(empty($xml->bumperData))
 				$this->bumperData = array();
 			else
 				$this->bumperData = Kaltura_Client_ParseUtils::unmarshalArray($xml->bumperData, "KalturaObject");
+		}
+		if(!is_null($jsonObject) && isset($jsonObject->bumperData))
+		{
+			if(empty($jsonObject->bumperData))
+				$this->bumperData = array();
+			else
+				$this->bumperData = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsonObject->bumperData, "KalturaObject");
 		}
 	}
 	/**

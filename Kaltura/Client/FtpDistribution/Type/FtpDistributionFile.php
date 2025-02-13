@@ -38,25 +38,40 @@ class Kaltura_Client_FtpDistribution_Type_FtpDistributionFile extends Kaltura_Cl
 		return 'KalturaFtpDistributionFile';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->assetId))
+		if(!is_null($xml) && count($xml->assetId))
 			$this->assetId = (string)$xml->assetId;
-		if(count($xml->filename))
+		if(!is_null($jsonObject) && isset($jsonObject->assetId))
+			$this->assetId = (string)$jsonObject->assetId;
+		if(!is_null($xml) && count($xml->filename))
 			$this->filename = (string)$xml->filename;
-		if(count($xml->contents))
+		if(!is_null($jsonObject) && isset($jsonObject->filename))
+			$this->filename = (string)$jsonObject->filename;
+		if(!is_null($xml) && count($xml->contents))
 			$this->contents = (string)$xml->contents;
-		if(count($xml->localFilePath))
+		if(!is_null($jsonObject) && isset($jsonObject->contents))
+			$this->contents = (string)$jsonObject->contents;
+		if(!is_null($xml) && count($xml->localFilePath))
 			$this->localFilePath = (string)$xml->localFilePath;
-		if(count($xml->version))
+		if(!is_null($jsonObject) && isset($jsonObject->localFilePath))
+			$this->localFilePath = (string)$jsonObject->localFilePath;
+		if(!is_null($xml) && count($xml->version))
 			$this->version = (string)$xml->version;
-		if(count($xml->hash))
+		if(!is_null($jsonObject) && isset($jsonObject->version))
+			$this->version = (string)$jsonObject->version;
+		if(!is_null($xml) && count($xml->hash))
 			$this->hash = (string)$xml->hash;
+		if(!is_null($jsonObject) && isset($jsonObject->hash))
+			$this->hash = (string)$jsonObject->hash;
 	}
 	/**
 	 * 

@@ -38,19 +38,28 @@ class Kaltura_Client_PodcastDistribution_Type_PodcastDistributionJobProviderData
 		return 'KalturaPodcastDistributionJobProviderData';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->xml))
+		if(!is_null($xml) && count($xml->xml))
 			$this->xml = (string)$xml->xml;
-		if(count($xml->metadataProfileId))
+		if(!is_null($jsonObject) && isset($jsonObject->xml))
+			$this->xml = (string)$jsonObject->xml;
+		if(!is_null($xml) && count($xml->metadataProfileId))
 			$this->metadataProfileId = (int)$xml->metadataProfileId;
-		if(count($xml->distributionProfileId))
+		if(!is_null($jsonObject) && isset($jsonObject->metadataProfileId))
+			$this->metadataProfileId = (int)$jsonObject->metadataProfileId;
+		if(!is_null($xml) && count($xml->distributionProfileId))
 			$this->distributionProfileId = (int)$xml->distributionProfileId;
+		if(!is_null($jsonObject) && isset($jsonObject->distributionProfileId))
+			$this->distributionProfileId = (int)$jsonObject->distributionProfileId;
 	}
 	/**
 	 * 

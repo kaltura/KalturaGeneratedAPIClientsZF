@@ -38,27 +38,44 @@ class Kaltura_Client_DailymotionDistribution_Type_DailymotionDistributionCaption
 		return 'KalturaDailymotionDistributionCaptionInfo';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->language))
+		if(!is_null($xml) && count($xml->language))
 			$this->language = (string)$xml->language;
-		if(count($xml->filePath))
+		if(!is_null($jsonObject) && isset($jsonObject->language))
+			$this->language = (string)$jsonObject->language;
+		if(!is_null($xml) && count($xml->filePath))
 			$this->filePath = (string)$xml->filePath;
-		if(count($xml->remoteId))
+		if(!is_null($jsonObject) && isset($jsonObject->filePath))
+			$this->filePath = (string)$jsonObject->filePath;
+		if(!is_null($xml) && count($xml->remoteId))
 			$this->remoteId = (string)$xml->remoteId;
-		if(count($xml->action))
+		if(!is_null($jsonObject) && isset($jsonObject->remoteId))
+			$this->remoteId = (string)$jsonObject->remoteId;
+		if(!is_null($xml) && count($xml->action))
 			$this->action = (int)$xml->action;
-		if(count($xml->version))
+		if(!is_null($jsonObject) && isset($jsonObject->action))
+			$this->action = (int)$jsonObject->action;
+		if(!is_null($xml) && count($xml->version))
 			$this->version = (string)$xml->version;
-		if(count($xml->assetId))
+		if(!is_null($jsonObject) && isset($jsonObject->version))
+			$this->version = (string)$jsonObject->version;
+		if(!is_null($xml) && count($xml->assetId))
 			$this->assetId = (string)$xml->assetId;
-		if(count($xml->format))
+		if(!is_null($jsonObject) && isset($jsonObject->assetId))
+			$this->assetId = (string)$jsonObject->assetId;
+		if(!is_null($xml) && count($xml->format))
 			$this->format = (int)$xml->format;
+		if(!is_null($jsonObject) && isset($jsonObject->format))
+			$this->format = (int)$jsonObject->format;
 	}
 	/**
 	 * 

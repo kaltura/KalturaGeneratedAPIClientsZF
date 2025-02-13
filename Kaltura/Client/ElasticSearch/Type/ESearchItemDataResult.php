@@ -38,24 +38,38 @@ class Kaltura_Client_ElasticSearch_Type_ESearchItemDataResult extends Kaltura_Cl
 		return 'KalturaESearchItemDataResult';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->totalCount))
+		if(!is_null($xml) && count($xml->totalCount))
 			$this->totalCount = (int)$xml->totalCount;
-		if(count($xml->items))
+		if(!is_null($jsonObject) && isset($jsonObject->totalCount))
+			$this->totalCount = (int)$jsonObject->totalCount;
+		if(!is_null($xml) && count($xml->items))
 		{
 			if(empty($xml->items))
 				$this->items = array();
 			else
 				$this->items = Kaltura_Client_ParseUtils::unmarshalArray($xml->items, "KalturaESearchItemData");
 		}
-		if(count($xml->itemsType))
+		if(!is_null($jsonObject) && isset($jsonObject->items))
+		{
+			if(empty($jsonObject->items))
+				$this->items = array();
+			else
+				$this->items = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsonObject->items, "KalturaESearchItemData");
+		}
+		if(!is_null($xml) && count($xml->itemsType))
 			$this->itemsType = (string)$xml->itemsType;
+		if(!is_null($jsonObject) && isset($jsonObject->itemsType))
+			$this->itemsType = (string)$jsonObject->itemsType;
 	}
 	/**
 	 * 

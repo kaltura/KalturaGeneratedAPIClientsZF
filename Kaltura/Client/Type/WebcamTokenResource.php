@@ -38,15 +38,20 @@ class Kaltura_Client_Type_WebcamTokenResource extends Kaltura_Client_Type_DataCe
 		return 'KalturaWebcamTokenResource';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->token))
+		if(!is_null($xml) && count($xml->token))
 			$this->token = (string)$xml->token;
+		if(!is_null($jsonObject) && isset($jsonObject->token))
+			$this->token = (string)$jsonObject->token;
 	}
 	/**
 	 * Token that returned from media server such as FMS or red5.

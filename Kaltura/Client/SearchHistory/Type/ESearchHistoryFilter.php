@@ -38,17 +38,32 @@ class Kaltura_Client_SearchHistory_Type_ESearchHistoryFilter extends Kaltura_Cli
 		return 'KalturaESearchHistoryFilter';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->searchTermStartsWith))
+		if(!is_null($xml) && count($xml->searchTermStartsWith))
 			$this->searchTermStartsWith = (string)$xml->searchTermStartsWith;
-		if(count($xml->searchedObjectIn))
+		if(!is_null($jsonObject) && isset($jsonObject->searchTermStartsWith))
+			$this->searchTermStartsWith = (string)$jsonObject->searchTermStartsWith;
+		if(!is_null($xml) && count($xml->searchedObjectIn))
 			$this->searchedObjectIn = (string)$xml->searchedObjectIn;
+		if(!is_null($jsonObject) && isset($jsonObject->searchedObjectIn))
+			$this->searchedObjectIn = (string)$jsonObject->searchedObjectIn;
+		if(!is_null($xml) && count($xml->timestampRange) && !empty($xml->timestampRange))
+			$this->timestampRange = Kaltura_Client_ParseUtils::unmarshalObject($xml->timestampRange, "KalturaESearchRange");
+		if(!is_null($jsonObject) && isset($jsonObject->timestampRange) && !empty($jsonObject->timestampRange))
+			$this->timestampRange = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsonObject->timestampRange, "KalturaESearchRange");
+		if(!is_null($xml) && count($xml->aggregation) && !empty($xml->aggregation))
+			$this->aggregation = Kaltura_Client_ParseUtils::unmarshalObject($xml->aggregation, "KalturaESearchHistoryAggregationItem");
+		if(!is_null($jsonObject) && isset($jsonObject->aggregation) && !empty($jsonObject->aggregation))
+			$this->aggregation = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsonObject->aggregation, "KalturaESearchHistoryAggregationItem");
 	}
 	/**
 	 * 
@@ -63,6 +78,20 @@ class Kaltura_Client_SearchHistory_Type_ESearchHistoryFilter extends Kaltura_Cli
 	 * @var string
 	 */
 	public $searchedObjectIn = null;
+
+	/**
+	 * 
+	 *
+	 * @var Kaltura_Client_ElasticSearch_Type_ESearchRange
+	 */
+	public $timestampRange;
+
+	/**
+	 * 
+	 *
+	 * @var Kaltura_Client_SearchHistory_Type_ESearchHistoryAggregationItem
+	 */
+	public $aggregation;
 
 
 }

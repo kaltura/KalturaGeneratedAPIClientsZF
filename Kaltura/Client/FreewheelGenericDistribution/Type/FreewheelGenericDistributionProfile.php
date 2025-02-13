@@ -38,41 +38,76 @@ class Kaltura_Client_FreewheelGenericDistribution_Type_FreewheelGenericDistribut
 		return 'KalturaFreewheelGenericDistributionProfile';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->apikey))
+		if(!is_null($xml) && count($xml->apikey))
 			$this->apikey = (string)$xml->apikey;
-		if(count($xml->email))
+		if(!is_null($jsonObject) && isset($jsonObject->apikey))
+			$this->apikey = (string)$jsonObject->apikey;
+		if(!is_null($xml) && count($xml->email))
 			$this->email = (string)$xml->email;
-		if(count($xml->sftpPass))
+		if(!is_null($jsonObject) && isset($jsonObject->email))
+			$this->email = (string)$jsonObject->email;
+		if(!is_null($xml) && count($xml->sftpPass))
 			$this->sftpPass = (string)$xml->sftpPass;
-		if(count($xml->sftpLogin))
+		if(!is_null($jsonObject) && isset($jsonObject->sftpPass))
+			$this->sftpPass = (string)$jsonObject->sftpPass;
+		if(!is_null($xml) && count($xml->sftpLogin))
 			$this->sftpLogin = (string)$xml->sftpLogin;
-		if(count($xml->contentOwner))
+		if(!is_null($jsonObject) && isset($jsonObject->sftpLogin))
+			$this->sftpLogin = (string)$jsonObject->sftpLogin;
+		if(!is_null($xml) && count($xml->contentOwner))
 			$this->contentOwner = (string)$xml->contentOwner;
-		if(count($xml->upstreamVideoId))
+		if(!is_null($jsonObject) && isset($jsonObject->contentOwner))
+			$this->contentOwner = (string)$jsonObject->contentOwner;
+		if(!is_null($xml) && count($xml->upstreamVideoId))
 			$this->upstreamVideoId = (string)$xml->upstreamVideoId;
-		if(count($xml->upstreamNetworkName))
+		if(!is_null($jsonObject) && isset($jsonObject->upstreamVideoId))
+			$this->upstreamVideoId = (string)$jsonObject->upstreamVideoId;
+		if(!is_null($xml) && count($xml->upstreamNetworkName))
 			$this->upstreamNetworkName = (string)$xml->upstreamNetworkName;
-		if(count($xml->upstreamNetworkId))
+		if(!is_null($jsonObject) && isset($jsonObject->upstreamNetworkName))
+			$this->upstreamNetworkName = (string)$jsonObject->upstreamNetworkName;
+		if(!is_null($xml) && count($xml->upstreamNetworkId))
 			$this->upstreamNetworkId = (string)$xml->upstreamNetworkId;
-		if(count($xml->categoryId))
+		if(!is_null($jsonObject) && isset($jsonObject->upstreamNetworkId))
+			$this->upstreamNetworkId = (string)$jsonObject->upstreamNetworkId;
+		if(!is_null($xml) && count($xml->categoryId))
 			$this->categoryId = (string)$xml->categoryId;
-		if(count($xml->replaceGroup))
+		if(!is_null($jsonObject) && isset($jsonObject->categoryId))
+			$this->categoryId = (string)$jsonObject->categoryId;
+		if(!is_null($xml) && count($xml->replaceGroup))
 		{
 			if(!empty($xml->replaceGroup) && ((int) $xml->replaceGroup === 1 || strtolower((string)$xml->replaceGroup) === 'true'))
 				$this->replaceGroup = true;
 			else
 				$this->replaceGroup = false;
 		}
-		if(count($xml->replaceAirDates))
+		if(!is_null($jsonObject) && isset($jsonObject->replaceGroup))
+		{
+			if(!empty($jsonObject->replaceGroup) && ((int) $jsonObject->replaceGroup === 1 || strtolower((string)$jsonObject->replaceGroup) === 'true'))
+				$this->replaceGroup = true;
+			else
+				$this->replaceGroup = false;
+		}
+		if(!is_null($xml) && count($xml->replaceAirDates))
 		{
 			if(!empty($xml->replaceAirDates) && ((int) $xml->replaceAirDates === 1 || strtolower((string)$xml->replaceAirDates) === 'true'))
+				$this->replaceAirDates = true;
+			else
+				$this->replaceAirDates = false;
+		}
+		if(!is_null($jsonObject) && isset($jsonObject->replaceAirDates))
+		{
+			if(!empty($jsonObject->replaceAirDates) && ((int) $jsonObject->replaceAirDates === 1 || strtolower((string)$jsonObject->replaceAirDates) === 'true'))
 				$this->replaceAirDates = true;
 			else
 				$this->replaceAirDates = false;

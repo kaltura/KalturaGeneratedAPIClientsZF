@@ -38,19 +38,28 @@ class Kaltura_Client_TagSearch_Type_IndexTagsByPrivacyContextJobData extends Kal
 		return 'KalturaIndexTagsByPrivacyContextJobData';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->changedCategoryId))
+		if(!is_null($xml) && count($xml->changedCategoryId))
 			$this->changedCategoryId = (int)$xml->changedCategoryId;
-		if(count($xml->deletedPrivacyContexts))
+		if(!is_null($jsonObject) && isset($jsonObject->changedCategoryId))
+			$this->changedCategoryId = (int)$jsonObject->changedCategoryId;
+		if(!is_null($xml) && count($xml->deletedPrivacyContexts))
 			$this->deletedPrivacyContexts = (string)$xml->deletedPrivacyContexts;
-		if(count($xml->addedPrivacyContexts))
+		if(!is_null($jsonObject) && isset($jsonObject->deletedPrivacyContexts))
+			$this->deletedPrivacyContexts = (string)$jsonObject->deletedPrivacyContexts;
+		if(!is_null($xml) && count($xml->addedPrivacyContexts))
 			$this->addedPrivacyContexts = (string)$xml->addedPrivacyContexts;
+		if(!is_null($jsonObject) && isset($jsonObject->addedPrivacyContexts))
+			$this->addedPrivacyContexts = (string)$jsonObject->addedPrivacyContexts;
 	}
 	/**
 	 * 

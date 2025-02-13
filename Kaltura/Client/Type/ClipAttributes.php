@@ -38,25 +38,59 @@ class Kaltura_Client_Type_ClipAttributes extends Kaltura_Client_Type_OperationAt
 		return 'KalturaClipAttributes';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->offset))
+		if(!is_null($xml) && count($xml->offset))
 			$this->offset = (int)$xml->offset;
-		if(count($xml->duration))
+		if(!is_null($jsonObject) && isset($jsonObject->offset))
+			$this->offset = (int)$jsonObject->offset;
+		if(!is_null($xml) && count($xml->duration))
 			$this->duration = (int)$xml->duration;
-		if(count($xml->globalOffsetInDestination))
+		if(!is_null($jsonObject) && isset($jsonObject->duration))
+			$this->duration = (int)$jsonObject->duration;
+		if(!is_null($xml) && count($xml->globalOffsetInDestination))
 			$this->globalOffsetInDestination = (int)$xml->globalOffsetInDestination;
-		if(count($xml->effectArray))
+		if(!is_null($jsonObject) && isset($jsonObject->globalOffsetInDestination))
+			$this->globalOffsetInDestination = (int)$jsonObject->globalOffsetInDestination;
+		if(!is_null($xml) && count($xml->effectArray))
 		{
 			if(empty($xml->effectArray))
 				$this->effectArray = array();
 			else
 				$this->effectArray = Kaltura_Client_ParseUtils::unmarshalArray($xml->effectArray, "KalturaEffect");
+		}
+		if(!is_null($jsonObject) && isset($jsonObject->effectArray))
+		{
+			if(empty($jsonObject->effectArray))
+				$this->effectArray = array();
+			else
+				$this->effectArray = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsonObject->effectArray, "KalturaEffect");
+		}
+		if(!is_null($xml) && count($xml->cropAlignment))
+			$this->cropAlignment = (int)$xml->cropAlignment;
+		if(!is_null($jsonObject) && isset($jsonObject->cropAlignment))
+			$this->cropAlignment = (int)$jsonObject->cropAlignment;
+		if(!is_null($xml) && count($xml->captionAttributes))
+		{
+			if(empty($xml->captionAttributes))
+				$this->captionAttributes = array();
+			else
+				$this->captionAttributes = Kaltura_Client_ParseUtils::unmarshalArray($xml->captionAttributes, "KalturaCaptionAttributes");
+		}
+		if(!is_null($jsonObject) && isset($jsonObject->captionAttributes))
+		{
+			if(empty($jsonObject->captionAttributes))
+				$this->captionAttributes = array();
+			else
+				$this->captionAttributes = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsonObject->captionAttributes, "KalturaCaptionAttributes");
 		}
 	}
 	/**
@@ -86,6 +120,20 @@ class Kaltura_Client_Type_ClipAttributes extends Kaltura_Client_Type_OperationAt
 	 * @var array of KalturaEffect
 	 */
 	public $effectArray;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $cropAlignment = null;
+
+	/**
+	 * 
+	 *
+	 * @var array of KalturaCaptionAttributes
+	 */
+	public $captionAttributes;
 
 
 }

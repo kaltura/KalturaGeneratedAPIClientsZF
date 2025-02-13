@@ -38,25 +38,40 @@ class Kaltura_Client_Wowza_Type_WowzaMediaServerNode extends Kaltura_Client_Type
 		return 'KalturaWowzaMediaServerNode';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->appPrefix))
+		if(!is_null($xml) && count($xml->appPrefix))
 			$this->appPrefix = (string)$xml->appPrefix;
-		if(count($xml->transcoder))
+		if(!is_null($jsonObject) && isset($jsonObject->appPrefix))
+			$this->appPrefix = (string)$jsonObject->appPrefix;
+		if(!is_null($xml) && count($xml->transcoder))
 			$this->transcoder = (string)$xml->transcoder;
-		if(count($xml->GPUID))
+		if(!is_null($jsonObject) && isset($jsonObject->transcoder))
+			$this->transcoder = (string)$jsonObject->transcoder;
+		if(!is_null($xml) && count($xml->GPUID))
 			$this->GPUID = (int)$xml->GPUID;
-		if(count($xml->liveServicePort))
+		if(!is_null($jsonObject) && isset($jsonObject->GPUID))
+			$this->GPUID = (int)$jsonObject->GPUID;
+		if(!is_null($xml) && count($xml->liveServicePort))
 			$this->liveServicePort = (int)$xml->liveServicePort;
-		if(count($xml->liveServiceProtocol))
+		if(!is_null($jsonObject) && isset($jsonObject->liveServicePort))
+			$this->liveServicePort = (int)$jsonObject->liveServicePort;
+		if(!is_null($xml) && count($xml->liveServiceProtocol))
 			$this->liveServiceProtocol = (string)$xml->liveServiceProtocol;
-		if(count($xml->liveServiceInternalDomain))
+		if(!is_null($jsonObject) && isset($jsonObject->liveServiceProtocol))
+			$this->liveServiceProtocol = (string)$jsonObject->liveServiceProtocol;
+		if(!is_null($xml) && count($xml->liveServiceInternalDomain))
 			$this->liveServiceInternalDomain = (string)$xml->liveServiceInternalDomain;
+		if(!is_null($jsonObject) && isset($jsonObject->liveServiceInternalDomain))
+			$this->liveServiceInternalDomain = (string)$jsonObject->liveServiceInternalDomain;
 	}
 	/**
 	 * Wowza Media server app prefix

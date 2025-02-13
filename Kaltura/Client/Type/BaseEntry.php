@@ -38,155 +38,308 @@ class Kaltura_Client_Type_BaseEntry extends Kaltura_Client_ObjectBase
 		return 'KalturaBaseEntry';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->id))
+		if(!is_null($xml) && count($xml->id))
 			$this->id = (string)$xml->id;
-		if(count($xml->name))
+		if(!is_null($jsonObject) && isset($jsonObject->id))
+			$this->id = (string)$jsonObject->id;
+		if(!is_null($xml) && count($xml->name))
 		{
 			if(isset($xml->name->item) && count($xml->name->item))
 				$this->multiLingual_name = Kaltura_Client_ParseUtils::unmarshalArray($xml->name, '');
 			else
 				$this->name = (string)$xml->name;
 		}
-		if(count($xml->multiLingual_name))
+		if(!is_null($jsonObject) && isset($jsonObject->name))
+		{
+			if(is_array($jsonObject->name))
+				$this->multiLingual_name = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsonObject->name, '');
+			else
+				$this->name = (string)$jsonObject->name;
+		}
+		if(!is_null($xml) && count($xml->multiLingual_name))
 		{
 			if(empty($xml->multiLingual_name))
 				$this->multiLingual_name = array();
 			else
 				$this->multiLingual_name = Kaltura_Client_ParseUtils::unmarshalArray($xml->multiLingual_name, "KalturaMultiLingualString");
 		}
-		if(count($xml->description))
+		if(!is_null($jsonObject) && isset($jsonObject->multiLingual_name))
+		{
+			if(empty($jsonObject->multiLingual_name))
+				$this->multiLingual_name = array();
+			else
+				$this->multiLingual_name = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsonObject->multiLingual_name, "KalturaMultiLingualString");
+		}
+		if(!is_null($xml) && count($xml->description))
 		{
 			if(isset($xml->description->item) && count($xml->description->item))
 				$this->multiLingual_description = Kaltura_Client_ParseUtils::unmarshalArray($xml->description, '');
 			else
 				$this->description = (string)$xml->description;
 		}
-		if(count($xml->multiLingual_description))
+		if(!is_null($jsonObject) && isset($jsonObject->description))
+		{
+			if(is_array($jsonObject->description))
+				$this->multiLingual_description = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsonObject->description, '');
+			else
+				$this->description = (string)$jsonObject->description;
+		}
+		if(!is_null($xml) && count($xml->multiLingual_description))
 		{
 			if(empty($xml->multiLingual_description))
 				$this->multiLingual_description = array();
 			else
 				$this->multiLingual_description = Kaltura_Client_ParseUtils::unmarshalArray($xml->multiLingual_description, "KalturaMultiLingualString");
 		}
-		if(count($xml->partnerId))
+		if(!is_null($jsonObject) && isset($jsonObject->multiLingual_description))
+		{
+			if(empty($jsonObject->multiLingual_description))
+				$this->multiLingual_description = array();
+			else
+				$this->multiLingual_description = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsonObject->multiLingual_description, "KalturaMultiLingualString");
+		}
+		if(!is_null($xml) && count($xml->partnerId))
 			$this->partnerId = (int)$xml->partnerId;
-		if(count($xml->userId))
+		if(!is_null($jsonObject) && isset($jsonObject->partnerId))
+			$this->partnerId = (int)$jsonObject->partnerId;
+		if(!is_null($xml) && count($xml->userId))
 			$this->userId = (string)$xml->userId;
-		if(count($xml->creatorId))
+		if(!is_null($jsonObject) && isset($jsonObject->userId))
+			$this->userId = (string)$jsonObject->userId;
+		if(!is_null($xml) && count($xml->creatorId))
 			$this->creatorId = (string)$xml->creatorId;
-		if(count($xml->tags))
+		if(!is_null($jsonObject) && isset($jsonObject->creatorId))
+			$this->creatorId = (string)$jsonObject->creatorId;
+		if(!is_null($xml) && count($xml->tags))
 		{
 			if(isset($xml->tags->item) && count($xml->tags->item))
 				$this->multiLingual_tags = Kaltura_Client_ParseUtils::unmarshalArray($xml->tags, '');
 			else
 				$this->tags = (string)$xml->tags;
 		}
-		if(count($xml->multiLingual_tags))
+		if(!is_null($jsonObject) && isset($jsonObject->tags))
+		{
+			if(is_array($jsonObject->tags))
+				$this->multiLingual_tags = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsonObject->tags, '');
+			else
+				$this->tags = (string)$jsonObject->tags;
+		}
+		if(!is_null($xml) && count($xml->multiLingual_tags))
 		{
 			if(empty($xml->multiLingual_tags))
 				$this->multiLingual_tags = array();
 			else
 				$this->multiLingual_tags = Kaltura_Client_ParseUtils::unmarshalArray($xml->multiLingual_tags, "KalturaMultiLingualString");
 		}
-		if(count($xml->adminTags))
+		if(!is_null($jsonObject) && isset($jsonObject->multiLingual_tags))
+		{
+			if(empty($jsonObject->multiLingual_tags))
+				$this->multiLingual_tags = array();
+			else
+				$this->multiLingual_tags = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsonObject->multiLingual_tags, "KalturaMultiLingualString");
+		}
+		if(!is_null($xml) && count($xml->adminTags))
 			$this->adminTags = (string)$xml->adminTags;
-		if(count($xml->categories))
+		if(!is_null($jsonObject) && isset($jsonObject->adminTags))
+			$this->adminTags = (string)$jsonObject->adminTags;
+		if(!is_null($xml) && count($xml->categories))
 			$this->categories = (string)$xml->categories;
-		if(count($xml->categoriesIds))
+		if(!is_null($jsonObject) && isset($jsonObject->categories))
+			$this->categories = (string)$jsonObject->categories;
+		if(!is_null($xml) && count($xml->categoriesIds))
 			$this->categoriesIds = (string)$xml->categoriesIds;
-		if(count($xml->status))
+		if(!is_null($jsonObject) && isset($jsonObject->categoriesIds))
+			$this->categoriesIds = (string)$jsonObject->categoriesIds;
+		if(!is_null($xml) && count($xml->status))
 			$this->status = (string)$xml->status;
-		if(count($xml->moderationStatus))
+		if(!is_null($jsonObject) && isset($jsonObject->status))
+			$this->status = (string)$jsonObject->status;
+		if(!is_null($xml) && count($xml->moderationStatus))
 			$this->moderationStatus = (int)$xml->moderationStatus;
-		if(count($xml->moderationCount))
+		if(!is_null($jsonObject) && isset($jsonObject->moderationStatus))
+			$this->moderationStatus = (int)$jsonObject->moderationStatus;
+		if(!is_null($xml) && count($xml->moderationCount))
 			$this->moderationCount = (int)$xml->moderationCount;
-		if(count($xml->type))
+		if(!is_null($jsonObject) && isset($jsonObject->moderationCount))
+			$this->moderationCount = (int)$jsonObject->moderationCount;
+		if(!is_null($xml) && count($xml->type))
 			$this->type = (string)$xml->type;
-		if(count($xml->createdAt))
+		if(!is_null($jsonObject) && isset($jsonObject->type))
+			$this->type = (string)$jsonObject->type;
+		if(!is_null($xml) && count($xml->createdAt))
 			$this->createdAt = (int)$xml->createdAt;
-		if(count($xml->updatedAt))
+		if(!is_null($jsonObject) && isset($jsonObject->createdAt))
+			$this->createdAt = (int)$jsonObject->createdAt;
+		if(!is_null($xml) && count($xml->updatedAt))
 			$this->updatedAt = (int)$xml->updatedAt;
-		if(count($xml->rank))
+		if(!is_null($jsonObject) && isset($jsonObject->updatedAt))
+			$this->updatedAt = (int)$jsonObject->updatedAt;
+		if(!is_null($xml) && count($xml->rank))
 			$this->rank = (float)$xml->rank;
-		if(count($xml->totalRank))
+		if(!is_null($jsonObject) && isset($jsonObject->rank))
+			$this->rank = (float)$jsonObject->rank;
+		if(!is_null($xml) && count($xml->totalRank))
 			$this->totalRank = (int)$xml->totalRank;
-		if(count($xml->votes))
+		if(!is_null($jsonObject) && isset($jsonObject->totalRank))
+			$this->totalRank = (int)$jsonObject->totalRank;
+		if(!is_null($xml) && count($xml->votes))
 			$this->votes = (int)$xml->votes;
-		if(count($xml->groupId))
+		if(!is_null($jsonObject) && isset($jsonObject->votes))
+			$this->votes = (int)$jsonObject->votes;
+		if(!is_null($xml) && count($xml->groupId))
 			$this->groupId = (int)$xml->groupId;
-		if(count($xml->partnerData))
+		if(!is_null($jsonObject) && isset($jsonObject->groupId))
+			$this->groupId = (int)$jsonObject->groupId;
+		if(!is_null($xml) && count($xml->partnerData))
 			$this->partnerData = (string)$xml->partnerData;
-		if(count($xml->downloadUrl))
+		if(!is_null($jsonObject) && isset($jsonObject->partnerData))
+			$this->partnerData = (string)$jsonObject->partnerData;
+		if(!is_null($xml) && count($xml->downloadUrl))
 			$this->downloadUrl = (string)$xml->downloadUrl;
-		if(count($xml->searchText))
+		if(!is_null($jsonObject) && isset($jsonObject->downloadUrl))
+			$this->downloadUrl = (string)$jsonObject->downloadUrl;
+		if(!is_null($xml) && count($xml->searchText))
 			$this->searchText = (string)$xml->searchText;
-		if(count($xml->licenseType))
+		if(!is_null($jsonObject) && isset($jsonObject->searchText))
+			$this->searchText = (string)$jsonObject->searchText;
+		if(!is_null($xml) && count($xml->licenseType))
 			$this->licenseType = (int)$xml->licenseType;
-		if(count($xml->version))
+		if(!is_null($jsonObject) && isset($jsonObject->licenseType))
+			$this->licenseType = (int)$jsonObject->licenseType;
+		if(!is_null($xml) && count($xml->version))
 			$this->version = (int)$xml->version;
-		if(count($xml->thumbnailUrl))
+		if(!is_null($jsonObject) && isset($jsonObject->version))
+			$this->version = (int)$jsonObject->version;
+		if(!is_null($xml) && count($xml->thumbnailUrl))
 			$this->thumbnailUrl = (string)$xml->thumbnailUrl;
-		if(count($xml->accessControlId))
+		if(!is_null($jsonObject) && isset($jsonObject->thumbnailUrl))
+			$this->thumbnailUrl = (string)$jsonObject->thumbnailUrl;
+		if(!is_null($xml) && count($xml->accessControlId))
 			$this->accessControlId = (int)$xml->accessControlId;
-		if(count($xml->startDate))
+		if(!is_null($jsonObject) && isset($jsonObject->accessControlId))
+			$this->accessControlId = (int)$jsonObject->accessControlId;
+		if(!is_null($xml) && count($xml->startDate))
 			$this->startDate = (int)$xml->startDate;
-		if(count($xml->endDate))
+		if(!is_null($jsonObject) && isset($jsonObject->startDate))
+			$this->startDate = (int)$jsonObject->startDate;
+		if(!is_null($xml) && count($xml->endDate))
 			$this->endDate = (int)$xml->endDate;
-		if(count($xml->referenceId))
+		if(!is_null($jsonObject) && isset($jsonObject->endDate))
+			$this->endDate = (int)$jsonObject->endDate;
+		if(!is_null($xml) && count($xml->referenceId))
 			$this->referenceId = (string)$xml->referenceId;
-		if(count($xml->replacingEntryId))
+		if(!is_null($jsonObject) && isset($jsonObject->referenceId))
+			$this->referenceId = (string)$jsonObject->referenceId;
+		if(!is_null($xml) && count($xml->replacingEntryId))
 			$this->replacingEntryId = (string)$xml->replacingEntryId;
-		if(count($xml->replacedEntryId))
+		if(!is_null($jsonObject) && isset($jsonObject->replacingEntryId))
+			$this->replacingEntryId = (string)$jsonObject->replacingEntryId;
+		if(!is_null($xml) && count($xml->replacedEntryId))
 			$this->replacedEntryId = (string)$xml->replacedEntryId;
-		if(count($xml->replacementStatus))
+		if(!is_null($jsonObject) && isset($jsonObject->replacedEntryId))
+			$this->replacedEntryId = (string)$jsonObject->replacedEntryId;
+		if(!is_null($xml) && count($xml->replacementStatus))
 			$this->replacementStatus = (string)$xml->replacementStatus;
-		if(count($xml->partnerSortValue))
+		if(!is_null($jsonObject) && isset($jsonObject->replacementStatus))
+			$this->replacementStatus = (string)$jsonObject->replacementStatus;
+		if(!is_null($xml) && count($xml->partnerSortValue))
 			$this->partnerSortValue = (int)$xml->partnerSortValue;
-		if(count($xml->conversionProfileId))
+		if(!is_null($jsonObject) && isset($jsonObject->partnerSortValue))
+			$this->partnerSortValue = (int)$jsonObject->partnerSortValue;
+		if(!is_null($xml) && count($xml->conversionProfileId))
 			$this->conversionProfileId = (int)$xml->conversionProfileId;
-		if(count($xml->redirectEntryId))
+		if(!is_null($jsonObject) && isset($jsonObject->conversionProfileId))
+			$this->conversionProfileId = (int)$jsonObject->conversionProfileId;
+		if(!is_null($xml) && count($xml->redirectEntryId))
 			$this->redirectEntryId = (string)$xml->redirectEntryId;
-		if(count($xml->rootEntryId))
+		if(!is_null($jsonObject) && isset($jsonObject->redirectEntryId))
+			$this->redirectEntryId = (string)$jsonObject->redirectEntryId;
+		if(!is_null($xml) && count($xml->rootEntryId))
 			$this->rootEntryId = (string)$xml->rootEntryId;
-		if(count($xml->parentEntryId))
+		if(!is_null($jsonObject) && isset($jsonObject->rootEntryId))
+			$this->rootEntryId = (string)$jsonObject->rootEntryId;
+		if(!is_null($xml) && count($xml->parentEntryId))
 			$this->parentEntryId = (string)$xml->parentEntryId;
-		if(count($xml->operationAttributes))
+		if(!is_null($jsonObject) && isset($jsonObject->parentEntryId))
+			$this->parentEntryId = (string)$jsonObject->parentEntryId;
+		if(!is_null($xml) && count($xml->operationAttributes))
 		{
 			if(empty($xml->operationAttributes))
 				$this->operationAttributes = array();
 			else
 				$this->operationAttributes = Kaltura_Client_ParseUtils::unmarshalArray($xml->operationAttributes, "KalturaOperationAttributes");
 		}
-		if(count($xml->entitledUsersEdit))
+		if(!is_null($jsonObject) && isset($jsonObject->operationAttributes))
+		{
+			if(empty($jsonObject->operationAttributes))
+				$this->operationAttributes = array();
+			else
+				$this->operationAttributes = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsonObject->operationAttributes, "KalturaOperationAttributes");
+		}
+		if(!is_null($xml) && count($xml->entitledUsersEdit))
 			$this->entitledUsersEdit = (string)$xml->entitledUsersEdit;
-		if(count($xml->entitledUsersPublish))
+		if(!is_null($jsonObject) && isset($jsonObject->entitledUsersEdit))
+			$this->entitledUsersEdit = (string)$jsonObject->entitledUsersEdit;
+		if(!is_null($xml) && count($xml->entitledUsersPublish))
 			$this->entitledUsersPublish = (string)$xml->entitledUsersPublish;
-		if(count($xml->entitledUsersView))
+		if(!is_null($jsonObject) && isset($jsonObject->entitledUsersPublish))
+			$this->entitledUsersPublish = (string)$jsonObject->entitledUsersPublish;
+		if(!is_null($xml) && count($xml->entitledUsersView))
 			$this->entitledUsersView = (string)$xml->entitledUsersView;
-		if(count($xml->capabilities))
+		if(!is_null($jsonObject) && isset($jsonObject->entitledUsersView))
+			$this->entitledUsersView = (string)$jsonObject->entitledUsersView;
+		if(!is_null($xml) && count($xml->capabilities))
 			$this->capabilities = (string)$xml->capabilities;
-		if(count($xml->templateEntryId))
+		if(!is_null($jsonObject) && isset($jsonObject->capabilities))
+			$this->capabilities = (string)$jsonObject->capabilities;
+		if(!is_null($xml) && count($xml->templateEntryId))
 			$this->templateEntryId = (string)$xml->templateEntryId;
-		if(count($xml->displayInSearch))
+		if(!is_null($jsonObject) && isset($jsonObject->templateEntryId))
+			$this->templateEntryId = (string)$jsonObject->templateEntryId;
+		if(!is_null($xml) && count($xml->displayInSearch))
 			$this->displayInSearch = (int)$xml->displayInSearch;
-		if(count($xml->application))
+		if(!is_null($jsonObject) && isset($jsonObject->displayInSearch))
+			$this->displayInSearch = (int)$jsonObject->displayInSearch;
+		if(!is_null($xml) && count($xml->application))
 			$this->application = (string)$xml->application;
-		if(count($xml->applicationVersion))
+		if(!is_null($jsonObject) && isset($jsonObject->application))
+			$this->application = (string)$jsonObject->application;
+		if(!is_null($xml) && count($xml->applicationVersion))
 			$this->applicationVersion = (string)$xml->applicationVersion;
-		if(count($xml->blockAutoTranscript))
+		if(!is_null($jsonObject) && isset($jsonObject->applicationVersion))
+			$this->applicationVersion = (string)$jsonObject->applicationVersion;
+		if(!is_null($xml) && count($xml->blockAutoTranscript))
 		{
 			if(!empty($xml->blockAutoTranscript) && ((int) $xml->blockAutoTranscript === 1 || strtolower((string)$xml->blockAutoTranscript) === 'true'))
 				$this->blockAutoTranscript = true;
 			else
 				$this->blockAutoTranscript = false;
 		}
+		if(!is_null($jsonObject) && isset($jsonObject->blockAutoTranscript))
+		{
+			if(!empty($jsonObject->blockAutoTranscript) && ((int) $jsonObject->blockAutoTranscript === 1 || strtolower((string)$jsonObject->blockAutoTranscript) === 'true'))
+				$this->blockAutoTranscript = true;
+			else
+				$this->blockAutoTranscript = false;
+		}
+		if(!is_null($xml) && count($xml->defaultLanguage))
+			$this->defaultLanguage = (string)$xml->defaultLanguage;
+		if(!is_null($jsonObject) && isset($jsonObject->defaultLanguage))
+			$this->defaultLanguage = (string)$jsonObject->defaultLanguage;
+		if(!is_null($xml) && count($xml->responseLanguage))
+			$this->responseLanguage = (string)$xml->responseLanguage;
+		if(!is_null($jsonObject) && isset($jsonObject->responseLanguage))
+			$this->responseLanguage = (string)$jsonObject->responseLanguage;
 	}
 	/**
 	 * Auto generated 10 characters alphanumeric string
@@ -567,6 +720,22 @@ class Kaltura_Client_Type_BaseEntry extends Kaltura_Client_ObjectBase
 	 * @var bool
 	 */
 	public $blockAutoTranscript = null;
+
+	/**
+	 * Entry's default language if the entry is multi lingual
+	 *
+	 * @var string
+	 * @readonly
+	 */
+	public $defaultLanguage = null;
+
+	/**
+	 * The language in which the object is returned
+	 *
+	 * @var string
+	 * @readonly
+	 */
+	public $responseLanguage = null;
 
 
 }

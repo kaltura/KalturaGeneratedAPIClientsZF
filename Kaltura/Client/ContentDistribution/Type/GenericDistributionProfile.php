@@ -38,27 +38,44 @@ class Kaltura_Client_ContentDistribution_Type_GenericDistributionProfile extends
 		return 'KalturaGenericDistributionProfile';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->genericProviderId))
+		if(!is_null($xml) && count($xml->genericProviderId))
 			$this->genericProviderId = (int)$xml->genericProviderId;
-		if(count($xml->submitAction) && !empty($xml->submitAction))
+		if(!is_null($jsonObject) && isset($jsonObject->genericProviderId))
+			$this->genericProviderId = (int)$jsonObject->genericProviderId;
+		if(!is_null($xml) && count($xml->submitAction) && !empty($xml->submitAction))
 			$this->submitAction = Kaltura_Client_ParseUtils::unmarshalObject($xml->submitAction, "KalturaGenericDistributionProfileAction");
-		if(count($xml->updateAction) && !empty($xml->updateAction))
+		if(!is_null($jsonObject) && isset($jsonObject->submitAction) && !empty($jsonObject->submitAction))
+			$this->submitAction = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsonObject->submitAction, "KalturaGenericDistributionProfileAction");
+		if(!is_null($xml) && count($xml->updateAction) && !empty($xml->updateAction))
 			$this->updateAction = Kaltura_Client_ParseUtils::unmarshalObject($xml->updateAction, "KalturaGenericDistributionProfileAction");
-		if(count($xml->deleteAction) && !empty($xml->deleteAction))
+		if(!is_null($jsonObject) && isset($jsonObject->updateAction) && !empty($jsonObject->updateAction))
+			$this->updateAction = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsonObject->updateAction, "KalturaGenericDistributionProfileAction");
+		if(!is_null($xml) && count($xml->deleteAction) && !empty($xml->deleteAction))
 			$this->deleteAction = Kaltura_Client_ParseUtils::unmarshalObject($xml->deleteAction, "KalturaGenericDistributionProfileAction");
-		if(count($xml->fetchReportAction) && !empty($xml->fetchReportAction))
+		if(!is_null($jsonObject) && isset($jsonObject->deleteAction) && !empty($jsonObject->deleteAction))
+			$this->deleteAction = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsonObject->deleteAction, "KalturaGenericDistributionProfileAction");
+		if(!is_null($xml) && count($xml->fetchReportAction) && !empty($xml->fetchReportAction))
 			$this->fetchReportAction = Kaltura_Client_ParseUtils::unmarshalObject($xml->fetchReportAction, "KalturaGenericDistributionProfileAction");
-		if(count($xml->updateRequiredEntryFields))
+		if(!is_null($jsonObject) && isset($jsonObject->fetchReportAction) && !empty($jsonObject->fetchReportAction))
+			$this->fetchReportAction = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsonObject->fetchReportAction, "KalturaGenericDistributionProfileAction");
+		if(!is_null($xml) && count($xml->updateRequiredEntryFields))
 			$this->updateRequiredEntryFields = (string)$xml->updateRequiredEntryFields;
-		if(count($xml->updateRequiredMetadataXPaths))
+		if(!is_null($jsonObject) && isset($jsonObject->updateRequiredEntryFields))
+			$this->updateRequiredEntryFields = (string)$jsonObject->updateRequiredEntryFields;
+		if(!is_null($xml) && count($xml->updateRequiredMetadataXPaths))
 			$this->updateRequiredMetadataXPaths = (string)$xml->updateRequiredMetadataXPaths;
+		if(!is_null($jsonObject) && isset($jsonObject->updateRequiredMetadataXPaths))
+			$this->updateRequiredMetadataXPaths = (string)$jsonObject->updateRequiredMetadataXPaths;
 	}
 	/**
 	 * 

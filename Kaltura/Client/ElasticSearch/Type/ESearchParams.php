@@ -38,19 +38,42 @@ abstract class Kaltura_Client_ElasticSearch_Type_ESearchParams extends Kaltura_C
 		return 'KalturaESearchParams';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->objectStatuses))
+		if(!is_null($xml) && count($xml->objectStatuses))
 			$this->objectStatuses = (string)$xml->objectStatuses;
-		if(count($xml->objectId))
+		if(!is_null($jsonObject) && isset($jsonObject->objectStatuses))
+			$this->objectStatuses = (string)$jsonObject->objectStatuses;
+		if(!is_null($xml) && count($xml->objectId))
 			$this->objectId = (string)$xml->objectId;
-		if(count($xml->orderBy) && !empty($xml->orderBy))
+		if(!is_null($jsonObject) && isset($jsonObject->objectId))
+			$this->objectId = (string)$jsonObject->objectId;
+		if(!is_null($xml) && count($xml->orderBy) && !empty($xml->orderBy))
 			$this->orderBy = Kaltura_Client_ParseUtils::unmarshalObject($xml->orderBy, "KalturaESearchOrderBy");
+		if(!is_null($jsonObject) && isset($jsonObject->orderBy) && !empty($jsonObject->orderBy))
+			$this->orderBy = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsonObject->orderBy, "KalturaESearchOrderBy");
+		if(!is_null($xml) && count($xml->ignoreSynonym))
+		{
+			if(!empty($xml->ignoreSynonym) && ((int) $xml->ignoreSynonym === 1 || strtolower((string)$xml->ignoreSynonym) === 'true'))
+				$this->ignoreSynonym = true;
+			else
+				$this->ignoreSynonym = false;
+		}
+		if(!is_null($jsonObject) && isset($jsonObject->ignoreSynonym))
+		{
+			if(!empty($jsonObject->ignoreSynonym) && ((int) $jsonObject->ignoreSynonym === 1 || strtolower((string)$jsonObject->ignoreSynonym) === 'true'))
+				$this->ignoreSynonym = true;
+			else
+				$this->ignoreSynonym = false;
+		}
 	}
 	/**
 	 * 
@@ -72,6 +95,13 @@ abstract class Kaltura_Client_ElasticSearch_Type_ESearchParams extends Kaltura_C
 	 * @var Kaltura_Client_ElasticSearch_Type_ESearchOrderBy
 	 */
 	public $orderBy;
+
+	/**
+	 * 
+	 *
+	 * @var bool
+	 */
+	public $ignoreSynonym = null;
 
 
 }

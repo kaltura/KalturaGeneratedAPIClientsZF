@@ -38,27 +38,44 @@ abstract class Kaltura_Client_DropFolder_Type_SshDropFolder extends Kaltura_Clie
 		return 'KalturaSshDropFolder';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->host))
+		if(!is_null($xml) && count($xml->host))
 			$this->host = (string)$xml->host;
-		if(count($xml->port))
+		if(!is_null($jsonObject) && isset($jsonObject->host))
+			$this->host = (string)$jsonObject->host;
+		if(!is_null($xml) && count($xml->port))
 			$this->port = (int)$xml->port;
-		if(count($xml->username))
+		if(!is_null($jsonObject) && isset($jsonObject->port))
+			$this->port = (int)$jsonObject->port;
+		if(!is_null($xml) && count($xml->username))
 			$this->username = (string)$xml->username;
-		if(count($xml->password))
+		if(!is_null($jsonObject) && isset($jsonObject->username))
+			$this->username = (string)$jsonObject->username;
+		if(!is_null($xml) && count($xml->password))
 			$this->password = (string)$xml->password;
-		if(count($xml->privateKey))
+		if(!is_null($jsonObject) && isset($jsonObject->password))
+			$this->password = (string)$jsonObject->password;
+		if(!is_null($xml) && count($xml->privateKey))
 			$this->privateKey = (string)$xml->privateKey;
-		if(count($xml->publicKey))
+		if(!is_null($jsonObject) && isset($jsonObject->privateKey))
+			$this->privateKey = (string)$jsonObject->privateKey;
+		if(!is_null($xml) && count($xml->publicKey))
 			$this->publicKey = (string)$xml->publicKey;
-		if(count($xml->passPhrase))
+		if(!is_null($jsonObject) && isset($jsonObject->publicKey))
+			$this->publicKey = (string)$jsonObject->publicKey;
+		if(!is_null($xml) && count($xml->passPhrase))
 			$this->passPhrase = (string)$xml->passPhrase;
+		if(!is_null($jsonObject) && isset($jsonObject->passPhrase))
+			$this->passPhrase = (string)$jsonObject->passPhrase;
 	}
 	/**
 	 * 

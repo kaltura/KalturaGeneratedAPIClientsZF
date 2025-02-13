@@ -38,30 +38,54 @@ abstract class Kaltura_Client_ContentDistribution_Type_ConfigurableDistributionP
 		return 'KalturaConfigurableDistributionProfile';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->fieldConfigArray))
+		if(!is_null($xml) && count($xml->fieldConfigArray))
 		{
 			if(empty($xml->fieldConfigArray))
 				$this->fieldConfigArray = array();
 			else
 				$this->fieldConfigArray = Kaltura_Client_ParseUtils::unmarshalArray($xml->fieldConfigArray, "KalturaDistributionFieldConfig");
 		}
-		if(count($xml->itemXpathsToExtend))
+		if(!is_null($jsonObject) && isset($jsonObject->fieldConfigArray))
+		{
+			if(empty($jsonObject->fieldConfigArray))
+				$this->fieldConfigArray = array();
+			else
+				$this->fieldConfigArray = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsonObject->fieldConfigArray, "KalturaDistributionFieldConfig");
+		}
+		if(!is_null($xml) && count($xml->itemXpathsToExtend))
 		{
 			if(empty($xml->itemXpathsToExtend))
 				$this->itemXpathsToExtend = array();
 			else
 				$this->itemXpathsToExtend = Kaltura_Client_ParseUtils::unmarshalArray($xml->itemXpathsToExtend, "KalturaExtendingItemMrssParameter");
 		}
-		if(count($xml->useCategoryEntries))
+		if(!is_null($jsonObject) && isset($jsonObject->itemXpathsToExtend))
+		{
+			if(empty($jsonObject->itemXpathsToExtend))
+				$this->itemXpathsToExtend = array();
+			else
+				$this->itemXpathsToExtend = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsonObject->itemXpathsToExtend, "KalturaExtendingItemMrssParameter");
+		}
+		if(!is_null($xml) && count($xml->useCategoryEntries))
 		{
 			if(!empty($xml->useCategoryEntries) && ((int) $xml->useCategoryEntries === 1 || strtolower((string)$xml->useCategoryEntries) === 'true'))
+				$this->useCategoryEntries = true;
+			else
+				$this->useCategoryEntries = false;
+		}
+		if(!is_null($jsonObject) && isset($jsonObject->useCategoryEntries))
+		{
+			if(!empty($jsonObject->useCategoryEntries) && ((int) $jsonObject->useCategoryEntries === 1 || strtolower((string)$jsonObject->useCategoryEntries) === 'true'))
 				$this->useCategoryEntries = true;
 			else
 				$this->useCategoryEntries = false;

@@ -38,23 +38,36 @@ abstract class Kaltura_Client_Type_ThumbAssetBaseFilter extends Kaltura_Client_T
 		return 'KalturaThumbAssetBaseFilter';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->thumbParamsIdEqual))
+		if(!is_null($xml) && count($xml->thumbParamsIdEqual))
 			$this->thumbParamsIdEqual = (int)$xml->thumbParamsIdEqual;
-		if(count($xml->thumbParamsIdIn))
+		if(!is_null($jsonObject) && isset($jsonObject->thumbParamsIdEqual))
+			$this->thumbParamsIdEqual = (int)$jsonObject->thumbParamsIdEqual;
+		if(!is_null($xml) && count($xml->thumbParamsIdIn))
 			$this->thumbParamsIdIn = (string)$xml->thumbParamsIdIn;
-		if(count($xml->statusEqual))
+		if(!is_null($jsonObject) && isset($jsonObject->thumbParamsIdIn))
+			$this->thumbParamsIdIn = (string)$jsonObject->thumbParamsIdIn;
+		if(!is_null($xml) && count($xml->statusEqual))
 			$this->statusEqual = (int)$xml->statusEqual;
-		if(count($xml->statusIn))
+		if(!is_null($jsonObject) && isset($jsonObject->statusEqual))
+			$this->statusEqual = (int)$jsonObject->statusEqual;
+		if(!is_null($xml) && count($xml->statusIn))
 			$this->statusIn = (string)$xml->statusIn;
-		if(count($xml->statusNotIn))
+		if(!is_null($jsonObject) && isset($jsonObject->statusIn))
+			$this->statusIn = (string)$jsonObject->statusIn;
+		if(!is_null($xml) && count($xml->statusNotIn))
 			$this->statusNotIn = (string)$xml->statusNotIn;
+		if(!is_null($jsonObject) && isset($jsonObject->statusNotIn))
+			$this->statusNotIn = (string)$jsonObject->statusNotIn;
 	}
 	/**
 	 * 

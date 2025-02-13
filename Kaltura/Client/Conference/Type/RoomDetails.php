@@ -38,23 +38,36 @@ class Kaltura_Client_Conference_Type_RoomDetails extends Kaltura_Client_ObjectBa
 		return 'KalturaRoomDetails';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->serverUrl))
+		if(!is_null($xml) && count($xml->serverUrl))
 			$this->serverUrl = (string)$xml->serverUrl;
-		if(count($xml->entryId))
+		if(!is_null($jsonObject) && isset($jsonObject->serverUrl))
+			$this->serverUrl = (string)$jsonObject->serverUrl;
+		if(!is_null($xml) && count($xml->entryId))
 			$this->entryId = (string)$xml->entryId;
-		if(count($xml->token))
+		if(!is_null($jsonObject) && isset($jsonObject->entryId))
+			$this->entryId = (string)$jsonObject->entryId;
+		if(!is_null($xml) && count($xml->token))
 			$this->token = (string)$xml->token;
-		if(count($xml->expiry))
+		if(!is_null($jsonObject) && isset($jsonObject->token))
+			$this->token = (string)$jsonObject->token;
+		if(!is_null($xml) && count($xml->expiry))
 			$this->expiry = (int)$xml->expiry;
-		if(count($xml->serverName))
+		if(!is_null($jsonObject) && isset($jsonObject->expiry))
+			$this->expiry = (int)$jsonObject->expiry;
+		if(!is_null($xml) && count($xml->serverName))
 			$this->serverName = (string)$xml->serverName;
+		if(!is_null($jsonObject) && isset($jsonObject->serverName))
+			$this->serverName = (string)$jsonObject->serverName;
 	}
 	/**
 	 * 

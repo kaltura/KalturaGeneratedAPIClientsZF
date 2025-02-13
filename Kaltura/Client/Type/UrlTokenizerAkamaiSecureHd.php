@@ -38,23 +38,36 @@ class Kaltura_Client_Type_UrlTokenizerAkamaiSecureHd extends Kaltura_Client_Type
 		return 'KalturaUrlTokenizerAkamaiSecureHd';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->paramName))
+		if(!is_null($xml) && count($xml->paramName))
 			$this->paramName = (string)$xml->paramName;
-		if(count($xml->aclPostfix))
+		if(!is_null($jsonObject) && isset($jsonObject->paramName))
+			$this->paramName = (string)$jsonObject->paramName;
+		if(!is_null($xml) && count($xml->aclPostfix))
 			$this->aclPostfix = (string)$xml->aclPostfix;
-		if(count($xml->customPostfixes))
+		if(!is_null($jsonObject) && isset($jsonObject->aclPostfix))
+			$this->aclPostfix = (string)$jsonObject->aclPostfix;
+		if(!is_null($xml) && count($xml->customPostfixes))
 			$this->customPostfixes = (string)$xml->customPostfixes;
-		if(count($xml->useCookieHosts))
+		if(!is_null($jsonObject) && isset($jsonObject->customPostfixes))
+			$this->customPostfixes = (string)$jsonObject->customPostfixes;
+		if(!is_null($xml) && count($xml->useCookieHosts))
 			$this->useCookieHosts = (string)$xml->useCookieHosts;
-		if(count($xml->rootDir))
+		if(!is_null($jsonObject) && isset($jsonObject->useCookieHosts))
+			$this->useCookieHosts = (string)$jsonObject->useCookieHosts;
+		if(!is_null($xml) && count($xml->rootDir))
 			$this->rootDir = (string)$xml->rootDir;
+		if(!is_null($jsonObject) && isset($jsonObject->rootDir))
+			$this->rootDir = (string)$jsonObject->rootDir;
 	}
 	/**
 	 * 

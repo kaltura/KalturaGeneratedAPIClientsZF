@@ -38,17 +38,24 @@ class Kaltura_Client_BulkUploadFilter_Type_BulkUploadFilterJobData extends Kaltu
 		return 'KalturaBulkUploadFilterJobData';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->filter) && !empty($xml->filter))
+		if(!is_null($xml) && count($xml->filter) && !empty($xml->filter))
 			$this->filter = Kaltura_Client_ParseUtils::unmarshalObject($xml->filter, "KalturaFilter");
-		if(count($xml->templateObject) && !empty($xml->templateObject))
+		if(!is_null($jsonObject) && isset($jsonObject->filter) && !empty($jsonObject->filter))
+			$this->filter = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsonObject->filter, "KalturaFilter");
+		if(!is_null($xml) && count($xml->templateObject) && !empty($xml->templateObject))
 			$this->templateObject = Kaltura_Client_ParseUtils::unmarshalObject($xml->templateObject, "KalturaObjectBase");
+		if(!is_null($jsonObject) && isset($jsonObject->templateObject) && !empty($jsonObject->templateObject))
+			$this->templateObject = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsonObject->templateObject, "KalturaObjectBase");
 	}
 	/**
 	 * Filter for extracting the objects list to upload

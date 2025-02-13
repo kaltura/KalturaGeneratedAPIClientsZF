@@ -38,23 +38,36 @@ class Kaltura_Client_Type_LiveReportInputFilter extends Kaltura_Client_ObjectBas
 		return 'KalturaLiveReportInputFilter';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->entryIds))
+		if(!is_null($xml) && count($xml->entryIds))
 			$this->entryIds = (string)$xml->entryIds;
-		if(count($xml->fromTime))
+		if(!is_null($jsonObject) && isset($jsonObject->entryIds))
+			$this->entryIds = (string)$jsonObject->entryIds;
+		if(!is_null($xml) && count($xml->fromTime))
 			$this->fromTime = (int)$xml->fromTime;
-		if(count($xml->toTime))
+		if(!is_null($jsonObject) && isset($jsonObject->fromTime))
+			$this->fromTime = (int)$jsonObject->fromTime;
+		if(!is_null($xml) && count($xml->toTime))
 			$this->toTime = (int)$xml->toTime;
-		if(count($xml->live))
+		if(!is_null($jsonObject) && isset($jsonObject->toTime))
+			$this->toTime = (int)$jsonObject->toTime;
+		if(!is_null($xml) && count($xml->live))
 			$this->live = (int)$xml->live;
-		if(count($xml->orderBy))
+		if(!is_null($jsonObject) && isset($jsonObject->live))
+			$this->live = (int)$jsonObject->live;
+		if(!is_null($xml) && count($xml->orderBy))
 			$this->orderBy = (string)$xml->orderBy;
+		if(!is_null($jsonObject) && isset($jsonObject->orderBy))
+			$this->orderBy = (string)$jsonObject->orderBy;
 	}
 	/**
 	 * 

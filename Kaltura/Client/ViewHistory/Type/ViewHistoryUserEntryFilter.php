@@ -38,14 +38,50 @@ class Kaltura_Client_ViewHistory_Type_ViewHistoryUserEntryFilter extends Kaltura
 		return 'KalturaViewHistoryUserEntryFilter';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
+		if(!is_null($xml) && count($xml->extendedStatusEqual))
+			$this->extendedStatusEqual = (string)$xml->extendedStatusEqual;
+		if(!is_null($jsonObject) && isset($jsonObject->extendedStatusEqual))
+			$this->extendedStatusEqual = (string)$jsonObject->extendedStatusEqual;
+		if(!is_null($xml) && count($xml->extendedStatusIn))
+			$this->extendedStatusIn = (string)$xml->extendedStatusIn;
+		if(!is_null($jsonObject) && isset($jsonObject->extendedStatusIn))
+			$this->extendedStatusIn = (string)$jsonObject->extendedStatusIn;
+		if(!is_null($xml) && count($xml->extendedStatusNotIn))
+			$this->extendedStatusNotIn = (string)$xml->extendedStatusNotIn;
+		if(!is_null($jsonObject) && isset($jsonObject->extendedStatusNotIn))
+			$this->extendedStatusNotIn = (string)$jsonObject->extendedStatusNotIn;
 	}
+	/**
+	 * 
+	 *
+	 * @var Kaltura_Client_Enum_UserEntryExtendedStatus
+	 */
+	public $extendedStatusEqual = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $extendedStatusIn = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $extendedStatusNotIn = null;
+
 
 }
 

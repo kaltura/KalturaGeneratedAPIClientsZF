@@ -38,21 +38,32 @@ class Kaltura_Client_Reach_Type_VendorCredit extends Kaltura_Client_Reach_Type_B
 		return 'KalturaVendorCredit';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->credit))
+		if(!is_null($xml) && count($xml->credit))
 			$this->credit = (int)$xml->credit;
-		if(count($xml->fromDate))
+		if(!is_null($jsonObject) && isset($jsonObject->credit))
+			$this->credit = (int)$jsonObject->credit;
+		if(!is_null($xml) && count($xml->fromDate))
 			$this->fromDate = (int)$xml->fromDate;
-		if(count($xml->overageCredit))
+		if(!is_null($jsonObject) && isset($jsonObject->fromDate))
+			$this->fromDate = (int)$jsonObject->fromDate;
+		if(!is_null($xml) && count($xml->overageCredit))
 			$this->overageCredit = (int)$xml->overageCredit;
-		if(count($xml->addOn))
+		if(!is_null($jsonObject) && isset($jsonObject->overageCredit))
+			$this->overageCredit = (int)$jsonObject->overageCredit;
+		if(!is_null($xml) && count($xml->addOn))
 			$this->addOn = (int)$xml->addOn;
+		if(!is_null($jsonObject) && isset($jsonObject->addOn))
+			$this->addOn = (int)$jsonObject->addOn;
 	}
 	/**
 	 * 

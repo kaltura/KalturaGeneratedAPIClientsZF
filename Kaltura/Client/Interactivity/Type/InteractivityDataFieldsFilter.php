@@ -38,15 +38,20 @@ abstract class Kaltura_Client_Interactivity_Type_InteractivityDataFieldsFilter e
 		return 'KalturaInteractivityDataFieldsFilter';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->fields))
+		if(!is_null($xml) && count($xml->fields))
 			$this->fields = (string)$xml->fields;
+		if(!is_null($jsonObject) && isset($jsonObject->fields))
+			$this->fields = (string)$jsonObject->fields;
 	}
 	/**
 	 * A string containing CSV list of fields to include

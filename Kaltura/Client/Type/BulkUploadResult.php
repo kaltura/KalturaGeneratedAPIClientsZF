@@ -38,50 +38,90 @@ class Kaltura_Client_Type_BulkUploadResult extends Kaltura_Client_ObjectBase
 		return 'KalturaBulkUploadResult';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->id))
+		if(!is_null($xml) && count($xml->id))
 			$this->id = (int)$xml->id;
-		if(count($xml->bulkUploadJobId))
+		if(!is_null($jsonObject) && isset($jsonObject->id))
+			$this->id = (int)$jsonObject->id;
+		if(!is_null($xml) && count($xml->bulkUploadJobId))
 			$this->bulkUploadJobId = (string)$xml->bulkUploadJobId;
-		if(count($xml->lineIndex))
+		if(!is_null($jsonObject) && isset($jsonObject->bulkUploadJobId))
+			$this->bulkUploadJobId = (string)$jsonObject->bulkUploadJobId;
+		if(!is_null($xml) && count($xml->lineIndex))
 			$this->lineIndex = (int)$xml->lineIndex;
-		if(count($xml->partnerId))
+		if(!is_null($jsonObject) && isset($jsonObject->lineIndex))
+			$this->lineIndex = (int)$jsonObject->lineIndex;
+		if(!is_null($xml) && count($xml->partnerId))
 			$this->partnerId = (int)$xml->partnerId;
-		if(count($xml->status))
+		if(!is_null($jsonObject) && isset($jsonObject->partnerId))
+			$this->partnerId = (int)$jsonObject->partnerId;
+		if(!is_null($xml) && count($xml->status))
 			$this->status = (string)$xml->status;
-		if(count($xml->action))
+		if(!is_null($jsonObject) && isset($jsonObject->status))
+			$this->status = (string)$jsonObject->status;
+		if(!is_null($xml) && count($xml->action))
 			$this->action = (string)$xml->action;
-		if(count($xml->objectId))
+		if(!is_null($jsonObject) && isset($jsonObject->action))
+			$this->action = (string)$jsonObject->action;
+		if(!is_null($xml) && count($xml->objectId))
 			$this->objectId = (string)$xml->objectId;
-		if(count($xml->objectStatus))
+		if(!is_null($jsonObject) && isset($jsonObject->objectId))
+			$this->objectId = (string)$jsonObject->objectId;
+		if(!is_null($xml) && count($xml->objectStatus))
 			$this->objectStatus = (int)$xml->objectStatus;
-		if(count($xml->bulkUploadResultObjectType))
+		if(!is_null($jsonObject) && isset($jsonObject->objectStatus))
+			$this->objectStatus = (int)$jsonObject->objectStatus;
+		if(!is_null($xml) && count($xml->bulkUploadResultObjectType))
 			$this->bulkUploadResultObjectType = (string)$xml->bulkUploadResultObjectType;
-		if(count($xml->rowData))
+		if(!is_null($jsonObject) && isset($jsonObject->bulkUploadResultObjectType))
+			$this->bulkUploadResultObjectType = (string)$jsonObject->bulkUploadResultObjectType;
+		if(!is_null($xml) && count($xml->rowData))
 			$this->rowData = (string)$xml->rowData;
-		if(count($xml->partnerData))
+		if(!is_null($jsonObject) && isset($jsonObject->rowData))
+			$this->rowData = (string)$jsonObject->rowData;
+		if(!is_null($xml) && count($xml->partnerData))
 			$this->partnerData = (string)$xml->partnerData;
-		if(count($xml->objectErrorDescription))
+		if(!is_null($jsonObject) && isset($jsonObject->partnerData))
+			$this->partnerData = (string)$jsonObject->partnerData;
+		if(!is_null($xml) && count($xml->objectErrorDescription))
 			$this->objectErrorDescription = (string)$xml->objectErrorDescription;
-		if(count($xml->pluginsData))
+		if(!is_null($jsonObject) && isset($jsonObject->objectErrorDescription))
+			$this->objectErrorDescription = (string)$jsonObject->objectErrorDescription;
+		if(!is_null($xml) && count($xml->pluginsData))
 		{
 			if(empty($xml->pluginsData))
 				$this->pluginsData = array();
 			else
 				$this->pluginsData = Kaltura_Client_ParseUtils::unmarshalArray($xml->pluginsData, "KalturaBulkUploadPluginData");
 		}
-		if(count($xml->errorDescription))
+		if(!is_null($jsonObject) && isset($jsonObject->pluginsData))
+		{
+			if(empty($jsonObject->pluginsData))
+				$this->pluginsData = array();
+			else
+				$this->pluginsData = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsonObject->pluginsData, "KalturaBulkUploadPluginData");
+		}
+		if(!is_null($xml) && count($xml->errorDescription))
 			$this->errorDescription = (string)$xml->errorDescription;
-		if(count($xml->errorCode))
+		if(!is_null($jsonObject) && isset($jsonObject->errorDescription))
+			$this->errorDescription = (string)$jsonObject->errorDescription;
+		if(!is_null($xml) && count($xml->errorCode))
 			$this->errorCode = (string)$xml->errorCode;
-		if(count($xml->errorType))
+		if(!is_null($jsonObject) && isset($jsonObject->errorCode))
+			$this->errorCode = (string)$jsonObject->errorCode;
+		if(!is_null($xml) && count($xml->errorType))
 			$this->errorType = (int)$xml->errorType;
+		if(!is_null($jsonObject) && isset($jsonObject->errorType))
+			$this->errorType = (int)$jsonObject->errorType;
 	}
 	/**
 	 * The id of the result

@@ -38,55 +38,104 @@ class Kaltura_Client_FtpDistribution_Type_FtpDistributionProfile extends Kaltura
 		return 'KalturaFtpDistributionProfile';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->protocol))
+		if(!is_null($xml) && count($xml->protocol))
 			$this->protocol = (int)$xml->protocol;
-		if(count($xml->host))
+		if(!is_null($jsonObject) && isset($jsonObject->protocol))
+			$this->protocol = (int)$jsonObject->protocol;
+		if(!is_null($xml) && count($xml->host))
 			$this->host = (string)$xml->host;
-		if(count($xml->port))
+		if(!is_null($jsonObject) && isset($jsonObject->host))
+			$this->host = (string)$jsonObject->host;
+		if(!is_null($xml) && count($xml->port))
 			$this->port = (int)$xml->port;
-		if(count($xml->basePath))
+		if(!is_null($jsonObject) && isset($jsonObject->port))
+			$this->port = (int)$jsonObject->port;
+		if(!is_null($xml) && count($xml->basePath))
 			$this->basePath = (string)$xml->basePath;
-		if(count($xml->username))
+		if(!is_null($jsonObject) && isset($jsonObject->basePath))
+			$this->basePath = (string)$jsonObject->basePath;
+		if(!is_null($xml) && count($xml->username))
 			$this->username = (string)$xml->username;
-		if(count($xml->password))
+		if(!is_null($jsonObject) && isset($jsonObject->username))
+			$this->username = (string)$jsonObject->username;
+		if(!is_null($xml) && count($xml->password))
 			$this->password = (string)$xml->password;
-		if(count($xml->passphrase))
+		if(!is_null($jsonObject) && isset($jsonObject->password))
+			$this->password = (string)$jsonObject->password;
+		if(!is_null($xml) && count($xml->passphrase))
 			$this->passphrase = (string)$xml->passphrase;
-		if(count($xml->sftpPublicKey))
+		if(!is_null($jsonObject) && isset($jsonObject->passphrase))
+			$this->passphrase = (string)$jsonObject->passphrase;
+		if(!is_null($xml) && count($xml->sftpPublicKey))
 			$this->sftpPublicKey = (string)$xml->sftpPublicKey;
-		if(count($xml->sftpPrivateKey))
+		if(!is_null($jsonObject) && isset($jsonObject->sftpPublicKey))
+			$this->sftpPublicKey = (string)$jsonObject->sftpPublicKey;
+		if(!is_null($xml) && count($xml->sftpPrivateKey))
 			$this->sftpPrivateKey = (string)$xml->sftpPrivateKey;
-		if(count($xml->disableMetadata))
+		if(!is_null($jsonObject) && isset($jsonObject->sftpPrivateKey))
+			$this->sftpPrivateKey = (string)$jsonObject->sftpPrivateKey;
+		if(!is_null($xml) && count($xml->disableMetadata))
 		{
 			if(!empty($xml->disableMetadata) && ((int) $xml->disableMetadata === 1 || strtolower((string)$xml->disableMetadata) === 'true'))
 				$this->disableMetadata = true;
 			else
 				$this->disableMetadata = false;
 		}
-		if(count($xml->metadataXslt))
+		if(!is_null($jsonObject) && isset($jsonObject->disableMetadata))
+		{
+			if(!empty($jsonObject->disableMetadata) && ((int) $jsonObject->disableMetadata === 1 || strtolower((string)$jsonObject->disableMetadata) === 'true'))
+				$this->disableMetadata = true;
+			else
+				$this->disableMetadata = false;
+		}
+		if(!is_null($xml) && count($xml->metadataXslt))
 			$this->metadataXslt = (string)$xml->metadataXslt;
-		if(count($xml->metadataFilenameXslt))
+		if(!is_null($jsonObject) && isset($jsonObject->metadataXslt))
+			$this->metadataXslt = (string)$jsonObject->metadataXslt;
+		if(!is_null($xml) && count($xml->metadataFilenameXslt))
 			$this->metadataFilenameXslt = (string)$xml->metadataFilenameXslt;
-		if(count($xml->flavorAssetFilenameXslt))
+		if(!is_null($jsonObject) && isset($jsonObject->metadataFilenameXslt))
+			$this->metadataFilenameXslt = (string)$jsonObject->metadataFilenameXslt;
+		if(!is_null($xml) && count($xml->flavorAssetFilenameXslt))
 			$this->flavorAssetFilenameXslt = (string)$xml->flavorAssetFilenameXslt;
-		if(count($xml->thumbnailAssetFilenameXslt))
+		if(!is_null($jsonObject) && isset($jsonObject->flavorAssetFilenameXslt))
+			$this->flavorAssetFilenameXslt = (string)$jsonObject->flavorAssetFilenameXslt;
+		if(!is_null($xml) && count($xml->thumbnailAssetFilenameXslt))
 			$this->thumbnailAssetFilenameXslt = (string)$xml->thumbnailAssetFilenameXslt;
-		if(count($xml->assetFilenameXslt))
+		if(!is_null($jsonObject) && isset($jsonObject->thumbnailAssetFilenameXslt))
+			$this->thumbnailAssetFilenameXslt = (string)$jsonObject->thumbnailAssetFilenameXslt;
+		if(!is_null($xml) && count($xml->assetFilenameXslt))
 			$this->assetFilenameXslt = (string)$xml->assetFilenameXslt;
-		if(count($xml->asperaPublicKey))
+		if(!is_null($jsonObject) && isset($jsonObject->assetFilenameXslt))
+			$this->assetFilenameXslt = (string)$jsonObject->assetFilenameXslt;
+		if(!is_null($xml) && count($xml->asperaPublicKey))
 			$this->asperaPublicKey = (string)$xml->asperaPublicKey;
-		if(count($xml->asperaPrivateKey))
+		if(!is_null($jsonObject) && isset($jsonObject->asperaPublicKey))
+			$this->asperaPublicKey = (string)$jsonObject->asperaPublicKey;
+		if(!is_null($xml) && count($xml->asperaPrivateKey))
 			$this->asperaPrivateKey = (string)$xml->asperaPrivateKey;
-		if(count($xml->sendMetadataAfterAssets))
+		if(!is_null($jsonObject) && isset($jsonObject->asperaPrivateKey))
+			$this->asperaPrivateKey = (string)$jsonObject->asperaPrivateKey;
+		if(!is_null($xml) && count($xml->sendMetadataAfterAssets))
 		{
 			if(!empty($xml->sendMetadataAfterAssets) && ((int) $xml->sendMetadataAfterAssets === 1 || strtolower((string)$xml->sendMetadataAfterAssets) === 'true'))
+				$this->sendMetadataAfterAssets = true;
+			else
+				$this->sendMetadataAfterAssets = false;
+		}
+		if(!is_null($jsonObject) && isset($jsonObject->sendMetadataAfterAssets))
+		{
+			if(!empty($jsonObject->sendMetadataAfterAssets) && ((int) $jsonObject->sendMetadataAfterAssets === 1 || strtolower((string)$jsonObject->sendMetadataAfterAssets) === 'true'))
 				$this->sendMetadataAfterAssets = true;
 			else
 				$this->sendMetadataAfterAssets = false;

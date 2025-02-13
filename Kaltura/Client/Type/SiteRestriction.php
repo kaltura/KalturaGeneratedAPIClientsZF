@@ -38,17 +38,24 @@ class Kaltura_Client_Type_SiteRestriction extends Kaltura_Client_Type_BaseRestri
 		return 'KalturaSiteRestriction';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->siteRestrictionType))
+		if(!is_null($xml) && count($xml->siteRestrictionType))
 			$this->siteRestrictionType = (int)$xml->siteRestrictionType;
-		if(count($xml->siteList))
+		if(!is_null($jsonObject) && isset($jsonObject->siteRestrictionType))
+			$this->siteRestrictionType = (int)$jsonObject->siteRestrictionType;
+		if(!is_null($xml) && count($xml->siteList))
 			$this->siteList = (string)$xml->siteList;
+		if(!is_null($jsonObject) && isset($jsonObject->siteList))
+			$this->siteList = (string)$jsonObject->siteList;
 	}
 	/**
 	 * The site restriction type (allow or deny)

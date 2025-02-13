@@ -38,33 +38,56 @@ class Kaltura_Client_Type_ExtractMediaJobData extends Kaltura_Client_Type_Convar
 		return 'KalturaExtractMediaJobData';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->flavorAssetId))
+		if(!is_null($xml) && count($xml->flavorAssetId))
 			$this->flavorAssetId = (string)$xml->flavorAssetId;
-		if(count($xml->calculateComplexity))
+		if(!is_null($jsonObject) && isset($jsonObject->flavorAssetId))
+			$this->flavorAssetId = (string)$jsonObject->flavorAssetId;
+		if(!is_null($xml) && count($xml->calculateComplexity))
 		{
 			if(!empty($xml->calculateComplexity) && ((int) $xml->calculateComplexity === 1 || strtolower((string)$xml->calculateComplexity) === 'true'))
 				$this->calculateComplexity = true;
 			else
 				$this->calculateComplexity = false;
 		}
-		if(count($xml->extractId3Tags))
+		if(!is_null($jsonObject) && isset($jsonObject->calculateComplexity))
+		{
+			if(!empty($jsonObject->calculateComplexity) && ((int) $jsonObject->calculateComplexity === 1 || strtolower((string)$jsonObject->calculateComplexity) === 'true'))
+				$this->calculateComplexity = true;
+			else
+				$this->calculateComplexity = false;
+		}
+		if(!is_null($xml) && count($xml->extractId3Tags))
 		{
 			if(!empty($xml->extractId3Tags) && ((int) $xml->extractId3Tags === 1 || strtolower((string)$xml->extractId3Tags) === 'true'))
 				$this->extractId3Tags = true;
 			else
 				$this->extractId3Tags = false;
 		}
-		if(count($xml->destDataFilePath))
+		if(!is_null($jsonObject) && isset($jsonObject->extractId3Tags))
+		{
+			if(!empty($jsonObject->extractId3Tags) && ((int) $jsonObject->extractId3Tags === 1 || strtolower((string)$jsonObject->extractId3Tags) === 'true'))
+				$this->extractId3Tags = true;
+			else
+				$this->extractId3Tags = false;
+		}
+		if(!is_null($xml) && count($xml->destDataFilePath))
 			$this->destDataFilePath = (string)$xml->destDataFilePath;
-		if(count($xml->detectGOP))
+		if(!is_null($jsonObject) && isset($jsonObject->destDataFilePath))
+			$this->destDataFilePath = (string)$jsonObject->destDataFilePath;
+		if(!is_null($xml) && count($xml->detectGOP))
 			$this->detectGOP = (int)$xml->detectGOP;
+		if(!is_null($jsonObject) && isset($jsonObject->detectGOP))
+			$this->detectGOP = (int)$jsonObject->detectGOP;
 	}
 	/**
 	 * 

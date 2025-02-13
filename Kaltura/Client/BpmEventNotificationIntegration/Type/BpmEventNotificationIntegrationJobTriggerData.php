@@ -38,19 +38,28 @@ class Kaltura_Client_BpmEventNotificationIntegration_Type_BpmEventNotificationIn
 		return 'KalturaBpmEventNotificationIntegrationJobTriggerData';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->templateId))
+		if(!is_null($xml) && count($xml->templateId))
 			$this->templateId = (int)$xml->templateId;
-		if(count($xml->businessProcessId))
+		if(!is_null($jsonObject) && isset($jsonObject->templateId))
+			$this->templateId = (int)$jsonObject->templateId;
+		if(!is_null($xml) && count($xml->businessProcessId))
 			$this->businessProcessId = (string)$xml->businessProcessId;
-		if(count($xml->caseId))
+		if(!is_null($jsonObject) && isset($jsonObject->businessProcessId))
+			$this->businessProcessId = (string)$jsonObject->businessProcessId;
+		if(!is_null($xml) && count($xml->caseId))
 			$this->caseId = (string)$xml->caseId;
+		if(!is_null($jsonObject) && isset($jsonObject->caseId))
+			$this->caseId = (string)$jsonObject->caseId;
 	}
 	/**
 	 * KalturaBusinessProcessNotificationTemplate id

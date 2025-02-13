@@ -38,49 +38,88 @@ class Kaltura_Client_YouTubeDistribution_Type_YouTubeDistributionJobProviderData
 		return 'KalturaYouTubeDistributionJobProviderData';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->videoAssetFilePath))
+		if(!is_null($xml) && count($xml->videoAssetFilePath))
 			$this->videoAssetFilePath = (string)$xml->videoAssetFilePath;
-		if(count($xml->thumbAssetFilePath))
+		if(!is_null($jsonObject) && isset($jsonObject->videoAssetFilePath))
+			$this->videoAssetFilePath = (string)$jsonObject->videoAssetFilePath;
+		if(!is_null($xml) && count($xml->thumbAssetFilePath))
 			$this->thumbAssetFilePath = (string)$xml->thumbAssetFilePath;
-		if(count($xml->thumbAssetId))
+		if(!is_null($jsonObject) && isset($jsonObject->thumbAssetFilePath))
+			$this->thumbAssetFilePath = (string)$jsonObject->thumbAssetFilePath;
+		if(!is_null($xml) && count($xml->thumbAssetId))
 			$this->thumbAssetId = (string)$xml->thumbAssetId;
-		if(count($xml->captionAssetIds))
+		if(!is_null($jsonObject) && isset($jsonObject->thumbAssetId))
+			$this->thumbAssetId = (string)$jsonObject->thumbAssetId;
+		if(!is_null($xml) && count($xml->captionAssetIds))
 			$this->captionAssetIds = (string)$xml->captionAssetIds;
-		if(count($xml->sftpDirectory))
+		if(!is_null($jsonObject) && isset($jsonObject->captionAssetIds))
+			$this->captionAssetIds = (string)$jsonObject->captionAssetIds;
+		if(!is_null($xml) && count($xml->sftpDirectory))
 			$this->sftpDirectory = (string)$xml->sftpDirectory;
-		if(count($xml->sftpMetadataFilename))
+		if(!is_null($jsonObject) && isset($jsonObject->sftpDirectory))
+			$this->sftpDirectory = (string)$jsonObject->sftpDirectory;
+		if(!is_null($xml) && count($xml->sftpMetadataFilename))
 			$this->sftpMetadataFilename = (string)$xml->sftpMetadataFilename;
-		if(count($xml->currentPlaylists))
+		if(!is_null($jsonObject) && isset($jsonObject->sftpMetadataFilename))
+			$this->sftpMetadataFilename = (string)$jsonObject->sftpMetadataFilename;
+		if(!is_null($xml) && count($xml->currentPlaylists))
 			$this->currentPlaylists = (string)$xml->currentPlaylists;
-		if(count($xml->newPlaylists))
+		if(!is_null($jsonObject) && isset($jsonObject->currentPlaylists))
+			$this->currentPlaylists = (string)$jsonObject->currentPlaylists;
+		if(!is_null($xml) && count($xml->newPlaylists))
 			$this->newPlaylists = (string)$xml->newPlaylists;
-		if(count($xml->submitXml))
+		if(!is_null($jsonObject) && isset($jsonObject->newPlaylists))
+			$this->newPlaylists = (string)$jsonObject->newPlaylists;
+		if(!is_null($xml) && count($xml->submitXml))
 			$this->submitXml = (string)$xml->submitXml;
-		if(count($xml->updateXml))
+		if(!is_null($jsonObject) && isset($jsonObject->submitXml))
+			$this->submitXml = (string)$jsonObject->submitXml;
+		if(!is_null($xml) && count($xml->updateXml))
 			$this->updateXml = (string)$xml->updateXml;
-		if(count($xml->deleteXml))
+		if(!is_null($jsonObject) && isset($jsonObject->updateXml))
+			$this->updateXml = (string)$jsonObject->updateXml;
+		if(!is_null($xml) && count($xml->deleteXml))
 			$this->deleteXml = (string)$xml->deleteXml;
-		if(count($xml->googleClientId))
+		if(!is_null($jsonObject) && isset($jsonObject->deleteXml))
+			$this->deleteXml = (string)$jsonObject->deleteXml;
+		if(!is_null($xml) && count($xml->googleClientId))
 			$this->googleClientId = (string)$xml->googleClientId;
-		if(count($xml->googleClientSecret))
+		if(!is_null($jsonObject) && isset($jsonObject->googleClientId))
+			$this->googleClientId = (string)$jsonObject->googleClientId;
+		if(!is_null($xml) && count($xml->googleClientSecret))
 			$this->googleClientSecret = (string)$xml->googleClientSecret;
-		if(count($xml->googleTokenData))
+		if(!is_null($jsonObject) && isset($jsonObject->googleClientSecret))
+			$this->googleClientSecret = (string)$jsonObject->googleClientSecret;
+		if(!is_null($xml) && count($xml->googleTokenData))
 			$this->googleTokenData = (string)$xml->googleTokenData;
-		if(count($xml->captionsCsvMap))
+		if(!is_null($jsonObject) && isset($jsonObject->googleTokenData))
+			$this->googleTokenData = (string)$jsonObject->googleTokenData;
+		if(!is_null($xml) && count($xml->captionsCsvMap))
 			$this->captionsCsvMap = (string)$xml->captionsCsvMap;
-		if(count($xml->submitCsvMap))
+		if(!is_null($jsonObject) && isset($jsonObject->captionsCsvMap))
+			$this->captionsCsvMap = (string)$jsonObject->captionsCsvMap;
+		if(!is_null($xml) && count($xml->submitCsvMap))
 			$this->submitCsvMap = (string)$xml->submitCsvMap;
-		if(count($xml->updateCsvMap))
+		if(!is_null($jsonObject) && isset($jsonObject->submitCsvMap))
+			$this->submitCsvMap = (string)$jsonObject->submitCsvMap;
+		if(!is_null($xml) && count($xml->updateCsvMap))
 			$this->updateCsvMap = (string)$xml->updateCsvMap;
-		if(count($xml->deleteVideoIds))
+		if(!is_null($jsonObject) && isset($jsonObject->updateCsvMap))
+			$this->updateCsvMap = (string)$jsonObject->updateCsvMap;
+		if(!is_null($xml) && count($xml->deleteVideoIds))
 			$this->deleteVideoIds = (string)$xml->deleteVideoIds;
+		if(!is_null($jsonObject) && isset($jsonObject->deleteVideoIds))
+			$this->deleteVideoIds = (string)$jsonObject->deleteVideoIds;
 	}
 	/**
 	 * 

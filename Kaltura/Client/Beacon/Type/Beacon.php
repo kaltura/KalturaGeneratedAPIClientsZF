@@ -38,29 +38,48 @@ class Kaltura_Client_Beacon_Type_Beacon extends Kaltura_Client_ObjectBase
 		return 'KalturaBeacon';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->id))
+		if(!is_null($xml) && count($xml->id))
 			$this->id = (string)$xml->id;
-		if(count($xml->indexType))
+		if(!is_null($jsonObject) && isset($jsonObject->id))
+			$this->id = (string)$jsonObject->id;
+		if(!is_null($xml) && count($xml->indexType))
 			$this->indexType = (string)$xml->indexType;
-		if(count($xml->updatedAt))
+		if(!is_null($jsonObject) && isset($jsonObject->indexType))
+			$this->indexType = (string)$jsonObject->indexType;
+		if(!is_null($xml) && count($xml->updatedAt))
 			$this->updatedAt = (int)$xml->updatedAt;
-		if(count($xml->relatedObjectType))
+		if(!is_null($jsonObject) && isset($jsonObject->updatedAt))
+			$this->updatedAt = (int)$jsonObject->updatedAt;
+		if(!is_null($xml) && count($xml->relatedObjectType))
 			$this->relatedObjectType = (string)$xml->relatedObjectType;
-		if(count($xml->eventType))
+		if(!is_null($jsonObject) && isset($jsonObject->relatedObjectType))
+			$this->relatedObjectType = (string)$jsonObject->relatedObjectType;
+		if(!is_null($xml) && count($xml->eventType))
 			$this->eventType = (string)$xml->eventType;
-		if(count($xml->objectId))
+		if(!is_null($jsonObject) && isset($jsonObject->eventType))
+			$this->eventType = (string)$jsonObject->eventType;
+		if(!is_null($xml) && count($xml->objectId))
 			$this->objectId = (string)$xml->objectId;
-		if(count($xml->privateData))
+		if(!is_null($jsonObject) && isset($jsonObject->objectId))
+			$this->objectId = (string)$jsonObject->objectId;
+		if(!is_null($xml) && count($xml->privateData))
 			$this->privateData = (string)$xml->privateData;
-		if(count($xml->rawData))
+		if(!is_null($jsonObject) && isset($jsonObject->privateData))
+			$this->privateData = (string)$jsonObject->privateData;
+		if(!is_null($xml) && count($xml->rawData))
 			$this->rawData = (string)$xml->rawData;
+		if(!is_null($jsonObject) && isset($jsonObject->rawData))
+			$this->rawData = (string)$jsonObject->rawData;
 	}
 	/**
 	 * Beacon id

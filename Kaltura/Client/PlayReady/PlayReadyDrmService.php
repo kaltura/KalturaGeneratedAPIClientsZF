@@ -49,12 +49,18 @@ class Kaltura_Client_PlayReady_PlayReadyDrmService extends Kaltura_Client_Servic
 		$this->client->queueServiceActionCall("playready_playreadydrm", "generateKey", "KalturaPlayReadyContentKey", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaPlayReadyContentKey");
-		$this->client->validateObjectType($resultObject, "Kaltura_Client_PlayReady_Type_PlayReadyContentKey");
-		return $resultObject;
+		$rawResult = $this->client->doQueue();
+		if ($this->client->getConfig()->format === Kaltura_Client_ClientBase::KALTURA_SERVICE_FORMAT_JSON) {
+			$jsObject = json_decode($rawResult);
+			$resultObject = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsObject);
+			return $resultObject;
+		} else {
+			$resultXmlObject = new \SimpleXMLElement($rawResult);
+			$this->client->checkIfError($resultXmlObject->result);
+			$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaPlayReadyContentKey");
+			$this->client->validateObjectType($resultObject, "Kaltura_Client_PlayReady_Type_PlayReadyContentKey");
+		}
+			return $resultObject;
 	}
 
 	/**
@@ -68,14 +74,20 @@ class Kaltura_Client_PlayReady_PlayReadyDrmService extends Kaltura_Client_Servic
 		$this->client->queueServiceActionCall("playready_playreadydrm", "getContentKeys", "KalturaPlayReadyContentKey", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = Kaltura_Client_ParseUtils::unmarshalArray($resultXmlObject->result, "KalturaPlayReadyContentKey");
-		foreach($resultObject as $resultObjectItem){
-			$this->client->validateObjectType($resultObjectItem, "Kaltura_Client_PlayReady_Type_PlayReadyContentKey");
+		$rawResult = $this->client->doQueue();
+		if ($this->client->getConfig()->format === Kaltura_Client_ClientBase::KALTURA_SERVICE_FORMAT_JSON) {
+			$jsObject = json_decode($rawResult);
+			$resultObject = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsObject);
+			return $resultObject;
+		} else {
+			$resultXmlObject = new \SimpleXMLElement($rawResult);
+			$this->client->checkIfError($resultXmlObject->result);
+			$resultObject = Kaltura_Client_ParseUtils::unmarshalArray($resultXmlObject->result, "KalturaPlayReadyContentKey");
+			foreach($resultObject as $resultObjectItem){
+				$this->client->validateObjectType($resultObjectItem, "Kaltura_Client_PlayReady_Type_PlayReadyContentKey");
+			}
 		}
-		return $resultObject;
+			return $resultObject;
 	}
 
 	/**
@@ -90,12 +102,18 @@ class Kaltura_Client_PlayReady_PlayReadyDrmService extends Kaltura_Client_Servic
 		$this->client->queueServiceActionCall("playready_playreadydrm", "getEntryContentKey", "KalturaPlayReadyContentKey", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaPlayReadyContentKey");
-		$this->client->validateObjectType($resultObject, "Kaltura_Client_PlayReady_Type_PlayReadyContentKey");
-		return $resultObject;
+		$rawResult = $this->client->doQueue();
+		if ($this->client->getConfig()->format === Kaltura_Client_ClientBase::KALTURA_SERVICE_FORMAT_JSON) {
+			$jsObject = json_decode($rawResult);
+			$resultObject = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsObject);
+			return $resultObject;
+		} else {
+			$resultXmlObject = new \SimpleXMLElement($rawResult);
+			$this->client->checkIfError($resultXmlObject->result);
+			$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaPlayReadyContentKey");
+			$this->client->validateObjectType($resultObject, "Kaltura_Client_PlayReady_Type_PlayReadyContentKey");
+		}
+			return $resultObject;
 	}
 
 	/**
@@ -113,11 +131,17 @@ class Kaltura_Client_PlayReady_PlayReadyDrmService extends Kaltura_Client_Servic
 		$this->client->queueServiceActionCall("playready_playreadydrm", "getLicenseDetails", "KalturaPlayReadyLicenseDetails", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaPlayReadyLicenseDetails");
-		$this->client->validateObjectType($resultObject, "Kaltura_Client_PlayReady_Type_PlayReadyLicenseDetails");
-		return $resultObject;
+		$rawResult = $this->client->doQueue();
+		if ($this->client->getConfig()->format === Kaltura_Client_ClientBase::KALTURA_SERVICE_FORMAT_JSON) {
+			$jsObject = json_decode($rawResult);
+			$resultObject = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsObject);
+			return $resultObject;
+		} else {
+			$resultXmlObject = new \SimpleXMLElement($rawResult);
+			$this->client->checkIfError($resultXmlObject->result);
+			$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaPlayReadyLicenseDetails");
+			$this->client->validateObjectType($resultObject, "Kaltura_Client_PlayReady_Type_PlayReadyLicenseDetails");
+		}
+			return $resultObject;
 	}
 }

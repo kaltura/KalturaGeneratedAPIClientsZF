@@ -38,19 +38,28 @@ class Kaltura_Client_ContentDistribution_Type_GenericDistributionJobProviderData
 		return 'KalturaGenericDistributionJobProviderData';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->xml))
+		if(!is_null($xml) && count($xml->xml))
 			$this->xml = (string)$xml->xml;
-		if(count($xml->resultParseData))
+		if(!is_null($jsonObject) && isset($jsonObject->xml))
+			$this->xml = (string)$jsonObject->xml;
+		if(!is_null($xml) && count($xml->resultParseData))
 			$this->resultParseData = (string)$xml->resultParseData;
-		if(count($xml->resultParserType))
+		if(!is_null($jsonObject) && isset($jsonObject->resultParseData))
+			$this->resultParseData = (string)$jsonObject->resultParseData;
+		if(!is_null($xml) && count($xml->resultParserType))
 			$this->resultParserType = (int)$xml->resultParserType;
+		if(!is_null($jsonObject) && isset($jsonObject->resultParserType))
+			$this->resultParserType = (int)$jsonObject->resultParserType;
 	}
 	/**
 	 * 

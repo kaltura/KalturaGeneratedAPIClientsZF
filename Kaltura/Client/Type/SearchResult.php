@@ -38,35 +38,60 @@ class Kaltura_Client_Type_SearchResult extends Kaltura_Client_Type_Search
 		return 'KalturaSearchResult';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->id))
+		if(!is_null($xml) && count($xml->id))
 			$this->id = (string)$xml->id;
-		if(count($xml->title))
+		if(!is_null($jsonObject) && isset($jsonObject->id))
+			$this->id = (string)$jsonObject->id;
+		if(!is_null($xml) && count($xml->title))
 			$this->title = (string)$xml->title;
-		if(count($xml->thumbUrl))
+		if(!is_null($jsonObject) && isset($jsonObject->title))
+			$this->title = (string)$jsonObject->title;
+		if(!is_null($xml) && count($xml->thumbUrl))
 			$this->thumbUrl = (string)$xml->thumbUrl;
-		if(count($xml->description))
+		if(!is_null($jsonObject) && isset($jsonObject->thumbUrl))
+			$this->thumbUrl = (string)$jsonObject->thumbUrl;
+		if(!is_null($xml) && count($xml->description))
 			$this->description = (string)$xml->description;
-		if(count($xml->tags))
+		if(!is_null($jsonObject) && isset($jsonObject->description))
+			$this->description = (string)$jsonObject->description;
+		if(!is_null($xml) && count($xml->tags))
 			$this->tags = (string)$xml->tags;
-		if(count($xml->url))
+		if(!is_null($jsonObject) && isset($jsonObject->tags))
+			$this->tags = (string)$jsonObject->tags;
+		if(!is_null($xml) && count($xml->url))
 			$this->url = (string)$xml->url;
-		if(count($xml->sourceLink))
+		if(!is_null($jsonObject) && isset($jsonObject->url))
+			$this->url = (string)$jsonObject->url;
+		if(!is_null($xml) && count($xml->sourceLink))
 			$this->sourceLink = (string)$xml->sourceLink;
-		if(count($xml->credit))
+		if(!is_null($jsonObject) && isset($jsonObject->sourceLink))
+			$this->sourceLink = (string)$jsonObject->sourceLink;
+		if(!is_null($xml) && count($xml->credit))
 			$this->credit = (string)$xml->credit;
-		if(count($xml->licenseType))
+		if(!is_null($jsonObject) && isset($jsonObject->credit))
+			$this->credit = (string)$jsonObject->credit;
+		if(!is_null($xml) && count($xml->licenseType))
 			$this->licenseType = (int)$xml->licenseType;
-		if(count($xml->flashPlaybackType))
+		if(!is_null($jsonObject) && isset($jsonObject->licenseType))
+			$this->licenseType = (int)$jsonObject->licenseType;
+		if(!is_null($xml) && count($xml->flashPlaybackType))
 			$this->flashPlaybackType = (string)$xml->flashPlaybackType;
-		if(count($xml->fileExt))
+		if(!is_null($jsonObject) && isset($jsonObject->flashPlaybackType))
+			$this->flashPlaybackType = (string)$jsonObject->flashPlaybackType;
+		if(!is_null($xml) && count($xml->fileExt))
 			$this->fileExt = (string)$xml->fileExt;
+		if(!is_null($jsonObject) && isset($jsonObject->fileExt))
+			$this->fileExt = (string)$jsonObject->fileExt;
 	}
 	/**
 	 * 

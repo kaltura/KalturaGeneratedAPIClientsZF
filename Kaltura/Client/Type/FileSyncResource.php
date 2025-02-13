@@ -38,21 +38,36 @@ class Kaltura_Client_Type_FileSyncResource extends Kaltura_Client_Type_ContentRe
 		return 'KalturaFileSyncResource';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->fileSyncObjectType))
+		if(!is_null($xml) && count($xml->fileSyncObjectType))
 			$this->fileSyncObjectType = (int)$xml->fileSyncObjectType;
-		if(count($xml->objectSubType))
+		if(!is_null($jsonObject) && isset($jsonObject->fileSyncObjectType))
+			$this->fileSyncObjectType = (int)$jsonObject->fileSyncObjectType;
+		if(!is_null($xml) && count($xml->objectSubType))
 			$this->objectSubType = (int)$xml->objectSubType;
-		if(count($xml->objectId))
+		if(!is_null($jsonObject) && isset($jsonObject->objectSubType))
+			$this->objectSubType = (int)$jsonObject->objectSubType;
+		if(!is_null($xml) && count($xml->objectId))
 			$this->objectId = (string)$xml->objectId;
-		if(count($xml->version))
+		if(!is_null($jsonObject) && isset($jsonObject->objectId))
+			$this->objectId = (string)$jsonObject->objectId;
+		if(!is_null($xml) && count($xml->version))
 			$this->version = (string)$xml->version;
+		if(!is_null($jsonObject) && isset($jsonObject->version))
+			$this->version = (string)$jsonObject->version;
+		if(!is_null($xml) && count($xml->originEntryId))
+			$this->originEntryId = (string)$xml->originEntryId;
+		if(!is_null($jsonObject) && isset($jsonObject->originEntryId))
+			$this->originEntryId = (string)$jsonObject->originEntryId;
 	}
 	/**
 	 * The object type of the file sync object
@@ -81,6 +96,13 @@ class Kaltura_Client_Type_FileSyncResource extends Kaltura_Client_Type_ContentRe
 	 * @var string
 	 */
 	public $version = null;
+
+	/**
+	 * The original entry ID, if exists
+	 *
+	 * @var string
+	 */
+	public $originEntryId = null;
 
 
 }

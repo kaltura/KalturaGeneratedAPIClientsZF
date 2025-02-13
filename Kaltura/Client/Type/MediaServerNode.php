@@ -38,28 +38,47 @@ abstract class Kaltura_Client_Type_MediaServerNode extends Kaltura_Client_Type_D
 		return 'KalturaMediaServerNode';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->applicationName))
+		if(!is_null($xml) && count($xml->applicationName))
 			$this->applicationName = (string)$xml->applicationName;
-		if(count($xml->mediaServerPortConfig))
+		if(!is_null($jsonObject) && isset($jsonObject->applicationName))
+			$this->applicationName = (string)$jsonObject->applicationName;
+		if(!is_null($xml) && count($xml->mediaServerPortConfig))
 		{
 			if(empty($xml->mediaServerPortConfig))
 				$this->mediaServerPortConfig = array();
 			else
 				$this->mediaServerPortConfig = Kaltura_Client_ParseUtils::unmarshalArray($xml->mediaServerPortConfig, "KalturaKeyValue");
 		}
-		if(count($xml->mediaServerPlaybackDomainConfig))
+		if(!is_null($jsonObject) && isset($jsonObject->mediaServerPortConfig))
+		{
+			if(empty($jsonObject->mediaServerPortConfig))
+				$this->mediaServerPortConfig = array();
+			else
+				$this->mediaServerPortConfig = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsonObject->mediaServerPortConfig, "KalturaKeyValue");
+		}
+		if(!is_null($xml) && count($xml->mediaServerPlaybackDomainConfig))
 		{
 			if(empty($xml->mediaServerPlaybackDomainConfig))
 				$this->mediaServerPlaybackDomainConfig = array();
 			else
 				$this->mediaServerPlaybackDomainConfig = Kaltura_Client_ParseUtils::unmarshalArray($xml->mediaServerPlaybackDomainConfig, "KalturaKeyValue");
+		}
+		if(!is_null($jsonObject) && isset($jsonObject->mediaServerPlaybackDomainConfig))
+		{
+			if(empty($jsonObject->mediaServerPlaybackDomainConfig))
+				$this->mediaServerPlaybackDomainConfig = array();
+			else
+				$this->mediaServerPlaybackDomainConfig = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsonObject->mediaServerPlaybackDomainConfig, "KalturaKeyValue");
 		}
 	}
 	/**

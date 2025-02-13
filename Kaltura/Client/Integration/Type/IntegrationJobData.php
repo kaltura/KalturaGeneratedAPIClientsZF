@@ -38,23 +38,36 @@ class Kaltura_Client_Integration_Type_IntegrationJobData extends Kaltura_Client_
 		return 'KalturaIntegrationJobData';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->callbackNotificationUrl))
+		if(!is_null($xml) && count($xml->callbackNotificationUrl))
 			$this->callbackNotificationUrl = (string)$xml->callbackNotificationUrl;
-		if(count($xml->providerType))
+		if(!is_null($jsonObject) && isset($jsonObject->callbackNotificationUrl))
+			$this->callbackNotificationUrl = (string)$jsonObject->callbackNotificationUrl;
+		if(!is_null($xml) && count($xml->providerType))
 			$this->providerType = (string)$xml->providerType;
-		if(count($xml->providerData) && !empty($xml->providerData))
+		if(!is_null($jsonObject) && isset($jsonObject->providerType))
+			$this->providerType = (string)$jsonObject->providerType;
+		if(!is_null($xml) && count($xml->providerData) && !empty($xml->providerData))
 			$this->providerData = Kaltura_Client_ParseUtils::unmarshalObject($xml->providerData, "KalturaIntegrationJobProviderData");
-		if(count($xml->triggerType))
+		if(!is_null($jsonObject) && isset($jsonObject->providerData) && !empty($jsonObject->providerData))
+			$this->providerData = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsonObject->providerData, "KalturaIntegrationJobProviderData");
+		if(!is_null($xml) && count($xml->triggerType))
 			$this->triggerType = (string)$xml->triggerType;
-		if(count($xml->triggerData) && !empty($xml->triggerData))
+		if(!is_null($jsonObject) && isset($jsonObject->triggerType))
+			$this->triggerType = (string)$jsonObject->triggerType;
+		if(!is_null($xml) && count($xml->triggerData) && !empty($xml->triggerData))
 			$this->triggerData = Kaltura_Client_ParseUtils::unmarshalObject($xml->triggerData, "KalturaIntegrationJobTriggerData");
+		if(!is_null($jsonObject) && isset($jsonObject->triggerData) && !empty($jsonObject->triggerData))
+			$this->triggerData = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsonObject->triggerData, "KalturaIntegrationJobTriggerData");
 	}
 	/**
 	 * 

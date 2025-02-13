@@ -38,17 +38,24 @@ class Kaltura_Client_Type_ClientConfiguration extends Kaltura_Client_ObjectBase
 		return 'KalturaClientConfiguration';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->clientTag))
+		if(!is_null($xml) && count($xml->clientTag))
 			$this->clientTag = (string)$xml->clientTag;
-		if(count($xml->apiVersion))
+		if(!is_null($jsonObject) && isset($jsonObject->clientTag))
+			$this->clientTag = (string)$jsonObject->clientTag;
+		if(!is_null($xml) && count($xml->apiVersion))
 			$this->apiVersion = (string)$xml->apiVersion;
+		if(!is_null($jsonObject) && isset($jsonObject->apiVersion))
+			$this->apiVersion = (string)$jsonObject->apiVersion;
 	}
 	/**
 	 * 

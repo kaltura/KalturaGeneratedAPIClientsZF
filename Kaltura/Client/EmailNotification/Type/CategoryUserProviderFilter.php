@@ -38,37 +38,64 @@ class Kaltura_Client_EmailNotification_Type_CategoryUserProviderFilter extends K
 		return 'KalturaCategoryUserProviderFilter';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->userIdEqual))
+		if(!is_null($xml) && count($xml->userIdEqual))
 			$this->userIdEqual = (string)$xml->userIdEqual;
-		if(count($xml->userIdIn))
+		if(!is_null($jsonObject) && isset($jsonObject->userIdEqual))
+			$this->userIdEqual = (string)$jsonObject->userIdEqual;
+		if(!is_null($xml) && count($xml->userIdIn))
 			$this->userIdIn = (string)$xml->userIdIn;
-		if(count($xml->statusEqual))
+		if(!is_null($jsonObject) && isset($jsonObject->userIdIn))
+			$this->userIdIn = (string)$jsonObject->userIdIn;
+		if(!is_null($xml) && count($xml->statusEqual))
 			$this->statusEqual = (int)$xml->statusEqual;
-		if(count($xml->statusIn))
+		if(!is_null($jsonObject) && isset($jsonObject->statusEqual))
+			$this->statusEqual = (int)$jsonObject->statusEqual;
+		if(!is_null($xml) && count($xml->statusIn))
 			$this->statusIn = (string)$xml->statusIn;
-		if(count($xml->createdAtGreaterThanOrEqual))
+		if(!is_null($jsonObject) && isset($jsonObject->statusIn))
+			$this->statusIn = (string)$jsonObject->statusIn;
+		if(!is_null($xml) && count($xml->createdAtGreaterThanOrEqual))
 			$this->createdAtGreaterThanOrEqual = (int)$xml->createdAtGreaterThanOrEqual;
-		if(count($xml->createdAtLessThanOrEqual))
+		if(!is_null($jsonObject) && isset($jsonObject->createdAtGreaterThanOrEqual))
+			$this->createdAtGreaterThanOrEqual = (int)$jsonObject->createdAtGreaterThanOrEqual;
+		if(!is_null($xml) && count($xml->createdAtLessThanOrEqual))
 			$this->createdAtLessThanOrEqual = (int)$xml->createdAtLessThanOrEqual;
-		if(count($xml->updatedAtGreaterThanOrEqual))
+		if(!is_null($jsonObject) && isset($jsonObject->createdAtLessThanOrEqual))
+			$this->createdAtLessThanOrEqual = (int)$jsonObject->createdAtLessThanOrEqual;
+		if(!is_null($xml) && count($xml->updatedAtGreaterThanOrEqual))
 			$this->updatedAtGreaterThanOrEqual = (int)$xml->updatedAtGreaterThanOrEqual;
-		if(count($xml->updatedAtLessThanOrEqual))
+		if(!is_null($jsonObject) && isset($jsonObject->updatedAtGreaterThanOrEqual))
+			$this->updatedAtGreaterThanOrEqual = (int)$jsonObject->updatedAtGreaterThanOrEqual;
+		if(!is_null($xml) && count($xml->updatedAtLessThanOrEqual))
 			$this->updatedAtLessThanOrEqual = (int)$xml->updatedAtLessThanOrEqual;
-		if(count($xml->updateMethodEqual))
+		if(!is_null($jsonObject) && isset($jsonObject->updatedAtLessThanOrEqual))
+			$this->updatedAtLessThanOrEqual = (int)$jsonObject->updatedAtLessThanOrEqual;
+		if(!is_null($xml) && count($xml->updateMethodEqual))
 			$this->updateMethodEqual = (int)$xml->updateMethodEqual;
-		if(count($xml->updateMethodIn))
+		if(!is_null($jsonObject) && isset($jsonObject->updateMethodEqual))
+			$this->updateMethodEqual = (int)$jsonObject->updateMethodEqual;
+		if(!is_null($xml) && count($xml->updateMethodIn))
 			$this->updateMethodIn = (string)$xml->updateMethodIn;
-		if(count($xml->permissionNamesMatchAnd))
+		if(!is_null($jsonObject) && isset($jsonObject->updateMethodIn))
+			$this->updateMethodIn = (string)$jsonObject->updateMethodIn;
+		if(!is_null($xml) && count($xml->permissionNamesMatchAnd))
 			$this->permissionNamesMatchAnd = (string)$xml->permissionNamesMatchAnd;
-		if(count($xml->permissionNamesMatchOr))
+		if(!is_null($jsonObject) && isset($jsonObject->permissionNamesMatchAnd))
+			$this->permissionNamesMatchAnd = (string)$jsonObject->permissionNamesMatchAnd;
+		if(!is_null($xml) && count($xml->permissionNamesMatchOr))
 			$this->permissionNamesMatchOr = (string)$xml->permissionNamesMatchOr;
+		if(!is_null($jsonObject) && isset($jsonObject->permissionNamesMatchOr))
+			$this->permissionNamesMatchOr = (string)$jsonObject->permissionNamesMatchOr;
 	}
 	/**
 	 * 

@@ -38,17 +38,24 @@ class Kaltura_Client_Type_AccessControlServeRemoteEdgeServerAction extends Kaltu
 		return 'KalturaAccessControlServeRemoteEdgeServerAction';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->edgeServerIds))
+		if(!is_null($xml) && count($xml->edgeServerIds))
 			$this->edgeServerIds = (string)$xml->edgeServerIds;
-		if(count($xml->seamlessFallbackEnabled))
+		if(!is_null($jsonObject) && isset($jsonObject->edgeServerIds))
+			$this->edgeServerIds = (string)$jsonObject->edgeServerIds;
+		if(!is_null($xml) && count($xml->seamlessFallbackEnabled))
 			$this->seamlessFallbackEnabled = (int)$xml->seamlessFallbackEnabled;
+		if(!is_null($jsonObject) && isset($jsonObject->seamlessFallbackEnabled))
+			$this->seamlessFallbackEnabled = (int)$jsonObject->seamlessFallbackEnabled;
 	}
 	/**
 	 * Comma separated list of edge servers playBack should be done from

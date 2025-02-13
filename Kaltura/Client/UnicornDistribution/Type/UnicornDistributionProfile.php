@@ -38,31 +38,52 @@ class Kaltura_Client_UnicornDistribution_Type_UnicornDistributionProfile extends
 		return 'KalturaUnicornDistributionProfile';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->username))
+		if(!is_null($xml) && count($xml->username))
 			$this->username = (string)$xml->username;
-		if(count($xml->password))
+		if(!is_null($jsonObject) && isset($jsonObject->username))
+			$this->username = (string)$jsonObject->username;
+		if(!is_null($xml) && count($xml->password))
 			$this->password = (string)$xml->password;
-		if(count($xml->domainName))
+		if(!is_null($jsonObject) && isset($jsonObject->password))
+			$this->password = (string)$jsonObject->password;
+		if(!is_null($xml) && count($xml->domainName))
 			$this->domainName = (string)$xml->domainName;
-		if(count($xml->channelGuid))
+		if(!is_null($jsonObject) && isset($jsonObject->domainName))
+			$this->domainName = (string)$jsonObject->domainName;
+		if(!is_null($xml) && count($xml->channelGuid))
 			$this->channelGuid = (string)$xml->channelGuid;
-		if(count($xml->apiHostUrl))
+		if(!is_null($jsonObject) && isset($jsonObject->channelGuid))
+			$this->channelGuid = (string)$jsonObject->channelGuid;
+		if(!is_null($xml) && count($xml->apiHostUrl))
 			$this->apiHostUrl = (string)$xml->apiHostUrl;
-		if(count($xml->domainGuid))
+		if(!is_null($jsonObject) && isset($jsonObject->apiHostUrl))
+			$this->apiHostUrl = (string)$jsonObject->apiHostUrl;
+		if(!is_null($xml) && count($xml->domainGuid))
 			$this->domainGuid = (string)$xml->domainGuid;
-		if(count($xml->adFreeApplicationGuid))
+		if(!is_null($jsonObject) && isset($jsonObject->domainGuid))
+			$this->domainGuid = (string)$jsonObject->domainGuid;
+		if(!is_null($xml) && count($xml->adFreeApplicationGuid))
 			$this->adFreeApplicationGuid = (string)$xml->adFreeApplicationGuid;
-		if(count($xml->remoteAssetParamsId))
+		if(!is_null($jsonObject) && isset($jsonObject->adFreeApplicationGuid))
+			$this->adFreeApplicationGuid = (string)$jsonObject->adFreeApplicationGuid;
+		if(!is_null($xml) && count($xml->remoteAssetParamsId))
 			$this->remoteAssetParamsId = (int)$xml->remoteAssetParamsId;
-		if(count($xml->storageProfileId))
+		if(!is_null($jsonObject) && isset($jsonObject->remoteAssetParamsId))
+			$this->remoteAssetParamsId = (int)$jsonObject->remoteAssetParamsId;
+		if(!is_null($xml) && count($xml->storageProfileId))
 			$this->storageProfileId = (string)$xml->storageProfileId;
+		if(!is_null($jsonObject) && isset($jsonObject->storageProfileId))
+			$this->storageProfileId = (string)$jsonObject->storageProfileId;
 	}
 	/**
 	 * The email address associated with the Upload User, used to authorize the incoming request.

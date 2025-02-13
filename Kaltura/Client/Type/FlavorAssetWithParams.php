@@ -38,19 +38,28 @@ class Kaltura_Client_Type_FlavorAssetWithParams extends Kaltura_Client_ObjectBas
 		return 'KalturaFlavorAssetWithParams';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->flavorAsset) && !empty($xml->flavorAsset))
+		if(!is_null($xml) && count($xml->flavorAsset) && !empty($xml->flavorAsset))
 			$this->flavorAsset = Kaltura_Client_ParseUtils::unmarshalObject($xml->flavorAsset, "KalturaFlavorAsset");
-		if(count($xml->flavorParams) && !empty($xml->flavorParams))
+		if(!is_null($jsonObject) && isset($jsonObject->flavorAsset) && !empty($jsonObject->flavorAsset))
+			$this->flavorAsset = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsonObject->flavorAsset, "KalturaFlavorAsset");
+		if(!is_null($xml) && count($xml->flavorParams) && !empty($xml->flavorParams))
 			$this->flavorParams = Kaltura_Client_ParseUtils::unmarshalObject($xml->flavorParams, "KalturaFlavorParams");
-		if(count($xml->entryId))
+		if(!is_null($jsonObject) && isset($jsonObject->flavorParams) && !empty($jsonObject->flavorParams))
+			$this->flavorParams = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsonObject->flavorParams, "KalturaFlavorParams");
+		if(!is_null($xml) && count($xml->entryId))
 			$this->entryId = (string)$xml->entryId;
+		if(!is_null($jsonObject) && isset($jsonObject->entryId))
+			$this->entryId = (string)$jsonObject->entryId;
 	}
 	/**
 	 * The Flavor Asset (Can be null when there are params without asset)

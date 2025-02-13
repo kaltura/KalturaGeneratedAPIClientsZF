@@ -38,42 +38,74 @@ class Kaltura_Client_ConfMaps_Type_ConfMaps extends Kaltura_Client_ObjectBase
 		return 'KalturaConfMaps';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->name))
+		if(!is_null($xml) && count($xml->name))
 			$this->name = (string)$xml->name;
-		if(count($xml->content))
+		if(!is_null($jsonObject) && isset($jsonObject->name))
+			$this->name = (string)$jsonObject->name;
+		if(!is_null($xml) && count($xml->content))
 			$this->content = (string)$xml->content;
-		if(count($xml->rawData))
+		if(!is_null($jsonObject) && isset($jsonObject->content))
+			$this->content = (string)$jsonObject->content;
+		if(!is_null($xml) && count($xml->rawData))
 			$this->rawData = (string)$xml->rawData;
-		if(count($xml->userId))
+		if(!is_null($jsonObject) && isset($jsonObject->rawData))
+			$this->rawData = (string)$jsonObject->rawData;
+		if(!is_null($xml) && count($xml->userId))
 			$this->userId = (string)$xml->userId;
-		if(count($xml->isEditable))
+		if(!is_null($jsonObject) && isset($jsonObject->userId))
+			$this->userId = (string)$jsonObject->userId;
+		if(!is_null($xml) && count($xml->isEditable))
 		{
 			if(!empty($xml->isEditable) && ((int) $xml->isEditable === 1 || strtolower((string)$xml->isEditable) === 'true'))
 				$this->isEditable = true;
 			else
 				$this->isEditable = false;
 		}
-		if(count($xml->createdAt))
+		if(!is_null($jsonObject) && isset($jsonObject->isEditable))
+		{
+			if(!empty($jsonObject->isEditable) && ((int) $jsonObject->isEditable === 1 || strtolower((string)$jsonObject->isEditable) === 'true'))
+				$this->isEditable = true;
+			else
+				$this->isEditable = false;
+		}
+		if(!is_null($xml) && count($xml->createdAt))
 			$this->createdAt = (int)$xml->createdAt;
-		if(count($xml->relatedHost))
+		if(!is_null($jsonObject) && isset($jsonObject->createdAt))
+			$this->createdAt = (int)$jsonObject->createdAt;
+		if(!is_null($xml) && count($xml->relatedHost))
 			$this->relatedHost = (string)$xml->relatedHost;
-		if(count($xml->version))
+		if(!is_null($jsonObject) && isset($jsonObject->relatedHost))
+			$this->relatedHost = (string)$jsonObject->relatedHost;
+		if(!is_null($xml) && count($xml->version))
 			$this->version = (int)$xml->version;
-		if(count($xml->sourceLocation))
+		if(!is_null($jsonObject) && isset($jsonObject->version))
+			$this->version = (int)$jsonObject->version;
+		if(!is_null($xml) && count($xml->sourceLocation))
 			$this->sourceLocation = (string)$xml->sourceLocation;
-		if(count($xml->remarks))
+		if(!is_null($jsonObject) && isset($jsonObject->sourceLocation))
+			$this->sourceLocation = (string)$jsonObject->sourceLocation;
+		if(!is_null($xml) && count($xml->remarks))
 			$this->remarks = (string)$xml->remarks;
-		if(count($xml->status))
+		if(!is_null($jsonObject) && isset($jsonObject->remarks))
+			$this->remarks = (string)$jsonObject->remarks;
+		if(!is_null($xml) && count($xml->status))
 			$this->status = (int)$xml->status;
-		if(count($xml->changeDescription))
+		if(!is_null($jsonObject) && isset($jsonObject->status))
+			$this->status = (int)$jsonObject->status;
+		if(!is_null($xml) && count($xml->changeDescription))
 			$this->changeDescription = (string)$xml->changeDescription;
+		if(!is_null($jsonObject) && isset($jsonObject->changeDescription))
+			$this->changeDescription = (string)$jsonObject->changeDescription;
 	}
 	/**
 	 * Name of the map

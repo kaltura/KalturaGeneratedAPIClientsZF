@@ -38,86 +38,166 @@ abstract class Kaltura_Client_ContentDistribution_Type_DistributionProfile exten
 		return 'KalturaDistributionProfile';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->id))
+		if(!is_null($xml) && count($xml->id))
 			$this->id = (int)$xml->id;
-		if(count($xml->createdAt))
+		if(!is_null($jsonObject) && isset($jsonObject->id))
+			$this->id = (int)$jsonObject->id;
+		if(!is_null($xml) && count($xml->createdAt))
 			$this->createdAt = (int)$xml->createdAt;
-		if(count($xml->updatedAt))
+		if(!is_null($jsonObject) && isset($jsonObject->createdAt))
+			$this->createdAt = (int)$jsonObject->createdAt;
+		if(!is_null($xml) && count($xml->updatedAt))
 			$this->updatedAt = (int)$xml->updatedAt;
-		if(count($xml->partnerId))
+		if(!is_null($jsonObject) && isset($jsonObject->updatedAt))
+			$this->updatedAt = (int)$jsonObject->updatedAt;
+		if(!is_null($xml) && count($xml->partnerId))
 			$this->partnerId = (int)$xml->partnerId;
-		if(count($xml->providerType))
+		if(!is_null($jsonObject) && isset($jsonObject->partnerId))
+			$this->partnerId = (int)$jsonObject->partnerId;
+		if(!is_null($xml) && count($xml->providerType))
 			$this->providerType = (string)$xml->providerType;
-		if(count($xml->name))
+		if(!is_null($jsonObject) && isset($jsonObject->providerType))
+			$this->providerType = (string)$jsonObject->providerType;
+		if(!is_null($xml) && count($xml->name))
 			$this->name = (string)$xml->name;
-		if(count($xml->status))
+		if(!is_null($jsonObject) && isset($jsonObject->name))
+			$this->name = (string)$jsonObject->name;
+		if(!is_null($xml) && count($xml->status))
 			$this->status = (int)$xml->status;
-		if(count($xml->submitEnabled))
+		if(!is_null($jsonObject) && isset($jsonObject->status))
+			$this->status = (int)$jsonObject->status;
+		if(!is_null($xml) && count($xml->submitEnabled))
 			$this->submitEnabled = (int)$xml->submitEnabled;
-		if(count($xml->updateEnabled))
+		if(!is_null($jsonObject) && isset($jsonObject->submitEnabled))
+			$this->submitEnabled = (int)$jsonObject->submitEnabled;
+		if(!is_null($xml) && count($xml->updateEnabled))
 			$this->updateEnabled = (int)$xml->updateEnabled;
-		if(count($xml->deleteEnabled))
+		if(!is_null($jsonObject) && isset($jsonObject->updateEnabled))
+			$this->updateEnabled = (int)$jsonObject->updateEnabled;
+		if(!is_null($xml) && count($xml->deleteEnabled))
 			$this->deleteEnabled = (int)$xml->deleteEnabled;
-		if(count($xml->reportEnabled))
+		if(!is_null($jsonObject) && isset($jsonObject->deleteEnabled))
+			$this->deleteEnabled = (int)$jsonObject->deleteEnabled;
+		if(!is_null($xml) && count($xml->reportEnabled))
 			$this->reportEnabled = (int)$xml->reportEnabled;
-		if(count($xml->autoCreateFlavors))
+		if(!is_null($jsonObject) && isset($jsonObject->reportEnabled))
+			$this->reportEnabled = (int)$jsonObject->reportEnabled;
+		if(!is_null($xml) && count($xml->autoCreateFlavors))
 			$this->autoCreateFlavors = (string)$xml->autoCreateFlavors;
-		if(count($xml->autoCreateThumb))
+		if(!is_null($jsonObject) && isset($jsonObject->autoCreateFlavors))
+			$this->autoCreateFlavors = (string)$jsonObject->autoCreateFlavors;
+		if(!is_null($xml) && count($xml->autoCreateThumb))
 			$this->autoCreateThumb = (string)$xml->autoCreateThumb;
-		if(count($xml->optionalFlavorParamsIds))
+		if(!is_null($jsonObject) && isset($jsonObject->autoCreateThumb))
+			$this->autoCreateThumb = (string)$jsonObject->autoCreateThumb;
+		if(!is_null($xml) && count($xml->optionalFlavorParamsIds))
 			$this->optionalFlavorParamsIds = (string)$xml->optionalFlavorParamsIds;
-		if(count($xml->requiredFlavorParamsIds))
+		if(!is_null($jsonObject) && isset($jsonObject->optionalFlavorParamsIds))
+			$this->optionalFlavorParamsIds = (string)$jsonObject->optionalFlavorParamsIds;
+		if(!is_null($xml) && count($xml->requiredFlavorParamsIds))
 			$this->requiredFlavorParamsIds = (string)$xml->requiredFlavorParamsIds;
-		if(count($xml->optionalThumbDimensions))
+		if(!is_null($jsonObject) && isset($jsonObject->requiredFlavorParamsIds))
+			$this->requiredFlavorParamsIds = (string)$jsonObject->requiredFlavorParamsIds;
+		if(!is_null($xml) && count($xml->optionalThumbDimensions))
 		{
 			if(empty($xml->optionalThumbDimensions))
 				$this->optionalThumbDimensions = array();
 			else
 				$this->optionalThumbDimensions = Kaltura_Client_ParseUtils::unmarshalArray($xml->optionalThumbDimensions, "KalturaDistributionThumbDimensions");
 		}
-		if(count($xml->requiredThumbDimensions))
+		if(!is_null($jsonObject) && isset($jsonObject->optionalThumbDimensions))
+		{
+			if(empty($jsonObject->optionalThumbDimensions))
+				$this->optionalThumbDimensions = array();
+			else
+				$this->optionalThumbDimensions = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsonObject->optionalThumbDimensions, "KalturaDistributionThumbDimensions");
+		}
+		if(!is_null($xml) && count($xml->requiredThumbDimensions))
 		{
 			if(empty($xml->requiredThumbDimensions))
 				$this->requiredThumbDimensions = array();
 			else
 				$this->requiredThumbDimensions = Kaltura_Client_ParseUtils::unmarshalArray($xml->requiredThumbDimensions, "KalturaDistributionThumbDimensions");
 		}
-		if(count($xml->optionalAssetDistributionRules))
+		if(!is_null($jsonObject) && isset($jsonObject->requiredThumbDimensions))
+		{
+			if(empty($jsonObject->requiredThumbDimensions))
+				$this->requiredThumbDimensions = array();
+			else
+				$this->requiredThumbDimensions = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsonObject->requiredThumbDimensions, "KalturaDistributionThumbDimensions");
+		}
+		if(!is_null($xml) && count($xml->optionalAssetDistributionRules))
 		{
 			if(empty($xml->optionalAssetDistributionRules))
 				$this->optionalAssetDistributionRules = array();
 			else
 				$this->optionalAssetDistributionRules = Kaltura_Client_ParseUtils::unmarshalArray($xml->optionalAssetDistributionRules, "KalturaAssetDistributionRule");
 		}
-		if(count($xml->requiredAssetDistributionRules))
+		if(!is_null($jsonObject) && isset($jsonObject->optionalAssetDistributionRules))
+		{
+			if(empty($jsonObject->optionalAssetDistributionRules))
+				$this->optionalAssetDistributionRules = array();
+			else
+				$this->optionalAssetDistributionRules = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsonObject->optionalAssetDistributionRules, "KalturaAssetDistributionRule");
+		}
+		if(!is_null($xml) && count($xml->requiredAssetDistributionRules))
 		{
 			if(empty($xml->requiredAssetDistributionRules))
 				$this->requiredAssetDistributionRules = array();
 			else
 				$this->requiredAssetDistributionRules = Kaltura_Client_ParseUtils::unmarshalArray($xml->requiredAssetDistributionRules, "KalturaAssetDistributionRule");
 		}
-		if(count($xml->sunriseDefaultOffset))
+		if(!is_null($jsonObject) && isset($jsonObject->requiredAssetDistributionRules))
+		{
+			if(empty($jsonObject->requiredAssetDistributionRules))
+				$this->requiredAssetDistributionRules = array();
+			else
+				$this->requiredAssetDistributionRules = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsonObject->requiredAssetDistributionRules, "KalturaAssetDistributionRule");
+		}
+		if(!is_null($xml) && count($xml->sunriseDefaultOffset))
 			$this->sunriseDefaultOffset = (int)$xml->sunriseDefaultOffset;
-		if(count($xml->sunsetDefaultOffset))
+		if(!is_null($jsonObject) && isset($jsonObject->sunriseDefaultOffset))
+			$this->sunriseDefaultOffset = (int)$jsonObject->sunriseDefaultOffset;
+		if(!is_null($xml) && count($xml->sunsetDefaultOffset))
 			$this->sunsetDefaultOffset = (int)$xml->sunsetDefaultOffset;
-		if(count($xml->recommendedStorageProfileForDownload))
+		if(!is_null($jsonObject) && isset($jsonObject->sunsetDefaultOffset))
+			$this->sunsetDefaultOffset = (int)$jsonObject->sunsetDefaultOffset;
+		if(!is_null($xml) && count($xml->recommendedStorageProfileForDownload))
 			$this->recommendedStorageProfileForDownload = (int)$xml->recommendedStorageProfileForDownload;
-		if(count($xml->recommendedDcForDownload))
+		if(!is_null($jsonObject) && isset($jsonObject->recommendedStorageProfileForDownload))
+			$this->recommendedStorageProfileForDownload = (int)$jsonObject->recommendedStorageProfileForDownload;
+		if(!is_null($xml) && count($xml->recommendedDcForDownload))
 			$this->recommendedDcForDownload = (int)$xml->recommendedDcForDownload;
-		if(count($xml->recommendedDcForExecute))
+		if(!is_null($jsonObject) && isset($jsonObject->recommendedDcForDownload))
+			$this->recommendedDcForDownload = (int)$jsonObject->recommendedDcForDownload;
+		if(!is_null($xml) && count($xml->recommendedDcForExecute))
 			$this->recommendedDcForExecute = (int)$xml->recommendedDcForExecute;
-		if(count($xml->distributeTrigger))
+		if(!is_null($jsonObject) && isset($jsonObject->recommendedDcForExecute))
+			$this->recommendedDcForExecute = (int)$jsonObject->recommendedDcForExecute;
+		if(!is_null($xml) && count($xml->distributeTrigger))
 			$this->distributeTrigger = (int)$xml->distributeTrigger;
-		if(count($xml->supportImageEntry))
+		if(!is_null($jsonObject) && isset($jsonObject->distributeTrigger))
+			$this->distributeTrigger = (int)$jsonObject->distributeTrigger;
+		if(!is_null($xml) && count($xml->supportImageEntry))
 		{
 			if(!empty($xml->supportImageEntry) && ((int) $xml->supportImageEntry === 1 || strtolower((string)$xml->supportImageEntry) === 'true'))
+				$this->supportImageEntry = true;
+			else
+				$this->supportImageEntry = false;
+		}
+		if(!is_null($jsonObject) && isset($jsonObject->supportImageEntry))
+		{
+			if(!empty($jsonObject->supportImageEntry) && ((int) $jsonObject->supportImageEntry === 1 || strtolower((string)$jsonObject->supportImageEntry) === 'true'))
 				$this->supportImageEntry = true;
 			else
 				$this->supportImageEntry = false;

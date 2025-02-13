@@ -38,25 +38,41 @@ class Kaltura_Client_DailymotionDistribution_Type_DailymotionDistributionJobProv
 		return 'KalturaDailymotionDistributionJobProviderData';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->videoAssetFilePath))
+		if(!is_null($xml) && count($xml->videoAssetFilePath))
 			$this->videoAssetFilePath = (string)$xml->videoAssetFilePath;
-		if(count($xml->accessControlGeoBlockingOperation))
+		if(!is_null($jsonObject) && isset($jsonObject->videoAssetFilePath))
+			$this->videoAssetFilePath = (string)$jsonObject->videoAssetFilePath;
+		if(!is_null($xml) && count($xml->accessControlGeoBlockingOperation))
 			$this->accessControlGeoBlockingOperation = (string)$xml->accessControlGeoBlockingOperation;
-		if(count($xml->accessControlGeoBlockingCountryList))
+		if(!is_null($jsonObject) && isset($jsonObject->accessControlGeoBlockingOperation))
+			$this->accessControlGeoBlockingOperation = (string)$jsonObject->accessControlGeoBlockingOperation;
+		if(!is_null($xml) && count($xml->accessControlGeoBlockingCountryList))
 			$this->accessControlGeoBlockingCountryList = (string)$xml->accessControlGeoBlockingCountryList;
-		if(count($xml->captionsInfo))
+		if(!is_null($jsonObject) && isset($jsonObject->accessControlGeoBlockingCountryList))
+			$this->accessControlGeoBlockingCountryList = (string)$jsonObject->accessControlGeoBlockingCountryList;
+		if(!is_null($xml) && count($xml->captionsInfo))
 		{
 			if(empty($xml->captionsInfo))
 				$this->captionsInfo = array();
 			else
 				$this->captionsInfo = Kaltura_Client_ParseUtils::unmarshalArray($xml->captionsInfo, "KalturaDailymotionDistributionCaptionInfo");
+		}
+		if(!is_null($jsonObject) && isset($jsonObject->captionsInfo))
+		{
+			if(empty($jsonObject->captionsInfo))
+				$this->captionsInfo = array();
+			else
+				$this->captionsInfo = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsonObject->captionsInfo, "KalturaDailymotionDistributionCaptionInfo");
 		}
 	}
 	/**

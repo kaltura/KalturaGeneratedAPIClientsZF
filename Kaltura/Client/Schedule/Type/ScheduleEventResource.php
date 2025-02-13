@@ -38,23 +38,36 @@ class Kaltura_Client_Schedule_Type_ScheduleEventResource extends Kaltura_Client_
 		return 'KalturaScheduleEventResource';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->eventId))
+		if(!is_null($xml) && count($xml->eventId))
 			$this->eventId = (int)$xml->eventId;
-		if(count($xml->resourceId))
+		if(!is_null($jsonObject) && isset($jsonObject->eventId))
+			$this->eventId = (int)$jsonObject->eventId;
+		if(!is_null($xml) && count($xml->resourceId))
 			$this->resourceId = (int)$xml->resourceId;
-		if(count($xml->partnerId))
+		if(!is_null($jsonObject) && isset($jsonObject->resourceId))
+			$this->resourceId = (int)$jsonObject->resourceId;
+		if(!is_null($xml) && count($xml->partnerId))
 			$this->partnerId = (int)$xml->partnerId;
-		if(count($xml->createdAt))
+		if(!is_null($jsonObject) && isset($jsonObject->partnerId))
+			$this->partnerId = (int)$jsonObject->partnerId;
+		if(!is_null($xml) && count($xml->createdAt))
 			$this->createdAt = (int)$xml->createdAt;
-		if(count($xml->updatedAt))
+		if(!is_null($jsonObject) && isset($jsonObject->createdAt))
+			$this->createdAt = (int)$jsonObject->createdAt;
+		if(!is_null($xml) && count($xml->updatedAt))
 			$this->updatedAt = (int)$xml->updatedAt;
+		if(!is_null($jsonObject) && isset($jsonObject->updatedAt))
+			$this->updatedAt = (int)$jsonObject->updatedAt;
 	}
 	/**
 	 * 

@@ -38,17 +38,24 @@ class Kaltura_Client_Widevine_Type_WidevineFlavorParamsOutput extends Kaltura_Cl
 		return 'KalturaWidevineFlavorParamsOutput';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->widevineDistributionStartDate))
+		if(!is_null($xml) && count($xml->widevineDistributionStartDate))
 			$this->widevineDistributionStartDate = (int)$xml->widevineDistributionStartDate;
-		if(count($xml->widevineDistributionEndDate))
+		if(!is_null($jsonObject) && isset($jsonObject->widevineDistributionStartDate))
+			$this->widevineDistributionStartDate = (int)$jsonObject->widevineDistributionStartDate;
+		if(!is_null($xml) && count($xml->widevineDistributionEndDate))
 			$this->widevineDistributionEndDate = (int)$xml->widevineDistributionEndDate;
+		if(!is_null($jsonObject) && isset($jsonObject->widevineDistributionEndDate))
+			$this->widevineDistributionEndDate = (int)$jsonObject->widevineDistributionEndDate;
 	}
 	/**
 	 * License distribution window start date

@@ -51,12 +51,18 @@ class Kaltura_Client_Quiz_QuizService extends Kaltura_Client_ServiceBase
 		$this->client->queueServiceActionCall("quiz_quiz", "add", "KalturaQuiz", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaQuiz");
-		$this->client->validateObjectType($resultObject, "Kaltura_Client_Quiz_Type_Quiz");
-		return $resultObject;
+		$rawResult = $this->client->doQueue();
+		if ($this->client->getConfig()->format === Kaltura_Client_ClientBase::KALTURA_SERVICE_FORMAT_JSON) {
+			$jsObject = json_decode($rawResult);
+			$resultObject = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsObject);
+			return $resultObject;
+		} else {
+			$resultXmlObject = new \SimpleXMLElement($rawResult);
+			$this->client->checkIfError($resultXmlObject->result);
+			$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaQuiz");
+			$this->client->validateObjectType($resultObject, "Kaltura_Client_Quiz_Type_Quiz");
+		}
+			return $resultObject;
 	}
 
 	/**
@@ -70,12 +76,18 @@ class Kaltura_Client_Quiz_QuizService extends Kaltura_Client_ServiceBase
 		$this->client->queueServiceActionCall("quiz_quiz", "get", "KalturaQuiz", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaQuiz");
-		$this->client->validateObjectType($resultObject, "Kaltura_Client_Quiz_Type_Quiz");
-		return $resultObject;
+		$rawResult = $this->client->doQueue();
+		if ($this->client->getConfig()->format === Kaltura_Client_ClientBase::KALTURA_SERVICE_FORMAT_JSON) {
+			$jsObject = json_decode($rawResult);
+			$resultObject = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsObject);
+			return $resultObject;
+		} else {
+			$resultXmlObject = new \SimpleXMLElement($rawResult);
+			$this->client->checkIfError($resultXmlObject->result);
+			$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaQuiz");
+			$this->client->validateObjectType($resultObject, "Kaltura_Client_Quiz_Type_Quiz");
+		}
+			return $resultObject;
 	}
 
 	/**
@@ -90,11 +102,17 @@ class Kaltura_Client_Quiz_QuizService extends Kaltura_Client_ServiceBase
 		$this->client->queueServiceActionCall("quiz_quiz", "getUrl", null, $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = (string)Kaltura_Client_ParseUtils::unmarshalSimpleType($resultXmlObject->result);
-		return $resultObject;
+		$rawResult = $this->client->doQueue();
+		if ($this->client->getConfig()->format === Kaltura_Client_ClientBase::KALTURA_SERVICE_FORMAT_JSON) {
+			$jsObject = json_decode($rawResult);
+			$resultObject = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsObject);
+			return $resultObject;
+		} else {
+			$resultXmlObject = new \SimpleXMLElement($rawResult);
+			$this->client->checkIfError($resultXmlObject->result);
+			$resultObject = (string)Kaltura_Client_ParseUtils::unmarshalSimpleType($resultXmlObject->result);
+		}
+			return $resultObject;
 	}
 
 	/**
@@ -111,12 +129,18 @@ class Kaltura_Client_Quiz_QuizService extends Kaltura_Client_ServiceBase
 		$this->client->queueServiceActionCall("quiz_quiz", "list", "KalturaQuizListResponse", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaQuizListResponse");
-		$this->client->validateObjectType($resultObject, "Kaltura_Client_Quiz_Type_QuizListResponse");
-		return $resultObject;
+		$rawResult = $this->client->doQueue();
+		if ($this->client->getConfig()->format === Kaltura_Client_ClientBase::KALTURA_SERVICE_FORMAT_JSON) {
+			$jsObject = json_decode($rawResult);
+			$resultObject = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsObject);
+			return $resultObject;
+		} else {
+			$resultXmlObject = new \SimpleXMLElement($rawResult);
+			$this->client->checkIfError($resultXmlObject->result);
+			$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaQuizListResponse");
+			$this->client->validateObjectType($resultObject, "Kaltura_Client_Quiz_Type_QuizListResponse");
+		}
+			return $resultObject;
 	}
 
 	/**
@@ -133,7 +157,7 @@ class Kaltura_Client_Quiz_QuizService extends Kaltura_Client_ServiceBase
 		$this->client->addParam($kparams, "quizOutputType", $quizOutputType);
 		$this->client->queueServiceActionCall('quiz_quiz', 'serve', null, $kparams);
 		$resultObject = $this->client->getServeUrl();
-		return $resultObject;
+			return $resultObject;
 	}
 
 	/**
@@ -148,11 +172,17 @@ class Kaltura_Client_Quiz_QuizService extends Kaltura_Client_ServiceBase
 		$this->client->queueServiceActionCall("quiz_quiz", "update", "KalturaQuiz", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaQuiz");
-		$this->client->validateObjectType($resultObject, "Kaltura_Client_Quiz_Type_Quiz");
-		return $resultObject;
+		$rawResult = $this->client->doQueue();
+		if ($this->client->getConfig()->format === Kaltura_Client_ClientBase::KALTURA_SERVICE_FORMAT_JSON) {
+			$jsObject = json_decode($rawResult);
+			$resultObject = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsObject);
+			return $resultObject;
+		} else {
+			$resultXmlObject = new \SimpleXMLElement($rawResult);
+			$this->client->checkIfError($resultXmlObject->result);
+			$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaQuiz");
+			$this->client->validateObjectType($resultObject, "Kaltura_Client_Quiz_Type_Quiz");
+		}
+			return $resultObject;
 	}
 }

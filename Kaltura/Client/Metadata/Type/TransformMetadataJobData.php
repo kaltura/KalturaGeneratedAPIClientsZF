@@ -38,23 +38,36 @@ class Kaltura_Client_Metadata_Type_TransformMetadataJobData extends Kaltura_Clie
 		return 'KalturaTransformMetadataJobData';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->srcXsl) && !empty($xml->srcXsl))
+		if(!is_null($xml) && count($xml->srcXsl) && !empty($xml->srcXsl))
 			$this->srcXsl = Kaltura_Client_ParseUtils::unmarshalObject($xml->srcXsl, "KalturaFileContainer");
-		if(count($xml->srcVersion))
+		if(!is_null($jsonObject) && isset($jsonObject->srcXsl) && !empty($jsonObject->srcXsl))
+			$this->srcXsl = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsonObject->srcXsl, "KalturaFileContainer");
+		if(!is_null($xml) && count($xml->srcVersion))
 			$this->srcVersion = (int)$xml->srcVersion;
-		if(count($xml->destVersion))
+		if(!is_null($jsonObject) && isset($jsonObject->srcVersion))
+			$this->srcVersion = (int)$jsonObject->srcVersion;
+		if(!is_null($xml) && count($xml->destVersion))
 			$this->destVersion = (int)$xml->destVersion;
-		if(count($xml->destXsd) && !empty($xml->destXsd))
+		if(!is_null($jsonObject) && isset($jsonObject->destVersion))
+			$this->destVersion = (int)$jsonObject->destVersion;
+		if(!is_null($xml) && count($xml->destXsd) && !empty($xml->destXsd))
 			$this->destXsd = Kaltura_Client_ParseUtils::unmarshalObject($xml->destXsd, "KalturaFileContainer");
-		if(count($xml->metadataProfileId))
+		if(!is_null($jsonObject) && isset($jsonObject->destXsd) && !empty($jsonObject->destXsd))
+			$this->destXsd = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsonObject->destXsd, "KalturaFileContainer");
+		if(!is_null($xml) && count($xml->metadataProfileId))
 			$this->metadataProfileId = (int)$xml->metadataProfileId;
+		if(!is_null($jsonObject) && isset($jsonObject->metadataProfileId))
+			$this->metadataProfileId = (int)$jsonObject->metadataProfileId;
 	}
 	/**
 	 * 

@@ -38,33 +38,56 @@ class Kaltura_Client_MetroPcsDistribution_Type_MetroPcsDistributionProfile exten
 		return 'KalturaMetroPcsDistributionProfile';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->ftpHost))
+		if(!is_null($xml) && count($xml->ftpHost))
 			$this->ftpHost = (string)$xml->ftpHost;
-		if(count($xml->ftpLogin))
+		if(!is_null($jsonObject) && isset($jsonObject->ftpHost))
+			$this->ftpHost = (string)$jsonObject->ftpHost;
+		if(!is_null($xml) && count($xml->ftpLogin))
 			$this->ftpLogin = (string)$xml->ftpLogin;
-		if(count($xml->ftpPass))
+		if(!is_null($jsonObject) && isset($jsonObject->ftpLogin))
+			$this->ftpLogin = (string)$jsonObject->ftpLogin;
+		if(!is_null($xml) && count($xml->ftpPass))
 			$this->ftpPass = (string)$xml->ftpPass;
-		if(count($xml->ftpPath))
+		if(!is_null($jsonObject) && isset($jsonObject->ftpPass))
+			$this->ftpPass = (string)$jsonObject->ftpPass;
+		if(!is_null($xml) && count($xml->ftpPath))
 			$this->ftpPath = (string)$xml->ftpPath;
-		if(count($xml->providerName))
+		if(!is_null($jsonObject) && isset($jsonObject->ftpPath))
+			$this->ftpPath = (string)$jsonObject->ftpPath;
+		if(!is_null($xml) && count($xml->providerName))
 			$this->providerName = (string)$xml->providerName;
-		if(count($xml->providerId))
+		if(!is_null($jsonObject) && isset($jsonObject->providerName))
+			$this->providerName = (string)$jsonObject->providerName;
+		if(!is_null($xml) && count($xml->providerId))
 			$this->providerId = (string)$xml->providerId;
-		if(count($xml->copyright))
+		if(!is_null($jsonObject) && isset($jsonObject->providerId))
+			$this->providerId = (string)$jsonObject->providerId;
+		if(!is_null($xml) && count($xml->copyright))
 			$this->copyright = (string)$xml->copyright;
-		if(count($xml->entitlements))
+		if(!is_null($jsonObject) && isset($jsonObject->copyright))
+			$this->copyright = (string)$jsonObject->copyright;
+		if(!is_null($xml) && count($xml->entitlements))
 			$this->entitlements = (string)$xml->entitlements;
-		if(count($xml->rating))
+		if(!is_null($jsonObject) && isset($jsonObject->entitlements))
+			$this->entitlements = (string)$jsonObject->entitlements;
+		if(!is_null($xml) && count($xml->rating))
 			$this->rating = (string)$xml->rating;
-		if(count($xml->itemType))
+		if(!is_null($jsonObject) && isset($jsonObject->rating))
+			$this->rating = (string)$jsonObject->rating;
+		if(!is_null($xml) && count($xml->itemType))
 			$this->itemType = (string)$xml->itemType;
+		if(!is_null($jsonObject) && isset($jsonObject->itemType))
+			$this->itemType = (string)$jsonObject->itemType;
 	}
 	/**
 	 * 

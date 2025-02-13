@@ -38,17 +38,24 @@ class Kaltura_Client_FeedDropFolder_Type_FeedDropFolder extends Kaltura_Client_D
 		return 'KalturaFeedDropFolder';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->itemHandlingLimit))
+		if(!is_null($xml) && count($xml->itemHandlingLimit))
 			$this->itemHandlingLimit = (int)$xml->itemHandlingLimit;
-		if(count($xml->feedItemInfo) && !empty($xml->feedItemInfo))
+		if(!is_null($jsonObject) && isset($jsonObject->itemHandlingLimit))
+			$this->itemHandlingLimit = (int)$jsonObject->itemHandlingLimit;
+		if(!is_null($xml) && count($xml->feedItemInfo) && !empty($xml->feedItemInfo))
 			$this->feedItemInfo = Kaltura_Client_ParseUtils::unmarshalObject($xml->feedItemInfo, "KalturaFeedItemInfo");
+		if(!is_null($jsonObject) && isset($jsonObject->feedItemInfo) && !empty($jsonObject->feedItemInfo))
+			$this->feedItemInfo = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsonObject->feedItemInfo, "KalturaFeedItemInfo");
 	}
 	/**
 	 * 

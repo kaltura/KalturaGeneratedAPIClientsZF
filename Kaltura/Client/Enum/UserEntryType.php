@@ -33,6 +33,7 @@
  */
 class Kaltura_Client_Enum_UserEntryType extends Kaltura_Client_EnumBase
 {
+	const PERMISSION_LEVEL = "entryPermissionLevel.PERMISSION_LEVEL";
 	const QUIZ = "quiz.QUIZ";
 	const REGISTRATION = "registration.REGISTRATION";
 	const VIEW_HISTORY = "viewHistory.VIEW_HISTORY";

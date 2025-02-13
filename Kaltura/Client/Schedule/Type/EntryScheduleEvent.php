@@ -38,25 +38,41 @@ abstract class Kaltura_Client_Schedule_Type_EntryScheduleEvent extends Kaltura_C
 		return 'KalturaEntryScheduleEvent';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->templateEntryId))
+		if(!is_null($xml) && count($xml->templateEntryId))
 			$this->templateEntryId = (string)$xml->templateEntryId;
-		if(count($xml->entryIds))
+		if(!is_null($jsonObject) && isset($jsonObject->templateEntryId))
+			$this->templateEntryId = (string)$jsonObject->templateEntryId;
+		if(!is_null($xml) && count($xml->entryIds))
 			$this->entryIds = (string)$xml->entryIds;
-		if(count($xml->categoryIds))
+		if(!is_null($jsonObject) && isset($jsonObject->entryIds))
+			$this->entryIds = (string)$jsonObject->entryIds;
+		if(!is_null($xml) && count($xml->categoryIds))
 			$this->categoryIds = (string)$xml->categoryIds;
-		if(count($xml->blackoutConflicts))
+		if(!is_null($jsonObject) && isset($jsonObject->categoryIds))
+			$this->categoryIds = (string)$jsonObject->categoryIds;
+		if(!is_null($xml) && count($xml->blackoutConflicts))
 		{
 			if(empty($xml->blackoutConflicts))
 				$this->blackoutConflicts = array();
 			else
 				$this->blackoutConflicts = Kaltura_Client_ParseUtils::unmarshalArray($xml->blackoutConflicts, "KalturaScheduleEvent");
+		}
+		if(!is_null($jsonObject) && isset($jsonObject->blackoutConflicts))
+		{
+			if(empty($jsonObject->blackoutConflicts))
+				$this->blackoutConflicts = array();
+			else
+				$this->blackoutConflicts = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsonObject->blackoutConflicts, "KalturaScheduleEvent");
 		}
 	}
 	/**

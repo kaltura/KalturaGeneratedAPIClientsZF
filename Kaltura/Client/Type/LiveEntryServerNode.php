@@ -38,38 +38,70 @@ class Kaltura_Client_Type_LiveEntryServerNode extends Kaltura_Client_Type_EntryS
 		return 'KalturaLiveEntryServerNode';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->streams))
+		if(!is_null($xml) && count($xml->streams))
 		{
 			if(empty($xml->streams))
 				$this->streams = array();
 			else
 				$this->streams = Kaltura_Client_ParseUtils::unmarshalArray($xml->streams, "KalturaLiveStreamParams");
 		}
-		if(count($xml->recordingInfo))
+		if(!is_null($jsonObject) && isset($jsonObject->streams))
+		{
+			if(empty($jsonObject->streams))
+				$this->streams = array();
+			else
+				$this->streams = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsonObject->streams, "KalturaLiveStreamParams");
+		}
+		if(!is_null($xml) && count($xml->recordingInfo))
 		{
 			if(empty($xml->recordingInfo))
 				$this->recordingInfo = array();
 			else
 				$this->recordingInfo = Kaltura_Client_ParseUtils::unmarshalArray($xml->recordingInfo, "KalturaLiveEntryServerNodeRecordingInfo");
 		}
-		if(count($xml->isPlayableUser))
+		if(!is_null($jsonObject) && isset($jsonObject->recordingInfo))
+		{
+			if(empty($jsonObject->recordingInfo))
+				$this->recordingInfo = array();
+			else
+				$this->recordingInfo = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsonObject->recordingInfo, "KalturaLiveEntryServerNodeRecordingInfo");
+		}
+		if(!is_null($xml) && count($xml->isPlayableUser))
 		{
 			if(!empty($xml->isPlayableUser) && ((int) $xml->isPlayableUser === 1 || strtolower((string)$xml->isPlayableUser) === 'true'))
 				$this->isPlayableUser = true;
 			else
 				$this->isPlayableUser = false;
 		}
-		if(count($xml->viewMode))
+		if(!is_null($jsonObject) && isset($jsonObject->isPlayableUser))
+		{
+			if(!empty($jsonObject->isPlayableUser) && ((int) $jsonObject->isPlayableUser === 1 || strtolower((string)$jsonObject->isPlayableUser) === 'true'))
+				$this->isPlayableUser = true;
+			else
+				$this->isPlayableUser = false;
+		}
+		if(!is_null($xml) && count($xml->viewMode))
 			$this->viewMode = (int)$xml->viewMode;
-		if(count($xml->featuresUpdatedAt))
+		if(!is_null($jsonObject) && isset($jsonObject->viewMode))
+			$this->viewMode = (int)$jsonObject->viewMode;
+		if(!is_null($xml) && count($xml->featuresUpdatedAt))
 			$this->featuresUpdatedAt = (int)$xml->featuresUpdatedAt;
+		if(!is_null($jsonObject) && isset($jsonObject->featuresUpdatedAt))
+			$this->featuresUpdatedAt = (int)$jsonObject->featuresUpdatedAt;
+		if(!is_null($xml) && count($xml->viewModeUpdatedAt))
+			$this->viewModeUpdatedAt = (int)$xml->viewModeUpdatedAt;
+		if(!is_null($jsonObject) && isset($jsonObject->viewModeUpdatedAt))
+			$this->viewModeUpdatedAt = (int)$jsonObject->viewModeUpdatedAt;
 	}
 	/**
 	 * parameters of the stream we got
@@ -105,6 +137,13 @@ class Kaltura_Client_Type_LiveEntryServerNode extends Kaltura_Client_Type_EntryS
 	 * @var int
 	 */
 	public $featuresUpdatedAt = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $viewModeUpdatedAt = null;
 
 
 }

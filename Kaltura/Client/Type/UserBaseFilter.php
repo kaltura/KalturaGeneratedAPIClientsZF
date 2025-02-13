@@ -38,27 +38,44 @@ abstract class Kaltura_Client_Type_UserBaseFilter extends Kaltura_Client_Type_Ba
 		return 'KalturaUserBaseFilter';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->idEqual))
+		if(!is_null($xml) && count($xml->idEqual))
 			$this->idEqual = (string)$xml->idEqual;
-		if(count($xml->idIn))
+		if(!is_null($jsonObject) && isset($jsonObject->idEqual))
+			$this->idEqual = (string)$jsonObject->idEqual;
+		if(!is_null($xml) && count($xml->idIn))
 			$this->idIn = (string)$xml->idIn;
-		if(count($xml->typeEqual))
+		if(!is_null($jsonObject) && isset($jsonObject->idIn))
+			$this->idIn = (string)$jsonObject->idIn;
+		if(!is_null($xml) && count($xml->typeEqual))
 			$this->typeEqual = (int)$xml->typeEqual;
-		if(count($xml->typeIn))
+		if(!is_null($jsonObject) && isset($jsonObject->typeEqual))
+			$this->typeEqual = (int)$jsonObject->typeEqual;
+		if(!is_null($xml) && count($xml->typeIn))
 			$this->typeIn = (string)$xml->typeIn;
-		if(count($xml->isAdminEqual))
+		if(!is_null($jsonObject) && isset($jsonObject->typeIn))
+			$this->typeIn = (string)$jsonObject->typeIn;
+		if(!is_null($xml) && count($xml->isAdminEqual))
 			$this->isAdminEqual = (int)$xml->isAdminEqual;
-		if(count($xml->firstNameStartsWith))
+		if(!is_null($jsonObject) && isset($jsonObject->isAdminEqual))
+			$this->isAdminEqual = (int)$jsonObject->isAdminEqual;
+		if(!is_null($xml) && count($xml->firstNameStartsWith))
 			$this->firstNameStartsWith = (string)$xml->firstNameStartsWith;
-		if(count($xml->lastNameStartsWith))
+		if(!is_null($jsonObject) && isset($jsonObject->firstNameStartsWith))
+			$this->firstNameStartsWith = (string)$jsonObject->firstNameStartsWith;
+		if(!is_null($xml) && count($xml->lastNameStartsWith))
 			$this->lastNameStartsWith = (string)$xml->lastNameStartsWith;
+		if(!is_null($jsonObject) && isset($jsonObject->lastNameStartsWith))
+			$this->lastNameStartsWith = (string)$jsonObject->lastNameStartsWith;
 	}
 	/**
 	 * 

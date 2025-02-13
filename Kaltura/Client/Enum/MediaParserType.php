@@ -34,6 +34,7 @@
 class Kaltura_Client_Enum_MediaParserType extends Kaltura_Client_EnumBase
 {
 	const MEDIAINFO = "0";
+	const REMOTE_MEDIAINFO = "remoteMediaInfo.RemoteMediaInfo";
 	const FFMPEG = "1";
 }
 

@@ -38,32 +38,54 @@ class Kaltura_Client_Quiz_Type_QuestionCuePoint extends Kaltura_Client_CuePoint_
 		return 'KalturaQuestionCuePoint';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->optionalAnswers))
+		if(!is_null($xml) && count($xml->optionalAnswers))
 		{
 			if(empty($xml->optionalAnswers))
 				$this->optionalAnswers = array();
 			else
 				$this->optionalAnswers = Kaltura_Client_ParseUtils::unmarshalArray($xml->optionalAnswers, "KalturaOptionalAnswer");
 		}
-		if(count($xml->hint))
+		if(!is_null($jsonObject) && isset($jsonObject->optionalAnswers))
+		{
+			if(empty($jsonObject->optionalAnswers))
+				$this->optionalAnswers = array();
+			else
+				$this->optionalAnswers = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsonObject->optionalAnswers, "KalturaOptionalAnswer");
+		}
+		if(!is_null($xml) && count($xml->hint))
 			$this->hint = (string)$xml->hint;
-		if(count($xml->question))
+		if(!is_null($jsonObject) && isset($jsonObject->hint))
+			$this->hint = (string)$jsonObject->hint;
+		if(!is_null($xml) && count($xml->question))
 			$this->question = (string)$xml->question;
-		if(count($xml->explanation))
+		if(!is_null($jsonObject) && isset($jsonObject->question))
+			$this->question = (string)$jsonObject->question;
+		if(!is_null($xml) && count($xml->explanation))
 			$this->explanation = (string)$xml->explanation;
-		if(count($xml->questionType))
+		if(!is_null($jsonObject) && isset($jsonObject->explanation))
+			$this->explanation = (string)$jsonObject->explanation;
+		if(!is_null($xml) && count($xml->questionType))
 			$this->questionType = (int)$xml->questionType;
-		if(count($xml->presentationOrder))
+		if(!is_null($jsonObject) && isset($jsonObject->questionType))
+			$this->questionType = (int)$jsonObject->questionType;
+		if(!is_null($xml) && count($xml->presentationOrder))
 			$this->presentationOrder = (int)$xml->presentationOrder;
-		if(count($xml->excludeFromScore))
+		if(!is_null($jsonObject) && isset($jsonObject->presentationOrder))
+			$this->presentationOrder = (int)$jsonObject->presentationOrder;
+		if(!is_null($xml) && count($xml->excludeFromScore))
 			$this->excludeFromScore = (int)$xml->excludeFromScore;
+		if(!is_null($jsonObject) && isset($jsonObject->excludeFromScore))
+			$this->excludeFromScore = (int)$jsonObject->excludeFromScore;
 	}
 	/**
 	 * Array of key value answerKey->optionAnswer objects

@@ -38,36 +38,63 @@ class Kaltura_Client_Type_AccessControlScope extends Kaltura_Client_ObjectBase
 		return 'KalturaAccessControlScope';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->referrer))
+		if(!is_null($xml) && count($xml->referrer))
 			$this->referrer = (string)$xml->referrer;
-		if(count($xml->ip))
+		if(!is_null($jsonObject) && isset($jsonObject->referrer))
+			$this->referrer = (string)$jsonObject->referrer;
+		if(!is_null($xml) && count($xml->ip))
 			$this->ip = (string)$xml->ip;
-		if(count($xml->ks))
+		if(!is_null($jsonObject) && isset($jsonObject->ip))
+			$this->ip = (string)$jsonObject->ip;
+		if(!is_null($xml) && count($xml->ks))
 			$this->ks = (string)$xml->ks;
-		if(count($xml->userAgent))
+		if(!is_null($jsonObject) && isset($jsonObject->ks))
+			$this->ks = (string)$jsonObject->ks;
+		if(!is_null($xml) && count($xml->userAgent))
 			$this->userAgent = (string)$xml->userAgent;
-		if(count($xml->time))
+		if(!is_null($jsonObject) && isset($jsonObject->userAgent))
+			$this->userAgent = (string)$jsonObject->userAgent;
+		if(!is_null($xml) && count($xml->time))
 			$this->time = (int)$xml->time;
-		if(count($xml->contexts))
+		if(!is_null($jsonObject) && isset($jsonObject->time))
+			$this->time = (int)$jsonObject->time;
+		if(!is_null($xml) && count($xml->contexts))
 		{
 			if(empty($xml->contexts))
 				$this->contexts = array();
 			else
 				$this->contexts = Kaltura_Client_ParseUtils::unmarshalArray($xml->contexts, "KalturaAccessControlContextTypeHolder");
 		}
-		if(count($xml->hashes))
+		if(!is_null($jsonObject) && isset($jsonObject->contexts))
+		{
+			if(empty($jsonObject->contexts))
+				$this->contexts = array();
+			else
+				$this->contexts = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsonObject->contexts, "KalturaAccessControlContextTypeHolder");
+		}
+		if(!is_null($xml) && count($xml->hashes))
 		{
 			if(empty($xml->hashes))
 				$this->hashes = array();
 			else
 				$this->hashes = Kaltura_Client_ParseUtils::unmarshalArray($xml->hashes, "KalturaKeyValue");
+		}
+		if(!is_null($jsonObject) && isset($jsonObject->hashes))
+		{
+			if(empty($jsonObject->hashes))
+				$this->hashes = array();
+			else
+				$this->hashes = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsonObject->hashes, "KalturaKeyValue");
 		}
 	}
 	/**

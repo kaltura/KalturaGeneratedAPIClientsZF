@@ -38,38 +38,66 @@ class Kaltura_Client_Quiz_Type_Quiz extends Kaltura_Client_ObjectBase
 		return 'KalturaQuiz';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->version))
+		if(!is_null($xml) && count($xml->version))
 			$this->version = (int)$xml->version;
-		if(count($xml->uiAttributes))
+		if(!is_null($jsonObject) && isset($jsonObject->version))
+			$this->version = (int)$jsonObject->version;
+		if(!is_null($xml) && count($xml->uiAttributes))
 		{
 			if(empty($xml->uiAttributes))
 				$this->uiAttributes = array();
 			else
 				$this->uiAttributes = Kaltura_Client_ParseUtils::unmarshalArray($xml->uiAttributes, "KalturaKeyValue");
 		}
-		if(count($xml->showResultOnAnswer))
+		if(!is_null($jsonObject) && isset($jsonObject->uiAttributes))
+		{
+			if(empty($jsonObject->uiAttributes))
+				$this->uiAttributes = array();
+			else
+				$this->uiAttributes = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsonObject->uiAttributes, "KalturaKeyValue");
+		}
+		if(!is_null($xml) && count($xml->showResultOnAnswer))
 			$this->showResultOnAnswer = (int)$xml->showResultOnAnswer;
-		if(count($xml->showCorrectKeyOnAnswer))
+		if(!is_null($jsonObject) && isset($jsonObject->showResultOnAnswer))
+			$this->showResultOnAnswer = (int)$jsonObject->showResultOnAnswer;
+		if(!is_null($xml) && count($xml->showCorrectKeyOnAnswer))
 			$this->showCorrectKeyOnAnswer = (int)$xml->showCorrectKeyOnAnswer;
-		if(count($xml->allowAnswerUpdate))
+		if(!is_null($jsonObject) && isset($jsonObject->showCorrectKeyOnAnswer))
+			$this->showCorrectKeyOnAnswer = (int)$jsonObject->showCorrectKeyOnAnswer;
+		if(!is_null($xml) && count($xml->allowAnswerUpdate))
 			$this->allowAnswerUpdate = (int)$xml->allowAnswerUpdate;
-		if(count($xml->showCorrectAfterSubmission))
+		if(!is_null($jsonObject) && isset($jsonObject->allowAnswerUpdate))
+			$this->allowAnswerUpdate = (int)$jsonObject->allowAnswerUpdate;
+		if(!is_null($xml) && count($xml->showCorrectAfterSubmission))
 			$this->showCorrectAfterSubmission = (int)$xml->showCorrectAfterSubmission;
-		if(count($xml->allowDownload))
+		if(!is_null($jsonObject) && isset($jsonObject->showCorrectAfterSubmission))
+			$this->showCorrectAfterSubmission = (int)$jsonObject->showCorrectAfterSubmission;
+		if(!is_null($xml) && count($xml->allowDownload))
 			$this->allowDownload = (int)$xml->allowDownload;
-		if(count($xml->showGradeAfterSubmission))
+		if(!is_null($jsonObject) && isset($jsonObject->allowDownload))
+			$this->allowDownload = (int)$jsonObject->allowDownload;
+		if(!is_null($xml) && count($xml->showGradeAfterSubmission))
 			$this->showGradeAfterSubmission = (int)$xml->showGradeAfterSubmission;
-		if(count($xml->attemptsAllowed))
+		if(!is_null($jsonObject) && isset($jsonObject->showGradeAfterSubmission))
+			$this->showGradeAfterSubmission = (int)$jsonObject->showGradeAfterSubmission;
+		if(!is_null($xml) && count($xml->attemptsAllowed))
 			$this->attemptsAllowed = (int)$xml->attemptsAllowed;
-		if(count($xml->scoreType))
+		if(!is_null($jsonObject) && isset($jsonObject->attemptsAllowed))
+			$this->attemptsAllowed = (int)$jsonObject->attemptsAllowed;
+		if(!is_null($xml) && count($xml->scoreType))
 			$this->scoreType = (int)$xml->scoreType;
+		if(!is_null($jsonObject) && isset($jsonObject->scoreType))
+			$this->scoreType = (int)$jsonObject->scoreType;
 	}
 	/**
 	 * 

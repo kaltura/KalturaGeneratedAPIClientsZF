@@ -38,29 +38,48 @@ abstract class Kaltura_Client_Type_PlayableEntryBaseFilter extends Kaltura_Clien
 		return 'KalturaPlayableEntryBaseFilter';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->lastPlayedAtGreaterThanOrEqual))
+		if(!is_null($xml) && count($xml->lastPlayedAtGreaterThanOrEqual))
 			$this->lastPlayedAtGreaterThanOrEqual = (int)$xml->lastPlayedAtGreaterThanOrEqual;
-		if(count($xml->lastPlayedAtLessThanOrEqual))
+		if(!is_null($jsonObject) && isset($jsonObject->lastPlayedAtGreaterThanOrEqual))
+			$this->lastPlayedAtGreaterThanOrEqual = (int)$jsonObject->lastPlayedAtGreaterThanOrEqual;
+		if(!is_null($xml) && count($xml->lastPlayedAtLessThanOrEqual))
 			$this->lastPlayedAtLessThanOrEqual = (int)$xml->lastPlayedAtLessThanOrEqual;
-		if(count($xml->lastPlayedAtLessThanOrEqualOrNull))
+		if(!is_null($jsonObject) && isset($jsonObject->lastPlayedAtLessThanOrEqual))
+			$this->lastPlayedAtLessThanOrEqual = (int)$jsonObject->lastPlayedAtLessThanOrEqual;
+		if(!is_null($xml) && count($xml->lastPlayedAtLessThanOrEqualOrNull))
 			$this->lastPlayedAtLessThanOrEqualOrNull = (int)$xml->lastPlayedAtLessThanOrEqualOrNull;
-		if(count($xml->durationLessThan))
+		if(!is_null($jsonObject) && isset($jsonObject->lastPlayedAtLessThanOrEqualOrNull))
+			$this->lastPlayedAtLessThanOrEqualOrNull = (int)$jsonObject->lastPlayedAtLessThanOrEqualOrNull;
+		if(!is_null($xml) && count($xml->durationLessThan))
 			$this->durationLessThan = (int)$xml->durationLessThan;
-		if(count($xml->durationGreaterThan))
+		if(!is_null($jsonObject) && isset($jsonObject->durationLessThan))
+			$this->durationLessThan = (int)$jsonObject->durationLessThan;
+		if(!is_null($xml) && count($xml->durationGreaterThan))
 			$this->durationGreaterThan = (int)$xml->durationGreaterThan;
-		if(count($xml->durationLessThanOrEqual))
+		if(!is_null($jsonObject) && isset($jsonObject->durationGreaterThan))
+			$this->durationGreaterThan = (int)$jsonObject->durationGreaterThan;
+		if(!is_null($xml) && count($xml->durationLessThanOrEqual))
 			$this->durationLessThanOrEqual = (int)$xml->durationLessThanOrEqual;
-		if(count($xml->durationGreaterThanOrEqual))
+		if(!is_null($jsonObject) && isset($jsonObject->durationLessThanOrEqual))
+			$this->durationLessThanOrEqual = (int)$jsonObject->durationLessThanOrEqual;
+		if(!is_null($xml) && count($xml->durationGreaterThanOrEqual))
 			$this->durationGreaterThanOrEqual = (int)$xml->durationGreaterThanOrEqual;
-		if(count($xml->durationTypeMatchOr))
+		if(!is_null($jsonObject) && isset($jsonObject->durationGreaterThanOrEqual))
+			$this->durationGreaterThanOrEqual = (int)$jsonObject->durationGreaterThanOrEqual;
+		if(!is_null($xml) && count($xml->durationTypeMatchOr))
 			$this->durationTypeMatchOr = (string)$xml->durationTypeMatchOr;
+		if(!is_null($jsonObject) && isset($jsonObject->durationTypeMatchOr))
+			$this->durationTypeMatchOr = (string)$jsonObject->durationTypeMatchOr;
 	}
 	/**
 	 * 

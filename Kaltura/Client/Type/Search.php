@@ -38,23 +38,36 @@ class Kaltura_Client_Type_Search extends Kaltura_Client_ObjectBase
 		return 'KalturaSearch';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->keyWords))
+		if(!is_null($xml) && count($xml->keyWords))
 			$this->keyWords = (string)$xml->keyWords;
-		if(count($xml->searchSource))
+		if(!is_null($jsonObject) && isset($jsonObject->keyWords))
+			$this->keyWords = (string)$jsonObject->keyWords;
+		if(!is_null($xml) && count($xml->searchSource))
 			$this->searchSource = (int)$xml->searchSource;
-		if(count($xml->mediaType))
+		if(!is_null($jsonObject) && isset($jsonObject->searchSource))
+			$this->searchSource = (int)$jsonObject->searchSource;
+		if(!is_null($xml) && count($xml->mediaType))
 			$this->mediaType = (int)$xml->mediaType;
-		if(count($xml->extraData))
+		if(!is_null($jsonObject) && isset($jsonObject->mediaType))
+			$this->mediaType = (int)$jsonObject->mediaType;
+		if(!is_null($xml) && count($xml->extraData))
 			$this->extraData = (string)$xml->extraData;
-		if(count($xml->authData))
+		if(!is_null($jsonObject) && isset($jsonObject->extraData))
+			$this->extraData = (string)$jsonObject->extraData;
+		if(!is_null($xml) && count($xml->authData))
 			$this->authData = (string)$xml->authData;
+		if(!is_null($jsonObject) && isset($jsonObject->authData))
+			$this->authData = (string)$jsonObject->authData;
 	}
 	/**
 	 * 

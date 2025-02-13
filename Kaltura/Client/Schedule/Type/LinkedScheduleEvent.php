@@ -38,17 +38,24 @@ class Kaltura_Client_Schedule_Type_LinkedScheduleEvent extends Kaltura_Client_Ob
 		return 'KalturaLinkedScheduleEvent';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->offset))
+		if(!is_null($xml) && count($xml->offset))
 			$this->offset = (int)$xml->offset;
-		if(count($xml->eventId))
+		if(!is_null($jsonObject) && isset($jsonObject->offset))
+			$this->offset = (int)$jsonObject->offset;
+		if(!is_null($xml) && count($xml->eventId))
 			$this->eventId = (int)$xml->eventId;
+		if(!is_null($jsonObject) && isset($jsonObject->eventId))
+			$this->eventId = (int)$jsonObject->eventId;
 	}
 	/**
 	 * The time between the end of the event which it's id is in $eventId and the start of the event holding this object

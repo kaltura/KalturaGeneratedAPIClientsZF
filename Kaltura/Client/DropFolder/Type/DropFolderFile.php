@@ -38,61 +38,112 @@ class Kaltura_Client_DropFolder_Type_DropFolderFile extends Kaltura_Client_Objec
 		return 'KalturaDropFolderFile';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->id))
+		if(!is_null($xml) && count($xml->id))
 			$this->id = (int)$xml->id;
-		if(count($xml->partnerId))
+		if(!is_null($jsonObject) && isset($jsonObject->id))
+			$this->id = (int)$jsonObject->id;
+		if(!is_null($xml) && count($xml->partnerId))
 			$this->partnerId = (int)$xml->partnerId;
-		if(count($xml->dropFolderId))
+		if(!is_null($jsonObject) && isset($jsonObject->partnerId))
+			$this->partnerId = (int)$jsonObject->partnerId;
+		if(!is_null($xml) && count($xml->dropFolderId))
 			$this->dropFolderId = (int)$xml->dropFolderId;
-		if(count($xml->fileName))
+		if(!is_null($jsonObject) && isset($jsonObject->dropFolderId))
+			$this->dropFolderId = (int)$jsonObject->dropFolderId;
+		if(!is_null($xml) && count($xml->fileName))
 			$this->fileName = (string)$xml->fileName;
-		if(count($xml->fileSize))
+		if(!is_null($jsonObject) && isset($jsonObject->fileName))
+			$this->fileName = (string)$jsonObject->fileName;
+		if(!is_null($xml) && count($xml->fileSize))
 			$this->fileSize = (float)$xml->fileSize;
-		if(count($xml->fileSizeLastSetAt))
+		if(!is_null($jsonObject) && isset($jsonObject->fileSize))
+			$this->fileSize = (float)$jsonObject->fileSize;
+		if(!is_null($xml) && count($xml->fileSizeLastSetAt))
 			$this->fileSizeLastSetAt = (int)$xml->fileSizeLastSetAt;
-		if(count($xml->status))
+		if(!is_null($jsonObject) && isset($jsonObject->fileSizeLastSetAt))
+			$this->fileSizeLastSetAt = (int)$jsonObject->fileSizeLastSetAt;
+		if(!is_null($xml) && count($xml->status))
 			$this->status = (int)$xml->status;
-		if(count($xml->type))
+		if(!is_null($jsonObject) && isset($jsonObject->status))
+			$this->status = (int)$jsonObject->status;
+		if(!is_null($xml) && count($xml->type))
 			$this->type = (string)$xml->type;
-		if(count($xml->parsedSlug))
+		if(!is_null($jsonObject) && isset($jsonObject->type))
+			$this->type = (string)$jsonObject->type;
+		if(!is_null($xml) && count($xml->parsedSlug))
 			$this->parsedSlug = (string)$xml->parsedSlug;
-		if(count($xml->parsedFlavor))
+		if(!is_null($jsonObject) && isset($jsonObject->parsedSlug))
+			$this->parsedSlug = (string)$jsonObject->parsedSlug;
+		if(!is_null($xml) && count($xml->parsedFlavor))
 			$this->parsedFlavor = (string)$xml->parsedFlavor;
-		if(count($xml->parsedUserId))
+		if(!is_null($jsonObject) && isset($jsonObject->parsedFlavor))
+			$this->parsedFlavor = (string)$jsonObject->parsedFlavor;
+		if(!is_null($xml) && count($xml->parsedUserId))
 			$this->parsedUserId = (string)$xml->parsedUserId;
-		if(count($xml->leadDropFolderFileId))
+		if(!is_null($jsonObject) && isset($jsonObject->parsedUserId))
+			$this->parsedUserId = (string)$jsonObject->parsedUserId;
+		if(!is_null($xml) && count($xml->leadDropFolderFileId))
 			$this->leadDropFolderFileId = (int)$xml->leadDropFolderFileId;
-		if(count($xml->deletedDropFolderFileId))
+		if(!is_null($jsonObject) && isset($jsonObject->leadDropFolderFileId))
+			$this->leadDropFolderFileId = (int)$jsonObject->leadDropFolderFileId;
+		if(!is_null($xml) && count($xml->deletedDropFolderFileId))
 			$this->deletedDropFolderFileId = (int)$xml->deletedDropFolderFileId;
-		if(count($xml->entryId))
+		if(!is_null($jsonObject) && isset($jsonObject->deletedDropFolderFileId))
+			$this->deletedDropFolderFileId = (int)$jsonObject->deletedDropFolderFileId;
+		if(!is_null($xml) && count($xml->entryId))
 			$this->entryId = (string)$xml->entryId;
-		if(count($xml->errorCode))
+		if(!is_null($jsonObject) && isset($jsonObject->entryId))
+			$this->entryId = (string)$jsonObject->entryId;
+		if(!is_null($xml) && count($xml->errorCode))
 			$this->errorCode = (string)$xml->errorCode;
-		if(count($xml->errorDescription))
+		if(!is_null($jsonObject) && isset($jsonObject->errorCode))
+			$this->errorCode = (string)$jsonObject->errorCode;
+		if(!is_null($xml) && count($xml->errorDescription))
 			$this->errorDescription = (string)$xml->errorDescription;
-		if(count($xml->lastModificationTime))
+		if(!is_null($jsonObject) && isset($jsonObject->errorDescription))
+			$this->errorDescription = (string)$jsonObject->errorDescription;
+		if(!is_null($xml) && count($xml->lastModificationTime))
 			$this->lastModificationTime = (string)$xml->lastModificationTime;
-		if(count($xml->createdAt))
+		if(!is_null($jsonObject) && isset($jsonObject->lastModificationTime))
+			$this->lastModificationTime = (string)$jsonObject->lastModificationTime;
+		if(!is_null($xml) && count($xml->createdAt))
 			$this->createdAt = (int)$xml->createdAt;
-		if(count($xml->updatedAt))
+		if(!is_null($jsonObject) && isset($jsonObject->createdAt))
+			$this->createdAt = (int)$jsonObject->createdAt;
+		if(!is_null($xml) && count($xml->updatedAt))
 			$this->updatedAt = (int)$xml->updatedAt;
-		if(count($xml->uploadStartDetectedAt))
+		if(!is_null($jsonObject) && isset($jsonObject->updatedAt))
+			$this->updatedAt = (int)$jsonObject->updatedAt;
+		if(!is_null($xml) && count($xml->uploadStartDetectedAt))
 			$this->uploadStartDetectedAt = (int)$xml->uploadStartDetectedAt;
-		if(count($xml->uploadEndDetectedAt))
+		if(!is_null($jsonObject) && isset($jsonObject->uploadStartDetectedAt))
+			$this->uploadStartDetectedAt = (int)$jsonObject->uploadStartDetectedAt;
+		if(!is_null($xml) && count($xml->uploadEndDetectedAt))
 			$this->uploadEndDetectedAt = (int)$xml->uploadEndDetectedAt;
-		if(count($xml->importStartedAt))
+		if(!is_null($jsonObject) && isset($jsonObject->uploadEndDetectedAt))
+			$this->uploadEndDetectedAt = (int)$jsonObject->uploadEndDetectedAt;
+		if(!is_null($xml) && count($xml->importStartedAt))
 			$this->importStartedAt = (int)$xml->importStartedAt;
-		if(count($xml->importEndedAt))
+		if(!is_null($jsonObject) && isset($jsonObject->importStartedAt))
+			$this->importStartedAt = (int)$jsonObject->importStartedAt;
+		if(!is_null($xml) && count($xml->importEndedAt))
 			$this->importEndedAt = (int)$xml->importEndedAt;
-		if(count($xml->batchJobId))
+		if(!is_null($jsonObject) && isset($jsonObject->importEndedAt))
+			$this->importEndedAt = (int)$jsonObject->importEndedAt;
+		if(!is_null($xml) && count($xml->batchJobId))
 			$this->batchJobId = (int)$xml->batchJobId;
+		if(!is_null($jsonObject) && isset($jsonObject->batchJobId))
+			$this->batchJobId = (int)$jsonObject->batchJobId;
 	}
 	/**
 	 * 

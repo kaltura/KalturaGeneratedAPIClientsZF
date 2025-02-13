@@ -38,21 +38,32 @@ class Kaltura_Client_Type_EntryContextDataParams extends Kaltura_Client_Type_Acc
 		return 'KalturaEntryContextDataParams';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->flavorAssetId))
+		if(!is_null($xml) && count($xml->flavorAssetId))
 			$this->flavorAssetId = (string)$xml->flavorAssetId;
-		if(count($xml->flavorTags))
+		if(!is_null($jsonObject) && isset($jsonObject->flavorAssetId))
+			$this->flavorAssetId = (string)$jsonObject->flavorAssetId;
+		if(!is_null($xml) && count($xml->flavorTags))
 			$this->flavorTags = (string)$xml->flavorTags;
-		if(count($xml->streamerType))
+		if(!is_null($jsonObject) && isset($jsonObject->flavorTags))
+			$this->flavorTags = (string)$jsonObject->flavorTags;
+		if(!is_null($xml) && count($xml->streamerType))
 			$this->streamerType = (string)$xml->streamerType;
-		if(count($xml->mediaProtocol))
+		if(!is_null($jsonObject) && isset($jsonObject->streamerType))
+			$this->streamerType = (string)$jsonObject->streamerType;
+		if(!is_null($xml) && count($xml->mediaProtocol))
 			$this->mediaProtocol = (string)$xml->mediaProtocol;
+		if(!is_null($jsonObject) && isset($jsonObject->mediaProtocol))
+			$this->mediaProtocol = (string)$jsonObject->mediaProtocol;
 	}
 	/**
 	 * Id of the current flavor.

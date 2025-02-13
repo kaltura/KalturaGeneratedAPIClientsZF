@@ -38,29 +38,48 @@ class Kaltura_Client_ViewHistory_Type_ViewHistoryUserEntryAdvancedFilter extends
 		return 'KalturaViewHistoryUserEntryAdvancedFilter';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->idEqual))
+		if(!is_null($xml) && count($xml->idEqual))
 			$this->idEqual = (string)$xml->idEqual;
-		if(count($xml->idIn))
+		if(!is_null($jsonObject) && isset($jsonObject->idEqual))
+			$this->idEqual = (string)$jsonObject->idEqual;
+		if(!is_null($xml) && count($xml->idIn))
 			$this->idIn = (string)$xml->idIn;
-		if(count($xml->userIdEqual))
+		if(!is_null($jsonObject) && isset($jsonObject->idIn))
+			$this->idIn = (string)$jsonObject->idIn;
+		if(!is_null($xml) && count($xml->userIdEqual))
 			$this->userIdEqual = (string)$xml->userIdEqual;
-		if(count($xml->userIdIn))
+		if(!is_null($jsonObject) && isset($jsonObject->userIdEqual))
+			$this->userIdEqual = (string)$jsonObject->userIdEqual;
+		if(!is_null($xml) && count($xml->userIdIn))
 			$this->userIdIn = (string)$xml->userIdIn;
-		if(count($xml->updatedAtGreaterThanOrEqual))
+		if(!is_null($jsonObject) && isset($jsonObject->userIdIn))
+			$this->userIdIn = (string)$jsonObject->userIdIn;
+		if(!is_null($xml) && count($xml->updatedAtGreaterThanOrEqual))
 			$this->updatedAtGreaterThanOrEqual = (string)$xml->updatedAtGreaterThanOrEqual;
-		if(count($xml->updatedAtLessThanOrEqual))
+		if(!is_null($jsonObject) && isset($jsonObject->updatedAtGreaterThanOrEqual))
+			$this->updatedAtGreaterThanOrEqual = (string)$jsonObject->updatedAtGreaterThanOrEqual;
+		if(!is_null($xml) && count($xml->updatedAtLessThanOrEqual))
 			$this->updatedAtLessThanOrEqual = (string)$xml->updatedAtLessThanOrEqual;
-		if(count($xml->extendedStatusEqual))
+		if(!is_null($jsonObject) && isset($jsonObject->updatedAtLessThanOrEqual))
+			$this->updatedAtLessThanOrEqual = (string)$jsonObject->updatedAtLessThanOrEqual;
+		if(!is_null($xml) && count($xml->extendedStatusEqual))
 			$this->extendedStatusEqual = (string)$xml->extendedStatusEqual;
-		if(count($xml->extendedStatusIn))
+		if(!is_null($jsonObject) && isset($jsonObject->extendedStatusEqual))
+			$this->extendedStatusEqual = (string)$jsonObject->extendedStatusEqual;
+		if(!is_null($xml) && count($xml->extendedStatusIn))
 			$this->extendedStatusIn = (string)$xml->extendedStatusIn;
+		if(!is_null($jsonObject) && isset($jsonObject->extendedStatusIn))
+			$this->extendedStatusIn = (string)$jsonObject->extendedStatusIn;
 	}
 	/**
 	 * 

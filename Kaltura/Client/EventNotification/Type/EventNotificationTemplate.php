@@ -38,70 +38,134 @@ class Kaltura_Client_EventNotification_Type_EventNotificationTemplate extends Ka
 		return 'KalturaEventNotificationTemplate';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->id))
+		if(!is_null($xml) && count($xml->id))
 			$this->id = (int)$xml->id;
-		if(count($xml->partnerId))
+		if(!is_null($jsonObject) && isset($jsonObject->id))
+			$this->id = (int)$jsonObject->id;
+		if(!is_null($xml) && count($xml->partnerId))
 			$this->partnerId = (int)$xml->partnerId;
-		if(count($xml->name))
+		if(!is_null($jsonObject) && isset($jsonObject->partnerId))
+			$this->partnerId = (int)$jsonObject->partnerId;
+		if(!is_null($xml) && count($xml->name))
 			$this->name = (string)$xml->name;
-		if(count($xml->systemName))
+		if(!is_null($jsonObject) && isset($jsonObject->name))
+			$this->name = (string)$jsonObject->name;
+		if(!is_null($xml) && count($xml->systemName))
 			$this->systemName = (string)$xml->systemName;
-		if(count($xml->description))
+		if(!is_null($jsonObject) && isset($jsonObject->systemName))
+			$this->systemName = (string)$jsonObject->systemName;
+		if(!is_null($xml) && count($xml->description))
 			$this->description = (string)$xml->description;
-		if(count($xml->type))
+		if(!is_null($jsonObject) && isset($jsonObject->description))
+			$this->description = (string)$jsonObject->description;
+		if(!is_null($xml) && count($xml->type))
 			$this->type = (string)$xml->type;
-		if(count($xml->status))
+		if(!is_null($jsonObject) && isset($jsonObject->type))
+			$this->type = (string)$jsonObject->type;
+		if(!is_null($xml) && count($xml->status))
 			$this->status = (int)$xml->status;
-		if(count($xml->createdAt))
+		if(!is_null($jsonObject) && isset($jsonObject->status))
+			$this->status = (int)$jsonObject->status;
+		if(!is_null($xml) && count($xml->createdAt))
 			$this->createdAt = (int)$xml->createdAt;
-		if(count($xml->updatedAt))
+		if(!is_null($jsonObject) && isset($jsonObject->createdAt))
+			$this->createdAt = (int)$jsonObject->createdAt;
+		if(!is_null($xml) && count($xml->updatedAt))
 			$this->updatedAt = (int)$xml->updatedAt;
-		if(count($xml->manualDispatchEnabled))
+		if(!is_null($jsonObject) && isset($jsonObject->updatedAt))
+			$this->updatedAt = (int)$jsonObject->updatedAt;
+		if(!is_null($xml) && count($xml->manualDispatchEnabled))
 		{
 			if(!empty($xml->manualDispatchEnabled) && ((int) $xml->manualDispatchEnabled === 1 || strtolower((string)$xml->manualDispatchEnabled) === 'true'))
 				$this->manualDispatchEnabled = true;
 			else
 				$this->manualDispatchEnabled = false;
 		}
-		if(count($xml->automaticDispatchEnabled))
+		if(!is_null($jsonObject) && isset($jsonObject->manualDispatchEnabled))
+		{
+			if(!empty($jsonObject->manualDispatchEnabled) && ((int) $jsonObject->manualDispatchEnabled === 1 || strtolower((string)$jsonObject->manualDispatchEnabled) === 'true'))
+				$this->manualDispatchEnabled = true;
+			else
+				$this->manualDispatchEnabled = false;
+		}
+		if(!is_null($xml) && count($xml->automaticDispatchEnabled))
 		{
 			if(!empty($xml->automaticDispatchEnabled) && ((int) $xml->automaticDispatchEnabled === 1 || strtolower((string)$xml->automaticDispatchEnabled) === 'true'))
 				$this->automaticDispatchEnabled = true;
 			else
 				$this->automaticDispatchEnabled = false;
 		}
-		if(count($xml->eventType))
+		if(!is_null($jsonObject) && isset($jsonObject->automaticDispatchEnabled))
+		{
+			if(!empty($jsonObject->automaticDispatchEnabled) && ((int) $jsonObject->automaticDispatchEnabled === 1 || strtolower((string)$jsonObject->automaticDispatchEnabled) === 'true'))
+				$this->automaticDispatchEnabled = true;
+			else
+				$this->automaticDispatchEnabled = false;
+		}
+		if(!is_null($xml) && count($xml->eventType))
 			$this->eventType = (string)$xml->eventType;
-		if(count($xml->eventObjectType))
+		if(!is_null($jsonObject) && isset($jsonObject->eventType))
+			$this->eventType = (string)$jsonObject->eventType;
+		if(!is_null($xml) && count($xml->eventObjectType))
 			$this->eventObjectType = (string)$xml->eventObjectType;
-		if(count($xml->eventConditions))
+		if(!is_null($jsonObject) && isset($jsonObject->eventObjectType))
+			$this->eventObjectType = (string)$jsonObject->eventObjectType;
+		if(!is_null($xml) && count($xml->eventConditions))
 		{
 			if(empty($xml->eventConditions))
 				$this->eventConditions = array();
 			else
 				$this->eventConditions = Kaltura_Client_ParseUtils::unmarshalArray($xml->eventConditions, "KalturaCondition");
 		}
-		if(count($xml->contentParameters))
+		if(!is_null($jsonObject) && isset($jsonObject->eventConditions))
+		{
+			if(empty($jsonObject->eventConditions))
+				$this->eventConditions = array();
+			else
+				$this->eventConditions = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsonObject->eventConditions, "KalturaCondition");
+		}
+		if(!is_null($xml) && count($xml->contentParameters))
 		{
 			if(empty($xml->contentParameters))
 				$this->contentParameters = array();
 			else
 				$this->contentParameters = Kaltura_Client_ParseUtils::unmarshalArray($xml->contentParameters, "KalturaEventNotificationParameter");
 		}
-		if(count($xml->userParameters))
+		if(!is_null($jsonObject) && isset($jsonObject->contentParameters))
+		{
+			if(empty($jsonObject->contentParameters))
+				$this->contentParameters = array();
+			else
+				$this->contentParameters = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsonObject->contentParameters, "KalturaEventNotificationParameter");
+		}
+		if(!is_null($xml) && count($xml->userParameters))
 		{
 			if(empty($xml->userParameters))
 				$this->userParameters = array();
 			else
 				$this->userParameters = Kaltura_Client_ParseUtils::unmarshalArray($xml->userParameters, "KalturaEventNotificationParameter");
 		}
+		if(!is_null($jsonObject) && isset($jsonObject->userParameters))
+		{
+			if(empty($jsonObject->userParameters))
+				$this->userParameters = array();
+			else
+				$this->userParameters = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsonObject->userParameters, "KalturaEventNotificationParameter");
+		}
+		if(!is_null($xml) && count($xml->eventDelayedCondition))
+			$this->eventDelayedCondition = (int)$xml->eventDelayedCondition;
+		if(!is_null($jsonObject) && isset($jsonObject->eventDelayedCondition))
+			$this->eventDelayedCondition = (int)$jsonObject->eventDelayedCondition;
 	}
 	/**
 	 * 
@@ -194,7 +258,7 @@ class Kaltura_Client_EventNotification_Type_EventNotificationTemplate extends Ka
 	public $eventType = null;
 
 	/**
-	 * Define the object that raied the event that should trigger this notification
+	 * Define the object that raised the event that should trigger this notification
 	 *
 	 * @var Kaltura_Client_EventNotification_Enum_EventNotificationEventObjectType
 	 */
@@ -220,6 +284,13 @@ class Kaltura_Client_EventNotification_Type_EventNotificationTemplate extends Ka
 	 * @var array of KalturaEventNotificationParameter
 	 */
 	public $userParameters;
+
+	/**
+	 * Event batch job will be delayed until specific condition criteria is met
+	 *
+	 * @var Kaltura_Client_EventNotification_Enum_EventNotificationDelayedCondition
+	 */
+	public $eventDelayedCondition = null;
 
 
 }

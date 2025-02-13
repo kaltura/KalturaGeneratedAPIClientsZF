@@ -38,51 +38,92 @@ class Kaltura_Client_Type_Rule extends Kaltura_Client_ObjectBase
 		return 'KalturaRule';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->description))
+		if(!is_null($xml) && count($xml->description))
 			$this->description = (string)$xml->description;
-		if(count($xml->ruleData))
+		if(!is_null($jsonObject) && isset($jsonObject->description))
+			$this->description = (string)$jsonObject->description;
+		if(!is_null($xml) && count($xml->ruleData))
 			$this->ruleData = (string)$xml->ruleData;
-		if(count($xml->message))
+		if(!is_null($jsonObject) && isset($jsonObject->ruleData))
+			$this->ruleData = (string)$jsonObject->ruleData;
+		if(!is_null($xml) && count($xml->message))
 			$this->message = (string)$xml->message;
-		if(count($xml->code))
+		if(!is_null($jsonObject) && isset($jsonObject->message))
+			$this->message = (string)$jsonObject->message;
+		if(!is_null($xml) && count($xml->code))
 			$this->code = (string)$xml->code;
-		if(count($xml->actions))
+		if(!is_null($jsonObject) && isset($jsonObject->code))
+			$this->code = (string)$jsonObject->code;
+		if(!is_null($xml) && count($xml->actions))
 		{
 			if(empty($xml->actions))
 				$this->actions = array();
 			else
 				$this->actions = Kaltura_Client_ParseUtils::unmarshalArray($xml->actions, "KalturaRuleAction");
 		}
-		if(count($xml->conditions))
+		if(!is_null($jsonObject) && isset($jsonObject->actions))
+		{
+			if(empty($jsonObject->actions))
+				$this->actions = array();
+			else
+				$this->actions = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsonObject->actions, "KalturaRuleAction");
+		}
+		if(!is_null($xml) && count($xml->conditions))
 		{
 			if(empty($xml->conditions))
 				$this->conditions = array();
 			else
 				$this->conditions = Kaltura_Client_ParseUtils::unmarshalArray($xml->conditions, "KalturaCondition");
 		}
-		if(count($xml->contexts))
+		if(!is_null($jsonObject) && isset($jsonObject->conditions))
+		{
+			if(empty($jsonObject->conditions))
+				$this->conditions = array();
+			else
+				$this->conditions = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsonObject->conditions, "KalturaCondition");
+		}
+		if(!is_null($xml) && count($xml->contexts))
 		{
 			if(empty($xml->contexts))
 				$this->contexts = array();
 			else
 				$this->contexts = Kaltura_Client_ParseUtils::unmarshalArray($xml->contexts, "KalturaContextTypeHolder");
 		}
-		if(count($xml->stopProcessing))
+		if(!is_null($jsonObject) && isset($jsonObject->contexts))
+		{
+			if(empty($jsonObject->contexts))
+				$this->contexts = array();
+			else
+				$this->contexts = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsonObject->contexts, "KalturaContextTypeHolder");
+		}
+		if(!is_null($xml) && count($xml->stopProcessing))
 		{
 			if(!empty($xml->stopProcessing) && ((int) $xml->stopProcessing === 1 || strtolower((string)$xml->stopProcessing) === 'true'))
 				$this->stopProcessing = true;
 			else
 				$this->stopProcessing = false;
 		}
-		if(count($xml->forceAdminValidation))
+		if(!is_null($jsonObject) && isset($jsonObject->stopProcessing))
+		{
+			if(!empty($jsonObject->stopProcessing) && ((int) $jsonObject->stopProcessing === 1 || strtolower((string)$jsonObject->stopProcessing) === 'true'))
+				$this->stopProcessing = true;
+			else
+				$this->stopProcessing = false;
+		}
+		if(!is_null($xml) && count($xml->forceAdminValidation))
 			$this->forceAdminValidation = (int)$xml->forceAdminValidation;
+		if(!is_null($jsonObject) && isset($jsonObject->forceAdminValidation))
+			$this->forceAdminValidation = (int)$jsonObject->forceAdminValidation;
 	}
 	/**
 	 * Short Rule Description

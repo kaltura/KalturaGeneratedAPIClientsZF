@@ -42,6 +42,7 @@ class Kaltura_Client_ElasticSearch_Enum_ESearchEntryOrderByFieldName extends Kal
 	const PLAYS_LAST_30_DAYS = "plays_last_30_days";
 	const PLAYS_LAST_7_DAYS = "plays_last_7_days";
 	const RANK = "rank";
+	const RECYCLED_AT = "recycled_at";
 	const START_DATE = "start_date";
 	const UPDATED_AT = "updated_at";
 	const VIEWS = "views";

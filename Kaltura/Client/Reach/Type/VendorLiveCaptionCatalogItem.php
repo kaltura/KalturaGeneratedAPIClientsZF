@@ -31,48 +31,24 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Reach_Type_VendorLiveCaptionCatalogItem extends Kaltura_Client_Reach_Type_VendorCaptionsCatalogItem
+class Kaltura_Client_Reach_Type_VendorLiveCaptionCatalogItem extends Kaltura_Client_Reach_Type_VendorLiveCatalogItem
 {
 	public function getKalturaObjectType()
 	{
 		return 'KalturaVendorLiveCaptionCatalogItem';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->minimalRefundTime))
-			$this->minimalRefundTime = (int)$xml->minimalRefundTime;
-		if(count($xml->minimalOrderTime))
-			$this->minimalOrderTime = (int)$xml->minimalOrderTime;
-		if(count($xml->durationLimit))
-			$this->durationLimit = (int)$xml->durationLimit;
 	}
-	/**
-	 * 
-	 *
-	 * @var int
-	 */
-	public $minimalRefundTime = null;
-
-	/**
-	 * 
-	 *
-	 * @var int
-	 */
-	public $minimalOrderTime = null;
-
-	/**
-	 * 
-	 *
-	 * @var int
-	 */
-	public $durationLimit = null;
-
 
 }
 

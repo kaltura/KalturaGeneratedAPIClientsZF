@@ -38,19 +38,28 @@ class Kaltura_Client_Type_SyndicationFeedEntryCount extends Kaltura_Client_Objec
 		return 'KalturaSyndicationFeedEntryCount';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->totalEntryCount))
+		if(!is_null($xml) && count($xml->totalEntryCount))
 			$this->totalEntryCount = (int)$xml->totalEntryCount;
-		if(count($xml->actualEntryCount))
+		if(!is_null($jsonObject) && isset($jsonObject->totalEntryCount))
+			$this->totalEntryCount = (int)$jsonObject->totalEntryCount;
+		if(!is_null($xml) && count($xml->actualEntryCount))
 			$this->actualEntryCount = (int)$xml->actualEntryCount;
-		if(count($xml->requireTranscodingCount))
+		if(!is_null($jsonObject) && isset($jsonObject->actualEntryCount))
+			$this->actualEntryCount = (int)$jsonObject->actualEntryCount;
+		if(!is_null($xml) && count($xml->requireTranscodingCount))
 			$this->requireTranscodingCount = (int)$xml->requireTranscodingCount;
+		if(!is_null($jsonObject) && isset($jsonObject->requireTranscodingCount))
+			$this->requireTranscodingCount = (int)$jsonObject->requireTranscodingCount;
 	}
 	/**
 	 * the total count of entries that should appear in the feed without flavor filtering

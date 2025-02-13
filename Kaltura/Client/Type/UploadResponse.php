@@ -38,21 +38,32 @@ class Kaltura_Client_Type_UploadResponse extends Kaltura_Client_ObjectBase
 		return 'KalturaUploadResponse';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->uploadTokenId))
+		if(!is_null($xml) && count($xml->uploadTokenId))
 			$this->uploadTokenId = (string)$xml->uploadTokenId;
-		if(count($xml->fileSize))
+		if(!is_null($jsonObject) && isset($jsonObject->uploadTokenId))
+			$this->uploadTokenId = (string)$jsonObject->uploadTokenId;
+		if(!is_null($xml) && count($xml->fileSize))
 			$this->fileSize = (int)$xml->fileSize;
-		if(count($xml->errorCode))
+		if(!is_null($jsonObject) && isset($jsonObject->fileSize))
+			$this->fileSize = (int)$jsonObject->fileSize;
+		if(!is_null($xml) && count($xml->errorCode))
 			$this->errorCode = (int)$xml->errorCode;
-		if(count($xml->errorDescription))
+		if(!is_null($jsonObject) && isset($jsonObject->errorCode))
+			$this->errorCode = (int)$jsonObject->errorCode;
+		if(!is_null($xml) && count($xml->errorDescription))
 			$this->errorDescription = (string)$xml->errorDescription;
+		if(!is_null($jsonObject) && isset($jsonObject->errorDescription))
+			$this->errorDescription = (string)$jsonObject->errorDescription;
 	}
 	/**
 	 * 

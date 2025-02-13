@@ -52,12 +52,18 @@ class Kaltura_Client_ElasticSearch_ESearchService extends Kaltura_Client_Service
 		$this->client->queueServiceActionCall("elasticsearch_esearch", "searchCategory", "KalturaESearchCategoryResponse", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaESearchCategoryResponse");
-		$this->client->validateObjectType($resultObject, "Kaltura_Client_ElasticSearch_Type_ESearchCategoryResponse");
-		return $resultObject;
+		$rawResult = $this->client->doQueue();
+		if ($this->client->getConfig()->format === Kaltura_Client_ClientBase::KALTURA_SERVICE_FORMAT_JSON) {
+			$jsObject = json_decode($rawResult);
+			$resultObject = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsObject);
+			return $resultObject;
+		} else {
+			$resultXmlObject = new \SimpleXMLElement($rawResult);
+			$this->client->checkIfError($resultXmlObject->result);
+			$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaESearchCategoryResponse");
+			$this->client->validateObjectType($resultObject, "Kaltura_Client_ElasticSearch_Type_ESearchCategoryResponse");
+		}
+			return $resultObject;
 	}
 
 	/**
@@ -73,12 +79,18 @@ class Kaltura_Client_ElasticSearch_ESearchService extends Kaltura_Client_Service
 		$this->client->queueServiceActionCall("elasticsearch_esearch", "searchEntry", "KalturaESearchEntryResponse", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaESearchEntryResponse");
-		$this->client->validateObjectType($resultObject, "Kaltura_Client_ElasticSearch_Type_ESearchEntryResponse");
-		return $resultObject;
+		$rawResult = $this->client->doQueue();
+		if ($this->client->getConfig()->format === Kaltura_Client_ClientBase::KALTURA_SERVICE_FORMAT_JSON) {
+			$jsObject = json_decode($rawResult);
+			$resultObject = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsObject);
+			return $resultObject;
+		} else {
+			$resultXmlObject = new \SimpleXMLElement($rawResult);
+			$this->client->checkIfError($resultXmlObject->result);
+			$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaESearchEntryResponse");
+			$this->client->validateObjectType($resultObject, "Kaltura_Client_ElasticSearch_Type_ESearchEntryResponse");
+		}
+			return $resultObject;
 	}
 
 	/**
@@ -94,12 +106,18 @@ class Kaltura_Client_ElasticSearch_ESearchService extends Kaltura_Client_Service
 		$this->client->queueServiceActionCall("elasticsearch_esearch", "searchGroup", "KalturaESearchGroupResponse", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaESearchGroupResponse");
-		$this->client->validateObjectType($resultObject, "Kaltura_Client_ElasticSearch_Type_ESearchGroupResponse");
-		return $resultObject;
+		$rawResult = $this->client->doQueue();
+		if ($this->client->getConfig()->format === Kaltura_Client_ClientBase::KALTURA_SERVICE_FORMAT_JSON) {
+			$jsObject = json_decode($rawResult);
+			$resultObject = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsObject);
+			return $resultObject;
+		} else {
+			$resultXmlObject = new \SimpleXMLElement($rawResult);
+			$this->client->checkIfError($resultXmlObject->result);
+			$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaESearchGroupResponse");
+			$this->client->validateObjectType($resultObject, "Kaltura_Client_ElasticSearch_Type_ESearchGroupResponse");
+		}
+			return $resultObject;
 	}
 
 	/**
@@ -115,11 +133,17 @@ class Kaltura_Client_ElasticSearch_ESearchService extends Kaltura_Client_Service
 		$this->client->queueServiceActionCall("elasticsearch_esearch", "searchUser", "KalturaESearchUserResponse", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaESearchUserResponse");
-		$this->client->validateObjectType($resultObject, "Kaltura_Client_ElasticSearch_Type_ESearchUserResponse");
-		return $resultObject;
+		$rawResult = $this->client->doQueue();
+		if ($this->client->getConfig()->format === Kaltura_Client_ClientBase::KALTURA_SERVICE_FORMAT_JSON) {
+			$jsObject = json_decode($rawResult);
+			$resultObject = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsObject);
+			return $resultObject;
+		} else {
+			$resultXmlObject = new \SimpleXMLElement($rawResult);
+			$this->client->checkIfError($resultXmlObject->result);
+			$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaESearchUserResponse");
+			$this->client->validateObjectType($resultObject, "Kaltura_Client_ElasticSearch_Type_ESearchUserResponse");
+		}
+			return $resultObject;
 	}
 }

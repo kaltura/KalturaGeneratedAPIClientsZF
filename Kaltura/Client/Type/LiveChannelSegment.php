@@ -38,43 +38,76 @@ class Kaltura_Client_Type_LiveChannelSegment extends Kaltura_Client_ObjectBase
 		return 'KalturaLiveChannelSegment';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->id))
+		if(!is_null($xml) && count($xml->id))
 			$this->id = (string)$xml->id;
-		if(count($xml->partnerId))
+		if(!is_null($jsonObject) && isset($jsonObject->id))
+			$this->id = (string)$jsonObject->id;
+		if(!is_null($xml) && count($xml->partnerId))
 			$this->partnerId = (int)$xml->partnerId;
-		if(count($xml->createdAt))
+		if(!is_null($jsonObject) && isset($jsonObject->partnerId))
+			$this->partnerId = (int)$jsonObject->partnerId;
+		if(!is_null($xml) && count($xml->createdAt))
 			$this->createdAt = (int)$xml->createdAt;
-		if(count($xml->updatedAt))
+		if(!is_null($jsonObject) && isset($jsonObject->createdAt))
+			$this->createdAt = (int)$jsonObject->createdAt;
+		if(!is_null($xml) && count($xml->updatedAt))
 			$this->updatedAt = (int)$xml->updatedAt;
-		if(count($xml->name))
+		if(!is_null($jsonObject) && isset($jsonObject->updatedAt))
+			$this->updatedAt = (int)$jsonObject->updatedAt;
+		if(!is_null($xml) && count($xml->name))
 			$this->name = (string)$xml->name;
-		if(count($xml->description))
+		if(!is_null($jsonObject) && isset($jsonObject->name))
+			$this->name = (string)$jsonObject->name;
+		if(!is_null($xml) && count($xml->description))
 			$this->description = (string)$xml->description;
-		if(count($xml->tags))
+		if(!is_null($jsonObject) && isset($jsonObject->description))
+			$this->description = (string)$jsonObject->description;
+		if(!is_null($xml) && count($xml->tags))
 			$this->tags = (string)$xml->tags;
-		if(count($xml->type))
+		if(!is_null($jsonObject) && isset($jsonObject->tags))
+			$this->tags = (string)$jsonObject->tags;
+		if(!is_null($xml) && count($xml->type))
 			$this->type = (string)$xml->type;
-		if(count($xml->status))
+		if(!is_null($jsonObject) && isset($jsonObject->type))
+			$this->type = (string)$jsonObject->type;
+		if(!is_null($xml) && count($xml->status))
 			$this->status = (string)$xml->status;
-		if(count($xml->channelId))
+		if(!is_null($jsonObject) && isset($jsonObject->status))
+			$this->status = (string)$jsonObject->status;
+		if(!is_null($xml) && count($xml->channelId))
 			$this->channelId = (string)$xml->channelId;
-		if(count($xml->entryId))
+		if(!is_null($jsonObject) && isset($jsonObject->channelId))
+			$this->channelId = (string)$jsonObject->channelId;
+		if(!is_null($xml) && count($xml->entryId))
 			$this->entryId = (string)$xml->entryId;
-		if(count($xml->triggerType))
+		if(!is_null($jsonObject) && isset($jsonObject->entryId))
+			$this->entryId = (string)$jsonObject->entryId;
+		if(!is_null($xml) && count($xml->triggerType))
 			$this->triggerType = (string)$xml->triggerType;
-		if(count($xml->triggerSegmentId))
+		if(!is_null($jsonObject) && isset($jsonObject->triggerType))
+			$this->triggerType = (string)$jsonObject->triggerType;
+		if(!is_null($xml) && count($xml->triggerSegmentId))
 			$this->triggerSegmentId = (string)$xml->triggerSegmentId;
-		if(count($xml->startTime))
+		if(!is_null($jsonObject) && isset($jsonObject->triggerSegmentId))
+			$this->triggerSegmentId = (string)$jsonObject->triggerSegmentId;
+		if(!is_null($xml) && count($xml->startTime))
 			$this->startTime = (float)$xml->startTime;
-		if(count($xml->duration))
+		if(!is_null($jsonObject) && isset($jsonObject->startTime))
+			$this->startTime = (float)$jsonObject->startTime;
+		if(!is_null($xml) && count($xml->duration))
 			$this->duration = (float)$xml->duration;
+		if(!is_null($jsonObject) && isset($jsonObject->duration))
+			$this->duration = (float)$jsonObject->duration;
 	}
 	/**
 	 * Unique identifier

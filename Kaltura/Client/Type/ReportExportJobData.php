@@ -38,35 +38,60 @@ class Kaltura_Client_Type_ReportExportJobData extends Kaltura_Client_Type_JobDat
 		return 'KalturaReportExportJobData';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->recipientEmail))
+		if(!is_null($xml) && count($xml->recipientEmail))
 			$this->recipientEmail = (string)$xml->recipientEmail;
-		if(count($xml->reportItems))
+		if(!is_null($jsonObject) && isset($jsonObject->recipientEmail))
+			$this->recipientEmail = (string)$jsonObject->recipientEmail;
+		if(!is_null($xml) && count($xml->reportItems))
 		{
 			if(empty($xml->reportItems))
 				$this->reportItems = array();
 			else
 				$this->reportItems = Kaltura_Client_ParseUtils::unmarshalArray($xml->reportItems, "KalturaReportExportItem");
 		}
-		if(count($xml->filePaths))
+		if(!is_null($jsonObject) && isset($jsonObject->reportItems))
+		{
+			if(empty($jsonObject->reportItems))
+				$this->reportItems = array();
+			else
+				$this->reportItems = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsonObject->reportItems, "KalturaReportExportItem");
+		}
+		if(!is_null($xml) && count($xml->filePaths))
 			$this->filePaths = (string)$xml->filePaths;
-		if(count($xml->reportsGroup))
+		if(!is_null($jsonObject) && isset($jsonObject->filePaths))
+			$this->filePaths = (string)$jsonObject->filePaths;
+		if(!is_null($xml) && count($xml->reportsGroup))
 			$this->reportsGroup = (string)$xml->reportsGroup;
-		if(count($xml->files))
+		if(!is_null($jsonObject) && isset($jsonObject->reportsGroup))
+			$this->reportsGroup = (string)$jsonObject->reportsGroup;
+		if(!is_null($xml) && count($xml->files))
 		{
 			if(empty($xml->files))
 				$this->files = array();
 			else
 				$this->files = Kaltura_Client_ParseUtils::unmarshalArray($xml->files, "KalturaReportExportFile");
 		}
-		if(count($xml->baseUrl))
+		if(!is_null($jsonObject) && isset($jsonObject->files))
+		{
+			if(empty($jsonObject->files))
+				$this->files = array();
+			else
+				$this->files = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsonObject->files, "KalturaReportExportFile");
+		}
+		if(!is_null($xml) && count($xml->baseUrl))
 			$this->baseUrl = (string)$xml->baseUrl;
+		if(!is_null($jsonObject) && isset($jsonObject->baseUrl))
+			$this->baseUrl = (string)$jsonObject->baseUrl;
 	}
 	/**
 	 * 

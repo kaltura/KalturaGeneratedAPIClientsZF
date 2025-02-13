@@ -166,28 +166,204 @@ class ZendClientTester
 		$this->_client->media->delete($imageEntry->id);
 	}
 	
+	public function testMultiRequest()
+	{
+		$this->_client->startMultiRequest();
+		$entry = new Kaltura_Client_Type_BaseEntry();
+		$entry->name = "test entry 1";
+		$entry->tags = "test1";
+		$entryAddResult = $this->_client->baseEntry->add($entry);
+		$this->assertEqual((string)$entryAddResult, '{1:result}');
+		$this->assertEqual((int)$entryAddResult->value, 1);
+		$this->assertEqual((string)$entryAddResult->creatorId, '{1:result:creatorId}');
+		$user = new Kaltura_Client_Type_User();
+		$user->id = "test1".rand(0, 10000000);
+		$user->type = Kaltura_Client_Enum_UserType::USER;
+		$userAddResult = $this->_client->user->add($user);
+		$this->assertEqual((string)$userAddResult, '{2:result}');
+		$this->assertEqual((int)$userAddResult->value, 2);
+		$this->assertEqual((string)$userAddResult->id, '{2:result:id}');
+
+		$badUser = new Kaltura_Client_Type_User();
+		$badUser->id = "  test  1".rand(0, 10000000); // spaces in user ID not allowed, expected error
+		$badUser->type = Kaltura_Client_Enum_UserType::USER;
+		$badUserAddResult = $this->_client->user->add($badUser);
+		$this->assertEqual((string)$badUserAddResult, '{3:result}');
+		$this->assertEqual((int)$badUserAddResult->value, 3);
+
+		$results = $this->_client->doMultiRequest();
+		$this->assertTrue($results[0]->name === $entry->name);
+		$this->assertTrue($results[1]->id === $user->id);
+		$this->assertTrue($results[2] instanceof Kaltura_Client_Exception);
+	}
+
+	public function testResponseProfile() {
+		$entry = $this->addImageEntry();
+
+		$filter = new Kaltura_Client_Type_ThumbAssetFilter();
+		$userFilter = new Kaltura_Client_Type_UserFilter();
+
+		$resourceMapping = new Kaltura_Client_Type_ResponseProfileMapping();
+		$resourceMapping->filterProperty = 'entryIdEqual';
+		$resourceMapping->parentProperty = 'id';
+        
+		$userResourceMapping = new Kaltura_Client_Type_ResponseProfileMapping();
+		$userResourceMapping->filterProperty = 'idEqual';
+		$userResourceMapping->parentProperty = 'userId';
+
+		$thumbListResponseProfile = new Kaltura_Client_Type_ResponseProfile();
+		$thumbListResponseProfile->name = "thumbsOfEntry";
+		$thumbListResponseProfile->filter = $filter;
+		$thumbListResponseProfile->mappings = array($resourceMapping);
+
+		$userResponseProfile = new Kaltura_Client_Type_ResponseProfile();
+		$userResponseProfile->name = "entryOwner";
+		$userResponseProfile->filter = $userFilter;
+		$userResponseProfile->mappings = [$userResourceMapping];
+
+		$responseProfile = new Kaltura_Client_Type_ResponseProfile();
+		$responseProfile->name = 'entry';
+		$responseProfile->relatedProfiles = [
+			$thumbListResponseProfile,
+			$userResponseProfile
+		];
+
+		$this->_client->setResponseProfile($responseProfile);
+		$result = $this->_client->media->get($entry->id);
+		$this->assertTrue(count($result->relatedObjects) > 0);
+		$this->assertTrue(isset($result->relatedObjects['thumbsOfEntry']));
+		$this->assertTrue(isset($result->relatedObjects['entryOwner']));
+		$this->assertTrue($result->relatedObjects['entryOwner']->objects[0]->id === $entry->userId);
+	}
+
+	public function testResponseProfileUnNamed() {
+		$entry = $this->addImageEntry();
+
+		$filter = new Kaltura_Client_Type_ThumbAssetFilter();
+		$userFilter = new Kaltura_Client_Type_UserFilter();
+
+		$resourceMapping = new Kaltura_Client_Type_ResponseProfileMapping();
+		$resourceMapping->filterProperty = 'entryIdEqual';
+		$resourceMapping->parentProperty = 'id';
+        
+		$userResourceMapping = new Kaltura_Client_Type_ResponseProfileMapping();
+		$userResourceMapping->filterProperty = 'idEqual';
+		$userResourceMapping->parentProperty = 'userId';
+
+		$thumbListResponseProfile = new Kaltura_Client_Type_ResponseProfile();
+		$thumbListResponseProfile->filter = $filter;
+		$thumbListResponseProfile->mappings = array($resourceMapping);
+
+		$userResponseProfile = new Kaltura_Client_Type_ResponseProfile();
+		$userResponseProfile->filter = $userFilter;
+		$userResponseProfile->mappings = [$userResourceMapping];
+
+		$responseProfile = new Kaltura_Client_Type_ResponseProfile();
+		$responseProfile->relatedProfiles = [
+			$userResponseProfile,
+			$thumbListResponseProfile,
+		];
+
+		$this->_client->setResponseProfile($responseProfile);
+		$result = $this->_client->media->get($entry->id);
+		$this->assertTrue(count($result->relatedObjects) > 0);
+		$this->assertTrue(isset($result->relatedObjects[0]));
+		$this->assertTrue(isset($result->relatedObjects[1]));
+		$this->assertTrue($result->relatedObjects[0]->objects[0]->id === $entry->userId);
+	}
+
+	public function testMultiLingualObject() {
+		$this->_client->setLanguage('multi');
+		$entry = new Kaltura_Client_Type_BaseEntry();
+		$entry->description = "test multiling";
+		$entry->tags = "testmulti";
+		$nameEn = new Kaltura_Client_Type_MultiLingualString();
+		$nameEn->language = 'EN';
+		$nameEn->value = "Test Entry";
+		$nameEs = new Kaltura_Client_Type_MultiLingualString();
+		$nameEs->language = 'ES';
+		$nameEs->value = "Entrada de prueba";
+		$entry->multiLingual_name = [
+			$nameEn,
+			$nameEs,
+		];
+		
+		$newEntry = $this->_client->baseEntry->add($entry, Kaltura_Client_Enum_EntryType::MEDIA_CLIP);
+
+		$this->assertTrue(empty($newEntry->name));
+		$this->assertTrue(is_array($newEntry->multiLingual_name));
+		$this->assertTrue(empty($newEntry->description));
+		$this->assertTrue(is_array($newEntry->multiLingual_description));
+		foreach($newEntry->multiLingual_name as $multiLangName) {
+			if($multiLangName->language == 'EN') {
+				$this->assertEqual($multiLangName->value , $nameEn->value);
+			}
+			if($multiLangName->language == 'ES') {
+				$this->assertEqual($multiLangName->value , $nameEs->value);
+			}
+		}
+		
+		$this->_client->setLanguage(null);
+		$entryNotMultiLang = $this->_client->baseEntry->get($newEntry->id);
+		$this->assertTrue(!is_array($entryNotMultiLang->name));
+		$this->assertTrue(empty($entryNotMultiLang->multiLingual_name));
+
+		$this->_client->setLanguage('ES');
+
+		$entryNotMultiLang = $this->_client->baseEntry->get($newEntry->id);
+		$this->assertTrue(!is_array($entryNotMultiLang->name));
+		$this->assertEqual($entryNotMultiLang->name, $nameEs->value);
+		$this->assertTrue(empty($entryNotMultiLang->multiLingual_name));
+
+		$this->_client->setLanguage(null);
+	}
+
+	public function testAccessControlProfile()
+	{
+		$accessControlProfileName = '__test_access_control_profile_' . rand(0, 10000);
+		$accessControlProfile = new Kaltura_Client_Type_AccessControlProfile();
+		$accessControlProfile->name = $accessControlProfileName;
+		$accessControlProfile->isDefault = Kaltura_Client_Enum_NullableBoolean::FALSE_VALUE;
+
+		$code = '1';
+		$message = 'Test Rule';
+		$rule = new Kaltura_Client_Type_Rule();
+		$rule->code = $code;
+		$rule->message = $message;
+
+		$accessControlProfile->rules = [$rule];
+
+		$accessControlProfile = $this->_client->accessControlProfile->add($accessControlProfile);
+
+		$this->assertEqual($accessControlProfile->name, $accessControlProfileName);
+		$this->assertEqual($accessControlProfile->rules[0]->code, $code);
+		$this->assertEqual($accessControlProfile->rules[0]->message, $message);
+
+		$this->_client->accessControlProfile->delete($accessControlProfile->id);
+	}
+
 	public function addImageEntry()
 	{
-	    $entry = new Kaltura_Client_Type_MediaEntry();
-	    $entry->name = self::ENTRY_NAME;
-	    $entry->mediaType = Kaltura_Client_Enum_MediaType::IMAGE;
-	    $entry->tags = uniqid('test_');
-	    $entry = $this->_client->media->add($entry);
-	    
-	    $uploadToken = new Kaltura_Client_Type_UploadToken();
-	    $uploadToken->fileName = self::UPLOAD_IMAGE_FILENAME;
-	    $uploadToken = $this->_client->uploadToken->add($uploadToken);
+		$entry = new Kaltura_Client_Type_MediaEntry();
+		$entry->name = self::ENTRY_NAME;
+		$entry->mediaType = Kaltura_Client_Enum_MediaType::IMAGE;
+		$entry->tags = uniqid('test_');
+		$entry = $this->_client->media->add($entry);
 
-	    $uploadFilePath = dirname(__FILE__) . '/../resources/' . self::UPLOAD_IMAGE_FILENAME;
-	    $uploadToken = $this->_client->uploadToken->upload($uploadToken->id, $uploadFilePath);
-	    
-		    $resource = new Kaltura_Client_Type_UploadedFileTokenResource();
-	    $resource->token = $uploadToken->id;
-	    $entry = $this->_client->media->addContent($entry->id, $resource);
-	    
-	    return $entry;
+		$uploadToken = new Kaltura_Client_Type_UploadToken();
+		$uploadToken->fileName = self::UPLOAD_IMAGE_FILENAME;
+		$uploadToken = $this->_client->uploadToken->add($uploadToken);
+
+		$uploadFilePath = dirname(__FILE__) . '/../resources/' . self::UPLOAD_IMAGE_FILENAME;
+		$uploadToken = $this->_client->uploadToken->upload($uploadToken->id, $uploadFilePath);
+
+		$resource = new Kaltura_Client_Type_UploadedFileTokenResource();
+		$resource->token = $uploadToken->id;
+		$entry = $this->_client->media->addContent($entry->id, $resource);
+
+		return $entry;
 	}
-	
+
 	protected function assertTrue($v)
 	{
 		if ($v !== true)

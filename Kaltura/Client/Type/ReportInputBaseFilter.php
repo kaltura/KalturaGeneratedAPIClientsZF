@@ -38,21 +38,32 @@ class Kaltura_Client_Type_ReportInputBaseFilter extends Kaltura_Client_ObjectBas
 		return 'KalturaReportInputBaseFilter';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->fromDate))
+		if(!is_null($xml) && count($xml->fromDate))
 			$this->fromDate = (int)$xml->fromDate;
-		if(count($xml->toDate))
+		if(!is_null($jsonObject) && isset($jsonObject->fromDate))
+			$this->fromDate = (int)$jsonObject->fromDate;
+		if(!is_null($xml) && count($xml->toDate))
 			$this->toDate = (int)$xml->toDate;
-		if(count($xml->fromDay))
+		if(!is_null($jsonObject) && isset($jsonObject->toDate))
+			$this->toDate = (int)$jsonObject->toDate;
+		if(!is_null($xml) && count($xml->fromDay))
 			$this->fromDay = (string)$xml->fromDay;
-		if(count($xml->toDay))
+		if(!is_null($jsonObject) && isset($jsonObject->fromDay))
+			$this->fromDay = (string)$jsonObject->fromDay;
+		if(!is_null($xml) && count($xml->toDay))
 			$this->toDay = (string)$xml->toDay;
+		if(!is_null($jsonObject) && isset($jsonObject->toDay))
+			$this->toDay = (string)$jsonObject->toDay;
 	}
 	/**
 	 * Start date as Unix timestamp (In seconds)

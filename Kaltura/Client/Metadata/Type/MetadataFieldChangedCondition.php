@@ -38,23 +38,36 @@ class Kaltura_Client_Metadata_Type_MetadataFieldChangedCondition extends Kaltura
 		return 'KalturaMetadataFieldChangedCondition';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->xPath))
+		if(!is_null($xml) && count($xml->xPath))
 			$this->xPath = (string)$xml->xPath;
-		if(count($xml->profileId))
+		if(!is_null($jsonObject) && isset($jsonObject->xPath))
+			$this->xPath = (string)$jsonObject->xPath;
+		if(!is_null($xml) && count($xml->profileId))
 			$this->profileId = (int)$xml->profileId;
-		if(count($xml->profileSystemName))
+		if(!is_null($jsonObject) && isset($jsonObject->profileId))
+			$this->profileId = (int)$jsonObject->profileId;
+		if(!is_null($xml) && count($xml->profileSystemName))
 			$this->profileSystemName = (string)$xml->profileSystemName;
-		if(count($xml->versionA))
+		if(!is_null($jsonObject) && isset($jsonObject->profileSystemName))
+			$this->profileSystemName = (string)$jsonObject->profileSystemName;
+		if(!is_null($xml) && count($xml->versionA))
 			$this->versionA = (string)$xml->versionA;
-		if(count($xml->versionB))
+		if(!is_null($jsonObject) && isset($jsonObject->versionA))
+			$this->versionA = (string)$jsonObject->versionA;
+		if(!is_null($xml) && count($xml->versionB))
 			$this->versionB = (string)$xml->versionB;
+		if(!is_null($jsonObject) && isset($jsonObject->versionB))
+			$this->versionB = (string)$jsonObject->versionB;
 	}
 	/**
 	 * May contain the full xpath to the field in three formats

@@ -38,19 +38,28 @@ class Kaltura_Client_Sip_Type_SipEntryServerNode extends Kaltura_Client_Type_Ent
 		return 'KalturaSipEntryServerNode';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->sipRoomId))
+		if(!is_null($xml) && count($xml->sipRoomId))
 			$this->sipRoomId = (string)$xml->sipRoomId;
-		if(count($xml->sipPrimaryAdpId))
+		if(!is_null($jsonObject) && isset($jsonObject->sipRoomId))
+			$this->sipRoomId = (string)$jsonObject->sipRoomId;
+		if(!is_null($xml) && count($xml->sipPrimaryAdpId))
 			$this->sipPrimaryAdpId = (string)$xml->sipPrimaryAdpId;
-		if(count($xml->sipSecondaryAdpId))
+		if(!is_null($jsonObject) && isset($jsonObject->sipPrimaryAdpId))
+			$this->sipPrimaryAdpId = (string)$jsonObject->sipPrimaryAdpId;
+		if(!is_null($xml) && count($xml->sipSecondaryAdpId))
 			$this->sipSecondaryAdpId = (string)$xml->sipSecondaryAdpId;
+		if(!is_null($jsonObject) && isset($jsonObject->sipSecondaryAdpId))
+			$this->sipSecondaryAdpId = (string)$jsonObject->sipSecondaryAdpId;
 	}
 	/**
 	 * 

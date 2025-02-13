@@ -50,9 +50,39 @@ class Kaltura_Client_SearchHistory_SearchHistoryService extends Kaltura_Client_S
 		$this->client->queueServiceActionCall("searchhistory_searchhistory", "delete", null, $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
+		$rawResult = $this->client->doQueue();
+		if ($this->client->getConfig()->format === Kaltura_Client_ClientBase::KALTURA_SERVICE_FORMAT_JSON) {
+			$jsObject = json_decode($rawResult);
+			$resultObject = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsObject);
+			return $resultObject;
+		} else {
+			$resultXmlObject = new \SimpleXMLElement($rawResult);
+			$this->client->checkIfError($resultXmlObject->result);
+		}
+	}
+
+	/**
+	 * @return string
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
+	 */
+	function exportToCsv(Kaltura_Client_SearchHistory_Type_ESearchHistoryFilter $filter)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "filter", $filter->toParams());
+		$this->client->queueServiceActionCall("searchhistory_searchhistory", "exportToCsv", null, $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$rawResult = $this->client->doQueue();
+		if ($this->client->getConfig()->format === Kaltura_Client_ClientBase::KALTURA_SERVICE_FORMAT_JSON) {
+			$jsObject = json_decode($rawResult);
+			$resultObject = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsObject);
+			return $resultObject;
+		} else {
+			$resultXmlObject = new \SimpleXMLElement($rawResult);
+			$this->client->checkIfError($resultXmlObject->result);
+			$resultObject = (string)Kaltura_Client_ParseUtils::unmarshalSimpleType($resultXmlObject->result);
+		}
+			return $resultObject;
 	}
 
 	/**
@@ -67,11 +97,17 @@ class Kaltura_Client_SearchHistory_SearchHistoryService extends Kaltura_Client_S
 		$this->client->queueServiceActionCall("searchhistory_searchhistory", "list", "KalturaESearchHistoryListResponse", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaESearchHistoryListResponse");
-		$this->client->validateObjectType($resultObject, "Kaltura_Client_SearchHistory_Type_ESearchHistoryListResponse");
-		return $resultObject;
+		$rawResult = $this->client->doQueue();
+		if ($this->client->getConfig()->format === Kaltura_Client_ClientBase::KALTURA_SERVICE_FORMAT_JSON) {
+			$jsObject = json_decode($rawResult);
+			$resultObject = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsObject);
+			return $resultObject;
+		} else {
+			$resultXmlObject = new \SimpleXMLElement($rawResult);
+			$this->client->checkIfError($resultXmlObject->result);
+			$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaESearchHistoryListResponse");
+			$this->client->validateObjectType($resultObject, "Kaltura_Client_SearchHistory_Type_ESearchHistoryListResponse");
+		}
+			return $resultObject;
 	}
 }

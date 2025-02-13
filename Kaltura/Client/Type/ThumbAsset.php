@@ -38,21 +38,32 @@ class Kaltura_Client_Type_ThumbAsset extends Kaltura_Client_Type_Asset
 		return 'KalturaThumbAsset';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->thumbParamsId))
+		if(!is_null($xml) && count($xml->thumbParamsId))
 			$this->thumbParamsId = (int)$xml->thumbParamsId;
-		if(count($xml->width))
+		if(!is_null($jsonObject) && isset($jsonObject->thumbParamsId))
+			$this->thumbParamsId = (int)$jsonObject->thumbParamsId;
+		if(!is_null($xml) && count($xml->width))
 			$this->width = (int)$xml->width;
-		if(count($xml->height))
+		if(!is_null($jsonObject) && isset($jsonObject->width))
+			$this->width = (int)$jsonObject->width;
+		if(!is_null($xml) && count($xml->height))
 			$this->height = (int)$xml->height;
-		if(count($xml->status))
+		if(!is_null($jsonObject) && isset($jsonObject->height))
+			$this->height = (int)$jsonObject->height;
+		if(!is_null($xml) && count($xml->status))
 			$this->status = (int)$xml->status;
+		if(!is_null($jsonObject) && isset($jsonObject->status))
+			$this->status = (int)$jsonObject->status;
 	}
 	/**
 	 * The Flavor Params used to create this Flavor Asset

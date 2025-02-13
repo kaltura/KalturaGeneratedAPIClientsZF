@@ -38,40 +38,70 @@ class Kaltura_Client_Type_LiveStatsEvent extends Kaltura_Client_ObjectBase
 		return 'KalturaLiveStatsEvent';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->partnerId))
+		if(!is_null($xml) && count($xml->partnerId))
 			$this->partnerId = (int)$xml->partnerId;
-		if(count($xml->entryId))
+		if(!is_null($jsonObject) && isset($jsonObject->partnerId))
+			$this->partnerId = (int)$jsonObject->partnerId;
+		if(!is_null($xml) && count($xml->entryId))
 			$this->entryId = (string)$xml->entryId;
-		if(count($xml->eventType))
+		if(!is_null($jsonObject) && isset($jsonObject->entryId))
+			$this->entryId = (string)$jsonObject->entryId;
+		if(!is_null($xml) && count($xml->eventType))
 			$this->eventType = (int)$xml->eventType;
-		if(count($xml->sessionId))
+		if(!is_null($jsonObject) && isset($jsonObject->eventType))
+			$this->eventType = (int)$jsonObject->eventType;
+		if(!is_null($xml) && count($xml->sessionId))
 			$this->sessionId = (string)$xml->sessionId;
-		if(count($xml->eventIndex))
+		if(!is_null($jsonObject) && isset($jsonObject->sessionId))
+			$this->sessionId = (string)$jsonObject->sessionId;
+		if(!is_null($xml) && count($xml->eventIndex))
 			$this->eventIndex = (int)$xml->eventIndex;
-		if(count($xml->bufferTime))
+		if(!is_null($jsonObject) && isset($jsonObject->eventIndex))
+			$this->eventIndex = (int)$jsonObject->eventIndex;
+		if(!is_null($xml) && count($xml->bufferTime))
 			$this->bufferTime = (int)$xml->bufferTime;
-		if(count($xml->bitrate))
+		if(!is_null($jsonObject) && isset($jsonObject->bufferTime))
+			$this->bufferTime = (int)$jsonObject->bufferTime;
+		if(!is_null($xml) && count($xml->bitrate))
 			$this->bitrate = (int)$xml->bitrate;
-		if(count($xml->referrer))
+		if(!is_null($jsonObject) && isset($jsonObject->bitrate))
+			$this->bitrate = (int)$jsonObject->bitrate;
+		if(!is_null($xml) && count($xml->referrer))
 			$this->referrer = (string)$xml->referrer;
-		if(count($xml->isLive))
+		if(!is_null($jsonObject) && isset($jsonObject->referrer))
+			$this->referrer = (string)$jsonObject->referrer;
+		if(!is_null($xml) && count($xml->isLive))
 		{
 			if(!empty($xml->isLive) && ((int) $xml->isLive === 1 || strtolower((string)$xml->isLive) === 'true'))
 				$this->isLive = true;
 			else
 				$this->isLive = false;
 		}
-		if(count($xml->startTime))
+		if(!is_null($jsonObject) && isset($jsonObject->isLive))
+		{
+			if(!empty($jsonObject->isLive) && ((int) $jsonObject->isLive === 1 || strtolower((string)$jsonObject->isLive) === 'true'))
+				$this->isLive = true;
+			else
+				$this->isLive = false;
+		}
+		if(!is_null($xml) && count($xml->startTime))
 			$this->startTime = (string)$xml->startTime;
-		if(count($xml->deliveryType))
+		if(!is_null($jsonObject) && isset($jsonObject->startTime))
+			$this->startTime = (string)$jsonObject->startTime;
+		if(!is_null($xml) && count($xml->deliveryType))
 			$this->deliveryType = (string)$xml->deliveryType;
+		if(!is_null($jsonObject) && isset($jsonObject->deliveryType))
+			$this->deliveryType = (string)$jsonObject->deliveryType;
 	}
 	/**
 	 * 

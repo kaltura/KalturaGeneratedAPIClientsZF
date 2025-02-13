@@ -53,11 +53,17 @@ class Kaltura_Client_ContentDistribution_DistributionProviderService extends Kal
 		$this->client->queueServiceActionCall("contentdistribution_distributionprovider", "list", "KalturaDistributionProviderListResponse", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaDistributionProviderListResponse");
-		$this->client->validateObjectType($resultObject, "Kaltura_Client_ContentDistribution_Type_DistributionProviderListResponse");
-		return $resultObject;
+		$rawResult = $this->client->doQueue();
+		if ($this->client->getConfig()->format === Kaltura_Client_ClientBase::KALTURA_SERVICE_FORMAT_JSON) {
+			$jsObject = json_decode($rawResult);
+			$resultObject = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsObject);
+			return $resultObject;
+		} else {
+			$resultXmlObject = new \SimpleXMLElement($rawResult);
+			$this->client->checkIfError($resultXmlObject->result);
+			$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaDistributionProviderListResponse");
+			$this->client->validateObjectType($resultObject, "Kaltura_Client_ContentDistribution_Type_DistributionProviderListResponse");
+		}
+			return $resultObject;
 	}
 }

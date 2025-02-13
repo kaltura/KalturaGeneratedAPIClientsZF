@@ -38,27 +38,44 @@ class Kaltura_Client_Type_LiveToVodJobData extends Kaltura_Client_Type_JobData
 		return 'KalturaLiveToVodJobData';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->vodEntryId))
+		if(!is_null($xml) && count($xml->vodEntryId))
 			$this->vodEntryId = (string)$xml->vodEntryId;
-		if(count($xml->liveEntryId))
+		if(!is_null($jsonObject) && isset($jsonObject->vodEntryId))
+			$this->vodEntryId = (string)$jsonObject->vodEntryId;
+		if(!is_null($xml) && count($xml->liveEntryId))
 			$this->liveEntryId = (string)$xml->liveEntryId;
-		if(count($xml->totalVodDuration))
+		if(!is_null($jsonObject) && isset($jsonObject->liveEntryId))
+			$this->liveEntryId = (string)$jsonObject->liveEntryId;
+		if(!is_null($xml) && count($xml->totalVodDuration))
 			$this->totalVodDuration = (float)$xml->totalVodDuration;
-		if(count($xml->lastSegmentDuration))
+		if(!is_null($jsonObject) && isset($jsonObject->totalVodDuration))
+			$this->totalVodDuration = (float)$jsonObject->totalVodDuration;
+		if(!is_null($xml) && count($xml->lastSegmentDuration))
 			$this->lastSegmentDuration = (float)$xml->lastSegmentDuration;
-		if(count($xml->amfArray))
+		if(!is_null($jsonObject) && isset($jsonObject->lastSegmentDuration))
+			$this->lastSegmentDuration = (float)$jsonObject->lastSegmentDuration;
+		if(!is_null($xml) && count($xml->amfArray))
 			$this->amfArray = (string)$xml->amfArray;
-		if(count($xml->lastCuePointSyncTime))
+		if(!is_null($jsonObject) && isset($jsonObject->amfArray))
+			$this->amfArray = (string)$jsonObject->amfArray;
+		if(!is_null($xml) && count($xml->lastCuePointSyncTime))
 			$this->lastCuePointSyncTime = (int)$xml->lastCuePointSyncTime;
-		if(count($xml->lastSegmentDrift))
+		if(!is_null($jsonObject) && isset($jsonObject->lastCuePointSyncTime))
+			$this->lastCuePointSyncTime = (int)$jsonObject->lastCuePointSyncTime;
+		if(!is_null($xml) && count($xml->lastSegmentDrift))
 			$this->lastSegmentDrift = (int)$xml->lastSegmentDrift;
+		if(!is_null($jsonObject) && isset($jsonObject->lastSegmentDrift))
+			$this->lastSegmentDrift = (int)$jsonObject->lastSegmentDrift;
 	}
 	/**
 	 * $vod Entry Id

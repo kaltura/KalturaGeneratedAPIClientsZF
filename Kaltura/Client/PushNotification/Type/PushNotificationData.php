@@ -38,19 +38,28 @@ class Kaltura_Client_PushNotification_Type_PushNotificationData extends Kaltura_
 		return 'KalturaPushNotificationData';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->queueName))
+		if(!is_null($xml) && count($xml->queueName))
 			$this->queueName = (string)$xml->queueName;
-		if(count($xml->queueKey))
+		if(!is_null($jsonObject) && isset($jsonObject->queueName))
+			$this->queueName = (string)$jsonObject->queueName;
+		if(!is_null($xml) && count($xml->queueKey))
 			$this->queueKey = (string)$xml->queueKey;
-		if(count($xml->url))
+		if(!is_null($jsonObject) && isset($jsonObject->queueKey))
+			$this->queueKey = (string)$jsonObject->queueKey;
+		if(!is_null($xml) && count($xml->url))
 			$this->url = (string)$xml->url;
+		if(!is_null($jsonObject) && isset($jsonObject->url))
+			$this->url = (string)$jsonObject->url;
 	}
 	/**
 	 * 

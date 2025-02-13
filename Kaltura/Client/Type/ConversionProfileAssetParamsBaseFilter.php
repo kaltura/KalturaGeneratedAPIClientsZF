@@ -38,33 +38,56 @@ abstract class Kaltura_Client_Type_ConversionProfileAssetParamsBaseFilter extend
 		return 'KalturaConversionProfileAssetParamsBaseFilter';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->conversionProfileIdEqual))
+		if(!is_null($xml) && count($xml->conversionProfileIdEqual))
 			$this->conversionProfileIdEqual = (int)$xml->conversionProfileIdEqual;
-		if(count($xml->conversionProfileIdIn))
+		if(!is_null($jsonObject) && isset($jsonObject->conversionProfileIdEqual))
+			$this->conversionProfileIdEqual = (int)$jsonObject->conversionProfileIdEqual;
+		if(!is_null($xml) && count($xml->conversionProfileIdIn))
 			$this->conversionProfileIdIn = (string)$xml->conversionProfileIdIn;
-		if(count($xml->assetParamsIdEqual))
+		if(!is_null($jsonObject) && isset($jsonObject->conversionProfileIdIn))
+			$this->conversionProfileIdIn = (string)$jsonObject->conversionProfileIdIn;
+		if(!is_null($xml) && count($xml->assetParamsIdEqual))
 			$this->assetParamsIdEqual = (int)$xml->assetParamsIdEqual;
-		if(count($xml->assetParamsIdIn))
+		if(!is_null($jsonObject) && isset($jsonObject->assetParamsIdEqual))
+			$this->assetParamsIdEqual = (int)$jsonObject->assetParamsIdEqual;
+		if(!is_null($xml) && count($xml->assetParamsIdIn))
 			$this->assetParamsIdIn = (string)$xml->assetParamsIdIn;
-		if(count($xml->readyBehaviorEqual))
+		if(!is_null($jsonObject) && isset($jsonObject->assetParamsIdIn))
+			$this->assetParamsIdIn = (string)$jsonObject->assetParamsIdIn;
+		if(!is_null($xml) && count($xml->readyBehaviorEqual))
 			$this->readyBehaviorEqual = (int)$xml->readyBehaviorEqual;
-		if(count($xml->readyBehaviorIn))
+		if(!is_null($jsonObject) && isset($jsonObject->readyBehaviorEqual))
+			$this->readyBehaviorEqual = (int)$jsonObject->readyBehaviorEqual;
+		if(!is_null($xml) && count($xml->readyBehaviorIn))
 			$this->readyBehaviorIn = (string)$xml->readyBehaviorIn;
-		if(count($xml->originEqual))
+		if(!is_null($jsonObject) && isset($jsonObject->readyBehaviorIn))
+			$this->readyBehaviorIn = (string)$jsonObject->readyBehaviorIn;
+		if(!is_null($xml) && count($xml->originEqual))
 			$this->originEqual = (int)$xml->originEqual;
-		if(count($xml->originIn))
+		if(!is_null($jsonObject) && isset($jsonObject->originEqual))
+			$this->originEqual = (int)$jsonObject->originEqual;
+		if(!is_null($xml) && count($xml->originIn))
 			$this->originIn = (string)$xml->originIn;
-		if(count($xml->systemNameEqual))
+		if(!is_null($jsonObject) && isset($jsonObject->originIn))
+			$this->originIn = (string)$jsonObject->originIn;
+		if(!is_null($xml) && count($xml->systemNameEqual))
 			$this->systemNameEqual = (string)$xml->systemNameEqual;
-		if(count($xml->systemNameIn))
+		if(!is_null($jsonObject) && isset($jsonObject->systemNameEqual))
+			$this->systemNameEqual = (string)$jsonObject->systemNameEqual;
+		if(!is_null($xml) && count($xml->systemNameIn))
 			$this->systemNameIn = (string)$xml->systemNameIn;
+		if(!is_null($jsonObject) && isset($jsonObject->systemNameIn))
+			$this->systemNameIn = (string)$jsonObject->systemNameIn;
 	}
 	/**
 	 * 

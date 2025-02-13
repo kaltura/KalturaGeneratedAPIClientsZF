@@ -38,21 +38,32 @@ class Kaltura_Client_Type_EndUserReportInputFilter extends Kaltura_Client_Type_R
 		return 'KalturaEndUserReportInputFilter';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->application))
+		if(!is_null($xml) && count($xml->application))
 			$this->application = (string)$xml->application;
-		if(count($xml->userIds))
+		if(!is_null($jsonObject) && isset($jsonObject->application))
+			$this->application = (string)$jsonObject->application;
+		if(!is_null($xml) && count($xml->userIds))
 			$this->userIds = (string)$xml->userIds;
-		if(count($xml->playbackContext))
+		if(!is_null($jsonObject) && isset($jsonObject->userIds))
+			$this->userIds = (string)$jsonObject->userIds;
+		if(!is_null($xml) && count($xml->playbackContext))
 			$this->playbackContext = (string)$xml->playbackContext;
-		if(count($xml->ancestorPlaybackContext))
+		if(!is_null($jsonObject) && isset($jsonObject->playbackContext))
+			$this->playbackContext = (string)$jsonObject->playbackContext;
+		if(!is_null($xml) && count($xml->ancestorPlaybackContext))
 			$this->ancestorPlaybackContext = (string)$xml->ancestorPlaybackContext;
+		if(!is_null($jsonObject) && isset($jsonObject->ancestorPlaybackContext))
+			$this->ancestorPlaybackContext = (string)$jsonObject->ancestorPlaybackContext;
 	}
 	/**
 	 * 

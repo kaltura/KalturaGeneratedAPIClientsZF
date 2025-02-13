@@ -38,45 +38,80 @@ class Kaltura_Client_Schedule_Type_ScheduleEventRecurrence extends Kaltura_Clien
 		return 'KalturaScheduleEventRecurrence';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->name))
+		if(!is_null($xml) && count($xml->name))
 			$this->name = (string)$xml->name;
-		if(count($xml->frequency))
+		if(!is_null($jsonObject) && isset($jsonObject->name))
+			$this->name = (string)$jsonObject->name;
+		if(!is_null($xml) && count($xml->frequency))
 			$this->frequency = (string)$xml->frequency;
-		if(count($xml->until))
+		if(!is_null($jsonObject) && isset($jsonObject->frequency))
+			$this->frequency = (string)$jsonObject->frequency;
+		if(!is_null($xml) && count($xml->until))
 			$this->until = (int)$xml->until;
-		if(count($xml->timeZone))
+		if(!is_null($jsonObject) && isset($jsonObject->until))
+			$this->until = (int)$jsonObject->until;
+		if(!is_null($xml) && count($xml->timeZone))
 			$this->timeZone = (string)$xml->timeZone;
-		if(count($xml->count))
+		if(!is_null($jsonObject) && isset($jsonObject->timeZone))
+			$this->timeZone = (string)$jsonObject->timeZone;
+		if(!is_null($xml) && count($xml->count))
 			$this->count = (int)$xml->count;
-		if(count($xml->interval))
+		if(!is_null($jsonObject) && isset($jsonObject->count))
+			$this->count = (int)$jsonObject->count;
+		if(!is_null($xml) && count($xml->interval))
 			$this->interval = (int)$xml->interval;
-		if(count($xml->bySecond))
+		if(!is_null($jsonObject) && isset($jsonObject->interval))
+			$this->interval = (int)$jsonObject->interval;
+		if(!is_null($xml) && count($xml->bySecond))
 			$this->bySecond = (string)$xml->bySecond;
-		if(count($xml->byMinute))
+		if(!is_null($jsonObject) && isset($jsonObject->bySecond))
+			$this->bySecond = (string)$jsonObject->bySecond;
+		if(!is_null($xml) && count($xml->byMinute))
 			$this->byMinute = (string)$xml->byMinute;
-		if(count($xml->byHour))
+		if(!is_null($jsonObject) && isset($jsonObject->byMinute))
+			$this->byMinute = (string)$jsonObject->byMinute;
+		if(!is_null($xml) && count($xml->byHour))
 			$this->byHour = (string)$xml->byHour;
-		if(count($xml->byDay))
+		if(!is_null($jsonObject) && isset($jsonObject->byHour))
+			$this->byHour = (string)$jsonObject->byHour;
+		if(!is_null($xml) && count($xml->byDay))
 			$this->byDay = (string)$xml->byDay;
-		if(count($xml->byMonthDay))
+		if(!is_null($jsonObject) && isset($jsonObject->byDay))
+			$this->byDay = (string)$jsonObject->byDay;
+		if(!is_null($xml) && count($xml->byMonthDay))
 			$this->byMonthDay = (string)$xml->byMonthDay;
-		if(count($xml->byYearDay))
+		if(!is_null($jsonObject) && isset($jsonObject->byMonthDay))
+			$this->byMonthDay = (string)$jsonObject->byMonthDay;
+		if(!is_null($xml) && count($xml->byYearDay))
 			$this->byYearDay = (string)$xml->byYearDay;
-		if(count($xml->byWeekNumber))
+		if(!is_null($jsonObject) && isset($jsonObject->byYearDay))
+			$this->byYearDay = (string)$jsonObject->byYearDay;
+		if(!is_null($xml) && count($xml->byWeekNumber))
 			$this->byWeekNumber = (string)$xml->byWeekNumber;
-		if(count($xml->byMonth))
+		if(!is_null($jsonObject) && isset($jsonObject->byWeekNumber))
+			$this->byWeekNumber = (string)$jsonObject->byWeekNumber;
+		if(!is_null($xml) && count($xml->byMonth))
 			$this->byMonth = (string)$xml->byMonth;
-		if(count($xml->byOffset))
+		if(!is_null($jsonObject) && isset($jsonObject->byMonth))
+			$this->byMonth = (string)$jsonObject->byMonth;
+		if(!is_null($xml) && count($xml->byOffset))
 			$this->byOffset = (string)$xml->byOffset;
-		if(count($xml->weekStartDay))
+		if(!is_null($jsonObject) && isset($jsonObject->byOffset))
+			$this->byOffset = (string)$jsonObject->byOffset;
+		if(!is_null($xml) && count($xml->weekStartDay))
 			$this->weekStartDay = (string)$xml->weekStartDay;
+		if(!is_null($jsonObject) && isset($jsonObject->weekStartDay))
+			$this->weekStartDay = (string)$jsonObject->weekStartDay;
 	}
 	/**
 	 * 

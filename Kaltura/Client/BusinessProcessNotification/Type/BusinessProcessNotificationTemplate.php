@@ -38,19 +38,28 @@ abstract class Kaltura_Client_BusinessProcessNotification_Type_BusinessProcessNo
 		return 'KalturaBusinessProcessNotificationTemplate';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->serverId))
+		if(!is_null($xml) && count($xml->serverId))
 			$this->serverId = (int)$xml->serverId;
-		if(count($xml->processId))
+		if(!is_null($jsonObject) && isset($jsonObject->serverId))
+			$this->serverId = (int)$jsonObject->serverId;
+		if(!is_null($xml) && count($xml->processId))
 			$this->processId = (string)$xml->processId;
-		if(count($xml->mainObjectCode))
+		if(!is_null($jsonObject) && isset($jsonObject->processId))
+			$this->processId = (string)$jsonObject->processId;
+		if(!is_null($xml) && count($xml->mainObjectCode))
 			$this->mainObjectCode = (string)$xml->mainObjectCode;
+		if(!is_null($jsonObject) && isset($jsonObject->mainObjectCode))
+			$this->mainObjectCode = (string)$jsonObject->mainObjectCode;
 	}
 	/**
 	 * Define the integrated BPM server id

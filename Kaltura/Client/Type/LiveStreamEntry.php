@@ -38,68 +38,126 @@ class Kaltura_Client_Type_LiveStreamEntry extends Kaltura_Client_Type_LiveEntry
 		return 'KalturaLiveStreamEntry';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->streamRemoteId))
+		if(!is_null($xml) && count($xml->streamRemoteId))
 			$this->streamRemoteId = (string)$xml->streamRemoteId;
-		if(count($xml->streamRemoteBackupId))
+		if(!is_null($jsonObject) && isset($jsonObject->streamRemoteId))
+			$this->streamRemoteId = (string)$jsonObject->streamRemoteId;
+		if(!is_null($xml) && count($xml->streamRemoteBackupId))
 			$this->streamRemoteBackupId = (string)$xml->streamRemoteBackupId;
-		if(count($xml->bitrates))
+		if(!is_null($jsonObject) && isset($jsonObject->streamRemoteBackupId))
+			$this->streamRemoteBackupId = (string)$jsonObject->streamRemoteBackupId;
+		if(!is_null($xml) && count($xml->bitrates))
 		{
 			if(empty($xml->bitrates))
 				$this->bitrates = array();
 			else
 				$this->bitrates = Kaltura_Client_ParseUtils::unmarshalArray($xml->bitrates, "KalturaLiveStreamBitrate");
 		}
-		if(count($xml->primaryBroadcastingUrl))
+		if(!is_null($jsonObject) && isset($jsonObject->bitrates))
+		{
+			if(empty($jsonObject->bitrates))
+				$this->bitrates = array();
+			else
+				$this->bitrates = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsonObject->bitrates, "KalturaLiveStreamBitrate");
+		}
+		if(!is_null($xml) && count($xml->primaryBroadcastingUrl))
 			$this->primaryBroadcastingUrl = (string)$xml->primaryBroadcastingUrl;
-		if(count($xml->secondaryBroadcastingUrl))
+		if(!is_null($jsonObject) && isset($jsonObject->primaryBroadcastingUrl))
+			$this->primaryBroadcastingUrl = (string)$jsonObject->primaryBroadcastingUrl;
+		if(!is_null($xml) && count($xml->secondaryBroadcastingUrl))
 			$this->secondaryBroadcastingUrl = (string)$xml->secondaryBroadcastingUrl;
-		if(count($xml->primarySecuredBroadcastingUrl))
+		if(!is_null($jsonObject) && isset($jsonObject->secondaryBroadcastingUrl))
+			$this->secondaryBroadcastingUrl = (string)$jsonObject->secondaryBroadcastingUrl;
+		if(!is_null($xml) && count($xml->primarySecuredBroadcastingUrl))
 			$this->primarySecuredBroadcastingUrl = (string)$xml->primarySecuredBroadcastingUrl;
-		if(count($xml->secondarySecuredBroadcastingUrl))
+		if(!is_null($jsonObject) && isset($jsonObject->primarySecuredBroadcastingUrl))
+			$this->primarySecuredBroadcastingUrl = (string)$jsonObject->primarySecuredBroadcastingUrl;
+		if(!is_null($xml) && count($xml->secondarySecuredBroadcastingUrl))
 			$this->secondarySecuredBroadcastingUrl = (string)$xml->secondarySecuredBroadcastingUrl;
-		if(count($xml->primaryRtspBroadcastingUrl))
+		if(!is_null($jsonObject) && isset($jsonObject->secondarySecuredBroadcastingUrl))
+			$this->secondarySecuredBroadcastingUrl = (string)$jsonObject->secondarySecuredBroadcastingUrl;
+		if(!is_null($xml) && count($xml->primaryRtspBroadcastingUrl))
 			$this->primaryRtspBroadcastingUrl = (string)$xml->primaryRtspBroadcastingUrl;
-		if(count($xml->secondaryRtspBroadcastingUrl))
+		if(!is_null($jsonObject) && isset($jsonObject->primaryRtspBroadcastingUrl))
+			$this->primaryRtspBroadcastingUrl = (string)$jsonObject->primaryRtspBroadcastingUrl;
+		if(!is_null($xml) && count($xml->secondaryRtspBroadcastingUrl))
 			$this->secondaryRtspBroadcastingUrl = (string)$xml->secondaryRtspBroadcastingUrl;
-		if(count($xml->primarySrtBroadcastingUrl))
+		if(!is_null($jsonObject) && isset($jsonObject->secondaryRtspBroadcastingUrl))
+			$this->secondaryRtspBroadcastingUrl = (string)$jsonObject->secondaryRtspBroadcastingUrl;
+		if(!is_null($xml) && count($xml->primarySrtBroadcastingUrl))
 			$this->primarySrtBroadcastingUrl = (string)$xml->primarySrtBroadcastingUrl;
-		if(count($xml->primarySrtStreamId))
+		if(!is_null($jsonObject) && isset($jsonObject->primarySrtBroadcastingUrl))
+			$this->primarySrtBroadcastingUrl = (string)$jsonObject->primarySrtBroadcastingUrl;
+		if(!is_null($xml) && count($xml->primarySrtStreamId))
 			$this->primarySrtStreamId = (string)$xml->primarySrtStreamId;
-		if(count($xml->secondarySrtBroadcastingUrl))
+		if(!is_null($jsonObject) && isset($jsonObject->primarySrtStreamId))
+			$this->primarySrtStreamId = (string)$jsonObject->primarySrtStreamId;
+		if(!is_null($xml) && count($xml->secondarySrtBroadcastingUrl))
 			$this->secondarySrtBroadcastingUrl = (string)$xml->secondarySrtBroadcastingUrl;
-		if(count($xml->secondarySrtStreamId))
+		if(!is_null($jsonObject) && isset($jsonObject->secondarySrtBroadcastingUrl))
+			$this->secondarySrtBroadcastingUrl = (string)$jsonObject->secondarySrtBroadcastingUrl;
+		if(!is_null($xml) && count($xml->secondarySrtStreamId))
 			$this->secondarySrtStreamId = (string)$xml->secondarySrtStreamId;
-		if(count($xml->streamName))
+		if(!is_null($jsonObject) && isset($jsonObject->secondarySrtStreamId))
+			$this->secondarySrtStreamId = (string)$jsonObject->secondarySrtStreamId;
+		if(!is_null($xml) && count($xml->streamName))
 			$this->streamName = (string)$xml->streamName;
-		if(count($xml->streamUrl))
+		if(!is_null($jsonObject) && isset($jsonObject->streamName))
+			$this->streamName = (string)$jsonObject->streamName;
+		if(!is_null($xml) && count($xml->streamUrl))
 			$this->streamUrl = (string)$xml->streamUrl;
-		if(count($xml->hlsStreamUrl))
+		if(!is_null($jsonObject) && isset($jsonObject->streamUrl))
+			$this->streamUrl = (string)$jsonObject->streamUrl;
+		if(!is_null($xml) && count($xml->hlsStreamUrl))
 			$this->hlsStreamUrl = (string)$xml->hlsStreamUrl;
-		if(count($xml->urlManager))
+		if(!is_null($jsonObject) && isset($jsonObject->hlsStreamUrl))
+			$this->hlsStreamUrl = (string)$jsonObject->hlsStreamUrl;
+		if(!is_null($xml) && count($xml->urlManager))
 			$this->urlManager = (string)$xml->urlManager;
-		if(count($xml->encodingIP1))
+		if(!is_null($jsonObject) && isset($jsonObject->urlManager))
+			$this->urlManager = (string)$jsonObject->urlManager;
+		if(!is_null($xml) && count($xml->encodingIP1))
 			$this->encodingIP1 = (string)$xml->encodingIP1;
-		if(count($xml->encodingIP2))
+		if(!is_null($jsonObject) && isset($jsonObject->encodingIP1))
+			$this->encodingIP1 = (string)$jsonObject->encodingIP1;
+		if(!is_null($xml) && count($xml->encodingIP2))
 			$this->encodingIP2 = (string)$xml->encodingIP2;
-		if(count($xml->streamPassword))
+		if(!is_null($jsonObject) && isset($jsonObject->encodingIP2))
+			$this->encodingIP2 = (string)$jsonObject->encodingIP2;
+		if(!is_null($xml) && count($xml->streamPassword))
 			$this->streamPassword = (string)$xml->streamPassword;
-		if(count($xml->streamUsername))
+		if(!is_null($jsonObject) && isset($jsonObject->streamPassword))
+			$this->streamPassword = (string)$jsonObject->streamPassword;
+		if(!is_null($xml) && count($xml->streamUsername))
 			$this->streamUsername = (string)$xml->streamUsername;
-		if(count($xml->srtPass))
+		if(!is_null($jsonObject) && isset($jsonObject->streamUsername))
+			$this->streamUsername = (string)$jsonObject->streamUsername;
+		if(!is_null($xml) && count($xml->srtPass))
 			$this->srtPass = (string)$xml->srtPass;
-		if(count($xml->primaryServerNodeId))
+		if(!is_null($jsonObject) && isset($jsonObject->srtPass))
+			$this->srtPass = (string)$jsonObject->srtPass;
+		if(!is_null($xml) && count($xml->primaryServerNodeId))
 			$this->primaryServerNodeId = (int)$xml->primaryServerNodeId;
-		if(count($xml->sipToken))
+		if(!is_null($jsonObject) && isset($jsonObject->primaryServerNodeId))
+			$this->primaryServerNodeId = (int)$jsonObject->primaryServerNodeId;
+		if(!is_null($xml) && count($xml->sipToken))
 			$this->sipToken = (string)$xml->sipToken;
-		if(count($xml->sipSourceType))
+		if(!is_null($jsonObject) && isset($jsonObject->sipToken))
+			$this->sipToken = (string)$jsonObject->sipToken;
+		if(!is_null($xml) && count($xml->sipSourceType))
 			$this->sipSourceType = (int)$xml->sipSourceType;
+		if(!is_null($jsonObject) && isset($jsonObject->sipSourceType))
+			$this->sipSourceType = (int)$jsonObject->sipSourceType;
 	}
 	/**
 	 * The stream id as provided by the provider

@@ -38,29 +38,48 @@ class Kaltura_Client_Type_LiveStats extends Kaltura_Client_ObjectBase
 		return 'KalturaLiveStats';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->audience))
+		if(!is_null($xml) && count($xml->audience))
 			$this->audience = (int)$xml->audience;
-		if(count($xml->dvrAudience))
+		if(!is_null($jsonObject) && isset($jsonObject->audience))
+			$this->audience = (int)$jsonObject->audience;
+		if(!is_null($xml) && count($xml->dvrAudience))
 			$this->dvrAudience = (int)$xml->dvrAudience;
-		if(count($xml->avgBitrate))
+		if(!is_null($jsonObject) && isset($jsonObject->dvrAudience))
+			$this->dvrAudience = (int)$jsonObject->dvrAudience;
+		if(!is_null($xml) && count($xml->avgBitrate))
 			$this->avgBitrate = (float)$xml->avgBitrate;
-		if(count($xml->bufferTime))
+		if(!is_null($jsonObject) && isset($jsonObject->avgBitrate))
+			$this->avgBitrate = (float)$jsonObject->avgBitrate;
+		if(!is_null($xml) && count($xml->bufferTime))
 			$this->bufferTime = (int)$xml->bufferTime;
-		if(count($xml->plays))
+		if(!is_null($jsonObject) && isset($jsonObject->bufferTime))
+			$this->bufferTime = (int)$jsonObject->bufferTime;
+		if(!is_null($xml) && count($xml->plays))
 			$this->plays = (int)$xml->plays;
-		if(count($xml->secondsViewed))
+		if(!is_null($jsonObject) && isset($jsonObject->plays))
+			$this->plays = (int)$jsonObject->plays;
+		if(!is_null($xml) && count($xml->secondsViewed))
 			$this->secondsViewed = (int)$xml->secondsViewed;
-		if(count($xml->startEvent))
+		if(!is_null($jsonObject) && isset($jsonObject->secondsViewed))
+			$this->secondsViewed = (int)$jsonObject->secondsViewed;
+		if(!is_null($xml) && count($xml->startEvent))
 			$this->startEvent = (string)$xml->startEvent;
-		if(count($xml->timestamp))
+		if(!is_null($jsonObject) && isset($jsonObject->startEvent))
+			$this->startEvent = (string)$jsonObject->startEvent;
+		if(!is_null($xml) && count($xml->timestamp))
 			$this->timestamp = (int)$xml->timestamp;
+		if(!is_null($jsonObject) && isset($jsonObject->timestamp))
+			$this->timestamp = (int)$jsonObject->timestamp;
 	}
 	/**
 	 * 

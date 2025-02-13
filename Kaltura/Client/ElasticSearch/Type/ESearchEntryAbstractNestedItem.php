@@ -38,22 +38,38 @@ abstract class Kaltura_Client_ElasticSearch_Type_ESearchEntryAbstractNestedItem 
 		return 'KalturaESearchEntryAbstractNestedItem';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->searchTerm))
+		if(!is_null($xml) && count($xml->searchTerm))
 			$this->searchTerm = (string)$xml->searchTerm;
-		if(count($xml->itemType))
+		if(!is_null($jsonObject) && isset($jsonObject->searchTerm))
+			$this->searchTerm = (string)$jsonObject->searchTerm;
+		if(!is_null($xml) && count($xml->itemType))
 			$this->itemType = (int)$xml->itemType;
-		if(count($xml->range) && !empty($xml->range))
+		if(!is_null($jsonObject) && isset($jsonObject->itemType))
+			$this->itemType = (int)$jsonObject->itemType;
+		if(!is_null($xml) && count($xml->range) && !empty($xml->range))
 			$this->range = Kaltura_Client_ParseUtils::unmarshalObject($xml->range, "KalturaESearchRange");
-		if(count($xml->addHighlight))
+		if(!is_null($jsonObject) && isset($jsonObject->range) && !empty($jsonObject->range))
+			$this->range = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsonObject->range, "KalturaESearchRange");
+		if(!is_null($xml) && count($xml->addHighlight))
 		{
 			if(!empty($xml->addHighlight) && ((int) $xml->addHighlight === 1 || strtolower((string)$xml->addHighlight) === 'true'))
+				$this->addHighlight = true;
+			else
+				$this->addHighlight = false;
+		}
+		if(!is_null($jsonObject) && isset($jsonObject->addHighlight))
+		{
+			if(!empty($jsonObject->addHighlight) && ((int) $jsonObject->addHighlight === 1 || strtolower((string)$jsonObject->addHighlight) === 'true'))
 				$this->addHighlight = true;
 			else
 				$this->addHighlight = false;

@@ -38,21 +38,33 @@ class Kaltura_Client_ElasticSearch_Type_ESearchHighlight extends Kaltura_Client_
 		return 'KalturaESearchHighlight';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->fieldName))
+		if(!is_null($xml) && count($xml->fieldName))
 			$this->fieldName = (string)$xml->fieldName;
-		if(count($xml->hits))
+		if(!is_null($jsonObject) && isset($jsonObject->fieldName))
+			$this->fieldName = (string)$jsonObject->fieldName;
+		if(!is_null($xml) && count($xml->hits))
 		{
 			if(empty($xml->hits))
 				$this->hits = array();
 			else
 				$this->hits = Kaltura_Client_ParseUtils::unmarshalArray($xml->hits, "KalturaString");
+		}
+		if(!is_null($jsonObject) && isset($jsonObject->hits))
+		{
+			if(empty($jsonObject->hits))
+				$this->hits = array();
+			else
+				$this->hits = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsonObject->hits, "KalturaString");
 		}
 	}
 	/**

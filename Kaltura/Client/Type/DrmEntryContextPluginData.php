@@ -38,15 +38,20 @@ class Kaltura_Client_Type_DrmEntryContextPluginData extends Kaltura_Client_Type_
 		return 'KalturaDrmEntryContextPluginData';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->flavorData))
+		if(!is_null($xml) && count($xml->flavorData))
 			$this->flavorData = (string)$xml->flavorData;
+		if(!is_null($jsonObject) && isset($jsonObject->flavorData))
+			$this->flavorData = (string)$jsonObject->flavorData;
 	}
 	/**
 	 * For the uDRM we give the drm context data which is a json encoding of an array containing the uDRM data

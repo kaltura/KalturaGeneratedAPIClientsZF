@@ -38,85 +38,160 @@ class Kaltura_Client_Type_Category extends Kaltura_Client_ObjectBase
 		return 'KalturaCategory';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->id))
+		if(!is_null($xml) && count($xml->id))
 			$this->id = (int)$xml->id;
-		if(count($xml->parentId))
+		if(!is_null($jsonObject) && isset($jsonObject->id))
+			$this->id = (int)$jsonObject->id;
+		if(!is_null($xml) && count($xml->parentId))
 			$this->parentId = (int)$xml->parentId;
-		if(count($xml->depth))
+		if(!is_null($jsonObject) && isset($jsonObject->parentId))
+			$this->parentId = (int)$jsonObject->parentId;
+		if(!is_null($xml) && count($xml->depth))
 			$this->depth = (int)$xml->depth;
-		if(count($xml->partnerId))
+		if(!is_null($jsonObject) && isset($jsonObject->depth))
+			$this->depth = (int)$jsonObject->depth;
+		if(!is_null($xml) && count($xml->partnerId))
 			$this->partnerId = (int)$xml->partnerId;
-		if(count($xml->name))
+		if(!is_null($jsonObject) && isset($jsonObject->partnerId))
+			$this->partnerId = (int)$jsonObject->partnerId;
+		if(!is_null($xml) && count($xml->name))
 			$this->name = (string)$xml->name;
-		if(count($xml->fullName))
+		if(!is_null($jsonObject) && isset($jsonObject->name))
+			$this->name = (string)$jsonObject->name;
+		if(!is_null($xml) && count($xml->fullName))
 			$this->fullName = (string)$xml->fullName;
-		if(count($xml->fullIds))
+		if(!is_null($jsonObject) && isset($jsonObject->fullName))
+			$this->fullName = (string)$jsonObject->fullName;
+		if(!is_null($xml) && count($xml->fullIds))
 			$this->fullIds = (string)$xml->fullIds;
-		if(count($xml->entriesCount))
+		if(!is_null($jsonObject) && isset($jsonObject->fullIds))
+			$this->fullIds = (string)$jsonObject->fullIds;
+		if(!is_null($xml) && count($xml->entriesCount))
 			$this->entriesCount = (int)$xml->entriesCount;
-		if(count($xml->createdAt))
+		if(!is_null($jsonObject) && isset($jsonObject->entriesCount))
+			$this->entriesCount = (int)$jsonObject->entriesCount;
+		if(!is_null($xml) && count($xml->createdAt))
 			$this->createdAt = (int)$xml->createdAt;
-		if(count($xml->updatedAt))
+		if(!is_null($jsonObject) && isset($jsonObject->createdAt))
+			$this->createdAt = (int)$jsonObject->createdAt;
+		if(!is_null($xml) && count($xml->updatedAt))
 			$this->updatedAt = (int)$xml->updatedAt;
-		if(count($xml->description))
+		if(!is_null($jsonObject) && isset($jsonObject->updatedAt))
+			$this->updatedAt = (int)$jsonObject->updatedAt;
+		if(!is_null($xml) && count($xml->description))
 			$this->description = (string)$xml->description;
-		if(count($xml->tags))
+		if(!is_null($jsonObject) && isset($jsonObject->description))
+			$this->description = (string)$jsonObject->description;
+		if(!is_null($xml) && count($xml->tags))
 			$this->tags = (string)$xml->tags;
-		if(count($xml->appearInList))
+		if(!is_null($jsonObject) && isset($jsonObject->tags))
+			$this->tags = (string)$jsonObject->tags;
+		if(!is_null($xml) && count($xml->appearInList))
 			$this->appearInList = (int)$xml->appearInList;
-		if(count($xml->privacy))
+		if(!is_null($jsonObject) && isset($jsonObject->appearInList))
+			$this->appearInList = (int)$jsonObject->appearInList;
+		if(!is_null($xml) && count($xml->privacy))
 			$this->privacy = (int)$xml->privacy;
-		if(count($xml->inheritanceType))
+		if(!is_null($jsonObject) && isset($jsonObject->privacy))
+			$this->privacy = (int)$jsonObject->privacy;
+		if(!is_null($xml) && count($xml->inheritanceType))
 			$this->inheritanceType = (int)$xml->inheritanceType;
-		if(count($xml->userJoinPolicy))
+		if(!is_null($jsonObject) && isset($jsonObject->inheritanceType))
+			$this->inheritanceType = (int)$jsonObject->inheritanceType;
+		if(!is_null($xml) && count($xml->userJoinPolicy))
 			$this->userJoinPolicy = (int)$xml->userJoinPolicy;
-		if(count($xml->defaultPermissionLevel))
+		if(!is_null($jsonObject) && isset($jsonObject->userJoinPolicy))
+			$this->userJoinPolicy = (int)$jsonObject->userJoinPolicy;
+		if(!is_null($xml) && count($xml->defaultPermissionLevel))
 			$this->defaultPermissionLevel = (int)$xml->defaultPermissionLevel;
-		if(count($xml->owner))
+		if(!is_null($jsonObject) && isset($jsonObject->defaultPermissionLevel))
+			$this->defaultPermissionLevel = (int)$jsonObject->defaultPermissionLevel;
+		if(!is_null($xml) && count($xml->owner))
 			$this->owner = (string)$xml->owner;
-		if(count($xml->directEntriesCount))
+		if(!is_null($jsonObject) && isset($jsonObject->owner))
+			$this->owner = (string)$jsonObject->owner;
+		if(!is_null($xml) && count($xml->directEntriesCount))
 			$this->directEntriesCount = (int)$xml->directEntriesCount;
-		if(count($xml->referenceId))
+		if(!is_null($jsonObject) && isset($jsonObject->directEntriesCount))
+			$this->directEntriesCount = (int)$jsonObject->directEntriesCount;
+		if(!is_null($xml) && count($xml->referenceId))
 			$this->referenceId = (string)$xml->referenceId;
-		if(count($xml->contributionPolicy))
+		if(!is_null($jsonObject) && isset($jsonObject->referenceId))
+			$this->referenceId = (string)$jsonObject->referenceId;
+		if(!is_null($xml) && count($xml->contributionPolicy))
 			$this->contributionPolicy = (int)$xml->contributionPolicy;
-		if(count($xml->membersCount))
+		if(!is_null($jsonObject) && isset($jsonObject->contributionPolicy))
+			$this->contributionPolicy = (int)$jsonObject->contributionPolicy;
+		if(!is_null($xml) && count($xml->membersCount))
 			$this->membersCount = (int)$xml->membersCount;
-		if(count($xml->pendingMembersCount))
+		if(!is_null($jsonObject) && isset($jsonObject->membersCount))
+			$this->membersCount = (int)$jsonObject->membersCount;
+		if(!is_null($xml) && count($xml->pendingMembersCount))
 			$this->pendingMembersCount = (int)$xml->pendingMembersCount;
-		if(count($xml->privacyContext))
+		if(!is_null($jsonObject) && isset($jsonObject->pendingMembersCount))
+			$this->pendingMembersCount = (int)$jsonObject->pendingMembersCount;
+		if(!is_null($xml) && count($xml->privacyContext))
 			$this->privacyContext = (string)$xml->privacyContext;
-		if(count($xml->privacyContexts))
+		if(!is_null($jsonObject) && isset($jsonObject->privacyContext))
+			$this->privacyContext = (string)$jsonObject->privacyContext;
+		if(!is_null($xml) && count($xml->privacyContexts))
 			$this->privacyContexts = (string)$xml->privacyContexts;
-		if(count($xml->status))
+		if(!is_null($jsonObject) && isset($jsonObject->privacyContexts))
+			$this->privacyContexts = (string)$jsonObject->privacyContexts;
+		if(!is_null($xml) && count($xml->status))
 			$this->status = (int)$xml->status;
-		if(count($xml->inheritedParentId))
+		if(!is_null($jsonObject) && isset($jsonObject->status))
+			$this->status = (int)$jsonObject->status;
+		if(!is_null($xml) && count($xml->inheritedParentId))
 			$this->inheritedParentId = (int)$xml->inheritedParentId;
-		if(count($xml->partnerSortValue))
+		if(!is_null($jsonObject) && isset($jsonObject->inheritedParentId))
+			$this->inheritedParentId = (int)$jsonObject->inheritedParentId;
+		if(!is_null($xml) && count($xml->partnerSortValue))
 			$this->partnerSortValue = (int)$xml->partnerSortValue;
-		if(count($xml->partnerData))
+		if(!is_null($jsonObject) && isset($jsonObject->partnerSortValue))
+			$this->partnerSortValue = (int)$jsonObject->partnerSortValue;
+		if(!is_null($xml) && count($xml->partnerData))
 			$this->partnerData = (string)$xml->partnerData;
-		if(count($xml->defaultOrderBy))
+		if(!is_null($jsonObject) && isset($jsonObject->partnerData))
+			$this->partnerData = (string)$jsonObject->partnerData;
+		if(!is_null($xml) && count($xml->defaultOrderBy))
 			$this->defaultOrderBy = (string)$xml->defaultOrderBy;
-		if(count($xml->directSubCategoriesCount))
+		if(!is_null($jsonObject) && isset($jsonObject->defaultOrderBy))
+			$this->defaultOrderBy = (string)$jsonObject->defaultOrderBy;
+		if(!is_null($xml) && count($xml->directSubCategoriesCount))
 			$this->directSubCategoriesCount = (int)$xml->directSubCategoriesCount;
-		if(count($xml->moderation))
+		if(!is_null($jsonObject) && isset($jsonObject->directSubCategoriesCount))
+			$this->directSubCategoriesCount = (int)$jsonObject->directSubCategoriesCount;
+		if(!is_null($xml) && count($xml->moderation))
 			$this->moderation = (int)$xml->moderation;
-		if(count($xml->pendingEntriesCount))
+		if(!is_null($jsonObject) && isset($jsonObject->moderation))
+			$this->moderation = (int)$jsonObject->moderation;
+		if(!is_null($xml) && count($xml->pendingEntriesCount))
 			$this->pendingEntriesCount = (int)$xml->pendingEntriesCount;
-		if(count($xml->isAggregationCategory))
+		if(!is_null($jsonObject) && isset($jsonObject->pendingEntriesCount))
+			$this->pendingEntriesCount = (int)$jsonObject->pendingEntriesCount;
+		if(!is_null($xml) && count($xml->isAggregationCategory))
 			$this->isAggregationCategory = (int)$xml->isAggregationCategory;
-		if(count($xml->aggregationCategories))
+		if(!is_null($jsonObject) && isset($jsonObject->isAggregationCategory))
+			$this->isAggregationCategory = (int)$jsonObject->isAggregationCategory;
+		if(!is_null($xml) && count($xml->aggregationCategories))
 			$this->aggregationCategories = (string)$xml->aggregationCategories;
-		if(count($xml->adminTags))
+		if(!is_null($jsonObject) && isset($jsonObject->aggregationCategories))
+			$this->aggregationCategories = (string)$jsonObject->aggregationCategories;
+		if(!is_null($xml) && count($xml->adminTags))
 			$this->adminTags = (string)$xml->adminTags;
+		if(!is_null($jsonObject) && isset($jsonObject->adminTags))
+			$this->adminTags = (string)$jsonObject->adminTags;
 	}
 	/**
 	 * The id of the Category

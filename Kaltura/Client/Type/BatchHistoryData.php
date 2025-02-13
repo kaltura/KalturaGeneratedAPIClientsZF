@@ -38,33 +38,56 @@ class Kaltura_Client_Type_BatchHistoryData extends Kaltura_Client_ObjectBase
 		return 'KalturaBatchHistoryData';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->schedulerId))
+		if(!is_null($xml) && count($xml->schedulerId))
 			$this->schedulerId = (int)$xml->schedulerId;
-		if(count($xml->workerId))
+		if(!is_null($jsonObject) && isset($jsonObject->schedulerId))
+			$this->schedulerId = (int)$jsonObject->schedulerId;
+		if(!is_null($xml) && count($xml->workerId))
 			$this->workerId = (int)$xml->workerId;
-		if(count($xml->batchIndex))
+		if(!is_null($jsonObject) && isset($jsonObject->workerId))
+			$this->workerId = (int)$jsonObject->workerId;
+		if(!is_null($xml) && count($xml->batchIndex))
 			$this->batchIndex = (int)$xml->batchIndex;
-		if(count($xml->timeStamp))
+		if(!is_null($jsonObject) && isset($jsonObject->batchIndex))
+			$this->batchIndex = (int)$jsonObject->batchIndex;
+		if(!is_null($xml) && count($xml->timeStamp))
 			$this->timeStamp = (int)$xml->timeStamp;
-		if(count($xml->message))
+		if(!is_null($jsonObject) && isset($jsonObject->timeStamp))
+			$this->timeStamp = (int)$jsonObject->timeStamp;
+		if(!is_null($xml) && count($xml->message))
 			$this->message = (string)$xml->message;
-		if(count($xml->errType))
+		if(!is_null($jsonObject) && isset($jsonObject->message))
+			$this->message = (string)$jsonObject->message;
+		if(!is_null($xml) && count($xml->errType))
 			$this->errType = (int)$xml->errType;
-		if(count($xml->errNumber))
+		if(!is_null($jsonObject) && isset($jsonObject->errType))
+			$this->errType = (int)$jsonObject->errType;
+		if(!is_null($xml) && count($xml->errNumber))
 			$this->errNumber = (int)$xml->errNumber;
-		if(count($xml->hostName))
+		if(!is_null($jsonObject) && isset($jsonObject->errNumber))
+			$this->errNumber = (int)$jsonObject->errNumber;
+		if(!is_null($xml) && count($xml->hostName))
 			$this->hostName = (string)$xml->hostName;
-		if(count($xml->sessionId))
+		if(!is_null($jsonObject) && isset($jsonObject->hostName))
+			$this->hostName = (string)$jsonObject->hostName;
+		if(!is_null($xml) && count($xml->sessionId))
 			$this->sessionId = (string)$xml->sessionId;
-		if(count($xml->schedulerName))
+		if(!is_null($jsonObject) && isset($jsonObject->sessionId))
+			$this->sessionId = (string)$jsonObject->sessionId;
+		if(!is_null($xml) && count($xml->schedulerName))
 			$this->schedulerName = (string)$xml->schedulerName;
+		if(!is_null($jsonObject) && isset($jsonObject->schedulerName))
+			$this->schedulerName = (string)$jsonObject->schedulerName;
 	}
 	/**
 	 * 

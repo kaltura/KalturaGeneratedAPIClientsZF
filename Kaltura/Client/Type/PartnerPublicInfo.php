@@ -38,20 +38,34 @@ class Kaltura_Client_Type_PartnerPublicInfo extends Kaltura_Client_ObjectBase
 		return 'KalturaPartnerPublicInfo';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->analyticsUrl))
+		if(!is_null($xml) && count($xml->analyticsUrl))
 			$this->analyticsUrl = (string)$xml->analyticsUrl;
-		if(count($xml->ottEnvironmentUrl))
+		if(!is_null($jsonObject) && isset($jsonObject->analyticsUrl))
+			$this->analyticsUrl = (string)$jsonObject->analyticsUrl;
+		if(!is_null($xml) && count($xml->ottEnvironmentUrl))
 			$this->ottEnvironmentUrl = (string)$xml->ottEnvironmentUrl;
-		if(count($xml->analyticsPersistentSessionId))
+		if(!is_null($jsonObject) && isset($jsonObject->ottEnvironmentUrl))
+			$this->ottEnvironmentUrl = (string)$jsonObject->ottEnvironmentUrl;
+		if(!is_null($xml) && count($xml->analyticsPersistentSessionId))
 		{
 			if(!empty($xml->analyticsPersistentSessionId) && ((int) $xml->analyticsPersistentSessionId === 1 || strtolower((string)$xml->analyticsPersistentSessionId) === 'true'))
+				$this->analyticsPersistentSessionId = true;
+			else
+				$this->analyticsPersistentSessionId = false;
+		}
+		if(!is_null($jsonObject) && isset($jsonObject->analyticsPersistentSessionId))
+		{
+			if(!empty($jsonObject->analyticsPersistentSessionId) && ((int) $jsonObject->analyticsPersistentSessionId === 1 || strtolower((string)$jsonObject->analyticsPersistentSessionId) === 'true'))
 				$this->analyticsPersistentSessionId = true;
 			else
 				$this->analyticsPersistentSessionId = false;

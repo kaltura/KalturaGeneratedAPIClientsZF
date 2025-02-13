@@ -38,27 +38,44 @@ class Kaltura_Client_Type_ReportExportItem extends Kaltura_Client_ObjectBase
 		return 'KalturaReportExportItem';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->reportTitle))
+		if(!is_null($xml) && count($xml->reportTitle))
 			$this->reportTitle = (string)$xml->reportTitle;
-		if(count($xml->action))
+		if(!is_null($jsonObject) && isset($jsonObject->reportTitle))
+			$this->reportTitle = (string)$jsonObject->reportTitle;
+		if(!is_null($xml) && count($xml->action))
 			$this->action = (int)$xml->action;
-		if(count($xml->reportType))
+		if(!is_null($jsonObject) && isset($jsonObject->action))
+			$this->action = (int)$jsonObject->action;
+		if(!is_null($xml) && count($xml->reportType))
 			$this->reportType = (string)$xml->reportType;
-		if(count($xml->filter) && !empty($xml->filter))
+		if(!is_null($jsonObject) && isset($jsonObject->reportType))
+			$this->reportType = (string)$jsonObject->reportType;
+		if(!is_null($xml) && count($xml->filter) && !empty($xml->filter))
 			$this->filter = Kaltura_Client_ParseUtils::unmarshalObject($xml->filter, "KalturaReportInputFilter");
-		if(count($xml->order))
+		if(!is_null($jsonObject) && isset($jsonObject->filter) && !empty($jsonObject->filter))
+			$this->filter = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsonObject->filter, "KalturaReportInputFilter");
+		if(!is_null($xml) && count($xml->order))
 			$this->order = (string)$xml->order;
-		if(count($xml->objectIds))
+		if(!is_null($jsonObject) && isset($jsonObject->order))
+			$this->order = (string)$jsonObject->order;
+		if(!is_null($xml) && count($xml->objectIds))
 			$this->objectIds = (string)$xml->objectIds;
-		if(count($xml->responseOptions) && !empty($xml->responseOptions))
+		if(!is_null($jsonObject) && isset($jsonObject->objectIds))
+			$this->objectIds = (string)$jsonObject->objectIds;
+		if(!is_null($xml) && count($xml->responseOptions) && !empty($xml->responseOptions))
 			$this->responseOptions = Kaltura_Client_ParseUtils::unmarshalObject($xml->responseOptions, "KalturaReportResponseOptions");
+		if(!is_null($jsonObject) && isset($jsonObject->responseOptions) && !empty($jsonObject->responseOptions))
+			$this->responseOptions = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsonObject->responseOptions, "KalturaReportResponseOptions");
 	}
 	/**
 	 * 

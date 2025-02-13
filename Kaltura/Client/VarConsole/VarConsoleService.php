@@ -55,12 +55,18 @@ class Kaltura_Client_VarConsole_VarConsoleService extends Kaltura_Client_Service
 		$this->client->queueServiceActionCall("varconsole_varconsole", "getPartnerUsage", "KalturaPartnerUsageListResponse", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaPartnerUsageListResponse");
-		$this->client->validateObjectType($resultObject, "Kaltura_Client_VarConsole_Type_PartnerUsageListResponse");
-		return $resultObject;
+		$rawResult = $this->client->doQueue();
+		if ($this->client->getConfig()->format === Kaltura_Client_ClientBase::KALTURA_SERVICE_FORMAT_JSON) {
+			$jsObject = json_decode($rawResult);
+			$resultObject = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsObject);
+			return $resultObject;
+		} else {
+			$resultXmlObject = new \SimpleXMLElement($rawResult);
+			$this->client->checkIfError($resultXmlObject->result);
+			$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaPartnerUsageListResponse");
+			$this->client->validateObjectType($resultObject, "Kaltura_Client_VarConsole_Type_PartnerUsageListResponse");
+		}
+			return $resultObject;
 	}
 
 	/**
@@ -75,8 +81,14 @@ class Kaltura_Client_VarConsole_VarConsoleService extends Kaltura_Client_Service
 		$this->client->queueServiceActionCall("varconsole_varconsole", "updateStatus", null, $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
+		$rawResult = $this->client->doQueue();
+		if ($this->client->getConfig()->format === Kaltura_Client_ClientBase::KALTURA_SERVICE_FORMAT_JSON) {
+			$jsObject = json_decode($rawResult);
+			$resultObject = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsObject);
+			return $resultObject;
+		} else {
+			$resultXmlObject = new \SimpleXMLElement($rawResult);
+			$this->client->checkIfError($resultXmlObject->result);
+		}
 	}
 }

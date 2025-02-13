@@ -38,19 +38,29 @@ class Kaltura_Client_EventNotification_Type_EventNotificationDispatchScope exten
 		return 'KalturaEventNotificationDispatchScope';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->dynamicValues))
+		if(!is_null($xml) && count($xml->dynamicValues))
 		{
 			if(empty($xml->dynamicValues))
 				$this->dynamicValues = array();
 			else
 				$this->dynamicValues = Kaltura_Client_ParseUtils::unmarshalArray($xml->dynamicValues, "KalturaKeyValue");
+		}
+		if(!is_null($jsonObject) && isset($jsonObject->dynamicValues))
+		{
+			if(empty($jsonObject->dynamicValues))
+				$this->dynamicValues = array();
+			else
+				$this->dynamicValues = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsonObject->dynamicValues, "KalturaKeyValue");
 		}
 	}
 	/**

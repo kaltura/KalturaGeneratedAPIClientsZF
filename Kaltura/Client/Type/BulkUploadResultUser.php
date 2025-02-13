@@ -38,43 +38,80 @@ class Kaltura_Client_Type_BulkUploadResultUser extends Kaltura_Client_Type_BulkU
 		return 'KalturaBulkUploadResultUser';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->userId))
+		if(!is_null($xml) && count($xml->userId))
 			$this->userId = (string)$xml->userId;
-		if(count($xml->screenName))
+		if(!is_null($jsonObject) && isset($jsonObject->userId))
+			$this->userId = (string)$jsonObject->userId;
+		if(!is_null($xml) && count($xml->screenName))
 			$this->screenName = (string)$xml->screenName;
-		if(count($xml->email))
+		if(!is_null($jsonObject) && isset($jsonObject->screenName))
+			$this->screenName = (string)$jsonObject->screenName;
+		if(!is_null($xml) && count($xml->email))
 			$this->email = (string)$xml->email;
-		if(count($xml->description))
+		if(!is_null($jsonObject) && isset($jsonObject->email))
+			$this->email = (string)$jsonObject->email;
+		if(!is_null($xml) && count($xml->description))
 			$this->description = (string)$xml->description;
-		if(count($xml->tags))
+		if(!is_null($jsonObject) && isset($jsonObject->description))
+			$this->description = (string)$jsonObject->description;
+		if(!is_null($xml) && count($xml->tags))
 			$this->tags = (string)$xml->tags;
-		if(count($xml->dateOfBirth))
+		if(!is_null($jsonObject) && isset($jsonObject->tags))
+			$this->tags = (string)$jsonObject->tags;
+		if(!is_null($xml) && count($xml->dateOfBirth))
 			$this->dateOfBirth = (int)$xml->dateOfBirth;
-		if(count($xml->country))
+		if(!is_null($jsonObject) && isset($jsonObject->dateOfBirth))
+			$this->dateOfBirth = (int)$jsonObject->dateOfBirth;
+		if(!is_null($xml) && count($xml->country))
 			$this->country = (string)$xml->country;
-		if(count($xml->state))
+		if(!is_null($jsonObject) && isset($jsonObject->country))
+			$this->country = (string)$jsonObject->country;
+		if(!is_null($xml) && count($xml->state))
 			$this->state = (string)$xml->state;
-		if(count($xml->city))
+		if(!is_null($jsonObject) && isset($jsonObject->state))
+			$this->state = (string)$jsonObject->state;
+		if(!is_null($xml) && count($xml->city))
 			$this->city = (string)$xml->city;
-		if(count($xml->zip))
+		if(!is_null($jsonObject) && isset($jsonObject->city))
+			$this->city = (string)$jsonObject->city;
+		if(!is_null($xml) && count($xml->zip))
 			$this->zip = (string)$xml->zip;
-		if(count($xml->gender))
+		if(!is_null($jsonObject) && isset($jsonObject->zip))
+			$this->zip = (string)$jsonObject->zip;
+		if(!is_null($xml) && count($xml->gender))
 			$this->gender = (int)$xml->gender;
-		if(count($xml->firstName))
+		if(!is_null($jsonObject) && isset($jsonObject->gender))
+			$this->gender = (int)$jsonObject->gender;
+		if(!is_null($xml) && count($xml->firstName))
 			$this->firstName = (string)$xml->firstName;
-		if(count($xml->lastName))
+		if(!is_null($jsonObject) && isset($jsonObject->firstName))
+			$this->firstName = (string)$jsonObject->firstName;
+		if(!is_null($xml) && count($xml->lastName))
 			$this->lastName = (string)$xml->lastName;
-		if(count($xml->group))
+		if(!is_null($jsonObject) && isset($jsonObject->lastName))
+			$this->lastName = (string)$jsonObject->lastName;
+		if(!is_null($xml) && count($xml->group))
 			$this->group = (string)$xml->group;
-		if(count($xml->externalId))
+		if(!is_null($jsonObject) && isset($jsonObject->group))
+			$this->group = (string)$jsonObject->group;
+		if(!is_null($xml) && count($xml->externalId))
 			$this->externalId = (string)$xml->externalId;
+		if(!is_null($jsonObject) && isset($jsonObject->externalId))
+			$this->externalId = (string)$jsonObject->externalId;
+		if(!is_null($xml) && count($xml->capabilities))
+			$this->capabilities = (string)$xml->capabilities;
+		if(!is_null($jsonObject) && isset($jsonObject->capabilities))
+			$this->capabilities = (string)$jsonObject->capabilities;
 	}
 	/**
 	 * 
@@ -180,6 +217,13 @@ class Kaltura_Client_Type_BulkUploadResultUser extends Kaltura_Client_Type_BulkU
 	 * @var string
 	 */
 	public $externalId = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $capabilities = null;
 
 
 }

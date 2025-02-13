@@ -50,12 +50,18 @@ class Kaltura_Client_DropFolder_DropFolderService extends Kaltura_Client_Service
 		$this->client->queueServiceActionCall("dropfolder_dropfolder", "add", "KalturaDropFolder", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaDropFolder");
-		$this->client->validateObjectType($resultObject, "Kaltura_Client_DropFolder_Type_DropFolder");
-		return $resultObject;
+		$rawResult = $this->client->doQueue();
+		if ($this->client->getConfig()->format === Kaltura_Client_ClientBase::KALTURA_SERVICE_FORMAT_JSON) {
+			$jsObject = json_decode($rawResult);
+			$resultObject = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsObject);
+			return $resultObject;
+		} else {
+			$resultXmlObject = new \SimpleXMLElement($rawResult);
+			$this->client->checkIfError($resultXmlObject->result);
+			$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaDropFolder");
+			$this->client->validateObjectType($resultObject, "Kaltura_Client_DropFolder_Type_DropFolder");
+		}
+			return $resultObject;
 	}
 
 	/**
@@ -69,12 +75,18 @@ class Kaltura_Client_DropFolder_DropFolderService extends Kaltura_Client_Service
 		$this->client->queueServiceActionCall("dropfolder_dropfolder", "delete", "KalturaDropFolder", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaDropFolder");
-		$this->client->validateObjectType($resultObject, "Kaltura_Client_DropFolder_Type_DropFolder");
-		return $resultObject;
+		$rawResult = $this->client->doQueue();
+		if ($this->client->getConfig()->format === Kaltura_Client_ClientBase::KALTURA_SERVICE_FORMAT_JSON) {
+			$jsObject = json_decode($rawResult);
+			$resultObject = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsObject);
+			return $resultObject;
+		} else {
+			$resultXmlObject = new \SimpleXMLElement($rawResult);
+			$this->client->checkIfError($resultXmlObject->result);
+			$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaDropFolder");
+			$this->client->validateObjectType($resultObject, "Kaltura_Client_DropFolder_Type_DropFolder");
+		}
+			return $resultObject;
 	}
 
 	/**
@@ -90,12 +102,18 @@ class Kaltura_Client_DropFolder_DropFolderService extends Kaltura_Client_Service
 		$this->client->queueServiceActionCall("dropfolder_dropfolder", "freeExclusiveDropFolder", "KalturaDropFolder", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaDropFolder");
-		$this->client->validateObjectType($resultObject, "Kaltura_Client_DropFolder_Type_DropFolder");
-		return $resultObject;
+		$rawResult = $this->client->doQueue();
+		if ($this->client->getConfig()->format === Kaltura_Client_ClientBase::KALTURA_SERVICE_FORMAT_JSON) {
+			$jsObject = json_decode($rawResult);
+			$resultObject = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsObject);
+			return $resultObject;
+		} else {
+			$resultXmlObject = new \SimpleXMLElement($rawResult);
+			$this->client->checkIfError($resultXmlObject->result);
+			$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaDropFolder");
+			$this->client->validateObjectType($resultObject, "Kaltura_Client_DropFolder_Type_DropFolder");
+		}
+			return $resultObject;
 	}
 
 	/**
@@ -109,12 +127,18 @@ class Kaltura_Client_DropFolder_DropFolderService extends Kaltura_Client_Service
 		$this->client->queueServiceActionCall("dropfolder_dropfolder", "get", "KalturaDropFolder", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaDropFolder");
-		$this->client->validateObjectType($resultObject, "Kaltura_Client_DropFolder_Type_DropFolder");
-		return $resultObject;
+		$rawResult = $this->client->doQueue();
+		if ($this->client->getConfig()->format === Kaltura_Client_ClientBase::KALTURA_SERVICE_FORMAT_JSON) {
+			$jsObject = json_decode($rawResult);
+			$resultObject = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsObject);
+			return $resultObject;
+		} else {
+			$resultXmlObject = new \SimpleXMLElement($rawResult);
+			$this->client->checkIfError($resultXmlObject->result);
+			$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaDropFolder");
+			$this->client->validateObjectType($resultObject, "Kaltura_Client_DropFolder_Type_DropFolder");
+		}
+			return $resultObject;
 	}
 
 	/**
@@ -129,12 +153,18 @@ class Kaltura_Client_DropFolder_DropFolderService extends Kaltura_Client_Service
 		$this->client->queueServiceActionCall("dropfolder_dropfolder", "getExclusiveDropFolder", "KalturaDropFolder", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaDropFolder");
-		$this->client->validateObjectType($resultObject, "Kaltura_Client_DropFolder_Type_DropFolder");
-		return $resultObject;
+		$rawResult = $this->client->doQueue();
+		if ($this->client->getConfig()->format === Kaltura_Client_ClientBase::KALTURA_SERVICE_FORMAT_JSON) {
+			$jsObject = json_decode($rawResult);
+			$resultObject = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsObject);
+			return $resultObject;
+		} else {
+			$resultXmlObject = new \SimpleXMLElement($rawResult);
+			$this->client->checkIfError($resultXmlObject->result);
+			$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaDropFolder");
+			$this->client->validateObjectType($resultObject, "Kaltura_Client_DropFolder_Type_DropFolder");
+		}
+			return $resultObject;
 	}
 
 	/**
@@ -151,12 +181,18 @@ class Kaltura_Client_DropFolder_DropFolderService extends Kaltura_Client_Service
 		$this->client->queueServiceActionCall("dropfolder_dropfolder", "list", "KalturaDropFolderListResponse", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaDropFolderListResponse");
-		$this->client->validateObjectType($resultObject, "Kaltura_Client_DropFolder_Type_DropFolderListResponse");
-		return $resultObject;
+		$rawResult = $this->client->doQueue();
+		if ($this->client->getConfig()->format === Kaltura_Client_ClientBase::KALTURA_SERVICE_FORMAT_JSON) {
+			$jsObject = json_decode($rawResult);
+			$resultObject = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsObject);
+			return $resultObject;
+		} else {
+			$resultXmlObject = new \SimpleXMLElement($rawResult);
+			$this->client->checkIfError($resultXmlObject->result);
+			$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaDropFolderListResponse");
+			$this->client->validateObjectType($resultObject, "Kaltura_Client_DropFolder_Type_DropFolderListResponse");
+		}
+			return $resultObject;
 	}
 
 	/**
@@ -171,12 +207,18 @@ class Kaltura_Client_DropFolder_DropFolderService extends Kaltura_Client_Service
 		$this->client->queueServiceActionCall("dropfolder_dropfolder", "update", "KalturaDropFolder", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaDropFolder");
-		$this->client->validateObjectType($resultObject, "Kaltura_Client_DropFolder_Type_DropFolder");
-		return $resultObject;
+		$rawResult = $this->client->doQueue();
+		if ($this->client->getConfig()->format === Kaltura_Client_ClientBase::KALTURA_SERVICE_FORMAT_JSON) {
+			$jsObject = json_decode($rawResult);
+			$resultObject = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsObject);
+			return $resultObject;
+		} else {
+			$resultXmlObject = new \SimpleXMLElement($rawResult);
+			$this->client->checkIfError($resultXmlObject->result);
+			$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaDropFolder");
+			$this->client->validateObjectType($resultObject, "Kaltura_Client_DropFolder_Type_DropFolder");
+		}
+			return $resultObject;
 	}
 
 	/**
@@ -191,8 +233,14 @@ class Kaltura_Client_DropFolder_DropFolderService extends Kaltura_Client_Service
 		$this->client->queueServiceActionCall("dropfolder_dropfolder", "updateStatus", null, $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
+		$rawResult = $this->client->doQueue();
+		if ($this->client->getConfig()->format === Kaltura_Client_ClientBase::KALTURA_SERVICE_FORMAT_JSON) {
+			$jsObject = json_decode($rawResult);
+			$resultObject = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsObject);
+			return $resultObject;
+		} else {
+			$resultXmlObject = new \SimpleXMLElement($rawResult);
+			$this->client->checkIfError($resultXmlObject->result);
+		}
 	}
 }

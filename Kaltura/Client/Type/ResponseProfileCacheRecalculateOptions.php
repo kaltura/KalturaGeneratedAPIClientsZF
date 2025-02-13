@@ -38,28 +38,50 @@ class Kaltura_Client_Type_ResponseProfileCacheRecalculateOptions extends Kaltura
 		return 'KalturaResponseProfileCacheRecalculateOptions';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->limit))
+		if(!is_null($xml) && count($xml->limit))
 			$this->limit = (int)$xml->limit;
-		if(count($xml->cachedObjectType))
+		if(!is_null($jsonObject) && isset($jsonObject->limit))
+			$this->limit = (int)$jsonObject->limit;
+		if(!is_null($xml) && count($xml->cachedObjectType))
 			$this->cachedObjectType = (string)$xml->cachedObjectType;
-		if(count($xml->objectId))
+		if(!is_null($jsonObject) && isset($jsonObject->cachedObjectType))
+			$this->cachedObjectType = (string)$jsonObject->cachedObjectType;
+		if(!is_null($xml) && count($xml->objectId))
 			$this->objectId = (string)$xml->objectId;
-		if(count($xml->startObjectKey))
+		if(!is_null($jsonObject) && isset($jsonObject->objectId))
+			$this->objectId = (string)$jsonObject->objectId;
+		if(!is_null($xml) && count($xml->startObjectKey))
 			$this->startObjectKey = (string)$xml->startObjectKey;
-		if(count($xml->endObjectKey))
+		if(!is_null($jsonObject) && isset($jsonObject->startObjectKey))
+			$this->startObjectKey = (string)$jsonObject->startObjectKey;
+		if(!is_null($xml) && count($xml->endObjectKey))
 			$this->endObjectKey = (string)$xml->endObjectKey;
-		if(count($xml->jobCreatedAt))
+		if(!is_null($jsonObject) && isset($jsonObject->endObjectKey))
+			$this->endObjectKey = (string)$jsonObject->endObjectKey;
+		if(!is_null($xml) && count($xml->jobCreatedAt))
 			$this->jobCreatedAt = (int)$xml->jobCreatedAt;
-		if(count($xml->isFirstLoop))
+		if(!is_null($jsonObject) && isset($jsonObject->jobCreatedAt))
+			$this->jobCreatedAt = (int)$jsonObject->jobCreatedAt;
+		if(!is_null($xml) && count($xml->isFirstLoop))
 		{
 			if(!empty($xml->isFirstLoop) && ((int) $xml->isFirstLoop === 1 || strtolower((string)$xml->isFirstLoop) === 'true'))
+				$this->isFirstLoop = true;
+			else
+				$this->isFirstLoop = false;
+		}
+		if(!is_null($jsonObject) && isset($jsonObject->isFirstLoop))
+		{
+			if(!empty($jsonObject->isFirstLoop) && ((int) $jsonObject->isFirstLoop === 1 || strtolower((string)$jsonObject->isFirstLoop) === 'true'))
 				$this->isFirstLoop = true;
 			else
 				$this->isFirstLoop = false;

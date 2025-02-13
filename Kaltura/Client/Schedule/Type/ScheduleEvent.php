@@ -38,67 +38,124 @@ abstract class Kaltura_Client_Schedule_Type_ScheduleEvent extends Kaltura_Client
 		return 'KalturaScheduleEvent';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->id))
+		if(!is_null($xml) && count($xml->id))
 			$this->id = (int)$xml->id;
-		if(count($xml->partnerId))
+		if(!is_null($jsonObject) && isset($jsonObject->id))
+			$this->id = (int)$jsonObject->id;
+		if(!is_null($xml) && count($xml->partnerId))
 			$this->partnerId = (int)$xml->partnerId;
-		if(count($xml->parentId))
+		if(!is_null($jsonObject) && isset($jsonObject->partnerId))
+			$this->partnerId = (int)$jsonObject->partnerId;
+		if(!is_null($xml) && count($xml->parentId))
 			$this->parentId = (int)$xml->parentId;
-		if(count($xml->summary))
+		if(!is_null($jsonObject) && isset($jsonObject->parentId))
+			$this->parentId = (int)$jsonObject->parentId;
+		if(!is_null($xml) && count($xml->summary))
 			$this->summary = (string)$xml->summary;
-		if(count($xml->description))
+		if(!is_null($jsonObject) && isset($jsonObject->summary))
+			$this->summary = (string)$jsonObject->summary;
+		if(!is_null($xml) && count($xml->description))
 			$this->description = (string)$xml->description;
-		if(count($xml->status))
+		if(!is_null($jsonObject) && isset($jsonObject->description))
+			$this->description = (string)$jsonObject->description;
+		if(!is_null($xml) && count($xml->status))
 			$this->status = (int)$xml->status;
-		if(count($xml->startDate))
+		if(!is_null($jsonObject) && isset($jsonObject->status))
+			$this->status = (int)$jsonObject->status;
+		if(!is_null($xml) && count($xml->startDate))
 			$this->startDate = (int)$xml->startDate;
-		if(count($xml->endDate))
+		if(!is_null($jsonObject) && isset($jsonObject->startDate))
+			$this->startDate = (int)$jsonObject->startDate;
+		if(!is_null($xml) && count($xml->endDate))
 			$this->endDate = (int)$xml->endDate;
-		if(count($xml->referenceId))
+		if(!is_null($jsonObject) && isset($jsonObject->endDate))
+			$this->endDate = (int)$jsonObject->endDate;
+		if(!is_null($xml) && count($xml->referenceId))
 			$this->referenceId = (string)$xml->referenceId;
-		if(count($xml->linkedTo) && !empty($xml->linkedTo))
+		if(!is_null($jsonObject) && isset($jsonObject->referenceId))
+			$this->referenceId = (string)$jsonObject->referenceId;
+		if(!is_null($xml) && count($xml->linkedTo) && !empty($xml->linkedTo))
 			$this->linkedTo = Kaltura_Client_ParseUtils::unmarshalObject($xml->linkedTo, "KalturaLinkedScheduleEvent");
-		if(count($xml->linkedBy))
+		if(!is_null($jsonObject) && isset($jsonObject->linkedTo) && !empty($jsonObject->linkedTo))
+			$this->linkedTo = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsonObject->linkedTo, "KalturaLinkedScheduleEvent");
+		if(!is_null($xml) && count($xml->linkedBy))
 			$this->linkedBy = (string)$xml->linkedBy;
-		if(count($xml->classificationType))
+		if(!is_null($jsonObject) && isset($jsonObject->linkedBy))
+			$this->linkedBy = (string)$jsonObject->linkedBy;
+		if(!is_null($xml) && count($xml->classificationType))
 			$this->classificationType = (int)$xml->classificationType;
-		if(count($xml->geoLatitude))
+		if(!is_null($jsonObject) && isset($jsonObject->classificationType))
+			$this->classificationType = (int)$jsonObject->classificationType;
+		if(!is_null($xml) && count($xml->geoLatitude))
 			$this->geoLatitude = (float)$xml->geoLatitude;
-		if(count($xml->geoLongitude))
+		if(!is_null($jsonObject) && isset($jsonObject->geoLatitude))
+			$this->geoLatitude = (float)$jsonObject->geoLatitude;
+		if(!is_null($xml) && count($xml->geoLongitude))
 			$this->geoLongitude = (float)$xml->geoLongitude;
-		if(count($xml->location))
+		if(!is_null($jsonObject) && isset($jsonObject->geoLongitude))
+			$this->geoLongitude = (float)$jsonObject->geoLongitude;
+		if(!is_null($xml) && count($xml->location))
 			$this->location = (string)$xml->location;
-		if(count($xml->organizer))
+		if(!is_null($jsonObject) && isset($jsonObject->location))
+			$this->location = (string)$jsonObject->location;
+		if(!is_null($xml) && count($xml->organizer))
 			$this->organizer = (string)$xml->organizer;
-		if(count($xml->ownerId))
+		if(!is_null($jsonObject) && isset($jsonObject->organizer))
+			$this->organizer = (string)$jsonObject->organizer;
+		if(!is_null($xml) && count($xml->ownerId))
 			$this->ownerId = (string)$xml->ownerId;
-		if(count($xml->priority))
+		if(!is_null($jsonObject) && isset($jsonObject->ownerId))
+			$this->ownerId = (string)$jsonObject->ownerId;
+		if(!is_null($xml) && count($xml->priority))
 			$this->priority = (int)$xml->priority;
-		if(count($xml->sequence))
+		if(!is_null($jsonObject) && isset($jsonObject->priority))
+			$this->priority = (int)$jsonObject->priority;
+		if(!is_null($xml) && count($xml->sequence))
 			$this->sequence = (int)$xml->sequence;
-		if(count($xml->recurrenceType))
+		if(!is_null($jsonObject) && isset($jsonObject->sequence))
+			$this->sequence = (int)$jsonObject->sequence;
+		if(!is_null($xml) && count($xml->recurrenceType))
 			$this->recurrenceType = (int)$xml->recurrenceType;
-		if(count($xml->duration))
+		if(!is_null($jsonObject) && isset($jsonObject->recurrenceType))
+			$this->recurrenceType = (int)$jsonObject->recurrenceType;
+		if(!is_null($xml) && count($xml->duration))
 			$this->duration = (int)$xml->duration;
-		if(count($xml->contact))
+		if(!is_null($jsonObject) && isset($jsonObject->duration))
+			$this->duration = (int)$jsonObject->duration;
+		if(!is_null($xml) && count($xml->contact))
 			$this->contact = (string)$xml->contact;
-		if(count($xml->comment))
+		if(!is_null($jsonObject) && isset($jsonObject->contact))
+			$this->contact = (string)$jsonObject->contact;
+		if(!is_null($xml) && count($xml->comment))
 			$this->comment = (string)$xml->comment;
-		if(count($xml->tags))
+		if(!is_null($jsonObject) && isset($jsonObject->comment))
+			$this->comment = (string)$jsonObject->comment;
+		if(!is_null($xml) && count($xml->tags))
 			$this->tags = (string)$xml->tags;
-		if(count($xml->createdAt))
+		if(!is_null($jsonObject) && isset($jsonObject->tags))
+			$this->tags = (string)$jsonObject->tags;
+		if(!is_null($xml) && count($xml->createdAt))
 			$this->createdAt = (int)$xml->createdAt;
-		if(count($xml->updatedAt))
+		if(!is_null($jsonObject) && isset($jsonObject->createdAt))
+			$this->createdAt = (int)$jsonObject->createdAt;
+		if(!is_null($xml) && count($xml->updatedAt))
 			$this->updatedAt = (int)$xml->updatedAt;
-		if(count($xml->recurrence) && !empty($xml->recurrence))
+		if(!is_null($jsonObject) && isset($jsonObject->updatedAt))
+			$this->updatedAt = (int)$jsonObject->updatedAt;
+		if(!is_null($xml) && count($xml->recurrence) && !empty($xml->recurrence))
 			$this->recurrence = Kaltura_Client_ParseUtils::unmarshalObject($xml->recurrence, "KalturaScheduleEventRecurrence");
+		if(!is_null($jsonObject) && isset($jsonObject->recurrence) && !empty($jsonObject->recurrence))
+			$this->recurrence = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsonObject->recurrence, "KalturaScheduleEventRecurrence");
 	}
 	/**
 	 * Auto-generated unique identifier

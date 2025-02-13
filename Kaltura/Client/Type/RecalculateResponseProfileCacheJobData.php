@@ -38,32 +38,54 @@ class Kaltura_Client_Type_RecalculateResponseProfileCacheJobData extends Kaltura
 		return 'KalturaRecalculateResponseProfileCacheJobData';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->protocol))
+		if(!is_null($xml) && count($xml->protocol))
 			$this->protocol = (string)$xml->protocol;
-		if(count($xml->ksType))
+		if(!is_null($jsonObject) && isset($jsonObject->protocol))
+			$this->protocol = (string)$jsonObject->protocol;
+		if(!is_null($xml) && count($xml->ksType))
 			$this->ksType = (int)$xml->ksType;
-		if(count($xml->userRoles))
+		if(!is_null($jsonObject) && isset($jsonObject->ksType))
+			$this->ksType = (int)$jsonObject->ksType;
+		if(!is_null($xml) && count($xml->userRoles))
 		{
 			if(empty($xml->userRoles))
 				$this->userRoles = array();
 			else
 				$this->userRoles = Kaltura_Client_ParseUtils::unmarshalArray($xml->userRoles, "KalturaIntegerValue");
 		}
-		if(count($xml->cachedObjectType))
+		if(!is_null($jsonObject) && isset($jsonObject->userRoles))
+		{
+			if(empty($jsonObject->userRoles))
+				$this->userRoles = array();
+			else
+				$this->userRoles = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsonObject->userRoles, "KalturaIntegerValue");
+		}
+		if(!is_null($xml) && count($xml->cachedObjectType))
 			$this->cachedObjectType = (string)$xml->cachedObjectType;
-		if(count($xml->objectId))
+		if(!is_null($jsonObject) && isset($jsonObject->cachedObjectType))
+			$this->cachedObjectType = (string)$jsonObject->cachedObjectType;
+		if(!is_null($xml) && count($xml->objectId))
 			$this->objectId = (string)$xml->objectId;
-		if(count($xml->startObjectKey))
+		if(!is_null($jsonObject) && isset($jsonObject->objectId))
+			$this->objectId = (string)$jsonObject->objectId;
+		if(!is_null($xml) && count($xml->startObjectKey))
 			$this->startObjectKey = (string)$xml->startObjectKey;
-		if(count($xml->endObjectKey))
+		if(!is_null($jsonObject) && isset($jsonObject->startObjectKey))
+			$this->startObjectKey = (string)$jsonObject->startObjectKey;
+		if(!is_null($xml) && count($xml->endObjectKey))
 			$this->endObjectKey = (string)$xml->endObjectKey;
+		if(!is_null($jsonObject) && isset($jsonObject->endObjectKey))
+			$this->endObjectKey = (string)$jsonObject->endObjectKey;
 	}
 	/**
 	 * http / https

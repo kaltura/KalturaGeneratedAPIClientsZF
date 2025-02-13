@@ -38,17 +38,24 @@ class Kaltura_Client_Group_Type_Group extends Kaltura_Client_Type_BaseUser
 		return 'KalturaGroup';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->membersCount))
+		if(!is_null($xml) && count($xml->membersCount))
 			$this->membersCount = (int)$xml->membersCount;
-		if(count($xml->processStatus))
+		if(!is_null($jsonObject) && isset($jsonObject->membersCount))
+			$this->membersCount = (int)$jsonObject->membersCount;
+		if(!is_null($xml) && count($xml->processStatus))
 			$this->processStatus = (int)$xml->processStatus;
+		if(!is_null($jsonObject) && isset($jsonObject->processStatus))
+			$this->processStatus = (int)$jsonObject->processStatus;
 	}
 	/**
 	 * 

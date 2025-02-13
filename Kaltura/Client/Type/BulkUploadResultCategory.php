@@ -38,42 +38,78 @@ class Kaltura_Client_Type_BulkUploadResultCategory extends Kaltura_Client_Type_B
 		return 'KalturaBulkUploadResultCategory';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->relativePath))
+		if(!is_null($xml) && count($xml->relativePath))
 			$this->relativePath = (string)$xml->relativePath;
-		if(count($xml->name))
+		if(!is_null($jsonObject) && isset($jsonObject->relativePath))
+			$this->relativePath = (string)$jsonObject->relativePath;
+		if(!is_null($xml) && count($xml->name))
 			$this->name = (string)$xml->name;
-		if(count($xml->referenceId))
+		if(!is_null($jsonObject) && isset($jsonObject->name))
+			$this->name = (string)$jsonObject->name;
+		if(!is_null($xml) && count($xml->referenceId))
 			$this->referenceId = (string)$xml->referenceId;
-		if(count($xml->description))
+		if(!is_null($jsonObject) && isset($jsonObject->referenceId))
+			$this->referenceId = (string)$jsonObject->referenceId;
+		if(!is_null($xml) && count($xml->description))
 			$this->description = (string)$xml->description;
-		if(count($xml->tags))
+		if(!is_null($jsonObject) && isset($jsonObject->description))
+			$this->description = (string)$jsonObject->description;
+		if(!is_null($xml) && count($xml->tags))
 			$this->tags = (string)$xml->tags;
-		if(count($xml->appearInList))
+		if(!is_null($jsonObject) && isset($jsonObject->tags))
+			$this->tags = (string)$jsonObject->tags;
+		if(!is_null($xml) && count($xml->appearInList))
 			$this->appearInList = (int)$xml->appearInList;
-		if(count($xml->privacy))
+		if(!is_null($jsonObject) && isset($jsonObject->appearInList))
+			$this->appearInList = (int)$jsonObject->appearInList;
+		if(!is_null($xml) && count($xml->privacy))
 			$this->privacy = (int)$xml->privacy;
-		if(count($xml->inheritanceType))
+		if(!is_null($jsonObject) && isset($jsonObject->privacy))
+			$this->privacy = (int)$jsonObject->privacy;
+		if(!is_null($xml) && count($xml->inheritanceType))
 			$this->inheritanceType = (int)$xml->inheritanceType;
-		if(count($xml->userJoinPolicy))
+		if(!is_null($jsonObject) && isset($jsonObject->inheritanceType))
+			$this->inheritanceType = (int)$jsonObject->inheritanceType;
+		if(!is_null($xml) && count($xml->userJoinPolicy))
 			$this->userJoinPolicy = (int)$xml->userJoinPolicy;
-		if(count($xml->defaultPermissionLevel))
+		if(!is_null($jsonObject) && isset($jsonObject->userJoinPolicy))
+			$this->userJoinPolicy = (int)$jsonObject->userJoinPolicy;
+		if(!is_null($xml) && count($xml->defaultPermissionLevel))
 			$this->defaultPermissionLevel = (int)$xml->defaultPermissionLevel;
-		if(count($xml->owner))
+		if(!is_null($jsonObject) && isset($jsonObject->defaultPermissionLevel))
+			$this->defaultPermissionLevel = (int)$jsonObject->defaultPermissionLevel;
+		if(!is_null($xml) && count($xml->owner))
 			$this->owner = (string)$xml->owner;
-		if(count($xml->contributionPolicy))
+		if(!is_null($jsonObject) && isset($jsonObject->owner))
+			$this->owner = (string)$jsonObject->owner;
+		if(!is_null($xml) && count($xml->contributionPolicy))
 			$this->contributionPolicy = (int)$xml->contributionPolicy;
-		if(count($xml->partnerSortValue))
+		if(!is_null($jsonObject) && isset($jsonObject->contributionPolicy))
+			$this->contributionPolicy = (int)$jsonObject->contributionPolicy;
+		if(!is_null($xml) && count($xml->partnerSortValue))
 			$this->partnerSortValue = (int)$xml->partnerSortValue;
-		if(count($xml->moderation))
+		if(!is_null($jsonObject) && isset($jsonObject->partnerSortValue))
+			$this->partnerSortValue = (int)$jsonObject->partnerSortValue;
+		if(!is_null($xml) && count($xml->moderation))
 		{
 			if(!empty($xml->moderation) && ((int) $xml->moderation === 1 || strtolower((string)$xml->moderation) === 'true'))
+				$this->moderation = true;
+			else
+				$this->moderation = false;
+		}
+		if(!is_null($jsonObject) && isset($jsonObject->moderation))
+		{
+			if(!empty($jsonObject->moderation) && ((int) $jsonObject->moderation === 1 || strtolower((string)$jsonObject->moderation) === 'true'))
 				$this->moderation = true;
 			else
 				$this->moderation = false;

@@ -38,19 +38,43 @@ class Kaltura_Client_SearchHistory_Type_ESearchHistoryListResponse extends Kaltu
 		return 'KalturaESearchHistoryListResponse';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->objects))
+		if(!is_null($xml) && count($xml->objects))
 		{
 			if(empty($xml->objects))
 				$this->objects = array();
 			else
 				$this->objects = Kaltura_Client_ParseUtils::unmarshalArray($xml->objects, "KalturaESearchHistory");
+		}
+		if(!is_null($jsonObject) && isset($jsonObject->objects))
+		{
+			if(empty($jsonObject->objects))
+				$this->objects = array();
+			else
+				$this->objects = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsonObject->objects, "KalturaESearchHistory");
+		}
+		if(!is_null($xml) && count($xml->aggregations))
+		{
+			if(empty($xml->aggregations))
+				$this->aggregations = array();
+			else
+				$this->aggregations = Kaltura_Client_ParseUtils::unmarshalArray($xml->aggregations, "KalturaESearchAggregationResponseItem");
+		}
+		if(!is_null($jsonObject) && isset($jsonObject->aggregations))
+		{
+			if(empty($jsonObject->aggregations))
+				$this->aggregations = array();
+			else
+				$this->aggregations = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsonObject->aggregations, "KalturaESearchAggregationResponseItem");
 		}
 	}
 	/**
@@ -60,6 +84,14 @@ class Kaltura_Client_SearchHistory_Type_ESearchHistoryListResponse extends Kaltu
 	 * @readonly
 	 */
 	public $objects;
+
+	/**
+	 * 
+	 *
+	 * @var array of KalturaESearchAggregationResponseItem
+	 * @readonly
+	 */
+	public $aggregations;
 
 
 }

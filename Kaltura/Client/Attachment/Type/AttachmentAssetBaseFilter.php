@@ -38,23 +38,36 @@ abstract class Kaltura_Client_Attachment_Type_AttachmentAssetBaseFilter extends 
 		return 'KalturaAttachmentAssetBaseFilter';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->formatEqual))
+		if(!is_null($xml) && count($xml->formatEqual))
 			$this->formatEqual = (string)$xml->formatEqual;
-		if(count($xml->formatIn))
+		if(!is_null($jsonObject) && isset($jsonObject->formatEqual))
+			$this->formatEqual = (string)$jsonObject->formatEqual;
+		if(!is_null($xml) && count($xml->formatIn))
 			$this->formatIn = (string)$xml->formatIn;
-		if(count($xml->statusEqual))
+		if(!is_null($jsonObject) && isset($jsonObject->formatIn))
+			$this->formatIn = (string)$jsonObject->formatIn;
+		if(!is_null($xml) && count($xml->statusEqual))
 			$this->statusEqual = (int)$xml->statusEqual;
-		if(count($xml->statusIn))
+		if(!is_null($jsonObject) && isset($jsonObject->statusEqual))
+			$this->statusEqual = (int)$jsonObject->statusEqual;
+		if(!is_null($xml) && count($xml->statusIn))
 			$this->statusIn = (string)$xml->statusIn;
-		if(count($xml->statusNotIn))
+		if(!is_null($jsonObject) && isset($jsonObject->statusIn))
+			$this->statusIn = (string)$jsonObject->statusIn;
+		if(!is_null($xml) && count($xml->statusNotIn))
 			$this->statusNotIn = (string)$xml->statusNotIn;
+		if(!is_null($jsonObject) && isset($jsonObject->statusNotIn))
+			$this->statusNotIn = (string)$jsonObject->statusNotIn;
 	}
 	/**
 	 * 

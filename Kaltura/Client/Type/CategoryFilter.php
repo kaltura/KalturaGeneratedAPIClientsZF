@@ -38,29 +38,48 @@ class Kaltura_Client_Type_CategoryFilter extends Kaltura_Client_Type_CategoryBas
 		return 'KalturaCategoryFilter';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->freeText))
+		if(!is_null($xml) && count($xml->freeText))
 			$this->freeText = (string)$xml->freeText;
-		if(count($xml->membersIn))
+		if(!is_null($jsonObject) && isset($jsonObject->freeText))
+			$this->freeText = (string)$jsonObject->freeText;
+		if(!is_null($xml) && count($xml->membersIn))
 			$this->membersIn = (string)$xml->membersIn;
-		if(count($xml->nameOrReferenceIdStartsWith))
+		if(!is_null($jsonObject) && isset($jsonObject->membersIn))
+			$this->membersIn = (string)$jsonObject->membersIn;
+		if(!is_null($xml) && count($xml->nameOrReferenceIdStartsWith))
 			$this->nameOrReferenceIdStartsWith = (string)$xml->nameOrReferenceIdStartsWith;
-		if(count($xml->managerEqual))
+		if(!is_null($jsonObject) && isset($jsonObject->nameOrReferenceIdStartsWith))
+			$this->nameOrReferenceIdStartsWith = (string)$jsonObject->nameOrReferenceIdStartsWith;
+		if(!is_null($xml) && count($xml->managerEqual))
 			$this->managerEqual = (string)$xml->managerEqual;
-		if(count($xml->memberEqual))
+		if(!is_null($jsonObject) && isset($jsonObject->managerEqual))
+			$this->managerEqual = (string)$jsonObject->managerEqual;
+		if(!is_null($xml) && count($xml->memberEqual))
 			$this->memberEqual = (string)$xml->memberEqual;
-		if(count($xml->fullNameStartsWithIn))
+		if(!is_null($jsonObject) && isset($jsonObject->memberEqual))
+			$this->memberEqual = (string)$jsonObject->memberEqual;
+		if(!is_null($xml) && count($xml->fullNameStartsWithIn))
 			$this->fullNameStartsWithIn = (string)$xml->fullNameStartsWithIn;
-		if(count($xml->ancestorIdIn))
+		if(!is_null($jsonObject) && isset($jsonObject->fullNameStartsWithIn))
+			$this->fullNameStartsWithIn = (string)$jsonObject->fullNameStartsWithIn;
+		if(!is_null($xml) && count($xml->ancestorIdIn))
 			$this->ancestorIdIn = (string)$xml->ancestorIdIn;
-		if(count($xml->idOrInheritedParentIdIn))
+		if(!is_null($jsonObject) && isset($jsonObject->ancestorIdIn))
+			$this->ancestorIdIn = (string)$jsonObject->ancestorIdIn;
+		if(!is_null($xml) && count($xml->idOrInheritedParentIdIn))
 			$this->idOrInheritedParentIdIn = (string)$xml->idOrInheritedParentIdIn;
+		if(!is_null($jsonObject) && isset($jsonObject->idOrInheritedParentIdIn))
+			$this->idOrInheritedParentIdIn = (string)$jsonObject->idOrInheritedParentIdIn;
 	}
 	/**
 	 * 

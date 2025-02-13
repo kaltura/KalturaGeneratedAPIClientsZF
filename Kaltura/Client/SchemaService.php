@@ -52,6 +52,6 @@ class Kaltura_Client_SchemaService extends Kaltura_Client_ServiceBase
 		$this->client->addParam($kparams, "type", $type);
 		$this->client->queueServiceActionCall('schema', 'serve', null, $kparams);
 		$resultObject = $this->client->getServeUrl();
-		return $resultObject;
+			return $resultObject;
 	}
 }

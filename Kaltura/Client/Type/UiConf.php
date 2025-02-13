@@ -38,66 +38,126 @@ class Kaltura_Client_Type_UiConf extends Kaltura_Client_ObjectBase
 		return 'KalturaUiConf';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->id))
+		if(!is_null($xml) && count($xml->id))
 			$this->id = (int)$xml->id;
-		if(count($xml->name))
+		if(!is_null($jsonObject) && isset($jsonObject->id))
+			$this->id = (int)$jsonObject->id;
+		if(!is_null($xml) && count($xml->name))
 			$this->name = (string)$xml->name;
-		if(count($xml->description))
+		if(!is_null($jsonObject) && isset($jsonObject->name))
+			$this->name = (string)$jsonObject->name;
+		if(!is_null($xml) && count($xml->description))
 			$this->description = (string)$xml->description;
-		if(count($xml->partnerId))
+		if(!is_null($jsonObject) && isset($jsonObject->description))
+			$this->description = (string)$jsonObject->description;
+		if(!is_null($xml) && count($xml->partnerId))
 			$this->partnerId = (int)$xml->partnerId;
-		if(count($xml->objType))
+		if(!is_null($jsonObject) && isset($jsonObject->partnerId))
+			$this->partnerId = (int)$jsonObject->partnerId;
+		if(!is_null($xml) && count($xml->objType))
 			$this->objType = (int)$xml->objType;
-		if(count($xml->objTypeAsString))
+		if(!is_null($jsonObject) && isset($jsonObject->objType))
+			$this->objType = (int)$jsonObject->objType;
+		if(!is_null($xml) && count($xml->objTypeAsString))
 			$this->objTypeAsString = (string)$xml->objTypeAsString;
-		if(count($xml->width))
+		if(!is_null($jsonObject) && isset($jsonObject->objTypeAsString))
+			$this->objTypeAsString = (string)$jsonObject->objTypeAsString;
+		if(!is_null($xml) && count($xml->width))
 			$this->width = (int)$xml->width;
-		if(count($xml->height))
+		if(!is_null($jsonObject) && isset($jsonObject->width))
+			$this->width = (int)$jsonObject->width;
+		if(!is_null($xml) && count($xml->height))
 			$this->height = (int)$xml->height;
-		if(count($xml->htmlParams))
+		if(!is_null($jsonObject) && isset($jsonObject->height))
+			$this->height = (int)$jsonObject->height;
+		if(!is_null($xml) && count($xml->htmlParams))
 			$this->htmlParams = (string)$xml->htmlParams;
-		if(count($xml->swfUrl))
+		if(!is_null($jsonObject) && isset($jsonObject->htmlParams))
+			$this->htmlParams = (string)$jsonObject->htmlParams;
+		if(!is_null($xml) && count($xml->swfUrl))
 			$this->swfUrl = (string)$xml->swfUrl;
-		if(count($xml->confFilePath))
+		if(!is_null($jsonObject) && isset($jsonObject->swfUrl))
+			$this->swfUrl = (string)$jsonObject->swfUrl;
+		if(!is_null($xml) && count($xml->confFilePath))
 			$this->confFilePath = (string)$xml->confFilePath;
-		if(count($xml->confFile))
+		if(!is_null($jsonObject) && isset($jsonObject->confFilePath))
+			$this->confFilePath = (string)$jsonObject->confFilePath;
+		if(!is_null($xml) && count($xml->confFile))
 			$this->confFile = (string)$xml->confFile;
-		if(count($xml->confFileFeatures))
+		if(!is_null($jsonObject) && isset($jsonObject->confFile))
+			$this->confFile = (string)$jsonObject->confFile;
+		if(!is_null($xml) && count($xml->confFileFeatures))
 			$this->confFileFeatures = (string)$xml->confFileFeatures;
-		if(count($xml->config))
+		if(!is_null($jsonObject) && isset($jsonObject->confFileFeatures))
+			$this->confFileFeatures = (string)$jsonObject->confFileFeatures;
+		if(!is_null($xml) && count($xml->config))
 			$this->config = (string)$xml->config;
-		if(count($xml->confVars))
+		if(!is_null($jsonObject) && isset($jsonObject->config))
+			$this->config = (string)$jsonObject->config;
+		if(!is_null($xml) && count($xml->confVars))
 			$this->confVars = (string)$xml->confVars;
-		if(count($xml->useCdn))
+		if(!is_null($jsonObject) && isset($jsonObject->confVars))
+			$this->confVars = (string)$jsonObject->confVars;
+		if(!is_null($xml) && count($xml->useCdn))
 		{
 			if(!empty($xml->useCdn) && ((int) $xml->useCdn === 1 || strtolower((string)$xml->useCdn) === 'true'))
 				$this->useCdn = true;
 			else
 				$this->useCdn = false;
 		}
-		if(count($xml->tags))
+		if(!is_null($jsonObject) && isset($jsonObject->useCdn))
+		{
+			if(!empty($jsonObject->useCdn) && ((int) $jsonObject->useCdn === 1 || strtolower((string)$jsonObject->useCdn) === 'true'))
+				$this->useCdn = true;
+			else
+				$this->useCdn = false;
+		}
+		if(!is_null($xml) && count($xml->tags))
 			$this->tags = (string)$xml->tags;
-		if(count($xml->swfUrlVersion))
+		if(!is_null($jsonObject) && isset($jsonObject->tags))
+			$this->tags = (string)$jsonObject->tags;
+		if(!is_null($xml) && count($xml->swfUrlVersion))
 			$this->swfUrlVersion = (string)$xml->swfUrlVersion;
-		if(count($xml->createdAt))
+		if(!is_null($jsonObject) && isset($jsonObject->swfUrlVersion))
+			$this->swfUrlVersion = (string)$jsonObject->swfUrlVersion;
+		if(!is_null($xml) && count($xml->createdAt))
 			$this->createdAt = (int)$xml->createdAt;
-		if(count($xml->updatedAt))
+		if(!is_null($jsonObject) && isset($jsonObject->createdAt))
+			$this->createdAt = (int)$jsonObject->createdAt;
+		if(!is_null($xml) && count($xml->updatedAt))
 			$this->updatedAt = (int)$xml->updatedAt;
-		if(count($xml->creationMode))
+		if(!is_null($jsonObject) && isset($jsonObject->updatedAt))
+			$this->updatedAt = (int)$jsonObject->updatedAt;
+		if(!is_null($xml) && count($xml->creationMode))
 			$this->creationMode = (int)$xml->creationMode;
-		if(count($xml->html5Url))
+		if(!is_null($jsonObject) && isset($jsonObject->creationMode))
+			$this->creationMode = (int)$jsonObject->creationMode;
+		if(!is_null($xml) && count($xml->html5Url))
 			$this->html5Url = (string)$xml->html5Url;
-		if(count($xml->version))
+		if(!is_null($jsonObject) && isset($jsonObject->html5Url))
+			$this->html5Url = (string)$jsonObject->html5Url;
+		if(!is_null($xml) && count($xml->version))
 			$this->version = (string)$xml->version;
-		if(count($xml->partnerTags))
+		if(!is_null($jsonObject) && isset($jsonObject->version))
+			$this->version = (string)$jsonObject->version;
+		if(!is_null($xml) && count($xml->partnerTags))
 			$this->partnerTags = (string)$xml->partnerTags;
+		if(!is_null($jsonObject) && isset($jsonObject->partnerTags))
+			$this->partnerTags = (string)$jsonObject->partnerTags;
+		if(!is_null($xml) && count($xml->v2Redirect) && !empty($xml->v2Redirect))
+			$this->v2Redirect = Kaltura_Client_ParseUtils::unmarshalObject($xml->v2Redirect, "KalturaUiConfV2Redirect");
+		if(!is_null($jsonObject) && isset($jsonObject->v2Redirect) && !empty($jsonObject->v2Redirect))
+			$this->v2Redirect = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsonObject->v2Redirect, "KalturaUiConfV2Redirect");
 	}
 	/**
 	 * 
@@ -273,6 +333,13 @@ class Kaltura_Client_Type_UiConf extends Kaltura_Client_ObjectBase
 	 * @var string
 	 */
 	public $partnerTags = null;
+
+	/**
+	 * 
+	 *
+	 * @var Kaltura_Client_Type_UiConfV2Redirect
+	 */
+	public $v2Redirect;
 
 
 }

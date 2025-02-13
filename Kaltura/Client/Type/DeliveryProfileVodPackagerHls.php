@@ -38,19 +38,43 @@ class Kaltura_Client_Type_DeliveryProfileVodPackagerHls extends Kaltura_Client_T
 		return 'KalturaDeliveryProfileVodPackagerHls';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->allowFairplayOffline))
+		if(!is_null($xml) && count($xml->allowFairplayOffline))
 		{
 			if(!empty($xml->allowFairplayOffline) && ((int) $xml->allowFairplayOffline === 1 || strtolower((string)$xml->allowFairplayOffline) === 'true'))
 				$this->allowFairplayOffline = true;
 			else
 				$this->allowFairplayOffline = false;
+		}
+		if(!is_null($jsonObject) && isset($jsonObject->allowFairplayOffline))
+		{
+			if(!empty($jsonObject->allowFairplayOffline) && ((int) $jsonObject->allowFairplayOffline === 1 || strtolower((string)$jsonObject->allowFairplayOffline) === 'true'))
+				$this->allowFairplayOffline = true;
+			else
+				$this->allowFairplayOffline = false;
+		}
+		if(!is_null($xml) && count($xml->supportFmp4))
+		{
+			if(!empty($xml->supportFmp4) && ((int) $xml->supportFmp4 === 1 || strtolower((string)$xml->supportFmp4) === 'true'))
+				$this->supportFmp4 = true;
+			else
+				$this->supportFmp4 = false;
+		}
+		if(!is_null($jsonObject) && isset($jsonObject->supportFmp4))
+		{
+			if(!empty($jsonObject->supportFmp4) && ((int) $jsonObject->supportFmp4 === 1 || strtolower((string)$jsonObject->supportFmp4) === 'true'))
+				$this->supportFmp4 = true;
+			else
+				$this->supportFmp4 = false;
 		}
 	}
 	/**
@@ -59,6 +83,13 @@ class Kaltura_Client_Type_DeliveryProfileVodPackagerHls extends Kaltura_Client_T
 	 * @var bool
 	 */
 	public $allowFairplayOffline = null;
+
+	/**
+	 * 
+	 *
+	 * @var bool
+	 */
+	public $supportFmp4 = null;
 
 
 }

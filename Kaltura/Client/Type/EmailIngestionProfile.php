@@ -38,45 +38,80 @@ class Kaltura_Client_Type_EmailIngestionProfile extends Kaltura_Client_ObjectBas
 		return 'KalturaEmailIngestionProfile';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->id))
+		if(!is_null($xml) && count($xml->id))
 			$this->id = (int)$xml->id;
-		if(count($xml->name))
+		if(!is_null($jsonObject) && isset($jsonObject->id))
+			$this->id = (int)$jsonObject->id;
+		if(!is_null($xml) && count($xml->name))
 			$this->name = (string)$xml->name;
-		if(count($xml->description))
+		if(!is_null($jsonObject) && isset($jsonObject->name))
+			$this->name = (string)$jsonObject->name;
+		if(!is_null($xml) && count($xml->description))
 			$this->description = (string)$xml->description;
-		if(count($xml->emailAddress))
+		if(!is_null($jsonObject) && isset($jsonObject->description))
+			$this->description = (string)$jsonObject->description;
+		if(!is_null($xml) && count($xml->emailAddress))
 			$this->emailAddress = (string)$xml->emailAddress;
-		if(count($xml->mailboxId))
+		if(!is_null($jsonObject) && isset($jsonObject->emailAddress))
+			$this->emailAddress = (string)$jsonObject->emailAddress;
+		if(!is_null($xml) && count($xml->mailboxId))
 			$this->mailboxId = (string)$xml->mailboxId;
-		if(count($xml->partnerId))
+		if(!is_null($jsonObject) && isset($jsonObject->mailboxId))
+			$this->mailboxId = (string)$jsonObject->mailboxId;
+		if(!is_null($xml) && count($xml->partnerId))
 			$this->partnerId = (int)$xml->partnerId;
-		if(count($xml->conversionProfile2Id))
+		if(!is_null($jsonObject) && isset($jsonObject->partnerId))
+			$this->partnerId = (int)$jsonObject->partnerId;
+		if(!is_null($xml) && count($xml->conversionProfile2Id))
 			$this->conversionProfile2Id = (int)$xml->conversionProfile2Id;
-		if(count($xml->moderationStatus))
+		if(!is_null($jsonObject) && isset($jsonObject->conversionProfile2Id))
+			$this->conversionProfile2Id = (int)$jsonObject->conversionProfile2Id;
+		if(!is_null($xml) && count($xml->moderationStatus))
 			$this->moderationStatus = (int)$xml->moderationStatus;
-		if(count($xml->status))
+		if(!is_null($jsonObject) && isset($jsonObject->moderationStatus))
+			$this->moderationStatus = (int)$jsonObject->moderationStatus;
+		if(!is_null($xml) && count($xml->status))
 			$this->status = (int)$xml->status;
-		if(count($xml->createdAt))
+		if(!is_null($jsonObject) && isset($jsonObject->status))
+			$this->status = (int)$jsonObject->status;
+		if(!is_null($xml) && count($xml->createdAt))
 			$this->createdAt = (string)$xml->createdAt;
-		if(count($xml->defaultCategory))
+		if(!is_null($jsonObject) && isset($jsonObject->createdAt))
+			$this->createdAt = (string)$jsonObject->createdAt;
+		if(!is_null($xml) && count($xml->defaultCategory))
 			$this->defaultCategory = (string)$xml->defaultCategory;
-		if(count($xml->defaultUserId))
+		if(!is_null($jsonObject) && isset($jsonObject->defaultCategory))
+			$this->defaultCategory = (string)$jsonObject->defaultCategory;
+		if(!is_null($xml) && count($xml->defaultUserId))
 			$this->defaultUserId = (string)$xml->defaultUserId;
-		if(count($xml->defaultTags))
+		if(!is_null($jsonObject) && isset($jsonObject->defaultUserId))
+			$this->defaultUserId = (string)$jsonObject->defaultUserId;
+		if(!is_null($xml) && count($xml->defaultTags))
 			$this->defaultTags = (string)$xml->defaultTags;
-		if(count($xml->defaultAdminTags))
+		if(!is_null($jsonObject) && isset($jsonObject->defaultTags))
+			$this->defaultTags = (string)$jsonObject->defaultTags;
+		if(!is_null($xml) && count($xml->defaultAdminTags))
 			$this->defaultAdminTags = (string)$xml->defaultAdminTags;
-		if(count($xml->maxAttachmentSizeKbytes))
+		if(!is_null($jsonObject) && isset($jsonObject->defaultAdminTags))
+			$this->defaultAdminTags = (string)$jsonObject->defaultAdminTags;
+		if(!is_null($xml) && count($xml->maxAttachmentSizeKbytes))
 			$this->maxAttachmentSizeKbytes = (int)$xml->maxAttachmentSizeKbytes;
-		if(count($xml->maxAttachmentsPerMail))
+		if(!is_null($jsonObject) && isset($jsonObject->maxAttachmentSizeKbytes))
+			$this->maxAttachmentSizeKbytes = (int)$jsonObject->maxAttachmentSizeKbytes;
+		if(!is_null($xml) && count($xml->maxAttachmentsPerMail))
 			$this->maxAttachmentsPerMail = (int)$xml->maxAttachmentsPerMail;
+		if(!is_null($jsonObject) && isset($jsonObject->maxAttachmentsPerMail))
+			$this->maxAttachmentsPerMail = (int)$jsonObject->maxAttachmentsPerMail;
 	}
 	/**
 	 * 

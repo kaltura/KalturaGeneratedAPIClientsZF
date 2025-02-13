@@ -38,17 +38,24 @@ class Kaltura_Client_PlayReady_Type_PlayReadyContentKey extends Kaltura_Client_O
 		return 'KalturaPlayReadyContentKey';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->keyId))
+		if(!is_null($xml) && count($xml->keyId))
 			$this->keyId = (string)$xml->keyId;
-		if(count($xml->contentKey))
+		if(!is_null($jsonObject) && isset($jsonObject->keyId))
+			$this->keyId = (string)$jsonObject->keyId;
+		if(!is_null($xml) && count($xml->contentKey))
 			$this->contentKey = (string)$xml->contentKey;
+		if(!is_null($jsonObject) && isset($jsonObject->contentKey))
+			$this->contentKey = (string)$jsonObject->contentKey;
 	}
 	/**
 	 * Guid - key id of the specific content

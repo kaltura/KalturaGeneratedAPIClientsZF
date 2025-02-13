@@ -38,29 +38,48 @@ class Kaltura_Client_Type_UserFilter extends Kaltura_Client_Type_UserBaseFilter
 		return 'KalturaUserFilter';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->idOrScreenNameStartsWith))
+		if(!is_null($xml) && count($xml->idOrScreenNameStartsWith))
 			$this->idOrScreenNameStartsWith = (string)$xml->idOrScreenNameStartsWith;
-		if(count($xml->loginEnabledEqual))
+		if(!is_null($jsonObject) && isset($jsonObject->idOrScreenNameStartsWith))
+			$this->idOrScreenNameStartsWith = (string)$jsonObject->idOrScreenNameStartsWith;
+		if(!is_null($xml) && count($xml->loginEnabledEqual))
 			$this->loginEnabledEqual = (int)$xml->loginEnabledEqual;
-		if(count($xml->roleIdEqual))
+		if(!is_null($jsonObject) && isset($jsonObject->loginEnabledEqual))
+			$this->loginEnabledEqual = (int)$jsonObject->loginEnabledEqual;
+		if(!is_null($xml) && count($xml->roleIdEqual))
 			$this->roleIdEqual = (string)$xml->roleIdEqual;
-		if(count($xml->roleIdsEqual))
+		if(!is_null($jsonObject) && isset($jsonObject->roleIdEqual))
+			$this->roleIdEqual = (string)$jsonObject->roleIdEqual;
+		if(!is_null($xml) && count($xml->roleIdsEqual))
 			$this->roleIdsEqual = (string)$xml->roleIdsEqual;
-		if(count($xml->roleIdsIn))
+		if(!is_null($jsonObject) && isset($jsonObject->roleIdsEqual))
+			$this->roleIdsEqual = (string)$jsonObject->roleIdsEqual;
+		if(!is_null($xml) && count($xml->roleIdsIn))
 			$this->roleIdsIn = (string)$xml->roleIdsIn;
-		if(count($xml->firstNameOrLastNameStartsWith))
+		if(!is_null($jsonObject) && isset($jsonObject->roleIdsIn))
+			$this->roleIdsIn = (string)$jsonObject->roleIdsIn;
+		if(!is_null($xml) && count($xml->firstNameOrLastNameStartsWith))
 			$this->firstNameOrLastNameStartsWith = (string)$xml->firstNameOrLastNameStartsWith;
-		if(count($xml->permissionNamesMultiLikeOr))
+		if(!is_null($jsonObject) && isset($jsonObject->firstNameOrLastNameStartsWith))
+			$this->firstNameOrLastNameStartsWith = (string)$jsonObject->firstNameOrLastNameStartsWith;
+		if(!is_null($xml) && count($xml->permissionNamesMultiLikeOr))
 			$this->permissionNamesMultiLikeOr = (string)$xml->permissionNamesMultiLikeOr;
-		if(count($xml->permissionNamesMultiLikeAnd))
+		if(!is_null($jsonObject) && isset($jsonObject->permissionNamesMultiLikeOr))
+			$this->permissionNamesMultiLikeOr = (string)$jsonObject->permissionNamesMultiLikeOr;
+		if(!is_null($xml) && count($xml->permissionNamesMultiLikeAnd))
 			$this->permissionNamesMultiLikeAnd = (string)$xml->permissionNamesMultiLikeAnd;
+		if(!is_null($jsonObject) && isset($jsonObject->permissionNamesMultiLikeAnd))
+			$this->permissionNamesMultiLikeAnd = (string)$jsonObject->permissionNamesMultiLikeAnd;
 	}
 	/**
 	 * 

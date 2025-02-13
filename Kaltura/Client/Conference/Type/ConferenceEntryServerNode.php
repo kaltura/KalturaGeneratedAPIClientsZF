@@ -38,17 +38,24 @@ class Kaltura_Client_Conference_Type_ConferenceEntryServerNode extends Kaltura_C
 		return 'KalturaConferenceEntryServerNode';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->confRoomStatus))
+		if(!is_null($xml) && count($xml->confRoomStatus))
 			$this->confRoomStatus = (int)$xml->confRoomStatus;
-		if(count($xml->registered))
+		if(!is_null($jsonObject) && isset($jsonObject->confRoomStatus))
+			$this->confRoomStatus = (int)$jsonObject->confRoomStatus;
+		if(!is_null($xml) && count($xml->registered))
 			$this->registered = (int)$xml->registered;
+		if(!is_null($jsonObject) && isset($jsonObject->registered))
+			$this->registered = (int)$jsonObject->registered;
 	}
 	/**
 	 * 

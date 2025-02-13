@@ -38,17 +38,24 @@ class Kaltura_Client_Type_DynamicEmailContents extends Kaltura_Client_ObjectBase
 		return 'KalturaDynamicEmailContents';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->emailSubject))
+		if(!is_null($xml) && count($xml->emailSubject))
 			$this->emailSubject = (string)$xml->emailSubject;
-		if(count($xml->emailBody))
+		if(!is_null($jsonObject) && isset($jsonObject->emailSubject))
+			$this->emailSubject = (string)$jsonObject->emailSubject;
+		if(!is_null($xml) && count($xml->emailBody))
 			$this->emailBody = (string)$xml->emailBody;
+		if(!is_null($jsonObject) && isset($jsonObject->emailBody))
+			$this->emailBody = (string)$jsonObject->emailBody;
 	}
 	/**
 	 * The subject of the customized email

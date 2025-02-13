@@ -38,19 +38,28 @@ class Kaltura_Client_Type_FileContainer extends Kaltura_Client_ObjectBase
 		return 'KalturaFileContainer';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->filePath))
+		if(!is_null($xml) && count($xml->filePath))
 			$this->filePath = (string)$xml->filePath;
-		if(count($xml->encryptionKey))
+		if(!is_null($jsonObject) && isset($jsonObject->filePath))
+			$this->filePath = (string)$jsonObject->filePath;
+		if(!is_null($xml) && count($xml->encryptionKey))
 			$this->encryptionKey = (string)$xml->encryptionKey;
-		if(count($xml->fileSize))
+		if(!is_null($jsonObject) && isset($jsonObject->encryptionKey))
+			$this->encryptionKey = (string)$jsonObject->encryptionKey;
+		if(!is_null($xml) && count($xml->fileSize))
 			$this->fileSize = (int)$xml->fileSize;
+		if(!is_null($jsonObject) && isset($jsonObject->fileSize))
+			$this->fileSize = (int)$jsonObject->fileSize;
 	}
 	/**
 	 * 

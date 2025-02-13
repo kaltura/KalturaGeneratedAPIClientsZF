@@ -38,17 +38,24 @@ class Kaltura_Client_Beacon_Type_BeaconEnhanceFilter extends Kaltura_Client_Type
 		return 'KalturaBeaconEnhanceFilter';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->externalElasticQueryObject))
+		if(!is_null($xml) && count($xml->externalElasticQueryObject))
 			$this->externalElasticQueryObject = (string)$xml->externalElasticQueryObject;
-		if(count($xml->indexTypeEqual))
+		if(!is_null($jsonObject) && isset($jsonObject->externalElasticQueryObject))
+			$this->externalElasticQueryObject = (string)$jsonObject->externalElasticQueryObject;
+		if(!is_null($xml) && count($xml->indexTypeEqual))
 			$this->indexTypeEqual = (string)$xml->indexTypeEqual;
+		if(!is_null($jsonObject) && isset($jsonObject->indexTypeEqual))
+			$this->indexTypeEqual = (string)$jsonObject->indexTypeEqual;
 	}
 	/**
 	 * 

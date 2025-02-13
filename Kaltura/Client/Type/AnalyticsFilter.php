@@ -38,32 +38,54 @@ class Kaltura_Client_Type_AnalyticsFilter extends Kaltura_Client_ObjectBase
 		return 'KalturaAnalyticsFilter';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->from_time))
+		if(!is_null($xml) && count($xml->from_time))
 			$this->from_time = (string)$xml->from_time;
-		if(count($xml->to_time))
+		if(!is_null($jsonObject) && isset($jsonObject->from_time))
+			$this->from_time = (string)$jsonObject->from_time;
+		if(!is_null($xml) && count($xml->to_time))
 			$this->to_time = (string)$xml->to_time;
-		if(count($xml->metrics))
+		if(!is_null($jsonObject) && isset($jsonObject->to_time))
+			$this->to_time = (string)$jsonObject->to_time;
+		if(!is_null($xml) && count($xml->metrics))
 			$this->metrics = (string)$xml->metrics;
-		if(count($xml->utcOffset))
+		if(!is_null($jsonObject) && isset($jsonObject->metrics))
+			$this->metrics = (string)$jsonObject->metrics;
+		if(!is_null($xml) && count($xml->utcOffset))
 			$this->utcOffset = (float)$xml->utcOffset;
-		if(count($xml->dimensions))
+		if(!is_null($jsonObject) && isset($jsonObject->utcOffset))
+			$this->utcOffset = (float)$jsonObject->utcOffset;
+		if(!is_null($xml) && count($xml->dimensions))
 			$this->dimensions = (string)$xml->dimensions;
-		if(count($xml->filters))
+		if(!is_null($jsonObject) && isset($jsonObject->dimensions))
+			$this->dimensions = (string)$jsonObject->dimensions;
+		if(!is_null($xml) && count($xml->filters))
 		{
 			if(empty($xml->filters))
 				$this->filters = array();
 			else
 				$this->filters = Kaltura_Client_ParseUtils::unmarshalArray($xml->filters, "KalturaReportFilter");
 		}
-		if(count($xml->orderBy))
+		if(!is_null($jsonObject) && isset($jsonObject->filters))
+		{
+			if(empty($jsonObject->filters))
+				$this->filters = array();
+			else
+				$this->filters = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsonObject->filters, "KalturaReportFilter");
+		}
+		if(!is_null($xml) && count($xml->orderBy))
 			$this->orderBy = (string)$xml->orderBy;
+		if(!is_null($jsonObject) && isset($jsonObject->orderBy))
+			$this->orderBy = (string)$jsonObject->orderBy;
 	}
 	/**
 	 * Query start time (in local time) MM/dd/yyyy HH:mi

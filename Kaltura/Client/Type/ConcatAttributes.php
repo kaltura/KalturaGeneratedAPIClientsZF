@@ -38,15 +38,20 @@ class Kaltura_Client_Type_ConcatAttributes extends Kaltura_Client_Type_Operation
 		return 'KalturaConcatAttributes';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->resource) && !empty($xml->resource))
+		if(!is_null($xml) && count($xml->resource) && !empty($xml->resource))
 			$this->resource = Kaltura_Client_ParseUtils::unmarshalObject($xml->resource, "KalturaDataCenterContentResource");
+		if(!is_null($jsonObject) && isset($jsonObject->resource) && !empty($jsonObject->resource))
+			$this->resource = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsonObject->resource, "KalturaDataCenterContentResource");
 	}
 	/**
 	 * The resource to be concatenated

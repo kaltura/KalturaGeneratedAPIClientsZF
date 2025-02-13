@@ -38,17 +38,24 @@ class Kaltura_Client_MetroPcsDistribution_Type_MetroPcsDistributionJobProviderDa
 		return 'KalturaMetroPcsDistributionJobProviderData';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->assetLocalPaths))
+		if(!is_null($xml) && count($xml->assetLocalPaths))
 			$this->assetLocalPaths = (string)$xml->assetLocalPaths;
-		if(count($xml->thumbUrls))
+		if(!is_null($jsonObject) && isset($jsonObject->assetLocalPaths))
+			$this->assetLocalPaths = (string)$jsonObject->assetLocalPaths;
+		if(!is_null($xml) && count($xml->thumbUrls))
 			$this->thumbUrls = (string)$xml->thumbUrls;
+		if(!is_null($jsonObject) && isset($jsonObject->thumbUrls))
+			$this->thumbUrls = (string)$jsonObject->thumbUrls;
 	}
 	/**
 	 * 

@@ -38,34 +38,58 @@ class Kaltura_Client_Type_Playlist extends Kaltura_Client_Type_BaseEntry
 		return 'KalturaPlaylist';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->playlistContent))
+		if(!is_null($xml) && count($xml->playlistContent))
 			$this->playlistContent = (string)$xml->playlistContent;
-		if(count($xml->filters))
+		if(!is_null($jsonObject) && isset($jsonObject->playlistContent))
+			$this->playlistContent = (string)$jsonObject->playlistContent;
+		if(!is_null($xml) && count($xml->filters))
 		{
 			if(empty($xml->filters))
 				$this->filters = array();
 			else
 				$this->filters = Kaltura_Client_ParseUtils::unmarshalArray($xml->filters, "KalturaMediaEntryFilterForPlaylist");
 		}
-		if(count($xml->totalResults))
+		if(!is_null($jsonObject) && isset($jsonObject->filters))
+		{
+			if(empty($jsonObject->filters))
+				$this->filters = array();
+			else
+				$this->filters = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsonObject->filters, "KalturaMediaEntryFilterForPlaylist");
+		}
+		if(!is_null($xml) && count($xml->totalResults))
 			$this->totalResults = (int)$xml->totalResults;
-		if(count($xml->playlistType))
+		if(!is_null($jsonObject) && isset($jsonObject->totalResults))
+			$this->totalResults = (int)$jsonObject->totalResults;
+		if(!is_null($xml) && count($xml->playlistType))
 			$this->playlistType = (int)$xml->playlistType;
-		if(count($xml->plays))
+		if(!is_null($jsonObject) && isset($jsonObject->playlistType))
+			$this->playlistType = (int)$jsonObject->playlistType;
+		if(!is_null($xml) && count($xml->plays))
 			$this->plays = (int)$xml->plays;
-		if(count($xml->views))
+		if(!is_null($jsonObject) && isset($jsonObject->plays))
+			$this->plays = (int)$jsonObject->plays;
+		if(!is_null($xml) && count($xml->views))
 			$this->views = (int)$xml->views;
-		if(count($xml->duration))
+		if(!is_null($jsonObject) && isset($jsonObject->views))
+			$this->views = (int)$jsonObject->views;
+		if(!is_null($xml) && count($xml->duration))
 			$this->duration = (int)$xml->duration;
-		if(count($xml->executeUrl))
+		if(!is_null($jsonObject) && isset($jsonObject->duration))
+			$this->duration = (int)$jsonObject->duration;
+		if(!is_null($xml) && count($xml->executeUrl))
 			$this->executeUrl = (string)$xml->executeUrl;
+		if(!is_null($jsonObject) && isset($jsonObject->executeUrl))
+			$this->executeUrl = (string)$jsonObject->executeUrl;
 	}
 	/**
 	 * Content of the playlist - 

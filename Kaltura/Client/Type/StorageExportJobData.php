@@ -38,33 +38,56 @@ class Kaltura_Client_Type_StorageExportJobData extends Kaltura_Client_Type_Stora
 		return 'KalturaStorageExportJobData';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->force))
+		if(!is_null($xml) && count($xml->force))
 		{
 			if(!empty($xml->force) && ((int) $xml->force === 1 || strtolower((string)$xml->force) === 'true'))
 				$this->force = true;
 			else
 				$this->force = false;
 		}
-		if(count($xml->createLink))
+		if(!is_null($jsonObject) && isset($jsonObject->force))
+		{
+			if(!empty($jsonObject->force) && ((int) $jsonObject->force === 1 || strtolower((string)$jsonObject->force) === 'true'))
+				$this->force = true;
+			else
+				$this->force = false;
+		}
+		if(!is_null($xml) && count($xml->createLink))
 		{
 			if(!empty($xml->createLink) && ((int) $xml->createLink === 1 || strtolower((string)$xml->createLink) === 'true'))
 				$this->createLink = true;
 			else
 				$this->createLink = false;
 		}
-		if(count($xml->assetId))
+		if(!is_null($jsonObject) && isset($jsonObject->createLink))
+		{
+			if(!empty($jsonObject->createLink) && ((int) $jsonObject->createLink === 1 || strtolower((string)$jsonObject->createLink) === 'true'))
+				$this->createLink = true;
+			else
+				$this->createLink = false;
+		}
+		if(!is_null($xml) && count($xml->assetId))
 			$this->assetId = (string)$xml->assetId;
-		if(count($xml->externalUrl))
+		if(!is_null($jsonObject) && isset($jsonObject->assetId))
+			$this->assetId = (string)$jsonObject->assetId;
+		if(!is_null($xml) && count($xml->externalUrl))
 			$this->externalUrl = (string)$xml->externalUrl;
-		if(count($xml->port))
+		if(!is_null($jsonObject) && isset($jsonObject->externalUrl))
+			$this->externalUrl = (string)$jsonObject->externalUrl;
+		if(!is_null($xml) && count($xml->port))
 			$this->port = (int)$xml->port;
+		if(!is_null($jsonObject) && isset($jsonObject->port))
+			$this->port = (int)$jsonObject->port;
 	}
 	/**
 	 * 

@@ -38,23 +38,36 @@ class Kaltura_Client_Document_Type_ImageFlavorParams extends Kaltura_Client_Type
 		return 'KalturaImageFlavorParams';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->densityWidth))
+		if(!is_null($xml) && count($xml->densityWidth))
 			$this->densityWidth = (int)$xml->densityWidth;
-		if(count($xml->densityHeight))
+		if(!is_null($jsonObject) && isset($jsonObject->densityWidth))
+			$this->densityWidth = (int)$jsonObject->densityWidth;
+		if(!is_null($xml) && count($xml->densityHeight))
 			$this->densityHeight = (int)$xml->densityHeight;
-		if(count($xml->sizeWidth))
+		if(!is_null($jsonObject) && isset($jsonObject->densityHeight))
+			$this->densityHeight = (int)$jsonObject->densityHeight;
+		if(!is_null($xml) && count($xml->sizeWidth))
 			$this->sizeWidth = (int)$xml->sizeWidth;
-		if(count($xml->sizeHeight))
+		if(!is_null($jsonObject) && isset($jsonObject->sizeWidth))
+			$this->sizeWidth = (int)$jsonObject->sizeWidth;
+		if(!is_null($xml) && count($xml->sizeHeight))
 			$this->sizeHeight = (int)$xml->sizeHeight;
-		if(count($xml->depth))
+		if(!is_null($jsonObject) && isset($jsonObject->sizeHeight))
+			$this->sizeHeight = (int)$jsonObject->sizeHeight;
+		if(!is_null($xml) && count($xml->depth))
 			$this->depth = (int)$xml->depth;
+		if(!is_null($jsonObject) && isset($jsonObject->depth))
+			$this->depth = (int)$jsonObject->depth;
 	}
 	/**
 	 * 

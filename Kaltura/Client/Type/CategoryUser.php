@@ -38,33 +38,56 @@ class Kaltura_Client_Type_CategoryUser extends Kaltura_Client_ObjectBase
 		return 'KalturaCategoryUser';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->categoryId))
+		if(!is_null($xml) && count($xml->categoryId))
 			$this->categoryId = (int)$xml->categoryId;
-		if(count($xml->userId))
+		if(!is_null($jsonObject) && isset($jsonObject->categoryId))
+			$this->categoryId = (int)$jsonObject->categoryId;
+		if(!is_null($xml) && count($xml->userId))
 			$this->userId = (string)$xml->userId;
-		if(count($xml->partnerId))
+		if(!is_null($jsonObject) && isset($jsonObject->userId))
+			$this->userId = (string)$jsonObject->userId;
+		if(!is_null($xml) && count($xml->partnerId))
 			$this->partnerId = (int)$xml->partnerId;
-		if(count($xml->permissionLevel))
+		if(!is_null($jsonObject) && isset($jsonObject->partnerId))
+			$this->partnerId = (int)$jsonObject->partnerId;
+		if(!is_null($xml) && count($xml->permissionLevel))
 			$this->permissionLevel = (int)$xml->permissionLevel;
-		if(count($xml->status))
+		if(!is_null($jsonObject) && isset($jsonObject->permissionLevel))
+			$this->permissionLevel = (int)$jsonObject->permissionLevel;
+		if(!is_null($xml) && count($xml->status))
 			$this->status = (int)$xml->status;
-		if(count($xml->createdAt))
+		if(!is_null($jsonObject) && isset($jsonObject->status))
+			$this->status = (int)$jsonObject->status;
+		if(!is_null($xml) && count($xml->createdAt))
 			$this->createdAt = (int)$xml->createdAt;
-		if(count($xml->updatedAt))
+		if(!is_null($jsonObject) && isset($jsonObject->createdAt))
+			$this->createdAt = (int)$jsonObject->createdAt;
+		if(!is_null($xml) && count($xml->updatedAt))
 			$this->updatedAt = (int)$xml->updatedAt;
-		if(count($xml->updateMethod))
+		if(!is_null($jsonObject) && isset($jsonObject->updatedAt))
+			$this->updatedAt = (int)$jsonObject->updatedAt;
+		if(!is_null($xml) && count($xml->updateMethod))
 			$this->updateMethod = (int)$xml->updateMethod;
-		if(count($xml->categoryFullIds))
+		if(!is_null($jsonObject) && isset($jsonObject->updateMethod))
+			$this->updateMethod = (int)$jsonObject->updateMethod;
+		if(!is_null($xml) && count($xml->categoryFullIds))
 			$this->categoryFullIds = (string)$xml->categoryFullIds;
-		if(count($xml->permissionNames))
+		if(!is_null($jsonObject) && isset($jsonObject->categoryFullIds))
+			$this->categoryFullIds = (string)$jsonObject->categoryFullIds;
+		if(!is_null($xml) && count($xml->permissionNames))
 			$this->permissionNames = (string)$xml->permissionNames;
+		if(!is_null($jsonObject) && isset($jsonObject->permissionNames))
+			$this->permissionNames = (string)$jsonObject->permissionNames;
 	}
 	/**
 	 * 

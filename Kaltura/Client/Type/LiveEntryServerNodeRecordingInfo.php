@@ -38,19 +38,28 @@ class Kaltura_Client_Type_LiveEntryServerNodeRecordingInfo extends Kaltura_Clien
 		return 'KalturaLiveEntryServerNodeRecordingInfo';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->recordedEntryId))
+		if(!is_null($xml) && count($xml->recordedEntryId))
 			$this->recordedEntryId = (string)$xml->recordedEntryId;
-		if(count($xml->duration))
+		if(!is_null($jsonObject) && isset($jsonObject->recordedEntryId))
+			$this->recordedEntryId = (string)$jsonObject->recordedEntryId;
+		if(!is_null($xml) && count($xml->duration))
 			$this->duration = (int)$xml->duration;
-		if(count($xml->recordingStatus))
+		if(!is_null($jsonObject) && isset($jsonObject->duration))
+			$this->duration = (int)$jsonObject->duration;
+		if(!is_null($xml) && count($xml->recordingStatus))
 			$this->recordingStatus = (int)$xml->recordingStatus;
+		if(!is_null($jsonObject) && isset($jsonObject->recordingStatus))
+			$this->recordingStatus = (int)$jsonObject->recordingStatus;
 	}
 	/**
 	 * 

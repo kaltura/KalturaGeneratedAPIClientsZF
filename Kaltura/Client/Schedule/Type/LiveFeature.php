@@ -38,19 +38,28 @@ abstract class Kaltura_Client_Schedule_Type_LiveFeature extends Kaltura_Client_O
 		return 'KalturaLiveFeature';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->systemName))
+		if(!is_null($xml) && count($xml->systemName))
 			$this->systemName = (string)$xml->systemName;
-		if(count($xml->preStartTime))
+		if(!is_null($jsonObject) && isset($jsonObject->systemName))
+			$this->systemName = (string)$jsonObject->systemName;
+		if(!is_null($xml) && count($xml->preStartTime))
 			$this->preStartTime = (int)$xml->preStartTime;
-		if(count($xml->postEndTime))
+		if(!is_null($jsonObject) && isset($jsonObject->preStartTime))
+			$this->preStartTime = (int)$jsonObject->preStartTime;
+		if(!is_null($xml) && count($xml->postEndTime))
 			$this->postEndTime = (int)$xml->postEndTime;
+		if(!is_null($jsonObject) && isset($jsonObject->postEndTime))
+			$this->postEndTime = (int)$jsonObject->postEndTime;
 	}
 	/**
 	 * 

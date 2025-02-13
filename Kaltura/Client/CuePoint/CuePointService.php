@@ -50,12 +50,18 @@ class Kaltura_Client_CuePoint_CuePointService extends Kaltura_Client_ServiceBase
 		$this->client->queueServiceActionCall("cuepoint_cuepoint", "add", "KalturaCuePoint", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaCuePoint");
-		$this->client->validateObjectType($resultObject, "Kaltura_Client_CuePoint_Type_CuePoint");
-		return $resultObject;
+		$rawResult = $this->client->doQueue();
+		if ($this->client->getConfig()->format === Kaltura_Client_ClientBase::KALTURA_SERVICE_FORMAT_JSON) {
+			$jsObject = json_decode($rawResult);
+			$resultObject = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsObject);
+			return $resultObject;
+		} else {
+			$resultXmlObject = new \SimpleXMLElement($rawResult);
+			$this->client->checkIfError($resultXmlObject->result);
+			$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaCuePoint");
+			$this->client->validateObjectType($resultObject, "Kaltura_Client_CuePoint_Type_CuePoint");
+		}
+			return $resultObject;
 	}
 
 	/**
@@ -70,12 +76,18 @@ class Kaltura_Client_CuePoint_CuePointService extends Kaltura_Client_ServiceBase
 		$this->client->queueServiceActionCall("cuepoint_cuepoint", "addFromBulk",  "KalturaCuePointListResponse", $kparams, $kfiles);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaCuePointListResponse");
-		$this->client->validateObjectType($resultObject, "Kaltura_Client_CuePoint_Type_CuePointListResponse");
-		return $resultObject;
+		$rawResult = $this->client->doQueue();
+		if ($this->client->getConfig()->format === Kaltura_Client_ClientBase::KALTURA_SERVICE_FORMAT_JSON) {
+			$jsObject = json_decode($rawResult);
+			$resultObject = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsObject);
+			return $resultObject;
+		} else {
+			$resultXmlObject = new \SimpleXMLElement($rawResult);
+			$this->client->checkIfError($resultXmlObject->result);
+			$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaCuePointListResponse");
+			$this->client->validateObjectType($resultObject, "Kaltura_Client_CuePoint_Type_CuePointListResponse");
+		}
+			return $resultObject;
 	}
 
 	/**
@@ -90,12 +102,18 @@ class Kaltura_Client_CuePoint_CuePointService extends Kaltura_Client_ServiceBase
 		$this->client->queueServiceActionCall("cuepoint_cuepoint", "clone", "KalturaCuePoint", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaCuePoint");
-		$this->client->validateObjectType($resultObject, "Kaltura_Client_CuePoint_Type_CuePoint");
-		return $resultObject;
+		$rawResult = $this->client->doQueue();
+		if ($this->client->getConfig()->format === Kaltura_Client_ClientBase::KALTURA_SERVICE_FORMAT_JSON) {
+			$jsObject = json_decode($rawResult);
+			$resultObject = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsObject);
+			return $resultObject;
+		} else {
+			$resultXmlObject = new \SimpleXMLElement($rawResult);
+			$this->client->checkIfError($resultXmlObject->result);
+			$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaCuePoint");
+			$this->client->validateObjectType($resultObject, "Kaltura_Client_CuePoint_Type_CuePoint");
+		}
+			return $resultObject;
 	}
 
 	/**
@@ -110,11 +128,17 @@ class Kaltura_Client_CuePoint_CuePointService extends Kaltura_Client_ServiceBase
 		$this->client->queueServiceActionCall("cuepoint_cuepoint", "count", null, $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = (int)Kaltura_Client_ParseUtils::unmarshalSimpleType($resultXmlObject->result);
-		return $resultObject;
+		$rawResult = $this->client->doQueue();
+		if ($this->client->getConfig()->format === Kaltura_Client_ClientBase::KALTURA_SERVICE_FORMAT_JSON) {
+			$jsObject = json_decode($rawResult);
+			$resultObject = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsObject);
+			return $resultObject;
+		} else {
+			$resultXmlObject = new \SimpleXMLElement($rawResult);
+			$this->client->checkIfError($resultXmlObject->result);
+			$resultObject = (int)Kaltura_Client_ParseUtils::unmarshalSimpleType($resultXmlObject->result);
+		}
+			return $resultObject;
 	}
 
 	/**
@@ -128,9 +152,15 @@ class Kaltura_Client_CuePoint_CuePointService extends Kaltura_Client_ServiceBase
 		$this->client->queueServiceActionCall("cuepoint_cuepoint", "delete", null, $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
+		$rawResult = $this->client->doQueue();
+		if ($this->client->getConfig()->format === Kaltura_Client_ClientBase::KALTURA_SERVICE_FORMAT_JSON) {
+			$jsObject = json_decode($rawResult);
+			$resultObject = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsObject);
+			return $resultObject;
+		} else {
+			$resultXmlObject = new \SimpleXMLElement($rawResult);
+			$this->client->checkIfError($resultXmlObject->result);
+		}
 	}
 
 	/**
@@ -144,12 +174,18 @@ class Kaltura_Client_CuePoint_CuePointService extends Kaltura_Client_ServiceBase
 		$this->client->queueServiceActionCall("cuepoint_cuepoint", "get", "KalturaCuePoint", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaCuePoint");
-		$this->client->validateObjectType($resultObject, "Kaltura_Client_CuePoint_Type_CuePoint");
-		return $resultObject;
+		$rawResult = $this->client->doQueue();
+		if ($this->client->getConfig()->format === Kaltura_Client_ClientBase::KALTURA_SERVICE_FORMAT_JSON) {
+			$jsObject = json_decode($rawResult);
+			$resultObject = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsObject);
+			return $resultObject;
+		} else {
+			$resultXmlObject = new \SimpleXMLElement($rawResult);
+			$this->client->checkIfError($resultXmlObject->result);
+			$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaCuePoint");
+			$this->client->validateObjectType($resultObject, "Kaltura_Client_CuePoint_Type_CuePoint");
+		}
+			return $resultObject;
 	}
 
 	/**
@@ -166,12 +202,18 @@ class Kaltura_Client_CuePoint_CuePointService extends Kaltura_Client_ServiceBase
 		$this->client->queueServiceActionCall("cuepoint_cuepoint", "list", "KalturaCuePointListResponse", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaCuePointListResponse");
-		$this->client->validateObjectType($resultObject, "Kaltura_Client_CuePoint_Type_CuePointListResponse");
-		return $resultObject;
+		$rawResult = $this->client->doQueue();
+		if ($this->client->getConfig()->format === Kaltura_Client_ClientBase::KALTURA_SERVICE_FORMAT_JSON) {
+			$jsObject = json_decode($rawResult);
+			$resultObject = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsObject);
+			return $resultObject;
+		} else {
+			$resultXmlObject = new \SimpleXMLElement($rawResult);
+			$this->client->checkIfError($resultXmlObject->result);
+			$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaCuePointListResponse");
+			$this->client->validateObjectType($resultObject, "Kaltura_Client_CuePoint_Type_CuePointListResponse");
+		}
+			return $resultObject;
 	}
 
 	/**
@@ -190,7 +232,7 @@ class Kaltura_Client_CuePoint_CuePointService extends Kaltura_Client_ServiceBase
 			$this->client->addParam($kparams, "pager", $pager->toParams());
 		$this->client->queueServiceActionCall('cuepoint_cuepoint', 'serveBulk', null, $kparams);
 		$resultObject = $this->client->getServeUrl();
-		return $resultObject;
+			return $resultObject;
 	}
 
 	/**
@@ -205,12 +247,18 @@ class Kaltura_Client_CuePoint_CuePointService extends Kaltura_Client_ServiceBase
 		$this->client->queueServiceActionCall("cuepoint_cuepoint", "update", "KalturaCuePoint", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaCuePoint");
-		$this->client->validateObjectType($resultObject, "Kaltura_Client_CuePoint_Type_CuePoint");
-		return $resultObject;
+		$rawResult = $this->client->doQueue();
+		if ($this->client->getConfig()->format === Kaltura_Client_ClientBase::KALTURA_SERVICE_FORMAT_JSON) {
+			$jsObject = json_decode($rawResult);
+			$resultObject = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsObject);
+			return $resultObject;
+		} else {
+			$resultXmlObject = new \SimpleXMLElement($rawResult);
+			$this->client->checkIfError($resultXmlObject->result);
+			$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaCuePoint");
+			$this->client->validateObjectType($resultObject, "Kaltura_Client_CuePoint_Type_CuePoint");
+		}
+			return $resultObject;
 	}
 
 	/**
@@ -226,12 +274,18 @@ class Kaltura_Client_CuePoint_CuePointService extends Kaltura_Client_ServiceBase
 		$this->client->queueServiceActionCall("cuepoint_cuepoint", "updateCuePointsTimes", "KalturaCuePoint", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
-		$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaCuePoint");
-		$this->client->validateObjectType($resultObject, "Kaltura_Client_CuePoint_Type_CuePoint");
-		return $resultObject;
+		$rawResult = $this->client->doQueue();
+		if ($this->client->getConfig()->format === Kaltura_Client_ClientBase::KALTURA_SERVICE_FORMAT_JSON) {
+			$jsObject = json_decode($rawResult);
+			$resultObject = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsObject);
+			return $resultObject;
+		} else {
+			$resultXmlObject = new \SimpleXMLElement($rawResult);
+			$this->client->checkIfError($resultXmlObject->result);
+			$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaCuePoint");
+			$this->client->validateObjectType($resultObject, "Kaltura_Client_CuePoint_Type_CuePoint");
+		}
+			return $resultObject;
 	}
 
 	/**
@@ -246,8 +300,14 @@ class Kaltura_Client_CuePoint_CuePointService extends Kaltura_Client_ServiceBase
 		$this->client->queueServiceActionCall("cuepoint_cuepoint", "updateStatus", null, $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();
-		$resultXml = $this->client->doQueue();
-		$resultXmlObject = new \SimpleXMLElement($resultXml);
-		$this->client->checkIfError($resultXmlObject->result);
+		$rawResult = $this->client->doQueue();
+		if ($this->client->getConfig()->format === Kaltura_Client_ClientBase::KALTURA_SERVICE_FORMAT_JSON) {
+			$jsObject = json_decode($rawResult);
+			$resultObject = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsObject);
+			return $resultObject;
+		} else {
+			$resultXmlObject = new \SimpleXMLElement($rawResult);
+			$this->client->checkIfError($resultXmlObject->result);
+		}
 	}
 }

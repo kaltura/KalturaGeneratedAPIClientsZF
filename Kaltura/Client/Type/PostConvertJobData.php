@@ -38,34 +38,58 @@ class Kaltura_Client_Type_PostConvertJobData extends Kaltura_Client_Type_Convart
 		return 'KalturaPostConvertJobData';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->flavorAssetId))
+		if(!is_null($xml) && count($xml->flavorAssetId))
 			$this->flavorAssetId = (string)$xml->flavorAssetId;
-		if(count($xml->flavorAssetEncryptionKey))
+		if(!is_null($jsonObject) && isset($jsonObject->flavorAssetId))
+			$this->flavorAssetId = (string)$jsonObject->flavorAssetId;
+		if(!is_null($xml) && count($xml->flavorAssetEncryptionKey))
 			$this->flavorAssetEncryptionKey = (string)$xml->flavorAssetEncryptionKey;
-		if(count($xml->createThumb))
+		if(!is_null($jsonObject) && isset($jsonObject->flavorAssetEncryptionKey))
+			$this->flavorAssetEncryptionKey = (string)$jsonObject->flavorAssetEncryptionKey;
+		if(!is_null($xml) && count($xml->createThumb))
 		{
 			if(!empty($xml->createThumb) && ((int) $xml->createThumb === 1 || strtolower((string)$xml->createThumb) === 'true'))
 				$this->createThumb = true;
 			else
 				$this->createThumb = false;
 		}
-		if(count($xml->thumbPath))
+		if(!is_null($jsonObject) && isset($jsonObject->createThumb))
+		{
+			if(!empty($jsonObject->createThumb) && ((int) $jsonObject->createThumb === 1 || strtolower((string)$jsonObject->createThumb) === 'true'))
+				$this->createThumb = true;
+			else
+				$this->createThumb = false;
+		}
+		if(!is_null($xml) && count($xml->thumbPath))
 			$this->thumbPath = (string)$xml->thumbPath;
-		if(count($xml->thumbOffset))
+		if(!is_null($jsonObject) && isset($jsonObject->thumbPath))
+			$this->thumbPath = (string)$jsonObject->thumbPath;
+		if(!is_null($xml) && count($xml->thumbOffset))
 			$this->thumbOffset = (int)$xml->thumbOffset;
-		if(count($xml->thumbHeight))
+		if(!is_null($jsonObject) && isset($jsonObject->thumbOffset))
+			$this->thumbOffset = (int)$jsonObject->thumbOffset;
+		if(!is_null($xml) && count($xml->thumbHeight))
 			$this->thumbHeight = (int)$xml->thumbHeight;
-		if(count($xml->thumbBitrate))
+		if(!is_null($jsonObject) && isset($jsonObject->thumbHeight))
+			$this->thumbHeight = (int)$jsonObject->thumbHeight;
+		if(!is_null($xml) && count($xml->thumbBitrate))
 			$this->thumbBitrate = (int)$xml->thumbBitrate;
-		if(count($xml->customData))
+		if(!is_null($jsonObject) && isset($jsonObject->thumbBitrate))
+			$this->thumbBitrate = (int)$jsonObject->thumbBitrate;
+		if(!is_null($xml) && count($xml->customData))
 			$this->customData = (string)$xml->customData;
+		if(!is_null($jsonObject) && isset($jsonObject->customData))
+			$this->customData = (string)$jsonObject->customData;
 	}
 	/**
 	 * 

@@ -38,19 +38,28 @@ class Kaltura_Client_Audit_Type_AuditTrailChangeItem extends Kaltura_Client_Obje
 		return 'KalturaAuditTrailChangeItem';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->descriptor))
+		if(!is_null($xml) && count($xml->descriptor))
 			$this->descriptor = (string)$xml->descriptor;
-		if(count($xml->oldValue))
+		if(!is_null($jsonObject) && isset($jsonObject->descriptor))
+			$this->descriptor = (string)$jsonObject->descriptor;
+		if(!is_null($xml) && count($xml->oldValue))
 			$this->oldValue = (string)$xml->oldValue;
-		if(count($xml->newValue))
+		if(!is_null($jsonObject) && isset($jsonObject->oldValue))
+			$this->oldValue = (string)$jsonObject->oldValue;
+		if(!is_null($xml) && count($xml->newValue))
 			$this->newValue = (string)$xml->newValue;
+		if(!is_null($jsonObject) && isset($jsonObject->newValue))
+			$this->newValue = (string)$jsonObject->newValue;
 	}
 	/**
 	 * 

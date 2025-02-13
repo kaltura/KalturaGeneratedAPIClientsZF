@@ -38,25 +38,40 @@ class Kaltura_Client_Type_AssetParamsOutput extends Kaltura_Client_Type_AssetPar
 		return 'KalturaAssetParamsOutput';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->assetParamsId))
+		if(!is_null($xml) && count($xml->assetParamsId))
 			$this->assetParamsId = (int)$xml->assetParamsId;
-		if(count($xml->assetParamsVersion))
+		if(!is_null($jsonObject) && isset($jsonObject->assetParamsId))
+			$this->assetParamsId = (int)$jsonObject->assetParamsId;
+		if(!is_null($xml) && count($xml->assetParamsVersion))
 			$this->assetParamsVersion = (string)$xml->assetParamsVersion;
-		if(count($xml->assetId))
+		if(!is_null($jsonObject) && isset($jsonObject->assetParamsVersion))
+			$this->assetParamsVersion = (string)$jsonObject->assetParamsVersion;
+		if(!is_null($xml) && count($xml->assetId))
 			$this->assetId = (string)$xml->assetId;
-		if(count($xml->assetVersion))
+		if(!is_null($jsonObject) && isset($jsonObject->assetId))
+			$this->assetId = (string)$jsonObject->assetId;
+		if(!is_null($xml) && count($xml->assetVersion))
 			$this->assetVersion = (string)$xml->assetVersion;
-		if(count($xml->readyBehavior))
+		if(!is_null($jsonObject) && isset($jsonObject->assetVersion))
+			$this->assetVersion = (string)$jsonObject->assetVersion;
+		if(!is_null($xml) && count($xml->readyBehavior))
 			$this->readyBehavior = (int)$xml->readyBehavior;
-		if(count($xml->format))
+		if(!is_null($jsonObject) && isset($jsonObject->readyBehavior))
+			$this->readyBehavior = (int)$jsonObject->readyBehavior;
+		if(!is_null($xml) && count($xml->format))
 			$this->format = (string)$xml->format;
+		if(!is_null($jsonObject) && isset($jsonObject->format))
+			$this->format = (string)$jsonObject->format;
 	}
 	/**
 	 * 

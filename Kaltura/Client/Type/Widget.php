@@ -38,57 +38,104 @@ class Kaltura_Client_Type_Widget extends Kaltura_Client_ObjectBase
 		return 'KalturaWidget';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->id))
+		if(!is_null($xml) && count($xml->id))
 			$this->id = (string)$xml->id;
-		if(count($xml->sourceWidgetId))
+		if(!is_null($jsonObject) && isset($jsonObject->id))
+			$this->id = (string)$jsonObject->id;
+		if(!is_null($xml) && count($xml->sourceWidgetId))
 			$this->sourceWidgetId = (string)$xml->sourceWidgetId;
-		if(count($xml->rootWidgetId))
+		if(!is_null($jsonObject) && isset($jsonObject->sourceWidgetId))
+			$this->sourceWidgetId = (string)$jsonObject->sourceWidgetId;
+		if(!is_null($xml) && count($xml->rootWidgetId))
 			$this->rootWidgetId = (string)$xml->rootWidgetId;
-		if(count($xml->partnerId))
+		if(!is_null($jsonObject) && isset($jsonObject->rootWidgetId))
+			$this->rootWidgetId = (string)$jsonObject->rootWidgetId;
+		if(!is_null($xml) && count($xml->partnerId))
 			$this->partnerId = (int)$xml->partnerId;
-		if(count($xml->entryId))
+		if(!is_null($jsonObject) && isset($jsonObject->partnerId))
+			$this->partnerId = (int)$jsonObject->partnerId;
+		if(!is_null($xml) && count($xml->entryId))
 			$this->entryId = (string)$xml->entryId;
-		if(count($xml->uiConfId))
+		if(!is_null($jsonObject) && isset($jsonObject->entryId))
+			$this->entryId = (string)$jsonObject->entryId;
+		if(!is_null($xml) && count($xml->uiConfId))
 			$this->uiConfId = (int)$xml->uiConfId;
-		if(count($xml->securityType))
+		if(!is_null($jsonObject) && isset($jsonObject->uiConfId))
+			$this->uiConfId = (int)$jsonObject->uiConfId;
+		if(!is_null($xml) && count($xml->securityType))
 			$this->securityType = (int)$xml->securityType;
-		if(count($xml->securityPolicy))
+		if(!is_null($jsonObject) && isset($jsonObject->securityType))
+			$this->securityType = (int)$jsonObject->securityType;
+		if(!is_null($xml) && count($xml->securityPolicy))
 			$this->securityPolicy = (int)$xml->securityPolicy;
-		if(count($xml->createdAt))
+		if(!is_null($jsonObject) && isset($jsonObject->securityPolicy))
+			$this->securityPolicy = (int)$jsonObject->securityPolicy;
+		if(!is_null($xml) && count($xml->createdAt))
 			$this->createdAt = (int)$xml->createdAt;
-		if(count($xml->updatedAt))
+		if(!is_null($jsonObject) && isset($jsonObject->createdAt))
+			$this->createdAt = (int)$jsonObject->createdAt;
+		if(!is_null($xml) && count($xml->updatedAt))
 			$this->updatedAt = (int)$xml->updatedAt;
-		if(count($xml->partnerData))
+		if(!is_null($jsonObject) && isset($jsonObject->updatedAt))
+			$this->updatedAt = (int)$jsonObject->updatedAt;
+		if(!is_null($xml) && count($xml->partnerData))
 			$this->partnerData = (string)$xml->partnerData;
-		if(count($xml->widgetHTML))
+		if(!is_null($jsonObject) && isset($jsonObject->partnerData))
+			$this->partnerData = (string)$jsonObject->partnerData;
+		if(!is_null($xml) && count($xml->widgetHTML))
 			$this->widgetHTML = (string)$xml->widgetHTML;
-		if(count($xml->enforceEntitlement))
+		if(!is_null($jsonObject) && isset($jsonObject->widgetHTML))
+			$this->widgetHTML = (string)$jsonObject->widgetHTML;
+		if(!is_null($xml) && count($xml->enforceEntitlement))
 		{
 			if(!empty($xml->enforceEntitlement) && ((int) $xml->enforceEntitlement === 1 || strtolower((string)$xml->enforceEntitlement) === 'true'))
 				$this->enforceEntitlement = true;
 			else
 				$this->enforceEntitlement = false;
 		}
-		if(count($xml->privacyContext))
+		if(!is_null($jsonObject) && isset($jsonObject->enforceEntitlement))
+		{
+			if(!empty($jsonObject->enforceEntitlement) && ((int) $jsonObject->enforceEntitlement === 1 || strtolower((string)$jsonObject->enforceEntitlement) === 'true'))
+				$this->enforceEntitlement = true;
+			else
+				$this->enforceEntitlement = false;
+		}
+		if(!is_null($xml) && count($xml->privacyContext))
 			$this->privacyContext = (string)$xml->privacyContext;
-		if(count($xml->addEmbedHtml5Support))
+		if(!is_null($jsonObject) && isset($jsonObject->privacyContext))
+			$this->privacyContext = (string)$jsonObject->privacyContext;
+		if(!is_null($xml) && count($xml->addEmbedHtml5Support))
 		{
 			if(!empty($xml->addEmbedHtml5Support) && ((int) $xml->addEmbedHtml5Support === 1 || strtolower((string)$xml->addEmbedHtml5Support) === 'true'))
 				$this->addEmbedHtml5Support = true;
 			else
 				$this->addEmbedHtml5Support = false;
 		}
-		if(count($xml->roles))
+		if(!is_null($jsonObject) && isset($jsonObject->addEmbedHtml5Support))
+		{
+			if(!empty($jsonObject->addEmbedHtml5Support) && ((int) $jsonObject->addEmbedHtml5Support === 1 || strtolower((string)$jsonObject->addEmbedHtml5Support) === 'true'))
+				$this->addEmbedHtml5Support = true;
+			else
+				$this->addEmbedHtml5Support = false;
+		}
+		if(!is_null($xml) && count($xml->roles))
 			$this->roles = (string)$xml->roles;
-		if(count($xml->privileges))
+		if(!is_null($jsonObject) && isset($jsonObject->roles))
+			$this->roles = (string)$jsonObject->roles;
+		if(!is_null($xml) && count($xml->privileges))
 			$this->privileges = (string)$xml->privileges;
+		if(!is_null($jsonObject) && isset($jsonObject->privileges))
+			$this->privileges = (string)$jsonObject->privileges;
 	}
 	/**
 	 * 

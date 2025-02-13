@@ -38,29 +38,48 @@ class Kaltura_Client_Type_PlayableEntry extends Kaltura_Client_Type_BaseEntry
 		return 'KalturaPlayableEntry';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->plays))
+		if(!is_null($xml) && count($xml->plays))
 			$this->plays = (int)$xml->plays;
-		if(count($xml->views))
+		if(!is_null($jsonObject) && isset($jsonObject->plays))
+			$this->plays = (int)$jsonObject->plays;
+		if(!is_null($xml) && count($xml->views))
 			$this->views = (int)$xml->views;
-		if(count($xml->lastPlayedAt))
+		if(!is_null($jsonObject) && isset($jsonObject->views))
+			$this->views = (int)$jsonObject->views;
+		if(!is_null($xml) && count($xml->lastPlayedAt))
 			$this->lastPlayedAt = (int)$xml->lastPlayedAt;
-		if(count($xml->width))
+		if(!is_null($jsonObject) && isset($jsonObject->lastPlayedAt))
+			$this->lastPlayedAt = (int)$jsonObject->lastPlayedAt;
+		if(!is_null($xml) && count($xml->width))
 			$this->width = (int)$xml->width;
-		if(count($xml->height))
+		if(!is_null($jsonObject) && isset($jsonObject->width))
+			$this->width = (int)$jsonObject->width;
+		if(!is_null($xml) && count($xml->height))
 			$this->height = (int)$xml->height;
-		if(count($xml->duration))
+		if(!is_null($jsonObject) && isset($jsonObject->height))
+			$this->height = (int)$jsonObject->height;
+		if(!is_null($xml) && count($xml->duration))
 			$this->duration = (int)$xml->duration;
-		if(count($xml->msDuration))
+		if(!is_null($jsonObject) && isset($jsonObject->duration))
+			$this->duration = (int)$jsonObject->duration;
+		if(!is_null($xml) && count($xml->msDuration))
 			$this->msDuration = (int)$xml->msDuration;
-		if(count($xml->durationType))
+		if(!is_null($jsonObject) && isset($jsonObject->msDuration))
+			$this->msDuration = (int)$jsonObject->msDuration;
+		if(!is_null($xml) && count($xml->durationType))
 			$this->durationType = (string)$xml->durationType;
+		if(!is_null($jsonObject) && isset($jsonObject->durationType))
+			$this->durationType = (string)$jsonObject->durationType;
 	}
 	/**
 	 * Number of plays

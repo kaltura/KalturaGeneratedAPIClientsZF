@@ -38,38 +38,67 @@ class Kaltura_Client_Schedule_Type_LiveStreamScheduleEvent extends Kaltura_Clien
 		return 'KalturaLiveStreamScheduleEvent';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->sourceEntryId))
+		if(!is_null($xml) && count($xml->sourceEntryId))
 			$this->sourceEntryId = (string)$xml->sourceEntryId;
-		if(count($xml->projectedAudience))
+		if(!is_null($jsonObject) && isset($jsonObject->sourceEntryId))
+			$this->sourceEntryId = (string)$jsonObject->sourceEntryId;
+		if(!is_null($xml) && count($xml->projectedAudience))
 			$this->projectedAudience = (int)$xml->projectedAudience;
-		if(count($xml->preStartTime))
+		if(!is_null($jsonObject) && isset($jsonObject->projectedAudience))
+			$this->projectedAudience = (int)$jsonObject->projectedAudience;
+		if(!is_null($xml) && count($xml->preStartTime))
 			$this->preStartTime = (int)$xml->preStartTime;
-		if(count($xml->postEndTime))
+		if(!is_null($jsonObject) && isset($jsonObject->preStartTime))
+			$this->preStartTime = (int)$jsonObject->preStartTime;
+		if(!is_null($xml) && count($xml->postEndTime))
 			$this->postEndTime = (int)$xml->postEndTime;
-		if(count($xml->preStartEntryId))
+		if(!is_null($jsonObject) && isset($jsonObject->postEndTime))
+			$this->postEndTime = (int)$jsonObject->postEndTime;
+		if(!is_null($xml) && count($xml->preStartEntryId))
 			$this->preStartEntryId = (string)$xml->preStartEntryId;
-		if(count($xml->postEndEntryId))
+		if(!is_null($jsonObject) && isset($jsonObject->preStartEntryId))
+			$this->preStartEntryId = (string)$jsonObject->preStartEntryId;
+		if(!is_null($xml) && count($xml->postEndEntryId))
 			$this->postEndEntryId = (string)$xml->postEndEntryId;
-		if(count($xml->isContentInterruptible))
+		if(!is_null($jsonObject) && isset($jsonObject->postEndEntryId))
+			$this->postEndEntryId = (string)$jsonObject->postEndEntryId;
+		if(!is_null($xml) && count($xml->isContentInterruptible))
 		{
 			if(!empty($xml->isContentInterruptible) && ((int) $xml->isContentInterruptible === 1 || strtolower((string)$xml->isContentInterruptible) === 'true'))
 				$this->isContentInterruptible = true;
 			else
 				$this->isContentInterruptible = false;
 		}
-		if(count($xml->liveFeatures))
+		if(!is_null($jsonObject) && isset($jsonObject->isContentInterruptible))
+		{
+			if(!empty($jsonObject->isContentInterruptible) && ((int) $jsonObject->isContentInterruptible === 1 || strtolower((string)$jsonObject->isContentInterruptible) === 'true'))
+				$this->isContentInterruptible = true;
+			else
+				$this->isContentInterruptible = false;
+		}
+		if(!is_null($xml) && count($xml->liveFeatures))
 		{
 			if(empty($xml->liveFeatures))
 				$this->liveFeatures = array();
 			else
 				$this->liveFeatures = Kaltura_Client_ParseUtils::unmarshalArray($xml->liveFeatures, "KalturaLiveFeature");
+		}
+		if(!is_null($jsonObject) && isset($jsonObject->liveFeatures))
+		{
+			if(empty($jsonObject->liveFeatures))
+				$this->liveFeatures = array();
+			else
+				$this->liveFeatures = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsonObject->liveFeatures, "KalturaLiveFeature");
 		}
 	}
 	/**

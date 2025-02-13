@@ -38,19 +38,28 @@ class Kaltura_Client_Metadata_Type_ImportMetadataJobData extends Kaltura_Client_
 		return 'KalturaImportMetadataJobData';
 	}
 	
-	public function __construct(SimpleXMLElement $xml = null)
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
 	{
-		parent::__construct($xml);
+		parent::__construct($xml, $jsonObject);
 		
-		if(is_null($xml))
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(count($xml->srcFileUrl))
+		if(!is_null($xml) && count($xml->srcFileUrl))
 			$this->srcFileUrl = (string)$xml->srcFileUrl;
-		if(count($xml->destFileLocalPath))
+		if(!is_null($jsonObject) && isset($jsonObject->srcFileUrl))
+			$this->srcFileUrl = (string)$jsonObject->srcFileUrl;
+		if(!is_null($xml) && count($xml->destFileLocalPath))
 			$this->destFileLocalPath = (string)$xml->destFileLocalPath;
-		if(count($xml->metadataId))
+		if(!is_null($jsonObject) && isset($jsonObject->destFileLocalPath))
+			$this->destFileLocalPath = (string)$jsonObject->destFileLocalPath;
+		if(!is_null($xml) && count($xml->metadataId))
 			$this->metadataId = (int)$xml->metadataId;
+		if(!is_null($jsonObject) && isset($jsonObject->metadataId))
+			$this->metadataId = (int)$jsonObject->metadataId;
 	}
 	/**
 	 * 
