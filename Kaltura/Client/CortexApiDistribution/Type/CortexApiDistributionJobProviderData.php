@@ -88,7 +88,7 @@ class Kaltura_Client_CortexApiDistribution_Type_CortexApiDistributionJobProvider
 	/**
 	 * 
 	 *
-	 * @var array of KalturaCortexApiCaptionDistributionInfo
+	 * @var Kaltura_Client_CortexApiDistribution_Type_CortexApiCaptionDistributionInfo[]
 	 */
 	public $captionsInfo;
 

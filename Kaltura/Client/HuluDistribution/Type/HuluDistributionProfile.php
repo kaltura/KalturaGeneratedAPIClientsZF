@@ -183,7 +183,7 @@ class Kaltura_Client_HuluDistribution_Type_HuluDistributionProfile extends Kaltu
 	/**
 	 * 
 	 *
-	 * @var array of KalturaString
+	 * @var Kaltura_Client_Type_String[]
 	 */
 	public $seriesAdditionalCategories;
 

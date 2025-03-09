@@ -66,7 +66,7 @@ class Kaltura_Client_Type_UserEntryListResponse extends Kaltura_Client_Type_List
 	/**
 	 * 
 	 *
-	 * @var array of KalturaUserEntry
+	 * @var Kaltura_Client_Type_UserEntry[]
 	 * @readonly
 	 */
 	public $objects;

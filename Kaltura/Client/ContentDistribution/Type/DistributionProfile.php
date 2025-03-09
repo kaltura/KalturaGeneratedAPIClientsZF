@@ -316,28 +316,28 @@ abstract class Kaltura_Client_ContentDistribution_Type_DistributionProfile exten
 	/**
 	 * Thumbnail dimensions that should be submitted if ready
 	 *
-	 * @var array of KalturaDistributionThumbDimensions
+	 * @var Kaltura_Client_ContentDistribution_Type_DistributionThumbDimensions[]
 	 */
 	public $optionalThumbDimensions;
 
 	/**
 	 * Thumbnail dimensions that required to be readt before submission
 	 *
-	 * @var array of KalturaDistributionThumbDimensions
+	 * @var Kaltura_Client_ContentDistribution_Type_DistributionThumbDimensions[]
 	 */
 	public $requiredThumbDimensions;
 
 	/**
 	 * Asset Distribution Rules for assets that should be submitted if ready
 	 *
-	 * @var array of KalturaAssetDistributionRule
+	 * @var Kaltura_Client_ContentDistribution_Type_AssetDistributionRule[]
 	 */
 	public $optionalAssetDistributionRules;
 
 	/**
 	 * Assets Asset Distribution Rules for assets that are required to be ready before submission
 	 *
-	 * @var array of KalturaAssetDistributionRule
+	 * @var Kaltura_Client_ContentDistribution_Type_AssetDistributionRule[]
 	 */
 	public $requiredAssetDistributionRules;
 

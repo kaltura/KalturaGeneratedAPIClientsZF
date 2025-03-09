@@ -78,7 +78,7 @@ class Kaltura_Client_AttUverseDistribution_Type_AttUverseDistributionJobProvider
 	/**
 	 * 
 	 *
-	 * @var array of KalturaAttUverseDistributionFile
+	 * @var Kaltura_Client_AttUverseDistribution_Type_AttUverseDistributionFile[]
 	 */
 	public $filesForDistribution;
 

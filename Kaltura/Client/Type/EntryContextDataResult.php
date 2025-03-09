@@ -303,21 +303,21 @@ class Kaltura_Client_Type_EntryContextDataResult extends Kaltura_Client_Type_Con
 	/**
 	 * Array of messages as received from the access control rules that invalidated
 	 *
-	 * @var array of KalturaString
+	 * @var Kaltura_Client_Type_String[]
 	 */
 	public $accessControlMessages;
 
 	/**
 	 * Array of actions as received from the access control rules that invalidated
 	 *
-	 * @var array of KalturaRuleAction
+	 * @var Kaltura_Client_Type_RuleAction[]
 	 */
 	public $accessControlActions;
 
 	/**
 	 * Array of allowed flavor assets according to access control limitations and requested tags
 	 *
-	 * @var array of KalturaFlavorAsset
+	 * @var Kaltura_Client_Type_FlavorAsset[]
 	 */
 	public $flavorAssets;
 

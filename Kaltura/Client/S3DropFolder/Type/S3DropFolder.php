@@ -64,6 +64,24 @@ class Kaltura_Client_S3DropFolder_Type_S3DropFolder extends Kaltura_Client_DropF
 			$this->s3Password = (string)$xml->s3Password;
 		if(!is_null($jsonObject) && isset($jsonObject->s3Password))
 			$this->s3Password = (string)$jsonObject->s3Password;
+		if(!is_null($xml) && count($xml->useS3Arn))
+		{
+			if(!empty($xml->useS3Arn) && ((int) $xml->useS3Arn === 1 || strtolower((string)$xml->useS3Arn) === 'true'))
+				$this->useS3Arn = true;
+			else
+				$this->useS3Arn = false;
+		}
+		if(!is_null($jsonObject) && isset($jsonObject->useS3Arn))
+		{
+			if(!empty($jsonObject->useS3Arn) && ((int) $jsonObject->useS3Arn === 1 || strtolower((string)$jsonObject->useS3Arn) === 'true'))
+				$this->useS3Arn = true;
+			else
+				$this->useS3Arn = false;
+		}
+		if(!is_null($xml) && count($xml->s3Arn))
+			$this->s3Arn = (string)$xml->s3Arn;
+		if(!is_null($jsonObject) && isset($jsonObject->s3Arn))
+			$this->s3Arn = (string)$jsonObject->s3Arn;
 	}
 	/**
 	 * 
@@ -92,6 +110,21 @@ class Kaltura_Client_S3DropFolder_Type_S3DropFolder extends Kaltura_Client_DropF
 	 * @var string
 	 */
 	public $s3Password = null;
+
+	/**
+	 * 
+	 *
+	 * @var bool
+	 */
+	public $useS3Arn = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 * @readonly
+	 */
+	public $s3Arn = null;
 
 
 }

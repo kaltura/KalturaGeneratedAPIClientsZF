@@ -66,7 +66,7 @@ class Kaltura_Client_EmailNotification_Type_EmailNotificationStaticRecipientProv
 	/**
 	 * Email to emails and names
 	 *
-	 * @var array of KalturaEmailNotificationRecipient
+	 * @var Kaltura_Client_EmailNotification_Type_EmailNotificationRecipient[]
 	 */
 	public $emailRecipients;
 

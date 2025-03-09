@@ -52,6 +52,10 @@ class Kaltura_Client_Type_ReportExportParams extends Kaltura_Client_ObjectBase
 			$this->recipientEmail = (string)$xml->recipientEmail;
 		if(!is_null($jsonObject) && isset($jsonObject->recipientEmail))
 			$this->recipientEmail = (string)$jsonObject->recipientEmail;
+		if(!is_null($xml) && count($xml->recipientName))
+			$this->recipientName = (string)$xml->recipientName;
+		if(!is_null($jsonObject) && isset($jsonObject->recipientName))
+			$this->recipientName = (string)$jsonObject->recipientName;
 		if(!is_null($xml) && count($xml->timeZoneOffset))
 			$this->timeZoneOffset = (int)$xml->timeZoneOffset;
 		if(!is_null($jsonObject) && isset($jsonObject->timeZoneOffset))
@@ -87,6 +91,13 @@ class Kaltura_Client_Type_ReportExportParams extends Kaltura_Client_ObjectBase
 	public $recipientEmail = null;
 
 	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $recipientName = null;
+
+	/**
 	 * Time zone offset in minutes (between client to UTC)
 	 *
 	 * @var int
@@ -96,7 +107,7 @@ class Kaltura_Client_Type_ReportExportParams extends Kaltura_Client_ObjectBase
 	/**
 	 * 
 	 *
-	 * @var array of KalturaReportExportItem
+	 * @var Kaltura_Client_Type_ReportExportItem[]
 	 */
 	public $reportItems;
 

@@ -106,14 +106,14 @@ class Kaltura_Client_Type_LiveEntryServerNode extends Kaltura_Client_Type_EntryS
 	/**
 	 * parameters of the stream we got
 	 *
-	 * @var array of KalturaLiveStreamParams
+	 * @var Kaltura_Client_Type_LiveStreamParams[]
 	 */
 	public $streams;
 
 	/**
 	 * 
 	 *
-	 * @var array of KalturaLiveEntryServerNodeRecordingInfo
+	 * @var Kaltura_Client_Type_LiveEntryServerNodeRecordingInfo[]
 	 */
 	public $recordingInfo;
 

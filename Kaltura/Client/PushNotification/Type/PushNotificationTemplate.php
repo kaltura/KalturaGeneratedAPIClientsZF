@@ -92,14 +92,14 @@ class Kaltura_Client_PushNotification_Type_PushNotificationTemplate extends Kalt
 	/**
 	 * Define the content dynamic parameters
 	 *
-	 * @var array of KalturaPushEventNotificationParameter
+	 * @var Kaltura_Client_PushNotification_Type_PushEventNotificationParameter[]
 	 */
 	public $queueNameParameters;
 
 	/**
 	 * Define the content dynamic parameters
 	 *
-	 * @var array of KalturaPushEventNotificationParameter
+	 * @var Kaltura_Client_PushNotification_Type_PushEventNotificationParameter[]
 	 */
 	public $queueKeyParameters;
 

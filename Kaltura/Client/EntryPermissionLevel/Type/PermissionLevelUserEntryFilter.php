@@ -66,7 +66,7 @@ class Kaltura_Client_EntryPermissionLevel_Type_PermissionLevelUserEntryFilter ex
 	/**
 	 * 
 	 *
-	 * @var array of KalturaPermissionLevel
+	 * @var Kaltura_Client_EntryPermissionLevel_Type_PermissionLevel[]
 	 */
 	public $permissionLevels;
 

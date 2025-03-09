@@ -66,7 +66,7 @@ class Kaltura_Client_SystemPartner_Type_SystemPartnerUsageListResponse extends K
 	/**
 	 * 
 	 *
-	 * @var array of KalturaSystemPartnerUsageItem
+	 * @var Kaltura_Client_SystemPartner_Type_SystemPartnerUsageItem[]
 	 */
 	public $objects;
 

@@ -77,7 +77,7 @@ class Kaltura_Client_Type_EntryReplacementOptions extends Kaltura_Client_ObjectB
 	/**
 	 * Array of plugin replacement options
 	 *
-	 * @var array of KalturaPluginReplacementOptionsItem
+	 * @var Kaltura_Client_Type_PluginReplacementOptionsItem[]
 	 */
 	public $pluginOptionItems;
 

@@ -77,7 +77,7 @@ class Kaltura_Client_ElasticSearch_Type_ESearchNestedOperator extends Kaltura_Cl
 	/**
 	 * 
 	 *
-	 * @var array of KalturaESearchEntryNestedBaseItem
+	 * @var Kaltura_Client_ElasticSearch_Type_ESearchEntryNestedBaseItem[]
 	 */
 	public $searchItems;
 

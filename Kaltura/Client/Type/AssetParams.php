@@ -173,7 +173,7 @@ class Kaltura_Client_Type_AssetParams extends Kaltura_Client_ObjectBase
 	/**
 	 * Array of partner permisison names that required for using this asset params
 	 *
-	 * @var array of KalturaString
+	 * @var Kaltura_Client_Type_String[]
 	 */
 	public $requiredPermissions;
 

@@ -66,7 +66,7 @@ class Kaltura_Client_VirusScan_Type_VirusScanProfileListResponse extends Kaltura
 	/**
 	 * 
 	 *
-	 * @var array of KalturaVirusScanProfile
+	 * @var Kaltura_Client_VirusScan_Type_VirusScanProfile[]
 	 * @readonly
 	 */
 	public $objects;

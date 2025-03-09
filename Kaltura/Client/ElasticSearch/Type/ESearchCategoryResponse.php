@@ -66,7 +66,7 @@ class Kaltura_Client_ElasticSearch_Type_ESearchCategoryResponse extends Kaltura_
 	/**
 	 * 
 	 *
-	 * @var array of KalturaESearchCategoryResult
+	 * @var Kaltura_Client_ElasticSearch_Type_ESearchCategoryResult[]
 	 * @readonly
 	 */
 	public $objects;

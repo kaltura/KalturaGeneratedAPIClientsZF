@@ -66,7 +66,7 @@ class Kaltura_Client_Reach_Type_VendorCatalogItemListResponse extends Kaltura_Cl
 	/**
 	 * 
 	 *
-	 * @var array of KalturaVendorCatalogItem
+	 * @var Kaltura_Client_Reach_Type_VendorCatalogItem[]
 	 * @readonly
 	 */
 	public $objects;

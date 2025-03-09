@@ -204,7 +204,7 @@ class Kaltura_Client_Type_BulkUpload extends Kaltura_Client_ObjectBase
 	/**
 	 * 
 	 *
-	 * @var array of KalturaBulkUploadResult
+	 * @var Kaltura_Client_Type_BulkUploadResult[]
 	 */
 	public $results;
 

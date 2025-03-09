@@ -66,7 +66,7 @@ class Kaltura_Client_Type_MixListResponse extends Kaltura_Client_Type_ListRespon
 	/**
 	 * 
 	 *
-	 * @var array of KalturaMixEntry
+	 * @var Kaltura_Client_Type_MixEntry[]
 	 * @readonly
 	 */
 	public $objects;

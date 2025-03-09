@@ -66,7 +66,7 @@ class Kaltura_Client_ExternalMedia_Type_ExternalMediaEntryListResponse extends K
 	/**
 	 * 
 	 *
-	 * @var array of KalturaExternalMediaEntry
+	 * @var Kaltura_Client_ExternalMedia_Type_ExternalMediaEntry[]
 	 * @readonly
 	 */
 	public $objects;

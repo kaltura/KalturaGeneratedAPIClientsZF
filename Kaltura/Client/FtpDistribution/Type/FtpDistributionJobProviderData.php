@@ -66,7 +66,7 @@ class Kaltura_Client_FtpDistribution_Type_FtpDistributionJobProviderData extends
 	/**
 	 * 
 	 *
-	 * @var array of KalturaFtpDistributionFile
+	 * @var Kaltura_Client_FtpDistribution_Type_FtpDistributionFile[]
 	 */
 	public $filesForDistribution;
 

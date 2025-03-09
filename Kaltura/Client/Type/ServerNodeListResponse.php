@@ -66,7 +66,7 @@ class Kaltura_Client_Type_ServerNodeListResponse extends Kaltura_Client_Type_Lis
 	/**
 	 * 
 	 *
-	 * @var array of KalturaServerNode
+	 * @var Kaltura_Client_Type_ServerNode[]
 	 * @readonly
 	 */
 	public $objects;

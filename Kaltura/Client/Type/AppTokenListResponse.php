@@ -66,7 +66,7 @@ class Kaltura_Client_Type_AppTokenListResponse extends Kaltura_Client_Type_ListR
 	/**
 	 * 
 	 *
-	 * @var array of KalturaAppToken
+	 * @var Kaltura_Client_Type_AppToken[]
 	 * @readonly
 	 */
 	public $objects;

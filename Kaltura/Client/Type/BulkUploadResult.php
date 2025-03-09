@@ -211,7 +211,7 @@ class Kaltura_Client_Type_BulkUploadResult extends Kaltura_Client_ObjectBase
 	/**
 	 * 
 	 *
-	 * @var array of KalturaBulkUploadPluginData
+	 * @var Kaltura_Client_Type_BulkUploadPluginData[]
 	 */
 	public $pluginsData;
 

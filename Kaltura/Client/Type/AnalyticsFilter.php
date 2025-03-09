@@ -125,7 +125,7 @@ class Kaltura_Client_Type_AnalyticsFilter extends Kaltura_Client_ObjectBase
 	/**
 	 * Array of filters
 	 *
-	 * @var array of KalturaReportFilter
+	 * @var Kaltura_Client_Type_ReportFilter[]
 	 */
 	public $filters;
 

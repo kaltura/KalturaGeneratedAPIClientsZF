@@ -47,5 +47,6 @@ class Kaltura_Client_Reach_Enum_VendorServiceFeature extends Kaltura_Client_Enum
 	const QUIZ = 12;
 	const SUMMARY = 13;
 	const VIDEO_ANALYSIS = 14;
+	const MODERATION = 15;
 }
 

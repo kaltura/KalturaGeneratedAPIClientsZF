@@ -259,7 +259,7 @@ class Kaltura_Client_HttpNotification_Type_HttpNotificationTemplate extends Kalt
 	/**
 	 * Adds a e-mail custom header
 	 *
-	 * @var array of KalturaKeyValue
+	 * @var Kaltura_Client_Type_KeyValue[]
 	 */
 	public $customHeaders;
 

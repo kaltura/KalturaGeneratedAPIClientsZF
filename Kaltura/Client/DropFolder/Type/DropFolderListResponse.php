@@ -66,7 +66,7 @@ class Kaltura_Client_DropFolder_Type_DropFolderListResponse extends Kaltura_Clie
 	/**
 	 * 
 	 *
-	 * @var array of KalturaDropFolder
+	 * @var Kaltura_Client_DropFolder_Type_DropFolder[]
 	 * @readonly
 	 */
 	public $objects;

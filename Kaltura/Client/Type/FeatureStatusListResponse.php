@@ -66,7 +66,7 @@ class Kaltura_Client_Type_FeatureStatusListResponse extends Kaltura_Client_Type_
 	/**
 	 * 
 	 *
-	 * @var array of KalturaFeatureStatus
+	 * @var Kaltura_Client_Type_FeatureStatus[]
 	 * @readonly
 	 */
 	public $objects;

@@ -66,7 +66,7 @@ class Kaltura_Client_Type_GroupUserListResponse extends Kaltura_Client_Type_List
 	/**
 	 * 
 	 *
-	 * @var array of KalturaGroupUser
+	 * @var Kaltura_Client_Type_GroupUser[]
 	 * @readonly
 	 */
 	public $objects;

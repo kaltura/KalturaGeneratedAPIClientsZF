@@ -88,7 +88,7 @@ class Kaltura_Client_FacebookDistribution_Type_FacebookDistributionJobProviderDa
 	/**
 	 * 
 	 *
-	 * @var array of KalturaFacebookCaptionDistributionInfo
+	 * @var Kaltura_Client_FacebookDistribution_Type_FacebookCaptionDistributionInfo[]
 	 */
 	public $captionsInfo;
 

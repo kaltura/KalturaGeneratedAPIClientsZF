@@ -132,7 +132,7 @@ class Kaltura_Client_Type_ConvertCollectionJobData extends Kaltura_Client_Type_C
 	/**
 	 * 
 	 *
-	 * @var array of KalturaConvertCollectionFlavorData
+	 * @var Kaltura_Client_Type_ConvertCollectionFlavorData[]
 	 */
 	public $flavors;
 

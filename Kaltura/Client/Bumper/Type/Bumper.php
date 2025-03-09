@@ -88,7 +88,7 @@ class Kaltura_Client_Bumper_Type_Bumper extends Kaltura_Client_ObjectBase
 	/**
 	 * 
 	 *
-	 * @var array of KalturaPlaybackSource
+	 * @var Kaltura_Client_Type_PlaybackSource[]
 	 * @readonly
 	 */
 	public $sources;

@@ -66,7 +66,7 @@ class Kaltura_Client_Type_FlavorParamsListResponse extends Kaltura_Client_Type_L
 	/**
 	 * 
 	 *
-	 * @var array of KalturaFlavorParams
+	 * @var Kaltura_Client_Type_FlavorParams[]
 	 * @readonly
 	 */
 	public $objects;

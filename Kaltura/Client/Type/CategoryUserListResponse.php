@@ -66,7 +66,7 @@ class Kaltura_Client_Type_CategoryUserListResponse extends Kaltura_Client_Type_L
 	/**
 	 * 
 	 *
-	 * @var array of KalturaCategoryUser
+	 * @var Kaltura_Client_Type_CategoryUser[]
 	 * @readonly
 	 */
 	public $objects;

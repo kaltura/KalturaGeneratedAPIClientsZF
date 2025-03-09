@@ -152,7 +152,7 @@ class Kaltura_Client_ElasticSearch_Type_ESearchCuePointItemData extends Kaltura_
 	/**
 	 * 
 	 *
-	 * @var array of KalturaString
+	 * @var Kaltura_Client_Type_String[]
 	 */
 	public $tags;
 
@@ -187,7 +187,7 @@ class Kaltura_Client_ElasticSearch_Type_ESearchCuePointItemData extends Kaltura_
 	/**
 	 * 
 	 *
-	 * @var array of KalturaString
+	 * @var Kaltura_Client_Type_String[]
 	 */
 	public $answers;
 

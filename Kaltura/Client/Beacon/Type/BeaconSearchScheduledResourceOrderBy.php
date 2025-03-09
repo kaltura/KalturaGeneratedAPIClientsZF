@@ -66,7 +66,7 @@ class Kaltura_Client_Beacon_Type_BeaconSearchScheduledResourceOrderBy extends Ka
 	/**
 	 * 
 	 *
-	 * @var array of KalturaBeaconSearchScheduledResourceOrderByItem
+	 * @var Kaltura_Client_Beacon_Type_BeaconSearchScheduledResourceOrderByItem[]
 	 */
 	public $orderItems;
 

@@ -80,7 +80,7 @@ class Kaltura_Client_ElasticSearch_Type_ESearchEntryResponse extends Kaltura_Cli
 	/**
 	 * 
 	 *
-	 * @var array of KalturaESearchEntryResult
+	 * @var Kaltura_Client_ElasticSearch_Type_ESearchEntryResult[]
 	 * @readonly
 	 */
 	public $objects;
@@ -88,7 +88,7 @@ class Kaltura_Client_ElasticSearch_Type_ESearchEntryResponse extends Kaltura_Cli
 	/**
 	 * 
 	 *
-	 * @var array of KalturaESearchAggregationResponseItem
+	 * @var Kaltura_Client_ElasticSearch_Type_ESearchAggregationResponseItem[]
 	 * @readonly
 	 */
 	public $aggregations;

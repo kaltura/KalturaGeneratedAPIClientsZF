@@ -140,7 +140,7 @@ class Kaltura_Client_Type_ClipConcatJobData extends Kaltura_Client_Type_JobData
 	/**
 	 * 
 	 *
-	 * @var array of KalturaOperationAttributes
+	 * @var Kaltura_Client_Type_OperationAttributes[]
 	 */
 	public $operationAttributes;
 

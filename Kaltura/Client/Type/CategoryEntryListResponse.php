@@ -66,7 +66,7 @@ class Kaltura_Client_Type_CategoryEntryListResponse extends Kaltura_Client_Type_
 	/**
 	 * 
 	 *
-	 * @var array of KalturaCategoryEntry
+	 * @var Kaltura_Client_Type_CategoryEntry[]
 	 * @readonly
 	 */
 	public $objects;

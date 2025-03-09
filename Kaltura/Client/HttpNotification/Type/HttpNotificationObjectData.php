@@ -120,7 +120,7 @@ class Kaltura_Client_HttpNotification_Type_HttpNotificationObjectData extends Ka
 	/**
 	 * An array of pattern-replacement pairs used for data string regex replacements
 	 *
-	 * @var array of KalturaKeyValue
+	 * @var Kaltura_Client_Type_KeyValue[]
 	 */
 	public $dataStringReplacements;
 

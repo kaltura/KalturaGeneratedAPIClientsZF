@@ -66,7 +66,7 @@ class Kaltura_Client_Metadata_Type_MetadataProfileFieldListResponse extends Kalt
 	/**
 	 * 
 	 *
-	 * @var array of KalturaMetadataProfileField
+	 * @var Kaltura_Client_Metadata_Type_MetadataProfileField[]
 	 * @readonly
 	 */
 	public $objects;

@@ -187,7 +187,7 @@ abstract class Kaltura_Client_Type_LiveEntry extends Kaltura_Client_Type_MediaEn
 	/**
 	 * Array of key value protocol->live stream url objects
 	 *
-	 * @var array of KalturaLiveStreamConfiguration
+	 * @var Kaltura_Client_Type_LiveStreamConfiguration[]
 	 */
 	public $liveStreamConfigurations;
 
@@ -208,7 +208,7 @@ abstract class Kaltura_Client_Type_LiveEntry extends Kaltura_Client_Type_MediaEn
 	/**
 	 * Array of publish configurations
 	 *
-	 * @var array of KalturaLiveStreamPushPublishConfiguration
+	 * @var Kaltura_Client_Type_LiveStreamPushPublishConfiguration[]
 	 */
 	public $publishConfigurations;
 

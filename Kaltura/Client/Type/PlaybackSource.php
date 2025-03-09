@@ -121,7 +121,7 @@ class Kaltura_Client_Type_PlaybackSource extends Kaltura_Client_ObjectBase
 	/**
 	 * drm data object containing relevant license url ,scheme name and certificate
 	 *
-	 * @var array of KalturaDrmPlaybackPluginData
+	 * @var Kaltura_Client_Type_DrmPlaybackPluginData[]
 	 */
 	public $drm;
 

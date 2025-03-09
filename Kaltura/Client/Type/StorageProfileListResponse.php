@@ -66,7 +66,7 @@ class Kaltura_Client_Type_StorageProfileListResponse extends Kaltura_Client_Type
 	/**
 	 * 
 	 *
-	 * @var array of KalturaStorageProfile
+	 * @var Kaltura_Client_Type_StorageProfile[]
 	 * @readonly
 	 */
 	public $objects;

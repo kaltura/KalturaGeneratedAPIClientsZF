@@ -815,7 +815,7 @@ class Kaltura_Client_Type_Partner extends Kaltura_Client_ObjectBase
 	/**
 	 * 
 	 *
-	 * @var array of KalturaKeyValue
+	 * @var Kaltura_Client_Type_KeyValue[]
 	 */
 	public $additionalParams;
 
@@ -862,7 +862,7 @@ class Kaltura_Client_Type_Partner extends Kaltura_Client_ObjectBase
 	/**
 	 * 
 	 *
-	 * @var array of KalturaPlayerDeliveryType
+	 * @var Kaltura_Client_Type_PlayerDeliveryType[]
 	 * @readonly
 	 */
 	public $deliveryTypes;
@@ -870,7 +870,7 @@ class Kaltura_Client_Type_Partner extends Kaltura_Client_ObjectBase
 	/**
 	 * 
 	 *
-	 * @var array of KalturaPlayerEmbedCodeType
+	 * @var Kaltura_Client_Type_PlayerEmbedCodeType[]
 	 * @readonly
 	 */
 	public $embedCodeTypes;
@@ -1002,7 +1002,7 @@ class Kaltura_Client_Type_Partner extends Kaltura_Client_ObjectBase
 	/**
 	 * 
 	 *
-	 * @var array of KalturaESearchLanguageItem
+	 * @var Kaltura_Client_Type_ESearchLanguageItem[]
 	 */
 	public $eSearchLanguages;
 
@@ -1081,7 +1081,7 @@ class Kaltura_Client_Type_Partner extends Kaltura_Client_ObjectBase
 	/**
 	 * 
 	 *
-	 * @var array of KalturaRegexItem
+	 * @var Kaltura_Client_Type_RegexItem[]
 	 */
 	public $passwordStructureValidations;
 

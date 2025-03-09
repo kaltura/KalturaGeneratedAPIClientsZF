@@ -66,7 +66,7 @@ class Kaltura_Client_ShortLink_Type_ShortLinkListResponse extends Kaltura_Client
 	/**
 	 * 
 	 *
-	 * @var array of KalturaShortLink
+	 * @var Kaltura_Client_ShortLink_Type_ShortLink[]
 	 * @readonly
 	 */
 	public $objects;

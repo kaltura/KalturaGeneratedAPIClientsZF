@@ -158,7 +158,7 @@ class Kaltura_Client_Type_AccessControlProfile extends Kaltura_Client_ObjectBase
 	/**
 	 * Array of access control rules
 	 *
-	 * @var array of KalturaRule
+	 * @var Kaltura_Client_Type_Rule[]
 	 */
 	public $rules;
 

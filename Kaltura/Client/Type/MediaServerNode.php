@@ -91,14 +91,14 @@ abstract class Kaltura_Client_Type_MediaServerNode extends Kaltura_Client_Type_D
 	/**
 	 * Media server playback port configuration by protocol and format
 	 *
-	 * @var array of KalturaKeyValue
+	 * @var Kaltura_Client_Type_KeyValue[]
 	 */
 	public $mediaServerPortConfig;
 
 	/**
 	 * Media server playback Domain configuration by protocol and format
 	 *
-	 * @var array of KalturaKeyValue
+	 * @var Kaltura_Client_Type_KeyValue[]
 	 */
 	public $mediaServerPlaybackDomainConfig;
 

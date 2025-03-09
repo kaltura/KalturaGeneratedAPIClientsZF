@@ -66,7 +66,7 @@ class Kaltura_Client_Type_UiConfListResponse extends Kaltura_Client_Type_ListRes
 	/**
 	 * 
 	 *
-	 * @var array of KalturaUiConf
+	 * @var Kaltura_Client_Type_UiConf[]
 	 * @readonly
 	 */
 	public $objects;

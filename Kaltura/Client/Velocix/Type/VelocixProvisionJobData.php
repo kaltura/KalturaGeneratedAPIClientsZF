@@ -74,7 +74,7 @@ class Kaltura_Client_Velocix_Type_VelocixProvisionJobData extends Kaltura_Client
 	/**
 	 * 
 	 *
-	 * @var array of KalturaKeyValue
+	 * @var Kaltura_Client_Type_KeyValue[]
 	 */
 	public $provisioningParams;
 

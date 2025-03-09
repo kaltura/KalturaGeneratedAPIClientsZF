@@ -66,7 +66,7 @@ class Kaltura_Client_EventNotification_Type_EventNotificationTemplateListRespons
 	/**
 	 * 
 	 *
-	 * @var array of KalturaEventNotificationTemplate
+	 * @var Kaltura_Client_EventNotification_Type_EventNotificationTemplate[]
 	 * @readonly
 	 */
 	public $objects;

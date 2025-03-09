@@ -66,7 +66,7 @@ class Kaltura_Client_Sso_Type_SsoListResponse extends Kaltura_Client_Type_ListRe
 	/**
 	 * 
 	 *
-	 * @var array of KalturaSso
+	 * @var Kaltura_Client_Sso_Type_Sso[]
 	 * @readonly
 	 */
 	public $objects;

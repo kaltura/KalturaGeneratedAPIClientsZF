@@ -208,7 +208,7 @@ class Kaltura_Client_Type_MediaEntry extends Kaltura_Client_Type_PlayableEntry
 	/**
 	 * Array of streams that exists on the entry
 	 *
-	 * @var array of KalturaStreamContainer
+	 * @var Kaltura_Client_Type_StreamContainer[]
 	 */
 	public $streams;
 

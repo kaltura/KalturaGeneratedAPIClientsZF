@@ -66,7 +66,7 @@ class Kaltura_Client_ElasticSearch_Type_ESearchOrderBy extends Kaltura_Client_Ob
 	/**
 	 * 
 	 *
-	 * @var array of KalturaESearchOrderByItem
+	 * @var Kaltura_Client_ElasticSearch_Type_ESearchOrderByItem[]
 	 */
 	public $orderItems;
 

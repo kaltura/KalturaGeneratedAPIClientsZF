@@ -84,7 +84,7 @@ class Kaltura_Client_FreewheelGenericDistribution_Type_FreewheelGenericDistribut
 	/**
 	 * Demonstrate passing array of paths to the job
 	 *
-	 * @var array of KalturaString
+	 * @var Kaltura_Client_Type_String[]
 	 */
 	public $videoAssetFilePaths;
 
@@ -98,7 +98,7 @@ class Kaltura_Client_FreewheelGenericDistribution_Type_FreewheelGenericDistribut
 	/**
 	 * 
 	 *
-	 * @var array of KalturaCuePoint
+	 * @var Kaltura_Client_CuePoint_Type_CuePoint[]
 	 */
 	public $cuePoints;
 

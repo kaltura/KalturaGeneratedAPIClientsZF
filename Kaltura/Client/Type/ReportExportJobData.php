@@ -52,6 +52,10 @@ class Kaltura_Client_Type_ReportExportJobData extends Kaltura_Client_Type_JobDat
 			$this->recipientEmail = (string)$xml->recipientEmail;
 		if(!is_null($jsonObject) && isset($jsonObject->recipientEmail))
 			$this->recipientEmail = (string)$jsonObject->recipientEmail;
+		if(!is_null($xml) && count($xml->recipientName))
+			$this->recipientName = (string)$xml->recipientName;
+		if(!is_null($jsonObject) && isset($jsonObject->recipientName))
+			$this->recipientName = (string)$jsonObject->recipientName;
 		if(!is_null($xml) && count($xml->reportItems))
 		{
 			if(empty($xml->reportItems))
@@ -103,7 +107,14 @@ class Kaltura_Client_Type_ReportExportJobData extends Kaltura_Client_Type_JobDat
 	/**
 	 * 
 	 *
-	 * @var array of KalturaReportExportItem
+	 * @var string
+	 */
+	public $recipientName = null;
+
+	/**
+	 * 
+	 *
+	 * @var Kaltura_Client_Type_ReportExportItem[]
 	 */
 	public $reportItems;
 
@@ -124,7 +135,7 @@ class Kaltura_Client_Type_ReportExportJobData extends Kaltura_Client_Type_JobDat
 	/**
 	 * 
 	 *
-	 * @var array of KalturaReportExportFile
+	 * @var Kaltura_Client_Type_ReportExportFile[]
 	 */
 	public $files;
 

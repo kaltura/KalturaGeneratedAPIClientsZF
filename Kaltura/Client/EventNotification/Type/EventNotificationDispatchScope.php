@@ -66,7 +66,7 @@ class Kaltura_Client_EventNotification_Type_EventNotificationDispatchScope exten
 	/**
 	 * 
 	 *
-	 * @var array of KalturaKeyValue
+	 * @var Kaltura_Client_Type_KeyValue[]
 	 */
 	public $dynamicValues;
 

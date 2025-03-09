@@ -70,7 +70,7 @@ abstract class Kaltura_Client_Type_DeliveryServerNode extends Kaltura_Client_Typ
 	/**
 	 * Delivery profile ids
 	 *
-	 * @var array of KalturaKeyValue
+	 * @var Kaltura_Client_Type_KeyValue[]
 	 */
 	public $deliveryProfileIds;
 

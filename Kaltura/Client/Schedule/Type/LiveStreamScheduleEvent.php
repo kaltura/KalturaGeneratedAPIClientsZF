@@ -153,7 +153,7 @@ class Kaltura_Client_Schedule_Type_LiveStreamScheduleEvent extends Kaltura_Clien
 	/**
 	 * list of live features that apply to the event
 	 *
-	 * @var array of KalturaLiveFeature
+	 * @var Kaltura_Client_Schedule_Type_LiveFeature[]
 	 */
 	public $liveFeatures;
 

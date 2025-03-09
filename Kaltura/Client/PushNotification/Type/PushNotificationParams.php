@@ -66,7 +66,7 @@ class Kaltura_Client_PushNotification_Type_PushNotificationParams extends Kaltur
 	/**
 	 * User params
 	 *
-	 * @var array of KalturaPushEventNotificationParameter
+	 * @var Kaltura_Client_PushNotification_Type_PushEventNotificationParameter[]
 	 */
 	public $userParams;
 

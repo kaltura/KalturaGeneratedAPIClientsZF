@@ -66,7 +66,7 @@ class Kaltura_Client_Type_DeliveryProfileListResponse extends Kaltura_Client_Typ
 	/**
 	 * 
 	 *
-	 * @var array of KalturaDeliveryProfile
+	 * @var Kaltura_Client_Type_DeliveryProfile[]
 	 * @readonly
 	 */
 	public $objects;

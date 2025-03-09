@@ -446,7 +446,7 @@ class Kaltura_Client_Type_StorageProfile extends Kaltura_Client_ObjectBase
 	/**
 	 * 
 	 *
-	 * @var array of KalturaKeyValue
+	 * @var Kaltura_Client_Type_KeyValue[]
 	 */
 	public $pathManagerParams;
 
@@ -495,14 +495,14 @@ class Kaltura_Client_Type_StorageProfile extends Kaltura_Client_ObjectBase
 	/**
 	 * Holds storage profile export rules
 	 *
-	 * @var array of KalturaRule
+	 * @var Kaltura_Client_Type_Rule[]
 	 */
 	public $rules;
 
 	/**
 	 * Delivery profile ids
 	 *
-	 * @var array of KalturaKeyValue
+	 * @var Kaltura_Client_Type_KeyValue[]
 	 */
 	public $deliveryProfileIds;
 
@@ -579,7 +579,7 @@ class Kaltura_Client_Type_StorageProfile extends Kaltura_Client_ObjectBase
 	/**
 	 * 
 	 *
-	 * @var array of KalturaKeyValue
+	 * @var Kaltura_Client_Type_KeyValue[]
 	 */
 	public $additionalInfo;
 

@@ -77,7 +77,7 @@ class Kaltura_Client_Type_SearchOperator extends Kaltura_Client_Type_SearchItem
 	/**
 	 * 
 	 *
-	 * @var array of KalturaSearchItem
+	 * @var Kaltura_Client_Type_SearchItem[]
 	 */
 	public $items;
 

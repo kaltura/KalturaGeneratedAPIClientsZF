@@ -77,7 +77,7 @@ class Kaltura_Client_ApFeedDropFolder_Type_ApFeedDropFolder extends Kaltura_Clie
 	/**
 	 * 
 	 *
-	 * @var array of KalturaStringValue
+	 * @var Kaltura_Client_Type_StringValue[]
 	 */
 	public $itemsToExpand;
 

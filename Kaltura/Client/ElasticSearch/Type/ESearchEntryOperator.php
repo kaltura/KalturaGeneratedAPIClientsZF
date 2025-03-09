@@ -77,7 +77,7 @@ class Kaltura_Client_ElasticSearch_Type_ESearchEntryOperator extends Kaltura_Cli
 	/**
 	 * 
 	 *
-	 * @var array of KalturaESearchEntryBaseItem
+	 * @var Kaltura_Client_ElasticSearch_Type_ESearchEntryBaseItem[]
 	 */
 	public $searchItems;
 

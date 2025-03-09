@@ -77,7 +77,7 @@ class Kaltura_Client_ScheduledTask_Type_ModifyCategoriesObjectTask extends Kaltu
 	/**
 	 * The list of category ids to add or remove
 	 *
-	 * @var array of KalturaIntegerValue
+	 * @var Kaltura_Client_Type_IntegerValue[]
 	 */
 	public $categoryIds;
 

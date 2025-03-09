@@ -70,7 +70,7 @@ class Kaltura_Client_FreewheelDistribution_Type_FreewheelDistributionJobProvider
 	/**
 	 * Demonstrate passing array of paths to the job
 	 *
-	 * @var array of KalturaFreewheelDistributionAssetPath
+	 * @var Kaltura_Client_FreewheelDistribution_Type_FreewheelDistributionAssetPath[]
 	 */
 	public $videoAssetFilePaths;
 

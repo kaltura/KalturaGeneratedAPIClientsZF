@@ -172,7 +172,7 @@ class Kaltura_Client_ScheduledTask_Type_ScheduledTaskProfile extends Kaltura_Cli
 	/**
 	 * A list of tasks to execute on the founded objects
 	 *
-	 * @var array of KalturaObjectTask
+	 * @var Kaltura_Client_ScheduledTask_Type_ObjectTask[]
 	 */
 	public $objectTasks;
 

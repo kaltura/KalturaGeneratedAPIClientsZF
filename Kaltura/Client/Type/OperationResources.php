@@ -84,7 +84,7 @@ class Kaltura_Client_Type_OperationResources extends Kaltura_Client_Type_Content
 	/**
 	 * 
 	 *
-	 * @var array of KalturaOperationResource
+	 * @var Kaltura_Client_Type_OperationResource[]
 	 */
 	public $resources;
 
@@ -98,7 +98,7 @@ class Kaltura_Client_Type_OperationResources extends Kaltura_Client_Type_Content
 	/**
 	 * 
 	 *
-	 * @var array of KalturaDimensionsAttributes
+	 * @var Kaltura_Client_Type_DimensionsAttributes[]
 	 */
 	public $dimensionsAttributes;
 

@@ -66,7 +66,7 @@ class Kaltura_Client_Type_ConversionProfileAssetParamsListResponse extends Kaltu
 	/**
 	 * 
 	 *
-	 * @var array of KalturaConversionProfileAssetParams
+	 * @var Kaltura_Client_Type_ConversionProfileAssetParams[]
 	 * @readonly
 	 */
 	public $objects;

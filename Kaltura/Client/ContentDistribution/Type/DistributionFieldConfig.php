@@ -172,7 +172,7 @@ class Kaltura_Client_ContentDistribution_Type_DistributionFieldConfig extends Ka
 	/**
 	 * Entry column or metadata xpath that should trigger an update
 	 *
-	 * @var array of KalturaString
+	 * @var Kaltura_Client_Type_String[]
 	 */
 	public $updateParams;
 

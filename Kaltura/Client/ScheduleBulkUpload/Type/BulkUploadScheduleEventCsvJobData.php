@@ -78,7 +78,7 @@ class Kaltura_Client_ScheduleBulkUpload_Type_BulkUploadScheduleEventCsvJobData e
 	/**
 	 * Array containing CSV headers
 	 *
-	 * @var array of KalturaString
+	 * @var Kaltura_Client_Type_String[]
 	 */
 	public $columns;
 

@@ -66,7 +66,7 @@ class Kaltura_Client_Quiz_Type_QuizListResponse extends Kaltura_Client_Type_List
 	/**
 	 * 
 	 *
-	 * @var array of KalturaQuiz
+	 * @var Kaltura_Client_Quiz_Type_Quiz[]
 	 * @readonly
 	 */
 	public $objects;

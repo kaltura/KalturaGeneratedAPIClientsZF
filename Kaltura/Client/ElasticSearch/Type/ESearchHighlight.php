@@ -77,7 +77,7 @@ class Kaltura_Client_ElasticSearch_Type_ESearchHighlight extends Kaltura_Client_
 	/**
 	 * 
 	 *
-	 * @var array of KalturaString
+	 * @var Kaltura_Client_Type_String[]
 	 */
 	public $hits;
 

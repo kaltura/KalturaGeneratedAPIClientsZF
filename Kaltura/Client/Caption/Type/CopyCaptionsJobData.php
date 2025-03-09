@@ -91,7 +91,7 @@ class Kaltura_Client_Caption_Type_CopyCaptionsJobData extends Kaltura_Client_Typ
 	/**
 	 * an array of source start time and duration
 	 *
-	 * @var array of KalturaClipDescription
+	 * @var Kaltura_Client_Type_ClipDescription[]
 	 */
 	public $clipsDescriptionArray;
 

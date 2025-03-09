@@ -66,7 +66,7 @@ class Kaltura_Client_ContentDistribution_Type_DistributionProviderListResponse e
 	/**
 	 * 
 	 *
-	 * @var array of KalturaDistributionProvider
+	 * @var Kaltura_Client_ContentDistribution_Type_DistributionProvider[]
 	 * @readonly
 	 */
 	public $objects;

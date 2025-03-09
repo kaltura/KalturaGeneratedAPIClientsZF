@@ -66,7 +66,7 @@ class Kaltura_Client_ElasticSearch_Type_ESearchAggregation extends Kaltura_Clien
 	/**
 	 * 
 	 *
-	 * @var array of KalturaESearchAggregationItem
+	 * @var Kaltura_Client_ElasticSearch_Type_ESearchAggregationItem[]
 	 */
 	public $aggregations;
 

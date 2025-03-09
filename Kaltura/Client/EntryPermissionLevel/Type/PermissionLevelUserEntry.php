@@ -70,7 +70,7 @@ class Kaltura_Client_EntryPermissionLevel_Type_PermissionLevelUserEntry extends 
 	/**
 	 * Playback context
 	 *
-	 * @var array of KalturaPermissionLevel
+	 * @var Kaltura_Client_EntryPermissionLevel_Type_PermissionLevel[]
 	 */
 	public $permissionLevels;
 

@@ -88,7 +88,7 @@ class Kaltura_Client_YoutubeApiDistribution_Type_YoutubeApiDistributionJobProvid
 	/**
 	 * 
 	 *
-	 * @var array of KalturaYouTubeApiCaptionDistributionInfo
+	 * @var Kaltura_Client_YoutubeApiDistribution_Type_YouTubeApiCaptionDistributionInfo[]
 	 */
 	public $captionsInfo;
 

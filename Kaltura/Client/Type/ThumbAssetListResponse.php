@@ -66,7 +66,7 @@ class Kaltura_Client_Type_ThumbAssetListResponse extends Kaltura_Client_Type_Lis
 	/**
 	 * 
 	 *
-	 * @var array of KalturaThumbAsset
+	 * @var Kaltura_Client_Type_ThumbAsset[]
 	 * @readonly
 	 */
 	public $objects;

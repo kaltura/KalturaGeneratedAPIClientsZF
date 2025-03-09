@@ -160,7 +160,7 @@ class Kaltura_Client_Type_AccessControl extends Kaltura_Client_ObjectBase
 	/**
 	 * Array of Access Control Restrictions
 	 *
-	 * @var array of KalturaBaseRestriction
+	 * @var Kaltura_Client_Type_BaseRestriction[]
 	 */
 	public $restrictions;
 

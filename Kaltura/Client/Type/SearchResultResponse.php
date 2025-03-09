@@ -80,7 +80,7 @@ class Kaltura_Client_Type_SearchResultResponse extends Kaltura_Client_ObjectBase
 	/**
 	 * 
 	 *
-	 * @var array of KalturaSearchResult
+	 * @var Kaltura_Client_Type_SearchResult[]
 	 * @readonly
 	 */
 	public $objects;

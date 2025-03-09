@@ -211,7 +211,7 @@ class Kaltura_Client_EmailNotification_Type_EmailNotificationTemplate extends Ka
 	/**
 	 * Adds a e-mail custom header
 	 *
-	 * @var array of KalturaKeyValue
+	 * @var Kaltura_Client_Type_KeyValue[]
 	 */
 	public $customHeaders;
 

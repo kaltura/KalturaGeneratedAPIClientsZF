@@ -159,7 +159,7 @@ class Kaltura_Client_Type_ConvertJobData extends Kaltura_Client_Type_Convartable
 	/**
 	 * 
 	 *
-	 * @var array of KalturaDestFileSyncDescriptor
+	 * @var Kaltura_Client_Type_DestFileSyncDescriptor[]
 	 */
 	public $extraDestFileSyncs;
 

@@ -313,7 +313,7 @@ class Kaltura_Client_ContentDistribution_Type_EntryDistribution extends Kaltura_
 	/**
 	 * 
 	 *
-	 * @var array of KalturaDistributionValidationError
+	 * @var Kaltura_Client_ContentDistribution_Type_DistributionValidationError[]
 	 */
 	public $validationErrors;
 

@@ -66,7 +66,7 @@ class Kaltura_Client_Type_ObjectListResponse extends Kaltura_Client_Type_ListRes
 	/**
 	 * 
 	 *
-	 * @var array of KalturaObject
+	 * @var Kaltura_Client_Type_Object[]
 	 * @readonly
 	 */
 	public $objects;

@@ -66,7 +66,7 @@ class Kaltura_Client_Type_ModerationFlagListResponse extends Kaltura_Client_Type
 	/**
 	 * 
 	 *
-	 * @var array of KalturaModerationFlag
+	 * @var Kaltura_Client_Type_ModerationFlag[]
 	 * @readonly
 	 */
 	public $objects;

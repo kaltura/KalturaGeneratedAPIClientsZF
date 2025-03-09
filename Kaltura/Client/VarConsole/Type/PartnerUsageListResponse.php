@@ -77,7 +77,7 @@ class Kaltura_Client_VarConsole_Type_PartnerUsageListResponse extends Kaltura_Cl
 	/**
 	 * 
 	 *
-	 * @var array of KalturaVarPartnerUsageItem
+	 * @var Kaltura_Client_VarConsole_Type_VarPartnerUsageItem[]
 	 */
 	public $objects;
 

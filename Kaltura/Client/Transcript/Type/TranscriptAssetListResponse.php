@@ -66,7 +66,7 @@ class Kaltura_Client_Transcript_Type_TranscriptAssetListResponse extends Kaltura
 	/**
 	 * 
 	 *
-	 * @var array of KalturaTranscriptAsset
+	 * @var Kaltura_Client_Transcript_Type_TranscriptAsset[]
 	 * @readonly
 	 */
 	public $objects;

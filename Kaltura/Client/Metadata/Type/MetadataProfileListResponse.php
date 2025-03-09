@@ -66,7 +66,7 @@ class Kaltura_Client_Metadata_Type_MetadataProfileListResponse extends Kaltura_C
 	/**
 	 * 
 	 *
-	 * @var array of KalturaMetadataProfile
+	 * @var Kaltura_Client_Metadata_Type_MetadataProfile[]
 	 * @readonly
 	 */
 	public $objects;

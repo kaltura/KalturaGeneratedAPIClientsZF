@@ -66,7 +66,7 @@ class Kaltura_Client_VirtualEvent_Type_VirtualEventListResponse extends Kaltura_
 	/**
 	 * 
 	 *
-	 * @var array of KalturaVirtualEvent
+	 * @var Kaltura_Client_VirtualEvent_Type_VirtualEvent[]
 	 */
 	public $objects;
 

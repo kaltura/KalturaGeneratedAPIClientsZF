@@ -66,7 +66,7 @@ class Kaltura_Client_Type_LiveStreamListResponse extends Kaltura_Client_Type_Lis
 	/**
 	 * 
 	 *
-	 * @var array of KalturaLiveStreamEntry
+	 * @var Kaltura_Client_Type_LiveStreamEntry[]
 	 * @readonly
 	 */
 	public $objects;

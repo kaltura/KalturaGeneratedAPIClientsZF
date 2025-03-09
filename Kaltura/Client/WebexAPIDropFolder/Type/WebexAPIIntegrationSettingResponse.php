@@ -66,7 +66,7 @@ class Kaltura_Client_WebexAPIDropFolder_Type_WebexAPIIntegrationSettingResponse 
 	/**
 	 * 
 	 *
-	 * @var array of KalturaWebexAPIIntegrationSetting
+	 * @var Kaltura_Client_WebexAPIDropFolder_Type_WebexAPIIntegrationSetting[]
 	 * @readonly
 	 */
 	public $objects;

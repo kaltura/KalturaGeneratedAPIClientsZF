@@ -80,7 +80,7 @@ class Kaltura_Client_SearchHistory_Type_ESearchHistoryListResponse extends Kaltu
 	/**
 	 * 
 	 *
-	 * @var array of KalturaESearchHistory
+	 * @var Kaltura_Client_SearchHistory_Type_ESearchHistory[]
 	 * @readonly
 	 */
 	public $objects;
@@ -88,7 +88,7 @@ class Kaltura_Client_SearchHistory_Type_ESearchHistoryListResponse extends Kaltu
 	/**
 	 * 
 	 *
-	 * @var array of KalturaESearchAggregationResponseItem
+	 * @var Kaltura_Client_ElasticSearch_Type_ESearchAggregationResponseItem[]
 	 * @readonly
 	 */
 	public $aggregations;

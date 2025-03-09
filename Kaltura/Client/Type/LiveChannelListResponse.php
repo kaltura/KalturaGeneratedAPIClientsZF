@@ -66,7 +66,7 @@ class Kaltura_Client_Type_LiveChannelListResponse extends Kaltura_Client_Type_Li
 	/**
 	 * 
 	 *
-	 * @var array of KalturaLiveChannel
+	 * @var Kaltura_Client_Type_LiveChannel[]
 	 * @readonly
 	 */
 	public $objects;

@@ -66,7 +66,7 @@ class Kaltura_Client_Reach_Type_EntryVendorTaskListResponse extends Kaltura_Clie
 	/**
 	 * 
 	 *
-	 * @var array of KalturaEntryVendorTask
+	 * @var Kaltura_Client_Reach_Type_EntryVendorTask[]
 	 * @readonly
 	 */
 	public $objects;

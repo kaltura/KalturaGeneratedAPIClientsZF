@@ -66,7 +66,7 @@ class Kaltura_Client_Game_Type_UserScorePropertiesResponse extends Kaltura_Clien
 	/**
 	 * 
 	 *
-	 * @var array of KalturaUserScoreProperties
+	 * @var Kaltura_Client_Game_Type_UserScoreProperties[]
 	 * @readonly
 	 */
 	public $objects;

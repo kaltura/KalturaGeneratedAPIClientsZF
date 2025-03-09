@@ -56,6 +56,10 @@ abstract class Kaltura_Client_DropFolder_Type_DropFolderFileBaseFilter extends K
 			$this->idIn = (string)$xml->idIn;
 		if(!is_null($jsonObject) && isset($jsonObject->idIn))
 			$this->idIn = (string)$jsonObject->idIn;
+		if(!is_null($xml) && count($xml->idGreaterThanOrEqual))
+			$this->idGreaterThanOrEqual = (int)$xml->idGreaterThanOrEqual;
+		if(!is_null($jsonObject) && isset($jsonObject->idGreaterThanOrEqual))
+			$this->idGreaterThanOrEqual = (int)$jsonObject->idGreaterThanOrEqual;
 		if(!is_null($xml) && count($xml->partnerIdEqual))
 			$this->partnerIdEqual = (int)$xml->partnerIdEqual;
 		if(!is_null($jsonObject) && isset($jsonObject->partnerIdEqual))
@@ -170,6 +174,13 @@ abstract class Kaltura_Client_DropFolder_Type_DropFolderFileBaseFilter extends K
 	 * @var string
 	 */
 	public $idIn = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $idGreaterThanOrEqual = null;
 
 	/**
 	 * 

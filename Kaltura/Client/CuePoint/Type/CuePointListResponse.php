@@ -66,7 +66,7 @@ class Kaltura_Client_CuePoint_Type_CuePointListResponse extends Kaltura_Client_T
 	/**
 	 * 
 	 *
-	 * @var array of KalturaCuePoint
+	 * @var Kaltura_Client_CuePoint_Type_CuePoint[]
 	 * @readonly
 	 */
 	public $objects;

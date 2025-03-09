@@ -128,7 +128,7 @@ class Kaltura_Client_Type_ConcatJobData extends Kaltura_Client_Type_JobData
 	/**
 	 * Source files to be concatenated
 	 *
-	 * @var array of KalturaString
+	 * @var Kaltura_Client_Type_String[]
 	 */
 	public $srcFiles;
 
@@ -177,7 +177,7 @@ class Kaltura_Client_Type_ConcatJobData extends Kaltura_Client_Type_JobData
 	/**
 	 * conversion commands to be applied to source files
 	 *
-	 * @var array of KalturaString
+	 * @var Kaltura_Client_Type_String[]
 	 */
 	public $conversionCommands;
 

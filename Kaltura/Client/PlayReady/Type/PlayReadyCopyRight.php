@@ -77,7 +77,7 @@ class Kaltura_Client_PlayReady_Type_PlayReadyCopyRight extends Kaltura_Client_Pl
 	/**
 	 * 
 	 *
-	 * @var array of KalturaPlayReadyCopyEnablerHolder
+	 * @var Kaltura_Client_PlayReady_Type_PlayReadyCopyEnablerHolder[]
 	 */
 	public $copyEnablers;
 

@@ -321,7 +321,7 @@ class Kaltura_Client_Reach_Type_ReachProfile extends Kaltura_Client_ObjectBase
 	/**
 	 * 
 	 *
-	 * @var array of KalturaRule
+	 * @var Kaltura_Client_Type_Rule[]
 	 */
 	public $rules;
 
@@ -343,7 +343,7 @@ class Kaltura_Client_Reach_Type_ReachProfile extends Kaltura_Client_ObjectBase
 	/**
 	 * 
 	 *
-	 * @var array of KalturaDictionary
+	 * @var Kaltura_Client_Reach_Type_Dictionary[]
 	 */
 	public $dictionaries;
 

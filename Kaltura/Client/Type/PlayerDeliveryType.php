@@ -106,7 +106,7 @@ class Kaltura_Client_Type_PlayerDeliveryType extends Kaltura_Client_ObjectBase
 	/**
 	 * 
 	 *
-	 * @var array of KalturaKeyValue
+	 * @var Kaltura_Client_Type_KeyValue[]
 	 */
 	public $flashvars;
 

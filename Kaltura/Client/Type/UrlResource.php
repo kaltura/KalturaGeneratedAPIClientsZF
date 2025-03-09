@@ -112,7 +112,7 @@ class Kaltura_Client_Type_UrlResource extends Kaltura_Client_Type_ContentResourc
 	/**
 	 * 
 	 *
-	 * @var array of KalturaString
+	 * @var Kaltura_Client_Type_String[]
 	 */
 	public $urlHeaders;
 

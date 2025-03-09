@@ -77,7 +77,7 @@ class Kaltura_Client_Beacon_Type_BeaconScheduledResourceOperator extends Kaltura
 	/**
 	 * 
 	 *
-	 * @var array of KalturaBeaconScheduledResourceBaseItem
+	 * @var Kaltura_Client_ElasticSearch_Type_BeaconScheduledResourceBaseItem[]
 	 */
 	public $searchItems;
 

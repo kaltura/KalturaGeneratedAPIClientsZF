@@ -80,14 +80,14 @@ class Kaltura_Client_Type_ContextDataResult extends Kaltura_Client_ObjectBase
 	/**
 	 * Array of messages as received from the rules that invalidated
 	 *
-	 * @var array of KalturaString
+	 * @var Kaltura_Client_Type_String[]
 	 */
 	public $messages;
 
 	/**
 	 * Array of actions as received from the rules that invalidated
 	 *
-	 * @var array of KalturaRuleAction
+	 * @var Kaltura_Client_Type_RuleAction[]
 	 */
 	public $actions;
 

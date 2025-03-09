@@ -289,7 +289,7 @@ class Kaltura_Client_CrossKalturaDistribution_Type_CrossKalturaDistributionProfi
 	/**
 	 * 
 	 *
-	 * @var array of KalturaStringValue
+	 * @var Kaltura_Client_Type_StringValue[]
 	 */
 	public $metadataXpathsTriggerUpdate;
 
@@ -331,49 +331,49 @@ class Kaltura_Client_CrossKalturaDistribution_Type_CrossKalturaDistributionProfi
 	/**
 	 * 
 	 *
-	 * @var array of KalturaKeyValue
+	 * @var Kaltura_Client_Type_KeyValue[]
 	 */
 	public $mapAccessControlProfileIds;
 
 	/**
 	 * 
 	 *
-	 * @var array of KalturaKeyValue
+	 * @var Kaltura_Client_Type_KeyValue[]
 	 */
 	public $mapConversionProfileIds;
 
 	/**
 	 * 
 	 *
-	 * @var array of KalturaKeyValue
+	 * @var Kaltura_Client_Type_KeyValue[]
 	 */
 	public $mapMetadataProfileIds;
 
 	/**
 	 * 
 	 *
-	 * @var array of KalturaKeyValue
+	 * @var Kaltura_Client_Type_KeyValue[]
 	 */
 	public $mapStorageProfileIds;
 
 	/**
 	 * 
 	 *
-	 * @var array of KalturaKeyValue
+	 * @var Kaltura_Client_Type_KeyValue[]
 	 */
 	public $mapFlavorParamsIds;
 
 	/**
 	 * 
 	 *
-	 * @var array of KalturaKeyValue
+	 * @var Kaltura_Client_Type_KeyValue[]
 	 */
 	public $mapThumbParamsIds;
 
 	/**
 	 * 
 	 *
-	 * @var array of KalturaKeyValue
+	 * @var Kaltura_Client_Type_KeyValue[]
 	 */
 	public $mapCaptionParamsIds;
 

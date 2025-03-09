@@ -117,7 +117,7 @@ class Kaltura_Client_Type_ClipAttributes extends Kaltura_Client_Type_OperationAt
 	/**
 	 * global Offset In Destination in milliseconds
 	 *
-	 * @var array of KalturaEffect
+	 * @var Kaltura_Client_Type_Effect[]
 	 */
 	public $effectArray;
 
@@ -131,7 +131,7 @@ class Kaltura_Client_Type_ClipAttributes extends Kaltura_Client_Type_OperationAt
 	/**
 	 * 
 	 *
-	 * @var array of KalturaCaptionAttributes
+	 * @var Kaltura_Client_Type_CaptionAttributes[]
 	 */
 	public $captionAttributes;
 

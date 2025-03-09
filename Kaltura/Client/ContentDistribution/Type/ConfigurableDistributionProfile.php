@@ -94,14 +94,14 @@ abstract class Kaltura_Client_ContentDistribution_Type_ConfigurableDistributionP
 	/**
 	 * 
 	 *
-	 * @var array of KalturaDistributionFieldConfig
+	 * @var Kaltura_Client_ContentDistribution_Type_DistributionFieldConfig[]
 	 */
 	public $fieldConfigArray;
 
 	/**
 	 * 
 	 *
-	 * @var array of KalturaExtendingItemMrssParameter
+	 * @var Kaltura_Client_Type_ExtendingItemMrssParameter[]
 	 */
 	public $itemXpathsToExtend;
 

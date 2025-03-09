@@ -66,7 +66,7 @@ class Kaltura_Client_CaptionSearch_Type_CaptionAssetItemListResponse extends Kal
 	/**
 	 * 
 	 *
-	 * @var array of KalturaCaptionAssetItem
+	 * @var Kaltura_Client_CaptionSearch_Type_CaptionAssetItem[]
 	 * @readonly
 	 */
 	public $objects;

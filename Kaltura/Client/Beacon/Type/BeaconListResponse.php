@@ -66,7 +66,7 @@ class Kaltura_Client_Beacon_Type_BeaconListResponse extends Kaltura_Client_Type_
 	/**
 	 * 
 	 *
-	 * @var array of KalturaBeacon
+	 * @var Kaltura_Client_Beacon_Type_Beacon[]
 	 * @readonly
 	 */
 	public $objects;

@@ -66,7 +66,7 @@ class Kaltura_Client_Type_BaseSyndicationFeedListResponse extends Kaltura_Client
 	/**
 	 * 
 	 *
-	 * @var array of KalturaBaseSyndicationFeed
+	 * @var Kaltura_Client_Type_BaseSyndicationFeed[]
 	 * @readonly
 	 */
 	public $objects;

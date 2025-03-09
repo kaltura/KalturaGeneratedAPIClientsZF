@@ -104,7 +104,7 @@ class Kaltura_Client_Type_RecalculateResponseProfileCacheJobData extends Kaltura
 	/**
 	 * 
 	 *
-	 * @var array of KalturaIntegerValue
+	 * @var Kaltura_Client_Type_IntegerValue[]
 	 */
 	public $userRoles;
 

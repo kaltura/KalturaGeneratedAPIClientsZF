@@ -66,7 +66,7 @@ class Kaltura_Client_Type_BaseEntryListResponse extends Kaltura_Client_Type_List
 	/**
 	 * 
 	 *
-	 * @var array of KalturaBaseEntry
+	 * @var Kaltura_Client_Type_BaseEntry[]
 	 * @readonly
 	 */
 	public $objects;

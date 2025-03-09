@@ -66,7 +66,7 @@ class Kaltura_Client_Type_UploadTokenListResponse extends Kaltura_Client_Type_Li
 	/**
 	 * 
 	 *
-	 * @var array of KalturaUploadToken
+	 * @var Kaltura_Client_Type_UploadToken[]
 	 * @readonly
 	 */
 	public $objects;

@@ -66,7 +66,7 @@ class Kaltura_Client_ContentDistribution_Type_GenericDistributionProviderListRes
 	/**
 	 * 
 	 *
-	 * @var array of KalturaGenericDistributionProvider
+	 * @var Kaltura_Client_ContentDistribution_Type_GenericDistributionProvider[]
 	 * @readonly
 	 */
 	public $objects;

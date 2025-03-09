@@ -66,7 +66,7 @@ class Kaltura_Client_BusinessProcessNotification_Type_BusinessProcessServerListR
 	/**
 	 * 
 	 *
-	 * @var array of KalturaBusinessProcessServer
+	 * @var Kaltura_Client_BusinessProcessNotification_Type_BusinessProcessServer[]
 	 * @readonly
 	 */
 	public $objects;

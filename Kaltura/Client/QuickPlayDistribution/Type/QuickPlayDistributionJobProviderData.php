@@ -91,14 +91,14 @@ class Kaltura_Client_QuickPlayDistribution_Type_QuickPlayDistributionJobProvider
 	/**
 	 * 
 	 *
-	 * @var array of KalturaString
+	 * @var Kaltura_Client_Type_String[]
 	 */
 	public $videoFilePaths;
 
 	/**
 	 * 
 	 *
-	 * @var array of KalturaString
+	 * @var Kaltura_Client_Type_String[]
 	 */
 	public $thumbnailFilePaths;
 

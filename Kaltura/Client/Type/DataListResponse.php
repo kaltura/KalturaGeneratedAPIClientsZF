@@ -66,7 +66,7 @@ class Kaltura_Client_Type_DataListResponse extends Kaltura_Client_Type_ListRespo
 	/**
 	 * 
 	 *
-	 * @var array of KalturaDataEntry
+	 * @var Kaltura_Client_Type_DataEntry[]
 	 * @readonly
 	 */
 	public $objects;

@@ -135,7 +135,7 @@ class Kaltura_Client_Type_ImportJobData extends Kaltura_Client_Type_JobData
 	/**
 	 * 
 	 *
-	 * @var array of KalturaString
+	 * @var Kaltura_Client_Type_String[]
 	 */
 	public $urlHeaders;
 

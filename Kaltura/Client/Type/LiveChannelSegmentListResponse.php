@@ -66,7 +66,7 @@ class Kaltura_Client_Type_LiveChannelSegmentListResponse extends Kaltura_Client_
 	/**
 	 * 
 	 *
-	 * @var array of KalturaLiveChannelSegment
+	 * @var Kaltura_Client_Type_LiveChannelSegment[]
 	 * @readonly
 	 */
 	public $objects;

@@ -85,7 +85,7 @@ class Kaltura_Client_Type_UiConfTypeInfo extends Kaltura_Client_ObjectBase
 	/**
 	 * Available versions
 	 *
-	 * @var array of KalturaString
+	 * @var Kaltura_Client_Type_String[]
 	 */
 	public $versions;
 

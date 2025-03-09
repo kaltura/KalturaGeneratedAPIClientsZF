@@ -66,7 +66,7 @@ class Kaltura_Client_Type_BatchJobListResponse extends Kaltura_Client_Type_ListR
 	/**
 	 * 
 	 *
-	 * @var array of KalturaBatchJob
+	 * @var Kaltura_Client_Type_BatchJob[]
 	 * @readonly
 	 */
 	public $objects;

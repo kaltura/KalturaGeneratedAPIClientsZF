@@ -66,7 +66,7 @@ abstract class Kaltura_Client_ElasticSearch_Type_ESearchItemData extends Kaltura
 	/**
 	 * 
 	 *
-	 * @var array of KalturaESearchHighlight
+	 * @var Kaltura_Client_ElasticSearch_Type_ESearchHighlight[]
 	 */
 	public $highlight;
 

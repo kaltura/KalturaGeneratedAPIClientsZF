@@ -66,7 +66,7 @@ class Kaltura_Client_Type_PartnerListResponse extends Kaltura_Client_Type_ListRe
 	/**
 	 * 
 	 *
-	 * @var array of KalturaPartner
+	 * @var Kaltura_Client_Type_Partner[]
 	 * @readonly
 	 */
 	public $objects;

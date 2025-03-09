@@ -81,7 +81,7 @@ class Kaltura_Client_ElasticSearch_Type_ESearchItemDataResult extends Kaltura_Cl
 	/**
 	 * 
 	 *
-	 * @var array of KalturaESearchItemData
+	 * @var Kaltura_Client_ElasticSearch_Type_ESearchItemData[]
 	 */
 	public $items;
 

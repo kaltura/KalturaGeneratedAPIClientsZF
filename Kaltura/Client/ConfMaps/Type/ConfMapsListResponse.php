@@ -66,7 +66,7 @@ class Kaltura_Client_ConfMaps_Type_ConfMapsListResponse extends Kaltura_Client_T
 	/**
 	 * 
 	 *
-	 * @var array of KalturaConfMaps
+	 * @var Kaltura_Client_ConfMaps_Type_ConfMaps[]
 	 * @readonly
 	 */
 	public $objects;

@@ -66,7 +66,7 @@ class Kaltura_Client_Attachment_Type_AttachmentAssetListResponse extends Kaltura
 	/**
 	 * 
 	 *
-	 * @var array of KalturaAttachmentAsset
+	 * @var Kaltura_Client_Attachment_Type_AttachmentAsset[]
 	 * @readonly
 	 */
 	public $objects;

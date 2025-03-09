@@ -66,7 +66,7 @@ class Kaltura_Client_Type_ConversionProfileListResponse extends Kaltura_Client_T
 	/**
 	 * 
 	 *
-	 * @var array of KalturaConversionProfile
+	 * @var Kaltura_Client_Type_ConversionProfile[]
 	 * @readonly
 	 */
 	public $objects;

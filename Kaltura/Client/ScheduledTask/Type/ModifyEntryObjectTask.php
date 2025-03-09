@@ -125,7 +125,7 @@ class Kaltura_Client_ScheduledTask_Type_ModifyEntryObjectTask extends Kaltura_Cl
 	/**
 	 * array of {input metadata xpath location,entry field} objects
 	 *
-	 * @var array of KalturaKeyValue
+	 * @var Kaltura_Client_Type_KeyValue[]
 	 */
 	public $inputMetadata;
 
@@ -139,7 +139,7 @@ class Kaltura_Client_ScheduledTask_Type_ModifyEntryObjectTask extends Kaltura_Cl
 	/**
 	 * array of {output metadata xpath location,entry field} objects
 	 *
-	 * @var array of KalturaKeyValue
+	 * @var Kaltura_Client_Type_KeyValue[]
 	 */
 	public $outputMetadata;
 

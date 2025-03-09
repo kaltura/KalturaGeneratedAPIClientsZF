@@ -86,7 +86,7 @@ class Kaltura_Client_BulkUploadCsv_Type_BulkUploadCsvJobData extends Kaltura_Cli
 	/**
 	 * Array containing CSV headers
 	 *
-	 * @var array of KalturaString
+	 * @var Kaltura_Client_Type_String[]
 	 */
 	public $columns;
 

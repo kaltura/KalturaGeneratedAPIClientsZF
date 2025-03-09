@@ -66,7 +66,7 @@ class Kaltura_Client_Type_MediaListResponse extends Kaltura_Client_Type_ListResp
 	/**
 	 * 
 	 *
-	 * @var array of KalturaMediaEntry
+	 * @var Kaltura_Client_Type_MediaEntry[]
 	 * @readonly
 	 */
 	public $objects;

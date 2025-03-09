@@ -156,21 +156,21 @@ class Kaltura_Client_Type_Rule extends Kaltura_Client_ObjectBase
 	/**
 	 * Actions to be performed by the player in case the rule is fulfilled
 	 *
-	 * @var array of KalturaRuleAction
+	 * @var Kaltura_Client_Type_RuleAction[]
 	 */
 	public $actions;
 
 	/**
 	 * Conditions to validate the rule
 	 *
-	 * @var array of KalturaCondition
+	 * @var Kaltura_Client_Type_Condition[]
 	 */
 	public $conditions;
 
 	/**
 	 * Indicates what contexts should be tested by this rule
 	 *
-	 * @var array of KalturaContextTypeHolder
+	 * @var Kaltura_Client_Type_ContextTypeHolder[]
 	 */
 	public $contexts;
 

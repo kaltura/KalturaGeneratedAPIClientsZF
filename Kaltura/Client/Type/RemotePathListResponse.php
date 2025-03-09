@@ -66,7 +66,7 @@ class Kaltura_Client_Type_RemotePathListResponse extends Kaltura_Client_Type_Lis
 	/**
 	 * 
 	 *
-	 * @var array of KalturaRemotePath
+	 * @var Kaltura_Client_Type_RemotePath[]
 	 * @readonly
 	 */
 	public $objects;

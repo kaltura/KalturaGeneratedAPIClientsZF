@@ -66,7 +66,7 @@ class Kaltura_Client_Document_Type_DocumentListResponse extends Kaltura_Client_T
 	/**
 	 * 
 	 *
-	 * @var array of KalturaDocumentEntry
+	 * @var Kaltura_Client_Document_Type_DocumentEntry[]
 	 * @readonly
 	 */
 	public $objects;

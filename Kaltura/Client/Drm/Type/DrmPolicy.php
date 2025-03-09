@@ -213,7 +213,7 @@ class Kaltura_Client_Drm_Type_DrmPolicy extends Kaltura_Client_ObjectBase
 	/**
 	 * 
 	 *
-	 * @var array of KalturaKeyValue
+	 * @var Kaltura_Client_Type_KeyValue[]
 	 */
 	public $licenseParams;
 

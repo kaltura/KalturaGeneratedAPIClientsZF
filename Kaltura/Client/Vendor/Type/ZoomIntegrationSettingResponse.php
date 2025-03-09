@@ -66,7 +66,7 @@ class Kaltura_Client_Vendor_Type_ZoomIntegrationSettingResponse extends Kaltura_
 	/**
 	 * 
 	 *
-	 * @var array of KalturaZoomIntegrationSetting
+	 * @var Kaltura_Client_Vendor_Type_ZoomIntegrationSetting[]
 	 * @readonly
 	 */
 	public $objects;

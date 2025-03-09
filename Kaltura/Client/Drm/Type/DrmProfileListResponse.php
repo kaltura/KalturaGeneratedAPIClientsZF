@@ -66,7 +66,7 @@ class Kaltura_Client_Drm_Type_DrmProfileListResponse extends Kaltura_Client_Type
 	/**
 	 * 
 	 *
-	 * @var array of KalturaDrmProfile
+	 * @var Kaltura_Client_Drm_Type_DrmProfile[]
 	 * @readonly
 	 */
 	public $objects;

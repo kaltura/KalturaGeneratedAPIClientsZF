@@ -66,7 +66,7 @@ class Kaltura_Client_Type_SchedulerListResponse extends Kaltura_Client_Type_List
 	/**
 	 * 
 	 *
-	 * @var array of KalturaScheduler
+	 * @var Kaltura_Client_Type_Scheduler[]
 	 * @readonly
 	 */
 	public $objects;

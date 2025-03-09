@@ -66,7 +66,7 @@ class Kaltura_Client_Like_Type_LikeListResponse extends Kaltura_Client_Type_List
 	/**
 	 * 
 	 *
-	 * @var array of KalturaLike
+	 * @var Kaltura_Client_Like_Type_Like[]
 	 * @readonly
 	 */
 	public $objects;

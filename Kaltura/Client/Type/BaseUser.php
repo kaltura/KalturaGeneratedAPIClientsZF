@@ -370,7 +370,7 @@ class Kaltura_Client_Type_BaseUser extends Kaltura_Client_ObjectBase
 	/**
 	 * 
 	 *
-	 * @var array of KalturaUserCapability
+	 * @var Kaltura_Client_Type_UserCapability[]
 	 */
 	public $capabilities;
 

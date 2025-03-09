@@ -66,7 +66,7 @@ class Kaltura_Client_Rating_Type_RatingCountListResponse extends Kaltura_Client_
 	/**
 	 * 
 	 *
-	 * @var array of KalturaRatingCount
+	 * @var Kaltura_Client_Rating_Type_RatingCount[]
 	 * @readonly
 	 */
 	public $objects;

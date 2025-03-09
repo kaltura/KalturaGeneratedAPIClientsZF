@@ -66,7 +66,7 @@ class Kaltura_Client_FileSync_Type_FileSyncListResponse extends Kaltura_Client_T
 	/**
 	 * 
 	 *
-	 * @var array of KalturaFileSync
+	 * @var Kaltura_Client_FileSync_Type_FileSync[]
 	 * @readonly
 	 */
 	public $objects;

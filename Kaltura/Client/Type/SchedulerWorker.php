@@ -188,21 +188,21 @@ class Kaltura_Client_Type_SchedulerWorker extends Kaltura_Client_ObjectBase
 	/**
 	 * Array of the last statuses
 	 *
-	 * @var array of KalturaSchedulerStatus
+	 * @var Kaltura_Client_Type_SchedulerStatus[]
 	 */
 	public $statuses;
 
 	/**
 	 * Array of the last configs
 	 *
-	 * @var array of KalturaSchedulerConfig
+	 * @var Kaltura_Client_Type_SchedulerConfig[]
 	 */
 	public $configs;
 
 	/**
 	 * Array of jobs that locked to this worker
 	 *
-	 * @var array of KalturaBatchJob
+	 * @var Kaltura_Client_Type_BatchJob[]
 	 */
 	public $lockedJobs;
 

@@ -359,7 +359,7 @@ class Kaltura_Client_Type_BaseEntry extends Kaltura_Client_ObjectBase
 	/**
 	 * Entry name (Min 1 chars)
 	 *
-	 * @var array of KalturaMultiLingualString
+	 * @var Kaltura_Client_Type_MultiLingualString[]
 	 */
 	public $multiLingual_name;
 
@@ -373,7 +373,7 @@ class Kaltura_Client_Type_BaseEntry extends Kaltura_Client_ObjectBase
 	/**
 	 * Entry description
 	 *
-	 * @var array of KalturaMultiLingualString
+	 * @var Kaltura_Client_Type_MultiLingualString[]
 	 */
 	public $multiLingual_description;
 
@@ -410,7 +410,7 @@ class Kaltura_Client_Type_BaseEntry extends Kaltura_Client_ObjectBase
 	/**
 	 * Entry tags
 	 *
-	 * @var array of KalturaMultiLingualString
+	 * @var Kaltura_Client_Type_MultiLingualString[]
 	 */
 	public $multiLingual_tags;
 
@@ -650,7 +650,7 @@ class Kaltura_Client_Type_BaseEntry extends Kaltura_Client_ObjectBase
 	/**
 	 * clipping, skipping and cropping attributes that used to create this entry
 	 *
-	 * @var array of KalturaOperationAttributes
+	 * @var Kaltura_Client_Type_OperationAttributes[]
 	 */
 	public $operationAttributes;
 

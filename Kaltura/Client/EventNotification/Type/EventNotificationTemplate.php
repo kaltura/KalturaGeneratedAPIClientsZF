@@ -267,21 +267,21 @@ class Kaltura_Client_EventNotification_Type_EventNotificationTemplate extends Ka
 	/**
 	 * Define the conditions that cause this notification to be triggered
 	 *
-	 * @var array of KalturaCondition
+	 * @var Kaltura_Client_Type_Condition[]
 	 */
 	public $eventConditions;
 
 	/**
 	 * Define the content dynamic parameters
 	 *
-	 * @var array of KalturaEventNotificationParameter
+	 * @var Kaltura_Client_EventNotification_Type_EventNotificationParameter[]
 	 */
 	public $contentParameters;
 
 	/**
 	 * Define the content dynamic parameters
 	 *
-	 * @var array of KalturaEventNotificationParameter
+	 * @var Kaltura_Client_EventNotification_Type_EventNotificationParameter[]
 	 */
 	public $userParameters;
 

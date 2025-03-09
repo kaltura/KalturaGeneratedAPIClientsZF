@@ -66,7 +66,7 @@ class Kaltura_Client_Annotation_Type_AnnotationListResponse extends Kaltura_Clie
 	/**
 	 * 
 	 *
-	 * @var array of KalturaAnnotation
+	 * @var Kaltura_Client_Annotation_Type_Annotation[]
 	 * @readonly
 	 */
 	public $objects;

@@ -104,7 +104,7 @@ class Kaltura_Client_Type_Playlist extends Kaltura_Client_Type_BaseEntry
 	/**
 	 * 
 	 *
-	 * @var array of KalturaMediaEntryFilterForPlaylist
+	 * @var Kaltura_Client_Type_MediaEntryFilterForPlaylist[]
 	 */
 	public $filters;
 

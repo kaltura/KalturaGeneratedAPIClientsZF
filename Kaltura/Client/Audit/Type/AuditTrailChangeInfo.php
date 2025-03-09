@@ -66,7 +66,7 @@ class Kaltura_Client_Audit_Type_AuditTrailChangeInfo extends Kaltura_Client_Audi
 	/**
 	 * 
 	 *
-	 * @var array of KalturaAuditTrailChangeItem
+	 * @var Kaltura_Client_Audit_Type_AuditTrailChangeItem[]
 	 */
 	public $changedItems;
 

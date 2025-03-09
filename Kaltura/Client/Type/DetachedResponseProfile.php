@@ -135,14 +135,14 @@ class Kaltura_Client_Type_DetachedResponseProfile extends Kaltura_Client_Type_Ba
 	/**
 	 * 
 	 *
-	 * @var array of KalturaDetachedResponseProfile
+	 * @var Kaltura_Client_Type_DetachedResponseProfile[]
 	 */
 	public $relatedProfiles;
 
 	/**
 	 * 
 	 *
-	 * @var array of KalturaResponseProfileMapping
+	 * @var Kaltura_Client_Type_ResponseProfileMapping[]
 	 */
 	public $mappings;
 

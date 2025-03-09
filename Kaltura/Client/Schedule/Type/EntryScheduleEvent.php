@@ -99,7 +99,7 @@ abstract class Kaltura_Client_Schedule_Type_EntryScheduleEvent extends Kaltura_C
 	/**
 	 * Blackout schedule events the conflict with this event
 	 *
-	 * @var array of KalturaScheduleEvent
+	 * @var Kaltura_Client_Schedule_Type_ScheduleEvent[]
 	 * @readonly
 	 */
 	public $blackoutConflicts;

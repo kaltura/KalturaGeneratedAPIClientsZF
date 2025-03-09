@@ -77,7 +77,7 @@ class Kaltura_Client_Type_GenericXsltSyndicationFeed extends Kaltura_Client_Type
 	/**
 	 * 
 	 *
-	 * @var array of KalturaExtendingItemMrssParameter
+	 * @var Kaltura_Client_Type_ExtendingItemMrssParameter[]
 	 */
 	public $itemXpathsToExtend;
 

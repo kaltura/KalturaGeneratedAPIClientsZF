@@ -80,14 +80,14 @@ class Kaltura_Client_EventNotification_Type_EventNotificationArrayParameter exte
 	/**
 	 * 
 	 *
-	 * @var array of KalturaString
+	 * @var Kaltura_Client_Type_String[]
 	 */
 	public $values;
 
 	/**
 	 * Used to restrict the values to close list
 	 *
-	 * @var array of KalturaStringValue
+	 * @var Kaltura_Client_Type_StringValue[]
 	 */
 	public $allowedValues;
 

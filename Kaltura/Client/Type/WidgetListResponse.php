@@ -66,7 +66,7 @@ class Kaltura_Client_Type_WidgetListResponse extends Kaltura_Client_Type_ListRes
 	/**
 	 * 
 	 *
-	 * @var array of KalturaWidget
+	 * @var Kaltura_Client_Type_Widget[]
 	 * @readonly
 	 */
 	public $objects;

@@ -66,7 +66,7 @@ class Kaltura_Client_ElasticSearch_Type_ESearchGroupResponse extends Kaltura_Cli
 	/**
 	 * 
 	 *
-	 * @var array of KalturaESearchGroupResult
+	 * @var Kaltura_Client_ElasticSearch_Type_ESearchGroupResult[]
 	 * @readonly
 	 */
 	public $objects;

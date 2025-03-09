@@ -66,7 +66,7 @@ class Kaltura_Client_Audit_Type_AuditTrailListResponse extends Kaltura_Client_Ty
 	/**
 	 * 
 	 *
-	 * @var array of KalturaAuditTrail
+	 * @var Kaltura_Client_Audit_Type_AuditTrail[]
 	 * @readonly
 	 */
 	public $objects;

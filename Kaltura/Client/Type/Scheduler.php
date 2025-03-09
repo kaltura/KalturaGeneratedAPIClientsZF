@@ -151,7 +151,7 @@ class Kaltura_Client_Type_Scheduler extends Kaltura_Client_ObjectBase
 	/**
 	 * Array of the last statuses
 	 *
-	 * @var array of KalturaSchedulerStatus
+	 * @var Kaltura_Client_Type_SchedulerStatus[]
 	 * @readonly
 	 */
 	public $statuses;
@@ -159,7 +159,7 @@ class Kaltura_Client_Type_Scheduler extends Kaltura_Client_ObjectBase
 	/**
 	 * Array of the last configs
 	 *
-	 * @var array of KalturaSchedulerConfig
+	 * @var Kaltura_Client_Type_SchedulerConfig[]
 	 * @readonly
 	 */
 	public $configs;
@@ -167,7 +167,7 @@ class Kaltura_Client_Type_Scheduler extends Kaltura_Client_ObjectBase
 	/**
 	 * Array of the workers
 	 *
-	 * @var array of KalturaSchedulerWorker
+	 * @var Kaltura_Client_Type_SchedulerWorker[]
 	 * @readonly
 	 */
 	public $workers;

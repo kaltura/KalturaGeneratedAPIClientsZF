@@ -66,7 +66,7 @@ class Kaltura_Client_ScheduledTask_Type_ScheduledTaskProfileListResponse extends
 	/**
 	 * 
 	 *
-	 * @var array of KalturaScheduledTaskProfile
+	 * @var Kaltura_Client_ScheduledTask_Type_ScheduledTaskProfile[]
 	 * @readonly
 	 */
 	public $objects;

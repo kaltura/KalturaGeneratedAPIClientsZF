@@ -77,7 +77,7 @@ class Kaltura_Client_EventNotification_Type_EventNotificationDispatchJobData ext
 	/**
 	 * Define the content dynamic parameters
 	 *
-	 * @var array of KalturaKeyValue
+	 * @var Kaltura_Client_Type_KeyValue[]
 	 */
 	public $contentParameters;
 

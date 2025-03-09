@@ -125,7 +125,7 @@ class Kaltura_Client_PlayReady_Type_PlayReadyPlayRight extends Kaltura_Client_Pl
 	/**
 	 * 
 	 *
-	 * @var array of KalturaPlayReadyAnalogVideoOPIdHolder
+	 * @var Kaltura_Client_PlayReady_Type_PlayReadyAnalogVideoOPIdHolder[]
 	 */
 	public $analogVideoOutputProtectionList;
 
@@ -146,7 +146,7 @@ class Kaltura_Client_PlayReady_Type_PlayReadyPlayRight extends Kaltura_Client_Pl
 	/**
 	 * 
 	 *
-	 * @var array of KalturaPlayReadyDigitalAudioOPIdHolder
+	 * @var Kaltura_Client_PlayReady_Type_PlayReadyDigitalAudioOPIdHolder[]
 	 */
 	public $digitalAudioOutputProtectionList;
 
@@ -174,7 +174,7 @@ class Kaltura_Client_PlayReady_Type_PlayReadyPlayRight extends Kaltura_Client_Pl
 	/**
 	 * 
 	 *
-	 * @var array of KalturaPlayReadyPlayEnablerHolder
+	 * @var Kaltura_Client_PlayReady_Type_PlayReadyPlayEnablerHolder[]
 	 */
 	public $playEnablers;
 

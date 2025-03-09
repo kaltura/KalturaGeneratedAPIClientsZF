@@ -66,7 +66,7 @@ class Kaltura_Client_Type_DeliveryProfileCondition extends Kaltura_Client_Type_C
 	/**
 	 * The delivery ids that are accepted by this condition
 	 *
-	 * @var array of KalturaIntegerValue
+	 * @var Kaltura_Client_Type_IntegerValue[]
 	 */
 	public $deliveryProfileIds;
 

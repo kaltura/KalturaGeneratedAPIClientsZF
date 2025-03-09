@@ -70,7 +70,7 @@ abstract class Kaltura_Client_Type_MatchCondition extends Kaltura_Client_Type_Co
 	/**
 	 * 
 	 *
-	 * @var array of KalturaStringValue
+	 * @var Kaltura_Client_Type_StringValue[]
 	 */
 	public $values;
 

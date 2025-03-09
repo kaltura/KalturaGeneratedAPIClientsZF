@@ -166,7 +166,7 @@ class Kaltura_Client_ContentDistribution_Type_DistributionJobData extends Kaltur
 	 * Stores array of media files that submitted to the destination site
 	 * 	 Could be used later for media update
 	 *
-	 * @var array of KalturaDistributionRemoteMediaFile
+	 * @var Kaltura_Client_ContentDistribution_Type_DistributionRemoteMediaFile[]
 	 */
 	public $mediaFiles;
 

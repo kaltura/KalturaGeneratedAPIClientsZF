@@ -66,7 +66,7 @@ class Kaltura_Client_ContentDistribution_Type_EntryDistributionListResponse exte
 	/**
 	 * 
 	 *
-	 * @var array of KalturaEntryDistribution
+	 * @var Kaltura_Client_ContentDistribution_Type_EntryDistribution[]
 	 * @readonly
 	 */
 	public $objects;

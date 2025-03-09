@@ -99,7 +99,7 @@ class Kaltura_Client_Drm_Type_DrmLicenseAccessDetails extends Kaltura_Client_Obj
 	/**
 	 * 
 	 *
-	 * @var array of KalturaKeyValue
+	 * @var Kaltura_Client_Type_KeyValue[]
 	 */
 	public $licenseParams;
 

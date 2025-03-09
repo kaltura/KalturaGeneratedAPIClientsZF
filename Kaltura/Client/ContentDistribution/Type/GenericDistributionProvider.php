@@ -191,14 +191,14 @@ class Kaltura_Client_ContentDistribution_Type_GenericDistributionProvider extend
 	/**
 	 * 
 	 *
-	 * @var array of KalturaDistributionThumbDimensions
+	 * @var Kaltura_Client_ContentDistribution_Type_DistributionThumbDimensions[]
 	 */
 	public $optionalThumbDimensions;
 
 	/**
 	 * 
 	 *
-	 * @var array of KalturaDistributionThumbDimensions
+	 * @var Kaltura_Client_ContentDistribution_Type_DistributionThumbDimensions[]
 	 */
 	public $requiredThumbDimensions;
 

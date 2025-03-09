@@ -106,7 +106,7 @@ class Kaltura_Client_HuluDistribution_Type_HuluDistributionJobProviderData exten
 	/**
 	 * 
 	 *
-	 * @var array of KalturaCuePoint
+	 * @var Kaltura_Client_CuePoint_Type_CuePoint[]
 	 */
 	public $cuePoints;
 
@@ -120,7 +120,7 @@ class Kaltura_Client_HuluDistribution_Type_HuluDistributionJobProviderData exten
 	/**
 	 * 
 	 *
-	 * @var array of KalturaString
+	 * @var Kaltura_Client_Type_String[]
 	 */
 	public $captionLocalPaths;
 

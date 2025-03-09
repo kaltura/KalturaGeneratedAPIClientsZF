@@ -80,14 +80,14 @@ abstract class Kaltura_Client_ElasticSearch_Type_ESearchResult extends Kaltura_C
 	/**
 	 * 
 	 *
-	 * @var array of KalturaESearchHighlight
+	 * @var Kaltura_Client_ElasticSearch_Type_ESearchHighlight[]
 	 */
 	public $highlight;
 
 	/**
 	 * 
 	 *
-	 * @var array of KalturaESearchItemDataResult
+	 * @var Kaltura_Client_ElasticSearch_Type_ESearchItemDataResult[]
 	 */
 	public $itemsData;
 

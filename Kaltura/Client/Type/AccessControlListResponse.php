@@ -66,7 +66,7 @@ class Kaltura_Client_Type_AccessControlListResponse extends Kaltura_Client_Type_
 	/**
 	 * 
 	 *
-	 * @var array of KalturaAccessControl
+	 * @var Kaltura_Client_Type_AccessControl[]
 	 * @readonly
 	 */
 	public $objects;

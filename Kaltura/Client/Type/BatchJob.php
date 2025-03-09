@@ -356,7 +356,7 @@ class Kaltura_Client_Type_BatchJob extends Kaltura_Client_ObjectBase
 	/**
 	 * 
 	 *
-	 * @var array of KalturaBatchHistoryData
+	 * @var Kaltura_Client_Type_BatchHistoryData[]
 	 */
 	public $history;
 

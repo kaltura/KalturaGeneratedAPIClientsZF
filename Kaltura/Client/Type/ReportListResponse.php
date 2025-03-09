@@ -66,7 +66,7 @@ class Kaltura_Client_Type_ReportListResponse extends Kaltura_Client_Type_ListRes
 	/**
 	 * 
 	 *
-	 * @var array of KalturaReport
+	 * @var Kaltura_Client_Type_Report[]
 	 * @readonly
 	 */
 	public $objects;

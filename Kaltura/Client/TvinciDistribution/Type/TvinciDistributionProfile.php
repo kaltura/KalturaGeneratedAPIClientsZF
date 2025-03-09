@@ -111,7 +111,7 @@ class Kaltura_Client_TvinciDistribution_Type_TvinciDistributionProfile extends K
 	/**
 	 * Tags array for Tvinci distribution
 	 *
-	 * @var array of KalturaTvinciDistributionTag
+	 * @var Kaltura_Client_TvinciDistribution_Type_TvinciDistributionTag[]
 	 */
 	public $tags;
 

@@ -77,7 +77,7 @@ class Kaltura_Client_Type_ReportResponse extends Kaltura_Client_ObjectBase
 	/**
 	 * 
 	 *
-	 * @var array of KalturaString
+	 * @var Kaltura_Client_Type_String[]
 	 */
 	public $results;
 

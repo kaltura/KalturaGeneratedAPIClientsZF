@@ -88,7 +88,7 @@ class Kaltura_Client_ElasticSearch_Type_ESearchAggregationResponseItem extends K
 	/**
 	 * 
 	 *
-	 * @var array of KalturaESearchAggregationBucket
+	 * @var Kaltura_Client_ElasticSearch_Type_ESearchAggregationBucket[]
 	 */
 	public $buckets;
 

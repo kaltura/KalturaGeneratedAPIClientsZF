@@ -137,7 +137,7 @@ class Kaltura_Client_Type_ConvartableJobData extends Kaltura_Client_Type_JobData
 	/**
 	 * 
 	 *
-	 * @var array of KalturaSourceFileSyncDescriptor
+	 * @var Kaltura_Client_Type_SourceFileSyncDescriptor[]
 	 */
 	public $srcFileSyncs;
 
@@ -186,7 +186,7 @@ class Kaltura_Client_Type_ConvartableJobData extends Kaltura_Client_Type_JobData
 	/**
 	 * 
 	 *
-	 * @var array of KalturaKeyValue
+	 * @var Kaltura_Client_Type_KeyValue[]
 	 */
 	public $pluginData;
 

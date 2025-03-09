@@ -190,7 +190,7 @@ class Kaltura_Client_ComcastMrssDistribution_Type_ComcastMrssDistributionProfile
 	/**
 	 * 
 	 *
-	 * @var array of KalturaKeyValue
+	 * @var Kaltura_Client_Type_KeyValue[]
 	 */
 	public $cPlatformTvSeries;
 

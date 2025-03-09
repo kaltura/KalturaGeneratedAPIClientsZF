@@ -77,7 +77,7 @@ class Kaltura_Client_ElasticSearch_Type_MediaEsearchExportToCsvJobData extends K
 	/**
 	 * options
 	 *
-	 * @var array of KalturaExportToCsvOptions
+	 * @var Kaltura_Client_Type_ExportToCsvOptions[]
 	 */
 	public $options;
 

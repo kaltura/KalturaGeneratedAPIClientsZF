@@ -66,7 +66,7 @@ class Kaltura_Client_Caption_Type_CaptionParamsListResponse extends Kaltura_Clie
 	/**
 	 * 
 	 *
-	 * @var array of KalturaCaptionParams
+	 * @var Kaltura_Client_Caption_Type_CaptionParams[]
 	 * @readonly
 	 */
 	public $objects;

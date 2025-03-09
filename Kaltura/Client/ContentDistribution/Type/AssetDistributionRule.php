@@ -77,7 +77,7 @@ class Kaltura_Client_ContentDistribution_Type_AssetDistributionRule extends Kalt
 	/**
 	 * An array of asset distribution conditions
 	 *
-	 * @var array of KalturaAssetDistributionCondition
+	 * @var Kaltura_Client_ContentDistribution_Type_AssetDistributionCondition[]
 	 */
 	public $assetDistributionConditions;
 

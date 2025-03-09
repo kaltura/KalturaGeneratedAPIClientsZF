@@ -66,7 +66,7 @@ class Kaltura_Client_Drm_Type_DrmPolicyListResponse extends Kaltura_Client_Type_
 	/**
 	 * 
 	 *
-	 * @var array of KalturaDrmPolicy
+	 * @var Kaltura_Client_Drm_Type_DrmPolicy[]
 	 * @readonly
 	 */
 	public $objects;

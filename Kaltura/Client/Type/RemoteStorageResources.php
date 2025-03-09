@@ -66,7 +66,7 @@ class Kaltura_Client_Type_RemoteStorageResources extends Kaltura_Client_Type_Con
 	/**
 	 * Array of remote stoage resources
 	 *
-	 * @var array of KalturaRemoteStorageResource
+	 * @var Kaltura_Client_Type_RemoteStorageResource[]
 	 */
 	public $resources;
 

@@ -66,7 +66,7 @@ class Kaltura_Client_Type_FlavorAssetListResponse extends Kaltura_Client_Type_Li
 	/**
 	 * 
 	 *
-	 * @var array of KalturaFlavorAsset
+	 * @var Kaltura_Client_Type_FlavorAsset[]
 	 * @readonly
 	 */
 	public $objects;

@@ -110,7 +110,7 @@ class Kaltura_Client_Quiz_Type_Quiz extends Kaltura_Client_ObjectBase
 	/**
 	 * Array of key value ui related objects
 	 *
-	 * @var array of KalturaKeyValue
+	 * @var Kaltura_Client_Type_KeyValue[]
 	 */
 	public $uiAttributes;
 

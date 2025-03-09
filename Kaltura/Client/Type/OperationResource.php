@@ -81,7 +81,7 @@ class Kaltura_Client_Type_OperationResource extends Kaltura_Client_Type_ContentR
 	/**
 	 * 
 	 *
-	 * @var array of KalturaOperationAttributes
+	 * @var Kaltura_Client_Type_OperationAttributes[]
 	 */
 	public $operationAttributes;
 

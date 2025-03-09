@@ -66,7 +66,7 @@ class Kaltura_Client_Reach_Type_ReachProfileListResponse extends Kaltura_Client_
 	/**
 	 * 
 	 *
-	 * @var array of KalturaReachProfile
+	 * @var Kaltura_Client_Reach_Type_ReachProfile[]
 	 * @readonly
 	 */
 	public $objects;

@@ -132,7 +132,7 @@ class Kaltura_Client_Type_MultiClipConcatJobData extends Kaltura_Client_Type_Job
 	/**
 	 * 
 	 *
-	 * @var array of KalturaOperationResource
+	 * @var Kaltura_Client_Type_OperationResource[]
 	 */
 	public $operationResources;
 

@@ -66,7 +66,7 @@ class Kaltura_Client_Type_ThumbParamsListResponse extends Kaltura_Client_Type_Li
 	/**
 	 * 
 	 *
-	 * @var array of KalturaThumbParams
+	 * @var Kaltura_Client_Type_ThumbParams[]
 	 * @readonly
 	 */
 	public $objects;

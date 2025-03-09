@@ -66,7 +66,7 @@ class Kaltura_Client_Schedule_Type_ScheduleEventResourceListResponse extends Kal
 	/**
 	 * 
 	 *
-	 * @var array of KalturaScheduleEventResource
+	 * @var Kaltura_Client_Schedule_Type_ScheduleEventResource[]
 	 * @readonly
 	 */
 	public $objects;

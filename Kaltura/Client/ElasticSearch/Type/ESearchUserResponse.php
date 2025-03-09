@@ -66,7 +66,7 @@ class Kaltura_Client_ElasticSearch_Type_ESearchUserResponse extends Kaltura_Clie
 	/**
 	 * 
 	 *
-	 * @var array of KalturaESearchUserResult
+	 * @var Kaltura_Client_ElasticSearch_Type_ESearchUserResult[]
 	 * @readonly
 	 */
 	public $objects;

@@ -95,14 +95,14 @@ abstract class Kaltura_Client_Type_MappedObjectsCsvJobData extends Kaltura_Clien
 	/**
 	 * The xpath to look in the metadataProfileId  and the wanted csv field name
 	 *
-	 * @var array of KalturaCsvAdditionalFieldInfo
+	 * @var Kaltura_Client_Type_CsvAdditionalFieldInfo[]
 	 */
 	public $additionalFields;
 
 	/**
 	 * Array of header names and their mapped user fields
 	 *
-	 * @var array of KalturaKeyValue
+	 * @var Kaltura_Client_Type_KeyValue[]
 	 */
 	public $mappedFields;
 

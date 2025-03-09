@@ -66,7 +66,7 @@ class Kaltura_Client_Type_ControlPanelCommandListResponse extends Kaltura_Client
 	/**
 	 * 
 	 *
-	 * @var array of KalturaControlPanelCommand
+	 * @var Kaltura_Client_Type_ControlPanelCommand[]
 	 * @readonly
 	 */
 	public $objects;

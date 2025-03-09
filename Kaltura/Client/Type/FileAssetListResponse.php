@@ -66,7 +66,7 @@ class Kaltura_Client_Type_FileAssetListResponse extends Kaltura_Client_Type_List
 	/**
 	 * 
 	 *
-	 * @var array of KalturaFileAsset
+	 * @var Kaltura_Client_Type_FileAsset[]
 	 * @readonly
 	 */
 	public $objects;

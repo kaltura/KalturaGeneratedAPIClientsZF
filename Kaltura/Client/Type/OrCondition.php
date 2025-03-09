@@ -66,7 +66,7 @@ class Kaltura_Client_Type_OrCondition extends Kaltura_Client_Type_Condition
 	/**
 	 * 
 	 *
-	 * @var array of KalturaCondition
+	 * @var Kaltura_Client_Type_Condition[]
 	 */
 	public $conditions;
 

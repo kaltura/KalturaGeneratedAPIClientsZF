@@ -66,7 +66,7 @@ class Kaltura_Client_Room_Type_RoomEntryListResponse extends Kaltura_Client_Type
 	/**
 	 * 
 	 *
-	 * @var array of KalturaRoomEntry
+	 * @var Kaltura_Client_Room_Type_RoomEntry[]
 	 * @readonly
 	 */
 	public $objects;

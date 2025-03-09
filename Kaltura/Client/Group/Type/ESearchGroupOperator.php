@@ -77,7 +77,7 @@ class Kaltura_Client_Group_Type_ESearchGroupOperator extends Kaltura_Client_Grou
 	/**
 	 * 
 	 *
-	 * @var array of KalturaESearchGroupBaseItem
+	 * @var Kaltura_Client_Group_Type_ESearchGroupBaseItem[]
 	 */
 	public $searchItems;
 

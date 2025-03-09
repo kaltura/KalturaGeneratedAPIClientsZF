@@ -66,7 +66,7 @@ class Kaltura_Client_Type_PlaylistListResponse extends Kaltura_Client_Type_ListR
 	/**
 	 * 
 	 *
-	 * @var array of KalturaPlaylist
+	 * @var Kaltura_Client_Type_Playlist[]
 	 * @readonly
 	 */
 	public $objects;

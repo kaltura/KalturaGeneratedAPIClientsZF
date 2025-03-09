@@ -110,7 +110,7 @@ class Kaltura_Client_PlayReady_Type_PlayReadyPolicy extends Kaltura_Client_Drm_T
 	/**
 	 * 
 	 *
-	 * @var array of KalturaPlayReadyRight
+	 * @var Kaltura_Client_PlayReady_Type_PlayReadyRight[]
 	 */
 	public $rights;
 

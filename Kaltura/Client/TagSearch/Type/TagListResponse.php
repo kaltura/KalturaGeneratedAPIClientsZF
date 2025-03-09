@@ -66,7 +66,7 @@ class Kaltura_Client_TagSearch_Type_TagListResponse extends Kaltura_Client_Type_
 	/**
 	 * 
 	 *
-	 * @var array of KalturaTag
+	 * @var Kaltura_Client_TagSearch_Type_Tag[]
 	 * @readonly
 	 */
 	public $objects;

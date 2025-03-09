@@ -66,7 +66,7 @@ class Kaltura_Client_Type_UserRoleListResponse extends Kaltura_Client_Type_ListR
 	/**
 	 * 
 	 *
-	 * @var array of KalturaUserRole
+	 * @var Kaltura_Client_Type_UserRole[]
 	 * @readonly
 	 */
 	public $objects;

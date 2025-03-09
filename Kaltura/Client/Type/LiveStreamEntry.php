@@ -178,7 +178,7 @@ class Kaltura_Client_Type_LiveStreamEntry extends Kaltura_Client_Type_LiveEntry
 	/**
 	 * Array of supported bitrates
 	 *
-	 * @var array of KalturaLiveStreamBitrate
+	 * @var Kaltura_Client_Type_LiveStreamBitrate[]
 	 */
 	public $bitrates;
 

@@ -99,7 +99,7 @@ class Kaltura_Client_DailymotionDistribution_Type_DailymotionDistributionJobProv
 	/**
 	 * 
 	 *
-	 * @var array of KalturaDailymotionDistributionCaptionInfo
+	 * @var Kaltura_Client_DailymotionDistribution_Type_DailymotionDistributionCaptionInfo[]
 	 */
 	public $captionsInfo;
 

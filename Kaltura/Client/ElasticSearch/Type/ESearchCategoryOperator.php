@@ -77,7 +77,7 @@ class Kaltura_Client_ElasticSearch_Type_ESearchCategoryOperator extends Kaltura_
 	/**
 	 * 
 	 *
-	 * @var array of KalturaESearchCategoryBaseItem
+	 * @var Kaltura_Client_ElasticSearch_Type_ESearchCategoryBaseItem[]
 	 */
 	public $searchItems;
 
