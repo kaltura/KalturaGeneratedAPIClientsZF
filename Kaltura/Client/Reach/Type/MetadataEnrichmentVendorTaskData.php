@@ -31,11 +31,11 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Quiz_Type_QuizUserEntryFilter extends Kaltura_Client_Type_QuizUserEntryBaseFilter
+class Kaltura_Client_Reach_Type_MetadataEnrichmentVendorTaskData extends Kaltura_Client_Reach_Type_VendorTaskData
 {
 	public function getKalturaObjectType()
 	{
-		return 'KalturaQuizUserEntryFilter';
+		return 'KalturaMetadataEnrichmentVendorTaskData';
 	}
 	
 	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
@@ -48,39 +48,42 @@ class Kaltura_Client_Quiz_Type_QuizUserEntryFilter extends Kaltura_Client_Type_Q
 		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(!is_null($xml) && count($xml->extendedStatusEqual))
-			$this->extendedStatusEqual = (string)$xml->extendedStatusEqual;
-		if(!is_null($jsonObject) && isset($jsonObject->extendedStatusEqual))
-			$this->extendedStatusEqual = (string)$jsonObject->extendedStatusEqual;
-		if(!is_null($xml) && count($xml->extendedStatusIn))
-			$this->extendedStatusIn = (string)$xml->extendedStatusIn;
-		if(!is_null($jsonObject) && isset($jsonObject->extendedStatusIn))
-			$this->extendedStatusIn = (string)$jsonObject->extendedStatusIn;
-		if(!is_null($xml) && count($xml->extendedStatusNotIn))
-			$this->extendedStatusNotIn = (string)$xml->extendedStatusNotIn;
-		if(!is_null($jsonObject) && isset($jsonObject->extendedStatusNotIn))
-			$this->extendedStatusNotIn = (string)$jsonObject->extendedStatusNotIn;
+		if(!is_null($xml) && count($xml->detailLevel))
+			$this->detailLevel = (string)$xml->detailLevel;
+		if(!is_null($jsonObject) && isset($jsonObject->detailLevel))
+			$this->detailLevel = (string)$jsonObject->detailLevel;
+		if(!is_null($xml) && count($xml->instruction))
+			$this->instruction = (string)$xml->instruction;
+		if(!is_null($jsonObject) && isset($jsonObject->instruction))
+			$this->instruction = (string)$jsonObject->instruction;
+		if(!is_null($xml) && count($xml->outputJson))
+			$this->outputJson = (string)$xml->outputJson;
+		if(!is_null($jsonObject) && isset($jsonObject->outputJson))
+			$this->outputJson = (string)$jsonObject->outputJson;
 	}
 	/**
-	 * 
+	 * The level of detail for the metadata enrichment process.
 	 *
-	 * @var Kaltura_Client_Enum_UserEntryExtendedStatus
+	 * @var string
+	 * @insertonly
 	 */
-	public $extendedStatusEqual = null;
+	public $detailLevel = null;
 
 	/**
-	 * 
+	 * Instructions describing what should be taken into account during the metadata enrichment process.
+	 *
+	 * @var string
+	 * @insertonly
+	 */
+	public $instruction = null;
+
+	/**
+	 * Metadata enrichment result as JSON string.
+	 * 	 For example: {"titles": ["The first title", "The second title"], "descriptions": ["The first description"], "tags": ["Tag1", "Tag2"]}
 	 *
 	 * @var string
 	 */
-	public $extendedStatusIn = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $extendedStatusNotIn = null;
+	public $outputJson = null;
 
 
 }

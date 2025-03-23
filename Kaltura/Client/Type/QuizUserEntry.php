@@ -64,6 +64,10 @@ class Kaltura_Client_Type_QuizUserEntry extends Kaltura_Client_Type_UserEntry
 			$this->version = (int)$xml->version;
 		if(!is_null($jsonObject) && isset($jsonObject->version))
 			$this->version = (int)$jsonObject->version;
+		if(!is_null($xml) && count($xml->extendedStatus))
+			$this->extendedStatus = (string)$xml->extendedStatus;
+		if(!is_null($jsonObject) && isset($jsonObject->extendedStatus))
+			$this->extendedStatus = (string)$jsonObject->extendedStatus;
 	}
 	/**
 	 * 
@@ -95,6 +99,13 @@ class Kaltura_Client_Type_QuizUserEntry extends Kaltura_Client_Type_UserEntry
 	 * @readonly
 	 */
 	public $version = null;
+
+	/**
+	 * 
+	 *
+	 * @var Kaltura_Client_Enum_UserEntryExtendedStatus
+	 */
+	public $extendedStatus = null;
 
 
 }

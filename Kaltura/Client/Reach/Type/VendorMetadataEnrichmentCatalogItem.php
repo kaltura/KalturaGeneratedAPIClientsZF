@@ -31,11 +31,11 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Quiz_Type_QuizUserEntryFilter extends Kaltura_Client_Type_QuizUserEntryBaseFilter
+class Kaltura_Client_Reach_Type_VendorMetadataEnrichmentCatalogItem extends Kaltura_Client_Reach_Type_VendorCatalogItem
 {
 	public function getKalturaObjectType()
 	{
-		return 'KalturaQuizUserEntryFilter';
+		return 'KalturaVendorMetadataEnrichmentCatalogItem';
 	}
 	
 	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
@@ -48,40 +48,7 @@ class Kaltura_Client_Quiz_Type_QuizUserEntryFilter extends Kaltura_Client_Type_Q
 		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(!is_null($xml) && count($xml->extendedStatusEqual))
-			$this->extendedStatusEqual = (string)$xml->extendedStatusEqual;
-		if(!is_null($jsonObject) && isset($jsonObject->extendedStatusEqual))
-			$this->extendedStatusEqual = (string)$jsonObject->extendedStatusEqual;
-		if(!is_null($xml) && count($xml->extendedStatusIn))
-			$this->extendedStatusIn = (string)$xml->extendedStatusIn;
-		if(!is_null($jsonObject) && isset($jsonObject->extendedStatusIn))
-			$this->extendedStatusIn = (string)$jsonObject->extendedStatusIn;
-		if(!is_null($xml) && count($xml->extendedStatusNotIn))
-			$this->extendedStatusNotIn = (string)$xml->extendedStatusNotIn;
-		if(!is_null($jsonObject) && isset($jsonObject->extendedStatusNotIn))
-			$this->extendedStatusNotIn = (string)$jsonObject->extendedStatusNotIn;
 	}
-	/**
-	 * 
-	 *
-	 * @var Kaltura_Client_Enum_UserEntryExtendedStatus
-	 */
-	public $extendedStatusEqual = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $extendedStatusIn = null;
-
-	/**
-	 * 
-	 *
-	 * @var string
-	 */
-	public $extendedStatusNotIn = null;
-
 
 }
 

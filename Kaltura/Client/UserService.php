@@ -147,6 +147,31 @@ class Kaltura_Client_UserService extends Kaltura_Client_ServiceBase
 	 * @return Kaltura_Client_Type_User
 	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
+	function demoteAdmin($userId)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "userId", $userId);
+		$this->client->queueServiceActionCall("user", "demoteAdmin", "KalturaUser", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$rawResult = $this->client->doQueue();
+		if ($this->client->getConfig()->format === Kaltura_Client_ClientBase::KALTURA_SERVICE_FORMAT_JSON) {
+			$jsObject = json_decode($rawResult);
+			$resultObject = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsObject);
+			return $resultObject;
+		} else {
+			$resultXmlObject = new \SimpleXMLElement($rawResult);
+			$this->client->checkIfError($resultXmlObject->result);
+			$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaUser");
+			$this->client->validateObjectType($resultObject, "Kaltura_Client_Type_User");
+		}
+			return $resultObject;
+	}
+
+	/**
+	 * @return Kaltura_Client_Type_User
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
+	 */
 	function disableLogin($userId = null, $loginId = null)
 	{
 		$kparams = array();
