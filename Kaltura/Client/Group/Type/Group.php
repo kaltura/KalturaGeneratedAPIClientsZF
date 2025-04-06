@@ -56,6 +56,10 @@ class Kaltura_Client_Group_Type_Group extends Kaltura_Client_Type_BaseUser
 			$this->processStatus = (int)$xml->processStatus;
 		if(!is_null($jsonObject) && isset($jsonObject->processStatus))
 			$this->processStatus = (int)$jsonObject->processStatus;
+		if(!is_null($xml) && count($xml->groupType))
+			$this->groupType = (int)$xml->groupType;
+		if(!is_null($jsonObject) && isset($jsonObject->groupType))
+			$this->groupType = (int)$jsonObject->groupType;
 	}
 	/**
 	 * 
@@ -71,6 +75,13 @@ class Kaltura_Client_Group_Type_Group extends Kaltura_Client_Type_BaseUser
 	 * @var Kaltura_Client_Group_Enum_GroupProcessStatus
 	 */
 	public $processStatus = null;
+
+	/**
+	 * 
+	 *
+	 * @var Kaltura_Client_Enum_GroupType
+	 */
+	public $groupType = null;
 
 
 }

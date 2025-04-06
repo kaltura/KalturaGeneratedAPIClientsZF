@@ -84,6 +84,10 @@ class Kaltura_Client_Type_GroupUser extends Kaltura_Client_ObjectBase
 			$this->userRole = (int)$xml->userRole;
 		if(!is_null($jsonObject) && isset($jsonObject->userRole))
 			$this->userRole = (int)$jsonObject->userRole;
+		if(!is_null($xml) && count($xml->groupType))
+			$this->groupType = (int)$xml->groupType;
+		if(!is_null($jsonObject) && isset($jsonObject->groupType))
+			$this->groupType = (int)$jsonObject->groupType;
 	}
 	/**
 	 * 
@@ -155,6 +159,14 @@ class Kaltura_Client_Type_GroupUser extends Kaltura_Client_ObjectBase
 	 * @var Kaltura_Client_Enum_GroupUserRole
 	 */
 	public $userRole = null;
+
+	/**
+	 * 
+	 *
+	 * @var Kaltura_Client_Enum_GroupType
+	 * @readonly
+	 */
+	public $groupType = null;
 
 
 }

@@ -48,7 +48,18 @@ class Kaltura_Client_Type_GroupUserFilter extends Kaltura_Client_Type_GroupUserB
 		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
+		if(!is_null($xml) && count($xml->groupType))
+			$this->groupType = (int)$xml->groupType;
+		if(!is_null($jsonObject) && isset($jsonObject->groupType))
+			$this->groupType = (int)$jsonObject->groupType;
 	}
+	/**
+	 * 
+	 *
+	 * @var Kaltura_Client_Enum_GroupType
+	 */
+	public $groupType = null;
+
 
 }
 
