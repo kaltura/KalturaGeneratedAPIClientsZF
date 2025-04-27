@@ -43,10 +43,11 @@ class Kaltura_Client_Reach_PartnerCatalogItemService extends Kaltura_Client_Serv
 	 * @return Kaltura_Client_Reach_Type_VendorCatalogItem
 	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */
-	function add($id)
+	function add($id, $defaultReachProfileId = null)
 	{
 		$kparams = array();
 		$this->client->addParam($kparams, "id", $id);
+		$this->client->addParam($kparams, "defaultReachProfileId", $defaultReachProfileId);
 		$this->client->queueServiceActionCall("reach_partnercatalogitem", "add", "KalturaVendorCatalogItem", $kparams);
 		if ($this->client->isMultiRequest())
 			return $this->client->getMultiRequestResult();

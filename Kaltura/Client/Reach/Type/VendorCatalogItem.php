@@ -142,6 +142,10 @@ abstract class Kaltura_Client_Reach_Type_VendorCatalogItem extends Kaltura_Clien
 			$this->partnerId = (int)$xml->partnerId;
 		if(!is_null($jsonObject) && isset($jsonObject->partnerId))
 			$this->partnerId = (int)$jsonObject->partnerId;
+		if(!is_null($xml) && count($xml->defaultReachProfileId))
+			$this->defaultReachProfileId = (int)$xml->defaultReachProfileId;
+		if(!is_null($jsonObject) && isset($jsonObject->defaultReachProfileId))
+			$this->defaultReachProfileId = (int)$jsonObject->defaultReachProfileId;
 		if(!is_null($xml) && count($xml->adminTagsToExclude))
 			$this->adminTagsToExclude = (string)$xml->adminTagsToExclude;
 		if(!is_null($jsonObject) && isset($jsonObject->adminTagsToExclude))
@@ -298,6 +302,13 @@ abstract class Kaltura_Client_Reach_Type_VendorCatalogItem extends Kaltura_Clien
 	 * @var int
 	 */
 	public $partnerId = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $defaultReachProfileId = null;
 
 	/**
 	 * 

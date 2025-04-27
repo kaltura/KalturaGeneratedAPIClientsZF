@@ -31,11 +31,11 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Reach_Type_VendorLiveCaptionCatalogItem extends Kaltura_Client_Reach_Type_VendorLiveCatalogItem
+class Kaltura_Client_Type_SessionTypeCondition extends Kaltura_Client_Type_Condition
 {
 	public function getKalturaObjectType()
 	{
-		return 'KalturaVendorLiveCaptionCatalogItem';
+		return 'KalturaSessionTypeCondition';
 	}
 	
 	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
@@ -48,30 +48,17 @@ class Kaltura_Client_Reach_Type_VendorLiveCaptionCatalogItem extends Kaltura_Cli
 		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(!is_null($xml) && count($xml->startTimeBuffer))
-			$this->startTimeBuffer = (int)$xml->startTimeBuffer;
-		if(!is_null($jsonObject) && isset($jsonObject->startTimeBuffer))
-			$this->startTimeBuffer = (int)$jsonObject->startTimeBuffer;
-		if(!is_null($xml) && count($xml->endTimeBuffer))
-			$this->endTimeBuffer = (int)$xml->endTimeBuffer;
-		if(!is_null($jsonObject) && isset($jsonObject->endTimeBuffer))
-			$this->endTimeBuffer = (int)$jsonObject->endTimeBuffer;
+		if(!is_null($xml) && count($xml->sessionType))
+			$this->sessionType = (int)$xml->sessionType;
+		if(!is_null($jsonObject) && isset($jsonObject->sessionType))
+			$this->sessionType = (int)$jsonObject->sessionType;
 	}
 	/**
-	 * How long before the live stream start should service activate? (in secs)
+	 * The privelege needed to remove the restriction
 	 *
-	 * @var int
-	 * @insertonly
+	 * @var Kaltura_Client_Enum_SessionType
 	 */
-	public $startTimeBuffer = null;
-
-	/**
-	 * How long after the live stream end should service de-activate? (in secs)
-	 *
-	 * @var int
-	 * @insertonly
-	 */
-	public $endTimeBuffer = null;
+	public $sessionType = null;
 
 
 }

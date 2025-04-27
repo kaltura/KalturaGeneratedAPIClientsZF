@@ -66,6 +66,20 @@ class Kaltura_Client_Type_ReportResponseOptions extends Kaltura_Client_ObjectBas
 			else
 				$this->skipEmptyDates = false;
 		}
+		if(!is_null($xml) && count($xml->useFriendlyHeadersNames))
+		{
+			if(!empty($xml->useFriendlyHeadersNames) && ((int) $xml->useFriendlyHeadersNames === 1 || strtolower((string)$xml->useFriendlyHeadersNames) === 'true'))
+				$this->useFriendlyHeadersNames = true;
+			else
+				$this->useFriendlyHeadersNames = false;
+		}
+		if(!is_null($jsonObject) && isset($jsonObject->useFriendlyHeadersNames))
+		{
+			if(!empty($jsonObject->useFriendlyHeadersNames) && ((int) $jsonObject->useFriendlyHeadersNames === 1 || strtolower((string)$jsonObject->useFriendlyHeadersNames) === 'true'))
+				$this->useFriendlyHeadersNames = true;
+			else
+				$this->useFriendlyHeadersNames = false;
+		}
 	}
 	/**
 	 * 
@@ -80,6 +94,13 @@ class Kaltura_Client_Type_ReportResponseOptions extends Kaltura_Client_ObjectBas
 	 * @var bool
 	 */
 	public $skipEmptyDates = null;
+
+	/**
+	 * 
+	 *
+	 * @var bool
+	 */
+	public $useFriendlyHeadersNames = null;
 
 
 }
