@@ -144,6 +144,18 @@ abstract class Kaltura_Client_Reach_Type_EntryVendorTaskBaseFilter extends Kaltu
 			$this->expectedFinishTimeLessThanOrEqual = (int)$xml->expectedFinishTimeLessThanOrEqual;
 		if(!is_null($jsonObject) && isset($jsonObject->expectedFinishTimeLessThanOrEqual))
 			$this->expectedFinishTimeLessThanOrEqual = (int)$jsonObject->expectedFinishTimeLessThanOrEqual;
+		if(!is_null($xml) && count($xml->entryObjectTypeEqual))
+			$this->entryObjectTypeEqual = (int)$xml->entryObjectTypeEqual;
+		if(!is_null($jsonObject) && isset($jsonObject->entryObjectTypeEqual))
+			$this->entryObjectTypeEqual = (int)$jsonObject->entryObjectTypeEqual;
+		if(!is_null($xml) && count($xml->entryObjectTypeIn))
+			$this->entryObjectTypeIn = (string)$xml->entryObjectTypeIn;
+		if(!is_null($jsonObject) && isset($jsonObject->entryObjectTypeIn))
+			$this->entryObjectTypeIn = (string)$jsonObject->entryObjectTypeIn;
+		if(!is_null($xml) && count($xml->entryObjectTypeNotIn))
+			$this->entryObjectTypeNotIn = (string)$xml->entryObjectTypeNotIn;
+		if(!is_null($jsonObject) && isset($jsonObject->entryObjectTypeNotIn))
+			$this->entryObjectTypeNotIn = (string)$jsonObject->entryObjectTypeNotIn;
 	}
 	/**
 	 * 
@@ -312,6 +324,27 @@ abstract class Kaltura_Client_Reach_Type_EntryVendorTaskBaseFilter extends Kaltu
 	 * @var int
 	 */
 	public $expectedFinishTimeLessThanOrEqual = null;
+
+	/**
+	 * 
+	 *
+	 * @var Kaltura_Client_Reach_Enum_EntryObjectType
+	 */
+	public $entryObjectTypeEqual = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $entryObjectTypeIn = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $entryObjectTypeNotIn = null;
 
 
 }

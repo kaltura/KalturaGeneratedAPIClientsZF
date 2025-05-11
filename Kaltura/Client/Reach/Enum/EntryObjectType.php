@@ -31,17 +31,8 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Enum_EntryApplication extends Kaltura_Client_EnumBase
+class Kaltura_Client_Reach_Enum_EntryObjectType extends Kaltura_Client_EnumBase
 {
-	const KMC = "0";
-	const KMS = "1";
-	const KAF = "2";
-	const PITCH = "3";
-	const KMS_GO = "4";
-	const WEBCAST_APP = "5";
-	const PERSONAL_CAPTURE = "6";
-	const KALTURA_MEETING = "7";
-	const EP = "8";
-	const CONTENT_LAB = "9";
+	const ENTRY = 1;
 }
 

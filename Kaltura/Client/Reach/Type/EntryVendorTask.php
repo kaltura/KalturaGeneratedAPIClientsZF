@@ -100,6 +100,10 @@ class Kaltura_Client_Reach_Type_EntryVendorTask extends Kaltura_Client_ObjectBas
 			$this->userId = (string)$xml->userId;
 		if(!is_null($jsonObject) && isset($jsonObject->userId))
 			$this->userId = (string)$jsonObject->userId;
+		if(!is_null($xml) && count($xml->entryObjectType))
+			$this->entryObjectType = (int)$xml->entryObjectType;
+		if(!is_null($jsonObject) && isset($jsonObject->entryObjectType))
+			$this->entryObjectType = (int)$jsonObject->entryObjectType;
 		if(!is_null($xml) && count($xml->moderatingUser))
 			$this->moderatingUser = (string)$xml->moderatingUser;
 		if(!is_null($jsonObject) && isset($jsonObject->moderatingUser))
@@ -271,6 +275,14 @@ class Kaltura_Client_Reach_Type_EntryVendorTask extends Kaltura_Client_ObjectBas
 	 * @readonly
 	 */
 	public $userId = null;
+
+	/**
+	 * 
+	 *
+	 * @var Kaltura_Client_Reach_Enum_EntryObjectType
+	 * @insertonly
+	 */
+	public $entryObjectType = null;
 
 	/**
 	 * The user ID that approved this task for execution (in case moderation is requested)

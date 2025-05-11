@@ -64,6 +64,20 @@ class Kaltura_Client_Reach_Type_VendorCredit extends Kaltura_Client_Reach_Type_B
 			$this->addOn = (int)$xml->addOn;
 		if(!is_null($jsonObject) && isset($jsonObject->addOn))
 			$this->addOn = (int)$jsonObject->addOn;
+		if(!is_null($xml) && count($xml->allowNegativeOverageCredit))
+		{
+			if(!empty($xml->allowNegativeOverageCredit) && ((int) $xml->allowNegativeOverageCredit === 1 || strtolower((string)$xml->allowNegativeOverageCredit) === 'true'))
+				$this->allowNegativeOverageCredit = true;
+			else
+				$this->allowNegativeOverageCredit = false;
+		}
+		if(!is_null($jsonObject) && isset($jsonObject->allowNegativeOverageCredit))
+		{
+			if(!empty($jsonObject->allowNegativeOverageCredit) && ((int) $jsonObject->allowNegativeOverageCredit === 1 || strtolower((string)$jsonObject->allowNegativeOverageCredit) === 'true'))
+				$this->allowNegativeOverageCredit = true;
+			else
+				$this->allowNegativeOverageCredit = false;
+		}
 	}
 	/**
 	 * 
@@ -92,6 +106,13 @@ class Kaltura_Client_Reach_Type_VendorCredit extends Kaltura_Client_Reach_Type_B
 	 * @var int
 	 */
 	public $addOn = null;
+
+	/**
+	 * 
+	 *
+	 * @var bool
+	 */
+	public $allowNegativeOverageCredit = null;
 
 
 }

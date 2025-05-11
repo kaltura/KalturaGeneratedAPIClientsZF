@@ -114,6 +114,20 @@ abstract class Kaltura_Client_Reach_Type_VendorCatalogItem extends Kaltura_Clien
 			else
 				$this->allowResubmission = false;
 		}
+		if(!is_null($xml) && count($xml->requiresOverages))
+		{
+			if(!empty($xml->requiresOverages) && ((int) $xml->requiresOverages === 1 || strtolower((string)$xml->requiresOverages) === 'true'))
+				$this->requiresOverages = true;
+			else
+				$this->requiresOverages = false;
+		}
+		if(!is_null($jsonObject) && isset($jsonObject->requiresOverages))
+		{
+			if(!empty($jsonObject->requiresOverages) && ((int) $jsonObject->requiresOverages === 1 || strtolower((string)$jsonObject->requiresOverages) === 'true'))
+				$this->requiresOverages = true;
+			else
+				$this->requiresOverages = false;
+		}
 		if(!is_null($xml) && count($xml->vendorData))
 			$this->vendorData = (string)$xml->vendorData;
 		if(!is_null($jsonObject) && isset($jsonObject->vendorData))
@@ -253,6 +267,13 @@ abstract class Kaltura_Client_Reach_Type_VendorCatalogItem extends Kaltura_Clien
 	 * @var bool
 	 */
 	public $allowResubmission = null;
+
+	/**
+	 * 
+	 *
+	 * @var bool
+	 */
+	public $requiresOverages = null;
 
 	/**
 	 * 
