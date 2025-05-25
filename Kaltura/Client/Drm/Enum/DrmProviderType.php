@@ -33,9 +33,9 @@
  */
 class Kaltura_Client_Drm_Enum_DrmProviderType extends Kaltura_Client_EnumBase
 {
+	const CENC = "1";
 	const FAIRPLAY = "fairplay.FAIRPLAY";
 	const PLAY_READY = "playReady.PLAY_READY";
 	const WIDEVINE = "widevine.WIDEVINE";
-	const CENC = "1";
 }
 

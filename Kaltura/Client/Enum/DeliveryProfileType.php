@@ -33,13 +33,6 @@
  */
 class Kaltura_Client_Enum_DeliveryProfileType extends Kaltura_Client_EnumBase
 {
-	const EDGE_CAST_HTTP = "edgeCast.EDGE_CAST_HTTP";
-	const EDGE_CAST_RTMP = "edgeCast.EDGE_CAST_RTMP";
-	const KONTIKI_HTTP = "kontiki.KONTIKI_HTTP";
-	const UPLYNK_HTTP = "uplynk.UPLYNK_HTTP";
-	const UPLYNK_RTMP = "uplynk.UPLYNK_RTMP";
-	const VELOCIX_HDS = "velocix.VELOCIX_HDS";
-	const VELOCIX_HLS = "velocix.VELOCIX_HLS";
 	const APPLE_HTTP = "1";
 	const HDS = "3";
 	const HTTP = "4";
@@ -85,5 +78,12 @@ class Kaltura_Client_Enum_DeliveryProfileType extends Kaltura_Client_EnumBase
 	const LIVE_PACKAGER_DASH = "1009";
 	const LIVE_PACKAGER_MSS = "1010";
 	const LIVE_AKAMAI_HDS = "1013";
+	const EDGE_CAST_HTTP = "edgeCast.EDGE_CAST_HTTP";
+	const EDGE_CAST_RTMP = "edgeCast.EDGE_CAST_RTMP";
+	const KONTIKI_HTTP = "kontiki.KONTIKI_HTTP";
+	const UPLYNK_HTTP = "uplynk.UPLYNK_HTTP";
+	const UPLYNK_RTMP = "uplynk.UPLYNK_RTMP";
+	const VELOCIX_HDS = "velocix.VELOCIX_HDS";
+	const VELOCIX_HLS = "velocix.VELOCIX_HLS";
 }
 

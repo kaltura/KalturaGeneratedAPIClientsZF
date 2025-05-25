@@ -34,10 +34,6 @@
 class Kaltura_Client_Enum_EntryType extends Kaltura_Client_EnumBase
 {
 	const AUTOMATIC = "-1";
-	const CONFERENCE_ENTRY_SERVER = "conference.CONFERENCE_ENTRY_SERVER";
-	const EXTERNAL_MEDIA = "externalMedia.externalMedia";
-	const ROOM = "room.room";
-	const SIP_ENTRY_SERVER = "sip.SIP_ENTRY_SERVER";
 	const MEDIA_CLIP = "1";
 	const MIX = "2";
 	const PLAYLIST = "5";
@@ -45,5 +41,9 @@ class Kaltura_Client_Enum_EntryType extends Kaltura_Client_EnumBase
 	const LIVE_STREAM = "7";
 	const LIVE_CHANNEL = "8";
 	const DOCUMENT = "10";
+	const CONFERENCE_ENTRY_SERVER = "conference.CONFERENCE_ENTRY_SERVER";
+	const EXTERNAL_MEDIA = "externalMedia.externalMedia";
+	const ROOM = "room.room";
+	const SIP_ENTRY_SERVER = "sip.SIP_ENTRY_SERVER";
 }
 

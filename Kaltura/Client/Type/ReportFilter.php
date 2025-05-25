@@ -31,7 +31,7 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Type_ReportFilter extends Kaltura_Client_Type_ReportBaseFilter
+class Kaltura_Client_Type_ReportFilter extends Kaltura_Client_ObjectBase
 {
 	public function getKalturaObjectType()
 	{
@@ -48,7 +48,29 @@ class Kaltura_Client_Type_ReportFilter extends Kaltura_Client_Type_ReportBaseFil
 		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
+		if(!is_null($xml) && count($xml->dimension))
+			$this->dimension = (string)$xml->dimension;
+		if(!is_null($jsonObject) && isset($jsonObject->dimension))
+			$this->dimension = (string)$jsonObject->dimension;
+		if(!is_null($xml) && count($xml->values))
+			$this->values = (string)$xml->values;
+		if(!is_null($jsonObject) && isset($jsonObject->values))
+			$this->values = (string)$jsonObject->values;
 	}
+	/**
+	 * The dimension whose values should be filtered
+	 *
+	 * @var string
+	 */
+	public $dimension = null;
+
+	/**
+	 * The (comma separated) values to include in the filter
+	 *
+	 * @var string
+	 */
+	public $values = null;
+
 
 }
 

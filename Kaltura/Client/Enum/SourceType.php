@@ -33,8 +33,6 @@
  */
 class Kaltura_Client_Enum_SourceType extends Kaltura_Client_EnumBase
 {
-	const LIMELIGHT_LIVE = "limeLight.LIVE_STREAM";
-	const VELOCIX_LIVE = "velocix.VELOCIX_LIVE";
 	const FILE = "1";
 	const WEBCAM = "2";
 	const URL = "5";
@@ -49,5 +47,7 @@ class Kaltura_Client_Enum_SourceType extends Kaltura_Client_EnumBase
 	const KALTURA_RECORDED_LIVE = "36";
 	const LECTURE_CAPTURE = "37";
 	const LIVE_STREAM_ONTEXTDATA_CAPTIONS = "42";
+	const LIMELIGHT_LIVE = "limeLight.LIVE_STREAM";
+	const VELOCIX_LIVE = "velocix.VELOCIX_LIVE";
 }
 

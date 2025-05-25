@@ -33,9 +33,6 @@
  */
 class Kaltura_Client_ScheduledTask_Enum_ObjectTaskType extends Kaltura_Client_EnumBase
 {
-	const DISTRIBUTE = "scheduledTaskContentDistribution.Distribute";
-	const DISPATCH_EVENT_NOTIFICATION = "scheduledTaskEventNotification.DispatchEventNotification";
-	const EXECUTE_METADATA_XSLT = "scheduledTaskMetadata.ExecuteMetadataXslt";
 	const DELETE_ENTRY = "1";
 	const MODIFY_CATEGORIES = "2";
 	const DELETE_ENTRY_FLAVORS = "3";
@@ -45,5 +42,8 @@ class Kaltura_Client_ScheduledTask_Enum_ObjectTaskType extends Kaltura_Client_En
 	const MODIFY_ENTRY = "7";
 	const MAIL_NOTIFICATION = "8";
 	const RECYCLE_BIN_CLEANUP = "9";
+	const DISTRIBUTE = "scheduledTaskContentDistribution.Distribute";
+	const DISPATCH_EVENT_NOTIFICATION = "scheduledTaskEventNotification.DispatchEventNotification";
+	const EXECUTE_METADATA_XSLT = "scheduledTaskMetadata.ExecuteMetadataXslt";
 }
 

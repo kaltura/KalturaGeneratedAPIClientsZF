@@ -74,6 +74,14 @@ abstract class Kaltura_Client_ElasticSearch_Type_ESearchParams extends Kaltura_C
 			else
 				$this->ignoreSynonym = false;
 		}
+		if(!is_null($xml) && count($xml->objectIds))
+			$this->objectIds = (string)$xml->objectIds;
+		if(!is_null($jsonObject) && isset($jsonObject->objectIds))
+			$this->objectIds = (string)$jsonObject->objectIds;
+		if(!is_null($xml) && count($xml->objectIdsNotIn))
+			$this->objectIdsNotIn = (int)$xml->objectIdsNotIn;
+		if(!is_null($jsonObject) && isset($jsonObject->objectIdsNotIn))
+			$this->objectIdsNotIn = (int)$jsonObject->objectIdsNotIn;
 	}
 	/**
 	 * 
@@ -102,6 +110,20 @@ abstract class Kaltura_Client_ElasticSearch_Type_ESearchParams extends Kaltura_C
 	 * @var bool
 	 */
 	public $ignoreSynonym = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $objectIds = null;
+
+	/**
+	 * 
+	 *
+	 * @var Kaltura_Client_Enum_NullableBoolean
+	 */
+	public $objectIdsNotIn = null;
 
 
 }

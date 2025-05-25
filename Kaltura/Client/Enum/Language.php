@@ -245,8 +245,8 @@ class Kaltura_Client_Enum_Language extends Kaltura_Client_EnumBase
 	const KPO = "Ikposo";
 	const ILO = "Iloko";
 	const SMN = "Inari Sami";
-	const IN = "Indonesian";
 	const ID = "Indonesian";
+	const IN = "Indonesian";
 	const IZH = "Ingrian";
 	const INH = "Ingush";
 	const IA = "Interlingua";

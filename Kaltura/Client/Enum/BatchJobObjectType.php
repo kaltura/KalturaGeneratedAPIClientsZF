@@ -33,15 +33,15 @@
  */
 class Kaltura_Client_Enum_BatchJobObjectType extends Kaltura_Client_EnumBase
 {
-	const ENTRY_DISTRIBUTION = "contentDistribution.EntryDistribution";
-	const DROP_FOLDER_FILE = "dropFolderXmlBulkUpload.DropFolderFile";
-	const METADATA = "metadata.Metadata";
-	const METADATA_PROFILE = "metadata.MetadataProfile";
-	const SCHEDULED_TASK_PROFILE = "scheduledTask.ScheduledTaskProfile";
 	const ENTRY = "1";
 	const CATEGORY = "2";
 	const FILE_SYNC = "3";
 	const ASSET = "4";
 	const USER = "5";
+	const ENTRY_DISTRIBUTION = "contentDistribution.EntryDistribution";
+	const DROP_FOLDER_FILE = "dropFolderXmlBulkUpload.DropFolderFile";
+	const METADATA = "metadata.Metadata";
+	const METADATA_PROFILE = "metadata.MetadataProfile";
+	const SCHEDULED_TASK_PROFILE = "scheduledTask.ScheduledTaskProfile";
 }
 

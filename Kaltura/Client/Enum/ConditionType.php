@@ -33,13 +33,6 @@
  */
 class Kaltura_Client_Enum_ConditionType extends Kaltura_Client_EnumBase
 {
-	const ABC_WATERMARK = "abcScreenersWatermarkAccessControl.abcWatermark";
-	const EVENT_NOTIFICATION_FIELD = "eventNotification.BooleanField";
-	const EVENT_NOTIFICATION_OBJECT_CHANGED = "eventNotification.ObjectChanged";
-	const METADATA_FIELD_CHANGED = "metadata.FieldChanged";
-	const METADATA_FIELD_COMPARE = "metadata.FieldCompare";
-	const METADATA_FIELD_MATCH = "metadata.FieldMatch";
-	const EVENT_CATEGORY_ENTRY = "reach.CategoryEntry";
 	const AUTHENTICATED = "1";
 	const COUNTRY = "2";
 	const IP_ADDRESS = "3";
@@ -62,5 +55,12 @@ class Kaltura_Client_Enum_ConditionType extends Kaltura_Client_EnumBase
 	const ACTION_NAME = "20";
 	const URL_AUTH_PARAMS = "21";
 	const SESSION_TYPE = "22";
+	const ABC_WATERMARK = "abcScreenersWatermarkAccessControl.abcWatermark";
+	const EVENT_NOTIFICATION_FIELD = "eventNotification.BooleanField";
+	const EVENT_NOTIFICATION_OBJECT_CHANGED = "eventNotification.ObjectChanged";
+	const METADATA_FIELD_CHANGED = "metadata.FieldChanged";
+	const METADATA_FIELD_COMPARE = "metadata.FieldCompare";
+	const METADATA_FIELD_MATCH = "metadata.FieldMatch";
+	const EVENT_CATEGORY_ENTRY = "reach.CategoryEntry";
 }
 

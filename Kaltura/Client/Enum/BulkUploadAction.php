@@ -33,7 +33,6 @@
  */
 class Kaltura_Client_Enum_BulkUploadAction extends Kaltura_Client_EnumBase
 {
-	const CANCEL = "scheduleBulkUpload.CANCEL";
 	const ADD = "1";
 	const UPDATE = "2";
 	const DELETE = "3";
@@ -43,5 +42,6 @@ class Kaltura_Client_Enum_BulkUploadAction extends Kaltura_Client_EnumBase
 	const ACTIVATE = "7";
 	const REJECT = "8";
 	const UPDATE_STATUS = "9";
+	const CANCEL = "scheduleBulkUpload.CANCEL";
 }
 

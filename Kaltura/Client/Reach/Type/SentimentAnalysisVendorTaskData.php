@@ -31,10 +31,35 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Enum_MediaParserType extends Kaltura_Client_EnumBase
+class Kaltura_Client_Reach_Type_SentimentAnalysisVendorTaskData extends Kaltura_Client_Reach_Type_VendorTaskData
 {
-	const MEDIAINFO = "0";
-	const FFMPEG = "1";
-	const REMOTE_MEDIAINFO = "remoteMediaInfo.RemoteMediaInfo";
+	public function getKalturaObjectType()
+	{
+		return 'KalturaSentimentAnalysisVendorTaskData';
+	}
+	
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
+	{
+		parent::__construct($xml, $jsonObject);
+		
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
+			return;
+		
+		if(!is_null($xml) && count($xml->language))
+			$this->language = (string)$xml->language;
+		if(!is_null($jsonObject) && isset($jsonObject->language))
+			$this->language = (string)$jsonObject->language;
+	}
+	/**
+	 * Language code
+	 *
+	 * @var Kaltura_Client_Enum_LanguageCode
+	 */
+	public $language = null;
+
+
 }
 

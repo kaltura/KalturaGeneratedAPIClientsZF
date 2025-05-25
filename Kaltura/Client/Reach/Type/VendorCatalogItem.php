@@ -114,19 +114,19 @@ abstract class Kaltura_Client_Reach_Type_VendorCatalogItem extends Kaltura_Clien
 			else
 				$this->allowResubmission = false;
 		}
-		if(!is_null($xml) && count($xml->requiresOverages))
+		if(!is_null($xml) && count($xml->payPerUse))
 		{
-			if(!empty($xml->requiresOverages) && ((int) $xml->requiresOverages === 1 || strtolower((string)$xml->requiresOverages) === 'true'))
-				$this->requiresOverages = true;
+			if(!empty($xml->payPerUse) && ((int) $xml->payPerUse === 1 || strtolower((string)$xml->payPerUse) === 'true'))
+				$this->payPerUse = true;
 			else
-				$this->requiresOverages = false;
+				$this->payPerUse = false;
 		}
-		if(!is_null($jsonObject) && isset($jsonObject->requiresOverages))
+		if(!is_null($jsonObject) && isset($jsonObject->payPerUse))
 		{
-			if(!empty($jsonObject->requiresOverages) && ((int) $jsonObject->requiresOverages === 1 || strtolower((string)$jsonObject->requiresOverages) === 'true'))
-				$this->requiresOverages = true;
+			if(!empty($jsonObject->payPerUse) && ((int) $jsonObject->payPerUse === 1 || strtolower((string)$jsonObject->payPerUse) === 'true'))
+				$this->payPerUse = true;
 			else
-				$this->requiresOverages = false;
+				$this->payPerUse = false;
 		}
 		if(!is_null($xml) && count($xml->vendorData))
 			$this->vendorData = (string)$xml->vendorData;
@@ -273,7 +273,7 @@ abstract class Kaltura_Client_Reach_Type_VendorCatalogItem extends Kaltura_Clien
 	 *
 	 * @var bool
 	 */
-	public $requiresOverages = null;
+	public $payPerUse = null;
 
 	/**
 	 * 

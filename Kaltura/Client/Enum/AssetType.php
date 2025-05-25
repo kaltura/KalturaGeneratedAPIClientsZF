@@ -33,6 +33,9 @@
  */
 class Kaltura_Client_Enum_AssetType extends Kaltura_Client_EnumBase
 {
+	const FLAVOR = "1";
+	const THUMBNAIL = "2";
+	const LIVE = "3";
 	const ATTACHMENT = "attachment.Attachment";
 	const CAPTION = "caption.Caption";
 	const DOCUMENT = "document.Document";
@@ -42,8 +45,5 @@ class Kaltura_Client_Enum_AssetType extends Kaltura_Client_EnumBase
 	const TIMED_THUMB_ASSET = "thumbCuePoint.timedThumb";
 	const TRANSCRIPT = "transcript.Transcript";
 	const WIDEVINE_FLAVOR = "widevine.WidevineFlavor";
-	const FLAVOR = "1";
-	const THUMBNAIL = "2";
-	const LIVE = "3";
 }
 

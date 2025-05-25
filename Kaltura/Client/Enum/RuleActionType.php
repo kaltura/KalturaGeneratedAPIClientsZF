@@ -33,8 +33,6 @@
  */
 class Kaltura_Client_Enum_RuleActionType extends Kaltura_Client_EnumBase
 {
-	const DRM_POLICY = "drm.DRM_POLICY";
-	const ADD_ENTRY_VENDOR_TASK = "reach.ADD_ENTRY_VENDOR_TASK";
 	const BLOCK = "1";
 	const PREVIEW = "2";
 	const LIMIT_FLAVORS = "3";
@@ -43,5 +41,7 @@ class Kaltura_Client_Enum_RuleActionType extends Kaltura_Client_EnumBase
 	const SERVE_FROM_REMOTE_SERVER = "6";
 	const REQUEST_HOST_REGEX = "7";
 	const LIMIT_THUMBNAIL_CAPTURE = "8";
+	const DRM_POLICY = "drm.DRM_POLICY";
+	const ADD_ENTRY_VENDOR_TASK = "reach.ADD_ENTRY_VENDOR_TASK";
 }
 

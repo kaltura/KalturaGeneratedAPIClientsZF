@@ -31,10 +31,24 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Enum_MediaParserType extends Kaltura_Client_EnumBase
+class Kaltura_Client_Reach_Type_VendorSentimentAnalysisCatalogItem extends Kaltura_Client_Reach_Type_VendorCatalogItem
 {
-	const MEDIAINFO = "0";
-	const FFMPEG = "1";
-	const REMOTE_MEDIAINFO = "remoteMediaInfo.RemoteMediaInfo";
+	public function getKalturaObjectType()
+	{
+		return 'KalturaVendorSentimentAnalysisCatalogItem';
+	}
+	
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
+	{
+		parent::__construct($xml, $jsonObject);
+		
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
+			return;
+		
+	}
+
 }
 

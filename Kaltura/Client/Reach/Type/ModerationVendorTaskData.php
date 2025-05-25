@@ -56,6 +56,10 @@ class Kaltura_Client_Reach_Type_ModerationVendorTaskData extends Kaltura_Client_
 			$this->policyIds = (string)$xml->policyIds;
 		if(!is_null($jsonObject) && isset($jsonObject->policyIds))
 			$this->policyIds = (string)$jsonObject->policyIds;
+		if(!is_null($xml) && count($xml->categoryIds))
+			$this->categoryIds = (string)$xml->categoryIds;
+		if(!is_null($jsonObject) && isset($jsonObject->categoryIds))
+			$this->categoryIds = (string)$jsonObject->categoryIds;
 		if(!is_null($xml) && count($xml->moderationOutputJson))
 			$this->moderationOutputJson = (string)$xml->moderationOutputJson;
 		if(!is_null($jsonObject) && isset($jsonObject->moderationOutputJson))
@@ -74,6 +78,13 @@ class Kaltura_Client_Reach_Type_ModerationVendorTaskData extends Kaltura_Client_
 	 * @var string
 	 */
 	public $policyIds = null;
+
+	/**
+	 * A comma seperated string of category IDs.
+	 *
+	 * @var string
+	 */
+	public $categoryIds = null;
 
 	/**
 	 * JSON string containing the moderation output.

@@ -33,12 +33,12 @@
  */
 class Kaltura_Client_Enum_StorageProfileProtocol extends Kaltura_Client_EnumBase
 {
-	const KONTIKI = "kontiki.KONTIKI";
 	const KALTURA_DC = "0";
 	const FTP = "1";
 	const SCP = "2";
 	const SFTP = "3";
 	const S3 = "6";
 	const LOCAL = "7";
+	const KONTIKI = "kontiki.KONTIKI";
 }
 

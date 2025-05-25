@@ -33,11 +33,6 @@
  */
 class Kaltura_Client_Enum_BaseEntryCloneOptions extends Kaltura_Client_EnumBase
 {
-	const AD_CUE_POINTS = "adCuePoint.AD_CUE_POINTS";
-	const ANNOTATION_CUE_POINTS = "annotation.ANNOTATION_CUE_POINTS";
-	const CODE_CUE_POINTS = "codeCuePoint.CODE_CUE_POINTS";
-	const SESSION_CUE_POINTS = "sessionCuePoint.SESSION_CUE_POINTS";
-	const THUMB_CUE_POINTS = "thumbCuePoint.THUMB_CUE_POINTS";
 	const USERS = "1";
 	const CATEGORIES = "2";
 	const CHILD_ENTRIES = "3";
@@ -45,5 +40,10 @@ class Kaltura_Client_Enum_BaseEntryCloneOptions extends Kaltura_Client_EnumBase
 	const METADATA = "5";
 	const FLAVORS = "6";
 	const CAPTIONS = "7";
+	const AD_CUE_POINTS = "adCuePoint.AD_CUE_POINTS";
+	const ANNOTATION_CUE_POINTS = "annotation.ANNOTATION_CUE_POINTS";
+	const CODE_CUE_POINTS = "codeCuePoint.CODE_CUE_POINTS";
+	const SESSION_CUE_POINTS = "sessionCuePoint.SESSION_CUE_POINTS";
+	const THUMB_CUE_POINTS = "thumbCuePoint.THUMB_CUE_POINTS";
 }
 
