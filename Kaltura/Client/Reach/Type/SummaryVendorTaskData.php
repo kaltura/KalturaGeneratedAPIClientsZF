@@ -31,7 +31,7 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Reach_Type_SummaryVendorTaskData extends Kaltura_Client_Reach_Type_VendorTaskData
+class Kaltura_Client_Reach_Type_SummaryVendorTaskData extends Kaltura_Client_Reach_Type_LocalizedVendorTaskData
 {
 	public function getKalturaObjectType()
 	{
@@ -56,10 +56,6 @@ class Kaltura_Client_Reach_Type_SummaryVendorTaskData extends Kaltura_Client_Rea
 			$this->writingStyle = (string)$xml->writingStyle;
 		if(!is_null($jsonObject) && isset($jsonObject->writingStyle))
 			$this->writingStyle = (string)$jsonObject->writingStyle;
-		if(!is_null($xml) && count($xml->language))
-			$this->language = (string)$xml->language;
-		if(!is_null($jsonObject) && isset($jsonObject->language))
-			$this->language = (string)$jsonObject->language;
 		if(!is_null($xml) && count($xml->summaryOutputJson))
 			$this->summaryOutputJson = (string)$xml->summaryOutputJson;
 		if(!is_null($jsonObject) && isset($jsonObject->summaryOutputJson))
@@ -78,13 +74,6 @@ class Kaltura_Client_Reach_Type_SummaryVendorTaskData extends Kaltura_Client_Rea
 	 * @var Kaltura_Client_Reach_Enum_SummaryWritingStyleTaskData
 	 */
 	public $writingStyle = null;
-
-	/**
-	 * Language code
-	 *
-	 * @var Kaltura_Client_Enum_LanguageCode
-	 */
-	public $language = null;
 
 	/**
 	 * JSON string containing the summary output.

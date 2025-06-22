@@ -31,11 +31,11 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Reach_Type_MetadataEnrichmentVendorTaskData extends Kaltura_Client_Reach_Type_LocalizedVendorTaskData
+class Kaltura_Client_Reach_Type_VendorDocumentEnrichmentCatalogItemFilter extends Kaltura_Client_Reach_Type_VendorCatalogItemFilter
 {
 	public function getKalturaObjectType()
 	{
-		return 'KalturaMetadataEnrichmentVendorTaskData';
+		return 'KalturaVendorDocumentEnrichmentCatalogItemFilter';
 	}
 	
 	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
@@ -48,31 +48,7 @@ class Kaltura_Client_Reach_Type_MetadataEnrichmentVendorTaskData extends Kaltura
 		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(!is_null($xml) && count($xml->detailLevel))
-			$this->detailLevel = (string)$xml->detailLevel;
-		if(!is_null($jsonObject) && isset($jsonObject->detailLevel))
-			$this->detailLevel = (string)$jsonObject->detailLevel;
-		if(!is_null($xml) && count($xml->instruction))
-			$this->instruction = (string)$xml->instruction;
-		if(!is_null($jsonObject) && isset($jsonObject->instruction))
-			$this->instruction = (string)$jsonObject->instruction;
 	}
-	/**
-	 * The level of detail for the metadata enrichment process.
-	 *
-	 * @var string
-	 * @insertonly
-	 */
-	public $detailLevel = null;
-
-	/**
-	 * Instructions describing what should be taken into account during the metadata enrichment process.
-	 *
-	 * @var string
-	 * @insertonly
-	 */
-	public $instruction = null;
-
 
 }
 

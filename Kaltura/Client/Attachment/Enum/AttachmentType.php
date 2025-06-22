@@ -37,5 +37,6 @@ class Kaltura_Client_Attachment_Enum_AttachmentType extends Kaltura_Client_EnumB
 	const MEDIA = "2";
 	const DOCUMENT = "3";
 	const JSON = "4";
+	const MARKDOWN = "5";
 }
 

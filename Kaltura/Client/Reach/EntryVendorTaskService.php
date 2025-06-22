@@ -299,6 +299,32 @@ class Kaltura_Client_Reach_EntryVendorTaskService extends Kaltura_Client_Service
 	}
 
 	/**
+	 * @return Kaltura_Client_Reach_Type_EntryVendorTask
+	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
+	 */
+	function replaceOutput($id, $newOutput)
+	{
+		$kparams = array();
+		$this->client->addParam($kparams, "id", $id);
+		$this->client->addParam($kparams, "newOutput", $newOutput);
+		$this->client->queueServiceActionCall("reach_entryvendortask", "replaceOutput", "KalturaEntryVendorTask", $kparams);
+		if ($this->client->isMultiRequest())
+			return $this->client->getMultiRequestResult();
+		$rawResult = $this->client->doQueue();
+		if ($this->client->getConfig()->format === Kaltura_Client_ClientBase::KALTURA_SERVICE_FORMAT_JSON) {
+			$jsObject = json_decode($rawResult);
+			$resultObject = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsObject);
+			return $resultObject;
+		} else {
+			$resultXmlObject = new \SimpleXMLElement($rawResult);
+			$this->client->checkIfError($resultXmlObject->result);
+			$resultObject = Kaltura_Client_ParseUtils::unmarshalObject($resultXmlObject->result, "KalturaEntryVendorTask");
+			$this->client->validateObjectType($resultObject, "Kaltura_Client_Reach_Type_EntryVendorTask");
+		}
+			return $resultObject;
+	}
+
+	/**
 	 * @return file
 	 * @throws Kaltura_Client_Exception|Kaltura_Client_ClientException
 	 */

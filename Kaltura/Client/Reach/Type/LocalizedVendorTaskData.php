@@ -31,11 +31,11 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Reach_Type_MetadataEnrichmentVendorTaskData extends Kaltura_Client_Reach_Type_LocalizedVendorTaskData
+class Kaltura_Client_Reach_Type_LocalizedVendorTaskData extends Kaltura_Client_Reach_Type_VendorTaskData
 {
 	public function getKalturaObjectType()
 	{
-		return 'KalturaMetadataEnrichmentVendorTaskData';
+		return 'KalturaLocalizedVendorTaskData';
 	}
 	
 	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
@@ -48,30 +48,28 @@ class Kaltura_Client_Reach_Type_MetadataEnrichmentVendorTaskData extends Kaltura
 		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(!is_null($xml) && count($xml->detailLevel))
-			$this->detailLevel = (string)$xml->detailLevel;
-		if(!is_null($jsonObject) && isset($jsonObject->detailLevel))
-			$this->detailLevel = (string)$jsonObject->detailLevel;
-		if(!is_null($xml) && count($xml->instruction))
-			$this->instruction = (string)$xml->instruction;
-		if(!is_null($jsonObject) && isset($jsonObject->instruction))
-			$this->instruction = (string)$jsonObject->instruction;
+		if(!is_null($xml) && count($xml->outputLanguage))
+			$this->outputLanguage = (string)$xml->outputLanguage;
+		if(!is_null($jsonObject) && isset($jsonObject->outputLanguage))
+			$this->outputLanguage = (string)$jsonObject->outputLanguage;
+		if(!is_null($xml) && count($xml->outputJson))
+			$this->outputJson = (string)$xml->outputJson;
+		if(!is_null($jsonObject) && isset($jsonObject->outputJson))
+			$this->outputJson = (string)$jsonObject->outputJson;
 	}
 	/**
-	 * The level of detail for the metadata enrichment process.
+	 * Language code
 	 *
-	 * @var string
-	 * @insertonly
+	 * @var Kaltura_Client_Enum_Language
 	 */
-	public $detailLevel = null;
+	public $outputLanguage = null;
 
 	/**
-	 * Instructions describing what should be taken into account during the metadata enrichment process.
+	 * result as JSON string.
 	 *
 	 * @var string
-	 * @insertonly
 	 */
-	public $instruction = null;
+	public $outputJson = null;
 
 
 }

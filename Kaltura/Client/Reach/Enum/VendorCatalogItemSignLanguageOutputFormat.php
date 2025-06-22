@@ -31,48 +31,9 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Reach_Type_MetadataEnrichmentVendorTaskData extends Kaltura_Client_Reach_Type_LocalizedVendorTaskData
+class Kaltura_Client_Reach_Enum_VendorCatalogItemSignLanguageOutputFormat extends Kaltura_Client_EnumBase
 {
-	public function getKalturaObjectType()
-	{
-		return 'KalturaMetadataEnrichmentVendorTaskData';
-	}
-	
-	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
-	{
-		parent::__construct($xml, $jsonObject);
-		
-		if(!is_null($xml) && !is_null($jsonObject))
-			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
-		
-		if(is_null($xml) && is_null($jsonObject))
-			return;
-		
-		if(!is_null($xml) && count($xml->detailLevel))
-			$this->detailLevel = (string)$xml->detailLevel;
-		if(!is_null($jsonObject) && isset($jsonObject->detailLevel))
-			$this->detailLevel = (string)$jsonObject->detailLevel;
-		if(!is_null($xml) && count($xml->instruction))
-			$this->instruction = (string)$xml->instruction;
-		if(!is_null($jsonObject) && isset($jsonObject->instruction))
-			$this->instruction = (string)$jsonObject->instruction;
-	}
-	/**
-	 * The level of detail for the metadata enrichment process.
-	 *
-	 * @var string
-	 * @insertonly
-	 */
-	public $detailLevel = null;
-
-	/**
-	 * Instructions describing what should be taken into account during the metadata enrichment process.
-	 *
-	 * @var string
-	 * @insertonly
-	 */
-	public $instruction = null;
-
-
+	const ASPECT_RATIO_16_9 = 1;
+	const ASPECT_RATIO_4_3 = 2;
 }
 

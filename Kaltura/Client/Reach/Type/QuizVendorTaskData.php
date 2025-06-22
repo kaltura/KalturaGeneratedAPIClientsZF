@@ -31,7 +31,7 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Reach_Type_QuizVendorTaskData extends Kaltura_Client_Reach_Type_VendorTaskData
+class Kaltura_Client_Reach_Type_QuizVendorTaskData extends Kaltura_Client_Reach_Type_LocalizedVendorTaskData
 {
 	public function getKalturaObjectType()
 	{

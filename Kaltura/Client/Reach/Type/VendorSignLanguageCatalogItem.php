@@ -31,11 +31,11 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Reach_Type_MetadataEnrichmentVendorTaskData extends Kaltura_Client_Reach_Type_LocalizedVendorTaskData
+class Kaltura_Client_Reach_Type_VendorSignLanguageCatalogItem extends Kaltura_Client_Reach_Type_VendorCatalogItem
 {
 	public function getKalturaObjectType()
 	{
-		return 'KalturaMetadataEnrichmentVendorTaskData';
+		return 'KalturaVendorSignLanguageCatalogItem';
 	}
 	
 	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
@@ -48,30 +48,28 @@ class Kaltura_Client_Reach_Type_MetadataEnrichmentVendorTaskData extends Kaltura
 		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(!is_null($xml) && count($xml->detailLevel))
-			$this->detailLevel = (string)$xml->detailLevel;
-		if(!is_null($jsonObject) && isset($jsonObject->detailLevel))
-			$this->detailLevel = (string)$jsonObject->detailLevel;
-		if(!is_null($xml) && count($xml->instruction))
-			$this->instruction = (string)$xml->instruction;
-		if(!is_null($jsonObject) && isset($jsonObject->instruction))
-			$this->instruction = (string)$jsonObject->instruction;
+		if(!is_null($xml) && count($xml->targetLanguage))
+			$this->targetLanguage = (string)$xml->targetLanguage;
+		if(!is_null($jsonObject) && isset($jsonObject->targetLanguage))
+			$this->targetLanguage = (string)$jsonObject->targetLanguage;
+		if(!is_null($xml) && count($xml->outputFormat))
+			$this->outputFormat = (int)$xml->outputFormat;
+		if(!is_null($jsonObject) && isset($jsonObject->outputFormat))
+			$this->outputFormat = (int)$jsonObject->outputFormat;
 	}
 	/**
-	 * The level of detail for the metadata enrichment process.
+	 * 
 	 *
-	 * @var string
-	 * @insertonly
+	 * @var Kaltura_Client_Reach_Enum_CatalogItemSignLanguage
 	 */
-	public $detailLevel = null;
+	public $targetLanguage = null;
 
 	/**
-	 * Instructions describing what should be taken into account during the metadata enrichment process.
+	 * 
 	 *
-	 * @var string
-	 * @insertonly
+	 * @var Kaltura_Client_Reach_Enum_VendorCatalogItemSignLanguageOutputFormat
 	 */
-	public $instruction = null;
+	public $outputFormat = null;
 
 
 }
