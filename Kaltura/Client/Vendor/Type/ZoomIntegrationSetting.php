@@ -100,6 +100,10 @@ class Kaltura_Client_Vendor_Type_ZoomIntegrationSetting extends Kaltura_Client_V
 			$this->handleAlternativeHostsMode = (int)$xml->handleAlternativeHostsMode;
 		if(!is_null($jsonObject) && isset($jsonObject->handleAlternativeHostsMode))
 			$this->handleAlternativeHostsMode = (int)$jsonObject->handleAlternativeHostsMode;
+		if(!is_null($xml) && count($xml->userSearchMethod))
+			$this->userSearchMethod = (int)$xml->userSearchMethod;
+		if(!is_null($jsonObject) && isset($jsonObject->userSearchMethod))
+			$this->userSearchMethod = (int)$jsonObject->userSearchMethod;
 	}
 	/**
 	 * 
@@ -191,6 +195,13 @@ class Kaltura_Client_Vendor_Type_ZoomIntegrationSetting extends Kaltura_Client_V
 	 * @var Kaltura_Client_Vendor_Enum_HandleParticipantsMode
 	 */
 	public $handleAlternativeHostsMode = null;
+
+	/**
+	 * 
+	 *
+	 * @var Kaltura_Client_Vendor_Enum_ZoomUsersSearchMethod
+	 */
+	public $userSearchMethod = null;
 
 
 }

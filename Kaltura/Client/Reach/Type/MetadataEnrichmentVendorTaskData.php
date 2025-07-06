@@ -56,6 +56,38 @@ class Kaltura_Client_Reach_Type_MetadataEnrichmentVendorTaskData extends Kaltura
 			$this->instruction = (string)$xml->instruction;
 		if(!is_null($jsonObject) && isset($jsonObject->instruction))
 			$this->instruction = (string)$jsonObject->instruction;
+		if(!is_null($xml) && count($xml->shouldApply))
+		{
+			if(!empty($xml->shouldApply) && ((int) $xml->shouldApply === 1 || strtolower((string)$xml->shouldApply) === 'true'))
+				$this->shouldApply = true;
+			else
+				$this->shouldApply = false;
+		}
+		if(!is_null($jsonObject) && isset($jsonObject->shouldApply))
+		{
+			if(!empty($jsonObject->shouldApply) && ((int) $jsonObject->shouldApply === 1 || strtolower((string)$jsonObject->shouldApply) === 'true'))
+				$this->shouldApply = true;
+			else
+				$this->shouldApply = false;
+		}
+		if(!is_null($xml) && count($xml->applyMode))
+			$this->applyMode = (string)$xml->applyMode;
+		if(!is_null($jsonObject) && isset($jsonObject->applyMode))
+			$this->applyMode = (string)$jsonObject->applyMode;
+		if(!is_null($xml) && count($xml->overrideFields))
+		{
+			if(empty($xml->overrideFields))
+				$this->overrideFields = array();
+			else
+				$this->overrideFields = Kaltura_Client_ParseUtils::unmarshalArray($xml->overrideFields, "KalturaString");
+		}
+		if(!is_null($jsonObject) && isset($jsonObject->overrideFields))
+		{
+			if(empty($jsonObject->overrideFields))
+				$this->overrideFields = array();
+			else
+				$this->overrideFields = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsonObject->overrideFields, "KalturaString");
+		}
 	}
 	/**
 	 * The level of detail for the metadata enrichment process.
@@ -72,6 +104,29 @@ class Kaltura_Client_Reach_Type_MetadataEnrichmentVendorTaskData extends Kaltura
 	 * @insertonly
 	 */
 	public $instruction = null;
+
+	/**
+	 * Indicates whether the metadata enrichment results should be automatically applied on the task entry.
+	 * 	 Default is false.
+	 *
+	 * @var bool
+	 */
+	public $shouldApply = null;
+
+	/**
+	 * Specifies how metadata fields should be applied during enrichment.
+	 * 	 If 'FILL_EMPTY_AND_OVERRIDE_LIST', use overrideFields to specify which fields to override.
+	 *
+	 * @var Kaltura_Client_Reach_Enum_MetadataEnrichmentApplyMode
+	 */
+	public $applyMode = null;
+
+	/**
+	 * List of entry fields to override when applyMode is set to 'FILL_EMPTY_AND_OVERRIDE_LIST'.
+	 *
+	 * @var Kaltura_Client_Type_String[]
+	 */
+	public $overrideFields;
 
 
 }
