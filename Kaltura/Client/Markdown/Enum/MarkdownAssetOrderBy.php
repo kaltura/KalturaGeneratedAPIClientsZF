@@ -31,9 +31,15 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Reach_Enum_VendorCatalogItemSignLanguageOutputFormat extends Kaltura_Client_EnumBase
+class Kaltura_Client_Markdown_Enum_MarkdownAssetOrderBy extends Kaltura_Client_EnumBase
 {
-	const ASPECT_RATIO_16_9 = 1;
-	const ASPECT_RATIO_4_3 = 2;
+	const CREATED_AT_ASC = "+createdAt";
+	const DELETED_AT_ASC = "+deletedAt";
+	const SIZE_ASC = "+size";
+	const UPDATED_AT_ASC = "+updatedAt";
+	const CREATED_AT_DESC = "-createdAt";
+	const DELETED_AT_DESC = "-deletedAt";
+	const SIZE_DESC = "-size";
+	const UPDATED_AT_DESC = "-updatedAt";
 }
 

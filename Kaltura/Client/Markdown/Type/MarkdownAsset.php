@@ -31,11 +31,11 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Reach_Type_VendorSignLanguageCatalogItem extends Kaltura_Client_Reach_Type_VendorCatalogItem
+class Kaltura_Client_Markdown_Type_MarkdownAsset extends Kaltura_Client_Attachment_Type_AttachmentAsset
 {
 	public function getKalturaObjectType()
 	{
-		return 'KalturaVendorSignLanguageCatalogItem';
+		return 'KalturaMarkdownAsset';
 	}
 	
 	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
@@ -48,17 +48,28 @@ class Kaltura_Client_Reach_Type_VendorSignLanguageCatalogItem extends Kaltura_Cl
 		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(!is_null($xml) && count($xml->targetLanguage))
-			$this->targetLanguage = (string)$xml->targetLanguage;
-		if(!is_null($jsonObject) && isset($jsonObject->targetLanguage))
-			$this->targetLanguage = (string)$jsonObject->targetLanguage;
+		if(!is_null($xml) && count($xml->accuracy))
+			$this->accuracy = (int)$xml->accuracy;
+		if(!is_null($jsonObject) && isset($jsonObject->accuracy))
+			$this->accuracy = (int)$jsonObject->accuracy;
+		if(!is_null($xml) && count($xml->providerType))
+			$this->providerType = (string)$xml->providerType;
+		if(!is_null($jsonObject) && isset($jsonObject->providerType))
+			$this->providerType = (string)$jsonObject->providerType;
 	}
 	/**
-	 * 
+	 * The percentage accuracy of the markdown - values between 0 and 100
 	 *
-	 * @var Kaltura_Client_Reach_Enum_CatalogItemSignLanguage
+	 * @var int
 	 */
-	public $targetLanguage = null;
+	public $accuracy = null;
+
+	/**
+	 * The provider of the markdown
+	 *
+	 * @var Kaltura_Client_Markdown_Enum_MarkdownProviderType
+	 */
+	public $providerType = null;
 
 
 }

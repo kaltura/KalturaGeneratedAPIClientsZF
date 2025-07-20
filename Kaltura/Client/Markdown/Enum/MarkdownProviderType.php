@@ -31,35 +31,8 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Reach_Type_VendorSignLanguageCatalogItem extends Kaltura_Client_Reach_Type_VendorCatalogItem
+class Kaltura_Client_Markdown_Enum_MarkdownProviderType extends Kaltura_Client_EnumBase
 {
-	public function getKalturaObjectType()
-	{
-		return 'KalturaVendorSignLanguageCatalogItem';
-	}
-	
-	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
-	{
-		parent::__construct($xml, $jsonObject);
-		
-		if(!is_null($xml) && !is_null($jsonObject))
-			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
-		
-		if(is_null($xml) && is_null($jsonObject))
-			return;
-		
-		if(!is_null($xml) && count($xml->targetLanguage))
-			$this->targetLanguage = (string)$xml->targetLanguage;
-		if(!is_null($jsonObject) && isset($jsonObject->targetLanguage))
-			$this->targetLanguage = (string)$jsonObject->targetLanguage;
-	}
-	/**
-	 * 
-	 *
-	 * @var Kaltura_Client_Reach_Enum_CatalogItemSignLanguage
-	 */
-	public $targetLanguage = null;
-
-
+	const KAI = "0";
 }
 

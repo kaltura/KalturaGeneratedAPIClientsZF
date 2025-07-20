@@ -31,11 +31,11 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Reach_Type_VendorSignLanguageCatalogItem extends Kaltura_Client_Reach_Type_VendorCatalogItem
+abstract class Kaltura_Client_Attachment_Type_TextualAttachmentAssetFilter extends Kaltura_Client_Attachment_Type_TextualAttachmentAssetBaseFilter
 {
 	public function getKalturaObjectType()
 	{
-		return 'KalturaVendorSignLanguageCatalogItem';
+		return 'KalturaTextualAttachmentAssetFilter';
 	}
 	
 	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
@@ -48,18 +48,7 @@ class Kaltura_Client_Reach_Type_VendorSignLanguageCatalogItem extends Kaltura_Cl
 		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(!is_null($xml) && count($xml->targetLanguage))
-			$this->targetLanguage = (string)$xml->targetLanguage;
-		if(!is_null($jsonObject) && isset($jsonObject->targetLanguage))
-			$this->targetLanguage = (string)$jsonObject->targetLanguage;
 	}
-	/**
-	 * 
-	 *
-	 * @var Kaltura_Client_Reach_Enum_CatalogItemSignLanguage
-	 */
-	public $targetLanguage = null;
-
 
 }
 

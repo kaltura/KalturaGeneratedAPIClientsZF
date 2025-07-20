@@ -31,7 +31,7 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Transcript_Type_TranscriptAsset extends Kaltura_Client_Attachment_Type_AttachmentAsset
+class Kaltura_Client_Transcript_Type_TranscriptAsset extends Kaltura_Client_Attachment_Type_TextualAttachmentAsset
 {
 	public function getKalturaObjectType()
 	{
@@ -52,14 +52,6 @@ class Kaltura_Client_Transcript_Type_TranscriptAsset extends Kaltura_Client_Atta
 			$this->accuracy = (float)$xml->accuracy;
 		if(!is_null($jsonObject) && isset($jsonObject->accuracy))
 			$this->accuracy = (float)$jsonObject->accuracy;
-		if(!is_null($xml) && count($xml->humanVerified))
-			$this->humanVerified = (int)$xml->humanVerified;
-		if(!is_null($jsonObject) && isset($jsonObject->humanVerified))
-			$this->humanVerified = (int)$jsonObject->humanVerified;
-		if(!is_null($xml) && count($xml->language))
-			$this->language = (string)$xml->language;
-		if(!is_null($jsonObject) && isset($jsonObject->language))
-			$this->language = (string)$jsonObject->language;
 		if(!is_null($xml) && count($xml->providerType))
 			$this->providerType = (string)$xml->providerType;
 		if(!is_null($jsonObject) && isset($jsonObject->providerType))
@@ -71,20 +63,6 @@ class Kaltura_Client_Transcript_Type_TranscriptAsset extends Kaltura_Client_Atta
 	 * @var float
 	 */
 	public $accuracy = null;
-
-	/**
-	 * Was verified by human or machine
-	 *
-	 * @var Kaltura_Client_Enum_NullableBoolean
-	 */
-	public $humanVerified = null;
-
-	/**
-	 * The language of the transcript
-	 *
-	 * @var Kaltura_Client_Enum_Language
-	 */
-	public $language = null;
 
 	/**
 	 * The provider of the transcript

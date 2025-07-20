@@ -33,8 +33,7 @@
  */
 class Kaltura_Client_Vendor_Enum_ZoomUsersSearchMethod extends Kaltura_Client_EnumBase
 {
-	const ID = 0;
-	const EMAIL = 1;
-	const ALL = 2;
+	const EMAIL = 0;
+	const EXTERNAL = 1;
 }
 

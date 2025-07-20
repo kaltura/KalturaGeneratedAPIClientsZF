@@ -34,5 +34,6 @@
 class Kaltura_Client_Reach_Enum_EntryObjectType extends Kaltura_Client_EnumBase
 {
 	const ENTRY = 1;
+	const ASSET = 2;
 }
 

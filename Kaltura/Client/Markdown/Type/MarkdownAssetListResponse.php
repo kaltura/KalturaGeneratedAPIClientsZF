@@ -31,11 +31,11 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Reach_Type_VendorSignLanguageCatalogItem extends Kaltura_Client_Reach_Type_VendorCatalogItem
+class Kaltura_Client_Markdown_Type_MarkdownAssetListResponse extends Kaltura_Client_Type_ListResponse
 {
 	public function getKalturaObjectType()
 	{
-		return 'KalturaVendorSignLanguageCatalogItem';
+		return 'KalturaMarkdownAssetListResponse';
 	}
 	
 	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
@@ -48,17 +48,28 @@ class Kaltura_Client_Reach_Type_VendorSignLanguageCatalogItem extends Kaltura_Cl
 		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(!is_null($xml) && count($xml->targetLanguage))
-			$this->targetLanguage = (string)$xml->targetLanguage;
-		if(!is_null($jsonObject) && isset($jsonObject->targetLanguage))
-			$this->targetLanguage = (string)$jsonObject->targetLanguage;
+		if(!is_null($xml) && count($xml->objects))
+		{
+			if(empty($xml->objects))
+				$this->objects = array();
+			else
+				$this->objects = Kaltura_Client_ParseUtils::unmarshalArray($xml->objects, "KalturaMarkdownAsset");
+		}
+		if(!is_null($jsonObject) && isset($jsonObject->objects))
+		{
+			if(empty($jsonObject->objects))
+				$this->objects = array();
+			else
+				$this->objects = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsonObject->objects, "KalturaMarkdownAsset");
+		}
 	}
 	/**
 	 * 
 	 *
-	 * @var Kaltura_Client_Reach_Enum_CatalogItemSignLanguage
+	 * @var Kaltura_Client_Markdown_Type_MarkdownAsset[]
+	 * @readonly
 	 */
-	public $targetLanguage = null;
+	public $objects;
 
 
 }

@@ -31,7 +31,7 @@
  * @package Kaltura
  * @subpackage Client
  */
-abstract class Kaltura_Client_Transcript_Type_TranscriptAssetBaseFilter extends Kaltura_Client_Attachment_Type_AttachmentAssetFilter
+abstract class Kaltura_Client_Transcript_Type_TranscriptAssetBaseFilter extends Kaltura_Client_Attachment_Type_TextualAttachmentAssetFilter
 {
 	public function getKalturaObjectType()
 	{
