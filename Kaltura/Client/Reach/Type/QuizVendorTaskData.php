@@ -82,6 +82,10 @@ class Kaltura_Client_Reach_Type_QuizVendorTaskData extends Kaltura_Client_Reach_
 			$this->quizOutput = (string)$xml->quizOutput;
 		if(!is_null($jsonObject) && isset($jsonObject->quizOutput))
 			$this->quizOutput = (string)$jsonObject->quizOutput;
+		if(!is_null($xml) && count($xml->instruction))
+			$this->instruction = (string)$xml->instruction;
+		if(!is_null($jsonObject) && isset($jsonObject->instruction))
+			$this->instruction = (string)$jsonObject->instruction;
 	}
 	/**
 	 * Number Of Questions.
@@ -124,6 +128,14 @@ class Kaltura_Client_Reach_Type_QuizVendorTaskData extends Kaltura_Client_Reach_
 	 * @var string
 	 */
 	public $quizOutput = null;
+
+	/**
+	 * Instructions describing what should be taken into account during the quiz creation process.
+	 *
+	 * @var string
+	 * @insertonly
+	 */
+	public $instruction = null;
 
 
 }

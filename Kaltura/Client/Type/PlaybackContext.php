@@ -132,6 +132,10 @@ class Kaltura_Client_Type_PlaybackContext extends Kaltura_Client_ObjectBase
 			else
 				$this->bumperData = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsonObject->bumperData, "KalturaObject");
 		}
+		if(!is_null($xml) && count($xml->activeLiveStreamTime) && !empty($xml->activeLiveStreamTime))
+			$this->activeLiveStreamTime = Kaltura_Client_ParseUtils::unmarshalObject($xml->activeLiveStreamTime, "KalturaActiveLiveStreamTime");
+		if(!is_null($jsonObject) && isset($jsonObject->activeLiveStreamTime) && !empty($jsonObject->activeLiveStreamTime))
+			$this->activeLiveStreamTime = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsonObject->activeLiveStreamTime, "KalturaActiveLiveStreamTime");
 	}
 	/**
 	 * 
@@ -174,6 +178,13 @@ class Kaltura_Client_Type_PlaybackContext extends Kaltura_Client_ObjectBase
 	 * @var Kaltura_Client_Type_Object[]
 	 */
 	public $bumperData;
+
+	/**
+	 * 
+	 *
+	 * @var Kaltura_Client_Type_ActiveLiveStreamTime
+	 */
+	public $activeLiveStreamTime;
 
 
 }

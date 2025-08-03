@@ -56,6 +56,7 @@ class Kaltura_Client_TypeMap
 		'KalturaAccessControlScope' => 'Kaltura_Client_Type_AccessControlScope',
 		'KalturaAccessControlServeRemoteEdgeServerAction' => 'Kaltura_Client_Type_AccessControlServeRemoteEdgeServerAction',
 		'KalturaActionNameCondition' => 'Kaltura_Client_Type_ActionNameCondition',
+		'KalturaActiveLiveStreamTime' => 'Kaltura_Client_Type_ActiveLiveStreamTime',
 		'KalturaActivitiBusinessProcessServer' => 'Kaltura_Client_ActivitiBusinessProcessNotification_Type_ActivitiBusinessProcessServer',
 		'KalturaActivitiBusinessProcessServerBaseFilter' => 'Kaltura_Client_ActivitiBusinessProcessNotification_Type_ActivitiBusinessProcessServerBaseFilter',
 		'KalturaActivitiBusinessProcessServerFilter' => 'Kaltura_Client_ActivitiBusinessProcessNotification_Type_ActivitiBusinessProcessServerFilter',
