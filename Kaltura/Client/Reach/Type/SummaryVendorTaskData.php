@@ -60,6 +60,10 @@ class Kaltura_Client_Reach_Type_SummaryVendorTaskData extends Kaltura_Client_Rea
 			$this->summaryOutputJson = (string)$xml->summaryOutputJson;
 		if(!is_null($jsonObject) && isset($jsonObject->summaryOutputJson))
 			$this->summaryOutputJson = (string)$jsonObject->summaryOutputJson;
+		if(!is_null($xml) && count($xml->instruction))
+			$this->instruction = (string)$xml->instruction;
+		if(!is_null($jsonObject) && isset($jsonObject->instruction))
+			$this->instruction = (string)$jsonObject->instruction;
 	}
 	/**
 	 * Type of summary.
@@ -81,6 +85,14 @@ class Kaltura_Client_Reach_Type_SummaryVendorTaskData extends Kaltura_Client_Rea
 	 * @var string
 	 */
 	public $summaryOutputJson = null;
+
+	/**
+	 * Additional instruction for the summary.
+	 *
+	 * @var string
+	 * @insertonly
+	 */
+	public $instruction = null;
 
 
 }

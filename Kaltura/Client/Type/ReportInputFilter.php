@@ -264,6 +264,10 @@ class Kaltura_Client_Type_ReportInputFilter extends Kaltura_Client_Type_ReportIn
 			$this->eventSessionContextIdIn = (string)$xml->eventSessionContextIdIn;
 		if(!is_null($jsonObject) && isset($jsonObject->eventSessionContextIdIn))
 			$this->eventSessionContextIdIn = (string)$jsonObject->eventSessionContextIdIn;
+		if(!is_null($xml) && count($xml->videoCodecIn))
+			$this->videoCodecIn = (string)$xml->videoCodecIn;
+		if(!is_null($jsonObject) && isset($jsonObject->videoCodecIn))
+			$this->videoCodecIn = (string)$jsonObject->videoCodecIn;
 	}
 	/**
 	 * Search keywords to filter objects
@@ -607,6 +611,13 @@ class Kaltura_Client_Type_ReportInputFilter extends Kaltura_Client_Type_ReportIn
 	 * @var string
 	 */
 	public $eventSessionContextIdIn = null;
+
+	/**
+	 * filter by event video codec
+	 *
+	 * @var string
+	 */
+	public $videoCodecIn = null;
 
 
 }
