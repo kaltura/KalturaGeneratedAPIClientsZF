@@ -52,6 +52,10 @@ class Kaltura_Client_Reach_Type_AddEntryVendorTaskAction extends Kaltura_Client_
 			$this->catalogItemIds = (string)$xml->catalogItemIds;
 		if(!is_null($jsonObject) && isset($jsonObject->catalogItemIds))
 			$this->catalogItemIds = (string)$jsonObject->catalogItemIds;
+		if(!is_null($xml) && count($xml->entryObjectType))
+			$this->entryObjectType = (int)$xml->entryObjectType;
+		if(!is_null($jsonObject) && isset($jsonObject->entryObjectType))
+			$this->entryObjectType = (int)$jsonObject->entryObjectType;
 	}
 	/**
 	 * Catalog Item Id
@@ -59,6 +63,13 @@ class Kaltura_Client_Reach_Type_AddEntryVendorTaskAction extends Kaltura_Client_
 	 * @var string
 	 */
 	public $catalogItemIds = null;
+
+	/**
+	 * Entry Object Type
+	 *
+	 * @var Kaltura_Client_Reach_Enum_EntryObjectType
+	 */
+	public $entryObjectType = null;
 
 
 }
