@@ -52,6 +52,10 @@ class Kaltura_Client_HttpNotification_Type_HttpNotificationDataText extends Kalt
 			$this->content = Kaltura_Client_ParseUtils::unmarshalObject($xml->content, "KalturaStringValue");
 		if(!is_null($jsonObject) && isset($jsonObject->content) && !empty($jsonObject->content))
 			$this->content = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsonObject->content, "KalturaStringValue");
+		if(!is_null($xml) && count($xml->contentType))
+			$this->contentType = (string)$xml->contentType;
+		if(!is_null($jsonObject) && isset($jsonObject->contentType))
+			$this->contentType = (string)$jsonObject->contentType;
 	}
 	/**
 	 * 
@@ -59,6 +63,13 @@ class Kaltura_Client_HttpNotification_Type_HttpNotificationDataText extends Kalt
 	 * @var Kaltura_Client_Type_StringValue
 	 */
 	public $content;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $contentType = null;
 
 
 }

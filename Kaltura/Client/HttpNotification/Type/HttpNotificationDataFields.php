@@ -48,7 +48,18 @@ class Kaltura_Client_HttpNotification_Type_HttpNotificationDataFields extends Ka
 		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
+		if(!is_null($xml) && count($xml->contentType))
+			$this->contentType = (string)$xml->contentType;
+		if(!is_null($jsonObject) && isset($jsonObject->contentType))
+			$this->contentType = (string)$jsonObject->contentType;
 	}
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $contentType = null;
+
 
 }
 

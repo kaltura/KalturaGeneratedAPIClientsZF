@@ -53,8 +53,10 @@ class Kaltura_Client_Reach_Enum_CatalogItemLanguage extends Kaltura_Client_EnumB
 	const DA = "Danish";
 	const NL = "Dutch";
 	const EN = "English";
+	const EN_ASL = "English (ASL)";
 	const EN_US = "English (American)";
 	const EN_AU = "English (Australian)";
+	const EN_BSL = "English (BSL)";
 	const EN_GB = "English (British)";
 	const EO = "Esperanto";
 	const ET = "Estonian";

@@ -56,7 +56,7 @@ class Kaltura_Client_Reach_Type_VendorSignLanguageCatalogItem extends Kaltura_Cl
 	/**
 	 * 
 	 *
-	 * @var Kaltura_Client_Reach_Enum_CatalogItemSignLanguage
+	 * @var Kaltura_Client_Reach_Enum_CatalogItemLanguage
 	 */
 	public $targetLanguage = null;
 
