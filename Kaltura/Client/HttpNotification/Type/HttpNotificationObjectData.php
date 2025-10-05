@@ -88,6 +88,10 @@ class Kaltura_Client_HttpNotification_Type_HttpNotificationObjectData extends Ka
 			else
 				$this->dataStringReplacements = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsonObject->dataStringReplacements, "KalturaKeyValue");
 		}
+		if(!is_null($xml) && count($xml->responseProfileId))
+			$this->responseProfileId = (int)$xml->responseProfileId;
+		if(!is_null($jsonObject) && isset($jsonObject->responseProfileId))
+			$this->responseProfileId = (int)$jsonObject->responseProfileId;
 	}
 	/**
 	 * Kaltura API object type
@@ -123,6 +127,13 @@ class Kaltura_Client_HttpNotification_Type_HttpNotificationObjectData extends Ka
 	 * @var Kaltura_Client_Type_KeyValue[]
 	 */
 	public $dataStringReplacements;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $responseProfileId = null;
 
 
 }
