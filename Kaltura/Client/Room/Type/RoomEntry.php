@@ -60,6 +60,10 @@ class Kaltura_Client_Room_Type_RoomEntry extends Kaltura_Client_Type_BaseEntry
 			$this->templateRoomEntryId = (string)$xml->templateRoomEntryId;
 		if(!is_null($jsonObject) && isset($jsonObject->templateRoomEntryId))
 			$this->templateRoomEntryId = (string)$jsonObject->templateRoomEntryId;
+		if(!is_null($xml) && count($xml->recordedEntryId))
+			$this->recordedEntryId = (string)$xml->recordedEntryId;
+		if(!is_null($jsonObject) && isset($jsonObject->recordedEntryId))
+			$this->recordedEntryId = (string)$jsonObject->recordedEntryId;
 	}
 	/**
 	 * 
@@ -81,6 +85,13 @@ class Kaltura_Client_Room_Type_RoomEntry extends Kaltura_Client_Type_BaseEntry
 	 * @var string
 	 */
 	public $templateRoomEntryId = null;
+
+	/**
+	 * The entryId of the recording
+	 *
+	 * @var string
+	 */
+	public $recordedEntryId = null;
 
 
 }
