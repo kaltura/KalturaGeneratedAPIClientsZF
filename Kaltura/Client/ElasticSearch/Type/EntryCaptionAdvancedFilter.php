@@ -52,6 +52,10 @@ class Kaltura_Client_ElasticSearch_Type_EntryCaptionAdvancedFilter extends Kaltu
 			$this->hasCaption = (int)$xml->hasCaption;
 		if(!is_null($jsonObject) && isset($jsonObject->hasCaption))
 			$this->hasCaption = (int)$jsonObject->hasCaption;
+		if(!is_null($xml) && count($xml->language))
+			$this->language = (string)$xml->language;
+		if(!is_null($jsonObject) && isset($jsonObject->language))
+			$this->language = (string)$jsonObject->language;
 	}
 	/**
 	 * 
@@ -59,6 +63,13 @@ class Kaltura_Client_ElasticSearch_Type_EntryCaptionAdvancedFilter extends Kaltu
 	 * @var Kaltura_Client_Enum_NullableBoolean
 	 */
 	public $hasCaption = null;
+
+	/**
+	 * 
+	 *
+	 * @var Kaltura_Client_Enum_Language
+	 */
+	public $language = null;
 
 
 }

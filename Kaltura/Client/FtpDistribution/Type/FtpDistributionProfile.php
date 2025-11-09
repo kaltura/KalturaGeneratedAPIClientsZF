@@ -118,6 +118,10 @@ class Kaltura_Client_FtpDistribution_Type_FtpDistributionProfile extends Kaltura
 			$this->assetFilenameXslt = (string)$xml->assetFilenameXslt;
 		if(!is_null($jsonObject) && isset($jsonObject->assetFilenameXslt))
 			$this->assetFilenameXslt = (string)$jsonObject->assetFilenameXslt;
+		if(!is_null($xml) && count($xml->dataContentFilenameXslt))
+			$this->dataContentFilenameXslt = (string)$xml->dataContentFilenameXslt;
+		if(!is_null($jsonObject) && isset($jsonObject->dataContentFilenameXslt))
+			$this->dataContentFilenameXslt = (string)$jsonObject->dataContentFilenameXslt;
 		if(!is_null($xml) && count($xml->asperaPublicKey))
 			$this->asperaPublicKey = (string)$xml->asperaPublicKey;
 		if(!is_null($jsonObject) && isset($jsonObject->asperaPublicKey))
@@ -246,6 +250,13 @@ class Kaltura_Client_FtpDistribution_Type_FtpDistributionProfile extends Kaltura
 	 * @var string
 	 */
 	public $assetFilenameXslt = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $dataContentFilenameXslt = null;
 
 	/**
 	 * 
