@@ -112,6 +112,10 @@ class Kaltura_Client_Type_BulkUploadResultUser extends Kaltura_Client_Type_BulkU
 			$this->capabilities = (string)$xml->capabilities;
 		if(!is_null($jsonObject) && isset($jsonObject->capabilities))
 			$this->capabilities = (string)$jsonObject->capabilities;
+		if(!is_null($xml) && count($xml->groupUserCreationMode))
+			$this->groupUserCreationMode = (int)$xml->groupUserCreationMode;
+		if(!is_null($jsonObject) && isset($jsonObject->groupUserCreationMode))
+			$this->groupUserCreationMode = (int)$jsonObject->groupUserCreationMode;
 	}
 	/**
 	 * 
@@ -224,6 +228,13 @@ class Kaltura_Client_Type_BulkUploadResultUser extends Kaltura_Client_Type_BulkU
 	 * @var string
 	 */
 	public $capabilities = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $groupUserCreationMode = null;
 
 
 }

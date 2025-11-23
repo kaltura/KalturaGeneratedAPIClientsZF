@@ -72,6 +72,14 @@ class Kaltura_Client_ElasticSearch_Type_ESearchCaptionItemData extends Kaltura_C
 			$this->label = (string)$xml->label;
 		if(!is_null($jsonObject) && isset($jsonObject->label))
 			$this->label = (string)$jsonObject->label;
+		if(!is_null($xml) && count($xml->accuracy))
+			$this->accuracy = (int)$xml->accuracy;
+		if(!is_null($jsonObject) && isset($jsonObject->accuracy))
+			$this->accuracy = (int)$jsonObject->accuracy;
+		if(!is_null($xml) && count($xml->usage))
+			$this->usage = (int)$xml->usage;
+		if(!is_null($jsonObject) && isset($jsonObject->usage))
+			$this->usage = (int)$jsonObject->usage;
 	}
 	/**
 	 * 
@@ -114,6 +122,20 @@ class Kaltura_Client_ElasticSearch_Type_ESearchCaptionItemData extends Kaltura_C
 	 * @var string
 	 */
 	public $label = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $accuracy = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $usage = null;
 
 
 }

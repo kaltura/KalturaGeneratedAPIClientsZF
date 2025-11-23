@@ -56,6 +56,26 @@ class Kaltura_Client_ElasticSearch_Type_EntryCaptionAdvancedFilter extends Kaltu
 			$this->language = (string)$xml->language;
 		if(!is_null($jsonObject) && isset($jsonObject->language))
 			$this->language = (string)$jsonObject->language;
+		if(!is_null($xml) && count($xml->accuracyGreaterThanOrEqual))
+			$this->accuracyGreaterThanOrEqual = (int)$xml->accuracyGreaterThanOrEqual;
+		if(!is_null($jsonObject) && isset($jsonObject->accuracyGreaterThanOrEqual))
+			$this->accuracyGreaterThanOrEqual = (int)$jsonObject->accuracyGreaterThanOrEqual;
+		if(!is_null($xml) && count($xml->accuracyLessThanOrEqual))
+			$this->accuracyLessThanOrEqual = (int)$xml->accuracyLessThanOrEqual;
+		if(!is_null($jsonObject) && isset($jsonObject->accuracyLessThanOrEqual))
+			$this->accuracyLessThanOrEqual = (int)$jsonObject->accuracyLessThanOrEqual;
+		if(!is_null($xml) && count($xml->accuracyGreaterThan))
+			$this->accuracyGreaterThan = (int)$xml->accuracyGreaterThan;
+		if(!is_null($jsonObject) && isset($jsonObject->accuracyGreaterThan))
+			$this->accuracyGreaterThan = (int)$jsonObject->accuracyGreaterThan;
+		if(!is_null($xml) && count($xml->accuracyLessThan))
+			$this->accuracyLessThan = (int)$xml->accuracyLessThan;
+		if(!is_null($jsonObject) && isset($jsonObject->accuracyLessThan))
+			$this->accuracyLessThan = (int)$jsonObject->accuracyLessThan;
+		if(!is_null($xml) && count($xml->usage))
+			$this->usage = (string)$xml->usage;
+		if(!is_null($jsonObject) && isset($jsonObject->usage))
+			$this->usage = (string)$jsonObject->usage;
 	}
 	/**
 	 * 
@@ -70,6 +90,41 @@ class Kaltura_Client_ElasticSearch_Type_EntryCaptionAdvancedFilter extends Kaltu
 	 * @var Kaltura_Client_Enum_Language
 	 */
 	public $language = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $accuracyGreaterThanOrEqual = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $accuracyLessThanOrEqual = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $accuracyGreaterThan = null;
+
+	/**
+	 * 
+	 *
+	 * @var int
+	 */
+	public $accuracyLessThan = null;
+
+	/**
+	 * 
+	 *
+	 * @var Kaltura_Client_Caption_Enum_CaptionAssetUsage
+	 */
+	public $usage = null;
 
 
 }
