@@ -222,6 +222,20 @@ class Kaltura_Client_Type_FlavorParams extends Kaltura_Client_Type_AssetParams
 			$this->clipDuration = (int)$xml->clipDuration;
 		if(!is_null($jsonObject) && isset($jsonObject->clipDuration))
 			$this->clipDuration = (int)$jsonObject->clipDuration;
+		if(!is_null($xml) && count($xml->audioLanguages))
+		{
+			if(empty($xml->audioLanguages))
+				$this->audioLanguages = array();
+			else
+				$this->audioLanguages = Kaltura_Client_ParseUtils::unmarshalArray($xml->audioLanguages, "KalturaString");
+		}
+		if(!is_null($jsonObject) && isset($jsonObject->audioLanguages))
+		{
+			if(empty($jsonObject->audioLanguages))
+				$this->audioLanguages = array();
+			else
+				$this->audioLanguages = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsonObject->audioLanguages, "KalturaString");
+		}
 	}
 	/**
 	 * The video codec of the Flavor Params
@@ -509,6 +523,14 @@ class Kaltura_Client_Type_FlavorParams extends Kaltura_Client_Type_AssetParams
 	 * @var int
 	 */
 	public $clipDuration = null;
+
+	/**
+	 * Audio languages extracted from multiStream field
+	 *
+	 * @var Kaltura_Client_Type_String[]
+	 * @readonly
+	 */
+	public $audioLanguages;
 
 
 }

@@ -84,6 +84,10 @@ class Kaltura_Client_Annotation_Type_Annotation extends Kaltura_Client_CuePoint_
 			$this->searchableOnEntry = (int)$xml->searchableOnEntry;
 		if(!is_null($jsonObject) && isset($jsonObject->searchableOnEntry))
 			$this->searchableOnEntry = (int)$jsonObject->searchableOnEntry;
+		if(!is_null($xml) && count($xml->originalCuePointCreateAt))
+			$this->originalCuePointCreateAt = (int)$xml->originalCuePointCreateAt;
+		if(!is_null($jsonObject) && isset($jsonObject->originalCuePointCreateAt))
+			$this->originalCuePointCreateAt = (int)$jsonObject->originalCuePointCreateAt;
 	}
 	/**
 	 * 
@@ -152,6 +156,13 @@ class Kaltura_Client_Annotation_Type_Annotation extends Kaltura_Client_CuePoint_
 	 * @var Kaltura_Client_Enum_NullableBoolean
 	 */
 	public $searchableOnEntry = null;
+
+	/**
+	 * In case of cloned annotation it will hold source cuepoint createdAt.
+	 *
+	 * @var int
+	 */
+	public $originalCuePointCreateAt = null;
 
 
 }
