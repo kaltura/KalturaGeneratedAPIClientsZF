@@ -82,6 +82,10 @@ abstract class Kaltura_Client_ElasticSearch_Type_ESearchParams extends Kaltura_C
 			$this->objectIdsNotIn = (int)$xml->objectIdsNotIn;
 		if(!is_null($jsonObject) && isset($jsonObject->objectIdsNotIn))
 			$this->objectIdsNotIn = (int)$jsonObject->objectIdsNotIn;
+		if(!is_null($xml) && count($xml->scoreFunctionParams) && !empty($xml->scoreFunctionParams))
+			$this->scoreFunctionParams = Kaltura_Client_ParseUtils::unmarshalObject($xml->scoreFunctionParams, "KalturaESearchScoreFunctionParams");
+		if(!is_null($jsonObject) && isset($jsonObject->scoreFunctionParams) && !empty($jsonObject->scoreFunctionParams))
+			$this->scoreFunctionParams = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsonObject->scoreFunctionParams, "KalturaESearchScoreFunctionParams");
 	}
 	/**
 	 * 
@@ -124,6 +128,13 @@ abstract class Kaltura_Client_ElasticSearch_Type_ESearchParams extends Kaltura_C
 	 * @var Kaltura_Client_Enum_NullableBoolean
 	 */
 	public $objectIdsNotIn = null;
+
+	/**
+	 * 
+	 *
+	 * @var Kaltura_Client_ElasticSearch_Type_ESearchScoreFunctionParams
+	 */
+	public $scoreFunctionParams;
 
 
 }

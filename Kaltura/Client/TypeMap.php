@@ -600,6 +600,7 @@ class Kaltura_Client_TypeMap
 		'KalturaESearchRange' => 'Kaltura_Client_ElasticSearch_Type_ESearchRange',
 		'KalturaESearchResponse' => 'Kaltura_Client_ElasticSearch_Type_ESearchResponse',
 		'KalturaESearchResult' => 'Kaltura_Client_ElasticSearch_Type_ESearchResult',
+		'KalturaESearchScoreFunctionParams' => 'Kaltura_Client_ElasticSearch_Type_ESearchScoreFunctionParams',
 		'KalturaESearchUnifiedItem' => 'Kaltura_Client_ElasticSearch_Type_ESearchUnifiedItem',
 		'KalturaESearchUserBaseItem' => 'Kaltura_Client_ElasticSearch_Type_ESearchUserBaseItem',
 		'KalturaESearchUserItem' => 'Kaltura_Client_ElasticSearch_Type_ESearchUserItem',
