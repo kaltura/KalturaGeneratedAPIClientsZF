@@ -70,6 +70,10 @@ class Kaltura_Client_CortexApiDistribution_Type_CortexApiDistributionJobProvider
 			else
 				$this->captionsInfo = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsonObject->captionsInfo, "KalturaCortexApiCaptionDistributionInfo");
 		}
+		if(!is_null($xml) && count($xml->mediaType))
+			$this->mediaType = (int)$xml->mediaType;
+		if(!is_null($jsonObject) && isset($jsonObject->mediaType))
+			$this->mediaType = (int)$jsonObject->mediaType;
 	}
 	/**
 	 * 
@@ -91,6 +95,13 @@ class Kaltura_Client_CortexApiDistribution_Type_CortexApiDistributionJobProvider
 	 * @var Kaltura_Client_CortexApiDistribution_Type_CortexApiCaptionDistributionInfo[]
 	 */
 	public $captionsInfo;
+
+	/**
+	 * 
+	 *
+	 * @var Kaltura_Client_Enum_MediaType
+	 */
+	public $mediaType = null;
 
 
 }
