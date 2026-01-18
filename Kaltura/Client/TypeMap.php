@@ -1419,6 +1419,7 @@ class Kaltura_Client_TypeMap
 		'KalturaUnicornDistributionProviderBaseFilter' => 'Kaltura_Client_UnicornDistribution_Type_UnicornDistributionProviderBaseFilter',
 		'KalturaUnicornDistributionProviderFilter' => 'Kaltura_Client_UnicornDistribution_Type_UnicornDistributionProviderFilter',
 		'KalturaUnlimitedVendorCredit' => 'Kaltura_Client_Reach_Type_UnlimitedVendorCredit',
+		'KalturaUpdateUserEntriesData' => 'Kaltura_Client_Type_UpdateUserEntriesData',
 		'KalturaUpgradeMetadataResponse' => 'Kaltura_Client_Metadata_Type_UpgradeMetadataResponse',
 		'KalturaUploadResponse' => 'Kaltura_Client_Type_UploadResponse',
 		'KalturaUploadToken' => 'Kaltura_Client_Type_UploadToken',

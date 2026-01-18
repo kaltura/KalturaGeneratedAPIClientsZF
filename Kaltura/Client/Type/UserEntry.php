@@ -117,7 +117,6 @@ abstract class Kaltura_Client_Type_UserEntry extends Kaltura_Client_ObjectBase
 	 * 
 	 *
 	 * @var Kaltura_Client_Enum_UserEntryStatus
-	 * @readonly
 	 */
 	public $status = null;
 

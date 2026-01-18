@@ -87,6 +87,7 @@ class Kaltura_Client_Enum_BatchJobType extends Kaltura_Client_EnumBase
 	const STORAGE_PERIODIC_DELETE_LOCAL = "55";
 	const REACH_JOB_CLEANER = "56";
 	const MULTI_CLIP_CONCAT = "57";
+	const UPDATE_USER_ENTRIES = "58";
 	const REACH_INTERNAL_QUEUE_HANDLER = "ReachInternal.ReachInternalQueueHandler";
 	const CONVERT_CAPTION_ASSET = "caption.convertcaptionasset";
 	const PARSE_MULTI_LANGUAGE_CAPTION_ASSET = "caption.parsemultilanguagecaptionasset";
