@@ -31,27 +31,24 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Reach_Enum_VendorServiceFeature extends Kaltura_Client_EnumBase
+class Kaltura_Client_Reach_Type_VendorSpeechToVideoCatalogItem extends Kaltura_Client_Reach_Type_VendorCatalogItem
 {
-	const CAPTIONS = 1;
-	const TRANSLATION = 2;
-	const ALIGNMENT = 3;
-	const AUDIO_DESCRIPTION = 4;
-	const CHAPTERING = 5;
-	const INTELLIGENT_TAGGING = 6;
-	const DUBBING = 7;
-	const LIVE_CAPTION = 8;
-	const EXTENDED_AUDIO_DESCRIPTION = 9;
-	const CLIPS = 10;
-	const LIVE_TRANSLATION = 11;
-	const QUIZ = 12;
-	const SUMMARY = 13;
-	const VIDEO_ANALYSIS = 14;
-	const MODERATION = 15;
-	const METADATA_ENRICHMENT = 16;
-	const SENTIMENT_ANALYSIS = 17;
-	const DOCUMENT_ENRICHMENT = 18;
-	const SIGN_LANGUAGE = 19;
-	const SPEECH_TO_VIDEO = 20;
+	public function getKalturaObjectType()
+	{
+		return 'KalturaVendorSpeechToVideoCatalogItem';
+	}
+	
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
+	{
+		parent::__construct($xml, $jsonObject);
+		
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
+			return;
+		
+	}
+
 }
 

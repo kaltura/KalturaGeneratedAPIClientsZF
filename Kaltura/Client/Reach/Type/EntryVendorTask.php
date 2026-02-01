@@ -176,6 +176,20 @@ class Kaltura_Client_Reach_Type_EntryVendorTask extends Kaltura_Client_ObjectBas
 			$this->externalTaskId = (string)$xml->externalTaskId;
 		if(!is_null($jsonObject) && isset($jsonObject->externalTaskId))
 			$this->externalTaskId = (string)$jsonObject->externalTaskId;
+		if(!is_null($xml) && count($xml->isPayPerUse))
+		{
+			if(!empty($xml->isPayPerUse) && ((int) $xml->isPayPerUse === 1 || strtolower((string)$xml->isPayPerUse) === 'true'))
+				$this->isPayPerUse = true;
+			else
+				$this->isPayPerUse = false;
+		}
+		if(!is_null($jsonObject) && isset($jsonObject->isPayPerUse))
+		{
+			if(!empty($jsonObject->isPayPerUse) && ((int) $jsonObject->isPayPerUse === 1 || strtolower((string)$jsonObject->isPayPerUse) === 'true'))
+				$this->isPayPerUse = true;
+			else
+				$this->isPayPerUse = false;
+		}
 	}
 	/**
 	 * 
@@ -422,6 +436,14 @@ class Kaltura_Client_Reach_Type_EntryVendorTask extends Kaltura_Client_ObjectBas
 	 * @var string
 	 */
 	public $externalTaskId = null;
+
+	/**
+	 * Indicates if the task is pay-per-use based on the catalog item
+	 *
+	 * @var bool
+	 * @readonly
+	 */
+	public $isPayPerUse = null;
 
 
 }
