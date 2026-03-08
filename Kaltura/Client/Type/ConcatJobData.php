@@ -62,6 +62,20 @@ class Kaltura_Client_Type_ConcatJobData extends Kaltura_Client_Type_JobData
 			else
 				$this->srcFiles = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsonObject->srcFiles, "KalturaString");
 		}
+		if(!is_null($xml) && count($xml->inputFiles))
+		{
+			if(empty($xml->inputFiles))
+				$this->inputFiles = array();
+			else
+				$this->inputFiles = Kaltura_Client_ParseUtils::unmarshalArray($xml->inputFiles, "KalturaStringArrayObject");
+		}
+		if(!is_null($jsonObject) && isset($jsonObject->inputFiles))
+		{
+			if(empty($jsonObject->inputFiles))
+				$this->inputFiles = array();
+			else
+				$this->inputFiles = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsonObject->inputFiles, "KalturaStringArrayObject");
+		}
 		if(!is_null($xml) && count($xml->destFilePath))
 			$this->destFilePath = (string)$xml->destFilePath;
 		if(!is_null($jsonObject) && isset($jsonObject->destFilePath))
@@ -131,6 +145,13 @@ class Kaltura_Client_Type_ConcatJobData extends Kaltura_Client_Type_JobData
 	 * @var Kaltura_Client_Type_String[]
 	 */
 	public $srcFiles;
+
+	/**
+	 * Additional input files to be used in conversion pre concatenation
+	 *
+	 * @var Kaltura_Client_Type_StringArrayObject[]
+	 */
+	public $inputFiles;
 
 	/**
 	 * Output file

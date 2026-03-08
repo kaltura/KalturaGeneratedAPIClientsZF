@@ -92,6 +92,20 @@ class Kaltura_Client_Type_ClipAttributes extends Kaltura_Client_Type_OperationAt
 			else
 				$this->captionAttributes = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsonObject->captionAttributes, "KalturaCaptionAttributes");
 		}
+		if(!is_null($xml) && count($xml->mediaCompositionAttributesArray))
+		{
+			if(empty($xml->mediaCompositionAttributesArray))
+				$this->mediaCompositionAttributesArray = array();
+			else
+				$this->mediaCompositionAttributesArray = Kaltura_Client_ParseUtils::unmarshalArray($xml->mediaCompositionAttributesArray, "KalturaMediaCompositionAttributes");
+		}
+		if(!is_null($jsonObject) && isset($jsonObject->mediaCompositionAttributesArray))
+		{
+			if(empty($jsonObject->mediaCompositionAttributesArray))
+				$this->mediaCompositionAttributesArray = array();
+			else
+				$this->mediaCompositionAttributesArray = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsonObject->mediaCompositionAttributesArray, "KalturaMediaCompositionAttributes");
+		}
 	}
 	/**
 	 * Offset in milliseconds
@@ -134,6 +148,13 @@ class Kaltura_Client_Type_ClipAttributes extends Kaltura_Client_Type_OperationAt
 	 * @var Kaltura_Client_Type_CaptionAttributes[]
 	 */
 	public $captionAttributes;
+
+	/**
+	 * 
+	 *
+	 * @var Kaltura_Client_Type_MediaCompositionAttributes[]
+	 */
+	public $mediaCompositionAttributesArray;
 
 
 }

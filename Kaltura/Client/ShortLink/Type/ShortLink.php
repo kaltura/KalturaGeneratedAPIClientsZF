@@ -84,6 +84,10 @@ class Kaltura_Client_ShortLink_Type_ShortLink extends Kaltura_Client_ObjectBase
 			$this->fullUrl = (string)$xml->fullUrl;
 		if(!is_null($jsonObject) && isset($jsonObject->fullUrl))
 			$this->fullUrl = (string)$jsonObject->fullUrl;
+		if(!is_null($xml) && count($xml->uniqueId))
+			$this->uniqueId = (string)$xml->uniqueId;
+		if(!is_null($jsonObject) && isset($jsonObject->uniqueId))
+			$this->uniqueId = (string)$jsonObject->uniqueId;
 		if(!is_null($xml) && count($xml->status))
 			$this->status = (int)$xml->status;
 		if(!is_null($jsonObject) && isset($jsonObject->status))
@@ -155,6 +159,14 @@ class Kaltura_Client_ShortLink_Type_ShortLink extends Kaltura_Client_ObjectBase
 	 * @var string
 	 */
 	public $fullUrl = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 * @insertonly
+	 */
+	public $uniqueId = null;
 
 	/**
 	 * 

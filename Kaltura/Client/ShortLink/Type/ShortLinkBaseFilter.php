@@ -112,6 +112,10 @@ abstract class Kaltura_Client_ShortLink_Type_ShortLinkBaseFilter extends Kaltura
 			$this->statusIn = (string)$xml->statusIn;
 		if(!is_null($jsonObject) && isset($jsonObject->statusIn))
 			$this->statusIn = (string)$jsonObject->statusIn;
+		if(!is_null($xml) && count($xml->uniqueIdEqual))
+			$this->uniqueIdEqual = (string)$xml->uniqueIdEqual;
+		if(!is_null($jsonObject) && isset($jsonObject->uniqueIdEqual))
+			$this->uniqueIdEqual = (string)$jsonObject->uniqueIdEqual;
 	}
 	/**
 	 * 
@@ -224,6 +228,13 @@ abstract class Kaltura_Client_ShortLink_Type_ShortLinkBaseFilter extends Kaltura
 	 * @var string
 	 */
 	public $statusIn = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $uniqueIdEqual = null;
 
 
 }
