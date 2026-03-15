@@ -39,6 +39,9 @@ class Kaltura_Client_Enum_LanguageCode extends Kaltura_Client_EnumBase
 	const ALG = "alg";
 	const AM = "am";
 	const AR = "ar";
+	const AR_LB = "ar_lb";
+	const AR_QA = "ar_qa";
+	const AR_SA = "ar_sa";
 	const AS_ = "as";
 	const ATH = "ath";
 	const AY = "ay";

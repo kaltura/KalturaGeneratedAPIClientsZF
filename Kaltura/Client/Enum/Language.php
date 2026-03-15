@@ -68,6 +68,9 @@ class Kaltura_Client_Enum_Language extends Kaltura_Client_EnumBase
 	const APJ = "Apache (Jicarilla)";
 	const APW = "Apache (Western)";
 	const AR = "Arabic";
+	const AR_LB = "Arabic (Lebanon)";
+	const AR_QA = "Arabic (Qatar)";
+	const AR_SA = "Arabic (Saudi Arabia)";
 	const ARB = "Arabic (standard)";
 	const B_T = "Arabic Tunisian Spoken";
 	const ARC = "Aramaic";
