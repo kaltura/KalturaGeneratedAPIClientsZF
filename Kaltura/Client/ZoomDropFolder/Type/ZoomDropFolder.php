@@ -60,6 +60,10 @@ class Kaltura_Client_ZoomDropFolder_Type_ZoomDropFolder extends Kaltura_Client_D
 			$this->lastHandledMeetingTime = (int)$xml->lastHandledMeetingTime;
 		if(!is_null($jsonObject) && isset($jsonObject->lastHandledMeetingTime))
 			$this->lastHandledMeetingTime = (int)$jsonObject->lastHandledMeetingTime;
+		if(!is_null($xml) && count($xml->fileProcessingGracePeriod))
+			$this->fileProcessingGracePeriod = (int)$xml->fileProcessingGracePeriod;
+		if(!is_null($jsonObject) && isset($jsonObject->fileProcessingGracePeriod))
+			$this->fileProcessingGracePeriod = (int)$jsonObject->fileProcessingGracePeriod;
 	}
 	/**
 	 * 
@@ -83,6 +87,13 @@ class Kaltura_Client_ZoomDropFolder_Type_ZoomDropFolder extends Kaltura_Client_D
 	 * @var int
 	 */
 	public $lastHandledMeetingTime = null;
+
+	/**
+	 * The amount of time, in seconds, to wait before processing a drop folder file
+	 *
+	 * @var int
+	 */
+	public $fileProcessingGracePeriod = null;
 
 
 }

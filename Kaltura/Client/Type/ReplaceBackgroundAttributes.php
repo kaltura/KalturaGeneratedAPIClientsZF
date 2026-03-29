@@ -52,6 +52,18 @@ class Kaltura_Client_Type_ReplaceBackgroundAttributes extends Kaltura_Client_Typ
 			$this->resource = Kaltura_Client_ParseUtils::unmarshalObject($xml->resource, "KalturaContentResource");
 		if(!is_null($jsonObject) && isset($jsonObject->resource) && !empty($jsonObject->resource))
 			$this->resource = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsonObject->resource, "KalturaContentResource");
+		if(!is_null($xml) && count($xml->backgroundColorCode))
+			$this->backgroundColorCode = (string)$xml->backgroundColorCode;
+		if(!is_null($jsonObject) && isset($jsonObject->backgroundColorCode))
+			$this->backgroundColorCode = (string)$jsonObject->backgroundColorCode;
+		if(!is_null($xml) && count($xml->foregroundScalePercentage))
+			$this->foregroundScalePercentage = (float)$xml->foregroundScalePercentage;
+		if(!is_null($jsonObject) && isset($jsonObject->foregroundScalePercentage))
+			$this->foregroundScalePercentage = (float)$jsonObject->foregroundScalePercentage;
+		if(!is_null($xml) && count($xml->foregroundPositionPercentage) && !empty($xml->foregroundPositionPercentage))
+			$this->foregroundPositionPercentage = Kaltura_Client_ParseUtils::unmarshalObject($xml->foregroundPositionPercentage, "KalturaPosition");
+		if(!is_null($jsonObject) && isset($jsonObject->foregroundPositionPercentage) && !empty($jsonObject->foregroundPositionPercentage))
+			$this->foregroundPositionPercentage = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsonObject->foregroundPositionPercentage, "KalturaPosition");
 	}
 	/**
 	 * Only KalturaEntryResource and KalturaAssetResource are supported
@@ -59,6 +71,27 @@ class Kaltura_Client_Type_ReplaceBackgroundAttributes extends Kaltura_Client_Typ
 	 * @var Kaltura_Client_Type_ContentResource
 	 */
 	public $resource;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $backgroundColorCode = null;
+
+	/**
+	 * 
+	 *
+	 * @var float
+	 */
+	public $foregroundScalePercentage = null;
+
+	/**
+	 * 
+	 *
+	 * @var Kaltura_Client_Type_Position
+	 */
+	public $foregroundPositionPercentage;
 
 
 }
