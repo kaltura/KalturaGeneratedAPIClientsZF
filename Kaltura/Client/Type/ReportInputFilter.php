@@ -268,6 +268,18 @@ class Kaltura_Client_Type_ReportInputFilter extends Kaltura_Client_Type_ReportIn
 			$this->videoCodecIn = (string)$xml->videoCodecIn;
 		if(!is_null($jsonObject) && isset($jsonObject->videoCodecIn))
 			$this->videoCodecIn = (string)$jsonObject->videoCodecIn;
+		if(!is_null($xml) && count($xml->agentIdIn))
+			$this->agentIdIn = (string)$xml->agentIdIn;
+		if(!is_null($jsonObject) && isset($jsonObject->agentIdIn))
+			$this->agentIdIn = (string)$jsonObject->agentIdIn;
+		if(!is_null($xml) && count($xml->genieIdIn))
+			$this->genieIdIn = (string)$xml->genieIdIn;
+		if(!is_null($jsonObject) && isset($jsonObject->genieIdIn))
+			$this->genieIdIn = (string)$jsonObject->genieIdIn;
+		if(!is_null($xml) && count($xml->reachProfileIdIn))
+			$this->reachProfileIdIn = (string)$xml->reachProfileIdIn;
+		if(!is_null($jsonObject) && isset($jsonObject->reachProfileIdIn))
+			$this->reachProfileIdIn = (string)$jsonObject->reachProfileIdIn;
 	}
 	/**
 	 * Search keywords to filter objects
@@ -618,6 +630,27 @@ class Kaltura_Client_Type_ReportInputFilter extends Kaltura_Client_Type_ReportIn
 	 * @var string
 	 */
 	public $videoCodecIn = null;
+
+	/**
+	 * filter by agent id
+	 *
+	 * @var string
+	 */
+	public $agentIdIn = null;
+
+	/**
+	 * filter by Genie id
+	 *
+	 * @var string
+	 */
+	public $genieIdIn = null;
+
+	/**
+	 * filter by reach profile id
+	 *
+	 * @var string
+	 */
+	public $reachProfileIdIn = null;
 
 
 }

@@ -64,6 +64,10 @@ class Kaltura_Client_Type_ReplaceBackgroundAttributes extends Kaltura_Client_Typ
 			$this->foregroundPositionPercentage = Kaltura_Client_ParseUtils::unmarshalObject($xml->foregroundPositionPercentage, "KalturaPosition");
 		if(!is_null($jsonObject) && isset($jsonObject->foregroundPositionPercentage) && !empty($jsonObject->foregroundPositionPercentage))
 			$this->foregroundPositionPercentage = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsonObject->foregroundPositionPercentage, "KalturaPosition");
+		if(!is_null($xml) && count($xml->audioAttributes) && !empty($xml->audioAttributes))
+			$this->audioAttributes = Kaltura_Client_ParseUtils::unmarshalObject($xml->audioAttributes, "KalturaAudioAttributes");
+		if(!is_null($jsonObject) && isset($jsonObject->audioAttributes) && !empty($jsonObject->audioAttributes))
+			$this->audioAttributes = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsonObject->audioAttributes, "KalturaAudioAttributes");
 	}
 	/**
 	 * Only KalturaEntryResource and KalturaAssetResource are supported
@@ -92,6 +96,13 @@ class Kaltura_Client_Type_ReplaceBackgroundAttributes extends Kaltura_Client_Typ
 	 * @var Kaltura_Client_Type_Position
 	 */
 	public $foregroundPositionPercentage;
+
+	/**
+	 * 
+	 *
+	 * @var Kaltura_Client_Type_AudioAttributes
+	 */
+	public $audioAttributes;
 
 
 }

@@ -176,6 +176,10 @@ class Kaltura_Client_Reach_Type_EntryVendorTask extends Kaltura_Client_ObjectBas
 			$this->externalTaskId = (string)$xml->externalTaskId;
 		if(!is_null($jsonObject) && isset($jsonObject->externalTaskId))
 			$this->externalTaskId = (string)$jsonObject->externalTaskId;
+		if(!is_null($xml) && count($xml->externalObjectId))
+			$this->externalObjectId = (string)$xml->externalObjectId;
+		if(!is_null($jsonObject) && isset($jsonObject->externalObjectId))
+			$this->externalObjectId = (string)$jsonObject->externalObjectId;
 	}
 	/**
 	 * 
@@ -422,6 +426,14 @@ class Kaltura_Client_Reach_Type_EntryVendorTask extends Kaltura_Client_ObjectBas
 	 * @var string
 	 */
 	public $externalTaskId = null;
+
+	/**
+	 * The identifier of the external object for EXTERNAL_OBJECT type tasks
+	 *
+	 * @var string
+	 * @insertonly
+	 */
+	public $externalObjectId = null;
 
 
 }

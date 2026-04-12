@@ -66,6 +66,26 @@ class Kaltura_Client_Type_OverlayAttributes extends Kaltura_Client_Type_MediaCom
 			else
 				$this->resourceMediaCompositionAttributesArray = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsonObject->resourceMediaCompositionAttributesArray, "KalturaMediaCompositionAttributes");
 		}
+		if(!is_null($xml) && count($xml->marginsPercentage))
+			$this->marginsPercentage = (float)$xml->marginsPercentage;
+		if(!is_null($jsonObject) && isset($jsonObject->marginsPercentage))
+			$this->marginsPercentage = (float)$jsonObject->marginsPercentage;
+		if(!is_null($xml) && count($xml->overlayScalePercentage))
+			$this->overlayScalePercentage = (float)$xml->overlayScalePercentage;
+		if(!is_null($jsonObject) && isset($jsonObject->overlayScalePercentage))
+			$this->overlayScalePercentage = (float)$jsonObject->overlayScalePercentage;
+		if(!is_null($xml) && count($xml->overlayPlacement))
+			$this->overlayPlacement = (int)$xml->overlayPlacement;
+		if(!is_null($jsonObject) && isset($jsonObject->overlayPlacement))
+			$this->overlayPlacement = (int)$jsonObject->overlayPlacement;
+		if(!is_null($xml) && count($xml->overlayShape))
+			$this->overlayShape = (int)$xml->overlayShape;
+		if(!is_null($jsonObject) && isset($jsonObject->overlayShape))
+			$this->overlayShape = (int)$jsonObject->overlayShape;
+		if(!is_null($xml) && count($xml->audioAttributes) && !empty($xml->audioAttributes))
+			$this->audioAttributes = Kaltura_Client_ParseUtils::unmarshalObject($xml->audioAttributes, "KalturaAudioAttributes");
+		if(!is_null($jsonObject) && isset($jsonObject->audioAttributes) && !empty($jsonObject->audioAttributes))
+			$this->audioAttributes = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsonObject->audioAttributes, "KalturaAudioAttributes");
 	}
 	/**
 	 * Only KalturaEntryResource and KalturaAssetResource are supported
@@ -80,6 +100,41 @@ class Kaltura_Client_Type_OverlayAttributes extends Kaltura_Client_Type_MediaCom
 	 * @var Kaltura_Client_Type_MediaCompositionAttributes[]
 	 */
 	public $resourceMediaCompositionAttributesArray;
+
+	/**
+	 * 
+	 *
+	 * @var float
+	 */
+	public $marginsPercentage = null;
+
+	/**
+	 * 
+	 *
+	 * @var float
+	 */
+	public $overlayScalePercentage = null;
+
+	/**
+	 * 
+	 *
+	 * @var Kaltura_Client_Enum_MediaCompositionAlignment
+	 */
+	public $overlayPlacement = null;
+
+	/**
+	 * 
+	 *
+	 * @var Kaltura_Client_Enum_OverlayShape
+	 */
+	public $overlayShape = null;
+
+	/**
+	 * 
+	 *
+	 * @var Kaltura_Client_Type_AudioAttributes
+	 */
+	public $audioAttributes;
 
 
 }
