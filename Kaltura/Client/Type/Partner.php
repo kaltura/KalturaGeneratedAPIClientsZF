@@ -552,6 +552,10 @@ class Kaltura_Client_Type_Partner extends Kaltura_Client_ObjectBase
 			$this->allowedEmailDomainsForAdmins = (string)$xml->allowedEmailDomainsForAdmins;
 		if(!is_null($jsonObject) && isset($jsonObject->allowedEmailDomainsForAdmins))
 			$this->allowedEmailDomainsForAdmins = (string)$jsonObject->allowedEmailDomainsForAdmins;
+		if(!is_null($xml) && count($xml->externalIdentifier))
+			$this->externalIdentifier = (string)$xml->externalIdentifier;
+		if(!is_null($jsonObject) && isset($jsonObject->externalIdentifier))
+			$this->externalIdentifier = (string)$jsonObject->externalIdentifier;
 	}
 	/**
 	 * 
@@ -1195,6 +1199,13 @@ class Kaltura_Client_Type_Partner extends Kaltura_Client_ObjectBase
 	 * @var string
 	 */
 	public $allowedEmailDomainsForAdmins = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $externalIdentifier = null;
 
 
 }

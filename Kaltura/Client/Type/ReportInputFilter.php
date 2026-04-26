@@ -280,6 +280,20 @@ class Kaltura_Client_Type_ReportInputFilter extends Kaltura_Client_Type_ReportIn
 			$this->reachProfileIdIn = (string)$xml->reachProfileIdIn;
 		if(!is_null($jsonObject) && isset($jsonObject->reachProfileIdIn))
 			$this->reachProfileIdIn = (string)$jsonObject->reachProfileIdIn;
+		if(!is_null($xml) && count($xml->isPreview))
+		{
+			if(!empty($xml->isPreview) && ((int) $xml->isPreview === 1 || strtolower((string)$xml->isPreview) === 'true'))
+				$this->isPreview = true;
+			else
+				$this->isPreview = false;
+		}
+		if(!is_null($jsonObject) && isset($jsonObject->isPreview))
+		{
+			if(!empty($jsonObject->isPreview) && ((int) $jsonObject->isPreview === 1 || strtolower((string)$jsonObject->isPreview) === 'true'))
+				$this->isPreview = true;
+			else
+				$this->isPreview = false;
+		}
 	}
 	/**
 	 * Search keywords to filter objects
@@ -651,6 +665,13 @@ class Kaltura_Client_Type_ReportInputFilter extends Kaltura_Client_Type_ReportIn
 	 * @var string
 	 */
 	public $reachProfileIdIn = null;
+
+	/**
+	 * filter by preview mode
+	 *
+	 * @var bool
+	 */
+	public $isPreview = null;
 
 
 }

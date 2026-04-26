@@ -336,7 +336,6 @@ class Kaltura_Client_Reach_Type_ReachProfile extends Kaltura_Client_ObjectBase
 	 * 
 	 *
 	 * @var float
-	 * @readonly
 	 */
 	public $usedCredit = null;
 
