@@ -53,5 +53,6 @@ class Kaltura_Client_Group_Enum_ESearchGroupFieldName extends Kaltura_Client_Enu
 	const TITLE = "title";
 	const UPDATED_AT = "updated_at";
 	const USER_ID = "user_id";
+	const TYPE = "user_type";
 }
 

@@ -122,6 +122,20 @@ class Kaltura_Client_Type_LiveStreamEntry extends Kaltura_Client_Type_LiveEntry
 			$this->hlsStreamUrl = (string)$xml->hlsStreamUrl;
 		if(!is_null($jsonObject) && isset($jsonObject->hlsStreamUrl))
 			$this->hlsStreamUrl = (string)$jsonObject->hlsStreamUrl;
+		if(!is_null($xml) && count($xml->readyForDeletion))
+		{
+			if(!empty($xml->readyForDeletion) && ((int) $xml->readyForDeletion === 1 || strtolower((string)$xml->readyForDeletion) === 'true'))
+				$this->readyForDeletion = true;
+			else
+				$this->readyForDeletion = false;
+		}
+		if(!is_null($jsonObject) && isset($jsonObject->readyForDeletion))
+		{
+			if(!empty($jsonObject->readyForDeletion) && ((int) $jsonObject->readyForDeletion === 1 || strtolower((string)$jsonObject->readyForDeletion) === 'true'))
+				$this->readyForDeletion = true;
+			else
+				$this->readyForDeletion = false;
+		}
 		if(!is_null($xml) && count($xml->urlManager))
 			$this->urlManager = (string)$xml->urlManager;
 		if(!is_null($jsonObject) && isset($jsonObject->urlManager))
@@ -272,6 +286,14 @@ class Kaltura_Client_Type_LiveStreamEntry extends Kaltura_Client_Type_LiveEntry
 	 * @var string
 	 */
 	public $hlsStreamUrl = null;
+
+	/**
+	 * Indicates whether the live entry is ready to be deleted
+	 *
+	 * @var bool
+	 * @readonly
+	 */
+	public $readyForDeletion = null;
 
 	/**
 	 * URL Manager to handle the live stream URL (for instance, add token)
