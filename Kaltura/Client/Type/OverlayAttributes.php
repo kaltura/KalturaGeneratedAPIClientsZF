@@ -66,14 +66,14 @@ class Kaltura_Client_Type_OverlayAttributes extends Kaltura_Client_Type_MediaCom
 			else
 				$this->resourceMediaCompositionAttributesArray = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsonObject->resourceMediaCompositionAttributesArray, "KalturaMediaCompositionAttributes");
 		}
-		if(!is_null($xml) && count($xml->marginsPercentage))
-			$this->marginsPercentage = (float)$xml->marginsPercentage;
-		if(!is_null($jsonObject) && isset($jsonObject->marginsPercentage))
-			$this->marginsPercentage = (float)$jsonObject->marginsPercentage;
-		if(!is_null($xml) && count($xml->overlayScalePercentage))
-			$this->overlayScalePercentage = (float)$xml->overlayScalePercentage;
-		if(!is_null($jsonObject) && isset($jsonObject->overlayScalePercentage))
-			$this->overlayScalePercentage = (float)$jsonObject->overlayScalePercentage;
+		if(!is_null($xml) && count($xml->marginsPercentage) && !empty($xml->marginsPercentage))
+			$this->marginsPercentage = Kaltura_Client_ParseUtils::unmarshalObject($xml->marginsPercentage, "KalturaDimensionsPercentage");
+		if(!is_null($jsonObject) && isset($jsonObject->marginsPercentage) && !empty($jsonObject->marginsPercentage))
+			$this->marginsPercentage = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsonObject->marginsPercentage, "KalturaDimensionsPercentage");
+		if(!is_null($xml) && count($xml->overlayScaleAttribute) && !empty($xml->overlayScaleAttribute))
+			$this->overlayScaleAttribute = Kaltura_Client_ParseUtils::unmarshalObject($xml->overlayScaleAttribute, "KalturaOverlayScaleAttribute");
+		if(!is_null($jsonObject) && isset($jsonObject->overlayScaleAttribute) && !empty($jsonObject->overlayScaleAttribute))
+			$this->overlayScaleAttribute = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsonObject->overlayScaleAttribute, "KalturaOverlayScaleAttribute");
 		if(!is_null($xml) && count($xml->overlayPlacement))
 			$this->overlayPlacement = (int)$xml->overlayPlacement;
 		if(!is_null($jsonObject) && isset($jsonObject->overlayPlacement))
@@ -104,16 +104,16 @@ class Kaltura_Client_Type_OverlayAttributes extends Kaltura_Client_Type_MediaCom
 	/**
 	 * 
 	 *
-	 * @var float
+	 * @var Kaltura_Client_Type_DimensionsPercentage
 	 */
-	public $marginsPercentage = null;
+	public $marginsPercentage;
 
 	/**
 	 * 
 	 *
-	 * @var float
+	 * @var Kaltura_Client_Type_OverlayScaleAttribute
 	 */
-	public $overlayScalePercentage = null;
+	public $overlayScaleAttribute;
 
 	/**
 	 * 
