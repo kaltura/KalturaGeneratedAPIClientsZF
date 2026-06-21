@@ -31,11 +31,11 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Type_OperationResource extends Kaltura_Client_Type_ContentResource
+class Kaltura_Client_Document_Type_DocumentImagesResource extends Kaltura_Client_Type_ContentResource
 {
 	public function getKalturaObjectType()
 	{
-		return 'KalturaOperationResource';
+		return 'KalturaDocumentImagesResource';
 	}
 	
 	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
@@ -48,49 +48,28 @@ class Kaltura_Client_Type_OperationResource extends Kaltura_Client_Type_ContentR
 		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(!is_null($xml) && count($xml->resource) && !empty($xml->resource))
-			$this->resource = Kaltura_Client_ParseUtils::unmarshalObject($xml->resource, "KalturaContentResource");
-		if(!is_null($jsonObject) && isset($jsonObject->resource) && !empty($jsonObject->resource))
-			$this->resource = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsonObject->resource, "KalturaContentResource");
-		if(!is_null($xml) && count($xml->operationAttributes))
-		{
-			if(empty($xml->operationAttributes))
-				$this->operationAttributes = array();
-			else
-				$this->operationAttributes = Kaltura_Client_ParseUtils::unmarshalArray($xml->operationAttributes, "KalturaOperationAttributes");
-		}
-		if(!is_null($jsonObject) && isset($jsonObject->operationAttributes))
-		{
-			if(empty($jsonObject->operationAttributes))
-				$this->operationAttributes = array();
-			else
-				$this->operationAttributes = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsonObject->operationAttributes, "KalturaOperationAttributes");
-		}
-		if(!is_null($xml) && count($xml->assetParamsId))
-			$this->assetParamsId = (int)$xml->assetParamsId;
-		if(!is_null($jsonObject) && isset($jsonObject->assetParamsId))
-			$this->assetParamsId = (int)$jsonObject->assetParamsId;
+		if(!is_null($xml) && count($xml->flavorAssetId))
+			$this->flavorAssetId = (string)$xml->flavorAssetId;
+		if(!is_null($jsonObject) && isset($jsonObject->flavorAssetId))
+			$this->flavorAssetId = (string)$jsonObject->flavorAssetId;
+		if(!is_null($xml) && count($xml->index))
+			$this->index = (int)$xml->index;
+		if(!is_null($jsonObject) && isset($jsonObject->index))
+			$this->index = (int)$jsonObject->index;
 	}
 	/**
-	 * Only KalturaEntryResource, KalturaAssetResource and KalturaDocumentImagesResource are supported
+	 * ID of the flavor asset containing the image list
 	 *
-	 * @var Kaltura_Client_Type_ContentResource
+	 * @var string
 	 */
-	public $resource;
+	public $flavorAssetId = null;
 
 	/**
-	 * 
-	 *
-	 * @var Kaltura_Client_Type_OperationAttributes[]
-	 */
-	public $operationAttributes;
-
-	/**
-	 * ID of alternative asset params to be used instead of the system default flavor params
+	 * Zero-based index of the image to retrieve from the list
 	 *
 	 * @var int
 	 */
-	public $assetParamsId = null;
+	public $index = null;
 
 
 }

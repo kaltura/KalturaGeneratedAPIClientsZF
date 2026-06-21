@@ -92,6 +92,20 @@ abstract class Kaltura_Client_Reach_Type_VendorCatalogItem extends Kaltura_Clien
 			$this->pricing = Kaltura_Client_ParseUtils::unmarshalObject($xml->pricing, "KalturaVendorCatalogItemPricing");
 		if(!is_null($jsonObject) && isset($jsonObject->pricing) && !empty($jsonObject->pricing))
 			$this->pricing = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsonObject->pricing, "KalturaVendorCatalogItemPricing");
+		if(!is_null($xml) && count($xml->pricingArray))
+		{
+			if(empty($xml->pricingArray))
+				$this->pricingArray = array();
+			else
+				$this->pricingArray = Kaltura_Client_ParseUtils::unmarshalArray($xml->pricingArray, "KalturaVendorCatalogItemUnitPricing");
+		}
+		if(!is_null($jsonObject) && isset($jsonObject->pricingArray))
+		{
+			if(empty($jsonObject->pricingArray))
+				$this->pricingArray = array();
+			else
+				$this->pricingArray = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsonObject->pricingArray, "KalturaVendorCatalogItemUnitPricing");
+		}
 		if(!is_null($xml) && count($xml->engineType))
 			$this->engineType = (string)$xml->engineType;
 		if(!is_null($jsonObject) && isset($jsonObject->engineType))
@@ -246,6 +260,13 @@ abstract class Kaltura_Client_Reach_Type_VendorCatalogItem extends Kaltura_Clien
 	 * @var Kaltura_Client_Reach_Type_VendorCatalogItemPricing
 	 */
 	public $pricing;
+
+	/**
+	 * 
+	 *
+	 * @var Kaltura_Client_Reach_Type_VendorCatalogItemUnitPricing[]
+	 */
+	public $pricingArray;
 
 	/**
 	 * Property showing the catalog item's engine type, in case a vendor can offer the same service via different engines.

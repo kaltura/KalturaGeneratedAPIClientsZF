@@ -31,11 +31,11 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Type_OperationResource extends Kaltura_Client_Type_ContentResource
+class Kaltura_Client_Reach_Type_EntryVendorTaskUnit extends Kaltura_Client_ObjectBase
 {
 	public function getKalturaObjectType()
 	{
-		return 'KalturaOperationResource';
+		return 'KalturaEntryVendorTaskUnit';
 	}
 	
 	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
@@ -48,49 +48,28 @@ class Kaltura_Client_Type_OperationResource extends Kaltura_Client_Type_ContentR
 		if(is_null($xml) && is_null($jsonObject))
 			return;
 		
-		if(!is_null($xml) && count($xml->resource) && !empty($xml->resource))
-			$this->resource = Kaltura_Client_ParseUtils::unmarshalObject($xml->resource, "KalturaContentResource");
-		if(!is_null($jsonObject) && isset($jsonObject->resource) && !empty($jsonObject->resource))
-			$this->resource = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsonObject->resource, "KalturaContentResource");
-		if(!is_null($xml) && count($xml->operationAttributes))
-		{
-			if(empty($xml->operationAttributes))
-				$this->operationAttributes = array();
-			else
-				$this->operationAttributes = Kaltura_Client_ParseUtils::unmarshalArray($xml->operationAttributes, "KalturaOperationAttributes");
-		}
-		if(!is_null($jsonObject) && isset($jsonObject->operationAttributes))
-		{
-			if(empty($jsonObject->operationAttributes))
-				$this->operationAttributes = array();
-			else
-				$this->operationAttributes = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsonObject->operationAttributes, "KalturaOperationAttributes");
-		}
-		if(!is_null($xml) && count($xml->assetParamsId))
-			$this->assetParamsId = (int)$xml->assetParamsId;
-		if(!is_null($jsonObject) && isset($jsonObject->assetParamsId))
-			$this->assetParamsId = (int)$jsonObject->assetParamsId;
+		if(!is_null($xml) && count($xml->unitsUsed))
+			$this->unitsUsed = (float)$xml->unitsUsed;
+		if(!is_null($jsonObject) && isset($jsonObject->unitsUsed))
+			$this->unitsUsed = (float)$jsonObject->unitsUsed;
+		if(!is_null($xml) && count($xml->serviceName))
+			$this->serviceName = (string)$xml->serviceName;
+		if(!is_null($jsonObject) && isset($jsonObject->serviceName))
+			$this->serviceName = (string)$jsonObject->serviceName;
 	}
 	/**
-	 * Only KalturaEntryResource, KalturaAssetResource and KalturaDocumentImagesResource are supported
+	 * 
 	 *
-	 * @var Kaltura_Client_Type_ContentResource
+	 * @var float
 	 */
-	public $resource;
+	public $unitsUsed = null;
 
 	/**
 	 * 
 	 *
-	 * @var Kaltura_Client_Type_OperationAttributes[]
+	 * @var string
 	 */
-	public $operationAttributes;
-
-	/**
-	 * ID of alternative asset params to be used instead of the system default flavor params
-	 *
-	 * @var int
-	 */
-	public $assetParamsId = null;
+	public $serviceName = null;
 
 
 }

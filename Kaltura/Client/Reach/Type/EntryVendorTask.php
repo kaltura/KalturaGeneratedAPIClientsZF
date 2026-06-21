@@ -108,6 +108,20 @@ class Kaltura_Client_Reach_Type_EntryVendorTask extends Kaltura_Client_ObjectBas
 			$this->unitsUsed = (int)$xml->unitsUsed;
 		if(!is_null($jsonObject) && isset($jsonObject->unitsUsed))
 			$this->unitsUsed = (int)$jsonObject->unitsUsed;
+		if(!is_null($xml) && count($xml->unitsUsedArray))
+		{
+			if(empty($xml->unitsUsedArray))
+				$this->unitsUsedArray = array();
+			else
+				$this->unitsUsedArray = Kaltura_Client_ParseUtils::unmarshalArray($xml->unitsUsedArray, "KalturaEntryVendorTaskUnit");
+		}
+		if(!is_null($jsonObject) && isset($jsonObject->unitsUsedArray))
+		{
+			if(empty($jsonObject->unitsUsedArray))
+				$this->unitsUsedArray = array();
+			else
+				$this->unitsUsedArray = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsonObject->unitsUsedArray, "KalturaEntryVendorTaskUnit");
+		}
 		if(!is_null($xml) && count($xml->moderatingUser))
 			$this->moderatingUser = (string)$xml->moderatingUser;
 		if(!is_null($jsonObject) && isset($jsonObject->moderatingUser))
@@ -298,6 +312,13 @@ class Kaltura_Client_Reach_Type_EntryVendorTask extends Kaltura_Client_ObjectBas
 	 * @var int
 	 */
 	public $unitsUsed = null;
+
+	/**
+	 * 
+	 *
+	 * @var Kaltura_Client_Reach_Type_EntryVendorTaskUnit[]
+	 */
+	public $unitsUsedArray;
 
 	/**
 	 * The user ID that approved this task for execution (in case moderation is requested)

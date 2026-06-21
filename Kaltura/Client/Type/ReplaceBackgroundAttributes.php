@@ -70,7 +70,7 @@ class Kaltura_Client_Type_ReplaceBackgroundAttributes extends Kaltura_Client_Typ
 			$this->audioAttributes = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsonObject->audioAttributes, "KalturaAudioAttributes");
 	}
 	/**
-	 * Only KalturaEntryResource and KalturaAssetResource are supported
+	 * Only KalturaEntryResource, KalturaAssetResource and KalturaDocumentImagesResource are supported
 	 *
 	 * @var Kaltura_Client_Type_ContentResource
 	 */
