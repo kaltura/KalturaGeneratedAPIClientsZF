@@ -172,6 +172,10 @@ class Kaltura_Client_Reach_Type_ReachProfile extends Kaltura_Client_ObjectBase
 			$this->vendorTaskProcessingRegion = (int)$xml->vendorTaskProcessingRegion;
 		if(!is_null($jsonObject) && isset($jsonObject->vendorTaskProcessingRegion))
 			$this->vendorTaskProcessingRegion = (int)$jsonObject->vendorTaskProcessingRegion;
+		if(!is_null($xml) && count($xml->allowedCatalogItemIds))
+			$this->allowedCatalogItemIds = (string)$xml->allowedCatalogItemIds;
+		if(!is_null($jsonObject) && isset($jsonObject->allowedCatalogItemIds))
+			$this->allowedCatalogItemIds = (string)$jsonObject->allowedCatalogItemIds;
 	}
 	/**
 	 * 
@@ -359,6 +363,13 @@ class Kaltura_Client_Reach_Type_ReachProfile extends Kaltura_Client_ObjectBase
 	 * @var Kaltura_Client_Reach_Enum_VendorTaskProcessingRegion
 	 */
 	public $vendorTaskProcessingRegion = null;
+
+	/**
+	 * Comma separated catalogItemIds that are allowed for ordering using this reach profile
+	 *
+	 * @var string
+	 */
+	public $allowedCatalogItemIds = null;
 
 
 }
