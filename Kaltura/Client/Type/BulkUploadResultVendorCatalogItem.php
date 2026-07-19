@@ -100,6 +100,20 @@ class Kaltura_Client_Type_BulkUploadResultVendorCatalogItem extends Kaltura_Clie
 			$this->pricing = Kaltura_Client_ParseUtils::unmarshalObject($xml->pricing, "KalturaVendorCatalogItemPricing");
 		if(!is_null($jsonObject) && isset($jsonObject->pricing) && !empty($jsonObject->pricing))
 			$this->pricing = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsonObject->pricing, "KalturaVendorCatalogItemPricing");
+		if(!is_null($xml) && count($xml->pricingArray))
+		{
+			if(empty($xml->pricingArray))
+				$this->pricingArray = array();
+			else
+				$this->pricingArray = Kaltura_Client_ParseUtils::unmarshalArray($xml->pricingArray, "KalturaVendorCatalogItemUnitPricing");
+		}
+		if(!is_null($jsonObject) && isset($jsonObject->pricingArray))
+		{
+			if(empty($jsonObject->pricingArray))
+				$this->pricingArray = array();
+			else
+				$this->pricingArray = Kaltura_Client_ParseUtils::jsObjectToClientObject($jsonObject->pricingArray, "KalturaVendorCatalogItemUnitPricing");
+		}
 		if(!is_null($xml) && count($xml->flavorParamsId))
 			$this->flavorParamsId = (int)$xml->flavorParamsId;
 		if(!is_null($jsonObject) && isset($jsonObject->flavorParamsId))
@@ -199,6 +213,13 @@ class Kaltura_Client_Type_BulkUploadResultVendorCatalogItem extends Kaltura_Clie
 	 * @var Kaltura_Client_Reach_Type_VendorCatalogItemPricing
 	 */
 	public $pricing;
+
+	/**
+	 * 
+	 *
+	 * @var Kaltura_Client_Reach_Type_VendorCatalogItemUnitPricing[]
+	 */
+	public $pricingArray;
 
 	/**
 	 * 

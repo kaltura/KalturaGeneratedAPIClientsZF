@@ -31,47 +31,11 @@
  * @package Kaltura
  * @subpackage Client
  */
-abstract class Kaltura_Client_Reach_Type_VendorTaskData extends Kaltura_Client_ObjectBase
+class Kaltura_Client_Enum_HTMLPurifierBehaviourType extends Kaltura_Client_EnumBase
 {
-	public function getKalturaObjectType()
-	{
-		return 'KalturaVendorTaskData';
-	}
-	
-	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
-	{
-		parent::__construct($xml, $jsonObject);
-		
-		if(!is_null($xml) && !is_null($jsonObject))
-			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
-		
-		if(is_null($xml) && is_null($jsonObject))
-			return;
-		
-		if(!is_null($xml) && count($xml->entryDuration))
-			$this->entryDuration = (int)$xml->entryDuration;
-		if(!is_null($jsonObject) && isset($jsonObject->entryDuration))
-			$this->entryDuration = (int)$jsonObject->entryDuration;
-		if(!is_null($xml) && count($xml->vendorComment))
-			$this->vendorComment = (string)$xml->vendorComment;
-		if(!is_null($jsonObject) && isset($jsonObject->vendorComment))
-			$this->vendorComment = (string)$jsonObject->vendorComment;
-	}
-	/**
-	 * The duration of the entry for which the task was created for in milliseconds
-	 *
-	 * @var int
-	 * @readonly
-	 */
-	public $entryDuration = null;
-
-	/**
-	 * string containing the comment provided by vendor
-	 *
-	 * @var string
-	 */
-	public $vendorComment = null;
-
-
+	const IGNORE = "0";
+	const NOTIFY = "1";
+	const SANITIZE = "2";
+	const BLOCK = "3";
 }
 

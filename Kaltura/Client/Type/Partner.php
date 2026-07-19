@@ -556,6 +556,52 @@ class Kaltura_Client_Type_Partner extends Kaltura_Client_ObjectBase
 			$this->externalIdentifier = (string)$xml->externalIdentifier;
 		if(!is_null($jsonObject) && isset($jsonObject->externalIdentifier))
 			$this->externalIdentifier = (string)$jsonObject->externalIdentifier;
+		if(!is_null($xml) && count($xml->htmlPurifierBehaviour))
+			$this->htmlPurifierBehaviour = (string)$xml->htmlPurifierBehaviour;
+		if(!is_null($jsonObject) && isset($jsonObject->htmlPurifierBehaviour))
+			$this->htmlPurifierBehaviour = (string)$jsonObject->htmlPurifierBehaviour;
+		if(!is_null($xml) && count($xml->htmlPurifierBaseListUsage))
+		{
+			if(!empty($xml->htmlPurifierBaseListUsage) && ((int) $xml->htmlPurifierBaseListUsage === 1 || strtolower((string)$xml->htmlPurifierBaseListUsage) === 'true'))
+				$this->htmlPurifierBaseListUsage = true;
+			else
+				$this->htmlPurifierBaseListUsage = false;
+		}
+		if(!is_null($jsonObject) && isset($jsonObject->htmlPurifierBaseListUsage))
+		{
+			if(!empty($jsonObject->htmlPurifierBaseListUsage) && ((int) $jsonObject->htmlPurifierBaseListUsage === 1 || strtolower((string)$jsonObject->htmlPurifierBaseListUsage) === 'true'))
+				$this->htmlPurifierBaseListUsage = true;
+			else
+				$this->htmlPurifierBaseListUsage = false;
+		}
+		if(!is_null($xml) && count($xml->purifyImageContent))
+		{
+			if(!empty($xml->purifyImageContent) && ((int) $xml->purifyImageContent === 1 || strtolower((string)$xml->purifyImageContent) === 'true'))
+				$this->purifyImageContent = true;
+			else
+				$this->purifyImageContent = false;
+		}
+		if(!is_null($jsonObject) && isset($jsonObject->purifyImageContent))
+		{
+			if(!empty($jsonObject->purifyImageContent) && ((int) $jsonObject->purifyImageContent === 1 || strtolower((string)$jsonObject->purifyImageContent) === 'true'))
+				$this->purifyImageContent = true;
+			else
+				$this->purifyImageContent = false;
+		}
+		if(!is_null($xml) && count($xml->fileTypeRestrictionEnabled))
+		{
+			if(!empty($xml->fileTypeRestrictionEnabled) && ((int) $xml->fileTypeRestrictionEnabled === 1 || strtolower((string)$xml->fileTypeRestrictionEnabled) === 'true'))
+				$this->fileTypeRestrictionEnabled = true;
+			else
+				$this->fileTypeRestrictionEnabled = false;
+		}
+		if(!is_null($jsonObject) && isset($jsonObject->fileTypeRestrictionEnabled))
+		{
+			if(!empty($jsonObject->fileTypeRestrictionEnabled) && ((int) $jsonObject->fileTypeRestrictionEnabled === 1 || strtolower((string)$jsonObject->fileTypeRestrictionEnabled) === 'true'))
+				$this->fileTypeRestrictionEnabled = true;
+			else
+				$this->fileTypeRestrictionEnabled = false;
+		}
 	}
 	/**
 	 * 
@@ -1206,6 +1252,34 @@ class Kaltura_Client_Type_Partner extends Kaltura_Client_ObjectBase
 	 * @var string
 	 */
 	public $externalIdentifier = null;
+
+	/**
+	 * 
+	 *
+	 * @var Kaltura_Client_Enum_HTMLPurifierBehaviourType
+	 */
+	public $htmlPurifierBehaviour = null;
+
+	/**
+	 * 
+	 *
+	 * @var bool
+	 */
+	public $htmlPurifierBaseListUsage = null;
+
+	/**
+	 * 
+	 *
+	 * @var bool
+	 */
+	public $purifyImageContent = null;
+
+	/**
+	 * 
+	 *
+	 * @var bool
+	 */
+	public $fileTypeRestrictionEnabled = null;
 
 
 }
