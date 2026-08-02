@@ -33,6 +33,7 @@
  */
 class Kaltura_Client_Group_Enum_ESearchGroupFieldName extends Kaltura_Client_EnumBase
 {
+	const ADMIN_TAGS = "admin_tags";
 	const CAPABILITIES = "capabilities";
 	const COMPANY = "company";
 	const COUNTRY = "country";

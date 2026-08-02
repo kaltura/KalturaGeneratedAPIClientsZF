@@ -53,6 +53,7 @@ class Kaltura_Client_ElasticSearch_Enum_ESearchEntryFieldName extends Kaltura_Cl
 	const ID = "id";
 	const IS_LIVE = "is_live";
 	const IS_QUIZ = "is_quiz";
+	const IS_SCHEDULED = "is_scheduled";
 	const USER_ID = "kuser_id";
 	const LAST_PLAYED_AT = "last_played_at";
 	const LENGTH_IN_MSECS = "length_in_msecs";
