@@ -294,6 +294,10 @@ class Kaltura_Client_Type_ReportInputFilter extends Kaltura_Client_Type_ReportIn
 			else
 				$this->isPreview = false;
 		}
+		if(!is_null($xml) && count($xml->streamTypeIn))
+			$this->streamTypeIn = (string)$xml->streamTypeIn;
+		if(!is_null($jsonObject) && isset($jsonObject->streamTypeIn))
+			$this->streamTypeIn = (string)$jsonObject->streamTypeIn;
 	}
 	/**
 	 * Search keywords to filter objects
@@ -672,6 +676,13 @@ class Kaltura_Client_Type_ReportInputFilter extends Kaltura_Client_Type_ReportIn
 	 * @var bool
 	 */
 	public $isPreview = null;
+
+	/**
+	 * filter by stream type
+	 *
+	 * @var string
+	 */
+	public $streamTypeIn = null;
 
 
 }

@@ -42,6 +42,7 @@ class Kaltura_Client_Reach_Enum_VendorServiceTurnAroundTime extends Kaltura_Clie
 	const FIVE_BUSINESS_DAYS = 5;
 	const SIX_BUSINESS_DAYS = 6;
 	const SEVEN_BUSINESS_DAYS = 7;
+	const TEN_BUSINESS_DAYS = 10;
 	const THIRTY_MINUTES = 1800;
 	const TWO_HOURS = 7200;
 	const THREE_HOURS = 10800;

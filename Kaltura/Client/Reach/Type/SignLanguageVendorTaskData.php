@@ -31,10 +31,36 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Reach_Enum_VendorServiceType extends Kaltura_Client_EnumBase
+class Kaltura_Client_Reach_Type_SignLanguageVendorTaskData extends Kaltura_Client_Reach_Type_VendorTaskData
 {
-	const HUMAN = 1;
-	const MACHINE = 2;
-	const HYBRID = 3;
+	public function getKalturaObjectType()
+	{
+		return 'KalturaSignLanguageVendorTaskData';
+	}
+	
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
+	{
+		parent::__construct($xml, $jsonObject);
+		
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
+			return;
+		
+		if(!is_null($xml) && count($xml->assetId))
+			$this->assetId = (string)$xml->assetId;
+		if(!is_null($jsonObject) && isset($jsonObject->assetId))
+			$this->assetId = (string)$jsonObject->assetId;
+	}
+	/**
+	 * 
+	 *
+	 * @var string
+	 * @insertonly
+	 */
+	public $assetId = null;
+
+
 }
 

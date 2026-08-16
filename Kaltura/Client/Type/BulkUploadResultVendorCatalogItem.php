@@ -122,6 +122,10 @@ class Kaltura_Client_Type_BulkUploadResultVendorCatalogItem extends Kaltura_Clie
 			$this->clearAudioFlavorParamsId = (int)$xml->clearAudioFlavorParamsId;
 		if(!is_null($jsonObject) && isset($jsonObject->clearAudioFlavorParamsId))
 			$this->clearAudioFlavorParamsId = (int)$jsonObject->clearAudioFlavorParamsId;
+		if(!is_null($xml) && count($xml->vendorData))
+			$this->vendorData = (string)$xml->vendorData;
+		if(!is_null($jsonObject) && isset($jsonObject->vendorData))
+			$this->vendorData = (string)$jsonObject->vendorData;
 	}
 	/**
 	 * 
@@ -234,6 +238,13 @@ class Kaltura_Client_Type_BulkUploadResultVendorCatalogItem extends Kaltura_Clie
 	 * @var int
 	 */
 	public $clearAudioFlavorParamsId = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $vendorData = null;
 
 
 }

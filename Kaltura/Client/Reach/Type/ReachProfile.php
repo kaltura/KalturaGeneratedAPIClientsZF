@@ -88,6 +88,10 @@ class Kaltura_Client_Reach_Type_ReachProfile extends Kaltura_Client_ObjectBase
 			$this->enableHumanModeration = (int)$xml->enableHumanModeration;
 		if(!is_null($jsonObject) && isset($jsonObject->enableHumanModeration))
 			$this->enableHumanModeration = (int)$jsonObject->enableHumanModeration;
+		if(!is_null($xml) && count($xml->enableHybridModeration))
+			$this->enableHybridModeration = (int)$xml->enableHybridModeration;
+		if(!is_null($jsonObject) && isset($jsonObject->enableHybridModeration))
+			$this->enableHybridModeration = (int)$jsonObject->enableHybridModeration;
 		if(!is_null($xml) && count($xml->autoDisplayMachineCaptionsOnPlayer))
 			$this->autoDisplayMachineCaptionsOnPlayer = (int)$xml->autoDisplayMachineCaptionsOnPlayer;
 		if(!is_null($jsonObject) && isset($jsonObject->autoDisplayMachineCaptionsOnPlayer))
@@ -96,6 +100,10 @@ class Kaltura_Client_Reach_Type_ReachProfile extends Kaltura_Client_ObjectBase
 			$this->autoDisplayHumanCaptionsOnPlayer = (int)$xml->autoDisplayHumanCaptionsOnPlayer;
 		if(!is_null($jsonObject) && isset($jsonObject->autoDisplayHumanCaptionsOnPlayer))
 			$this->autoDisplayHumanCaptionsOnPlayer = (int)$jsonObject->autoDisplayHumanCaptionsOnPlayer;
+		if(!is_null($xml) && count($xml->autoDisplayHybridCaptionsOnPlayer))
+			$this->autoDisplayHybridCaptionsOnPlayer = (int)$xml->autoDisplayHybridCaptionsOnPlayer;
+		if(!is_null($jsonObject) && isset($jsonObject->autoDisplayHybridCaptionsOnPlayer))
+			$this->autoDisplayHybridCaptionsOnPlayer = (int)$jsonObject->autoDisplayHybridCaptionsOnPlayer;
 		if(!is_null($xml) && count($xml->enableMetadataExtraction))
 			$this->enableMetadataExtraction = (int)$xml->enableMetadataExtraction;
 		if(!is_null($jsonObject) && isset($jsonObject->enableMetadataExtraction))
@@ -124,6 +132,10 @@ class Kaltura_Client_Reach_Type_ReachProfile extends Kaltura_Client_ObjectBase
 			$this->labelAdditionForHumanServiceType = (string)$xml->labelAdditionForHumanServiceType;
 		if(!is_null($jsonObject) && isset($jsonObject->labelAdditionForHumanServiceType))
 			$this->labelAdditionForHumanServiceType = (string)$jsonObject->labelAdditionForHumanServiceType;
+		if(!is_null($xml) && count($xml->labelAdditionForHybridServiceType))
+			$this->labelAdditionForHybridServiceType = (string)$xml->labelAdditionForHybridServiceType;
+		if(!is_null($jsonObject) && isset($jsonObject->labelAdditionForHybridServiceType))
+			$this->labelAdditionForHybridServiceType = (string)$jsonObject->labelAdditionForHybridServiceType;
 		if(!is_null($xml) && count($xml->contentDeletionPolicy))
 			$this->contentDeletionPolicy = (int)$xml->contentDeletionPolicy;
 		if(!is_null($jsonObject) && isset($jsonObject->contentDeletionPolicy))
@@ -257,6 +269,13 @@ class Kaltura_Client_Reach_Type_ReachProfile extends Kaltura_Client_ObjectBase
 	 *
 	 * @var Kaltura_Client_Enum_NullableBoolean
 	 */
+	public $enableHybridModeration = null;
+
+	/**
+	 * 
+	 *
+	 * @var Kaltura_Client_Enum_NullableBoolean
+	 */
 	public $autoDisplayMachineCaptionsOnPlayer = null;
 
 	/**
@@ -265,6 +284,13 @@ class Kaltura_Client_Reach_Type_ReachProfile extends Kaltura_Client_ObjectBase
 	 * @var Kaltura_Client_Enum_NullableBoolean
 	 */
 	public $autoDisplayHumanCaptionsOnPlayer = null;
+
+	/**
+	 * 
+	 *
+	 * @var Kaltura_Client_Enum_NullableBoolean
+	 */
+	public $autoDisplayHybridCaptionsOnPlayer = null;
 
 	/**
 	 * 
@@ -314,6 +340,13 @@ class Kaltura_Client_Reach_Type_ReachProfile extends Kaltura_Client_ObjectBase
 	 * @var string
 	 */
 	public $labelAdditionForHumanServiceType = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $labelAdditionForHybridServiceType = null;
 
 	/**
 	 * 
