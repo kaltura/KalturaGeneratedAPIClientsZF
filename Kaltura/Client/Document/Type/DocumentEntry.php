@@ -56,6 +56,10 @@ class Kaltura_Client_Document_Type_DocumentEntry extends Kaltura_Client_Type_Bas
 			$this->assetParamsIds = (string)$xml->assetParamsIds;
 		if(!is_null($jsonObject) && isset($jsonObject->assetParamsIds))
 			$this->assetParamsIds = (string)$jsonObject->assetParamsIds;
+		if(!is_null($xml) && count($xml->views))
+			$this->views = (int)$xml->views;
+		if(!is_null($jsonObject) && isset($jsonObject->views))
+			$this->views = (int)$jsonObject->views;
 	}
 	/**
 	 * The type of the document
@@ -72,6 +76,14 @@ class Kaltura_Client_Document_Type_DocumentEntry extends Kaltura_Client_Type_Bas
 	 * @readonly
 	 */
 	public $assetParamsIds = null;
+
+	/**
+	 * Number of views
+	 *
+	 * @var int
+	 * @readonly
+	 */
+	public $views = null;
 
 
 }

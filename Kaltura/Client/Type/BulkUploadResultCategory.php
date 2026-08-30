@@ -114,6 +114,10 @@ class Kaltura_Client_Type_BulkUploadResultCategory extends Kaltura_Client_Type_B
 			else
 				$this->moderation = false;
 		}
+		if(!is_null($xml) && count($xml->adminTags))
+			$this->adminTags = (string)$xml->adminTags;
+		if(!is_null($jsonObject) && isset($jsonObject->adminTags))
+			$this->adminTags = (string)$jsonObject->adminTags;
 	}
 	/**
 	 * 
@@ -212,6 +216,13 @@ class Kaltura_Client_Type_BulkUploadResultCategory extends Kaltura_Client_Type_B
 	 * @var bool
 	 */
 	public $moderation = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $adminTags = null;
 
 
 }
