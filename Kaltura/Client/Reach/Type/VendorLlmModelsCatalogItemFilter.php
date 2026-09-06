@@ -31,65 +31,24 @@
  * @package Kaltura
  * @subpackage Client
  */
-class Kaltura_Client_Drm_Plugin extends Kaltura_Client_Plugin
+class Kaltura_Client_Reach_Type_VendorLlmModelsCatalogItemFilter extends Kaltura_Client_Reach_Type_VendorCatalogItemFilter
 {
-	/**
-	 * @var Kaltura_Client_Drm_DrmPolicyService
-	 */
-	public $drmPolicy = null;
-
-	/**
-	 * @var Kaltura_Client_Drm_DrmProfileService
-	 */
-	public $drmProfile = null;
-
-	/**
-	 * @var Kaltura_Client_Drm_DrmLicenseAccessService
-	 */
-	public $drmLicenseAccess = null;
-
-	/**
-	 * @var Kaltura_Client_Drm_KeyManagementPolicyService
-	 */
-	public $keyManagementPolicy = null;
-
-	protected function __construct(Kaltura_Client_Client $client)
+	public function getKalturaObjectType()
 	{
-		parent::__construct($client);
-		$this->drmPolicy = new Kaltura_Client_Drm_DrmPolicyService($client);
-		$this->drmProfile = new Kaltura_Client_Drm_DrmProfileService($client);
-		$this->drmLicenseAccess = new Kaltura_Client_Drm_DrmLicenseAccessService($client);
-		$this->keyManagementPolicy = new Kaltura_Client_Drm_KeyManagementPolicyService($client);
+		return 'KalturaVendorLlmModelsCatalogItemFilter';
+	}
+	
+	public function __construct(SimpleXMLElement $xml = null, $jsonObject = null)
+	{
+		parent::__construct($xml, $jsonObject);
+		
+		if(!is_null($xml) && !is_null($jsonObject))
+			throw new Kaltura_Client_ClientException("construct with either XML or JSON object, not both", Kaltura_Client_ClientException::ERROR_CONSTRUCT_ARGS_CONFLICT);
+		
+		if(is_null($xml) && is_null($jsonObject))
+			return;
+		
 	}
 
-	/**
-	 * @return Kaltura_Client_Drm_Plugin
-	 */
-	public static function get(Kaltura_Client_Client $client)
-	{
-		return new Kaltura_Client_Drm_Plugin($client);
-	}
-
-	/**
-	 * @return array<Kaltura_Client_ServiceBase>
-	 */
-	public function getServices()
-	{
-		$services = array(
-			'drmPolicy' => $this->drmPolicy,
-			'drmProfile' => $this->drmProfile,
-			'drmLicenseAccess' => $this->drmLicenseAccess,
-			'keyManagementPolicy' => $this->keyManagementPolicy,
-		);
-		return $services;
-	}
-
-	/**
-	 * @return string
-	 */
-	public function getName()
-	{
-		return 'drm';
-	}
 }
 
