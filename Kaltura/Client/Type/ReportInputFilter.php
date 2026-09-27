@@ -298,6 +298,10 @@ class Kaltura_Client_Type_ReportInputFilter extends Kaltura_Client_Type_ReportIn
 			$this->streamTypeIn = (string)$xml->streamTypeIn;
 		if(!is_null($jsonObject) && isset($jsonObject->streamTypeIn))
 			$this->streamTypeIn = (string)$jsonObject->streamTypeIn;
+		if(!is_null($xml) && count($xml->reachCatalogItemIdIn))
+			$this->reachCatalogItemIdIn = (string)$xml->reachCatalogItemIdIn;
+		if(!is_null($jsonObject) && isset($jsonObject->reachCatalogItemIdIn))
+			$this->reachCatalogItemIdIn = (string)$jsonObject->reachCatalogItemIdIn;
 	}
 	/**
 	 * Search keywords to filter objects
@@ -683,6 +687,13 @@ class Kaltura_Client_Type_ReportInputFilter extends Kaltura_Client_Type_ReportIn
 	 * @var string
 	 */
 	public $streamTypeIn = null;
+
+	/**
+	 * filter by reach catalog item id
+	 *
+	 * @var string
+	 */
+	public $reachCatalogItemIdIn = null;
 
 
 }

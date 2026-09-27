@@ -588,6 +588,10 @@ class Kaltura_Client_Type_Partner extends Kaltura_Client_ObjectBase
 			else
 				$this->purifyImageContent = false;
 		}
+		if(!is_null($xml) && count($xml->htmlPurifierAllowedTags))
+			$this->htmlPurifierAllowedTags = (string)$xml->htmlPurifierAllowedTags;
+		if(!is_null($jsonObject) && isset($jsonObject->htmlPurifierAllowedTags))
+			$this->htmlPurifierAllowedTags = (string)$jsonObject->htmlPurifierAllowedTags;
 		if(!is_null($xml) && count($xml->fileTypeRestrictionEnabled))
 		{
 			if(!empty($xml->fileTypeRestrictionEnabled) && ((int) $xml->fileTypeRestrictionEnabled === 1 || strtolower((string)$xml->fileTypeRestrictionEnabled) === 'true'))
@@ -1273,6 +1277,13 @@ class Kaltura_Client_Type_Partner extends Kaltura_Client_ObjectBase
 	 * @var bool
 	 */
 	public $purifyImageContent = null;
+
+	/**
+	 * 
+	 *
+	 * @var string
+	 */
+	public $htmlPurifierAllowedTags = null;
 
 	/**
 	 * 
